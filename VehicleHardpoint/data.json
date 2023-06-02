@@ -1,372 +1,410 @@
 {
-    "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
-    "module_lang": null,
-    "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
-    "smw_multilingual_text": false,
-    "%icon_prefix": "Prefix used to generate the icon file name.",
-    "icon_prefix": "",
-    "%matches": "",
-    "matches": {
-        "ArmorLocker": {
-            "class": "CargoGrid",
-            "matches": [
-                "hardpoint_armory_cargo_%d+"
-            ],
-            "type": "ArmorStorage"
-        },
-        "Battery": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_battery"
-            ]
-        },
-        "Bed": {
-            "class": "Facilities",
-            "matches": [
-                "hardpoint_bed",
-                "hardpoint_bed_.+"
-            ]
-        },
-        "Cargo": {
-            "class": "Cargo",
-            "matches": [
-                "hardpoint_personal_inventory.*",
-                "hardpoint_personal_storage.*",
-                "hardpoint_storage_%d",
-                "hardpoint_general_cargo_%d+",
-                "hardpoint_medical_storage"
-            ],
-            "type": "PersonalStorage"
-        },
-        "CargoGrid": {
-            "class": "Cargo",
-            "matches": [
-                "hardpoint_cargo.*"
-            ],
-            "type": "CargoGrid"
-        },
-        "Computer": {
-            "class": "Avionics",
-            "matches": [
-                "hardpoint_avionics",
-                "hardpoint_computer"
-            ]
-        },
-        "Container": {
-            "class": "Cargo",
-            "matches": [
-                "hardpoint_mining_pod.*"
-            ],
-            "type": "CargoPod"
-        },
-        "Cooler": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_cooler_.+",
-                "hardpoint_cooler"
-            ]
-        },
-        "DriveUnit": {
-            "class": "Propulsion",
-            "matches": [
-                "hardpoint_controller_wheel"
-            ]
-        },
-        "EMP": {
-            "class": "Utility",
-            "matches": [],
-            "type": "EMPDevice"
-        },
-        "ExternalFuelTank": {
-            "class": "Cargo",
-            "matches": [],
-            "type": "CargoPod"
-        },
-        "FireExtinguisher": {
-            "class": "Facilities",
-            "matches": [
-                "hardpoint_cabinet_extinguisher.*",
-                "hardpoint_fire_extinguisher.*"
-            ]
-        },
-        "FuelIntake": {
-            "class": "Propulsion",
-            "matches": [
-                "hardpoint_fuel_intake.*"
-            ]
-        },
-        "FuelRefinery": {
-            "class": "Utility",
-            "matches": [
-                "hardpoint_fuel_refinery.*"
-            ]
-        },
-        "FuelTank": {
-            "class": "Propulsion",
-            "matches": [
-                "hardpoint_fuel_tank.*"
-            ]
-        },
-        "GravityGenerator": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_gravity_generator"
-            ]
-        },
-        "LifeSupportGenerator": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_gravity_generator"
-            ],
-            "type": "LifeSupport"
-        },
-        "MainThruster": {
-            "class": "Thrusters",
-            "matches": [
-                "hardpoint_engine_.+",
-                "hardpoint_thrusters?.*_main.*",
-                "hardpoint_Main_.+",
-                "hardpoint_mainthruster_.+"
-            ]
-        },
-        "ManneuverThruster": {
-            "class": "Thrusters",
-            "matches": [
-                "hardpoint_thrusters?_front_top_.+",
-                "hardpoint_thrusters?_front_bottom_.+",
-                "hardpoint_thrusters?_rear_top_.+",
-                "hardpoint_thrusters?_rear_bottom_.+",
-                "hardpoint_thrusters?_side_forward_.+",
-                "hardpoint_thrusters?_side_back_.+",
-                "hardpoint_thrusters?_top_forward_.+",
-                "hardpoint_thrusters?_top_back_.+",
-                "hardpoint_thrusters?_bottom_forward_.+",
-                "hardpoint_thrusters?_bottom_back_.+",
-                "hardpoint_thrusters?_left_upper_.+",
-                "hardpoint_thrusters?_right_upper_.+",
-                "hardpoint_thrusters?_left_lower_.+",
-                "hardpoint_thrusters?_right_lower_.+",
-                "hardpoint_thrusters?_left_retro",
-                "hardpoint_thrusters?_right_retro",
-                "hardpoint_Man_Thruster_.+",
-                "hardpoint_thrusters?_mav.+",
-                "hardpoint_thrusters?_maneuver_.+",
-                "hardpoint_grav_.+",
-                "hardpoint_gravplate_.+",
-                "hardpoint_gravlev_.+"
-            ]
-        },
-        "Missile": {
-            "class": "Weapons",
-            "matches": [
-                "missile_.+_attach",
-                "missile_attach_.+"
-            ],
-            "type": "Missiles"
-        },
-        "MissileLauncher": {
-            "class": "Weapons",
-            "matches": [
-                "hardpoint_missile_+"
-            ],
-            "type": "Missiles"
-        },
-        "PersonalInventory": {
-            "class": "Cargo",
-            "matches": [
-                "hardpoint_personal_inventory.*",
-                "hardpoint_personal_storage.*",
-                "hardpoint_storage_%d",
-                "hardpoint_general_cargo_%d+"
-            ],
-            "type": "PersonalStorage"
-        },
-        "PowerPlant": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_engine_attach.*",
-                "hardpoint_power_plant"
-            ]
-        },
-        "QuantumDrive": {
-            "class": "Propulsion",
-            "matches": [
-                "hardpoint_quantum_drive"
-            ]
-        },
-        "QuantumFuelTank": {
-            "class": "Propulsion",
-            "matches": [
-                "hardpoint_quantum_fuel.*"
-            ]
-        },
-        "QuantumInterdictionGenerator": {
-            "class": "Utility",
-            "matches": [],
-            "type": "QuantumJammer"
-        },
-        "Radar": {
-            "class": "Avionics",
-            "matches": [
-                "hardpoint_radar.*"
-            ]
-        },
-        "SalvageFillerStation": {
-            "class": "Facilities",
-            "matches": [
-                "hardpoint_refill_station"
-            ],
-            "type": "FillerStation"
-        },
-        "SalvageHead": {
-            "class": "Utility",
-            "matches": [
-                "hardpoint_salvage_laser"
-            ]
-        },
-        "SalvageModifier": {
-            "class": "Utility",
-            "matches": []
-        },
-        "Scanner": {
-            "class": "Avionics",
-            "matches": [
-                "hardpoint_scanner",
-                "hardpoint_controller_scanner"
-            ]
-        },
-        "SeatAccess": {
-            "class": "Cargo",
-            "matches": [],
-            "type": "PersonalStorage"
-        },
-        "Shield": {
-            "class": "Systems",
-            "matches": [
-                "hardpoint_shield_generator.*"
-            ]
-        },
-        "ToolArm": {
-            "class": "Utility",
-            "matches": [],
-            "type": "UtilityArm"
-        },
-        "Turret": {
-            "class": "Weapons",
-            "matches": [
-                "TurretBase",
-                "hardpoint_front_turret",
-                "^hardpoint_turret_top_front$",
-                "^hardpoint_turret_top_back$",
-                "^hardpoint_turret_bottom_left$",
-                "^hardpoint_turret_bottom_right$"
-            ],
-            "type": "Turret"
-        },
-        "UtilityTurret": {
-            "class": "Utility",
-            "matches": []
-        },
-        "WeaponDefensive": {
-            "class": "Utility",
-            "matches": [],
-            "type": "Countermeasure"
-        },
-        "WeaponGun": {
-            "class": "Weapons",
-            "matches": [
-                "hardpoint_weapon_left",
-                "hardpoint_weapon_right"
-            ],
-            "type": "Weapons"
-        },
-        "WeaponLocker": {
-            "class": "Cargo",
-            "matches": [
-                "hardpoint_.*weapon_?locker.*",
-                "hardpoint_weapon_?rack.*",
-                "hardpoint_weapon_rack",
-                "hardpoint_weapon_seat_rack.*",
-                "hardpoint_gun_rack",
-                "hardpoint_gunrack",
-                "hardpoint_rack_FL",
-                "hardpoint_rack_FR",
-                "hardpoint_rack_RL",
-                "hardpoint_rack_RR",
-                "hardpoint_weaponlocker"
-            ],
-            "type": "WeaponStorage"
-        },
-        "WeaponMining": {
-            "class": "Utility",
-            "matches": [
-                "hardpoint_weapon_mining"
-            ],
-            "type": "MiningLaser"
-        }
+  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+  "module_lang": null,
+
+  "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
+  "smw_multilingual_text": false,
+
+  "%icon_prefix": "Prefix used to generate the icon file name.",
+  "icon_prefix": "Hardpoints icon",
+
+  "%template_styles_page": "Page that containing the hardpoint styles",
+  "template_styles_page": "",
+
+  "%matches": "",
+  "matches": {
+    "ArmorLocker": {
+      "class": "CargoGrid",
+      "matches": [
+        "hardpoint_armory_cargo_%d+"
+      ],
+      "type": "ArmorStorage"
     },
-    "%hardpoint_type_fixes": "List of hardpoint names that should be checked against all matchers to retrieve the correct item type",
-    "hardpoint_type_fixes": [
-        "PersonalInventory",
-        "ArmorLocker",
-        "WeaponLocker",
-        "Bed",
-        "Container",
-        "FuelRefinery",
-        "Battery",
-        "Computer",
-        "DriveUnit",
-        "GravityGenerator",
-        "LifeSupportGenerator",
-        "FireExtinguisher"
-    ],
-    "%missing_icons": "List of labels with missing icons",
-    "missing_icons": [
-        "CargoGrid",
-        "PersonalStorage",
-        "ArmorStorage",
-        "WeaponStorage",
-        "DriveUnit",
-        "GravLev",
-        "Bed",
-        "Countermeasure",
-        "EMPDevice",
-        "QuantumJammer",
-        "CargoPod",
-        "FuelRefinery",
-        "FillerStation",
-        "UtilityArm",
-        "UtilityTurret",
-        "FireExtinguisher"
-    ],
-    "%name_fixes": "List of names that clash with other pages",
-    "name_fixes": {
-        "Beacon": "Beacon (Quantenantrieb)",
-        "Castra": "Castra (Schildgenerator)",
-        "Centurion": "Centurion (Generator)",
-        "Citadel": "Citadel_(Schildgenerator)",
-        "Eclipse": "Eclipse (Generator)",
-        "Nova": "Nova (Quantenantrieb)",
-        "Mercury": "Mercury (Kühler)",
-        "Odyssey": "Odyssey (Quantenantrieb)"
+    "Battery": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_battery"
+      ],
+      "type": "Battery"
     },
-    "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
-    "class_groupings": {
-        "avionic_systems": [
-            "Avionics",
-            "Systems"
-        ],
-        "propulsion_thrusters": [
-            "Propulsion",
-            "Thrusters"
-        ],
-        "weapons_utility": [
-            "Weapons",
-            "Utility"
-        ],
-        "cargo_facilities": [
-            "Cargo",
-            "Facilities"
-        ]
+    "Bed": {
+      "class": "Facilities",
+      "matches": [
+        "hardpoint_bed",
+        "hardpoint_bed_.+"
+      ],
+      "type": "Bed"
+    },
+    "Cargo": {
+      "class": "Cargo",
+      "matches": [
+        "hardpoint_personal_inventory.*",
+        "hardpoint_personal_storage.*",
+        "hardpoint_storage_%d",
+        "hardpoint_general_cargo_%d+",
+        "hardpoint_medical_storage"
+      ],
+      "type": "PersonalStorage"
+    },
+    "CargoGrid": {
+      "class": "Cargo",
+      "matches": [
+        "hardpoint_cargo.*"
+      ],
+      "type": "CargoGrid"
+    },
+    "Computer": {
+      "class": "Avionics",
+      "matches": [
+        "hardpoint_avionics",
+        "hardpoint_computer"
+      ],
+      "type": "Computer"
+    },
+    "Container": {
+      "class": "Cargo",
+      "matches": [
+        "hardpoint_mining_pod.*"
+      ],
+      "type": "CargoPod"
+    },
+    "Cooler": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_cooler_.+",
+        "hardpoint_cooler"
+      ],
+      "type": "Cooler"
+    },
+    "DriveUnit": {
+      "class": "Propulsion",
+      "matches": [
+        "hardpoint_controller_wheel"
+      ],
+      "type": "DriveUnit"
+    },
+    "EMP": {
+      "class": "Utility",
+      "matches": [],
+      "type": "EMPDevice"
+    },
+    "ExternalFuelTank": {
+      "class": "Cargo",
+      "matches": [],
+      "type": "CargoPod"
+    },
+    "FireExtinguisher": {
+      "class": "Facilities",
+      "matches": [
+        "hardpoint_cabinet_extinguisher.*",
+        "hardpoint_fire_extinguisher.*"
+      ],
+      "type": "FireExtinguisher"
+    },
+    "FuelIntake": {
+      "class": "Propulsion",
+      "matches": [
+        "hardpoint_fuel_intake.*"
+      ],
+      "type": "FuelIntake"
+    },
+    "FuelRefinery": {
+      "class": "Utility",
+      "matches": [
+        "hardpoint_fuel_refinery.*"
+      ],
+      "type": "FuelRefinery"
+    },
+    "FuelTank": {
+      "class": "Propulsion",
+      "matches": [
+        "hardpoint_fuel_tank.*"
+      ],
+      "type": "FuelTank"
+    },
+    "GravityGenerator": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_gravity_generator"
+      ],
+      "type": "GravityGenerator"
+    },
+    "LifeSupportGenerator": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_gravity_generator"
+      ],
+      "type": "LifeSupport"
+    },
+    "MainThruster": {
+      "class": "Thrusters",
+      "matches": [
+        "hardpoint_engine_.+",
+        "hardpoint_thrusters?.*_main.*",
+        "hardpoint_Main_.+",
+        "hardpoint_mainthruster_.+"
+      ],
+      "type": "MainThruster"
+    },
+    "ManneuverThruster": {
+      "class": "Thrusters",
+      "matches": [
+        "hardpoint_thrusters?_front_top_.+",
+        "hardpoint_thrusters?_front_bottom_.+",
+        "hardpoint_thrusters?_rear_top_.+",
+        "hardpoint_thrusters?_rear_bottom_.+",
+        "hardpoint_thrusters?_side_forward_.+",
+        "hardpoint_thrusters?_side_back_.+",
+        "hardpoint_thrusters?_top_forward_.+",
+        "hardpoint_thrusters?_top_back_.+",
+        "hardpoint_thrusters?_bottom_forward_.+",
+        "hardpoint_thrusters?_bottom_back_.+",
+        "hardpoint_thrusters?_left_upper_.+",
+        "hardpoint_thrusters?_right_upper_.+",
+        "hardpoint_thrusters?_left_lower_.+",
+        "hardpoint_thrusters?_right_lower_.+",
+        "hardpoint_thrusters?_left_retro",
+        "hardpoint_thrusters?_right_retro",
+        "hardpoint_Man_Thruster_.+",
+        "hardpoint_thrusters?_mav.+",
+        "hardpoint_thrusters?_maneuver_.+",
+        "hardpoint_grav_.+",
+        "hardpoint_gravplate_.+",
+        "hardpoint_gravlev_.+"
+      ],
+      "type": "ManneuverThruster"
+    },
+    "Missile": {
+      "class": "Weapons",
+      "matches": [
+        "missile_.+_attach",
+        "missile_attach_.+"
+      ],
+      "type": "Missiles"
+    },
+    "MissileLauncher": {
+      "class": "Weapons",
+      "matches": [
+        "hardpoint_missile_+"
+      ],
+      "type": "Missiles"
+    },
+    "PersonalInventory": {
+      "class": "Cargo",
+      "matches": [
+        "hardpoint_personal_inventory.*",
+        "hardpoint_personal_storage.*",
+        "hardpoint_storage_%d",
+        "hardpoint_general_cargo_%d+"
+      ],
+      "type": "PersonalStorage"
+    },
+    "PowerPlant": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_engine_attach.*",
+        "hardpoint_power_plant"
+      ],
+      "type": "PowerPlant"
+    },
+    "QuantumDrive": {
+      "class": "Propulsion",
+      "matches": [
+        "hardpoint_quantum_drive"
+      ],
+      "type": "QuantumDrive"
+    },
+    "QuantumFuelTank": {
+      "class": "Propulsion",
+      "matches": [
+        "hardpoint_quantum_fuel.*"
+      ],
+      "type": "QuantumFuelTank"
+    },
+    "QuantumInterdictionGenerator": {
+      "class": "Utility",
+      "matches": [],
+      "type": "QuantumJammer"
+    },
+    "Radar": {
+      "class": "Avionics",
+      "matches": [
+        "hardpoint_radar.*"
+      ],
+      "type": "Radar"
+    },
+    "SalvageFillerStation": {
+      "class": "Facilities",
+      "matches": [
+        "hardpoint_refill_station"
+      ],
+      "type": "FillerStation"
+    },
+    "SalvageHead": {
+      "class": "Utility",
+      "matches": [
+        "hardpoint_salvage_laser"
+      ],
+      "type": "SalvageHead"
+    },
+    "SalvageModifier": {
+      "class": "Utility",
+      "matches": [],
+      "type": "SalvageModifier"
+    },
+    "Scanner": {
+      "class": "Avionics",
+      "matches": [
+        "hardpoint_scanner",
+        "hardpoint_controller_scanner"
+      ],
+      "type": "Scanner"
+    },
+    "SeatAccess": {
+      "class": "Cargo",
+      "matches": [],
+      "type": "PersonalStorage"
+    },
+    "Shield": {
+      "class": "Systems",
+      "matches": [
+        "hardpoint_shield_generator.*"
+      ],
+      "type": "Shield"
+    },
+    "ToolArm": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityArm"
+    },
+    "Turret": {
+      "class": "Weapons",
+      "matches": [
+        "TurretBase",
+        "hardpoint_front_turret",
+        "^hardpoint_turret_top_front$",
+        "^hardpoint_turret_top_back$",
+        "^hardpoint_turret_bottom_left$",
+        "^hardpoint_turret_bottom_right$"
+      ],
+      "type": "Turret"
+    },
+    "UtilityTurret": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityTurret"
+    },
+    "WeaponDefensive": {
+      "class": "Utility",
+      "matches": [],
+      "type": "Countermeasure"
+    },
+    "WeaponGun": {
+      "class": "Weapons",
+      "matches": [
+        "hardpoint_weapon_left",
+        "hardpoint_weapon_right"
+      ],
+      "type": "Weapons"
+    },
+    "WeaponLocker": {
+      "class": "Cargo",
+      "matches": [
+        "hardpoint_.*weapon_?locker.*",
+        "hardpoint_weapon_?rack.*",
+        "hardpoint_weapon_rack",
+        "hardpoint_weapon_seat_rack.*",
+        "hardpoint_gun_rack",
+        "hardpoint_gunrack",
+        "hardpoint_rack_FL",
+        "hardpoint_rack_FR",
+        "hardpoint_rack_RL",
+        "hardpoint_rack_RR",
+        "hardpoint_weaponlocker"
+      ],
+      "type": "WeaponStorage"
+    },
+    "WeaponMining": {
+      "class": "Utility",
+      "matches": [
+        "hardpoint_weapon_mining"
+      ],
+      "type": "MiningLaser"
     }
+  },
+
+  "%hardpoint_type_fixes": "List of hardpoint names that should be checked against all matchers to retrieve the correct item type",
+  "hardpoint_type_fixes": [
+    "PersonalInventory",
+    "ArmorLocker",
+    "WeaponLocker",
+    "Bed",
+    "Container",
+    "FuelRefinery",
+    "Battery",
+    "Computer",
+    "DriveUnit",
+    "GravityGenerator",
+    "LifeSupportGenerator",
+    "FireExtinguisher"
+  ],
+
+  "%missing_icons": "List of labels with missing icons",
+  "missing_icons": [
+    "CargoGrid",
+    "PersonalStorage",
+    "ArmorStorage",
+    "WeaponStorage",
+    "DriveUnit",
+    "GravLev",
+    "Bed",
+    "Countermeasure",
+    "EMPDevice",
+    "QuantumJammer",
+    "CargoPod",
+    "FuelRefinery",
+    "FillerStation",
+    "UtilityArm",
+    "UtilityTurret",
+    "FireExtinguisher"
+  ],
+
+  "%name_fixes": "List of names that clash with other pages",
+  "name_fixes": {
+    "Beacon": "Beacon (Quantenantrieb)",
+    "Castra": "Castra (Schildgenerator)",
+    "Centurion": "Centurion (Generator)",
+    "Citadel": "Citadel_(Schildgenerator)",
+    "Eclipse": "Eclipse (Generator)",
+    "Nova": "Nova (Quantenantrieb)",
+    "Mercury": "Mercury (Kühler)",
+    "Odyssey": "Odyssey (Quantenantrieb)"
+  },
+
+  "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
+  "class_groupings": {
+    "avionic_systems": [
+      "Avionics",
+      "Systems"
+    ],
+    "propulsion_thrusters": [
+      "Propulsion",
+      "Thrusters"
+    ],
+    "weapons_utility": [
+      "Weapons",
+      "Utility"
+    ],
+    "cargo_facilities": [
+      "Cargo",
+      "Facilities"
+    ]
+  },
+
+  "%section_label_fixes": "Hardcoded list of types that needs to be fixed for section label",
+  "section_label_fixes": {
+    "Missiles": "Ordnance",
+    "Missile rack": "Ordnance",
+    "Weapon": "Pilot weapon"
+  }
 }

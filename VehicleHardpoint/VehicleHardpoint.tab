@@ -569,6 +569,180 @@
         "de": "Frachtraum & Ausstattung",
         "en": "Cargo & Facilities"
       }
+    ],
+
+
+
+
+
+
+
+
+
+
+
+
+
+    [
+      "SMW_Hardpoint",
+      {
+        "de": "Hardpoint",
+        "en": "Hardpoint"
+      }
+    ],
+    [
+      "SMW_FromGameData",
+      {
+        "de": "Aus Spieldaten",
+        "en": "From game data"
+      }
+    ],
+    [
+      "SMW_HardpointMinimumSize",
+      {
+        "de": "Minimalgröße",
+        "en": "Hardpoint minimum size"
+      }
+    ],
+    [
+      "SMW_HardpointMaximumSize",
+      {
+        "de": "Maximalgröße",
+        "en": "Hardpoint maximum size"
+      }
+    ],
+    [
+      "SMW_VehicleHardpointsTemplateGroup",
+      {
+        "de": "Komponentenklasse",
+        "en": "Vehicle hardpoints template group"
+      }
+    ],
+    [
+      "SMW_HardpointType",
+      {
+        "de": "Typ",
+        "en": "Hardpoint type"
+      }
+    ],
+    [
+      "SMW_HardpointSubType",
+      {
+        "de": "Subtyp",
+        "en": "Hardpoint subtype"
+      }
+    ],
+    [
+      "SMW_Name",
+      {
+        "de": "Name",
+        "en": "Name"
+      }
+    ],
+    [
+      "SMW_MagazineCapacity",
+      {
+        "de": "Magazingröße",
+        "en": "Magazine capacity"
+      }
+    ],
+    [
+      "SMW_Inventory",
+      {
+        "de": "SCU",
+        "en": "Inventory"
+      }
+    ],
+    [
+      "SMW_ParentHardpointUuid",
+      {
+        "de": "Parent UUID",
+        "en": "Parent hardpoint UUID"
+      }
+    ],
+    [
+      "SMW_ParentHardpoint",
+      {
+        "de": "Parent Hardpoint",
+        "en": "Parent hardpoint"
+      }
+    ],
+    [
+      "SMW_RootHardpoint",
+      {
+        "de": "Root Hardpoint",
+        "en": "Root hardpoint"
+      }
+    ],
+    [
+      "SMW_SelfDestruct",
+      {
+        "de": "Selbstzerstörung",
+        "en": "Self Destruct"
+      }
+    ],
+    [
+      "SMW_ItemQuantity",
+      {
+        "de": "Anzahl",
+        "en": "Item quantity"
+      }
+    ],
+    [
+      "SMW_Grade",
+      {
+        "de": "Grad",
+        "en": "Grade"
+      }
+    ],
+    [
+      "SMW_Class",
+      {
+        "de": "Klasse",
+        "en": "Class"
+      }
+    ],
+    [
+      "SMW_Size",
+      {
+        "de": "Größe",
+        "en": "Size"
+      }
+    ],
+    [
+      "SMW_Manufacturer",
+      {
+        "de": "Hersteller",
+        "en": "Manufacturer"
+      }
+    ],
+    [
+      "msg_invalid_hardpoints_object",
+      {
+        "de": "Hardpoints need to be a table",
+        "en": "Hardpoints need to be a table"
+      }
+    ],
+    [
+      "msg_from_gamedata",
+      {
+        "de": "Einträge stammen aus den Spieldaten",
+        "en": "Data extracted from game data."
+      }
+    ],
+    [
+      "msg_from_shipmatrix",
+      {
+        "de": "Einträge stammen aus der Ship-Matrix",
+        "en": "Data extracted from Ship-Matrix."
+      }
+    ],
+    [
+      "msg_no_data",
+      {
+        "de": "Einträge stammen aus der Ship-Matrix",
+        "en": "Data extracted from Ship-Matrix."
+      }
     ]
   ]
 }
