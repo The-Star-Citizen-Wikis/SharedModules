@@ -1,0 +1,574 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:VehicleComponent"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "ArmorLocker",
+      {
+        "de": "Rüstungsschrank",
+        "en": "Armor Locker"
+      }
+    ],
+    [
+      "ArmorStorage",
+      {
+        "de": "Rüstungsschrank",
+        "en": "Armor Storage"
+      }
+    ],
+    [
+      "Avionics",
+      {
+        "de": "Avionik",
+        "en": "Avionics"
+      }
+    ],
+    [
+      "Battery",
+      {
+        "de": "Batterie",
+        "en": "Battery"
+      }
+    ],
+    [
+      "Cargo",
+      {
+        "de": "Frachtraum",
+        "en": "Cargo"
+      }
+    ],
+    [
+      "CargoGrid",
+      {
+        "de": "Frachtraum",
+        "en": "Cargo Grid"
+      }
+    ],
+    [
+      "CargoPod",
+      {
+        "de": "Frachtraum",
+        "en": "Cargo Pod"
+      }
+    ],
+    [
+      "Computer",
+      {
+        "de": "Computer",
+        "en": "Computer"
+      }
+    ],
+    [
+      "Countermeasure",
+      {
+        "de": "Täuschkörper",
+        "en": "Countermeasure"
+      }
+    ],
+    [
+      "DecoyLauncher",
+      {
+        "de": "Täuschkörper (Köder)",
+        "en": "Decoy (Bait)"
+      }
+    ],
+    [
+      "DriveUnit",
+      {
+        "de": "Antriebseinheit",
+        "en": "Drive Unit"
+      }
+    ],
+    [
+      "EMP",
+      {
+        "de": "EMP",
+        "en": "EMP"
+      }
+    ],
+    [
+      "EMPDevice",
+      {
+        "de": "EMP-Generator",
+        "en": "EMP Device"
+      }
+    ],
+    [
+      "ExternalFuelTank",
+      {
+        "de": "Externer Kraftstofftank",
+        "en": "External Fuel Tank"
+      }
+    ],
+    [
+      "Facilities",
+      {
+        "de": "Ausstattung",
+        "en": "Facilities"
+      }
+    ],
+    [
+      "FillerStation",
+      {
+        "de": "Füllstation",
+        "en": "Filler Station"
+      }
+    ],
+    [
+      "FireExtinguisher",
+      {
+        "de": "Feuerlöschsystem",
+        "en": "Fire Extinguisher"
+      }
+    ],
+    [
+      "FixedThruster",
+      {
+        "de": "Feste Manövrierdüse",
+        "en": "Fixed Maneuvering Thruster"
+      }
+    ],
+    [
+      "FlexThruster",
+      {
+        "de": "Flexible Manövrierdüse",
+        "en": "Flexible Maneuvering Thruster"
+      }
+    ],
+    [
+      "FuelIntake",
+      {
+        "de": "Treibstoffeinlass",
+        "en": "Fuel Intake"
+      }
+    ],
+    [
+      "FuelRefinery",
+      {
+        "de": "Kraftstoffraffinerie",
+        "en": "Fuel Refinery"
+      }
+    ],
+    [
+      "FuelTank",
+      {
+        "de": "Treibstofftank",
+        "en": "Fuel Tank"
+      }
+    ],
+    [
+      "FuelTankLarge",
+      {
+        "de": "Treibstofftank (groß)",
+        "en": "Fuel Tank (large)"
+      }
+    ],
+    [
+      "FuelTankSmall",
+      {
+        "de": "Treibstofftank (klein)",
+        "en": "Fuel Tank (small)"
+      }
+    ],
+    [
+      "GimbalMount",
+      {
+        "de": "Kardanische Halterung",
+        "en": "Gimbal Mount"
+      }
+    ],
+    [
+      "GravityGenerator",
+      {
+        "de": "Schwerkraftgenerator",
+        "en": "Gravity Generator"
+      }
+    ],
+    [
+      "GravLev",
+      {
+        "de": "Grav Lev",
+        "en": "Grav Lev"
+      }
+    ],
+    [
+      "GunTurret",
+      {
+        "de": "Waffenturm",
+        "en": "Weapons Turret"
+      }
+    ],
+    [
+      "JointThruster",
+      {
+        "de": "Kardanische Manövrierdüse",
+        "en": "Cardanic Maneuvering Thruster"
+      }
+    ],
+    [
+      "LifeSupport",
+      {
+        "de": "Lebenserhaltungssysteme",
+        "en": "Life Support"
+      }
+    ],
+    [
+      "MainFixedThruster",
+      {
+        "de": "Feste Hauptschubdüse",
+        "en": "Fixed Main Thruster"
+      }
+    ],
+    [
+      "MainFlexThruster",
+      {
+        "de": "Flexible Hauptschubdüse",
+        "en": "Flexible Main Thruster"
+      }
+    ],
+    [
+      "MainJointThruster",
+      {
+        "de": "Kardanische Hauptschubdüse",
+        "en": "Cardanic Main Thruster"
+      }
+    ],
+    [
+      "MainRetroThruster",
+      {
+        "de": "Hauptretroschubdüse",
+        "en": "Main Retro Thruster"
+      }
+    ],
+    [
+      "MainThruster",
+      {
+        "de": "Haupttriebwerk",
+        "en": "Main Thruster"
+      }
+    ],
+    [
+      "MainVtolThruster",
+      {
+        "de": "VTOL Hauptschubdüse",
+        "en": "VTOL Main Thruster"
+      }
+    ],
+    [
+      "ManneuverThruster",
+      {
+        "de": "Manövriertriebwerk",
+        "en": "Maneuvering Thruster"
+      }
+    ],
+    [
+      "ManneuverThruster",
+      {
+        "de": "Manövriertriebwerk",
+        "en": "Maneuvering Thruster"
+      }
+    ],
+    [
+      "MiningArm",
+      {
+        "de": "Bergbauarm",
+        "en": "Mining Arm"
+      }
+    ],
+    [
+      "MiningLaser",
+      {
+        "de": "Bergbaulaser",
+        "en": "Mining Laser"
+      }
+    ],
+    [
+      "MiningTurret",
+      {
+        "de": "Bergbauturm",
+        "en": "Mining Tower"
+      }
+    ],
+    [
+      "MissileLauncher",
+      {
+        "de": "Raketenwerfer",
+        "en": "Rocket Launcher"
+      }
+    ],
+    [
+      "MissileLauncher",
+      {
+        "de": "Raketenwerfer",
+        "en": "Missile Launcher"
+      }
+    ],
+    [
+      "Missiles",
+      {
+        "de": "Raketen",
+        "en": "Missiles"
+      }
+    ],
+    [
+      "NoiseLauncher",
+      {
+        "de": "Täuschkörper (Geräusch)",
+        "en": "Decoy (Noise)"
+      }
+    ],
+    [
+      "PersonalStorage",
+      {
+        "de": "Persönliche Aufbewahrung",
+        "en": "Personal Storage"
+      }
+    ],
+    [
+      "PersonalStorage",
+      {
+        "de": "Persönliche Aufbewahrung",
+        "en": "Personal Storage"
+      }
+    ],
+    [
+      "PowerPlant",
+      {
+        "de": "Kraftwerksanlage",
+        "en": "Power Plant"
+      }
+    ],
+    [
+      "Propulsion",
+      {
+        "de": "Antrieb",
+        "en": "Propulsion"
+      }
+    ],
+    [
+      "QuantumFuelTank",
+      {
+        "de": "Quantentreibstofftank",
+        "en": "Quantum Fuel Tank"
+      }
+    ],
+    [
+      "QuantumFuelTankLarge",
+      {
+        "de": "Quantentreibstofftank (groß)",
+        "en": "Quantum Fuel Tank (large)"
+      }
+    ],
+    [
+      "QuantumFuelTankSmall",
+      {
+        "de": "Quantentreibstofftank (klein)",
+        "en": "Quantum Fuel Tank (small)"
+      }
+    ],
+    [
+      "QuantumInterdictionGenerator",
+      {
+        "de": "Quantum Interdiction Generator",
+        "en": "Quantum Interdiction Generator"
+      }
+    ],
+    [
+      "QuantumJammer",
+      {
+        "de": "Quantum Jammer",
+        "en": "Quantum Jammer"
+      }
+    ],
+    [
+      "Radar",
+      {
+        "de": "Radar",
+        "en": "Radar"
+      }
+    ],
+    [
+      "RetroThruster",
+      {
+        "de": "Retroschubdüse",
+        "en": "Retro Thruster"
+      }
+    ],
+    [
+      "SalvageArm",
+      {
+        "de": "Bergungsarm",
+        "en": "Salvage Arm"
+      }
+    ],
+    [
+      "SalvageHead",
+      {
+        "de": "Bergungskopf",
+        "en": "Salvage Head"
+      }
+    ],
+    [
+      "SalvageModifier",
+      {
+        "de": "Bergungsmodifikator",
+        "en": "Salvage Modifier"
+      }
+    ],
+    [
+      "Scanner",
+      {
+        "de": "Scanner",
+        "en": "Scanner"
+      }
+    ],
+    [
+      "SeatAccess",
+      {
+        "de": "Sitzzugriff",
+        "en": "Seat Access"
+      }
+    ],
+    [
+      "SelfDestruct",
+      {
+        "de": "Selbstzerstörung",
+        "en": "Self Destruct"
+      }
+    ],
+    [
+      "Shield",
+      {
+        "de": "Schildgenerator",
+        "en": "Shield"
+      }
+    ],
+    [
+      "Systems",
+      {
+        "de": "Systeme",
+        "en": "Systems"
+      }
+    ],
+    [
+      "PrimaryThruster",
+      {
+        "de": "Primärtriebwerk",
+        "en": "Primary Thruster"
+      }
+    ],
+    [
+      "Thrusters",
+      {
+        "de": "Triebwerk",
+        "en": "Thrusters"
+      }
+    ],
+    [
+      "ToolArm",
+      {
+        "de": "Tool Arm",
+        "en": "Tool Arm"
+      }
+    ],
+    [
+      "Turret",
+      {
+        "de": "Turm",
+        "en": "Turret"
+      }
+    ],
+    [
+      "Utility",
+      {
+        "de": "Unterstützung",
+        "en": "Utility"
+      }
+    ],
+    [
+      "UtilityArm",
+      {
+        "de": "Utility Arm",
+        "en": "Utility Arm"
+      }
+    ],
+    [
+      "UtilityTurret",
+      {
+        "de": "Utility Turret",
+        "en": "Utility Turret"
+      }
+    ],
+    [
+      "VtolThruster",
+      {
+        "de": "VTOL Schubdüse",
+        "en": "VTOL Thruster"
+      }
+    ],
+    [
+      "WeaponMining",
+      {
+        "de": "Bergbaulaser",
+        "en": "Mining Laser"
+      }
+    ],
+    [
+      "Weapons",
+      {
+        "de": "Bewaffnung",
+        "en": "Weapons"
+      }
+    ],
+    [
+      "WeaponStorage",
+      {
+        "de": "Waffenschrank",
+        "en": "Weapon Storage"
+      }
+    ],
+
+    [
+      "avionic_systems",
+      {
+        "de": "Avionik & Systeme",
+        "en": "Avionics & Systems"
+      }
+    ],
+    [
+      "propulsion_thrusters",
+      {
+        "de": "Antrieb & Triebwerke",
+        "en": "Propulsion & Thrusters"
+      }
+    ],
+    [
+      "weapons_utility",
+      {
+        "de": "Bewaffnung & Unterstützung",
+        "en": "Weaponry & Utility"
+      }
+    ],
+    [
+      "cargo_facilities",
+      {
+        "de": "Frachtraum & Ausstattung",
+        "en": "Cargo & Facilities"
+      }
+    ]
+  ]
+}
