@@ -1,0 +1,148 @@
+.template-components__section {
+    position: relative;
+    padding-top: var( --space-sm );
+    padding-bottom: var( --space-sm );
+    display: flex;
+    flex-direction: column;
+    gap: var( --space-xs );
+}
+
+/* TemplateStyles style tag can get in-between */
+.template-components__section + .template-components__section,
+.template-components__section + style + .template-components__section {
+    border-top: 1px solid var( --border-color-base );
+}
+
+.template-components__label {
+    align-self: flex-start;
+    display: flex;
+    align-items: center;
+    color: var( --color-base--subtle );
+    font-size: 0.875rem;
+    letter-spacing: 0.75px;
+    gap: var(--space-xs );
+    line-height: 1.25;
+}
+
+.template-components__label img {
+    height: 1rem;
+    width: auto;
+}
+
+.template-components__group {
+    display: flex;
+    gap: var( --space-xs );
+    flex-wrap: wrap;
+    flex-grow: 1;
+}
+
+.template-components__subgroup {
+    display: flex;
+    flex-direction: column;
+    gap: var( --space-xs );
+    flex-grow: 1;
+}
+
+.template-components__subgroup .template-component__connectorY {
+    top: -0.5rem; /* calc( var( --space-sm ) * -1 ) */
+}
+
+.template-components__subgroup .template-component:last-of-type .template-component__connectorY {
+    bottom: calc( 50% + 2px); /* calc( var( --connector-thickness ) + 2px ) */
+}
+
+.template-component {
+    display: flex;
+}
+
+.template-component__connectors {
+    /* --connector-thickness: 2px; */
+    position: relative;
+}
+
+.template-component__connectorX,
+.template-component__connectorY {
+    position: absolute;
+    background-color: var( --border-color-base );
+    left: calc( 50% - 2px ); /* calc( 50% - var( --connector-thickness ) ) */
+}
+
+.template-component__connectorX {
+    top: calc( 50% - 2px ); /* calc( 50% - var( --connector-thickness ) ) */
+    right: 0;
+    height: 2px; /* var( --connector-thickness ) */
+}
+
+.template-component__connectorY {
+    top: 0;
+    bottom: 0;
+    width: 2px; /* var( --connector-thickness ) */
+}
+
+.template-component--level-1 .template-component__connectors {
+    display: none;
+}
+
+.template-component--level-2 .template-component__connectors {
+    width: 3rem;
+}
+
+.template-component--level-3 .template-component__connectors {
+    margin-left: 3rem;
+    width: 3rem;
+}
+
+.template-component__card {
+    position: relative;
+    border: 1px solid var( --border-color-base );
+    border-radius: var( --border-radius--medium );
+    display: grid;
+    grid-template-columns: 3rem auto;
+    /* This isn't pretty */
+    line-height: 1.35;
+    flex-grow: 1;
+}
+
+.template-component__port {
+    display: grid;
+    place-content: center;
+    border-right: 1px solid var( --border-color-base );
+    border-top-left-radius: var( --border-radius--medium );
+    border-bottom-left-radius: var( --border-radius--medium );
+    background-color: var( --color-surface-0 );
+    font-weight: 500;
+    line-height: 1.25;
+    text-align: center;
+}
+
+.template-component__count {
+    color: var( --color-base--subtle );
+    font-size: 0.8125rem;
+}
+
+.template-component__item {
+    border-top-right-radius: var( --border-radius--medium );
+    border-bottom-right-radius: var( --border-radius--medium );
+    padding: var( --space-sm ) var( --space-md );
+    background-color: var( --color-surface-2 );
+}
+
+.template-component__title {
+    color: var( --color-base--emphasized );
+    font-weight: 500;
+    font-size: 0.875rem;
+}
+
+/* New links on component title is usually a false alert */
+.template-component__title a.new {
+    color: var( --color-base--emphasized );
+}
+
+.template-component__subtitle {
+    color: var( --color-base--subtle );
+    font-size: 0.8125rem;
+}
+
+.template-component__subtitle a {
+    color: var( --color-base--subtle );
+}

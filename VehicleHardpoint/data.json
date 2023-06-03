@@ -9,10 +9,15 @@
   "icon_prefix": "Hardpoints icon",
 
   "%template_styles_page": "Page that containing the hardpoint styles",
-  "template_styles_page": "",
+  "template_styles_page": "Module:VehicleHardpoint/styles.css",
 
   "%matches": "",
   "matches": {
+    "Armor": {
+      "class": "Facilities",
+      "matches": [],
+      "type": "Armor"
+    },
     "ArmorLocker": {
       "class": "CargoGrid",
       "matches": [
@@ -76,6 +81,16 @@
       ],
       "type": "Cooler"
     },
+    "DecoyLauncherMagazine": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "DecoyLauncherMagazine"
+    },
+    "DockingCollar": {
+      "class": "Facilities",
+      "matches": [],
+      "type": "DockingCollar"
+    },
     "DriveUnit": {
       "class": "Propulsion",
       "matches": [
@@ -136,6 +151,11 @@
       ],
       "type": "LifeSupport"
     },
+    "Magazine": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "Magazine"
+    },
     "MainThruster": {
       "class": "Thrusters",
       "matches": [
@@ -180,14 +200,26 @@
         "missile_.+_attach",
         "missile_attach_.+"
       ],
-      "type": "Missiles"
+      "type": "Ordnance"
     },
     "MissileLauncher": {
       "class": "Weapons",
       "matches": [
         "hardpoint_missile_+"
       ],
-      "type": "Missiles"
+      "type": "Ordnance"
+    },
+    "NoiseLauncherMagazine": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "NoiseLauncherMagazine"
+    },
+    "Paint": {
+      "class": "Facilities",
+      "matches": [
+        "hardpoint_paint"
+      ],
+      "type": "Paint"
     },
     "PersonalInventory": {
       "class": "Cargo",
@@ -225,6 +257,11 @@
       "class": "Utility",
       "matches": [],
       "type": "QuantumJammer"
+    },
+    "QuantumEnforcementDevice": {
+      "class": "Utility",
+      "matches": [],
+      "type": "QuantumEnforcementDevice"
     },
     "Radar": {
       "class": "Avionics",
@@ -330,6 +367,11 @@
         "hardpoint_weapon_mining"
       ],
       "type": "MiningLaser"
+    },
+    "WeaponPort": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "WeaponPort"
     }
   },
 
@@ -369,6 +411,41 @@
     "FireExtinguisher"
   ],
 
+  "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
+  "class_groupings": [
+    [
+      "avionic_systems",
+      [
+        "Avionics",
+        "Systems"
+      ]
+    ],
+    [
+      "propulsion_thrusters",
+      [
+        "Propulsion",
+        "Thrusters"
+      ]
+    ],
+    [
+      "weapons_utility",
+      [
+        "Weapons",
+        "Utility"
+      ]
+    ],
+    [
+      "cargo_facilities",
+      [
+        "Cargo",
+        "Facilities"
+      ]
+    ]
+  ],
+
+  "%section_label_fixes": "Hardcoded list of types that needs to be fixed for section label",
+  "section_label_fixes": {},
+
   "%name_fixes": "List of names that clash with other pages",
   "name_fixes": {
     "Beacon": "Beacon (Quantenantrieb)",
@@ -379,32 +456,5 @@
     "Nova": "Nova (Quantenantrieb)",
     "Mercury": "Mercury (Kühler)",
     "Odyssey": "Odyssey (Quantenantrieb)"
-  },
-
-  "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
-  "class_groupings": {
-    "avionic_systems": [
-      "Avionics",
-      "Systems"
-    ],
-    "propulsion_thrusters": [
-      "Propulsion",
-      "Thrusters"
-    ],
-    "weapons_utility": [
-      "Weapons",
-      "Utility"
-    ],
-    "cargo_facilities": [
-      "Cargo",
-      "Facilities"
-    ]
-  },
-
-  "%section_label_fixes": "Hardcoded list of types that needs to be fixed for section label",
-  "section_label_fixes": {
-    "Missiles": "Ordnance",
-    "Missile rack": "Ordnance",
-    "Weapon": "Pilot weapon"
   }
 }

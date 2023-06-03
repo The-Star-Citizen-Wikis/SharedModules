@@ -1,4 +1,4 @@
-local VehicleHardPoint = {}
+local VehicleHardpoint = {}
 
 local metatable = {}
 local methodtable = {}
@@ -6,19 +6,31 @@ local methodtable = {}
 metatable.__index = methodtable
 
 local TNT = require( 'Module:TNT' )
-local common = require( 'Module:Common' )
+local common = require( 'Module:Common' ) -- formatNum and spairs
 local hatnote = require( 'Module:Hatnote' )._hatnote
-local data = mw.loadJsonData( 'Module:Manufacturer/data.json' )
+local data = mw.loadJsonData( 'Module:VehicleHardpoint/data.json' )
 
-
--- Local functions
 
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
+--- @param addSuffix boolean Adds a language suffix if data.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
-local function translate( key )
+local function translate( key, addSuffix )
+    addSuffix = addSuffix or false
     local success, translation
+
+    if addSuffix == false and mw.ustring.sub( key, 1, 3 ) == 'SMW' then
+        addSuffix = true
+    end
+
+    local function multilingualIfActive( input )
+        if addSuffix and data.smw_multilingual_text == true then
+            return string.format( '%s@%s', input, data.module_lang or mw.getContentLanguage():getCode() )
+        end
+
+        return input
+    end
 
     if data.module_lang ~= nil then
         success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'I18n/Module:VehicleHardpoint.tab', key or '' )
@@ -27,23 +39,10 @@ local function translate( key )
     end
 
     if not success or translation == nil then
-        return key
+        return multilingualIfActive( key )
     end
 
-    return translation
-end
-
-
---- Adds a language suffix if data.smw_multilingual_text is true
----
---- @param input string|table The input text(s)
---- @return string|table Data that is understood by SMW
-local function multilingualIfActive( input )
-    if data.smw_multilingual_text == true then
-        return string.format( '%s@%s', input, data.module_lang or mw.getContentLanguage():getCode() )
-    end
-
-    return input
+    return multilingualIfActive( translation )
 end
 
 
@@ -55,55 +54,117 @@ local function hasChildren( row )
 end
 
 
+--- Creates the object that is used to query the SMW store
+---
+--- @param page string the vehicle page containing data
+--- @return table
+local function makeSmwQueryObject( page )
+    local langSuffix = ''
+    if data.smw_multilingual_text == true then
+        langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
+    end
+
+    return {
+        string.format(
+            '[[-Has subobject::' .. page .. ']][[%s::+]][[%s::+]]',
+            translate( 'SMW_HardpointType' ),
+            translate( 'SMW_VehicleHardpointsTemplateGroup' )
+        ),
+        string.format( '?%s#-=from_gamedata', translate( 'SMW_FromGameData' ) ),
+        string.format( '?%s#-=count', translate( 'SMW_ItemQuantity' ) ),
+        string.format( '?%s#-=min_size', translate( 'SMW_HardpointMinimumSize' ) ),
+        string.format( '?%s#-=max_size', translate( 'SMW_HardpointMaximumSize' ) ),
+        string.format( '?%s#-=class', translate( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
+        string.format( '?%s#-=type', translate( 'SMW_HardpointType' ) ), langSuffix,
+        string.format( '?%s#-=sub_type', translate( 'SMW_HardpointSubtype' ) ), langSuffix,
+        string.format( '?%s#-=name', translate( 'SMW_Name' ) ),
+        string.format( '?%s#-n=scu', translate( 'SMW_Inventory' ) ),
+        string.format( '?UUID#-=uuid' ),
+        string.format( '?%s#-=hardpoint', translate( 'SMW_Hardpoint' ) ) ,
+        string.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
+        string.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
+        string.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
+        string.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
+        string.format( '?%s#-=icon', translate( 'SMW_Icon' ) ),
+        -- These are subquery chains, they require that the 'Name' attribute is of type Page
+        -- And that these pages contain SMW attributes
+        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Grade' ) .. '#-=item_grade',
+        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Class' ) .. '#-=item_class',
+        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Size' ) .. '#-=item_size',
+        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Manufacturer' ) .. '#-=manufacturer',
+        string.format(
+            'sort=%s,%s,%s,%s',
+            translate( 'SMW_VehicleHardpointsTemplateGroup' ),
+            translate( 'SMW_HardpointType' ),
+            translate( 'SMW_HardpointMaximumSize' ),
+            translate( 'SMW_ItemQuantity' )
+        ),
+        'order=asc,asc,asc,asc',
+        'limit=1000'
+    }
+end
+
 --- Creates a 'key' based on various data points found on the hardpoint and item
 --- Based on this key, the count of some entries is generated
 ---
 --- @param row table - API Data
 --- @param hardpointData table - Data from getHardpointData
---- @param parent table|nil - Parent hardpoint
+--- @param parent table|nil - Parent hardpoint (A settable SMW Subobject)
 --- @param root string|nil - Root hardpoint
 --- @return string Key
 local function makeKey( row, hardpointData, parent, root )
     local key
 
+    -- If the hardpoint has an item attached
     if type( row.item ) == 'table' then
+        -- List of item types that should always be grouped together
+        -- i.e. their count is increased instead of them being displayed as separate boxes
         if row.type == 'ManneuverThruster' or
            row.type == 'MainThruster' or
-           row.type == 'WeaponDefensive' or
-           row.type == 'WeaponLocker' or
            row.type == 'ArmorLocker' or
            row.type == 'Bed' or
-           row.type == 'CargoGrid'
+           row.type == 'CargoGrid' or
+           row.type == 'Cargo'
         then
             key = row.type .. row.sub_type
         else
-            key = row.type .. row.sub_type .. row.item.uuid
+            -- Adding the uuid to the key ensures separate boxes if the equipped item differs
+            key = row.type .. row.sub_type .. ( row.item.uuid or '' )
         end
     else
-        key = hardpointData.class.de_DE .. hardpointData.type.de_DE
+        -- If no item is set, use the pre-defined class and type
+        key = hardpointData.class .. hardpointData.type
     end
 
-    if row.type ~= 'WeaponDefensive' then
-        if parent ~= nil then
-            key = key .. parent[ 'Hardpoint' ]
-        end
-
-        if root ~= nil and not string.match( key, root ) and ( hardpointData.class.de_DE == 'Bewaffnung' ) then
-            key = key .. root
-        end
+    -- Appends the parent and root hardpoints in order to not mess up child counts
+    -- Without this, a vehicle with four turrets containing each one weapon would be listed as
+    -- having four turrets that each has four weapons (if the exact weapon is equipped on each turret)
+    if parent ~= nil and parent[ translate( 'SMW_Hardpoint' ) ] ~= nil and
+       row.type ~= 'Magazine' and
+       row.type ~= 'DecoyLauncherMagazine' and
+       row.type ~= 'NoiseLauncherMagazine' and
+       row.type ~= 'WeaponPort'
+    then
+        key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
     end
 
-    if hardpointData.class.de_DE == 'Bewaffnung' and row.name ~= nil and row.type == 'MissileLauncher' then
+    if root ~= nil and not string.match( key, root ) and ( hardpointData.class == 'Weapons' or hardpointData.class == 'Utility' ) then
+        key = key .. root
+    end
+
+    if hardpointData.class == 'Weapons' and row.name ~= nil and row.type == 'MissileLauncher' then
         key = key .. row.name
     end
 
-    mw.log(string.format('Key: %s', key))
+    mw.log( string.format( 'Key: %s', key ) )
+
     return key
 end
 
 
 
---- Get pre-defined hardpoint data for a given hardpoint type or name
+--- Get pre-defined hardpoint data for a given hardpoint type
+--- If no type is found, the hardpoint name is matched against the defined regexes until the first one matches
 ---
 --- @param hardpointType string
 --- @return table|nil
@@ -128,7 +189,7 @@ function methodtable.getHardpointData( self, hardpointType )
 end
 
 
---- Creates a settable SMW Subobject
+--- Builds the object that is saved to SMW as a Subobject
 ---
 --- @param row table - API Data
 --- @param hardpointData table - Data from getHardpointData
@@ -150,28 +211,30 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     object[ translate( 'SMW_FromGameData' ) ] = true
     object[ translate( 'SMW_HardpointMinimumSize' ) ] = row.min_size
     object[ translate( 'SMW_HardpointMaximumSize' ) ] = row.max_size
-    object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = multilingualIfActive( translate( hardpointData.class ) )
+    object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class )
 
-    if data.hardPointNames[ row.type ] ~= nil then
-        object[ translate( 'SMW_HardpointType' ) ] = multilingualIfActive( translate( data.matches[ row.type ].type ) )
+    if data.matches[ row.type ] ~= nil then
+        object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type )
     else
-        object[ translate( 'SMW_HardpointType' ) ] = multilingualIfActive( translate( hardpointData.type ) )
+        object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type )
     end
 
-    if data.hardPointNames[ row.sub_type ] ~= nil then
-        object[ translate( 'SMW_HardpointSubtype' ) ] = multilingualIfActive( translate( data.matches[ row.sub_type ].type ) )
+    if data.matches[ row.sub_type ] ~= nil then
+        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( data.matches[ row.sub_type ].type )
     else
-        object[ translate( 'SMW_HardpointSubtype' ) ] = multilingualIfActive( translate( hardpointData.type ) )
+        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type )
     end
 
-    if hardpointData.item ~= nil then
-        if type( hardpointData.item.name ) == 'string' then object[ translate( 'SMW_Name' ) ] = hardpointData.item.name end
+    if hardpointData.item ~= nil and type( hardpointData.item.name ) == 'string' then
+        object[ translate( 'SMW_Name' ) ] = hardpointData.item.name
     end
 
     if type( row.item ) == 'table' then
         local itemObj = row.item
+
         if itemObj.name ~= '<= PLACEHOLDER =>' then
             local match = string.match( row.class_name or '', 'Destruct_(%d+s)')
+
             if row.type == 'SelfDestruct' and match ~= nil then
                 object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct' ), match )
             else
@@ -179,9 +242,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             end
         end
 
-        if itemObj.type == 'WeaponDefensive' and type( itemObj.counter_measure ) == 'table' then
-            object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.counter_measure.capacity
-        end
+        object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity
 
         if ( itemObj.type == 'Cargo' or itemObj.type == 'SeatAccess' or itemObj.type == 'CargoGrid' or itemObj.type == 'Container' )
                 and type( itemObj.inventory ) == 'table' then
@@ -205,6 +266,27 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         object[ translate( 'SMW_RootHardpoint' ) ] = root
     end
 
+    -- Icon
+    local icon = hardpointData.class
+    if data.section_label_fixes[ hardpointData.class ] ~= nil or data.section_label_fixes[ hardpointData.type ] ~= nil then
+        icon = data.section_label_fixes[ hardpointData.class ] or data.section_label_fixes[ hardpointData.type ]
+    end
+
+    icon = string.format( 'File:%s %s.svg', data.icon_prefix, string.lower( translate( icon ) ) )
+
+    -- Disable label missing icons for now
+    for _, labelMissingIcon in pairs( data.missing_icons ) do
+        if labelMissingIcon == data.section_label_fixes[ hardpointData.class ] or
+           labelMissingIcon == data.section_label_fixes[ hardpointData.type ] then
+            icon = nil
+            break
+        end
+    end
+
+    if icon ~= nil then
+        object[ translate( 'SMW_Icon' ) ] = icon
+    end
+
     -- Remove SeatAccess Hardpoints without storage
     if row.item ~= nil and row.item.type == 'SeatAccess' and object[ translate( 'SMW_Inventory' ) ] == nil then
         object = nil
@@ -214,8 +296,8 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 end
 
 
---- Sets all available hardpoints as sub-objects
---- This is the main method called by others
+--- Sets all available hardpoints as SMW subobjects
+--- This method should be called by the accompanying Vehicle Module
 ---
 --- @param hardpoints table API Hardpoint data
 function methodtable.setHardPointObjects( self, hardpoints )
@@ -223,58 +305,143 @@ function methodtable.setHardPointObjects( self, hardpoints )
         error( translate( 'msg_invalid_hardpoints_object' ) )
     end
 
-    local out = {}
+    local objects = {}
+    local depth = 1
 
+    --- Creates a child object for weapons and counter measure ammunitions
+    local function addSubComponents( hardpoint )
+        if type( hardpoint.item ) ~= 'table' then
+            return
+        end
+
+        if type( hardpoint.children ) ~= 'table' then
+            hardpoint.children = {}
+        end
+
+        if hardpoint.item.type == 'WeaponDefensive' or hardpoint.item.type == 'WeaponGun' then
+            local item_type = 'Magazine'
+            if mw.ustring.sub( hardpoint.class_name, -5 ) == 'Chaff' then
+                item_type = 'NoiseLauncherMagazine'
+            elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'Flare' then
+                item_type = 'DecoyLauncherMagazine'
+            end
+
+            local capacity
+            if hardpoint.item.type == 'WeaponGun' then
+                capacity = hardpoint.item.vehicle_weapon.capacity
+            else
+                capacity = hardpoint.item.counter_measure.capacity
+            end
+
+            table.insert( hardpoint.children, {
+                name = 'faux_hardpoint_magazine',
+                class_name = 'FAUX_' .. item_type .. 'Magazine',
+                type = item_type,
+                sub_type = item_type,
+                min_size = 1,
+                max_size = 1,
+                item = {
+                    name = translate( 'Magazine' ),
+                    type = item_type,
+                    sub_type = item_type,
+                    magazine_capacity = capacity
+                }
+            } )
+        end
+
+        -- This seems to be a weapon rack
+        if hardpoint.item.type == 'Usable' and type( hardpoint.item.ports ) == 'table' then
+            local item_type = 'WeaponPort'
+            for _, port in pairs( hardpoint.item.ports ) do
+                local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
+                local name = 'WeaponPort'
+
+                if mw.ustring.find( port.display_name, 'rifle', 1, true )  then
+                    name = name .. 'Rifle'
+                elseif mw.ustring.find( port.display_name, 'launcher', 1, true )  then
+                    name = name .. 'Launcher'
+                elseif mw.ustring.find( port.display_name, 'pistol', 1, true )  then
+                    name = name .. 'Pistol'
+                elseif mw.ustring.find( port.display_name, 'multitool', 1, true )  then
+                    name = name .. 'Multitool'
+                elseif mw.ustring.find( port.display_name, 'addon', 1, true )  then
+                    name = name .. 'Addon'
+                end
+
+                table.insert( hardpoint.children, {
+                    name = 'faux_hardpoint_weaponport',
+                    class_name = 'FAUX_WeaponPort',
+                    type = item_type,
+                    sub_type = sub_type,
+                    min_size = port.sizes.min,
+                    max_size = port.sizes.max,
+                    item = {
+                        name = translate( name ),
+                        type = item_type,
+                        sub_type = sub_type,
+                    }
+                } )
+            end
+        end
+    end
+
+
+    -- Adds the subobject to the list of objects that should be saved to SMW
+    -- Increases the item quantity / or combined cargo capacity for objects that have equal keys
     local function addToOut( object, key )
         if object == nil then
             return
         end
 
-        if type( out[ key ] ) ~= 'table' then
+        -- If this key (object) has not been seen before, save it to the list of subobjects
+        if type( objects[ key ] ) ~= 'table' then
             if object ~= nil then
-                out[ key ] = object
-                out[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+                objects[ key ] = object
+                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
             end
-        else
-            out[ key ][ translate( 'SMW_ItemQuantity' ) ] = out[ key ][ translate( 'SMW_ItemQuantity' ) ] + 1
+        else -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
+            objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = objects[ key ][ translate( 'SMW_ItemQuantity' ) ] + 1
 
-            if type( out[ key ][ translate( 'SMW_MagazineCapacity' ) ] ) == 'number' then
-                out[ key ][ translate( 'SMW_MagazineCapacity' ) ] = out[ key ][ translate( 'SMW_MagazineCapacity' ) ] + object[ translate( 'SMW_MagazineCapacity' ) ]
-            end
+            -- Accumulate the cargo capacities of all cargo grids
+            if object[ translate( 'SMW_HardpointType' ) ] == translate( 'SMW_CargoGrid' ) then
+                local inventoryKey = translate( 'SMW_Inventory' )
 
-            for _, value in pairs( object[ translate( 'SMW_HardpointType' ) ] ) do
-                if value == multilingualIfActive( translate( 'SMW_CargoGrid' ) ) then
-                    out[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
-                    if out[ key ][ translate( 'SMW_Inventory' ) ] ~= nil and object[ translate( 'SMW_Inventory' ) ] ~= nil then
-                        out[ key ][ translate( 'SMW_Inventory' ) ] = tonumber( out[ key ][ translate( 'SMW_Inventory' ) ] ) + tonumber( object[ translate( 'SMW_Inventory' ) ] )
-                    end
+                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+
+                if objects[ key ][ inventoryKey ] ~= nil and object[ inventoryKey ] ~= nil then
+                    objects[ key ][ inventoryKey ] = tonumber( objects[ key ][ inventoryKey ] ) + tonumber( object[ inventoryKey ] )
                 end
             end
         end
     end
 
-    local depth = 1
 
+    -- Iterates through the list of hardpoints found on the API object
     local function addHardpoints( hardpoints, parent, root )
         for _, hardpoint in pairs( hardpoints ) do
             hardpoint.name = string.lower( hardpoint.name )
 
             if depth == 1 then
                 root = hardpoint.name
-                mw.log(string.format('Root: %s', root))
+                mw.log( string.format( 'Root: %s', root ) )
             end
 
-            hardpoint = VehicleHardPoint.fixTypes( hardpoint )
+            hardpoint = VehicleHardpoint.fixTypes( hardpoint )
 
             local hardpointData = self:getHardpointData( hardpoint.type or hardpoint.name )
 
             if hardpointData ~= nil then
+                addSubComponents( hardpoint )
+
+                -- Based on the key, the hardpoint is either used as "standalone" (i.e. saved as a single subobject)
+                -- or, if the key already exists, the count if increased by one (so no extra subobject is generated)
                 local key = makeKey( hardpoint, hardpointData, parent, root )
 
                 local obj = self:makeObject( hardpoint, hardpointData, parent, root )
 
                 addToOut( obj, key )
 
+                -- Generate child subobjects
                 if hasChildren( hardpoint ) then
                     depth = depth + 1
                     addHardpoints( hardpoint.children, obj, root )
@@ -292,9 +459,9 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
     addHardpoints( hardpoints )
 
-    mw.logObject(out)
+    mw.logObject( objects )
 
-    for _, subobject in pairs( out ) do
+    for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
     end
 end
@@ -310,46 +477,7 @@ function methodtable.querySmwStore( self, page )
         return self.smwData
     end
 
-    local langSuffix = ''
-    if data.smw_multilingual_text == true then
-        langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
-    end
-
-    local smwData = mw.smw.ask( {
-        string.format(
-            '[[-Has subobject::' .. page .. ']][[%s::+]][[%s::+]]',
-            translate( 'SMW_HardpointType' ),
-            translate( 'SMW_VehicleHardpointsTemplateGroup' )
-        ),
-        string.format( '?%s#-=from_gamedata', translate( 'SMW_FromGameData' ) ),
-        string.format( '?%s#-=count', translate( 'SMW_ItemQuantity' ) ),
-        string.format( '?%s#-=min_size', translate( 'SMW_HardpointMinimumSize' ) ),
-        string.format( '?%s#-=max_size', translate( 'SMW_HardpointMaximumSize' ) ),
-        string.format( '?%s=class', translate( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
-        string.format( '?%s=type', translate( 'SMW_HardpointType' ) ), langSuffix,
-        string.format( '?%s=sub_type', translate( 'SMW_HardpointSubType' ) ), langSuffix,
-        string.format( '?%s#-=name', translate( 'SMW_Name' ) ),
-        string.format( '?%s-n=scu', translate( 'SMW_Inventory' ) ),
-        string.format( '?UUID#-=uuid'),
-        string.format( '?%s#-=hardpoint', translate( 'SMW_Hardpoint' ) ) ,
-        string.format( '?%s#-=magazine_size', translate( 'SMW_MagazineCapacity' ) ),
-        string.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
-        string.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
-        string.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
-        '?Name.' .. translate( 'SMW_Grade' ) .. '#-=item_grade',
-        '?Name.' .. translate( 'SMW_Class' ) .. '#-=item_class',
-        '?Name.' .. translate( 'SMW_Size' ) .. '#-=item_size',
-        '?Name.' .. translate( 'SMW_Manufacturer' ) .. '#-=manufacturer',
-        string.format(
-            'sort=%s,%s,%s,%s',
-            translate( 'SMW_VehicleHardpointsTemplateGroup' ),
-            translate( 'SMW_HardpointType' ),
-            translate( 'SMW_HardpointMaximumSize' ),
-            translate( 'SMW_ItemQuantity' )
-        ),
-        'order=asc,asc,asc,asc',
-        'limit=1000'
-    } )
+    local smwData = mw.smw.ask( makeSmwQueryObject( page ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
         return nil
@@ -375,7 +503,11 @@ function methodtable.group( self, smwData )
     end
 
     for _, row in common.spairs( smwData ) do
-        if not row.isChild and row.class ~= nil and row.type ~= nil then
+        if not row.isChild and row.class ~= nil and row.type ~= nil and
+            -- Specifically hide manually added weapon ports that have no parent
+            -- This should not be needed anymore if weapon lockers are found everywhere with an uuid
+            row.type ~= translate( 'WeaponPort' )
+        then
             if type( grouped[ row.class ] ) ~= 'table' then
                 grouped[ row.class ] = {}
             end
@@ -385,6 +517,9 @@ function methodtable.group( self, smwData )
             end
 
             table.insert( grouped[ row.class ][ row.type ], row )
+
+            self.iconMap[ row.class ] = row.icon
+            self.iconMap[ row.type ] = row.icon
         end
     end
 
@@ -399,7 +534,7 @@ end
 --- @param smwData table All available Hardpoint objects for this page
 --- @return table The stratified table
 function methodtable.createDataStructure( self, smwData )
-    -- Maps object id to key in array
+    -- Maps a key to the index of the subobject, this way children can be set on their parent
     local idMapping = {}
 
     for key, object in pairs( smwData ) do
@@ -410,10 +545,12 @@ function methodtable.createDataStructure( self, smwData )
         end
     end
 
+    -- Iterates through the list of SMW hardpoint subobjects
+    -- If the 'parent_hardpoint' key is set (i.e. the hardpoint is a child), it is added as a child to the parent object
     local function stratify( toStratify )
         for _, object in pairs( toStratify ) do
             if object.parent_hardpoint ~= nil then
-                local parentEl = toStratify[ idMapping[ (object.root_hardpoint or '') .. object.parent_hardpoint ] ]
+                local parentEl = toStratify[ idMapping[ ( object.root_hardpoint or '' ) .. object.parent_hardpoint ] ]
 
                 if parentEl ~= nil then
                     if parentEl.children == nil then
@@ -428,9 +565,59 @@ function methodtable.createDataStructure( self, smwData )
         end
     end
 
+    -- SMW outputs a "flat" List of objects, after this the output is more or less equal to that from the API
     stratify( smwData )
 
     return smwData
+end
+
+
+--- Creates the subtitle that is shown in the card
+---
+--- @param item table Item i.e. row from the smw query
+--- @return string
+function methodtable.makeSubtitle( self, item )
+    local subtitle = item.manufacturer or 'N/A'
+    if item.manufacturer ~= nil and item.manufacturer ~= 'N/A' then
+        subtitle = string.format( '[[%s]]', item.manufacturer )
+    end
+
+    -- Show SCU in subtitle
+    if item.scu ~= nil then
+        if item.type == translate( 'CargoGrid' ) then
+            subtitle = item.scu .. ' SCU' or 'N/A'
+        elseif item.type == translate( 'PersonalStorage' ) then
+            subtitle = item.scu * 1000 .. 'K µSCU' or 'N/A'
+        end
+    end
+
+    -- Items with Grade and/or Class
+    if item.item_grade ~= nil or item.item_class ~= nil then
+        subtitle = item.item_class or ''
+
+        if #subtitle > 0 then
+            subtitle = string.format( '%s (%s)', subtitle, item.item_class )
+        elseif item.item_grade ~= nil then
+            subtitle = item.item_grade
+        end
+    end
+
+    -- Magazine Capacity
+    if item.magazine_capacity ~= nil then
+        subtitle = string.format( '%s %s', item.magazine_capacity, translate( 'Ammunition' ) )
+    end
+
+    -- Magazine Capacity
+    if item.type == translate( 'WeaponPort' ) then
+        subtitle = string.format(
+            '%s (%s - %s)',
+            translate( 'Weapon' ),
+            item.min_size or 0,
+            item.max_size or 0
+        )
+    end
+
+    return subtitle
 end
 
 
@@ -455,7 +642,6 @@ function methodtable.makeOutput( self, groupedData )
             classOutput.info = hatnote( text, { icon = 'WikimediaUI-Robot.svg' } )
         end
 
-
         depth = depth or 1
 
         local row = mw.html.create( 'div' )
@@ -465,17 +651,22 @@ function methodtable.makeOutput( self, groupedData )
                   :addClass( 'template-component__connectors' )
                       :tag( 'div' ):addClass( 'template-component__connectorX' ):done()
                       :tag( 'div' ):addClass( 'template-component__connectorY' ):done()
-                  :done()
-
-        if item.magazine_size ~= nil then
-            item.count = item.magazine_size
-        end
+              :done()
 
         local size = 'N/A'
         local prefix = ''
 
-        if item.from_gamedata == true or item.class == translate( 'Weapons' ) then
+        -- If Ship-Matrix components are not saved to SMW, always output the 'S' prefix
+        if item.from_gamedata == nil then
             prefix = 'S'
+        else
+            if item.from_gamedata == true or
+               item.from_gamedata == 1 or
+               item.from_gamedata == '1' or -- For uninitialized attributes
+               item.class == translate( 'Weapons' )
+            then
+                prefix = 'S'
+            end
         end
 
         if item.item_size ~= nil then
@@ -485,11 +676,11 @@ function methodtable.makeOutput( self, groupedData )
         end
 
         local nodeSizeCount = mw.html.create( 'div' )
-                :addClass('template-component__port')
-                    :tag( 'div' )
-                        :addClass( 'template-component__count' )
-                        :wikitext( string.format( '%dx', item.count ) )
-                    :done()
+            :addClass('template-component__port')
+                :tag( 'div' )
+                    :addClass( 'template-component__count' )
+                    :wikitext( string.format( '%dx', item.count ) )
+                :done()
 
         if item.class ~= translate( 'CargoGrid' ) then
             nodeSizeCount
@@ -503,24 +694,10 @@ function methodtable.makeOutput( self, groupedData )
 
         local name = item.sub_type or item.type
         if item.name ~= nil then
-            if data.nameFixes[ item.name ] ~= nil then
-                name = string.format( '[[%s|%s]]', data.nameFixes[ item.name ], item.name )
+            if data.name_fixes[ item.name ] ~= nil then
+                name = string.format( '[[%s|%s]]', data.name_fixes[ item.name ], item.name )
             else
                 name = string.format( '[[%s]]', item.name )
-            end
-        end
-
-        local subtitle = item.manufacturer or 'N/A'
-        if item.manufacturer ~= nil and item.manufacturer ~= 'N/A' then
-            subtitle = string.format( '[[%s]]', item.manufacturer )
-        end
-
-        -- Show SCU in subtitle
-        if item.scu ~= nil then
-            if item.type == 'Cargo grid' then
-                subtitle = item.scu .. ' SCU' or 'N/A'
-            elseif item.type == 'Personal storage' then
-                subtitle = item.scu * 1000 .. 'K µSCU'  or 'N/A'
             end
         end
 
@@ -532,12 +709,12 @@ function methodtable.makeOutput( self, groupedData )
                :done()
                :tag( 'div' )
                     :addClass( 'template-component__subtitle' )
-                    :wikitext( subtitle  )
+                    :wikitext( self:makeSubtitle( item )  )
                :done()
                :allDone()
 
-        row:tag('div')
-           :addClass('template-component__card')
+        row:tag( 'div' )
+           :addClass( 'template-component__card' )
            :node( nodeSizeCount )
            :node( nodeItemManufacturer )
        :done()
@@ -563,16 +740,15 @@ function methodtable.makeOutput( self, groupedData )
             local label = classType
 
             -- Label override
+            -- Note: This must be manually changed on the data.json page
             if data.section_label_fixes[ classType ] ~= nil then
                 label = data.section_label_fixes[ classType ]
             end
 
-            local icon = string.format( '[[File:%s %s.svg|20px|link=]]', data.icon_prefix, string.lower( label ) )
-            -- Disable label missing icons for now
-            for _, labelMissingIcon in pairs( data.missing_icons ) do
-                if label == labelMissingIcon then icon = '' end
+            local icon = ''
+            if self.iconMap[ classType ] ~= nil then
+                icon = string.format( '[[%s|20px|link=]]', self.iconMap[ classType ] )
             end
-
 
             local section = mw.html.create( 'div' )
                   :addClass( 'template-components__section')
@@ -581,7 +757,7 @@ function methodtable.makeOutput( self, groupedData )
                           :wikitext( string.format(
                               '%s %s',
                               icon,
-                              translate( classType )
+                              classType
                           ) )
                       :done()
                       :tag( 'div' ):addClass( 'template-components__group' )
@@ -590,9 +766,9 @@ function methodtable.makeOutput( self, groupedData )
 
             for _, item in common.spairs( items ) do
                 if not item.isChild then
-                    local subGroup = mw.html.create('div')
+                    local subGroup = mw.html.create( 'div' )
                         :addClass( 'template-components__subgroup' )
-                        :node( makeEntry( item ) )
+                            :node( makeEntry( item ) )
                         :allDone()
                     str = str .. tostring( subGroup )
                 end
@@ -608,7 +784,7 @@ function methodtable.makeOutput( self, groupedData )
         classOutput[ class ] = makeSection( types )
     end
 
-    mw.logObject(classOutput)
+    mw.logObject( classOutput )
 
     return classOutput
 end
@@ -619,7 +795,7 @@ function methodtable.out( self )
     local smwData = self:querySmwStore( self.page )
 
     if smwData == nil then
-        return hatnote( 'SMW data not found on [[' .. self.page .. ']].', { icon = 'WikimediaUI-Error.svg' } )
+        return hatnote( TNT.format( 'I18n/Module:VehicleHardpoint.tab', 'msg_no_data', self.page ), { icon = 'WikimediaUI-Error.svg' } )
     end
 
     smwData = self:createDataStructure( smwData )
@@ -629,22 +805,24 @@ function methodtable.out( self )
 
     local tabberData = {}
 
-    local i = 1
-    for key, groups in common.spairs( data.class_grouping ) do
-        local groupContent = ''
+    for i, grouping in ipairs( data.class_groupings ) do
+        local key = grouping[ 1 ]
+        local groups = grouping[ 2 ]
 
-        for _, group in pairs( groups ) do
-            groupContent = groupContent .. output( translate( group ) or '' )
+        local groupContent = ''
+        local label = {}
+
+        for _, group in ipairs( groups ) do
+            groupContent = groupContent .. ( output[ translate( group ) ] or '' )
+            table.insert( label, translate( group ) )
         end
 
         if #groupContent == 0 then
-            groupContent = 'No X found'
+            groupContent = translate( 'empty_' .. key )
         end
 
-        tabberData[ 'label' .. i ] = translate( key )
+        tabberData[ 'label' .. i ] = table.concat( label, ' & ' )
         tabberData[ 'content' .. i ] = groupContent
-
-        i = i + 1
     end
 
     return require( 'Module:Tabber' ).renderTabber( tabberData ) .. mw.getCurrentFrame():extensionTag{
@@ -653,11 +831,71 @@ function methodtable.out( self )
 end
 
 
+--- Generates debug output
+function methodtable.makeDebugOutput( self )
+    self.smwData = nil
+    local smwData = self:querySmwStore( self.page )
+    local struct = self:createDataStructure( smwData or {} )
+    local group = self:group( struct )
+
+    local query = makeSmwQueryObject( self.page )
+    local queryParts = {
+        restrictions = {},
+        output = {},
+        other = {}
+    }
+    for _, part in ipairs( query ) do
+        if string.sub( part, 1, 1 ) == '?' then
+            table.insert( queryParts.output, part )
+        elseif string.sub( part, 1, 2 ) == '[[' then
+            table.insert( queryParts.restrictions, mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', part } ) )
+        elseif #part > 0 and part ~= nil then
+            table.insert( queryParts.other, part )
+        end
+    end
+    local queryString = string.format(
+            'Restrictions:<pre>%s</pre>Outputs:<pre>%s</pre>Other:<pre>%s</pre>',
+            table.concat( queryParts.restrictions, "\n" ),
+            table.concat( queryParts.output, "\n"),
+            table.concat( queryParts.other, "\n")
+    )
+
+    local debugOutput = mw.html.create( 'div' )
+        :addClass( 'mw-collapsible' )
+        :addClass( 'mw-collapsed' )
+        :tag( 'h3' ):wikitext( 'SMW Query' ):done()
+        :tag( 'div' ):wikitext( queryString ):done()
+        -- SMW Data
+        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
+        :tag( 'h3' ):wikitext( 'SMW Data' ):done()
+        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( smwData ) ):done()
+        :done()
+        -- Datastructure
+        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
+        :tag( 'h3' ):wikitext( 'Datastructure' ):done()
+        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( struct ) ):done()
+        :done()
+        -- Grouped
+        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
+        :tag( 'h3' ):wikitext( 'Grouped' ):done()
+        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( group ) ):done()
+        :done()
+        -- Output
+        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
+        :tag( 'h3' ):wikitext( 'Output' ):done()
+        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( self:makeOutput( group ) ) ):done()
+        :done()
+        :allDone()
+
+    return tostring( debugOutput )
+end
+
+
 --- Manually fix some (sub_)types by checking the hardpoint name
 ---
 --- @param hardpoint table Entry from the api
 --- @return table The fixed entry
-function VehicleHardPoint.fixTypes( hardpoint )
+function VehicleHardpoint.fixTypes( hardpoint )
     if hardpoint.type == 'ManneuverThruster' or hardpoint.type == 'MainThruster' then
         if ( hardpoint.sub_type == 'FixedThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
                 string.match( string.lower( hardpoint.name ), 'vtol' ) ~= nil then
@@ -763,10 +1001,11 @@ end
 
 --- New Instance
 ---
---- @return table VehicleHardPoint
-function VehicleHardPoint.new( self, page )
+--- @return table VehicleHardpoint
+function VehicleHardpoint.new( self, page )
     local instance = {
         page = page or nil,
+        iconMap = {}
     }
 
     setmetatable( instance, metatable )
@@ -775,22 +1014,35 @@ function VehicleHardPoint.new( self, page )
 end
 
 
-
 --- Parser call for generating the table
-function VehicleHardPoint.outputTable( frame )
+function VehicleHardpoint.outputTable( frame )
     local args = require( 'Module:Arguments' ).getArgs( frame )
     local page = args[ 1 ] or args[ 'Name' ] or mw.title.getCurrentTitle().rootText
 
-    local instance = VehicleHardPoint:new( page )
+    local instance = VehicleHardpoint:new( page )
+    local out = instance:out()
 
+    local debugOutput = ''
     if args['debug'] ~= nil then
-        local smwData = instance:querySmwStore(page)
-        local struct = instance:createDataStructure( smwData )
-        local group = instance:group( struct )
-        return mw.dumpObject(smwData) .. mw.dumpObject(struct) .. mw.dumpObject(group)
+        debugOutput = instance:makeDebugOutput()
     end
-    return instance:out()
+
+    return out .. debugOutput
 end
 
 
-return VehicleHardPoint
+--- Set the hardpoints of the 300i as subobjects to the current page
+function VehicleHardpoint.test( frame )
+    local page = frame.args['Name'] or '300i'
+    local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. page, {
+        include = {
+            'hardpoints',
+        },
+    } ) )
+
+    local hardpoint = VehicleHardpoint:new( page )
+    hardpoint:setHardPointObjects( json.data.hardpoints )
+end
+
+
+return VehicleHardpoint
