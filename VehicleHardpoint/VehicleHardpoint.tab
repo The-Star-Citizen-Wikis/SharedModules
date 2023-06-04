@@ -643,28 +643,28 @@
             "WeaponPortRifle",
             {
                 "de": "Gewehr",
-                "en": "Rifle"
+                "en": "Stocked weapon"
             }
         ],
         [
             "WeaponPortLauncher",
             {
                 "de": "Raketenwerfer",
-                "en": "Missile launcher"
+                "en": "Shouldered weapon"
             }
         ],
         [
             "WeaponPortPistol",
             {
                 "de": "Pistole",
-                "en": "Pistol"
+                "en": "Sidearm weapon"
             }
         ],
         [
             "WeaponPortMultitool",
             {
                 "de": "Multitool",
-                "en": "Multitool"
+                "en": "Utility weapon"
             }
         ],
         [
@@ -689,10 +689,10 @@
             }
         ],
         [
-            "WeaponStorage",
+            "WeaponRack",
             {
                 "de": "Waffenschrank",
-                "en": "Weapon Storage"
+                "en": "Weapon Rack"
             }
         ],
         [
