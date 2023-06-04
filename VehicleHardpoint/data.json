@@ -359,7 +359,7 @@
         "hardpoint_rack_RR",
         "hardpoint_weaponlocker"
       ],
-      "type": "WeaponStorage"
+      "type": "WeaponRack"
     },
     "WeaponMining": {
       "class": "Utility",
