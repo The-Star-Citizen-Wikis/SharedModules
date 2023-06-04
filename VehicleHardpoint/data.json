@@ -147,9 +147,10 @@
     "LifeSupportGenerator": {
       "class": "Systems",
       "matches": [
-        "hardpoint_gravity_generator"
+        "hardpoint_lifesupport",
+        "hardpoint_life_support"
       ],
-      "type": "LifeSupport"
+      "type": "LifeSupportGenerator"
     },
     "Magazine": {
       "class": "Weapons",
