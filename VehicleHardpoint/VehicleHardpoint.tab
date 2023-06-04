@@ -283,7 +283,7 @@
             }
         ],
         [
-            "LifeSupport",
+            "LifeSupportGenerator",
             {
                 "de": "Lebenserhaltungssysteme",
                 "en": "Life support"
