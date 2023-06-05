@@ -20,10 +20,6 @@ local function translate( key, addSuffix )
     addSuffix = addSuffix or false
     local success, translation
 
-    if addSuffix == false and mw.ustring.sub( key, 1, 3 ) == 'SMW' then
-        addSuffix = true
-    end
-
     local function multilingualIfActive( input )
         if addSuffix and data.smw_multilingual_text == true then
             return string.format( '%s@%s', input, data.module_lang or mw.getContentLanguage():getCode() )
@@ -192,6 +188,9 @@ end
 
 --- Creates a child object for weapons and counter measure ammunitions
 --- As well as weapon ports on armor locker
+---
+--- @param hardpoint table A hardpoint object form the API
+--- @return void
 local function addSubComponents( hardpoint )
     if type( hardpoint.item ) ~= 'table' then
         return
@@ -296,18 +295,18 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     object[ translate( 'SMW_FromGameData' ) ] = true
     object[ translate( 'SMW_HardpointMinimumSize' ) ] = row.min_size
     object[ translate( 'SMW_HardpointMaximumSize' ) ] = row.max_size
-    object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class )
+    object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class, true )
 
     if data.matches[ row.type ] ~= nil then
-        object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type )
+        object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type, true )
     else
-        object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type )
+        object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type, true )
     end
 
     if data.matches[ row.sub_type ] ~= nil then
-        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( data.matches[ row.sub_type ].type )
+        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( data.matches[ row.sub_type ].type, true )
     else
-        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type )
+        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type, true )
     end
 
     if hardpointData.item ~= nil and type( hardpointData.item.name ) == 'string' then
@@ -321,7 +320,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             local match = string.match( row.class_name or '', 'Destruct_(%d+s)')
 
             if row.type == 'SelfDestruct' and match ~= nil then
-                object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct' ), match )
+                object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct', true ), match )
             else
                 object[ translate( 'SMW_Name' ) ] = row.item.name
             end
@@ -366,7 +365,12 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     end
 
     if icon ~= nil then
-        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s %s.svg', data.icon_prefix, string.lower( translate( icon ) ) )
+        icon = translate( icon )
+        if data.icon_name_lowercase == true then
+            icon = string.lower( icon )
+        end
+
+        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s %s.svg', data.icon_prefix, icon )
     end
 
     -- Remove SeatAccess Hardpoints without storage
