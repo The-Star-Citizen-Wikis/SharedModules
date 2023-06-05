@@ -104,6 +104,7 @@ local function makeSmwQueryObject( page )
     }
 end
 
+
 --- Creates a 'key' based on various data points found on the hardpoint and item
 --- Based on this key, the count of some entries is generated
 ---
@@ -186,6 +187,90 @@ function methodtable.getHardpointData( self, hardpointType )
     end
 
     return nil
+end
+
+
+--- Creates a child object for weapons and counter measure ammunitions
+--- As well as weapon ports on armor locker
+local function addSubComponents( hardpoint )
+    if type( hardpoint.item ) ~= 'table' then
+        return
+    end
+
+    if type( hardpoint.children ) ~= 'table' then
+        hardpoint.children = {}
+    end
+
+    if hardpoint.item.type == 'WeaponDefensive' or hardpoint.item.type == 'WeaponGun' then
+        local item_type = 'Magazine'
+        if mw.ustring.sub( hardpoint.class_name, -5 ) == 'Chaff' then
+            item_type = 'NoiseLauncherMagazine'
+        elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'Flare' then
+            item_type = 'DecoyLauncherMagazine'
+        end
+
+        local capacity = {}
+        if hardpoint.item.type == 'WeaponGun' then
+            table.insert( capacity, hardpoint.item.vehicle_weapon.capacity )
+
+            -- This is a laser weapon, add another capacity of -1 to indicate that this weapon has infinite ammo
+            if type( hardpoint.item.vehicle_weapon.regeneration ) == 'table' then
+                table.insert( capacity, -1 )
+            end
+        else
+            table.insert( capacity, hardpoint.item.counter_measure.capacity )
+        end
+
+        table.insert( hardpoint.children, {
+            name = 'faux_hardpoint_magazine',
+            class_name = 'FAUX_' .. item_type .. 'Magazine',
+            type = item_type,
+            sub_type = item_type,
+            min_size = 1,
+            max_size = 1,
+            item = {
+                name = translate( 'Magazine' ),
+                type = item_type,
+                sub_type = item_type,
+                magazine_capacity = capacity
+            }
+        } )
+    end
+
+    -- This seems to be a weapon rack
+    if hardpoint.item.type == 'Usable' and type( hardpoint.item.ports ) == 'table' then
+        local item_type = 'WeaponPort'
+        for _, port in pairs( hardpoint.item.ports ) do
+            local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
+            local name = 'WeaponPort'
+
+            if mw.ustring.find( port.display_name, 'rifle', 1, true )  then
+                name = name .. 'Rifle'
+            elseif mw.ustring.find( port.display_name, 'launcher', 1, true )  then
+                name = name .. 'Launcher'
+            elseif mw.ustring.find( port.display_name, 'pistol', 1, true )  then
+                name = name .. 'Pistol'
+            elseif mw.ustring.find( port.display_name, 'multitool', 1, true )  then
+                name = name .. 'Multitool'
+            elseif mw.ustring.find( port.display_name, 'addon', 1, true )  then
+                name = name .. 'Addon'
+            end
+
+            table.insert( hardpoint.children, {
+                name = 'faux_hardpoint_weaponport',
+                class_name = 'FAUX_WeaponPort',
+                type = item_type,
+                sub_type = sub_type,
+                min_size = port.sizes.min,
+                max_size = port.sizes.max,
+                item = {
+                    name = translate( name ),
+                    type = item_type,
+                    sub_type = sub_type,
+                }
+            } )
+        end
+    end
 end
 
 
@@ -307,83 +392,6 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
     local objects = {}
     local depth = 1
-
-    --- Creates a child object for weapons and counter measure ammunitions
-    local function addSubComponents( hardpoint )
-        if type( hardpoint.item ) ~= 'table' then
-            return
-        end
-
-        if type( hardpoint.children ) ~= 'table' then
-            hardpoint.children = {}
-        end
-
-        if hardpoint.item.type == 'WeaponDefensive' or hardpoint.item.type == 'WeaponGun' then
-            local item_type = 'Magazine'
-            if mw.ustring.sub( hardpoint.class_name, -5 ) == 'Chaff' then
-                item_type = 'NoiseLauncherMagazine'
-            elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'Flare' then
-                item_type = 'DecoyLauncherMagazine'
-            end
-
-            local capacity
-            if hardpoint.item.type == 'WeaponGun' then
-                capacity = hardpoint.item.vehicle_weapon.capacity
-            else
-                capacity = hardpoint.item.counter_measure.capacity
-            end
-
-            table.insert( hardpoint.children, {
-                name = 'faux_hardpoint_magazine',
-                class_name = 'FAUX_' .. item_type .. 'Magazine',
-                type = item_type,
-                sub_type = item_type,
-                min_size = 1,
-                max_size = 1,
-                item = {
-                    name = translate( 'Magazine' ),
-                    type = item_type,
-                    sub_type = item_type,
-                    magazine_capacity = capacity
-                }
-            } )
-        end
-
-        -- This seems to be a weapon rack
-        if hardpoint.item.type == 'Usable' and type( hardpoint.item.ports ) == 'table' then
-            local item_type = 'WeaponPort'
-            for _, port in pairs( hardpoint.item.ports ) do
-                local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
-                local name = 'WeaponPort'
-
-                if mw.ustring.find( port.display_name, 'rifle', 1, true )  then
-                    name = name .. 'Rifle'
-                elseif mw.ustring.find( port.display_name, 'launcher', 1, true )  then
-                    name = name .. 'Launcher'
-                elseif mw.ustring.find( port.display_name, 'pistol', 1, true )  then
-                    name = name .. 'Pistol'
-                elseif mw.ustring.find( port.display_name, 'multitool', 1, true )  then
-                    name = name .. 'Multitool'
-                elseif mw.ustring.find( port.display_name, 'addon', 1, true )  then
-                    name = name .. 'Addon'
-                end
-
-                table.insert( hardpoint.children, {
-                    name = 'faux_hardpoint_weaponport',
-                    class_name = 'FAUX_WeaponPort',
-                    type = item_type,
-                    sub_type = sub_type,
-                    min_size = port.sizes.min,
-                    max_size = port.sizes.max,
-                    item = {
-                        name = translate( name ),
-                        type = item_type,
-                        sub_type = sub_type,
-                    }
-                } )
-            end
-        end
-    end
 
 
     -- Adds the subobject to the list of objects that should be saved to SMW
@@ -604,7 +612,20 @@ function methodtable.makeSubtitle( self, item )
 
     -- Magazine Capacity
     if item.magazine_capacity ~= nil then
-        subtitle = string.format( '%s %s', item.magazine_capacity, translate( 'Ammunition' ) )
+        if type( item.magazine_capacity ) == 'table' then
+            subtitle = string.format(
+                    '%s/∞ %s',
+                    item.magazine_capacity[ 1 ],
+                    translate( 'Ammunition' )
+            )
+        else
+            subtitle = string.format(
+                '%s/%s %s',
+                item.magazine_capacity,
+                item.magazine_capacity,
+                translate( 'Ammunition' )
+            )
+        end
     end
 
     -- Magazine Capacity
