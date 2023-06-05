@@ -1,15 +1,21 @@
 {
-  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
-  "module_lang": null,
-
   "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
   "smw_multilingual_text": false,
 
-  "%icon_prefix": "Prefix used to generate the icon file name.",
+  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+  "module_lang": null,
+
+  "%icon_prefix": "Prefix used to generate the icon file name. File names are then generated as 'icon_prefix ICON.svg",
   "icon_prefix": "Hardpoints icon",
+
+  "%icon_name_lowercase": "Convert icon names to lowercase",
+  "icon_name_lowercase": true,
 
   "%template_styles_page": "Page that containing the hardpoint styles",
   "template_styles_page": "Module:VehicleHardpoint/styles.css",
+
+  "%name_fixes": "List of item names that as ambiguous. Maps a key (the name of the equipped hardpoint item) to the correct page on the wiki.",
+  "name_fixes": {},
 
   "%matches": "",
   "matches": {
@@ -453,17 +459,5 @@
   ],
 
   "%section_label_fixes": "Hardcoded list of types that needs to be fixed for section label",
-  "section_label_fixes": {},
-
-  "%name_fixes": "List of names that clash with other pages",
-  "name_fixes": {
-    "Beacon": "Beacon (Quantenantrieb)",
-    "Castra": "Castra (Schildgenerator)",
-    "Centurion": "Centurion (Generator)",
-    "Citadel": "Citadel_(Schildgenerator)",
-    "Eclipse": "Eclipse (Generator)",
-    "Nova": "Nova (Quantenantrieb)",
-    "Mercury": "Mercury (Kühler)",
-    "Odyssey": "Odyssey (Quantenantrieb)"
-  }
+  "section_label_fixes": {}
 }
