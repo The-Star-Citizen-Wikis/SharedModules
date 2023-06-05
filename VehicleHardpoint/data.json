@@ -123,6 +123,11 @@
       ],
       "type": "FuelIntake"
     },
+    "TankingPort": {
+      "class": "Propulsion",
+      "matches": [],
+      "type": "TankingPort"
+    },
     "FuelRefinery": {
       "class": "Utility",
       "matches": [
@@ -394,22 +399,25 @@
 
   "%missing_icons": "List of labels with missing icons",
   "missing_icons": [
-    "CargoGrid",
-    "PersonalStorage",
+    "Armor",
     "ArmorStorage",
-    "WeaponStorage",
-    "DriveUnit",
-    "GravLev",
     "Bed",
-    "Countermeasure",
-    "EMPDevice",
-    "QuantumJammer",
+    "CargoGrid",
     "CargoPod",
-    "FuelRefinery",
+    "Countermeasure",
+    "DriveUnit",
+    "EMPDevice",
     "FillerStation",
+    "FireExtinguisher",
+    "FuelRefinery",
+    "GravLev",
+    "Paint",
+    "PersonalStorage",
+    "QuantumJammer",
+    "TankingPort",
     "UtilityArm",
     "UtilityTurret",
-    "FireExtinguisher"
+    "WeaponStorage"
   ],
 
   "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",

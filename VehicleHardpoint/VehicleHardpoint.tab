@@ -206,6 +206,13 @@
             }
         ],
         [
+            "TankingPort",
+            {
+                "de": "Luftbetankung",
+                "en": "Tanking port"
+            }
+        ],
+        [
             "FuelNozzle",
             {
                 "de": "Kraftstoffdüse",
