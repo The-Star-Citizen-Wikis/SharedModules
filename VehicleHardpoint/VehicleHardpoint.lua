@@ -352,24 +352,21 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     end
 
     -- Icon
-    local icon = hardpointData.class
+    local icon = hardpointData.type
     if data.section_label_fixes[ hardpointData.class ] ~= nil or data.section_label_fixes[ hardpointData.type ] ~= nil then
         icon = data.section_label_fixes[ hardpointData.class ] or data.section_label_fixes[ hardpointData.type ]
     end
 
-    icon = string.format( 'File:%s %s.svg', data.icon_prefix, string.lower( translate( icon ) ) )
-
     -- Disable label missing icons for now
     for _, labelMissingIcon in pairs( data.missing_icons ) do
-        if labelMissingIcon == data.section_label_fixes[ hardpointData.class ] or
-           labelMissingIcon == data.section_label_fixes[ hardpointData.type ] then
+        if labelMissingIcon == icon or labelMissingIcon == icon then
             icon = nil
             break
         end
     end
 
     if icon ~= nil then
-        object[ translate( 'SMW_Icon' ) ] = icon
+        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s %s.svg', data.icon_prefix, string.lower( translate( icon ) ) )
     end
 
     -- Remove SeatAccess Hardpoints without storage
@@ -1000,6 +997,15 @@ function VehicleHardpoint.fixTypes( hardpoint )
                 hardpoint.sub_type = 'MiningArm'
             elseif string.match( string.lower( hardpoint.class_name ), 'salvage' ) ~= nil then
                 hardpoint.sub_type = 'SalvageArm'
+            end
+        end
+    end
+
+    -- Mid-air refueling port
+    if hardpoint.type == 'DockingCollar' then
+        if hardpoint.sub_type == 'UNDEFINED' then
+            if string.match( string.lower( hardpoint.class_name ), 'fuel' ) ~= nil then
+                hardpoint.type = 'TankingPort'
             end
         end
     end
