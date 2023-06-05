@@ -515,7 +515,8 @@ function methodtable.group( self, smwData )
         if not row.isChild and row.class ~= nil and row.type ~= nil and
             -- Specifically hide manually added weapon ports that have no parent
             -- This should not be needed anymore if weapon lockers are found everywhere with an uuid
-            row.type ~= translate( 'WeaponPort' )
+            row.type ~= translate( 'WeaponPort' ) and
+            not mw.ustring.find( row.type, translate( 'Magazine' ), 1, true )
         then
             if type( grouped[ row.class ] ) ~= 'table' then
                 grouped[ row.class ] = {}
