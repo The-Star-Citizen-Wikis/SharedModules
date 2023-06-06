@@ -459,5 +459,94 @@
   ],
 
   "%section_label_fixes": "Hardcoded list of types that needs to be fixed for section label",
-  "section_label_fixes": {}
+  "section_label_fixes": {},
+
+  "%fixes": "Manually fix some (sub_)types by checking the hardpoint type",
+  "fixes": [
+    {
+      "type": [ "ManneuverThruster", "MainThruster" ],
+      "modification": [
+        {
+          "if": [
+            [ "sub_type:FixedThruster", "or", "sub_type:UNDEFINED" ],
+            "and",
+            [ "name:match:vtol" ]
+          ],
+          "then": "sub_type=VtolThruster"
+        },
+        {
+          "if": [
+            [ "sub_type:FixedThruster", "or", "sub_type:UNDEFINED" ],
+            "and",
+            [ "name:match:retro" ]
+          ],
+          "then": "sub_type=RetroThruster"
+        },
+        {
+          "if": [
+            [ "sub_type:JointThruster", "or", "sub_type:UNDEFINED" ],
+            "and",
+            [ "name:match:vtol" ]
+          ],
+          "then": "sub_type=GravLev"
+        },
+        {
+          "if": [ "type:MainThruster" ],
+          "then": "sub_type=Main+sub_type"
+        }
+      ]
+    },
+    {
+      "type": "WeaponDefensive",
+      "modification": [
+        {
+          "if": [
+            [ "sub_type:CountermeasureLauncher", "or", "sub_type:UNDEFINED" ],
+            "and",
+            [
+              [ "class_name:match:decoy" ],
+              "or",
+              [ "class_name:match:flare" ]
+            ]
+          ],
+          "then": "sub_type=DecoyLauncher"
+        },
+        {
+          "if": [
+            [ "sub_type:CountermeasureLauncher", "or", "sub_type:UNDEFINED" ],
+            "and",
+            [
+              [ "class_name:match:chaff" ],
+              "or",
+              [ "class_name:match:noise" ]
+            ]
+          ],
+          "then": "sub_type=NoiseLauncher"
+        }
+      ]
+    },
+    {
+      "type": "FuelTank",
+      "modification": [
+        {
+          "if": [ "class_name:match:small" ],
+          "then": "sub_type=FuelTankSmall"
+        },
+        {
+          "if": [ "class_name:match:small" ],
+          "then": "sub_type=FuelTankSmall"
+        }
+      ]
+    },
+    {
+      "type": "FuelTank",
+      "modification": [
+        {
+          "if": [ true ],
+          "and_match": [ "class_name:match:large" ],
+          "then": "sub_type=FuelTankLarge"
+        }
+      ]
+    }
+  ]
 }

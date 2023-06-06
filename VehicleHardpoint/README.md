@@ -27,7 +27,7 @@ All configuration of this module is handled in `data.json`.
 If this flag is set to true, a language suffix is added to the data that is saved to SMW.
 
 ### `module_lang`
-This only has an effect if `smw_multilingual_text` set to true. Manually override the language suffix that is added.  
+Manually select the language from the `.tab` page. Also overrides the language suffix that is added to SMW (if active).  
 If left empty, the language is guessed based on the content language.
 
 ### `icon_prefix`

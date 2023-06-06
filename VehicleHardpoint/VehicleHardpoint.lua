@@ -159,7 +159,6 @@ local function makeKey( row, hardpointData, parent, root )
 end
 
 
-
 --- Get pre-defined hardpoint data for a given hardpoint type
 --- If no type is found, the hardpoint name is matched against the defined regexes until the first one matches
 ---
@@ -593,7 +592,7 @@ function methodtable.makeSubtitle( self, item )
     end
 
     -- Show SCU in subtitle
-    if item.scu ~= nil then
+    if item.scu ~= nil and type( item.scu ) == 'number' then
         if item.type == translate( 'CargoGrid' ) then
             subtitle = item.scu .. ' SCU' or 'N/A'
         elseif item.type == translate( 'PersonalStorage' ) then
@@ -930,11 +929,6 @@ function VehicleHardpoint.fixTypes( hardpoint )
             hardpoint.sub_type = 'RetroThruster'
         end
 
-        if ( hardpoint.sub_type == 'FixedThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
-                string.match( string.lower( hardpoint.name ), 'retro' ) ~= nil then
-            hardpoint.sub_type = 'RetroThruster'
-        end
-
         if ( hardpoint.sub_type == 'JointThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
                 string.match( string.lower( hardpoint.name ), 'grav' ) ~= nil then
             hardpoint.sub_type = 'GravLev'
@@ -1074,6 +1068,94 @@ function VehicleHardpoint.test( frame )
 
     local hardpoint = VehicleHardpoint:new( page )
     hardpoint:setHardPointObjects( json.data.hardpoints )
+end
+
+
+--- Evaluates rules from 'data.fixes'
+---
+--- @param rules table A rules object from data.fixes
+--- @param hardpoint table The hardpoint to evaluate
+--- @param returnInvalid boolean|nil If invalid rules should be returned beneath the result
+--- @return boolean (, table)
+function VehicleHardpoint.parseRule( rules, hardpoint, returnInvalid )
+    returnInvalid = returnInvalid or false
+    local stepVal = {}
+    local combination = {}
+    local invalidRules = {}
+
+    local function invalidRule( rule, index )
+        table.insert( invalidRules, string.format( 'Invalid Rule found, skipping: "%s (Element %d)"', rule, index ) )
+    end
+
+    for index, rule in ipairs( rules ) do
+        if type( rule ) == 'string' then
+            mw.log( string.format( 'Evaluating rule %s', rule ) )
+
+            if string.find( rule, ':', 1, true ) ~= nil then
+                local parts = mw.text.split( rule, ':', true )
+
+                -- Simple check if a key equals a value
+                if #parts == 2 then
+                    local result = hardpoint[ parts[ 1 ] ] == parts[ 2 ]
+                    mw.log( string.format( 'Rule "%s == %s", equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ) )
+
+                    table.insert( stepVal, result )
+                    -- String Match
+                elseif #parts == 3 then
+                    local key = parts[ 1 ]
+                    local fn = parts[ 2 ]
+
+                    -- Remove key and 'match' in order to combine the last parts again
+                    table.remove( parts, 1 )
+                    table.remove( parts, 1 )
+
+                    local matcher = mw.ustring.lower( table.concat( parts, ':' ) )
+
+                    local result = string[ fn ]( string.lower( hardpoint[ key ] ), matcher ) ~= nil
+                    mw.log( string.format( 'Rule "%s matches %s", equates to %s', hardpoint[ key ], matcher, tostring( result ) ) )
+
+                    table.insert( stepVal, result )
+                else
+                    invalidRule( rule, index )
+                end
+                -- A combination rule
+            elseif rule == 'and' or rule == 'or' then
+                table.insert( combination, rule )
+            end
+            -- A sub rule
+        elseif type( rule ) == 'table' then
+            local matches, invalid = VehicleHardpoint.parseRule( rule, hardpoint )
+
+            table.insert( stepVal, matches )
+
+            for _, v in ipairs( invalid or {} ) do
+                table.insert( invalidRules, v )
+            end
+        else
+            mw.log( 'Is invalid ' .. rule )
+            invalidRule( rule, index )
+        end
+    end
+
+    local ruleMatches = false
+    for index, matched in ipairs( stepVal ) do
+        if index == 1 then
+            ruleMatches = matched
+        else
+            mw.log( 'test is ' .. combination[ index - 1 ])
+            if combination[ index - 1 ] == 'and' then
+                ruleMatches = ruleMatches and matched
+            else
+                ruleMatches = ruleMatches or matched
+            end
+        end
+    end
+
+    if returnInvalid then
+        return ruleMatches, invalidRules
+    else
+        return ruleMatches
+    end
 end
 
 
