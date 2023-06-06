@@ -533,18 +533,80 @@
           "then": "sub_type=FuelTankSmall"
         },
         {
-          "if": [ "class_name:match:small" ],
-          "then": "sub_type=FuelTankSmall"
+          "if": [ "class_name:match:large" ],
+          "then": "sub_type=FuelTankLarge"
         }
       ]
     },
     {
-      "type": "FuelTank",
+      "type": "QuantumFuelTank",
       "modification": [
         {
-          "if": [ true ],
-          "and_match": [ "class_name:match:large" ],
-          "then": "sub_type=FuelTankLarge"
+          "if": [ "class_name:match:small" ],
+          "then": "sub_type=QuantumFuelTankSmall"
+        },
+        {
+          "if": [ "class_name:match:small" ],
+          "then": "sub_type=QuantumFuelTankLarge"
+        }
+      ]
+    },
+    {
+      "type": "Turret",
+      "modification": [
+        {
+          "if": [ "sub_type:GunTurret", "and", "class_name:match:mount_gimbal" ],
+          "then": [
+            "type=WeaponGun",
+            "sub_type=GimbalMount"
+          ]
+        },
+        {
+          "if": [ "sub_type:BallTurret", "or", "sub_type:CanardTurret" ],
+          "then": [
+            "type=WeaponGun"
+          ]
+        },
+        {
+          "if": [ "sub_type:Utility", "and", "class_name:match:salvage" ],
+          "then": [
+            "type=UtilityTurret",
+            "sub_type=GunTurret"
+          ]
+        },
+        {
+          "if": [ "sub_type:Turret", "and", "class_name:match:remote" ],
+          "then": [
+            "sub_type=RemoteTurret"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "ToolArm",
+      "modification": [
+        {
+          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:mining" ],
+          "then": [
+            "sub_type=MiningArm"
+          ]
+        },
+        {
+          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:salvage" ],
+          "then": [
+            "sub_type=SalvageArm"
+          ]
+        }
+      ]
+    },
+    {
+      "type": "DockingCollar",
+      "modification": [
+        {
+          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:fuel" ],
+          "then": [
+            "type=TankingPort"
+          ]
         }
       ]
     }

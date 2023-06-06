@@ -4,7 +4,7 @@ local ScribuntoUnit = require( 'Module:ScribuntoUnit' )
 local suite = ScribuntoUnit:new()
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleEqRuleTrue()
     local rule = [[
         [ "sub_type:FixedThruster" ]
@@ -15,11 +15,11 @@ function suite:testSimpleEqRuleTrue()
         sub_type = 'FixedThruster',
     }
 
-    self:assertEquals( true, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( true, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleEqRuleFalse()
     local rule = [[
         [ "sub_type:FixedThruster" ]
@@ -30,11 +30,11 @@ function suite:testSimpleEqRuleFalse()
         sub_type = 'FooBar',
     }
 
-    self:assertEquals( false, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( false, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleMatchRuleTrue()
     local rule = [[
         [ "sub_type:match:Fixed.*" ]
@@ -45,11 +45,11 @@ function suite:testSimpleMatchRuleTrue()
         sub_type = 'FixedThruster',
     }
 
-    self:assertEquals( true, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( true, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleMatchRuleFalse()
     local rule = [[
         [ "sub_type:match:^StartFixed.+" ]
@@ -60,11 +60,11 @@ function suite:testSimpleMatchRuleFalse()
         sub_type = 'FixedThruster',
     }
 
-    self:assertEquals( false, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( false, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleAndEqRuleTrue()
     local rule = [[
         [ "sub_type:FixedThruster", "and", "name:vtol" ]
@@ -76,11 +76,11 @@ function suite:testSimpleAndEqRuleTrue()
         name = 'vtol'
     }
 
-    self:assertEquals( true, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( true, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testSimpleAndEqRuleFalse()
     local rule = [[
         [ "sub_type:FixedThruster", "and", "name:vtol" ]
@@ -92,11 +92,11 @@ function suite:testSimpleAndEqRuleFalse()
         name = 'FooBar'
     }
 
-    self:assertEquals( false, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( false, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testNestedRuleTrue()
     local rule = [[
           [
@@ -116,11 +116,11 @@ function suite:testNestedRuleTrue()
         class_name = 'DecoyLauncher'
     }
 
-    self:assertEquals( true, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( true, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testNestedRuleTrue2()
     local rule = [[
           [
@@ -140,11 +140,11 @@ function suite:testNestedRuleTrue2()
         class_name = 'FlareLauncher'
     }
 
-    self:assertEquals( true, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( true, module.evalRule( rule, hardpoint ) )
 end
 
 
---- module.parseRule tests
+--- module.evalRule tests
 function suite:testNestedRuleFalse()
     local rule = [[
           [
@@ -164,7 +164,7 @@ function suite:testNestedRuleFalse()
         class_name = 'FooLauncher'
     }
 
-    self:assertEquals( false, module.parseRule( rule, hardpoint ) )
+    self:assertEquals( false, module.evalRule( rule, hardpoint ) )
 end
 
 

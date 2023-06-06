@@ -918,94 +918,44 @@ end
 --- @param hardpoint table Entry from the api
 --- @return table The fixed entry
 function VehicleHardpoint.fixTypes( hardpoint )
-    if hardpoint.type == 'ManneuverThruster' or hardpoint.type == 'MainThruster' then
-        if ( hardpoint.sub_type == 'FixedThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
-                string.match( string.lower( hardpoint.name ), 'vtol' ) ~= nil then
-            hardpoint.sub_type = 'VtolThruster'
-        end
+    --- Assign key value pairs on a hardpoint
+    --- @param kv table Table containing 'key=value' string pairs
+    local function assign( kv )
+        for _, assignment in pairs( kv ) do
+            local parts = mw.text.split( assignment, '=', true )
 
-        if ( hardpoint.sub_type == 'FixedThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
-                string.match( string.lower( hardpoint.name ), 'retro' ) ~= nil then
-            hardpoint.sub_type = 'RetroThruster'
-        end
-
-        if ( hardpoint.sub_type == 'JointThruster' or hardpoint.sub_type == 'UNDEFINED' ) and
-                string.match( string.lower( hardpoint.name ), 'grav' ) ~= nil then
-            hardpoint.sub_type = 'GravLev'
-        end
-
-        if hardpoint.type == 'MainThruster' then
-            hardpoint.sub_type = 'Main' .. hardpoint.sub_type
-        end
-    end
-
-    if hardpoint.type == 'WeaponDefensive' then
-        if ( hardpoint.sub_type == 'CountermeasureLauncher' or hardpoint.sub_type == 'UNDEFINED' ) and
-                ( string.match( string.lower( hardpoint.class_name ), 'decoy' ) ~= nil or
-                        string.match( string.lower( hardpoint.class_name ), 'flare' ) ~= nil) then
-            hardpoint.sub_type = 'DecoyLauncher'
-        end
-
-        if ( hardpoint.sub_type == 'CountermeasureLauncher' or hardpoint.sub_type == 'UNDEFINED' ) and
-                ( string.match( string.lower( hardpoint.class_name ), 'chaff' ) ~= nil  or
-                        string.match( string.lower( hardpoint.class_name ), 'noise' ) ~= nil) then
-            hardpoint.sub_type = 'NoiseLauncher'
-        end
-
-        if type( hardpoint.item ) == 'table' and hardpoint.item ~= nil then
-            hardpoint.item.name = '<= PLACEHOLDER =>'
-        end
-    end
-
-    if hardpoint.type == 'FuelTank' or hardpoint.type == 'QuantumFuelTank' then
-        local prefix = ''
-        if hardpoint.type == 'QuantumFuelTank' then
-            prefix = 'Quantum'
-        end
-
-        if string.match( string.lower( hardpoint.class_name ), 'small' ) ~= nil then
-            hardpoint.sub_type = prefix .. 'FuelTankSmall'
-        end
-
-        if string.match( string.lower( hardpoint.class_name ), 'large' ) ~= nil then
-            hardpoint.sub_type = prefix .. 'FuelTankLarge'
-        end
-    end
-
-    if hardpoint.type == 'Turret' then
-        --- Gimbal mount
-        if hardpoint.sub_type == 'GunTurret' and string.match( string.lower( hardpoint.class_name ), 'mount_gimbal' ) ~= nil then
-            hardpoint.type = 'WeaponGun'
-            hardpoint.sub_type = 'GimbalMount'
-            -- Pilot controllable weapon (e.g. F7CM, Mustang Delta)
-        elseif hardpoint.sub_type == 'BallTurret' or hardpoint.sub_type == 'CanardTurret' then
-            hardpoint.type = 'WeaponGun'
-            -- Reclaimer remote salvage turret
-        elseif hardpoint.sub_type == 'Utility' and string.match( string.lower( hardpoint.class_name ), 'salvage' ) ~= nil then
-            hardpoint.type = 'UtilityTurret'
-            hardpoint.sub_type = 'GunTurret'
-            -- Fix remote turret designation
-        elseif hardpoint.sub_type == 'Turret' and string.match( string.lower( hardpoint.class_name ), 'remote' ) ~= nil then
-            hardpoint.sub_type = 'RemoteTurret'
-        end
-    end
-
-    if hardpoint.type == 'ToolArm' then
-        if hardpoint.sub_type == 'UNDEFINED' then
-            if string.match( string.lower( hardpoint.class_name ), 'mining' ) ~= nil then
-                hardpoint.sub_type = 'MiningArm'
-            elseif string.match( string.lower( hardpoint.class_name ), 'salvage' ) ~= nil then
-                hardpoint.sub_type = 'SalvageArm'
+            if #parts == 2 then
+                hardpoint[ parts[ 1 ] ] = parts[ 2 ]
             end
         end
     end
 
-    -- Mid-air refueling port
-    if hardpoint.type == 'DockingCollar' then
-        if hardpoint.sub_type == 'UNDEFINED' then
-            if string.match( string.lower( hardpoint.class_name ), 'fuel' ) ~= nil then
-                hardpoint.type = 'TankingPort'
+    --- Set fixes on a hardpoint if tests evaluate to true
+    --- @param tests table
+    local function fixHardpoint( tests )
+        for _, test in ipairs( tests ) do
+            if VehicleHardpoint.evalRule( test[ 'if' ], hardpoint ) then
+                local kv = test[ 'then' ]
+                if type( kv ) ~= 'table' then
+                    kv = { kv }
+                end
+
+                assign( kv )
             end
+        end
+    end
+
+    for _, fix in ipairs( data.fixes ) do
+        if type( fix.type ) == 'table' then
+            for _, v in pairs( fix.type ) do
+                if v == hardpoint.type then
+                    fixHardpoint( fix.modification )
+                    break
+                end
+            end
+        elseif type( fix.type ) == 'string' and fix.type == hardpoint.type then
+            fixHardpoint( fix.modification )
+            break
         end
     end
 
@@ -1077,7 +1027,7 @@ end
 --- @param hardpoint table The hardpoint to evaluate
 --- @param returnInvalid boolean|nil If invalid rules should be returned beneath the result
 --- @return boolean (, table)
-function VehicleHardpoint.parseRule( rules, hardpoint, returnInvalid )
+function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
     returnInvalid = returnInvalid or false
     local stepVal = {}
     local combination = {}
@@ -1124,7 +1074,7 @@ function VehicleHardpoint.parseRule( rules, hardpoint, returnInvalid )
             end
             -- A sub rule
         elseif type( rule ) == 'table' then
-            local matches, invalid = VehicleHardpoint.parseRule( rule, hardpoint )
+            local matches, invalid = VehicleHardpoint.evalRule( rule, hardpoint )
 
             table.insert( stepVal, matches )
 
