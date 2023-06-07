@@ -355,21 +355,21 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         icon = data.section_label_fixes[ hardpointData.class ] or data.section_label_fixes[ hardpointData.type ]
     end
 
-    -- Disable label missing icons for now
-    for _, labelMissingIcon in pairs( data.missing_icons ) do
-        if labelMissingIcon == icon or labelMissingIcon == icon then
-            icon = nil
-            break
+    for hType, iconKey in pairs( data.icons ) do
+        if hType == icon then
+            -- Disable label missing icons for now
+            if iconKey == '' then
+                icon = nil
+                break
+            end
+            -- Apply icon key override
+            icon = iconKey
         end
     end
 
     if icon ~= nil then
-        icon = translate( icon )
-        if data.icon_name_lowercase == true then
-            icon = string.lower( icon )
-        end
-
-        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s %s.svg', data.icon_prefix, icon )
+        icon = string.lower( icon )
+        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s%s.svg', data.icon_prefix, icon )
     end
 
     -- Remove SeatAccess Hardpoints without storage

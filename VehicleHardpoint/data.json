@@ -6,10 +6,7 @@
   "module_lang": null,
 
   "%icon_prefix": "Prefix used to generate the icon file name. File names are then generated as 'icon_prefix ICON.svg",
-  "icon_prefix": "Hardpoints icon",
-
-  "%icon_name_lowercase": "Convert icon names to lowercase",
-  "icon_name_lowercase": true,
+  "icon_prefix": "sc-icon-",
 
   "%template_styles_page": "Page that containing the hardpoint styles",
   "template_styles_page": "Module:VehicleHardpoint/styles.css",
@@ -22,7 +19,8 @@
     "Armor": {
       "class": "Facilities",
       "matches": [],
-      "type": "Armor"
+      "type": "Armor",
+      "icon": ""
     },
     "ArmorLocker": {
       "class": "CargoGrid",
@@ -403,28 +401,33 @@
     "FireExtinguisher"
   ],
 
-  "%missing_icons": "List of labels with missing icons",
-  "missing_icons": [
-    "Armor",
-    "ArmorStorage",
-    "Bed",
-    "CargoGrid",
-    "CargoPod",
-    "Countermeasure",
-    "DriveUnit",
-    "EMPDevice",
-    "FillerStation",
-    "FireExtinguisher",
-    "FuelRefinery",
-    "GravLev",
-    "Paint",
-    "PersonalStorage",
-    "QuantumJammer",
-    "TankingPort",
-    "UtilityArm",
-    "UtilityTurret",
-    "WeaponStorage"
-  ],
+  "%icons": "Define override for icons. Empty string equals to no icon.",
+  "icons": {
+    "Armor": "",
+    "ArmorStorage": "",
+    "Bed": "",
+    "CargoGrid": "",
+    "CargoPod": "",
+    "Countermeasure": "",
+    "DriveUnit": "",
+    "EMPDevice": "",
+    "FillerStation": "",
+    "FireExtinguisher": "",
+    "FuelRefinery": "",
+    "GravLev": "",
+    "LifeSupportGenerator": "lifesupport",
+    "ManneuverThruster": "maneuveringthruster",
+    "Ordnance": "missile",
+    "Paint": "",
+    "PersonalStorage": "",
+    "QuantumJammer": "",
+    "Shield": "shieldgenerator",
+    "TankingPort": "",
+    "UtilityArm": "",
+    "UtilityTurret": "",
+    "Weapons": "weapon",
+    "WeaponRack": ""
+  },
 
   "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
   "class_groupings": [

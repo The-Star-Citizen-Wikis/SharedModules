@@ -27,6 +27,11 @@
 .template-components__label img {
     height: 1rem;
     width: auto;
+    opacity: var( --opacity-icon-base );
+}
+
+html.skin-citizen-dark .template-components__label img {
+	filter: invert( 1 );
 }
 
 .template-components__group {
