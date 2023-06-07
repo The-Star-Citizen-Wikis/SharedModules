@@ -1,0 +1,346 @@
+.infobox {
+	margin-bottom: var( --space-md );
+    width: 100%;
+    max-width: 400px;
+    border-radius: var( --border-radius--medium );
+    background-color: var( --color-surface-2 );
+    /* Replace inset shadow in future when upstream is fixed */
+    box-shadow: var( --box-shadow-card );
+    font-size: 0.875rem;
+    line-height: var( --line-height-sm );
+}
+
+.infobox.mw-collapsed {
+	box-shadow: none;
+}
+
+.infobox__image img {
+    /* Perserve rounded border */
+    border-top-left-radius: var( --border-radius--medium );
+    border-top-right-radius: var( --border-radius--medium );
+    /* Prevent overflow */
+    max-width: 100%;
+    height: auto;
+}
+
+/* Provide background color for transparent SVGs */
+.infobox__image img[src$=".svg"] {
+    background: #eaecf0;
+}
+
+.infobox__snippet,
+.infobox__indicator,
+.infobox__header,
+.infobox__sectionHeader,
+.infobox__sectionContent {
+    padding-left: var( --space-md );
+    padding-right: var( --space-md );
+}
+
+.infobox__snippet,
+.infobox__indicator {
+    padding-top: var( --space-sm );
+    padding-bottom: var( --space-sm );
+}
+
+.infobox__snippet {
+    display: none;
+    gap: var( --space-xs );
+    align-items: center;
+    white-space: nowrap;
+}
+
+.infobox__snippet.mw-collapsible-toggle {
+    /* Disable default style */
+    float: none;
+    border-radius: var( --border-radius--medium );
+}
+
+/* Might as well steal from skin */
+.infobox__snippet.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
+    width: 0.875rem;
+    height: 0.875rem;
+    flex-shrink: 0;
+    transition: transform 250ms cubic-bezier( 0.215, 0.61, 0.355, 1);
+}
+
+/* Might as well steal from skin */
+.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed .mw-ui-icon-wikimedia-collapse {
+    transform: rotate( 180deg );
+}
+
+.infobox__snippet .infobox__desc {
+    max-width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    font-size: 0.875rem;
+}
+
+.infobox__indicator {
+    background-color: var( --color-surface-3 );
+}
+
+.infobox__indicator.infobox__indicator--red {
+	/* color-destructive */
+    background-color: rgba( 221, 51, 51, 0.1 );
+    color: rgba( 221, 51, 51, 1 );
+}
+
+.infobox__indicator.infobox__indicator--yellow {
+	/* color-warning */
+    background-color: rgba( 255, 204, 51, 0.1 );
+    color: rgba( 255, 204, 51, 1 );
+}
+
+.infobox__indicator.infobox__indicator--green {
+	/* color-success */
+    background-color: rgba( 0, 175, 137, 0.1 );
+    color: rgba( 0, 175, 137, 1 );
+}
+
+.infobox__header,
+.infobox__sectionHeader {
+	margin-bottom: var( --space-md );
+	line-height: var( --line-height-xs );
+}
+
+.infobox__header {
+	margin-top: var( --space-lg );
+}
+
+.infobox__sectionHeader {
+	margin-top: var( --space-md );
+}
+
+.infobox__section {
+    margin-top: var( --space-md );
+    margin-bottom: var( --space-md );
+}
+
+.infobox__title,
+.infobox__sectionTitle {
+    color: var( --color-base--emphasized );
+    font-weight: var( --font-weight-semibold );
+}
+
+.infobox__title {
+    font-size: var( --font-size-h3 );
+}
+
+.infobox__subtitle,
+.infobox__sectionSubtitle {
+    margin-top: 2px;
+}
+
+.infobox__section + .infobox__section {
+    border-top: 1px solid var( --border-color-base );
+}
+
+/* Use padding to prevent margin collapse when there is no footer */
+.infobox__content > .infobox__section:last-child {
+	margin-bottom: 0;
+	padding-bottom: var( --space-lg );
+}
+
+.infobox__sectionTitle {
+	font-size: 1rem;
+}
+
+.infobox__sectionSubtitle {
+    color: var( --color-base--subtle );
+}
+
+.infobox__sectionContent {
+	display: grid;
+	gap: var( --space-sm );
+}
+
+.infobox__item {
+	display: grid;
+    gap: 2px var( --space-xs );
+    grid-auto-rows: max-content;
+}
+
+.infobox__desc,
+.infobox__label {
+    color: var( --color-base--subtle );
+    font-size: 0.8125rem;
+}
+
+.infobox__label {
+    letter-spacing: 0.05em;
+}
+
+.infobox__grid--row .infobox__label,
+.infobox__grid--row .infobox__desc {
+    font-size: 0.875rem;
+}
+
+.infobox__data {
+    font-weight: var( --font-weight-medium );
+}
+
+.infobox__footer {
+	margin-top: var( --space-lg );
+}
+
+.infobox__button {
+	position: relative;
+	border-bottom-left-radius: var( --border-radius--medium );
+    border-bottom-right-radius: var( --border-radius--medium );
+	padding: var( --space-sm ) var( --space-md );
+	background-color: var( --color-primary );
+	cursor: pointer;
+}
+
+.infobox__button:hover {
+	background-color: var( --color-primary--hover );
+}
+
+.infobox__buttonLabel {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: var( --space-xs );
+    color: #fff;
+    font-weight: var( --font-weight-medium );
+}
+
+/* Fake button with link element */
+.infobox__buttonLink {
+	position: absolute;
+	top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.infobox__buttonLink a {
+	display: block;
+    height: 100%;
+    font-size: 0;
+}
+
+.infobox__buttonCard {
+	position: absolute;
+	top: 100%;
+	left: 0;
+    right: 0;
+    z-index: -1;
+    background-color: var( --color-surface-1 );
+    border-radius: var( --border-radius--medium );
+    box-shadow: var( --box-shadow-dialog );
+    opacity: 0;
+    transition: transform 250ms ease,opacity 250ms ease;
+    visibility: hidden;
+    transform: translateY( -20px );
+}
+
+.infobox__button:hover > .infobox__buttonCard {
+	z-index: 10;
+    opacity: 1;
+    visibility: visible;
+    transform: none;
+    cursor: auto;
+}
+
+.infobox__linkButton a {
+	padding: var( --space-xxs ) var( --space-xs );
+    display: block;
+    border-radius: var( --border-radius--small );
+}
+
+/* Hide external URL icon */
+.infobox__linkButton a:after {
+	content: none;
+}
+
+.infobox__linkButton a:hover {
+	background-color: var( --background-color-quiet--hover );
+}
+
+.infobox__linkButton a:active {
+	background-color: var( --background-color-quiet--active );
+}
+
+.infobox__section--linkButtons .infobox__data {
+	margin-top: var( --space-xxs );
+	margin-left: -8px; /* negative space-xs */
+    margin-right: -8px; /* negative space-xs */
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.infobox__buttonLabel img[src$=".svg"] {
+	filter: invert( 1 );
+}
+
+.infobox.mw-collapsible:before {
+    /* Avoid collapse button flash */
+    content: none !important;
+}
+
+@media only screen and ( max-width: 720px ) {
+	.infobox {
+		margin-right: auto;
+		margin-left: auto;
+	}
+
+    .infobox__snippet {
+        display: flex;
+    }
+}
+
+/* Tabber styles */
+.infobox__section--tabber > .infobox__sectionHeader {
+	margin-bottom: var( --space-xxs );
+}
+
+.infobox__section--tabber > .infobox__sectionContent {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+.infobox__section--tabber .tabber .infobox__section {
+    margin-top: var( --space-sm );
+    margin-bottom: 0;
+}
+
+/* Match padding in the rest of the infobox */
+.infobox__section--tabber .tabber__tab {
+	padding-left: var( --space-md );
+	padding-right: var( --space-md );
+}
+
+/* CSS grid utility classes */
+.infobox__grid--row {
+	grid-auto-flow: column;
+}
+
+.infobox__grid--cols-2 {
+    grid-template-columns: repeat( 2, minmax( 0, 1fr ) );
+}
+
+.infobox__grid--cols-3 {
+    grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
+}
+
+.infobox__grid--cols-4 {
+    grid-template-columns: repeat( 4, minmax( 0, 1fr ) );
+}
+
+.infobox__grid--col-span-2 {
+	grid-column: span 2;
+}
+
+.infobox__grid--col-span-3 {
+	grid-column: span 3;
+}
+
+.infobox__grid--col-span-4 {
+	grid-column: span 4;
+}
+
+.infobox__grid--space-between {
+    justify-content: space-between;
+}
