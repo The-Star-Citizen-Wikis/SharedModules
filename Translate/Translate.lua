@@ -10,6 +10,21 @@ local cache = {}
 local i18nDataset = 'Module:Translate/i18n.json'
 
 
+--- Uses the current title as the base and appends '/i18n.json'
+---
+--- @param dataset table
+--- @return string|nil
+local function guessDataset( dataset )
+    if string.find( dataset, ':', 1, true ) then
+        return dataset
+    elseif type( dataset ) == 'string' then
+        return string.format( 'Module:%s/i18n.json', dataset )
+    end
+
+    return nil
+end
+
+
 --- Loads a dataset and saves it to the cache
 ---
 --- @param dataset string
@@ -65,6 +80,8 @@ end
 function methodtable.format( dataset, key, ... )
     local checkType = require('libraryUtil').checkType
 
+    dataset = guessDataset( dataset )
+
     checkType('format', 1, dataset, 'string')
     checkType('format', 2, key, 'string')
 
@@ -83,6 +100,8 @@ end
 function methodtable.formatInLanguage( lang, dataset, key, ... )
     local checkType = require('libraryUtil').checkType
 
+    dataset = guessDataset( dataset )
+
     checkType('formatInLanguage', 1, lang, 'string')
     checkType('formatInLanguage', 2, dataset, 'string')
     checkType('formatInLanguage', 3, key, 'string')
@@ -94,8 +113,10 @@ end
 --- New Instance
 ---
 --- @return table Translate
-function Translate.new( self )
-    local instance = {}
+function Translate.new( self, dataset )
+    local instance = {
+        dataset = dataset or nil
+    }
 
     setmetatable( instance, metatable )
 
