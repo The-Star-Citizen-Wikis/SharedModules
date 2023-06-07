@@ -1,9 +1,5 @@
 .infobox {
-<<<<<<< HEAD
-    margin-bottom: var( --space-md );
-=======
 	margin-bottom: var( --space-md );
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     width: 100%;
     max-width: 400px;
     border-radius: var( --border-radius--medium );
@@ -15,11 +11,7 @@
 }
 
 .infobox.mw-collapsed {
-<<<<<<< HEAD
-    box-shadow: none;
-=======
 	box-shadow: none;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__image img {
@@ -89,38 +81,25 @@
 }
 
 .infobox__indicator.infobox__indicator--red {
-<<<<<<< HEAD
     /* color-destructive */
-=======
-	/* color-destructive */
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     background-color: rgba( 221, 51, 51, 0.1 );
     color: rgba( 221, 51, 51, 1 );
 }
 
 .infobox__indicator.infobox__indicator--yellow {
-<<<<<<< HEAD
-    /* color-warning */
-=======
 	/* color-warning */
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     background-color: rgba( 255, 204, 51, 0.1 );
     color: rgba( 255, 204, 51, 1 );
 }
 
 .infobox__indicator.infobox__indicator--green {
-<<<<<<< HEAD
-    /* color-success */
-=======
 	/* color-success */
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     background-color: rgba( 0, 175, 137, 0.1 );
     color: rgba( 0, 175, 137, 1 );
 }
 
 .infobox__header,
 .infobox__sectionHeader {
-<<<<<<< HEAD
     margin-bottom: var( --space-md );
     line-height: var( --line-height-xs );
 }
@@ -131,7 +110,6 @@
 
 .infobox__sectionHeader {
     margin-top: var( --space-md );
-=======
 	margin-bottom: var( --space-md );
 	line-height: var( --line-height-xs );
 }
@@ -142,7 +120,6 @@
 
 .infobox__sectionHeader {
 	margin-top: var( --space-md );
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__section {
@@ -171,21 +148,18 @@
 
 /* Use padding to prevent margin collapse when there is no footer */
 .infobox__content > .infobox__section:last-child {
-<<<<<<< HEAD
     margin-bottom: 0;
     padding-bottom: var( --space-lg );
 }
 
 .infobox__sectionTitle {
     font-size: 1rem;
-=======
 	margin-bottom: 0;
 	padding-bottom: var( --space-lg );
 }
 
 .infobox__sectionTitle {
 	font-size: 1rem;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__sectionSubtitle {
@@ -193,21 +167,17 @@
 }
 
 .infobox__sectionContent {
-<<<<<<< HEAD
     display: grid;
     gap: var( --space-sm );
 }
 
 .infobox__item {
-    display: grid;
-=======
 	display: grid;
 	gap: var( --space-sm );
 }
 
 .infobox__item {
 	display: grid;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     gap: 2px var( --space-xs );
     grid-auto-rows: max-content;
 }
@@ -232,7 +202,6 @@
 }
 
 .infobox__footer {
-<<<<<<< HEAD
     margin-top: var( --space-lg );
 }
 
@@ -251,7 +220,6 @@
 
 .infobox__buttonLabel {
     display: flex;
-=======
 	margin-top: var( --space-lg );
 }
 
@@ -270,7 +238,6 @@
 
 .infobox__buttonLabel {
 	display: flex;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     justify-content: center;
     align-items: center;
     gap: var( --space-xs );
@@ -280,38 +247,26 @@
 
 /* Fake button with link element */
 .infobox__buttonLink {
-<<<<<<< HEAD
-    position: absolute;
-    top: 0;
-=======
 	position: absolute;
 	top: 0;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     bottom: 0;
     left: 0;
     right: 0;
 }
 
 .infobox__buttonLink a {
-<<<<<<< HEAD
     display: block;
-=======
-	display: block;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     height: 100%;
     font-size: 0;
 }
 
 .infobox__buttonCard {
-<<<<<<< HEAD
     position: absolute;
     top: 100%;
     left: 0;
-=======
 	position: absolute;
 	top: 100%;
 	left: 0;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     right: 0;
     z-index: -1;
     background-color: var( --color-surface-1 );
@@ -324,11 +279,7 @@
 }
 
 .infobox__button:hover > .infobox__buttonCard {
-<<<<<<< HEAD
-    z-index: 10;
-=======
 	z-index: 10;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     opacity: 1;
     visibility: visible;
     transform: none;
@@ -336,18 +287,13 @@
 }
 
 .infobox__linkButton a {
-<<<<<<< HEAD
     padding: var( --space-xxs ) var( --space-xs );
-=======
-	padding: var( --space-xxs ) var( --space-xs );
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
     display: block;
     border-radius: var( --border-radius--small );
 }
 
 /* Hide external URL icon */
 .infobox__linkButton a:after {
-<<<<<<< HEAD
     content: none;
 }
 
@@ -369,7 +315,6 @@
 
 .infobox__buttonLabel img[src$=".svg"] {
     filter: invert( 1 );
-=======
 	content: none;
 }
 
@@ -391,7 +336,6 @@
 
 .infobox__buttonLabel img[src$=".svg"] {
 	filter: invert( 1 );
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox.mw-collapsible:before {
@@ -400,17 +344,10 @@
 }
 
 @media only screen and ( max-width: 720px ) {
-<<<<<<< HEAD
-    .infobox {
-        margin-right: auto;
-        margin-left: auto;
-    }
-=======
 	.infobox {
 		margin-right: auto;
 		margin-left: auto;
 	}
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 
     .infobox__snippet {
         display: flex;
@@ -419,21 +356,18 @@
 
 /* Tabber styles */
 .infobox__section--tabber > .infobox__sectionHeader {
-<<<<<<< HEAD
     margin-bottom: var( --space-xxs );
 }
 
 .infobox__section--tabber > .infobox__sectionContent {
     padding-left: 0;
     padding-right: 0;
-=======
 	margin-bottom: var( --space-xxs );
 }
 
 .infobox__section--tabber > .infobox__sectionContent {
 	padding-left: 0;
 	padding-right: 0;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__section--tabber .tabber .infobox__section {
@@ -443,22 +377,13 @@
 
 /* Match padding in the rest of the infobox */
 .infobox__section--tabber .tabber__tab {
-<<<<<<< HEAD
     padding-left: var( --space-md );
     padding-right: var( --space-md );
-=======
-	padding-left: var( --space-md );
-	padding-right: var( --space-md );
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 /* CSS grid utility classes */
 .infobox__grid--row {
-<<<<<<< HEAD
     grid-auto-flow: column;
-=======
-	grid-auto-flow: column;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__grid--cols-2 {
@@ -474,7 +399,6 @@
 }
 
 .infobox__grid--col-span-2 {
-<<<<<<< HEAD
     grid-column: span 2;
 }
 
@@ -484,17 +408,10 @@
 
 .infobox__grid--col-span-4 {
     grid-column: span 4;
-=======
-	grid-column: span 2;
 }
 
 .infobox__grid--col-span-3 {
 	grid-column: span 3;
-}
-
-.infobox__grid--col-span-4 {
-	grid-column: span 4;
->>>>>>> ddf5da2e91f950b929eda29e78f9db6415ce2596
 }
 
 .infobox__grid--space-between {
