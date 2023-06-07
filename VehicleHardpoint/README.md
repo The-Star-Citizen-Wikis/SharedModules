@@ -58,8 +58,8 @@ The first match is then used.
 List of hardpoint names that should be checked against all matchers to retrieve the correct item type.  
 If an item type is found in this list its hardpoint name is run against all `matches` until a match is found.
 
-### `missing_icons`
-List of item types that currently have no icon.
+### `icons`
+List of item types that requires icon key overrides. Use empty string to skip an icon.
 
 ### `class_groupings`
 This list defines the groups and content listed in the tabber output.  
