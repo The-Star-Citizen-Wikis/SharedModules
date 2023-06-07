@@ -393,7 +393,6 @@ function methodtable.setHardPointObjects( self, hardpoints )
     local objects = {}
     local depth = 1
 
-
     -- Adds the subobject to the list of objects that should be saved to SMW
     -- Increases the item quantity / or combined cargo capacity for objects that have equal keys
     local function addToOut( object, key )
@@ -410,14 +409,13 @@ function methodtable.setHardPointObjects( self, hardpoints )
         else -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
             objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = objects[ key ][ translate( 'SMW_ItemQuantity' ) ] + 1
 
+            local inventoryKey = translate( 'SMW_Inventory' )
             -- Accumulate the cargo capacities of all cargo grids
-            if object[ translate( 'SMW_HardpointType' ) ] == translate( 'SMW_CargoGrid' ) then
-                local inventoryKey = translate( 'SMW_Inventory' )
-
+            if object[ inventoryKey ] ~= nil then
                 objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
 
                 if objects[ key ][ inventoryKey ] ~= nil and object[ inventoryKey ] ~= nil then
-                    objects[ key ][ inventoryKey ] = tonumber( objects[ key ][ inventoryKey ] ) + tonumber( object[ inventoryKey ] )
+                    objects[ key ][ inventoryKey ] = tonumber( objects[ key ][ inventoryKey ], 10 ) + tonumber( object[ inventoryKey ], 10 )
                 end
             end
         end
@@ -656,7 +654,7 @@ function methodtable.makeSubtitle( self, item )
         end
     end
 
-    -- Magazine Capacity
+    -- Weapon Ports
     if item.type == translate( 'WeaponPort' ) then
         subtitle = string.format(
             '%s (%s - %s)',
