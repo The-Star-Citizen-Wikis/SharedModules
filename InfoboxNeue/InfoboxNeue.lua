@@ -259,8 +259,18 @@ end
 --- Return the HTML of the infobox item component as string
 ---
 --- @param data table {label, data, desc, row, spacebetween, colspan)
+--- @param content string|number optional
 --- @return string html
-function methodtable.renderItem( self, data )
+function methodtable.renderItem( self, data, content )
+	-- The arguments are not passed as a table
+	-- Allows to call this as box:renderItem( 'Label', 'Data' )
+	if content ~= nil then
+		data = {
+			label = data,
+			data = content
+		}
+	end
+
 	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
 
 	if self.config.removeEmpty == true and data[ 'data' ] == self.config.emptyString then
@@ -275,7 +285,7 @@ function methodtable.renderItem( self, data )
 
 	local dataOrder = { 'label', 'data', 'desc' }
 
-	for _, key in pairs( dataOrder ) do
+	for _, key in ipairs( dataOrder ) do
 		if data[ key ] then
 			html:tag( 'div' )
 				:addClass( 'infobox__' .. key )
