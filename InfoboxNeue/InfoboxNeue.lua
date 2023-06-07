@@ -106,8 +106,6 @@ end
 function methodtable.renderHeader( self, data )
 	if data == nil or data[ 'title' ] == nil then return '' end
 
-	local html = mw.html.create( 'div' ):addClass( 'infobox__header' )
-
 	if type( data ) == 'string' then
 		data = {
 			title = data
