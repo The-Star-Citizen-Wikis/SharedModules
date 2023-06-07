@@ -208,14 +208,14 @@ local function addSubComponents( hardpoint )
         end
 
         local capacity = {}
-        if hardpoint.item.type == 'WeaponGun' then
+        if hardpoint.item.type == 'WeaponGun' and type( hardpoint.item.vehicle_weapon ) == 'table' then
             table.insert( capacity, hardpoint.item.vehicle_weapon.capacity )
 
             -- This is a laser weapon, add another capacity of -1 to indicate that this weapon has infinite ammo
             if type( hardpoint.item.vehicle_weapon.regeneration ) == 'table' then
                 table.insert( capacity, -1 )
             end
-        else
+        elseif type( hardpoint.item.counter_measure ) == 'table' then
             table.insert( capacity, hardpoint.item.counter_measure.capacity )
         end
 
