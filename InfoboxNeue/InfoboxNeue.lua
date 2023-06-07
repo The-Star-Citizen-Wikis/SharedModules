@@ -47,6 +47,7 @@ end
 
 
 --- Return the HTML of the infobox image component as string
+---
 --- @param filename string
 --- @return string html
 function methodtable.renderImage( self, filename )
@@ -56,6 +57,12 @@ function methodtable.renderImage( self, filename )
 
 	if type( filename ) ~= 'string' then
 		return ''
+	end
+
+	local parts = mw.text.split( filename, ':', true )
+	if #parts > 1 then
+		table.remove( parts, 1 )
+		filename = table.concat( parts, ':' )
 	end
 
 	local html = mw.html.create( 'div' )
@@ -176,6 +183,7 @@ end
 
 
 --- Return the HTML of the infobox link button component as string
+---
 --- @param data table {label, link, page}
 --- @return string html
 function methodtable.renderLinkButton( self, data )
@@ -214,6 +222,7 @@ end
 
 
 --- Return the HTML of the infobox footer button component as string
+---
 --- @param data table {icon, label, type, content}
 --- @return string html
 function methodtable.renderFooterButton( self, data )
