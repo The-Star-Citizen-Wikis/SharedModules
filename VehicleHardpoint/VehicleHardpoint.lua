@@ -602,12 +602,31 @@ function methodtable.makeSubtitle( self, item )
 
     -- Items with Grade and/or Class
     if item.item_grade ~= nil or item.item_class ~= nil then
-        subtitle = item.item_class or ''
+        local grade_class = ''
 
-        if #subtitle > 0 then
-            subtitle = string.format( '%s (%s)', subtitle, item.item_class )
+        -- TODO can't use lang suffix for subquery properties
+        if type( item.item_class ) == 'table' then
+            local parts = mw.text.split( item.item_class[ 1 ], ' (', true )
+            if #parts == 2 then
+                grade_class = parts[ 1 ]
+                item.item_class = parts[ 1 ]
+            else
+                grade_class = grade_class[ 1 ]
+                item.item_class = item.item_class[ 1 ]
+            end
+        end
+
+        if item.item_grade ~= nil and item.item_class ~= nil then
+            grade_class = string.format( '%s (%s)', item.item_class, item.item_grade )
         elseif item.item_grade ~= nil then
-            subtitle = item.item_grade
+            grade_class = item.item_grade
+        end
+
+        -- Show the manufacturer if it is not N/A
+        if subtitle ~= 'N/A' then
+            subtitle = string.format( '%s - %s', subtitle, grade_class )
+        else
+            subtitle = grade_class
         end
     end
 
@@ -869,6 +888,9 @@ function methodtable.makeDebugOutput( self )
     for _, part in ipairs( query ) do
         if string.sub( part, 1, 1 ) == '?' then
             table.insert( queryParts.output, part )
+        elseif string.sub( part, 1, 5 ) == '+lang' then
+            local index = #queryParts.output
+            queryParts.output[ index ] = string.format( '%s|%s', queryParts.output[ index ], part )
         elseif string.sub( part, 1, 2 ) == '[[' then
             table.insert( queryParts.restrictions, mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', part } ) )
         elseif #part > 0 and part ~= nil then
