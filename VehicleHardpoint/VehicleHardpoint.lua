@@ -593,10 +593,12 @@ function methodtable.makeSubtitle( self, item )
     if item.scu ~= nil then
         -- Fix for german number format
         if string.find( item.scu, ',', 1, true ) then
-            local success, scu = pcall( tonumber, string.gsub( item.scu, ',', '.' ), 10 )
-            if success then
-                item.scu = scu
-            end
+            item.scu = string.gsub( item.scu, ',', '.' )
+        end
+
+        local success, scu = pcall( tonumber, string.gsub( item.scu, ',', '.' ), 10 )
+        if success then
+            item.scu = scu
         end
 
         if type( item.scu ) == 'number' then
