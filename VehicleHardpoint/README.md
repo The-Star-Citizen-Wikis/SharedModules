@@ -3,15 +3,14 @@
 This module saves and displays the hardpoints found on a vehicle.
 
 ## Requirements
-- Semantic MediaWiki
-- Extension:Apiunto
-- Extension:JsonConfig
-- Extension:Tabber
-- Module:Arguments
+- [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
+- [Extension:Apiunto](https://github.com/StarCitizenWiki/Apiunto)
+- [Extension:TabberNeue](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue)
+- [Module:Arguments](https://www.mediawiki.org/wiki/Module:Arguments)
 - Module:Common (spairs, formatNum)
 - Module:Hatnote
 - Module:Tabber
-- Module:TNT
+- [Module:Translate](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Translate)
 
 ## Installation
 1. Create `Module:VehicleHardpoint/data.json` with the content found in `data.json` on your wiki 
