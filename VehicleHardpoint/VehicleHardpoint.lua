@@ -624,7 +624,7 @@ function methodtable.makeSubtitle( self, item )
 
         -- Show the manufacturer if it is not N/A
         if subtitle ~= 'N/A' then
-            subtitle = string.format( '%s · %s', subtitle, grade_class )
+            subtitle = string.format( '%s · %s', grade_class, subtitle )
         else
             subtitle = grade_class
         end
