@@ -6,6 +6,11 @@ local methodtable = {}
 metatable.__index = methodtable
 
 
+metatable.__tostring = function( self )
+	return tostring( self:renderInfobox() )
+end
+
+
 --- Helper function to restore underscore from space
 --- so that it does not screw up the external link wikitext syntax
 --- For some reason SMW property converts underscore into space
@@ -33,7 +38,11 @@ end
 --- @param data table {title, desc)
 --- @return string html
 function methodtable.renderMessage( self, data )
-	return self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) } )
+	local item = self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) } )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -41,13 +50,23 @@ end
 --- @param filename string
 --- @return string html
 function methodtable.renderImage( self, filename )
-	if filename == nil or filename == '' then return '' end
+	if filename == false and self.config.displayPlaceholder == true then
+		filename = self.config.placeholderImage
+	end
+
+	if type( filename ) ~= 'string' then
+		return ''
+	end
 
 	local html = mw.html.create( 'div' )
 		:addClass( 'infobox__image' )
 		:wikitext( string.format( '[[File:%s|400px]]', filename ) )
 
-	return tostring( html );
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -72,7 +91,11 @@ function methodtable.renderIndicator( self, data )
 
 	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
 
-	return tostring( html )
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -81,6 +104,16 @@ end
 --- @param data table {title, subtitle)
 --- @return string html
 function methodtable.renderHeader( self, data )
+	if data == nil or data[ 'title' ] == nil then return '' end
+
+	local html = mw.html.create( 'div' ):addClass( 'infobox__header' )
+
+	if type( data ) == 'string' then
+		data = {
+			title = data
+		}
+	end
+
 	if data == nil or data[ 'title' ] == nil then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__header' )
@@ -96,7 +129,11 @@ function methodtable.renderHeader( self, data )
 			:wikitext( data[ 'subtitle' ] )
 	end
 
-	return tostring( html )
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -105,6 +142,10 @@ end
 --- @param data table {title, subtitle, content, col, class}
 --- @return string html
 function methodtable.renderSection( self, data )
+	if type( data.content ) == 'table' then
+		data.content = table.concat( data.content )
+	end
+
 	if data == nil or data[ 'content' ] == nil or data[ 'content' ] == '' then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__section' )
@@ -128,7 +169,11 @@ function methodtable.renderSection( self, data )
 	if data[ 'col' ] then content:addClass( 'infobox__grid--cols-' .. data[ 'col' ] ) end
 	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
 
-	return tostring( html )
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -162,7 +207,11 @@ function methodtable.renderLinkButton( self, data )
 		html:wikitext( string.format( '[[%s|%s]]', data[ 'page' ], data[ 'label' ] ) )
 	end
 
-	return tostring( html )
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 
@@ -193,7 +242,11 @@ function methodtable.renderFooterButton( self, data )
 			:wikitext( data[ 'content' ] )
 	end
 
-	return tostring( html )
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
 end
 
 --- Return the HTML of the infobox item component as string
@@ -202,6 +255,10 @@ end
 --- @return string html
 function methodtable.renderItem( self, data )
 	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
+
+	if self.config.removeEmpty == true and data[ 'data' ] == self.config.emptyString then
+		return ''
+	end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
@@ -219,7 +276,7 @@ function methodtable.renderItem( self, data )
 		end
 	end
 
-	return tostring( html );
+	return tostring( html )
 end
 
 
@@ -229,10 +286,17 @@ end
 --- @param snippetText string text used in snippet in mobile view
 --- @return string html infobox html with templatestyles
 function methodtable.renderInfobox( self, innerHtml, snippetText )
+	innerHtml = innerHtml or self.entries
+	if type( innerHtml ) == 'table' then
+		innerHtml = table.concat( self.entries )
+	end
+
 	local function renderSnippet()
 		if snippetText == nil then snippetText = mw.title.getCurrentTitle().rootText end
 
 		local html = mw.html.create( 'div' )
+
+		html
 			:addClass( 'infobox__snippet mw-collapsible-toggle' )
 			:tag( 'div' )
 				:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
@@ -249,6 +313,8 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 	end
 
 	local html = mw.html.create( 'div' )
+
+	html
 		:addClass( 'infobox floatright mw-collapsible' )
 		:wikitext( renderSnippet() )
 		:tag( 'div' )
@@ -275,8 +341,26 @@ end
 --- New Instance
 ---
 --- @return table InfoboxNeue
-function InfoboxNeue.new()
-    local instance = {}
+function InfoboxNeue.new( self, config )
+	local baseConfig = {
+		-- Flag to discard empty rows
+		removeEmpty = false,
+		-- Optional string which is valued as empty
+		emptyString = nil,
+		-- Display a placeholder image if addImage does not find an image
+		displayPlaceholder = true,
+		-- Placeholder Image
+		placeholderImage = 'Platzhalter.webp',
+	}
+
+	for k, v in pairs( config or {} ) do
+		baseConfig[ k ] = v
+	end
+
+    local instance = {
+		config = baseConfig,
+		entries = {}
+	}
 
     setmetatable( instance, metatable )
 
