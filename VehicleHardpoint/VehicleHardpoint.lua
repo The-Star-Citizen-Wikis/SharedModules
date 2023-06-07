@@ -5,7 +5,7 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
-local TNT = require( 'Module:TNT' )
+local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' ) -- formatNum and spairs
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:VehicleHardpoint/data.json' )
@@ -29,9 +29,9 @@ local function translate( key, addSuffix )
     end
 
     if data.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'I18n/Module:VehicleHardpoint.tab', key or '' )
+        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'Module:VehicleHardpoint/i18n.json', key or '' )
     else
-        success, translation = pcall( TNT.format, 'I18n/Module:VehicleHardpoint.tab', key or '' )
+        success, translation = pcall( TNT.format, 'Module:VehicleHardpoint/i18n.json', key or '' )
     end
 
     if not success or translation == nil then
@@ -599,10 +599,12 @@ function methodtable.makeSubtitle( self, item )
             end
         end
 
-        if item.type == translate( 'CargoGrid' ) then
-            subtitle = item.scu .. ' SCU' or 'N/A'
-        elseif item.type == translate( 'PersonalStorage' ) then
-            subtitle = item.scu * 1000 .. 'K µSCU' or 'N/A'
+        if type( item.scu ) == 'number' then
+            if item.type == translate( 'CargoGrid' ) then
+                subtitle = item.scu .. ' SCU' or 'N/A'
+            elseif item.type == translate( 'PersonalStorage' ) then
+                subtitle = item.scu * 1000 .. 'K µSCU' or 'N/A'
+            end
         end
     end
 
@@ -842,7 +844,7 @@ function methodtable.out( self )
     local smwData = self:querySmwStore( self.page )
 
     if smwData == nil then
-        return hatnote( TNT.format( 'I18n/Module:VehicleHardpoint.tab', 'msg_no_data', self.page ), { icon = 'WikimediaUI-Error.svg' } )
+        return hatnote( TNT.format( 'Module:VehicleHardpoint/i18n.json)', 'msg_no_data', self.page ), { icon = 'WikimediaUI-Error.svg' } )
     end
 
     smwData = self:createDataStructure( smwData )

@@ -1,0 +1,65 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "ast": "Tabla de traducciones pal Módulu:TNT",
+    "bg": "Таблица с преводи за Модул:TNT",
+    "ca": "Taula de traduccions per al Mòdul:TNT",
+    "cs": "Tabulka překladů pro  Modul:TNT",
+    "de": "Übersetzungstabelle für das Modul:TNT",
+    "el": "Πίνακας μετάφρασης για το Module:TNT",
+    "en": "Translation table for the Module:TNT",
+    "es": "Tabla de traducciones para el Módulo:TNT",
+    "fr": "Table de traduction pour le Module:TNT",
+    "gsw": "Ibersetzigstabälle fir s Modul:TNT",
+    "hu": "Fordítási táblázat a TNT modulhoz",
+    "ilo": "Tabla ti patarus para iti Modulo:TNT",
+    "mk": "Преводна табела за модулот TNT",
+    "no": "Oversettelsestabell for Modul:TNT",
+    "pl": "Tabela tłumaczeń dla modułu TNT",
+    "pt": "Tabela de traduções para o Módulo:TNT",
+    "sr": "Преводилачка табела за модул TNT",
+    "sv": "Översättningstabell för Modul:TNT",
+    "zh-hans": "模块:TNT 的翻译表",
+    "zh-hant": "模組:TNT 的翻譯表"
+  },
+  "sources": "Translations for [[mw:Module:TNT|Module:TNT]]",
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "error_bad_msgkey",
+      {
+        "ast": "El mensaxe «$1» nun esiste nel conxuntu de datos [[$2]]",
+        "bg": "Съобщението „$1“ не съществува в страницата с данни [[$2]]",
+        "ca": "El missatge «$1» no existeix al conjunt de dades [[$2]]",
+        "cs": "Zpráva „$1“ neexistuje v datasetu [[$2]]",
+        "de": "Nachricht „$1” ist im Datensatz [[$2]] nicht vorhanden",
+        "el": "Το μήνυμα «$» δεν υπάρχει στο dataset [[$2]]",
+        "en": "Message “$1” does not exist in dataset [[$2]]",
+        "es": "El mensaje «$1» no existe en el conjunto de datos [[$2]]",
+        "fr": "Le message « $1 » n’existe pas dans le jeu de données [[$2]]",
+        "gsw": "D Nochricht „$1“ git s nit im Datesatz [[$2]]",
+        "hu": "A(z) „$1” üzenet nem létezik a(z) [[$2]] adathalmazban",
+        "ilo": "Ti mensahe ti “$1” ket awan iti dataset ti [[$2]]",
+        "mk": "Пораката „$1“ не постои во податочниот збир [[$2]]",
+        "no": "Meldingen “$1” eksisterer ikke i datasettet [[$2]]",
+        "pl": "Komunikat «$1» nie istnieje w zestawie danych [[$2]]",
+        "pt": "A mensagem «$1» não existe no conjunto de dados [[$2]]",
+        "sr": "Порука „$1” не постоји у скупу података [[$2]]",
+        "sv": "Meddelande “$1” saknas i datamängden [[$2]]",
+        "zh-hans": "消息「$1」不存在于数据集[[$2]]之中",
+        "zh-hant": "訊息「$1」不存在於資料集[[$2]]之中"
+      }
+    ]
+  ]
+}
