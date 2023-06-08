@@ -66,6 +66,13 @@
             }
         ],
         [
+            "Capacitor",
+            {
+                "de": "Kondensator",
+                "en": "Capacitor"
+            }
+        ],
+        [
             "Cargo",
             {
                 "de": "Frachtraum",
