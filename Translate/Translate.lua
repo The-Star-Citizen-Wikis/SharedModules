@@ -59,10 +59,14 @@ local function formatMessage( dataset, key, params, lang )
     local data = load( dataset )
 
     if data.keys[ key ] == nil then
-        error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, i18nDataset } ) )
+        error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, dataset }, mw.getContentLanguage():getCode() ) )
     end
 
     local msg = data.data[ data.keys[ key ] ][ 2 ]
+
+    if msg == nil then
+        error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, dataset }, mw.getContentLanguage():getCode() ) )
+    end
 
     msg = msg[ lang ] or error( string.format( 'Language "%s" not found for key "%s"', lang, key ) )
 
