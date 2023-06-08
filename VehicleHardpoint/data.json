@@ -105,7 +105,7 @@
     "EMP": {
       "class": "Utility",
       "matches": [],
-      "type": "EMPDevice"
+      "type": "EMP"
     },
     "ExternalFuelTank": {
       "class": "Cargo",
@@ -410,7 +410,7 @@
     "CargoPod": "",
     "Countermeasure": "",
     "DriveUnit": "",
-    "EMPDevice": "",
+    "EMP": "",
     "FillerStation": "",
     "FireExtinguisher": "",
     "FuelRefinery": "",

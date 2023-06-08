@@ -145,15 +145,8 @@
         [
             "EMP",
             {
-                "de": "EMP",
-                "en": "EMP"
-            }
-        ],
-        [
-            "EMPDevice",
-            {
                 "de": "EMP-Generator",
-                "en": "EMP device"
+                "en": "EMP generator"
             }
         ],
         [
