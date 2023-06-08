@@ -124,8 +124,8 @@
         [
             "DecoyLauncherMagazine",
             {
-                "de": "Täuschkörpermagazin (Köder)",
-                "en": "Decoy magazine (Bait)"
+                "de": "Köder",
+                "en": "Bait"
             }
         ],
         [
@@ -390,7 +390,7 @@
         [
             "NoiseLauncherMagazine",
             {
-                "de": "Täuschkörpermagazin (Geräusch)",
+                "de": "Geräusch",
                 "en": "Noise"
             }
         ],
