@@ -105,7 +105,7 @@
     "EMP": {
       "class": "Utility",
       "matches": [],
-      "type": "EMP"
+      "type": "OffensiveDevices"
     },
     "ExternalFuelTank": {
       "class": "Cargo",
@@ -266,7 +266,7 @@
     "QuantumInterdictionGenerator": {
       "class": "Utility",
       "matches": [],
-      "type": "QuantumInterdictionGenerator"
+      "type": "OffensiveDevices"
     },
     "Radar": {
       "class": "Avionics",
@@ -339,7 +339,7 @@
     "WeaponDefensive": {
       "class": "Utility",
       "matches": [],
-      "type": "Countermeasure"
+      "type": "DefensiveDevices"
     },
     "WeaponGun": {
       "class": "Weapons",
@@ -404,9 +404,8 @@
     "Bed": "",
     "CargoGrid": "",
     "CargoPod": "",
-    "Countermeasure": "",
+    "DefensiveDevices": "",
     "DriveUnit": "",
-    "EMP": "",
     "FillerStation": "",
     "FireExtinguisher": "",
     "FuelPort": "",
@@ -414,6 +413,7 @@
     "GravLev": "",
     "LifeSupportGenerator": "lifesupport",
     "ManneuverThruster": "maneuveringthruster",
+    "OffensiveDevices": "",
     "Ordnance": "missile",
     "Paint": "",
     "PersonalStorage": "",

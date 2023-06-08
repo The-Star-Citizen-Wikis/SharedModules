@@ -129,6 +129,13 @@
             }
         ],
         [
+            "DefensiveDevices",
+            {
+                "de": "Verteidigungsgeräte",
+                "en": "Defensive devices"
+            }
+        ],
+        [
             "DockingCollar",
             {
                 "de": "Docking Collar",
@@ -385,6 +392,13 @@
             {
                 "de": "Täuschkörpermagazin (Geräusch)",
                 "en": "Noise"
+            }
+        ],
+        [
+            "OffensiveDevices",
+            {
+                "de": "Angriffsgeräte",
+                "en": "Offensive devices"
             }
         ],
         [
