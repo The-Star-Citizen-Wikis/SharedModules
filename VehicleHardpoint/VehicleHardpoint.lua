@@ -426,7 +426,12 @@ function methodtable.setHardPointObjects( self, hardpoints )
                 objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
 
                 if objects[ key ][ inventoryKey ] ~= nil and object[ inventoryKey ] ~= nil then
-                    objects[ key ][ inventoryKey ] = tonumber( objects[ key ][ inventoryKey ], 10 ) + tonumber( object[ inventoryKey ], 10 )
+                    local sucExisting, numExisting = pcall( tonumber, objects[ key ][ inventoryKey ], 10 )
+                    local sucNew, numNew = pcall( tonumber, object[ inventoryKey ], 10 )
+
+                    if sucExisting and sucNew and numExisting ~= nil and numNew ~= nil then
+                        objects[ key ][ inventoryKey ] = numExisting + numNew
+                    end
                 end
             end
         end
@@ -857,7 +862,7 @@ function methodtable.out( self )
     local smwData = self:querySmwStore( self.page )
 
     if smwData == nil then
-        return hatnote( TNT.format( 'Module:VehicleHardpoint/i18n.json)', 'msg_no_data', self.page ), { icon = 'WikimediaUI-Error.svg' } )
+        return hatnote( TNT.format( 'Module:VehicleHardpoint/i18n.json', 'msg_no_data', self.page ), { icon = 'WikimediaUI-Error.svg' } )
     end
 
     smwData = self:createDataStructure( smwData )
