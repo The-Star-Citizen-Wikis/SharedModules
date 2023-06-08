@@ -591,6 +591,13 @@
             }
         ],
         [
+            "UtilityDevices",
+            {
+                "de": "Utility-Geräte",
+                "en": "Utility devices"
+            }
+        ],
+        [
             "UtilityTurret",
             {
                 "de": "Utility Turret",
