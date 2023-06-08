@@ -91,7 +91,7 @@ local function makeSmwQueryObject( page )
         '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Size' ) .. '#-=item_size',
         '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Manufacturer' ) .. '#-=manufacturer',
         string.format(
-            'sort=%s,%s,%s,%s',
+            'sort=%s,%s,%s,%s,%s',
             translate( 'SMW_VehicleHardpointsTemplateGroup' ),
             translate( 'SMW_Hardpoint' ),
             translate( 'SMW_HardpointType' ),
