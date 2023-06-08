@@ -127,10 +127,10 @@
       ],
       "type": "FuelIntake"
     },
-    "TankingPort": {
+    "FuelPort": {
       "class": "Propulsion",
       "matches": [],
-      "type": "TankingPort"
+      "type": "FuelPort"
     },
     "FuelRefinery": {
       "class": "Utility",
@@ -413,6 +413,7 @@
     "EMP": "",
     "FillerStation": "",
     "FireExtinguisher": "",
+    "FuelPort": "",
     "FuelRefinery": "",
     "GravLev": "",
     "LifeSupportGenerator": "lifesupport",
@@ -422,7 +423,6 @@
     "PersonalStorage": "",
     "QuantumJammer": "",
     "Shield": "shieldgenerator",
-    "TankingPort": "",
     "UtilityArm": "",
     "UtilityTurret": "",
     "Weapons": "weapon",
@@ -608,7 +608,7 @@
         {
           "if": [ "sub_type:UNDEFINED", "and", "class_name:match:fuel" ],
           "then": [
-            "type=TankingPort"
+            "type=FuelPort"
           ]
         }
       ]

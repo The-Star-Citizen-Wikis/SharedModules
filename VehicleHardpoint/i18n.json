@@ -199,10 +199,10 @@
             }
         ],
         [
-            "TankingPort",
+            "FuelPort",
             {
                 "de": "Luftbetankung",
-                "en": "Tanking port"
+                "en": "Fuel port"
             }
         ],
         [
