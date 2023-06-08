@@ -795,7 +795,7 @@ function methodtable.makeSubtitle( self, item )
 
     -- Parts
     if item.hp ~= nil then
-        subtitle = item.hp
+        subtitle = item.hp .. ' HP'
     end
 
     if subtitle == 'N/A' and item.position ~= nil then
