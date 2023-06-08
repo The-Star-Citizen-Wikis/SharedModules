@@ -9,7 +9,7 @@ This module saves and displays the hardpoints found on a vehicle.
 - [Module:Arguments](https://www.mediawiki.org/wiki/Module:Arguments)
 - Module:Common (spairs, formatNum)
 - Module:Hatnote
-- Module:Tabber
+- [Module:Tabber](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Tabber)
 - [Module:Translate](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Translate)
 
 ## Installation
