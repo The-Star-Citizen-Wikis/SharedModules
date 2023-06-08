@@ -82,6 +82,8 @@ local function makeSmwQueryObject( page )
         string.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
         string.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
         string.format( '?%s#-=icon', translate( 'SMW_Icon' ) ),
+        string.format( '?%s#-=hp', translate( 'SMW_HitPoints' ) ),
+        string.format( '?%s#-=position', translate( 'SMW_Position' ) ),
         -- These are subquery chains, they require that the 'Name' attribute is of type Page
         -- And that these pages contain SMW attributes
         '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Grade' ) .. '#-=item_grade',
@@ -91,11 +93,12 @@ local function makeSmwQueryObject( page )
         string.format(
             'sort=%s,%s,%s,%s',
             translate( 'SMW_VehicleHardpointsTemplateGroup' ),
+            translate( 'SMW_Hardpoint' ),
             translate( 'SMW_HardpointType' ),
             translate( 'SMW_HardpointMaximumSize' ),
             translate( 'SMW_ItemQuantity' )
         ),
-        'order=asc,asc,asc,asc',
+        'order=asc,desc,asc,asc,asc',
         'limit=1000'
     }
 end
@@ -299,6 +302,8 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     object[ translate( 'SMW_HardpointMinimumSize' ) ] = row.min_size
     object[ translate( 'SMW_HardpointMaximumSize' ) ] = row.max_size
     object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class, true )
+    object[ translate( 'SMW_HitPoints' ) ] = row.damage_max
+    object[ translate( 'SMW_Position' ) ] = row.position
 
     if data.matches[ row.type ] ~= nil then
         object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type, true )
@@ -346,7 +351,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 
     if parent ~= nil then
         object[ translate( 'SMW_ParentHardpointUuid' ) ] = parent[ 'UUID' ]
-        object[ translate( 'SMW_ParentHardpoint' ) ] = parent[ 'Hardpoint' ]
+        object[ translate( 'SMW_ParentHardpoint' ) ] = parent[ translate( 'SMW_Hardpoint' ) ]
     end
 
     if root ~= nil and root ~= row.name then
@@ -419,6 +424,16 @@ function methodtable.setHardPointObjects( self, hardpoints )
             end
         else -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
             objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = objects[ key ][ translate( 'SMW_ItemQuantity' ) ] + 1
+            if object[ translate( 'SMW_Position' ) ] ~= nil then
+                if type( objects[ key ][ translate( 'SMW_Position' ) ] ) == 'table' then
+                    table.insert( objects[ key ][ translate( 'SMW_Position' ) ], object[ translate( 'SMW_Position' ) ] )
+                else
+                    objects[ key ][ translate( 'SMW_Position' ) ] = {
+                        objects[ key ][ translate( 'SMW_Position' ) ],
+                        object[ translate( 'SMW_Position' ) ]
+                    }
+                end
+            end
 
             local inventoryKey = translate( 'SMW_Inventory' )
             -- Accumulate the cargo capacities of all cargo grids
@@ -489,6 +504,98 @@ function methodtable.setHardPointObjects( self, hardpoints )
 end
 
 
+--- Sets all available vehicle parts as SMW subobjects
+--- This method should be called by the accompanying Vehicle Module
+---
+--- @param parts table API Hardpoint data
+function methodtable.setParts(self, parts )
+    if type( parts ) ~= 'table' then
+        error( translate( 'msg_invalid_hardpoints_object' ) )
+    end
+
+    local objects = {}
+    local depth = 1
+
+    local partData = {
+        class = 'VehiclePart',
+        type = 'VehiclePart',
+    }
+
+    local function makeKey( row, parent )
+        local key = row.name
+
+        if parent ~= nil then
+            key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
+        end
+
+        mw.log( string.format( 'Key: %s', key ) )
+
+        return key
+    end
+
+
+    -- Adds the subobject to the list of objects that should be saved to SMW
+    local function addToOut( object, key )
+        if object == nil then
+            return
+        end
+
+        -- If this key (object) has not been seen before, save it to the list of subobjects
+        if type( objects[ key ] ) ~= 'table' then
+            if object ~= nil then
+                objects[ key ] = object
+                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+            end
+        end
+    end
+
+
+    -- Iterates through the list of parts found on the API object
+    local function addParts( parts, parent, root )
+        for _, part in pairs( parts ) do
+            part.type = 'VehiclePart'
+            part.min_size = 1
+            part.max_size = 1
+            part.item = {
+                name = part.display_name
+            }
+
+            if depth == 1 then
+                root = part.name
+                mw.log( string.format( 'Root: %s', root ) )
+            end
+
+            local key = makeKey( part, parent )
+
+            local obj = self:makeObject( part, partData, parent, root )
+
+            addToOut( obj, key )
+
+            -- Generate child subobjects
+            if hasChildren( part ) then
+                depth = depth + 1
+                addParts( part.children, obj, root )
+            end
+        end
+
+        depth = depth - 1
+
+        if depth < 1 then
+            depth = 1
+            root = nil
+        end
+    end
+
+    addParts( parts )
+
+    mw.logObject( objects )
+
+    for _, subobject in pairs( objects ) do
+        mw.smw.subobject( subobject )
+    end
+end
+
+
 --- Queries the SMW store for all available hardpoint subobjects for a given page
 ---
 --- @param page string - The page to query
@@ -524,7 +631,7 @@ function methodtable.group( self, smwData )
         return {}
     end
 
-    for _, row in common.spairs( smwData ) do
+    for _, row in ipairs( smwData ) do
         if not row.isChild and row.class ~= nil and row.type ~= nil and
             -- Specifically hide manually added weapon ports that have no parent
             -- This should not be needed anymore if weapon lockers are found everywhere with an uuid
@@ -571,7 +678,7 @@ function methodtable.createDataStructure( self, smwData )
     -- Iterates through the list of SMW hardpoint subobjects
     -- If the 'parent_hardpoint' key is set (i.e. the hardpoint is a child), it is added as a child to the parent object
     local function stratify( toStratify )
-        for _, object in pairs( toStratify ) do
+        for _, object in ipairs( toStratify ) do
             if object.parent_hardpoint ~= nil then
                 local parentEl = toStratify[ idMapping[ ( object.root_hardpoint or '' ) .. object.parent_hardpoint ] ]
 
@@ -684,6 +791,24 @@ function methodtable.makeSubtitle( self, item )
         )
     end
 
+    -- Parts
+    if item.hp ~= nil then
+        subtitle = item.hp
+    end
+
+    if subtitle == 'N/A' and item.position ~= nil then
+        if type( item.position ) ~= 'table' then
+            item.position = { item.position }
+        end
+
+        local converted = {}
+        for _, position in ipairs( item.position ) do
+            table.insert( converted, mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) )
+        end
+
+        subtitle = table.concat( converted, ', ' )
+    end
+
     return subtitle
 end
 
@@ -790,7 +915,7 @@ function methodtable.makeOutput( self, groupedData )
 
         if type( item.children ) == 'table' then
             depth = depth + 1
-            for _, child in common.spairs( item.children ) do
+            for _, child in ipairs( item.children ) do
                 row = row .. makeEntry( child, depth )
             end
         end
@@ -831,7 +956,7 @@ function methodtable.makeOutput( self, groupedData )
 
             local str = ''
 
-            for _, item in common.spairs( items ) do
+            for _, item in ipairs( items ) do
                 if not item.isChild then
                     local subGroup = mw.html.create( 'div' )
                         :addClass( 'template-components__subgroup' )
@@ -1061,11 +1186,13 @@ function VehicleHardpoint.test( frame )
     local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. page, {
         include = {
             'hardpoints',
+            'parts'
         },
     } ) )
 
     local hardpoint = VehicleHardpoint:new( page )
     hardpoint:setHardPointObjects( json.data.hardpoints )
+    hardpoint:setParts( json.data.parts )
 end
 
 

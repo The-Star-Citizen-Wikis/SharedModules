@@ -416,6 +416,20 @@
             }
         ],
         [
+            "Part",
+            {
+                "de": "Part",
+                "en": "Part"
+            }
+        ],
+        [
+            "Parts",
+            {
+                "de": "Parts",
+                "en": "Parts"
+            }
+        ],
+        [
             "PersonalStorage",
             {
                 "de": "Persönliche Aufbewahrung",
@@ -605,6 +619,13 @@
             }
         ],
         [
+            "VehiclePart",
+            {
+                "de": "Fahrzeugpart",
+                "en": "Vehicle part"
+            }
+        ],
+        [
             "VtolThruster",
             {
                 "de": "VTOL Schubdüse",
@@ -710,6 +731,13 @@
             }
         ],
         [
+            "vehicle_parts",
+            {
+                "de": "Parts",
+                "en": "Parts"
+            }
+        ],
+        [
             "empty_avionic_systems",
             {
                 "de": "Keine Avionik oder Systeme verfügbar",
@@ -735,6 +763,13 @@
             {
                 "de": "Keine Informationen über Fracht oder Einrichtungen gefunden.",
                 "en": "No cargo or facilities information found."
+            }
+        ],
+        [
+            "empty_vehicle_parts",
+            {
+                "de": "Keine Informationen über Fahrzeugbauteile gefunden.",
+                "en": "No vehicle parts information found."
             }
         ],
         [
@@ -794,6 +829,13 @@
             }
         ],
         [
+            "SMW_HitPoints",
+            {
+                "de": "Schadenspunkte",
+                "en": "Health points"
+            }
+        ],
+        [
             "SMW_Name",
             {
                 "de": "Name",
@@ -826,6 +868,13 @@
             {
                 "de": "Parent Hardpoint",
                 "en": "Parent hardpoint"
+            }
+        ],
+        [
+            "SMW_Position",
+            {
+                "de": "Position",
+                "en": "Position"
             }
         ],
         [

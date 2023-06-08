@@ -342,6 +342,11 @@
       "matches": [],
       "type": "UtilityDevices"
     },
+    "VehiclePart": {
+      "class": "Parts",
+      "matches": [],
+      "type": "VehiclePart"
+    },
     "WeaponDefensive": {
       "class": "Utility",
       "matches": [],
@@ -427,7 +432,8 @@
     "Shield": "shieldgenerator",
     "UtilityDevices": "",
     "Weapons": "weapon",
-    "WeaponRack": ""
+    "WeaponRack": "",
+    "VehiclePart": ""
   },
 
   "%class_groupings": "This defines the order and the grouping of the defined classes. The key is used to retrieve the tabber translation",
@@ -458,6 +464,12 @@
       [
         "Cargo",
         "Facilities"
+      ]
+    ],
+    [
+      "vehicle_parts",
+      [
+        "VehiclePart"
       ]
     ]
   ],
