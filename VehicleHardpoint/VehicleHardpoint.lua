@@ -239,34 +239,38 @@ local function addSubComponents( hardpoint )
     if ( hardpoint.item.type == 'Usable' or hardpoint.item.type == 'Door' ) and type( hardpoint.item.ports ) == 'table' then
         local item_type = 'WeaponPort'
         for _, port in pairs( hardpoint.item.ports ) do
-            local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
-            local name = 'WeaponPort'
+            -- Prevent stuff like mattress and pillow to count as weapon ports (I don't think SC let you hide weapons inside them :P)
+            if ( mw.ustring.find( port.name, 'weapon', 1, true ) ) then
+                local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
+                local name = 'WeaponPort'
 
-            if mw.ustring.find( port.display_name, 'rifle', 1, true )  then
-                name = name .. 'Rifle'
-            elseif mw.ustring.find( port.display_name, 'launcher', 1, true )  then
-                name = name .. 'Launcher'
-            elseif mw.ustring.find( port.display_name, 'pistol', 1, true )  then
-                name = name .. 'Pistol'
-            elseif mw.ustring.find( port.display_name, 'multitool', 1, true )  then
-                name = name .. 'Multitool'
-            elseif mw.ustring.find( port.display_name, 'addon', 1, true )  then
-                name = name .. 'Addon'
-            end
+                if port.sizes.max == 5 or mw.ustring.find( port.display_name, 'launcher', 1, true ) then
+                    name = name .. 'Launcher'
+                elseif port.sizes.max == 4 or mw.ustring.find( port.display_name, 'rifle', 1, true ) then
+                    name = name .. 'Rifle'
+                elseif mw.ustring.find( port.display_name, 'multitool', 1, true ) then
+                    name = name .. 'Multitool'
+                elseif mw.ustring.find( port.display_name, 'addon', 1, true ) then
+                    name = name .. 'Addon'
+                -- Assume size 1 is pistol slot if it is not specified as multitool or addon
+                elseif port.sizes.max == 1 or mw.ustring.find( port.display_name, 'pistol', 1, true ) then
+                    name = name .. 'Pistol'
+                end
 
-            table.insert( hardpoint.children, {
-                name = 'faux_hardpoint_weaponport',
-                class_name = 'FAUX_WeaponPort',
-                type = item_type,
-                sub_type = sub_type,
-                min_size = port.sizes.min,
-                max_size = port.sizes.max,
-                item = {
-                    name = translate( name ),
+                table.insert( hardpoint.children, {
+                    name = 'faux_hardpoint_weaponport',
+                    class_name = 'FAUX_WeaponPort',
                     type = item_type,
                     sub_type = sub_type,
-                }
-            } )
+                    min_size = port.sizes.min,
+                    max_size = port.sizes.max,
+                    item = {
+                        name = translate( name ),
+                        type = item_type,
+                        sub_type = sub_type,
+                    }
+                } )
+            end
         end
     end
 end
