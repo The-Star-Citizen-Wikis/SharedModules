@@ -346,13 +346,6 @@
             }
         ],
         [
-            "ManneuverThruster",
-            {
-                "de": "Manövriertriebwerk",
-                "en": "Maneuvering thruster"
-            }
-        ],
-        [
             "MiningArm",
             {
                 "de": "Bergbauarm",
