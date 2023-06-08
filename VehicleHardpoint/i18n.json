@@ -353,24 +353,10 @@
             }
         ],
         [
-            "MiningLaser",
-            {
-                "de": "Bergbaulaser",
-                "en": "Mining laser"
-            }
-        ],
-        [
             "MiningTurret",
             {
                 "de": "Bergbauturm",
-                "en": "Mining tower"
-            }
-        ],
-        [
-            "MissileLauncher",
-            {
-                "de": "Raketenwerfer",
-                "en": "Rocket launcher"
+                "en": "Mining turret"
             }
         ],
         [
@@ -391,14 +377,14 @@
             "NoiseLauncher",
             {
                 "de": "Täuschkörper (Geräusch)",
-                "en": "Decoy (Noise)"
+                "en": "Noise launcher"
             }
         ],
         [
             "NoiseLauncherMagazine",
             {
                 "de": "Täuschkörpermagazin (Geräusch)",
-                "en": "Decoy magazine (Noise)"
+                "en": "Noise"
             }
         ],
         [
@@ -451,13 +437,6 @@
             }
         ],
         [
-            "QuantumEnforcementDevice",
-            {
-                "de": "Quantum Enforcement Device",
-                "en": "Quantum enforcement device"
-            }
-        ],
-        [
             "QuantumFuelTank",
             {
                 "de": "Quantentreibstofftank",
@@ -481,15 +460,8 @@
         [
             "QuantumInterdictionGenerator",
             {
-                "de": "Quantum Interdiction Generator",
-                "en": "Quantum interdiction generator"
-            }
-        ],
-        [
-            "QuantumJammer",
-            {
-                "de": "Quantum Jammer",
-                "en": "Quantum jammer"
+                "de": "Quantum Enforcement Device",
+                "en": "Quantum Enforcement Device"
             }
         ],
         [
@@ -517,14 +489,14 @@
             "SalvageHead",
             {
                 "de": "Bergungskopf",
-                "en": "Salvage beam"
+                "en": "Salvage head"
             }
         ],
         [
             "SalvageModifier",
             {
                 "de": "Bergungsmodifikator",
-                "en": "Salvage modifier"
+                "en": "Scraper module"
             }
         ],
         [
@@ -552,7 +524,7 @@
             "Shield",
             {
                 "de": "Schildgenerator",
-                "en": "Shield"
+                "en": "Shield generator"
             }
         ],
         [
@@ -622,7 +594,7 @@
             "WeaponMining",
             {
                 "de": "Bergbaulaser",
-                "en": "Mining laser"
+                "en": "Mining head"
             }
         ],
         [
@@ -664,7 +636,7 @@
             "WeaponPortAddon",
             {
                 "de": "Addon",
-                "en": "Addon"
+                "en": "Weapon attachment"
             }
         ],
         [
@@ -685,7 +657,7 @@
             "WeaponRack",
             {
                 "de": "Waffenschrank",
-                "en": "Weapon Rack"
+                "en": "Weapon rack"
             }
         ],
         [
@@ -846,7 +818,7 @@
             "SMW_SelfDestruct",
             {
                 "de": "Selbstzerstörung",
-                "en": "Self Destruct"
+                "en": "Self destruct"
             }
         ],
         [

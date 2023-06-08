@@ -266,12 +266,7 @@
     "QuantumInterdictionGenerator": {
       "class": "Utility",
       "matches": [],
-      "type": "QuantumJammer"
-    },
-    "QuantumEnforcementDevice": {
-      "class": "Utility",
-      "matches": [],
-      "type": "QuantumEnforcementDevice"
+      "type": "QuantumInterdictionGenerator"
     },
     "Radar": {
       "class": "Avionics",
@@ -376,7 +371,7 @@
       "matches": [
         "hardpoint_weapon_mining"
       ],
-      "type": "MiningLaser"
+      "type": "WeaponMining"
     },
     "WeaponPort": {
       "class": "Weapons",
@@ -421,7 +416,6 @@
     "Ordnance": "missile",
     "Paint": "",
     "PersonalStorage": "",
-    "QuantumJammer": "",
     "Shield": "shieldgenerator",
     "UtilityArm": "",
     "UtilityTurret": "",
