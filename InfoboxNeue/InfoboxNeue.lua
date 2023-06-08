@@ -287,6 +287,10 @@ function methodtable.renderItem( self, data, content )
 
 	for _, key in ipairs( dataOrder ) do
 		if data[ key ] then
+			if type( data[ key ] ) == 'table' then
+				data[ key ] = table.concat( data[ key ], ', ' )
+			end
+
 			html:tag( 'div' )
 				:addClass( 'infobox__' .. key )
 				:wikitext( data[ key ] )
