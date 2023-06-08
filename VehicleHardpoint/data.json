@@ -8,6 +8,9 @@
   "%icon_prefix": "Prefix used to generate the icon file name. File names are then generated as 'icon_prefix ICON.svg",
   "icon_prefix": "sc-icon-",
 
+  "%icon_name_lowercase": "Use lower-cased version of icon names",
+  "icon_name_lowercase": true,
+
   "%template_styles_page": "Page that containing the hardpoint styles",
   "template_styles_page": "Module:VehicleHardpoint/styles.css",
 

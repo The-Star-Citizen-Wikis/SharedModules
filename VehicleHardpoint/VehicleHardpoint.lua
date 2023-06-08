@@ -372,7 +372,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     end
 
     if icon ~= nil then
-        icon = string.lower( icon )
+        if data.icon_name_lowercase == true then
+            icon = string.lower( icon )
+        end
+
         object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s%s.svg', data.icon_prefix, icon )
     end
 
