@@ -240,7 +240,7 @@ local function addSubComponents( hardpoint )
         local item_type = 'WeaponPort'
         for _, port in pairs( hardpoint.item.ports ) do
             -- Prevent stuff like mattress and pillow to count as weapon ports (I don't think SC let you hide weapons inside them :P)
-            if ( mw.ustring.find( port.name, 'weapon', 1, true ) ) then
+            if ( mw.ustring.find( port.name, 'weapon', 1, true ) or mw.ustring.find( port.display_name, 'weapon', 1, true ) ) then
                 local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
                 local name = 'WeaponPort'
 
