@@ -236,7 +236,7 @@ local function addSubComponents( hardpoint )
     end
 
     -- This seems to be a weapon rack
-    if hardpoint.item.type == 'Usable' and type( hardpoint.item.ports ) == 'table' then
+    if ( hardpoint.item.type == 'Usable' or hardpoint.item.type == 'Door' ) and type( hardpoint.item.ports ) == 'table' then
         local item_type = 'WeaponPort'
         for _, port in pairs( hardpoint.item.ports ) do
             local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
