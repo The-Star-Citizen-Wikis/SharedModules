@@ -11,6 +11,9 @@
   "%icon_name_lowercase": "Use lower-cased version of icon names",
   "icon_name_lowercase": true,
 
+  "%icon_name_localized": "Use the translated hardpoint type as the icon name, else the hardpoint type is taken as is.",
+  "icon_name_localized": false,
+
   "%template_styles_page": "Page that containing the hardpoint styles",
   "template_styles_page": "Module:VehicleHardpoint/styles.css",
 

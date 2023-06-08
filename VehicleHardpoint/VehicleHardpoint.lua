@@ -372,6 +372,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     end
 
     if icon ~= nil then
+        if data.icon_name_localized == true then
+            icon = translate( icon )
+        end
+
         if data.icon_name_lowercase == true then
             icon = string.lower( icon )
         end
