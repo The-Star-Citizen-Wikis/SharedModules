@@ -420,6 +420,7 @@
     "DriveUnit": "",
     "FillerStation": "",
     "FireExtinguisher": "",
+    "FuelNozzle": "",
     "FuelPort": "",
     "FuelRefinery": "",
     "GravLev": "",
@@ -619,9 +620,15 @@
       "type": "DockingCollar",
       "modification": [
         {
-          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:fuel" ],
+          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:fuel_port" ],
           "then": [
             "type=FuelPort"
+          ]
+        },
+        {
+          "if": [ "sub_type:UNDEFINED", "and", "class_name:match:nozzle_fuel" ],
+          "then": [
+            "type=FuelNozzle"
           ]
         }
       ]
