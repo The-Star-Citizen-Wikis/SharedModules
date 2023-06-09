@@ -472,7 +472,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
                 mw.log( string.format( 'Root: %s', root ) )
             end
 
-            hardpoint = VehicleHardpoint.fixTypes( hardpoint )
+            hardpoint = VehicleHardpoint.fixTypes( hardpoint, data.fixes )
 
             local hardpointData = self:getHardpointData( hardpoint.type or hardpoint.name )
 
@@ -1105,8 +1105,9 @@ end
 --- Manually fix some (sub_)types by checking the hardpoint name
 ---
 --- @param hardpoint table Entry from the api
+--- @param fixes table
 --- @return table The fixed entry
-function VehicleHardpoint.fixTypes( hardpoint )
+function VehicleHardpoint.fixTypes( hardpoint, fixes )
     --- Assign key value pairs on a hardpoint
     --- @param kv table Table containing 'key=value' string pairs
     local function assign( kv )
@@ -1134,7 +1135,7 @@ function VehicleHardpoint.fixTypes( hardpoint )
         end
     end
 
-    for _, fix in ipairs( data.fixes ) do
+    for _, fix in ipairs( fixes ) do
         if type( fix.type ) == 'table' then
             for _, v in pairs( fix.type ) do
                 if v == hardpoint.type then

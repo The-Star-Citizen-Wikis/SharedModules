@@ -168,5 +168,58 @@ function suite:testNestedRuleFalse()
 end
 
 
+--- module.evalRule tests
+function suite:testApplyFixVtolThruster()
+    local fixes = [[
+      [
+        {
+          "type": [ "ManneuverThruster", "MainThruster" ],
+          "modification": [
+            {
+              "if": [
+                [ "sub_type:FixedThruster", "or", "sub_type:UNDEFINED" ],
+                "and",
+                [ "name:match:vtol" ]
+              ],
+              "then": "sub_type=VtolThruster"
+            },
+            {
+              "if": [
+                [ "sub_type:FixedThruster", "or", "sub_type:UNDEFINED" ],
+                "and",
+                [ "name:match:retro" ]
+              ],
+              "then": "sub_type=RetroThruster"
+            },
+            {
+              "if": [
+                [ "sub_type:JointThruster", "or", "sub_type:UNDEFINED" ],
+                "and",
+                [ "name:match:vtol" ]
+              ],
+              "then": "sub_type=GravLev"
+            },
+            {
+              "if": [ "type:MainThruster" ],
+              "then": "sub_type=Main+sub_type"
+            }
+          ]
+        }
+      ]
+    ]]
+    fixes = mw.text.jsonDecode( fixes )
+
+    local hardpoint = {
+        type = 'ManneuverThruster',
+        sub_type = 'FixedThruster',
+        name = 'hardpoint_mav_vtol_thruster'
+    }
+
+    module.fixTypes( hardpoint, fixes )
+
+    self:assertEquals( 'VtolThruster', hardpoint.sub_type )
+end
+
+
 
 return suite
