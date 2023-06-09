@@ -800,7 +800,7 @@ function methodtable.makeSubtitle( self, item )
     -- Weapon Ports
     if item.type == translate( 'WeaponPort' ) then
         subtitle = string.format(
-            '%s (%s - %s)',
+            '%s (S%s – S%s)',
             translate( 'Weapon' ),
             item.min_size or 0,
             item.max_size or 0
