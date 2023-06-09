@@ -357,7 +357,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         end
 
         if itemObj.fuel_intake then
-            object[ translate( 'SMW_FuelIntakeRate' ) ] = itemObj.fuel_push_rate
+            object[ translate( 'SMW_FuelIntakeRate' ) ] = itemObj.fuel_intake.fuel_push_rate
         end
 
         if object[ translate( 'SMW_HardpointMinimumSize' ) ] == nil then
