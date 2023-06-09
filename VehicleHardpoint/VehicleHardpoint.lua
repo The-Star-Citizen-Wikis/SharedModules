@@ -80,6 +80,7 @@ local function makeSmwQueryObject( page )
         string.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
         string.format( '?%s=thrust_capacity', translate( 'SMW_ThrustCapacity' ) ),
         string.format( '?%s=fuel_capacity', translate( 'SMW_FuelCapacity' ) ),
+        string.format( '?%s=fuel_intake_rate', translate( 'SMW_FuelIntakeRate' ) ),
         string.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
         string.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
         string.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
@@ -353,6 +354,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 
         if itemObj.fuel_tank and itemObj.fuel_tank.capacity > 0 then
             object[ translate( 'SMW_FuelCapacity' ) ] = itemObj.fuel_tank.capacity
+        end
+
+        if itemObj.fuel_intake then
+            object[ translate( 'SMW_FuelIntakeRate' ) ] = itemObj.fuel_push_rate
         end
 
         if object[ translate( 'SMW_HardpointMinimumSize' ) ] == nil then
@@ -796,17 +801,15 @@ function methodtable.makeSubtitle( self, item )
     end
 
     if item.fuel_capacity ~= nil then
-        subtitle = string.format(
-            '%s',
-            item.fuel_capacity
-        )
+        subtitle = item.fuel_capacity
+    end
+
+    if item.fuel_intake_rate ~= nil then
+        subtitle = item.fuel_intake_rate
     end
 
     if item.thrust_capacity ~= nil then
-        subtitle = string.format(
-            '%s',
-            item.thrust_capacity
-        )
+        subtitle = item.thrust_capacity
     end
 
     -- Weapon Ports

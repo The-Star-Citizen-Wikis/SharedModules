@@ -815,6 +815,13 @@
             }
         ],
         [
+            "SMW_FuelIntakeRate",
+            {
+                "de": "Kraftstoffaufnahmerate",
+                "en": "Fuel intake rate"
+            }
+        ],
+        [
             "SMW_HardpointMinimumSize",
             {
                 "de": "Minimalgröße",
