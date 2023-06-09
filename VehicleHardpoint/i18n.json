@@ -808,6 +808,13 @@
             }
         ],
         [
+            "SMW_FuelCapacity",
+            {
+                "de": "Kraftstoffkapazität",
+                "en": "Fuel capacity"
+            }
+        ],
+        [
             "SMW_HardpointMinimumSize",
             {
                 "de": "Minimalgröße",
