@@ -78,11 +78,12 @@ local function makeSmwQueryObject( page )
         string.format( '?UUID#-=uuid' ),
         string.format( '?%s#-=hardpoint', translate( 'SMW_Hardpoint' ) ) ,
         string.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
+        string.format( '?%s=thrust_capacity', translate( 'SMW_ThrustCapacity' ) ),
         string.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
         string.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
         string.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
         string.format( '?%s#-=icon', translate( 'SMW_Icon' ) ),
-        string.format( '?%s#-=hp', translate( 'SMW_HitPoints' ) ),
+        string.format( '?%s=hp', translate( 'SMW_HitPoints' ) ),
         string.format( '?%s#-=position', translate( 'SMW_Position' ) ),
         -- These are subquery chains, they require that the 'Name' attribute is of type Page
         -- And that these pages contain SMW attributes
@@ -341,6 +342,12 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         if ( itemObj.type == 'Cargo' or itemObj.type == 'SeatAccess' or itemObj.type == 'CargoGrid' or itemObj.type == 'Container' )
                 and type( itemObj.inventory ) == 'table' then
             object[ translate( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil), nil )
+        end
+
+        if itemObj.thruster then
+            object[ translate( 'SMW_ThrustCapacity' ) ] = itemObj.thruster.thrust_capacity
+            --- Convert to per Newton since thrust capacity is in Newton
+            object[ translate( 'SMW_FuelBurnRate' ) ] = itemObj.thruster.fuel_burn_per_10k_newton / 10000
         end
 
         if object[ translate( 'SMW_HardpointMinimumSize' ) ] == nil then
@@ -783,6 +790,13 @@ function methodtable.makeSubtitle( self, item )
         end
     end
 
+    if item.thrust_capacity ~= nil then
+        subtitle = string.format(
+            '%s',
+            item.thrust_capacity
+        )
+    end
+
     -- Weapon Ports
     if item.type == translate( 'WeaponPort' ) then
         subtitle = string.format(
@@ -795,7 +809,7 @@ function methodtable.makeSubtitle( self, item )
 
     -- Parts
     if item.hp ~= nil then
-        subtitle = item.hp .. ' HP'
+        subtitle = item.hp
     end
 
     if subtitle == 'N/A' and item.position ~= nil then

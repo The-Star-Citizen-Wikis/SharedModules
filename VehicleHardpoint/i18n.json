@@ -801,6 +801,13 @@
             }
         ],
         [
+            "SMW_FuelBurnRate",
+            {
+                "de": "Kraftstoffverbrauchsrate",
+                "en": "Fuel burn rate"
+            }
+        ],
+        [
             "SMW_HardpointMinimumSize",
             {
                 "de": "Minimalgröße",
@@ -896,6 +903,13 @@
             {
                 "de": "Selbstzerstörung",
                 "en": "Self destruct"
+            }
+        ],
+        [
+            "SMW_ThrustCapacity",
+            {
+                "de": "Schubkapazität",
+                "en": "Thrust capacity"
             }
         ],
         [
