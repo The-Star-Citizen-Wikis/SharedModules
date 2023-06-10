@@ -221,5 +221,33 @@ function suite:testApplyFixVtolThruster()
 end
 
 
+--- module.evalRule tests
+function suite:testApplyConcatFix()
+    local fixes = [[
+      [
+        {
+          "type": [ "ManneuverThruster", "MainThruster" ],
+          "modification": [
+            {
+              "if": [ "type:MainThruster" ],
+              "then": "sub_type=Main+sub_type"
+            }
+          ]
+        }
+      ]
+    ]]
+    fixes = mw.text.jsonDecode( fixes )
+
+    local hardpoint = {
+        type = 'MainThruster',
+        sub_type = 'FixedThruster',
+    }
+
+    module.fixTypes( hardpoint, fixes )
+
+    self:assertEquals( 'MainFixedThruster', hardpoint.sub_type )
+end
+
+
 
 return suite

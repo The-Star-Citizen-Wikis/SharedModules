@@ -77,6 +77,7 @@ local function makeSmwQueryObject( page )
         string.format( '?%s#-n=scu', translate( 'SMW_Inventory' ) ),
         string.format( '?UUID#-=uuid' ),
         string.format( '?%s#-=hardpoint', translate( 'SMW_Hardpoint' ) ) ,
+        string.format( '?%s#-=class_name', translate( 'SMW_HardpointClassName' ) ) ,
         string.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
         string.format( '?%s=thrust_capacity', translate( 'SMW_ThrustCapacity' ) ),
         string.format( '?%s=fuel_capacity', translate( 'SMW_FuelCapacity' ) ),
@@ -131,8 +132,13 @@ local function makeKey( row, hardpointData, parent, root )
         then
             key = row.type .. row.sub_type
         else
+            local suffix = ( row.item.name or '' )
+            if suffix == '<= PLACEHOLDER =>' then
+                suffix = row.item.uuid
+            end
+
             -- Adding the uuid to the key ensures separate boxes if the equipped item differs
-            key = row.type .. row.sub_type .. ( row.item.uuid or '' )
+            key = row.type .. row.sub_type .. suffix
         end
     else
         -- If no item is set, use the pre-defined class and type
@@ -142,13 +148,12 @@ local function makeKey( row, hardpointData, parent, root )
     -- Appends the parent and root hardpoints in order to not mess up child counts
     -- Without this, a vehicle with four turrets containing each one weapon would be listed as
     -- having four turrets that each has four weapons (if the exact weapon is equipped on each turret)
-    if parent ~= nil and parent[ translate( 'SMW_Hardpoint' ) ] ~= nil and
-       row.type ~= 'Magazine' and
+    if parent ~= nil and parent[ translate( 'SMW_Name' ) ] ~= nil and
        row.type ~= 'DecoyLauncherMagazine' and
-       row.type ~= 'NoiseLauncherMagazine' and
-       row.type ~= 'WeaponPort'
+       row.type ~= 'NoiseLauncherMagazine'
     then
-        key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
+        --key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
+        key = key .. ( parent[ translate( 'SMW_Name' ) ] or parent[ translate( 'SMW_Hardpoint' ) ] )
     end
 
     if root ~= nil and not string.match( key, root ) and ( hardpointData.class == 'Weapons' or hardpointData.class == 'Utility' ) then
@@ -156,10 +161,10 @@ local function makeKey( row, hardpointData, parent, root )
     end
 
     if hardpointData.class == 'Weapons' and row.name ~= nil and row.type == 'MissileLauncher' then
-        key = key .. row.name
+--        key = key .. row.item.name or row.name
     end
 
-    mw.log( string.format( 'Key: %s', key ) )
+    mw.logObject( string.format( 'Key: %s', key ), 'makeKey' )
 
     return key
 end
@@ -310,6 +315,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     object[ translate( 'SMW_HitPoints' ) ] = row.damage_max
     object[ translate( 'SMW_Position' ) ] = row.position
 
+    if type( row.class_name ) == 'string' then
+        object[ translate( 'SMW_HardpointClassName' ) ] = row.class_name
+    end
+
     if data.matches[ row.type ] ~= nil then
         object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type, true )
     else
@@ -337,6 +346,8 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             else
                 object[ translate( 'SMW_Name' ) ] = row.item.name
             end
+        else
+            object[ translate( 'SMW_Name' ) ] = translate( hardpointData.type )
         end
 
         object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity
@@ -370,10 +381,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 
     if parent ~= nil then
         object[ translate( 'SMW_ParentHardpointUuid' ) ] = parent[ 'UUID' ]
-        object[ translate( 'SMW_ParentHardpoint' ) ] = parent[ translate( 'SMW_Hardpoint' ) ]
+        object[ translate( 'SMW_ParentHardpoint' ) ] = parent[ translate( 'SMW_Name' ) ]
     end
 
-    if root ~= nil and root ~= row.name then
+    if root ~= nil then
         object[ translate( 'SMW_RootHardpoint' ) ] = root
     end
 
@@ -428,6 +439,21 @@ function methodtable.setHardPointObjects( self, hardpoints )
     local objects = {}
     local depth = 1
 
+    local function cleanClassName(input )
+        input = string.gsub( input, '_', ' ' )
+
+        if string.find( input, 'turret', 1, true ) then
+            local parts = mw.text.split( input, 'turret', true )
+            input = parts[ 1 ] or input
+        end
+
+        for _, remove in pairs( { 'top', 'bottom', 'left', 'right', 'front', 'rear', 'bubble', 'side' } ) do
+            input = string.gsub( input, ' ' .. remove, '', 1 )
+        end
+
+        return input
+    end
+
     -- Adds the subobject to the list of objects that should be saved to SMW
     -- Increases the item quantity / or combined cargo capacity for objects that have equal keys
     local function addToOut( object, key )
@@ -477,9 +503,8 @@ function methodtable.setHardPointObjects( self, hardpoints )
         for _, hardpoint in pairs( hardpoints ) do
             hardpoint.name = string.lower( hardpoint.name )
 
-            if depth == 1 then
-                root = hardpoint.name
-                mw.log( string.format( 'Root: %s', root ) )
+            if type( hardpoint.class_name ) == 'string' then
+                hardpoint.class_name = cleanClassName( string.lower( hardpoint.class_name ) )
             end
 
             hardpoint = VehicleHardpoint.fixTypes( hardpoint, data.fixes )
@@ -487,6 +512,19 @@ function methodtable.setHardPointObjects( self, hardpoints )
             local hardpointData = self:getHardpointData( hardpoint.type or hardpoint.name )
 
             if hardpointData ~= nil then
+                if depth == 1 then
+                    if type( hardpoint.item ) == 'table' then
+                        root = hardpoint.class_name or hardpoint.name
+
+                        if root == '<= PLACEHOLDER =>' then
+                            root = hardpointData.type
+                        end
+                    else
+                        root = hardpoint.name
+                    end
+                    mw.logObject( string.format( 'Root: %s', root ), 'addHardpoints' )
+                end
+
                 addSubComponents( hardpoint )
 
                 -- Based on the key, the hardpoint is either used as "standalone" (i.e. saved as a single subobject)
@@ -515,7 +553,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
     addHardpoints( hardpoints )
 
-    mw.logObject( objects )
+    mw.logObject( objects, 'setHardPointObjects' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -547,7 +585,7 @@ function methodtable.setParts(self, parts )
             key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
         end
 
-        mw.log( string.format( 'Key: %s', key ) )
+        mw.logObject( string.format( 'Key: %s', key ), 'makeKey' )
 
         return key
     end
@@ -581,7 +619,7 @@ function methodtable.setParts(self, parts )
 
             if depth == 1 then
                 root = part.name
-                mw.log( string.format( 'Root: %s', root ) )
+                mw.logObject( string.format( 'Root: %s', root ), 'addParts' )
             end
 
             local key = makeKey( part, parent )
@@ -607,7 +645,7 @@ function methodtable.setParts(self, parts )
 
     addParts( parts )
 
-    mw.logObject( objects )
+    mw.logObject( objects, 'setParts' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -631,7 +669,7 @@ function methodtable.querySmwStore( self, page )
         return nil
     end
 
-    mw.logObject( smwData )
+    --mw.logObject( smwData, 'querySmwStore' )
 
     self.smwData = smwData
 
@@ -686,12 +724,15 @@ function methodtable.createDataStructure( self, smwData )
     -- Maps a key to the index of the subobject, this way children can be set on their parent
     local idMapping = {}
 
-    for key, object in pairs( smwData ) do
-        if object.hardpoint ~= nil then
-            local keyMap = ( object.root_hardpoint or object.hardpoint ) .. object.hardpoint
-
-            idMapping[ keyMap ] = key
+    for index, object in ipairs( smwData ) do
+        local keyMap
+        if object.class == translate( 'VehiclePart' ) and object.name ~= nil then
+            keyMap = object.name
+        else
+            keyMap = ( object.root_hardpoint or object.class_name or '' ) .. ( object.name or object.type or '' )
         end
+
+        idMapping[ keyMap ] = index
     end
 
     -- Iterates through the list of SMW hardpoint subobjects
@@ -699,7 +740,12 @@ function methodtable.createDataStructure( self, smwData )
     local function stratify( toStratify )
         for _, object in ipairs( toStratify ) do
             if object.parent_hardpoint ~= nil then
-                local parentEl = toStratify[ idMapping[ ( object.root_hardpoint or '' ) .. object.parent_hardpoint ] ]
+                local parentEl
+                if object.class == translate( 'VehiclePart' ) and object.parent_hardpoint ~= nil then
+                    parentEl = toStratify[ idMapping[ object.parent_hardpoint ] ]
+                else
+                    parentEl = toStratify[ idMapping[ ( ( object.root_hardpoint or '' ) .. object.parent_hardpoint ) ] ]
+                end
 
                 if parentEl ~= nil then
                     if parentEl.children == nil then
@@ -825,19 +871,6 @@ function methodtable.makeSubtitle( self, item )
     -- Parts
     if item.hp ~= nil then
         subtitle = item.hp
-    end
-
-    if subtitle == 'N/A' and item.position ~= nil then
-        if type( item.position ) ~= 'table' then
-            item.position = { item.position }
-        end
-
-        local converted = {}
-        for _, position in ipairs( item.position ) do
-            table.insert( converted, mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) )
-        end
-
-        subtitle = table.concat( converted, ', ' )
     end
 
     return subtitle
@@ -1007,7 +1040,7 @@ function methodtable.makeOutput( self, groupedData )
         classOutput[ class ] = makeSection( types )
     end
 
-    mw.logObject( classOutput )
+    mw.logObject( classOutput, 'makeOutput' )
 
     return classOutput
 end
@@ -1130,6 +1163,12 @@ function VehicleHardpoint.fixTypes( hardpoint, fixes )
             local parts = mw.text.split( assignment, '=', true )
 
             if #parts == 2 then
+                if string.find( parts[ 2 ], '+', 1, true ) then
+                    local valueParts = mw.text.split( parts[ 2 ], '+', true )
+
+                    parts[ 2 ] = valueParts[ 1 ] .. ( hardpoint[ valueParts[ 2 ] ] or '' )
+                end
+
                 hardpoint[ parts[ 1 ] ] = parts[ 2 ]
             end
         end
@@ -1166,6 +1205,11 @@ function VehicleHardpoint.fixTypes( hardpoint, fixes )
 
     -- Manual mapping defined in Module:VehicleHardpoint/Data
     if type( hardpoint.item ) == 'table' and hardpoint.item ~= nil then
+        -- If this is a noise launcher, but the class name says decoy, change Noise to Decoy
+        if string.find( hardpoint.item.name, 'Noise', 1, true ) and string.find( hardpoint.class_name, 'Decoy', 1, true ) then
+            hardpoint.item.name = string.gsub( hardpoint.item.name, ' Noise ', ' Decoy ' )
+        end
+
         for _, mapping in pairs( data.hardpoint_type_fixes ) do
             for _, matcher in pairs( data.matches[ mapping ][ 'matches' ] ) do
                 if string.match( hardpoint.name, matcher ) ~= nil then
@@ -1241,12 +1285,12 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
     local invalidRules = {}
 
     local function invalidRule( rule, index )
-        table.insert( invalidRules, string.format( 'Invalid Rule found, skipping: "%s (Element %d)"', rule, index ) )
+        table.insert( invalidRules, string.format( 'Invalid Rule found, skipping: <%s (Element %d)>', rule, index ) )
     end
 
     for index, rule in ipairs( rules ) do
         if type( rule ) == 'string' then
-            mw.log( string.format( 'Evaluating rule %s', rule ) )
+            -- mw.logObject( string.format( 'Evaluating rule %s', rule ), 'evalRule' )
 
             if string.find( rule, ':', 1, true ) ~= nil then
                 local parts = mw.text.split( rule, ':', true )
@@ -1254,7 +1298,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                 -- Simple check if a key equals a value
                 if #parts == 2 then
                     local result = hardpoint[ parts[ 1 ] ] == parts[ 2 ]
-                    mw.log( string.format( 'Rule "%s == %s", equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ) )
+                    -- mw.logObject( string.format( 'Rule <%s == %s>, equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ), 'evalRule' )
 
                     table.insert( stepVal, result )
                     -- String Match
@@ -1269,7 +1313,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                     local matcher = mw.ustring.lower( table.concat( parts, ':' ) )
 
                     local result = string[ fn ]( string.lower( hardpoint[ key ] ), matcher ) ~= nil
-                    mw.log( string.format( 'Rule "%s matches %s", equates to %s', hardpoint[ key ], matcher, tostring( result ) ) )
+                    -- mw.logObject( string.format( 'Rule <%s matches %s>, equates to %s', hardpoint[ key ], matcher, tostring( result ) ), 'evalRule' )
 
                     table.insert( stepVal, result )
                 else
@@ -1289,7 +1333,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                 table.insert( invalidRules, v )
             end
         else
-            mw.log( 'Is invalid ' .. rule )
+            -- mw.logObject( 'Is invalid ' .. rule, 'evalRule' )
             invalidRule( rule, index )
         end
     end
@@ -1299,7 +1343,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
         if index == 1 then
             ruleMatches = matched
         else
-            mw.log( 'test is ' .. combination[ index - 1 ])
+            -- mw.logObject( 'test is ' .. combination[ index - 1 ], 'evalRule' )
             if combination[ index - 1 ] == 'and' then
                 ruleMatches = ruleMatches and matched
             else
@@ -1307,6 +1351,8 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
             end
         end
     end
+
+    -- mw.logObject( 'Final rule result is ' .. tostring( ruleMatches ), 'evalRule' )
 
     if returnInvalid then
         return ruleMatches, invalidRules

@@ -857,6 +857,13 @@
             }
         ],
         [
+            "SMW_HardpointClassName",
+            {
+                "de": "Klassenname",
+                "en": "Hardpoint class name"
+            }
+        ],
+        [
             "SMW_HitPoints",
             {
                 "de": "Schadenspunkte",
