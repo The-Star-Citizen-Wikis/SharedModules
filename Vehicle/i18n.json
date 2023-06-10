@@ -17,6 +17,708 @@
   },
   "data": [
     [
+      "ARG_productionstate",
+      {
+        "de": "",
+        "en": "productionstate"
+      }
+    ],
+    [
+      "ARG_role",
+      {
+        "de": "",
+        "en": "role"
+      }
+    ],
+    [
+      "ARG_series",
+      {
+        "de": "",
+        "en": "series"
+      }
+    ],
+    [
+      "ARG_size",
+      {
+        "de": "",
+        "en": "size"
+      }
+    ],
+    [
+      "ARG_pledgeavailability",
+      {
+        "de": "",
+        "en": "pledgeavailability"
+      }
+    ],
+    [
+      "ARG_pledgecost",
+      {
+        "de": "",
+        "en": "pledgecost"
+      }
+    ],
+    [
+      "ARG_originalpledgecost",
+      {
+        "de": "",
+        "en": "originalpledgecost"
+      }
+    ],
+    [
+      "ARG_warbondcost",
+      {
+        "de": "",
+        "en": "warbondcost"
+      }
+    ],
+    [
+      "ARG_originalwarbondcost",
+      {
+        "de": "",
+        "en": "originalwarbondcost"
+      }
+    ],
+    [
+      "ARG_mincrew",
+      {
+        "de": "",
+        "en": "mincrew"
+      }
+    ],
+    [
+      "ARG_maxcrew",
+      {
+        "de": "",
+        "en": "maxcrew"
+      }
+    ],
+    [
+      "ARG_cargocapacity",
+      {
+        "de": "",
+        "en": "cargocapacity"
+      }
+    ],
+    [
+      "ARG_combatspeed",
+      {
+        "de": "",
+        "en": "combatspeed"
+      }
+    ],
+    [
+      "ARG_maxspeed",
+      {
+        "de": "",
+        "en": "maxspeed"
+      }
+    ],
+    [
+      "ARG_length",
+      {
+        "de": "",
+        "en": "length"
+      }
+    ],
+    [
+      "ARG_width",
+      {
+        "de": "",
+        "en": "width"
+      }
+    ],
+    [
+      "ARG_height",
+      {
+        "de": "",
+        "en": "height"
+      }
+    ],
+    [
+      "ARG_retractedlength",
+      {
+        "de": "",
+        "en": "retractedlength"
+      }
+    ],
+    [
+      "ARG_retractedwidth",
+      {
+        "de": "",
+        "en": "retractedwidth"
+      }
+    ],
+    [
+      "ARG_retractedheight",
+      {
+        "de": "",
+        "en": "retractedheight"
+      }
+    ],
+    [
+      "ARG_mass",
+      {
+        "de": "",
+        "en": "mass"
+      }
+    ],
+    [
+      "ARG_releasedate",
+      {
+        "de": "",
+        "en": "releasedate"
+      }
+    ],
+    [
+      "ARG_retiredate",
+      {
+        "de": "",
+        "en": "retiredate"
+      }
+    ],
+    [
+      "ARG_conceptdate",
+      {
+        "de": "",
+        "en": "conceptdate"
+      }
+    ],
+    [
+      "ARG_saledate",
+      {
+        "de": "",
+        "en": "saledate"
+      }
+    ],
+    [
+      "ARG_galactapediaurl",
+      {
+        "de": "",
+        "en": "galactapediaurl"
+      }
+    ],
+    [
+      "ARG_rsistoreurl",
+      {
+        "de": "",
+        "en": "rsistoreurl"
+      }
+    ],
+    [
+      "ARG_brochureurl",
+      {
+        "de": "",
+        "en": "brochureurl"
+      }
+    ],
+    [
+      "ARG_trailerurl",
+      {
+        "de": "",
+        "en": "trailerurl"
+      }
+    ],
+    [
+      "ARG_whitleysguideurl",
+      {
+        "de": "",
+        "en": "whitleysguideurl"
+      }
+    ],
+    [
+      "InConcept",
+      {
+        "de": "Im Konzept",
+        "en": "In concept"
+      }
+    ],
+    [
+      "ActiveForSquadron42",
+      {
+        "de": "Aktiv für Squadron 42",
+        "en": "Active for Squadron 42"
+      }
+    ],
+    [
+      "InProduction",
+      {
+        "de": "In Produktion",
+        "en": "In production"
+      }
+    ],
+    [
+      "SMW_BiochemicalDamageModifier",
+      {
+        "de": "Modifikator für biochemischen Schaden",
+        "en": "Biochemical damage modifier"
+      }
+    ],
+    [
+      "SMW_BrochureUrl",
+      {
+        "de": "Broschüre URL",
+        "en": "Brochure URL"
+      }
+    ],
+    [
+      "SMW_CargoCapacity",
+      {
+        "de": "Frachtkapazität",
+        "en": "Cargo capacity"
+      }
+    ],
+    [
+      "SMW_ClassName",
+      {
+        "de": "Klassenname",
+        "en": "Class name"
+      }
+    ],
+    [
+      "SMW_ConceptAnnouncementDate",
+      {
+        "de": "Datum der Konzeptankündigung",
+        "en": "Concept announcement date"
+      }
+    ],
+    [
+      "SMW_ConceptSaleDate",
+      {
+        "de": "Verkaufsdatum des Konzepts",
+        "en": "Concept sale date"
+      }
+    ],
+    [
+      "SMW_CrossSectionSignatureModifier",
+      {
+        "de": "Modifikator für die Querschnittssignatur",
+        "en": "Cross section signature modifier"
+      }
+    ],
+    [
+      "SMW_DistortionDamageModifier",
+      {
+        "de": "Modifikator für Verzerrungsschaden",
+        "en": "Distortion damage modifier"
+      }
+    ],
+    [
+      "SMW_ElectromagneticSignatureModifier",
+      {
+        "de": "Modifikator der elektromagnetischen Signatur",
+        "en": "Electromagnetic signature modifier"
+      }
+    ],
+    [
+      "SMW_EnergyDamageModifier",
+      {
+        "de": "Modifikator für Energieschaden",
+        "en": "Energy damage modifier"
+      }
+    ],
+    [
+      "SMW_EntityHeight",
+      {
+        "de": "Höhe",
+        "en": "Entity height"
+      }
+    ],
+    [
+      "SMW_EntityLength",
+      {
+        "de": "Länge",
+        "en": "Entity length"
+      }
+    ],
+    [
+      "SMW_EntityWidth",
+      {
+        "de": "Breite",
+        "en": "Entity width"
+      }
+    ],
+    [
+      "SMW_FlightReady",
+      {
+        "de": "Flugbereit",
+        "en": "Flight ready"
+      }
+    ],
+    [
+      "SMW_GalactapediaUrl",
+      {
+        "de": "Galactapedia-URL",
+        "en": "Galactapedia URL"
+      }
+    ],
+    [
+      "SMW_GameBuild",
+      {
+        "de": "Version",
+        "en": "Game build"
+      }
+    ],
+    [
+      "SMW_HealthPoint",
+      {
+        "de": "Schadenspunkte",
+        "en": "Health point"
+      }
+    ],
+    [
+      "SMW_HydrogenFuelCapacity",
+      {
+        "de": "Wasserstoff-Kraftstoffkapazität",
+        "en": "Hydrogen fuel capacity"
+      }
+    ],
+    [
+      "SMW_HydrogenFuelIntakeRate",
+      {
+        "de": "Wasserstoff-Kraftstoff-Einlassrate",
+        "en": "Hydrogen fuel intake rate"
+      }
+    ],
+    [
+      "SMW_InfraredSignatureModifier",
+      {
+        "de": "Modifikator für Infrarot-Signatur",
+        "en": "Infrared signature modifier"
+      }
+    ],
+
+    [
+      "SMW_InsuranceClaimTime",
+      {
+        "de": "Reklamationszeit",
+        "en": "Insurance claim time"
+      }
+    ],
+    [
+      "SMW_InsuranceExpediteCost",
+      {
+        "de": "Beschleunigungskosten",
+        "en": "Insurance expedite cost"
+      }
+    ],
+    [
+      "SMW_InsuranceExpediteTime",
+      {
+        "de": "Beschleunigungszeit",
+        "en": "Insurance expedite time"
+      }
+    ],
+    [
+      "SMW_LoanerVehicle",
+      {
+        "de": "Leihfahrzeug",
+        "en": "Loaner vehicle"
+      }
+    ],
+    [
+      "SMW_LoreReleaseDate",
+      {
+        "de": "Lore-Releasedatum",
+        "en": "Lore release date"
+      }
+    ],
+    [
+      "SMW_LoreRetirementDate",
+      {
+        "de": "Lore Ruhestandsdatum",
+        "en": "Lore retirement date"
+      }
+    ],
+    [
+      "SMW_Manufacturer",
+      {
+        "de": "Hersteller",
+        "en": "Manufacturer"
+      }
+    ],
+    [
+      "SMW_Mass",
+      {
+        "de": "Masse",
+        "en": "Mass"
+      }
+    ],
+    [
+      "SMW_MinimumCrew",
+      {
+        "de": "Minimalbesatzung",
+        "en": "Minimmum crew"
+      }
+    ],
+    [
+      "SMW_MaximumCrew",
+      {
+        "de": "Maximalbesatzung",
+        "en": "Maximum crew"
+      }
+    ],
+    [
+      "SMW_MinimumSpeed",
+      {
+        "de": "Minimalgeschwindigkeit",
+        "en": "Maximum speed"
+      }
+    ],
+    [
+      "SMW_MaximumSpeed",
+      {
+        "de": "Maximalgeschwindigkeit",
+        "en": "Maximum speed"
+      }
+    ],
+    [
+      "SMW_MaximumSpeedToZeroTime",
+      {
+        "de": "Höchstgeschwindigkeit bis Null Zeit",
+        "en": "Maximum speed to zero time"
+      }
+    ],
+    [
+      "SMW_Name",
+      {
+        "de": "Name",
+        "en": "Name"
+      }
+    ],
+    [
+      "SMW_OriginalPledgePrice",
+      {
+        "de": "Ursprünglicher Pledege-Preis",
+        "en": "Original pledge price"
+      }
+    ],
+    [
+      "SMW_OriginalWarbondPledgePrice",
+      {
+        "de": "Ursprünglicher Warbond-Preis",
+        "en": "Original warbond pledge price"
+      }
+    ],
+    [
+      "SMW_PhysicalDamageModifier",
+      {
+        "de": "Modifikator für physischen Schaden",
+        "en": "Physical damage modifier"
+      }
+    ],
+    [
+      "SMW_PitchRate",
+      {
+        "de": "Neigungsrate",
+        "en": "Pitch rate"
+      }
+    ],
+    [
+      "SMW_PledgeAvailability",
+      {
+        "de": "Pledge-Verfügbarkeit",
+        "en": "Pledge availability"
+      }
+    ],
+    [
+      "SMW_PledgePrice",
+      {
+        "de": "Pledge-Preis",
+        "en": "Pledge price"
+      }
+    ],
+    [
+      "SMW_PledgeStoreUrl",
+      {
+        "de": "Pledgestore-URL",
+        "en": "Pledge store URL"
+      }
+    ],
+    [
+      "SMW_PresentationUrl",
+      {
+        "de": "Präsentation URL",
+        "en": "Presentation URL"
+      }
+    ],
+    [
+      "SMW_ProductionState",
+      {
+        "de": "Produktionsstatus",
+        "en": "Production state"
+      }
+    ],
+    [
+      "SMW_QAndAUrl",
+      {
+        "de": "Fragen und Antworten URL",
+        "en": "Q and A URL"
+      }
+    ],
+    [
+      "SMW_QuantumFuelCapacity",
+      {
+        "de": "Quantum Treibstoffkapazität",
+        "en": "Quantum fuel capacity"
+      }
+    ],
+    [
+      "SMW_RetractedHeight",
+      {
+        "de": "Eingezogene Höhe",
+        "en": "Retracted height"
+      }
+    ],
+    [
+      "SMW_RetractedLength",
+      {
+        "de": "Eingezogene Länge",
+        "en": "Retracted length"
+      }
+    ],
+    [
+      "SMW_RetractedWidth",
+      {
+        "de": "Eingezogene Breite",
+        "en": "Retracted width"
+      }
+    ],
+    [
+      "SMW_ReverseSpeed",
+      {
+        "de": "Umkehrgeschwindigkeit",
+        "en": "Reverse speed"
+      }
+    ],
+    [
+      "SMW_Role",
+      {
+        "de": "Rolle",
+        "en": "Role"
+      }
+    ],
+    [
+      "SMW_RollRate",
+      {
+        "de": "Rollrate",
+        "en": "Roll rate"
+      }
+    ],
+    [
+      "SMW_ScmSpeed",
+      {
+        "de": "SCM-Geschwindigkeit",
+        "en": "SCM speed"
+      }
+    ],
+    [
+      "SMW_ScmSpeedToZeroTime",
+      {
+        "de": "SCM-Geschwindigkeit bis Null Zeit",
+        "en": "SCM speed to zero time"
+      }
+    ],
+    [
+      "SMW_Series",
+      {
+        "de": "Reihe",
+        "en": "Series"
+      }
+    ],
+    [
+      "SMW_ShipMatrixName",
+      {
+        "de": "Ship Matrix Name",
+        "en": "Ship matrix name"
+      }
+    ],
+    [
+      "SMW_ShipMatrixSize",
+      {
+        "de": "Ship Matrix Größe",
+        "en": "Ship matrix size"
+      }
+    ],
+    [
+      "SMW_Size",
+      {
+        "de": "Größe",
+        "en": "Size"
+      }
+    ],
+    [
+      "SMW_StunDamageModifier",
+      {
+        "de": "Modifikator für Betäubungsschaden",
+        "en": "Stun damage modifier"
+      }
+    ],
+    [
+      "SMW_ThermalDamageModifier",
+      {
+        "de": "Modifikator für thermischen Schaden",
+        "en": "Thermal damage modifier"
+      }
+    ],
+    [
+      "SMW_TrailerUrl",
+      {
+        "de": "Trailer-URL",
+        "en": "Trailer URL"
+      }
+    ],
+    [
+      "SMW_UUID",
+      {
+        "de": "UUID",
+        "en": "UUID"
+      }
+    ],
+    [
+      "SMW_VehicleInventory",
+      {
+        "de": "Fahrzeuginventar",
+        "en": "Vehicle inventory"
+      }
+    ],
+    [
+      "SMW_WarbondPledgePrice",
+      {
+        "de": "Warbond-Pledgepreis",
+        "en": "Warbond pledge price"
+      }
+    ],
+    [
+      "SMW_WhitleysGuideUrl",
+      {
+        "de": "Whitleys Guide URL",
+        "en": "Whitleys Guide URL"
+      }
+    ],
+    [
+      "SMW_YawRate",
+      {
+        "de": "Gierrate",
+        "en": "Yaw rate"
+      }
+    ],
+    [
+      "SMW_ZeroToMaximumSpeedTime",
+      {
+        "de": "Zeit von Null bis zur Höchstgeschwindigkeit",
+        "en": "Zero to Maximum speed time"
+      }
+    ],
+    [
+      "SMW_ZeroToScmSpeedTime",
+      {
+        "de": "Zeit von Null bis SCM-Geschwindigkeit",
+        "en": "Zero to SCM speed time"
+
+      }
+    ],
+    [
       "error_no_data_title",
       {
         "de": "ERROR - Semantic MediaWiki (CODE 16008)",

@@ -50,7 +50,7 @@ end
 --- Using current subpage name without vehicle type suffix
 --- @return table or nil
 function methodtable.getApiDataForCurrentPage( self )
-	local query = self.frameArgs.uuid or self.frameArgs[ 'name' ] or common.removeTypeSuffix(
+	local query = self.frameArgs.uuid or self.frameArgs[ translate( 'ARG_name' ) ] or common.removeTypeSuffix(
         mw.title.getCurrentTitle().rootText,
         { 'ship', 'ground vehicle' }
     )
@@ -74,53 +74,53 @@ end
 function methodtable.setSemanticProperties( self )
 	-- Set properties with Template param
 	local setData = {
-		[ 'Name' ] = self.frameArgs[ 'name' ] or common.removeTypeSuffix(
+		[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_name' ) ] or common.removeTypeSuffix(
 				mw.title.getCurrentTitle().rootText,
 				{ 'ship', 'ground vehicle' }
 			),
-		[ 'Production state' ] = self.frameArgs[ 'productionstate' ],
-		[ 'Role' ] = self.frameArgs[ 'role' ],
-		[ 'Series' ] = self.frameArgs[ 'series' ],
-		[ 'Ship matrix size' ] = self.frameArgs[ 'size' ],
+		[ translate( 'SMW_ProductionState' ) ] = self.frameArgs[ translate( 'ARG_productionstate' ) ],
+		[ translate( 'SMW_Role' ) ] = self.frameArgs[ translate( 'ARG_role' ) ],
+		[ translate( 'SMW_Series' ) ] = self.frameArgs[ translate( 'ARG_series' ) ],
+		[ translate( 'SMW_ShipMatrixSize' ) ] = self.frameArgs[ translate( 'ARG_size' ) ],
 		--- Pledge info
-		[ 'Pledge availability' ] = self.frameArgs[ 'pledgeavailability' ],
-		[ 'Pledge price' ] = self.frameArgs[ 'pledgecost' ],
-		[ 'Original pledge price' ] = self.frameArgs[ 'originalpledgecost' ],
-		[ 'Warbond pledge price' ] = self.frameArgs[ 'warbondcost' ],
-		[ 'Original warbond pledge price' ] = self.frameArgs[ 'originalwarbondcost' ],
+		[ translate( 'SMW_PledgeAvailability' ) ] = self.frameArgs[ translate( 'ARG_pledgeavailability' ) ],
+		[ translate( 'SMW_PledgePrice' ) ] = self.frameArgs[ translate( 'ARG_pledgecost' ) ],
+		[ translate( 'SMW_OriginalPledgePrice' ) ] = self.frameArgs[ translate( 'ARG_originalpledgecost' ) ],
+		[ translate( 'SMW_WarbondPledgePrice' ) ] = self.frameArgs[ translate( 'ARG_warbondcost' ) ],
+		[ translate( 'SMW_OriginalWarbondPledgePrice' ) ] = self.frameArgs[ translate( 'ARG_originalwarbondcost' ) ],
 		--- Crew
-		[ 'Minimum crew' ] = self.frameArgs[ 'mincrew' ],
-		[ 'Maximum crew' ] = self.frameArgs[ 'maxcrew' ],
+		[ translate( 'SMW_MinimumCrew' ) ] = self.frameArgs[ translate( 'ARG_mincrew' ) ],
+		[ translate( 'SMW_MaximumCrew' ) ] = self.frameArgs[ translate( 'ARG_maxcrew' ) ],
 		--- Cargo
-		[ 'Cargo capacity' ] = self.frameArgs[ 'cargocapacity' ],
+		[ translate( 'SMW_CargoCapacity' ) ] = self.frameArgs[ translate( 'ARG_cargocapacity' ) ],
 		 --- Speed
-		[ 'SCM speed' ] = self.frameArgs[ 'combatspeed' ],
-		[ 'Maximum speed' ] = self.frameArgs[ 'maxspeed' ],
+		[ translate( 'SMW_ScmSpeed' ) ] = self.frameArgs[ translate( 'ARG_combatspeed' ) ],
+		[ translate( 'SMW_MaximumSpeed' ) ] = self.frameArgs[ translate( 'ARG_maxspeed' ) ],
 		--- Dimensions
-		[ 'Entity length' ] = self.frameArgs[ 'length' ],
-		[ 'Entity width' ] = self.frameArgs[ 'width' ],
-		[ 'Entity height' ] = self.frameArgs[ 'height' ],
-		[ 'Retracted length' ] = self.frameArgs[ 'retractedlength' ],
-		[ 'Retracted width' ] = self.frameArgs[ 'retractedwidth' ],
-		[ 'Retracted height' ] = self.frameArgs[ 'retractedheight' ],
-		[ 'Mass' ] = self.frameArgs[ 'mass' ],
+		[ translate( 'SMW_EntityLength' ) ] = self.frameArgs[ translate( 'ARG_length' ) ],
+		[ translate( 'SMW_EntityWidth' ) ] = self.frameArgs[ translate( 'ARG_width' ) ],
+		[ translate( 'SMW_EntityHeight' ) ] = self.frameArgs[ translate( 'ARG_height' ) ],
+		[ translate( 'SMW_RetractedLength' ) ] = self.frameArgs[ translate( 'ARG_retractedlength' ) ],
+		[ translate( 'SMW_RetractedWidth' ) ] = self.frameArgs[ translate( 'ARG_retractedwidth' ) ],
+		[ translate( 'SMW_RetractedHeight' ) ] = self.frameArgs[ translate( 'ARG_retractedheight' ) ],
+		[ translate( 'SMW_Mass' ) ] = self.frameArgs[ translate( 'ARG_mass' ) ],
 		--- Lore
-		[ 'Lore release date' ] = self.frameArgs[ 'releasedate' ],
-		[ 'Lore retirement date' ] = self.frameArgs[ 'retiredate' ],
+		[ translate( 'SMW_LoreReleaseDate' ) ] = self.frameArgs[ translate( 'ARG_releasedate' ) ],
+		[ translate( 'SMW_LoreRetirementDate' ) ] = self.frameArgs[ translate( 'ARG_retiredate' ) ],
 		--- Development
-		[ 'Concept announcement date' ] = self.frameArgs[ 'conceptdate' ],
-		[ 'Concept sale date' ] = self.frameArgs[ 'saledate' ],
+		[ translate( 'SMW_ConceptAnnouncementDate' ) ] = self.frameArgs[ translate( 'ARG_conceptdate' ) ],
+		[ translate( 'SMW_ConceptSaleDate' ) ] = self.frameArgs[ translate( 'ARG_saledate' ) ],
 		--- Official sites
-		[ 'Galactapedia URL' ] = self.frameArgs[ 'galactapediaurl' ],
-		[ 'Pledge store URL' ] = self.frameArgs[ 'rsistoreurl' ],
-		[ 'Brochure URL' ] = self.frameArgs[ 'brochureurl' ],
-		[ 'Trailer URL' ] = self.frameArgs[ 'trailerurl' ],
-		[ 'Whitleys Guide URL' ] = self.frameArgs[ 'whitleysguideurl' ],
+		[ translate( 'SMW_GalactapediaUrl' ) ] = self.frameArgs[ translate( 'ARG_galactapediaurl' ) ],
+		[ translate( 'SMW_PledgeStoreUrl' ) ] = self.frameArgs[ translate( 'ARG_rsistoreurl' ) ],
+		[ translate( 'SMW_BrochureUrl' ) ] = self.frameArgs[ translate( 'ARG_brochureurl' ) ],
+		[ translate( 'SMW_TrailerUrl' ) ] = self.frameArgs[ translate( 'ARG_trailerurl' ) ],
+		[ translate( 'SMW_WhitleysGuideUrl' ) ] = self.frameArgs[ translate( 'ARG_whitleysguideurl' ) ],
 	}
 
-	local manufacturerArg = self.frameArgs[ 'manufacturer' ]
+	local manufacturerArg = self.frameArgs[ translate( 'ARG_manufacturer' ) ]
 	if manufacturerArg then
-		setData[ 'Manufacturer' ] = manufacturer( manufacturerArg ).name or manufacturerArg
+		setData[ translate( 'SMW_Manufacturer' ) ] = manufacturer( manufacturerArg ).name or manufacturerArg
 	end
 
 	--- Handle numbered parameters
@@ -143,12 +143,12 @@ function methodtable.setSemanticProperties( self )
     -- Set properties with API data
     if self.apiData ~= nil then
 		-- RSI website data
-		setData[ 'Ship matrix name' ] = self.apiData.name
+		setData[ translate( 'SMW_ShipMatrixName' ) ] = self.apiData.name
 		-- Sizes are lowercased
 		if self.apiData.size ~= nil and self.apiData.size ~= 'undefined' then
-			setData[ 'Ship matrix size' ] = lang:ucfirst( self.apiData.size )
+			setData[ translate( 'SMW_ShipMatrixSize' ) ] = lang:ucfirst( self.apiData.size )
 		end
-		setData[ 'Role' ] = self.apiData.foci
+		setData[ translate( 'SMW_Role' ) ] = self.apiData.foci
 
 		-- Loaner vehicles
 		local loaners = {}
@@ -159,67 +159,67 @@ function methodtable.setSemanticProperties( self )
 		end
 
 		if #loaners > 0 then
-			setData[ 'Loaner vehicle' ] = loaners
+			setData[ translate( 'SMW_LoanerVehicle' ) ] = loaners
 		end
 
 		-- Flight ready vehicles
 		--- Override template parameter with in-game data
 		if self.apiData.uuid ~= nil then
-			setData[ 'Game build' ] = self.apiData.version
-			setData[ 'UUID' ] = self.apiData.uuid
-			setData[ 'Class name' ] = self.apiData.class_name
-			setData[ 'Size' ] = self.apiData.size_class
-			setData[ 'Mass' ] = self.apiData.mass
-			setData[ 'Cargo capacity' ] = common.formatNum( self.apiData.cargo_capacity )
-			setData[ 'Vehicle inventory' ] = common.formatNum( self.apiData.vehicle_inventory )
-			setData[ 'Maximum speed' ] = common.formatNum( self.apiData.speed.max )
-			setData[ 'Zero to Maximum speed time' ] = common.formatNum( self.apiData.speed.zero_to_max )
-			setData[ 'Maximum speed to zero time' ] = common.formatNum( self.apiData.speed.max_to_zero )
-			setData[ 'Health point' ] = common.formatNum( self.apiData.health )
+			setData[ translate( 'SMW_GameBuild' ) ] = self.apiData.version
+			setData[ translate( 'SMW_UUID' ) ] = self.apiData.uuid
+			setData[ translate( 'SMW_ClassName' ) ] = self.apiData.class_name
+			setData[ translate( 'SMW_Size' ) ] = self.apiData.size_class
+			setData[ translate( 'SMW_Mass' ) ] = self.apiData.mass
+			setData[ translate( 'SMW_CargoCapacity' ) ] = common.formatNum( self.apiData.cargo_capacity )
+			setData[ translate( 'SMW_VehicleInventory' ) ] = common.formatNum( self.apiData.vehicle_inventory )
+			setData[ translate( 'SMW_MaximumSpeed' ) ] = common.formatNum( self.apiData.speed.max )
+			setData[ translate( 'SMW_ZeroToMaximumSpeedTime' ) ] = common.formatNum( self.apiData.speed.zero_to_max )
+			setData[ translate( 'SMW_MaximumSpeedToZeroTime' ) ] = common.formatNum( self.apiData.speed.max_to_zero )
+			setData[ translate( 'SMW_HealthPoint' ) ] = common.formatNum( self.apiData.health )
 
 			if self.apiData.armor ~= nil then
-				setData[ 'Infrared signature modifier' ] = common.formatNum( self.apiData.armor.signal_infrared )
-				setData[ 'Electromagnetic signature modifier' ] = common.formatNum( self.apiData.armor.signal_electromagnetic )
-				setData[ 'Cross section signature modifier' ] = common.formatNum( self.apiData.armor.signal_cross_section )
-				setData[ 'Physical damage modifier' ] = common.formatNum( self.apiData.armor.damage_physical )
-				setData[ 'Energy damage modifier' ] = common.formatNum( self.apiData.armor.damage_energy )
-				setData[ 'Distortion damage modifier' ] = common.formatNum( self.apiData.armor.damage_distortion )
-				setData[ 'Thermal damage modifier' ] = common.formatNum( self.apiData.armor.damage_thermal )
-				setData[ 'Biochemical damage modifier' ] = common.formatNum( self.apiData.armor.damage_biochemical )
-				setData[ 'Stun damage modifier' ] = common.formatNum( self.apiData.armor.damage_stun )
+				setData[ translate( 'SMW_InfraredSignatureModifier' ) ] = common.formatNum( self.apiData.armor.signal_infrared )
+				setData[ translate( 'SMW_ElectromagneticSignatureModifier' ) ] = common.formatNum( self.apiData.armor.signal_electromagnetic )
+				setData[ translate( 'SMW_CrossSectionSignatureModifier' ) ] = common.formatNum( self.apiData.armor.signal_cross_section )
+				setData[ translate( 'SMW_PhysicalDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_physical )
+				setData[ translate( 'SMW_EnergyDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_energy )
+				setData[ translate( 'SMW_DistortionDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_distortion )
+				setData[ translate( 'SMW_ThermalDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_thermal )
+				setData[ translate( 'SMW_BiochemicalDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_biochemical )
+				setData[ translate( 'SMW_StunDamageModifier' ) ] = common.formatNum( self.apiData.armor.damage_stun )
 			end
 
 			--- Ground vehicle-specific data
 			--- Lazy way to differentiate ground vehicle
 			--- This is ship matrix data though so it might be inconsistent
 			if self.apiData.size == 'vehicle' then
-				setData[ 'Reverse speed' ] = common.formatNum( self.apiData.speed.reverse )
+				setData[ translate( 'SMW_ReverseSpeed' ) ] = common.formatNum( self.apiData.speed.reverse )
 			--- Spaceship-specific data
 			else
-				setData[ 'SCM speed' ] = common.formatNum( self.apiData.speed.scm )
-				setData[ 'Zero to SCM speed time' ] = common.formatNum( self.apiData.speed.zero_to_scm )
-				setData[ 'SCM speed to zero time' ] = common.formatNum( self.apiData.speed.scm_to_zero )
-				setData[ 'Roll rate' ] = common.formatNum( self.apiData.agility.roll or nil, nil )
-				setData[ 'Pitch rate' ] = common.formatNum( self.apiData.agility.pitch or nil, nil )
-				setData[ 'Yaw rate' ] = common.formatNum( self.apiData.agility.yaw or nil, nil )
-				setData[ 'Hydrogen fuel capacity' ] = common.formatNum( self.apiData.fuel.capacity )
-				setData[ 'Hydrogen fuel intake rate' ] = common.formatNum( self.apiData.fuel.intake_rate or 0 )
+				setData[ translate( 'SMW_ScmSpeed' ) ] = common.formatNum( self.apiData.speed.scm )
+				setData[ translate( 'SMW_ZeroToScmSpeedTime' ) ] = common.formatNum( self.apiData.speed.zero_to_scm )
+				setData[ translate( 'SMW_ScmSpeedToZeroTime' ) ] = common.formatNum( self.apiData.speed.scm_to_zero )
+				setData[ translate( 'SMW_RollRate' ) ] = common.formatNum( self.apiData.agility.roll or nil, nil )
+				setData[ translate( 'SMW_PitchRate' ) ] = common.formatNum( self.apiData.agility.pitch or nil, nil )
+				setData[ translate( 'SMW_YawRate' ) ] = common.formatNum( self.apiData.agility.yaw or nil, nil )
+				setData[ translate( 'SMW_HydrogenFuelCapacity' ) ] = common.formatNum( self.apiData.fuel.capacity )
+				setData[ translate( 'SMW_HydrogenFuelIntakeRate' ) ] = common.formatNum( self.apiData.fuel.intake_rate or 0 )
 
 				if self.apiData.quantum ~= nil then
-					setData[ 'Quantum fuel capacity' ] = common.formatNum( self.apiData.quantum.quantum_fuel_capacity )
+					setData[ translate( 'SMW_QuantumFuelCapacity' ) ] = common.formatNum( self.apiData.quantum.quantum_fuel_capacity )
 				end
 			end
 
 			--- Insurance
 			if self.apiData.insurance ~= nil then
-				setData[ 'Insurance claim time' ] = common.formatNum( self.apiData.insurance.claim_time or 0 )
-				setData[ 'Insurance expedite time' ] = common.formatNum( self.apiData.insurance.expedite_time or 0 )
-				setData[ 'Insurance expedite cost' ] = common.formatNum( self.apiData.insurance.expedite_cost or 0 )
+				setData[ translate( 'SMW_InsuranceClaimTime' ) ] = common.formatNum( self.apiData.insurance.claim_time or 0 )
+				setData[ translate( 'SMW_InsuranceExpediteTime' ) ] = common.formatNum( self.apiData.insurance.expedite_time or 0 )
+				setData[ translate( 'SMW_InsuranceExpediteCost' ) ] = common.formatNum( self.apiData.insurance.expedite_cost or 0 )
 			end
 
 			--- Components
 			if self.apiData.hardpoints ~= nil and type( self.apiData.hardpoints ) == 'table' and #self.apiData.hardpoints > 0 then
-				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ 'name' ] or mw.title.getCurrentTitle().fullText )
+				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ translate( 'ARG_name' ) ] or mw.title.getCurrentTitle().fullText )
 				hardpoint:setHardPointObjects( self.apiData.hardpoints )
 				hardpoint:setParts( self.apiData.parts )
 			end
@@ -242,7 +242,7 @@ function methodtable.getSmwData( self )
         return self.smwData
     end
 
-    local queryName = self.frameArgs[ 'smwqueryname' ] or mw.title.getCurrentTitle().fullText
+    local queryName = self.frameArgs[ translate( 'ARG_smwqueryname' ) ] or mw.title.getCurrentTitle().fullText
 
     local smwData = mw.smw.ask( {
         '[[ ' .. queryName .. ' ]]',
@@ -371,10 +371,10 @@ function methodtable.getInfobox( self )
 		)
 	end
 
-	infobox:renderImage( self.frameArgs[ 'image' ] )
+	infobox:renderImage( self.frameArgs[ translate( 'ARG_image' ) ] )
 	infobox:renderIndicator( {
 		data = smwData[ 'Production state' ],
-		desc = self.frameArgs[ 'productionstatedesc' ],
+		desc = self.frameArgs[ translate( 'ARG_productionstatedesc' ) ],
 		class = getIndicatorClass()
 	} )
 	infobox:renderHeader( {
