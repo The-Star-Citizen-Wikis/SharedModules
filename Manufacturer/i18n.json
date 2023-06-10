@@ -1,0 +1,34 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:Manufacturer"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "error_no_text",
+      {
+        "de": "Kein Text angegeben.",
+        "en": "No text specified."
+      }
+    ],
+    [
+      "error_not_found",
+      {
+        "de": "Kein $1 gefunden für die Eingabe $2",
+        "en": "No $1 found for $2."
+      }
+    ]
+  ]
+}

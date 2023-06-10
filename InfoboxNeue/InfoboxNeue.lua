@@ -51,7 +51,7 @@ end
 --- @param filename string
 --- @return string html
 function methodtable.renderImage( self, filename )
-	if filename == false and self.config.displayPlaceholder == true then
+	if type( filename ) ~= 'string' and self.config.displayPlaceholder == true then
 		filename = self.config.placeholderImage
 	end
 
@@ -145,8 +145,11 @@ end
 --- Wrap the HTML into an infobox section
 ---
 --- @param data table {title, subtitle, content, col, class}
+--- @param noInsert boolean whether to insert this section into the internal table table
 --- @return string html
-function methodtable.renderSection( self, data )
+function methodtable.renderSection( self, data, noInsert )
+	noInsert = noInsert or false
+
 	if type( data.content ) == 'table' then
 		data.content = table.concat( data.content )
 	end
@@ -176,7 +179,9 @@ function methodtable.renderSection( self, data )
 
 	local item = tostring( html )
 
-	table.insert( self.entries, item )
+	if not noInsert then
+		table.insert( self.entries, item )
+	end
 
 	return item
 end
@@ -213,11 +218,7 @@ function methodtable.renderLinkButton( self, data )
 		html:wikitext( string.format( '[[%s|%s]]', data[ 'page' ], data[ 'label' ] ) )
 	end
 
-	local item = tostring( html )
-
-	table.insert( self.entries, item )
-
-	return item
+	return tostring( html )
 end
 
 
@@ -345,6 +346,12 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 	return tostring( html ) .. mw.getCurrentFrame():extensionTag{
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
 	}
+end
+
+
+--- Just an accessor for the class method
+function methodtable.showDescIfDiff( s1, s2 )
+	return InfoboxNeue.showDescIfDiff( s1, s2 )
 end
 
 

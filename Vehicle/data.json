@@ -1,0 +1,18 @@
+{
+  "%api_locale": "Locale the api should return. If set to null, all languages are returned. Allowed values are 'de_DE' and 'en_EN",
+  "api_locale": null,
+
+  "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
+  "smw_multilingual_text": false,
+
+  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+  "module_lang": null,
+
+  "%includes": "Additional vehicle information that should be returned",
+  "includes": [
+    "hardpoints",
+    "components",
+    "shops",
+    "parts"
+  ],
+}
