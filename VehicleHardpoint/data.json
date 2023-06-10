@@ -420,7 +420,6 @@
     "DriveUnit": "",
     "FillerStation": "",
     "FireExtinguisher": "",
-    "FuelNozzle": "",
     "FuelPort": "",
     "FuelRefinery": "",
     "GravLev": "",
@@ -429,11 +428,11 @@
     "OffensiveDevices": "",
     "Ordnance": "missile",
     "Paint": "",
-    "PersonalStorage": "",
+    "PersonalStorage": "container",
     "Shield": "shieldgenerator",
     "UtilityDevices": "",
     "Weapons": "weapon",
-    "WeaponRack": "",
+    "WeaponRack": "pistol-s38",
     "VehiclePart": ""
   },
 
