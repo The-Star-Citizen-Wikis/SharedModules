@@ -212,9 +212,9 @@ local function addSubComponents( hardpoint )
 
     if hardpoint.item.type == 'WeaponDefensive' or hardpoint.item.type == 'WeaponGun' then
         local item_type = 'Magazine'
-        if mw.ustring.sub( hardpoint.class_name, -5 ) == 'Chaff' then
+        if mw.ustring.sub( hardpoint.class_name, -5 ) == 'chaff' then
             item_type = 'NoiseLauncherMagazine'
-        elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'Flare' then
+        elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'flare' then
             item_type = 'DecoyLauncherMagazine'
         end
 
@@ -339,12 +339,12 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         local itemObj = row.item
 
         if itemObj.name ~= '<= PLACEHOLDER =>' then
-            local match = string.match( row.class_name or '', 'Destruct_(%d+s)')
+            local match = string.match( row.class_name or '', '[Dd]estruct_(%d+s)' )
 
             if row.type == 'SelfDestruct' and match ~= nil then
-                object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct', true ), match )
+                object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct' ), match )
             else
-                object[ translate( 'SMW_Name' ) ] = row.item.name
+                object[ translate( 'SMW_Name' ) ] = itemObj.name
             end
         else
             object[ translate( 'SMW_Name' ) ] = translate( hardpointData.type )
@@ -354,7 +354,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 
         if ( itemObj.type == 'Cargo' or itemObj.type == 'SeatAccess' or itemObj.type == 'CargoGrid' or itemObj.type == 'Container' )
                 and type( itemObj.inventory ) == 'table' then
-            object[ translate( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil), nil )
+            object[ translate( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil ), nil )
         end
 
         if itemObj.thruster then
@@ -439,16 +439,14 @@ function methodtable.setHardPointObjects( self, hardpoints )
     local objects = {}
     local depth = 1
 
-    local function cleanClassName(input )
-        input = string.gsub( input, '_', ' ' )
-
+    local function cleanClassName( input )
         if string.find( input, 'turret', 1, true ) then
             local parts = mw.text.split( input, 'turret', true )
             input = parts[ 1 ] or input
         end
 
         for _, remove in pairs( { 'top', 'bottom', 'left', 'right', 'front', 'rear', 'bubble', 'side' } ) do
-            input = string.gsub( input, ' ' .. remove, '', 1 )
+            input = string.gsub( input, '_' .. remove, '', 1 )
         end
 
         return input
@@ -1206,7 +1204,7 @@ function VehicleHardpoint.fixTypes( hardpoint, fixes )
     -- Manual mapping defined in Module:VehicleHardpoint/Data
     if type( hardpoint.item ) == 'table' and hardpoint.item ~= nil then
         -- If this is a noise launcher, but the class name says decoy, change Noise to Decoy
-        if string.find( hardpoint.item.name, 'Noise', 1, true ) and string.find( hardpoint.class_name, 'Decoy', 1, true ) then
+        if string.find( hardpoint.item.name, 'Noise', 1, true ) and string.find( hardpoint.class_name, 'decoy', 1, true ) then
             hardpoint.item.name = string.gsub( hardpoint.item.name, ' Noise ', ' Decoy ' )
         end
 
