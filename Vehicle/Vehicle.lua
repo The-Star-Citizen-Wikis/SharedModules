@@ -8,8 +8,8 @@ metatable.__index = methodtable
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local api = require( 'Module:Common/Api' )
-local log = require( 'Module:Log' )
 local manufacturer = require( 'Module:Manufacturer' )._manufacturer
+local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
 
 local lang = mw.getContentLanguage()
@@ -46,14 +46,101 @@ local function translate( key, addSuffix )
 end
 
 
+
+
+
+--- Creates the object that is used to query the SMW store
+---
+--- @param page string the vehicle page containing data
+--- @return table
+local function makeSmwQueryObject( page )
+    local langSuffix = ''
+    if data.smw_multilingual_text == true then
+        langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
+    end
+
+    return {
+        string.format( '[[%s]]', page ),
+        string.format( '?%s', translate( 'SMW_Name' ) ),
+        string.format( '?%s', translate( 'SMW_Manufacturer' ) ),
+        string.format( '?%s', translate( 'SMW_ProductionState' ) ),
+        string.format( '?%s', translate( 'SMW_Role' ) ),
+        string.format( '?%s', translate( 'SMW_ShipMatrixSize' ) ),
+        string.format( '?%s', translate( 'SMW_Size' ) ),
+        string.format( '?%s', translate( 'SMW_Series' ) ),
+        string.format( '?%s', translate( 'SMW_LoanerVehicle' ) ),
+        string.format( '?%s', translate( 'SMW_MinimumCrew' ) ),
+        string.format( '?%s', translate( 'SMW_MaximumCrew' ) ),
+        string.format( '?%s', translate( 'SMW_CargoCapacity' ) ) ,
+        string.format( '?%s', translate( 'SMW_VehicleInventory' ) ) ,
+        string.format( '?%s', translate( 'SMW_PledgePrice' ) ),
+        string.format( '?%s', translate( 'SMW_OriginalPledgePrice' ) ),
+        string.format( '?%s', translate( 'SMW_WarbondPledgePrice' ) ),
+        string.format( '?%s', translate( 'SMW_OriginalWarbondPledgePrice' ) ),
+        string.format( '?%s', translate( 'SMW_PledgeAvailability' ) ),
+        string.format( '?%s', translate( 'SMW_InsuranceClaimTime' ) ),
+        string.format( '?%s', translate( 'SMW_InsuranceExpediteTime' ) ),
+        string.format( '?%s', translate( 'SMW_InsuranceExpediteCost' ) ),
+        string.format( '?%s', translate( 'SMW_EntityLength' ) ),
+        string.format( '?%s', translate( 'SMW_RetractedLength' ) ),
+        string.format( '?%s', translate( 'SMW_EntityWidth' ) ),
+        string.format( '?%s', translate( 'SMW_RetractedWidth' ) ),
+        string.format( '?%s', translate( 'SMW_EntityHeight' ) ),
+        string.format( '?%s', translate( 'SMW_RetractedHeight' ) ),
+        string.format( '?%s', translate( 'SMW_Mass' ) ),
+        string.format( '?%s', translate( 'SMW_ScmSpeed' ) ),
+        string.format( '?%s', translate( 'SMW_ZeroToScmSpeedTime' ) ),
+        string.format( '?%s', translate( 'SMW_ScmSpeedToZeroTime' ) ),
+        string.format( '?%s', translate( 'SMW_MaximumSpeed' ) ),
+        string.format( '?%s', translate( 'SMW_ZeroToMaximumSpeedTime' ) ),
+        string.format( '?%s', translate( 'SMW_MaximumSpeedToZeroTime' ) ),
+        string.format( '?%s', translate( 'SMW_ReverseSpeed' ) ),
+        string.format( '?%s', translate( 'SMW_RollRate' ) ),
+        string.format( '?%s', translate( 'SMW_PitchRate' ) ),
+        string.format( '?%s', translate( 'SMW_YawRate' ) ),
+        string.format( '?%s', translate( 'SMW_HydrogenFuelCapacity' ) ),
+        string.format( '?%s', translate( 'SMW_HydrogenFuelIntakeRate' ) ),
+        string.format( '?%s', translate( 'SMW_QuantumFuelCapacity' ) ),
+        string.format( '?%s', translate( 'SMW_CrossSectionSignatureModifier' ) ),
+        string.format( '?%s', translate( 'SMW_ElectromagneticSignatureModifier' ) ),
+        string.format( '?%s', translate( 'SMW_InfraredSignatureModifier' ) ),
+        string.format( '?%s', translate( 'SMW_PhysicalDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_EnergyDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_DistortionDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_ThermalDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_BiochemicalDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_StunDamageModifier' ) ),
+        string.format( '?%s', translate( 'SMW_HealthPoint' ) ),
+        string.format( '?%s', translate( 'SMW_LoreReleaseDate' ) ),
+        string.format( '?%s', translate( 'SMW_LoreRetirementDate' ) ),
+        string.format( '?%s', translate( 'SMW_ConceptAnnouncementDate' ) ),
+        string.format( '?%s', translate( 'SMW_ConceptSaleDate' ) ),
+        string.format( '?%s', translate( 'SMW_GalactapediaUrl' ) ),
+        string.format( '?%s', translate( 'SMW_PledgeStoreUrl' ) ),
+        string.format( '?%s', translate( 'SMW_PresentationUrl' ) ),
+        string.format( '?%s', translate( 'SMW_PortfolioUrl' ) ),
+        string.format( '?%s', translate( 'SMW_WhitleysGuideUrl' ) ),
+        string.format( '?%s', translate( 'SMW_BrochureUrl' ) ),
+        string.format( '?%s', translate( 'SMW_TrailerUrl' ) ),
+        string.format( '?%s', translate( 'SMW_QAndAUrl' ) ),
+        string.format( '?%s#-', translate( 'SMW_UUID' ) ),
+        string.format( '?%s', translate( 'SMW_ClassName' ) ),
+        string.format( '?%s', translate( 'SMW_ShipMatrixName' ) ),
+    }
+end
+
+
+
 --- Request Api Data
 --- Using current subpage name without vehicle type suffix
 --- @return table or nil
 function methodtable.getApiDataForCurrentPage( self )
-	local query = self.frameArgs.uuid or self.frameArgs[ translate( 'ARG_name' ) ] or common.removeTypeSuffix(
+	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
         mw.title.getCurrentTitle().rootText,
-        { 'ship', 'ground vehicle' }
+		data.name_suffixes
     )
+
+	query = '300i'
 
     local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
         include = data.includes,
@@ -75,7 +162,14 @@ function methodtable.setSemanticProperties( self )
 	local setData = {}
 
 	for _, datum in ipairs( data.smw_data ) do
-		local smwKey, from = next( datum )
+		local smwKey, from
+		for key, get_from in pairs( datum ) do
+			if string.sub( key, 1, 3 ) == 'SMW' then
+				smwKey = key
+				from = get_from
+			end
+		end
+
 		smwKey = translate( smwKey )
 
 		if type( from ) ~= 'table' then
@@ -136,7 +230,7 @@ function methodtable.setSemanticProperties( self )
 		end
 	end
 
-	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_name' ) ] or common.removeTypeSuffix(
+	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().rootText,
 		data.name_suffixes
 	)
@@ -163,6 +257,8 @@ function methodtable.setSemanticProperties( self )
 		end
 	end
 
+	mw.logObject( setData, 'SET' )
+
 	return mw.smw.set( setData )
 end
 
@@ -177,80 +273,15 @@ function methodtable.getSmwData( self )
 
     local queryName = self.frameArgs[ translate( 'ARG_smwqueryname' ) ] or mw.title.getCurrentTitle().fullText
 
-    local smwData = mw.smw.ask( {
-        '[[ ' .. queryName .. ' ]]',
-        '?Name#-',
-        '?Manufacturer#-',
-        '?Production state#-',
-        '?Role#-',
-        '?Ship matrix size#-',
-        '?Size#-',
-        '?Series#-',
-        '?Loaner vehicle',
-        '?Minimum crew#-',
-        '?Maximum crew#-',
-        '?Cargo capacity',
-        '?Vehicle inventory',
-        '?Pledge price',
-        '?Original pledge price',
-        '?Warbond pledge price',
-        '?Original warbond pledge price',
-        '?Pledge availability#-',
-        '?Insurance claim time#-n',
-        '?Insurance expedite time#-n',
-        '?Insurance expedite cost',
-        '?Entity length',
-        '?Retracted length',
-        '?Entity width',
-        '?Retracted width',
-        '?Entity height',
-        '?Retracted height',
-        '?Mass',
-        '?SCM speed',
-        '?Zero to SCM speed time',
-        '?SCM speed to zero time',
-        '?Maximum speed',
-        '?Zero to Maximum speed time',
-        '?Maximum speed to zero time',
-        '?Reverse speed',
-        '?Roll rate',
-        '?Pitch rate',
-        '?Yaw rate',
-        '?Hydrogen fuel capacity',
-        '?Hydrogen fuel intake rate',
-        '?Quantum fuel capacity',
-        '?Cross section signature modifier',
-        '?Electromagnetic signature modifier',
-        '?Infrared signature modifier',
-        '?Physical damage modifier',
-        '?Energy damage modifier',
-        '?Distortion damage modifier',
-        '?Thermal damage modifier',
-        '?Biochemical damage modifier',
-        '?Stun damage modifier',
-        '?Health point',
-        '?Lore release date',
-        '?Lore retirement date',
-        '?Concept announcement date',
-        '?Concept sale date',
-        '?Galactapedia URL#-',
-        '?Pledge store URL#-',
-        '?Presentation URL#-',
-        '?Portfolio URL#-',
-        '?Whitleys Guide URL#-',
-        '?Brochure URL#-',
-        '?Trailer URL#-',
-        '?Q and A URL#-',
-        '?UUID',
-        '?Class name',
-        '?Ship matrix name',
-    } )
+    local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-		return string.format(
-			'[[%s]]%s',
-			translate( 'error_script_error_cat' ),
-			log.info( translate( 'error_no_data_text' ) )
+		return hatnote( string.format(
+				'%s[[%s]]',
+				translate( 'error_no_data_text' ),
+				translate( 'error_script_error_cat' )
+			)
+			, { icon = 'WikimediaUI-Error.svg' }
 		)
     end
 
@@ -280,130 +311,91 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getIndicatorClass()
-		if smwData[ 'Production state' ] == nil then return end
+		if smwData[ translate( 'SMW_ProductionState' ) ] == nil then return end
 
 		local classMap = {
-			[ 'Flight ready' ] = 'green',
-			[ 'In production' ] = 'yellow',
-			[ 'Active for Squadron 42' ] = 'yellow',
-			[ 'In concept' ] = 'red'
+			[ translate( 'FlightReady' ) ] = 'green',
+			[ translate( 'InProduction' ) ] = 'yellow',
+			[ translate( 'ActiveForSquadron42' ) ] = 'yellow',
+			[ translate( 'InConcept' ) ] = 'red'
 		}
 
 		for matcher, class in pairs( classMap ) do
-			if string.match( smwData[ 'Production state' ], matcher ) ~= nil then
+			if string.match( smwData[ translate( 'SMW_ProductionState' ) ], matcher ) ~= nil then
 				return 'infobox__indicator--' .. class
 			end
 		end
 	end
 
 	local function getManufacturer()
-		if smwData[ 'Manufacturer' ] == nil then return end
+		if smwData[ translate( 'SMW_Manufacturer' ) ] == nil then return end
 
-		local mfu = manufacturer( smwData[ 'Manufacturer' ] )
-		if mfu == nil then return smwData[ 'Manufacturer' ] end
+		local mfu = manufacturer( smwData[ translate( 'SMW_Manufacturer' ) ] )
+		if mfu == nil then return smwData[ translate( 'SMW_Manufacturer' ) ] end
 
 		return infobox.showDescIfDiff(
-			table.concat( { '[[', smwData[ 'Manufacturer' ], '|', mfu.name , ']]' } ),
+			table.concat( { '[[', smwData[ translate( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
 			mfu.code
 		)
 	end
 
-	infobox:renderImage( self.frameArgs[ translate( 'ARG_image' ) ] )
-	infobox:renderIndicator( {
-		data = smwData[ 'Production state' ],
-		desc = self.frameArgs[ translate( 'ARG_productionstatedesc' ) ],
-		class = getIndicatorClass()
-	} )
-	infobox:renderHeader( {
-		title = smwData[ 'Name' ],
-		--- e.g. Aegis Dynamics (AEGS)
-		subtitle = getManufacturer()
-	} )
-
 	local function getSize()
-		if smwData[ 'Size' ] == nil then return smwData[ 'Ship matrix size' ] end
+		if smwData[ translate( 'SMW_Size' ) ] == nil then return smwData[ translate( 'SMW_ShipMatrixSize' ) ] end
 		local codes = { 'XXS', 'XS', 'S', 'M', 'L', 'XL' }
 		return infobox.showDescIfDiff(
-			smwData[ 'Ship matrix size' ],
-			table.concat( { 'S', smwData[ 'Size' ], '/', codes[ smwData[ 'Size' ] ] } )
+			smwData[ translate( 'SMW_ShipMatrixSize' ) ],
+			table.concat( { 'S', smwData[ translate( 'SMW_Size' ) ], '/', codes[ smwData[ translate( 'SMW_Size' ) ] ] } )
 		)
 	end
 
 	local function getSeries()
-		if smwData[ 'Series' ] == nil then return end
+		if smwData[ translate( 'SMW_Series' ) ] == nil then return end
 		return string.format(
-			'[[:Category:%s series|%s]]',
-			smwData[ 'Series' ], smwData[ 'Series' ]
+			'[[:Category:%s|%s]]',
+			TNT.format( 'Vehicle', 'category_series', smwData[ translate( 'SMW_Series' ) ] ),
+			smwData[ translate( 'SMW_Series' ) ]
 		)
 	end
 
-	infobox:renderItem( {
-		label = 'Role',
-		data = infobox.tableToCommaList( smwData[ 'Role' ] ),
-	} )
-	infobox:renderItem( {
-		label = 'Size',
-		data = getSize(),
-	} )
-	infobox:renderItem( {
-		label = 'Series',
-		data = getSeries(),
-	} )
-	infobox:renderItem( {
-		label = 'Loaner',
-		data = infobox.tableToCommaList( smwData[ 'Loaner vehicle' ] ),
-	} )
-
-	infobox:renderSection( { content = sectionTable, col = 2 } )
-
 	--- Capacity section
 	local function getCrew()
-		if smwData[ 'Minimum crew' ] and smwData[ 'Maximum crew' ] == nil then return end
-		if smwData[ 'Minimum crew' ] and smwData[ 'Maximum crew' ] and smwData[ 'Minimum crew' ] ~= smwData[ 'Maximum crew' ] then
-			return table.concat( { smwData[ 'Minimum crew' ], ' – ', smwData[ 'Maximum crew' ] } )
+		if smwData[ translate( 'SMW_MinimumCrew' ) ] and smwData[ translate( 'SMW_MaximumCrew' ) ] == nil then
+			return
 		end
 
-		return smwData[ 'Minimum crew' ] or smwData[ 'Maximum crew' ]
+		if smwData[ translate( 'SMW_MinimumCrew' ) ] and
+		   smwData[ translate( 'SMW_MaximumCrew' ) ] and
+		   smwData[ translate( 'SMW_MinimumCrew' ) ] ~= smwData[ translate( 'SMW_MaximumCrew' ) ] then
+			return table.concat( { smwData[ translate( 'SMW_MinimumCrew' ) ], ' – ', smwData[ translate( 'SMW_MaximumCrew' ) ] } )
+		end
+
+		return smwData[ translate( 'SMW_MinimumCrew' ) ] or smwData[ translate( 'SMW_MaximumCrew' ) ]
 	end
 
-	infobox:renderItem( {
-		label = 'Crew',
-		data = getCrew(),
-	} )
-	infobox:renderItem( {
-		label = 'Cargo',
-		data = smwData[ 'Cargo capacity' ],
-	} )
-	infobox:renderItem( {
-		label = 'Stowage',
-		data = smwData[ 'Vehicle inventory' ],
-	} )
-
-	infobox:renderSection( { content = sectionTable, title = 'Capacity', col = 3 } )
 
 	--- Cost section
 	local function getCostSection()
 		local tabberData = {}
 		local section
 
-		tabberData['label1'] = 'Pledge'
+		tabberData[ 'label1' ] = translate( 'LBL_Pledge' )
 		section = {
 			infobox:renderItem( {
-				label = 'Standalone',
-				data = infobox.showDescIfDiff( smwData[ 'Pledge price' ], smwData[ 'Original pledge price' ] ),
+				label = translate( 'LBL_Standalone' ),
+				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_PledgePrice' ) ], smwData[ translate( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Warbond',
-				data = infobox.showDescIfDiff( smwData[ 'Warbond pledge price' ], smwData[ 'Original warbond pledge price' ] ),
+				label = translate( 'LBL_Warbond' ),
+				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_WarbondPledgePrice' ) ], smwData[ translate( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Avaliblity',
-				data = smwData[ 'Pledge availability' ],
+				label = translate( 'LBL_Avaliblity' ),
+				data = smwData[ translate( 'SMW_PledgeAvailability' ) ],
 			} ),
 		}
-		tabberData['content1'] = infobox:renderSection( { content = section, col = 2 }, true )
+		tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
-		tabberData['label2'] = 'Insurance'
+		tabberData[ 'label2' ] = translate( 'LBL_Insurance' )
 
 		local function makeTimeReadable( t )
 			if t ~= nil then
@@ -425,134 +417,127 @@ function methodtable.getInfobox( self )
 
 		section = {
 			infobox:renderItem( {
-				label = 'Claim',
-				data = makeTimeReadable( smwData[ 'Insurance claim time' ] ),
+				label = translate( 'LBL_Claim' ),
+				data = makeTimeReadable( smwData[ translate(' SMW_InsuranceClaimTime' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Expedite',
-				data = makeTimeReadable( smwData[ 'Insurance expedite time' ] ),
+				label = translate( 'LBL_Expedite' ),
+				data = makeTimeReadable( smwData[ translate(' SMW_InsuranceExpediteTime' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Expedite fee',
-				data = smwData[ 'Insurance expedite cost' ],
+				label = translate( 'LBL_ExpediteFee' ),
+				data = smwData[ translate(' SMW_InsuranceExpediteCost' ) ],
 				colspan = 2
 			} ),
 		}
-		tabberData['content2'] = infobox:renderSection( { content = section, col = 4 }, true )
+		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 4 }, true )
 
 		--- TODO: Move this back up to the first tab when we fix universe cost
 		section = {}
 
 		--- Show message on where the game price data are
 		if smwData[ 'UUID' ] ~= nil then
-			tabberData['label3'] = 'Universe'
-			tabberData['content3'] = infobox:renderMessage( {
+			tabberData[ 'label3' ] = 'Universe'
+			tabberData[ 'content3' ] = infobox:renderMessage( {
 				title = 'Persistent Universe data has moved',
 				desc = 'Buy and rent information are now at the [[{{FULLPAGENAMEE}}#Universe_availability|universe availability]] section on the page.'
-			} )
+			}, true )
 		end
 
 		return tabber( tabberData )
 	end
 
-	sectionTable = { getCostSection() }
-
-	infobox:renderSection( {
-		content = sectionTable,
-		title = 'Cost',
-		class = 'infobox__section--tabber'
-	} )
 
 	--- Specifications section
 	local function getSpecificationsSection()
 		local tabberData = {}
 		local section
 
-		tabberData['label1'] = 'Dimensions'
+		tabberData[ 'label1' ] = translate( 'LBL_Dimensions' )
 		section = {
 			infobox:renderItem( {
-				label = 'Length',
-				data = infobox.showDescIfDiff( smwData[ 'Entity length' ], smwData[ 'Retracted length' ] ),
+				label = translate( 'LBL_Length' ),
+				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityLength' ) ], smwData[ translate( 'SMW_RetractedLength' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Width',
-				data = infobox.showDescIfDiff( smwData[ 'Entity width' ], smwData[ 'Retracted width' ] ),
+				label = translate( 'LBL_Width' ),
+				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityWidth' ) ], smwData[ translate( 'SMW_RetractedWidth' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Height',
-				data = infobox.showDescIfDiff( smwData[ 'Entity height' ], smwData[ 'Retracted height' ] ),
+				label = translate( 'LBL_Height' ),
+				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityHeight' ) ], smwData[ translate( 'SMW_RetractedHeight' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Mass',
-				data = smwData[ 'Mass' ],
+				label = translate( 'LBL_Mass' ),
+				data = smwData[ translate( 'SMW_Mass' ) ],
 			} ),
 		}
 
-		tabberData['content1'] = infobox:renderSection( { content =section, col = 3 }, true )
+		tabberData[ 'content1' ] = infobox:renderSection( { content =section, col = 3 }, true )
 
-		tabberData['label2'] = 'Speed'
+		tabberData[ 'label2' ] = translate( 'LBL_Speed' )
 		section = {
 			infobox:renderItem( {
-				label = 'SCM speed',
-				data = smwData[ 'SCM speed' ]
+				label = translate( 'LBL_ScmSpeed' ),
+				data = smwData[ translate( 'SMW_ScmSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = '0 to SCM',
-				data = smwData[ 'Zero to SCM speed time' ]
+				label = translate( 'LBL_0ToScm' ),
+				data = smwData[ translate( 'SMW_ZeroToScmSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'SCM to 0',
-				data = smwData[ 'SCM speed to zero time' ]
+				label = translate( 'LBL_ScmTo0' ),
+				data = smwData[ translate( 'SMW_ScmSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Max speed',
-				data = smwData[ 'Maximum speed' ]
+				label = translate( 'LBL_MaxSpeed' ),
+				data = smwData[ translate( 'SMW_MaximumSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = '0 to max',
-				data = smwData[ 'Zero to Maximum speed time' ]
+				label = translate( 'LBL_0ToMax' ),
+				data = smwData[ translate( 'SMW_ZeroToMaximumSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Max to 0',
-				data = smwData[ 'Maximum speed to zero time' ]
+				label = translate( 'LBL_MaxTo0' ),
+				data = smwData[ translate( 'SMW_MaximumSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Reverse speed',
-				data = smwData[ 'Reverse speed' ]
+				label = translate( 'LBL_ReverseSpeed' ),
+				data = smwData[ translate( 'SMW_ReverseSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Roll rate',
-				data = smwData[ 'Roll rate' ]
+				label = translate( 'LBL_RollRate' ),
+				data = smwData[ translate( 'SMW_RollRate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Pitch rate',
-				data = smwData[ 'Pitch rate' ]
+				label = translate( 'LBL_PitchRate' ),
+				data = smwData[ translate( 'SMW_PitchRate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = 'Yaw rate',
-				data = smwData[ 'Yaw rate' ]
+				label = translate( 'LBL_YawRate' ),
+				data = smwData[ translate( 'SMW_YawRate' ) ]
 			} ),
 		}
-		tabberData['content2'] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
 
-		tabberData['label3'] = 'Fuel'
+		tabberData[ 'label3' ] = translate( 'LBL_Fuel' )
 		section = {
 			infobox:renderItem( {
-				label = 'Hydrogen capacity',
-				data = smwData[ 'Hydrogen fuel capacity' ],
+				label = translate( 'LBL_HydrogenCapacity' ),
+				data = smwData[ translate( 'SMW_HydrogenFuelCapacity' ) ],
 			} ),
 			infobox:renderItem( {
-				label = 'Hydrogen intake',
-				data = smwData[ 'Hydrogen fuel intake rate' ],
+				label = translate( 'LBL_HydrogenIntake' ),
+				data = smwData[ translate( 'SMW_HydrogenFuelIntakeRate' ) ],
 			} ),
 			infobox:renderItem( {
-				label = 'Quantum capacity',
-				data = smwData[ 'Quantum fuel capacity' ],
+				label = translate( 'LBL_QuantumCapacity' ),
+				data = smwData[ translate( 'SMW_QuantumFuelCapacity' ) ],
 			} ),
 		}
-		tabberData['content3'] = infobox:renderSection( { content = section, col = 2 }, true )
+		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
-		tabberData['label4'] = 'Hull'
+		tabberData[ 'label4' ] = translate( 'LBL_Hull' )
 
 		--- FIXME: This should go to somewhere else, like Module:Common
 		--- TODO: Should we color code this for buff and debuff?
@@ -574,200 +559,217 @@ function methodtable.getInfobox( self )
 
 		section = {
 			infobox:renderItem( {
-				label = 'Cross section',
-				data = formatModifier( smwData[ 'Cross section signature modifier' ] ),
+				label = translate( 'LBL_CrossSection' ),
+				data = formatModifier( smwData[ translate( 'SMW_CrossSectionSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Electromagnetic',
-				data = formatModifier( smwData[ 'Electromagnetic signature modifier' ] ),
+				label = translate( 'LBL_Electromagnetic' ),
+				data = formatModifier( smwData[ translate( 'SMW_ElectromagneticSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Infrared',
-				data = formatModifier( smwData[ 'Infrared signature modifier' ] ),
+				label = translate( 'LBL_Infrared' ),
+				data = formatModifier( smwData[ translate( 'SMW_InfraredSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Physical',
-				data = formatModifier( smwData[ 'Physical damage modifier' ] ),
+				label = translate( 'LBL_Physical' ),
+				data = formatModifier( smwData[ translate( 'SMW_PhysicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Energy',
-				data = formatModifier( smwData[ 'Energy damage modifier' ] ),
+				label = translate( 'LBL_Energy' ),
+				data = formatModifier( smwData[ translate( 'SMW_EnergyDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Distortion',
-				data = formatModifier( smwData[ 'Distortion damage modifier' ] ),
+				label = translate( 'LBL_Distortion' ),
+				data = formatModifier( smwData[ translate( 'SMW_DistortionDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Thermal',
-				data = formatModifier( smwData[ 'Thermal damage modifier' ] ),
+				label = translate( 'LBL_Thermal' ),
+				data = formatModifier( smwData[ translate( 'SMW_ThermalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Biochemical',
-				data = formatModifier( smwData[ 'Biochemical damage modifier' ] ),
+				label = translate( 'LBL_Biochemical' ),
+				data = formatModifier( smwData[ translate( 'SMW_BiochemicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Stun',
-				data = formatModifier( smwData[ 'Stun damage modifier' ] ),
+				label = translate( 'LBL_Stun' ),
+				data = formatModifier( smwData[ translate( 'SMW_StunDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = 'Health',
-				data = smwData[ 'Health point' ],
+				label = translate( 'LBL_Health' ),
+				data = smwData[ translate( 'SMW_HealthPoint' ) ],
 			} ),
 		}
-		tabberData['content4'] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content4' ] = infobox:renderSection( { content = section, col = 3 }, true )
 
 		return tabber( tabberData )
 	end
+
+	--- Other sites
+	local function getOfficialSites()
+		local links = {}
+
+		for _, site in ipairs( data.official_sites ) do
+			local query = smwData[ translate( site.attribute ) ]
+
+			if query ~= nil then
+				table.insert( links, infobox:renderLinkButton( {
+					label = translate( site.label ),
+					link = query
+				} ) )
+			end
+		end
+
+		return links
+	end
+
+	local function getCommunitySites()
+		local links = {}
+
+		for _, site in ipairs( data.community_sites ) do
+			local query = smwData[ translate( site.data ) ]
+
+			if query ~= nil then
+				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
+					query = string.lower( query )
+				elseif site.data == 'SMW_ShipMatrixName' then
+					query = mw.uri.encode( query, 'PATH' )
+				end
+
+				table.insert( links, infobox:renderLinkButton( {
+					label = site.label,
+					link = string.format( site.format, query )
+				} ) )
+			end
+		end
+
+		return links
+	end
+
+
+	infobox:renderImage( self.frameArgs[ translate( 'ARG_Image' ) ] )
+
+	infobox:renderIndicator( {
+		data = smwData[ translate( 'SMW_ProductionState' ) ],
+		desc = self.frameArgs[ translate( 'ARG_ProductionStateDesc' ) ],
+		class = getIndicatorClass()
+	} )
+	infobox:renderHeader( {
+		title = smwData[ translate( 'SMW_Name' ) ],
+		--- e.g. Aegis Dynamics (AEGS)
+		subtitle = getManufacturer()
+	} )
+
+	infobox:renderItem( {
+		label = translate( 'LBL_Role' ),
+		data = infobox.tableToCommaList( smwData[ translate( 'SMW_Role' ) ] ),
+	} )
+	infobox:renderItem( {
+		label = translate( 'LBL_Size' ),
+		data = getSize(),
+	} )
+	infobox:renderItem( {
+		label = translate( 'LBL_Series' ),
+		data = getSeries(),
+	} )
+	infobox:renderItem( {
+		label = translate( 'LBL_Loaner' ),
+		data = infobox.tableToCommaList( smwData[ translate( 'SMW_LoanerVehicle' ) ] ),
+	} )
+
+	infobox:renderSection( { content = sectionTable, col = 2 } )
+
+
+	infobox:renderItem( {
+		label = translate( 'LBL_Crew' ),
+		data = getCrew(),
+	} )
+	infobox:renderItem( {
+		label = translate( 'LBL_Cargo' ),
+		data = smwData[ translate( 'SMW_CargoCapacity' ) ],
+	} )
+	infobox:renderItem( {
+		label = translate( 'LBL_Stowage' ),
+		data = smwData[ translate( 'SMW_VehicleInventory' ) ],
+	} )
+
+	infobox:renderSection( { content = sectionTable, title = translate( 'LBL_Capacity' ), col = 3 } )
+
+
+	sectionTable = { getCostSection() }
+
+	infobox:renderSection( {
+		content = sectionTable,
+		title = translate( 'LBL_Cost' ),
+		class = 'infobox__section--tabber'
+	} )
+
 
 	sectionTable = { getSpecificationsSection() }
 
 	infobox:renderSection( {
 		content = sectionTable,
-		title = 'Specifications',
+		title = translate( 'LBL_Specifications' ),
 	 	class = 'infobox__section--tabber'
 	} )
 
 	--- Lore section
 	sectionTable = {
 		infobox.renderItem( {
-				label = 'Released',
-				data = smwData[ 'Lore release date' ]
+				label = translate( 'LBL_Released' ),
+				data = smwData[ translate( 'SMW_LoreReleaseDate' ) ]
 		} ),
 		infobox.renderItem( {
-				label = 'Retired',
-				data = smwData[ 'Lore retirement date' ]
+				label = translate( 'LBL_Retired' ),
+				data = smwData[ translate( 'SMW_LoreRetirementDate' ) ]
 		} ),
 	}
 
 	infobox:renderSection( {
 		content = sectionTable,
-		title = 'Lore',
+		title = translate( 'LBL_Lore' ),
 		col = 2
 	} )
 
 	--- Development section
 	sectionTable = {
 		infobox:renderItem( {
-			label = 'Announced',
-			data = smwData[ 'Concept announcement date' ]
+			label = translate( 'LBL_Announced' ),
+			data = smwData[ 'SMW_ConceptAnnouncementDate' ]
 		} ),
 		infobox:renderItem( {
-			label = 'Concept sale',
-			data = smwData[ 'Concept sale date' ]
+			label = translate( 'LBL_ConceptSale' ),
+			data = smwData[ 'SMW_ConceptSaleDate' ]
 		} ),
 	}
 
 	infobox:renderSection( {
 		content = sectionTable,
-		title = 'Development',
+		title = translate( 'LBL_Development' ),
 		col = 2
 	} )
 
-	--- Other sites
-	local function getOfficialSites()
-		return {
-			infobox:renderLinkButton( {
-				label = 'Galactapedia',
-				link = smwData[ 'Galactapedia URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Pledge store',
-				link = smwData[ 'Pledge store URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Presentation',
-				link = smwData[ 'Presentation URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Portfolio',
-				link = smwData[ 'Portfolio URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Whitley\'s Guide',
-				link = smwData[ 'Whitleys Guide URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Brochure',
-				link = smwData[ 'Brochure URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Trailer',
-				link = smwData[ 'Trailer URL' ]
-			} ),
-			infobox:renderLinkButton( {
-				label = 'Q&A',
-				link = smwData[ 'Q and A URL' ]
-			} ),
-		}
-	end
-
-	local function getCommunitySites()
-		local links = {}
-		local query
-
-		if smwData[ 'UUID' ] ~= nil then
-			table.insert( links, infobox:renderLinkButton( {
-				label = 'Universal Item Finder',
-				link = string.format(
-					'https://finder.cstone.space/search/%s',
-					smwData[ 'UUID' ]
-				)
-			} ) )
-		end
-
-		if smwData[ 'Class name' ] ~= nil then
-			query = smwData[ 'Class name' ]:lower()
-			table.insert( links, infobox:renderLinkButton( {
-				label = '#DPSCalculator',
-				link = string.format( 'https://www.erkul.games/ship/%s', query )
-			} ) )
-			table.insert( links, infobox:renderLinkButton( {
-				label = 'SPViewer',
-				link = string.format( 'https://www.spviewer.eu/pages/ship-performances.html?ship=%s', query )
-			} ) )
-			table.insert( links, infobox:renderLinkButton( {
-				label = 'TIS Ship Map',
-				link = string.format( 'https://tradein.space/#/ship_maps/%s', query )
-			} ) )
-		end
-
-		if smwData[ 'Ship matrix name' ] ~= nil then
-			query = mw.uri.encode( smwData[ 'Ship matrix name' ], 'PATH' )
-			table.insert( links, infobox:renderLinkButton( {
-				label = 'StarShip 42',
-				link = string.format( 'https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s', query )
-			} ) )
-			table.insert( links, infobox:renderLinkButton( {
-				label = 'FleetYards',
-				link = string.format( 'https://fleetyards.net/ships/%s', query )
-			} ) )
-		end
-
-		return links
-	end
-
 	sectionTable = {
 		infobox:renderItem( {
-			label = 'Official sites',
+			label = translate( 'LBL_OfficialSites' ),
 			data = getOfficialSites()
 		} ),
 		infobox:renderItem( {
-			label = 'Community sites',
+			label = translate( 'LBL_CommunitySites' ),
 			data = getCommunitySites()
 		} ),
 	}
 
 	infobox:renderFooterButton( {
 		icon = 'WikimediaUI-Globe.svg',
-		label = 'Other sites',
+		label = translate( 'LBL_OtherSites' ),
 		type = 'popup',
-		content = infobox.renderSection( {
-			content = table.concat( sectionTable ),
+		content = infobox:renderSection( {
+			content = sectionTable,
 			class = 'infobox__section--linkButtons'
-		} )
+		}, true )
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ 'name' ] )
+	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
 end
 
 
@@ -797,6 +799,21 @@ function Vehicle.new( self )
     }
     setmetatable( instance, metatable )
     return instance
+end
+
+
+-- Load and save data from api.star-citizen.wiki
+function Vehicle.loadApiData( frame )
+	local instance = Vehicle:new()
+	instance:setFrame( frame )
+	instance:saveApiData()
+end
+
+
+function Vehicle.infobox( frame )
+	local instance = Vehicle:new()
+	instance:setFrame( frame )
+	return tostring( instance:getInfobox() )
 end
 
 

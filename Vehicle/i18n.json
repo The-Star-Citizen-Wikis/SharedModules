@@ -17,212 +17,261 @@
   },
   "data": [
     [
-      "ARG_productionstate",
+      "ARG_Image",
       {
-        "de": "",
+        "de": "Bild",
+        "en": "image"
+      }
+    ],
+    [
+      "ARG_ProductionStateDesc",
+      {
+        "de": "Produktionsstatus Beschreibung",
+        "en": "productionstatedesc"
+      }
+    ],
+    [
+      "ARG_SmwQueryName",
+      {
+        "de": "SMW Query Name",
+        "en": "smwqueryname"
+      }
+    ],
+    [
+      "ARG_UUID",
+      {
+        "de": "UUID",
+        "en": "uuid"
+      }
+    ],
+    [
+      "ARG_Name",
+      {
+        "de": "Name",
+        "en": "name"
+      }
+    ],
+    [
+      "ARG_ProductionState",
+      {
+        "de": "Produktionsstatus",
         "en": "productionstate"
       }
     ],
     [
-      "ARG_role",
+      "ARG_Role",
       {
-        "de": "",
+        "de": "Rolle",
         "en": "role"
       }
     ],
     [
-      "ARG_series",
+      "ARG_Series",
       {
-        "de": "",
+        "de": "Serie",
         "en": "series"
       }
     ],
     [
-      "ARG_size",
+      "ARG_Size",
       {
-        "de": "",
+        "de": "Fahrzeuggröße",
         "en": "size"
       }
     ],
     [
-      "ARG_pledgeavailability",
+      "ARG_PledgeAvailability",
       {
         "de": "",
         "en": "pledgeavailability"
       }
     ],
     [
-      "ARG_pledgecost",
+      "ARG_PledgePrice",
       {
-        "de": "",
+        "de": "Schiffspreis",
         "en": "pledgecost"
       }
     ],
     [
-      "ARG_originalpledgecost",
+      "ARG_OriginalPledgePrice",
       {
         "de": "",
         "en": "originalpledgecost"
       }
     ],
     [
-      "ARG_warbondcost",
+      "ARG_WarbondPledgePrice",
       {
         "de": "",
         "en": "warbondcost"
       }
     ],
     [
-      "ARG_originalwarbondcost",
+      "ARG_OriginalWarbondPledgePrice",
       {
         "de": "",
         "en": "originalwarbondcost"
       }
     ],
     [
-      "ARG_mincrew",
+      "ARG_MinimumCrew",
       {
-        "de": "",
+        "de": "Minimalbesatzung",
         "en": "mincrew"
       }
     ],
     [
-      "ARG_maxcrew",
+      "ARG_MaximumCrew",
       {
-        "de": "",
+        "de": "Maximalbesatzung",
         "en": "maxcrew"
       }
     ],
     [
-      "ARG_cargocapacity",
+      "ARG_Manufacturer",
       {
-        "de": "",
+        "de": "Hersteller",
+        "en": "manufacturer"
+      }
+    ],
+    [
+      "ARG_CargoCapacity",
+      {
+        "de": "Frachtkapazität",
         "en": "cargocapacity"
       }
     ],
     [
-      "ARG_combatspeed",
+      "ARG_ScmSpeed",
       {
-        "de": "",
+        "de": "SCM-Geschwindigkeit",
+        "en": "scmspeed"
+      }
+    ],
+    [
+      "ARG_CombatSpeed",
+      {
+        "de": "Kampfgeschwindigkeit",
         "en": "combatspeed"
       }
     ],
     [
-      "ARG_maxspeed",
+      "ARG_MaxSpeed",
       {
-        "de": "",
+        "de": "Maximalgeschwindigkeit",
         "en": "maxspeed"
       }
     ],
     [
-      "ARG_length",
+      "ARG_Length",
       {
-        "de": "",
+        "de": "Länge",
         "en": "length"
       }
     ],
     [
-      "ARG_width",
+      "ARG_Width",
       {
-        "de": "",
+        "de": "Breite",
         "en": "width"
       }
     ],
     [
-      "ARG_height",
+      "ARG_Height",
       {
-        "de": "",
+        "de": "Höhe",
         "en": "height"
       }
     ],
     [
-      "ARG_retractedlength",
+      "ARG_RetractedLength",
       {
         "de": "",
         "en": "retractedlength"
       }
     ],
     [
-      "ARG_retractedwidth",
+      "ARG_RetractedWidth",
       {
         "de": "",
         "en": "retractedwidth"
       }
     ],
     [
-      "ARG_retractedheight",
+      "ARG_RetractedHeight",
       {
         "de": "",
         "en": "retractedheight"
       }
     ],
     [
-      "ARG_mass",
+      "ARG_Mass",
       {
-        "de": "",
+        "de": "Masse",
         "en": "mass"
       }
     ],
     [
-      "ARG_releasedate",
+      "ARG_ReleaseDate",
       {
-        "de": "",
+        "de": "Veröffentlichungsdatum",
         "en": "releasedate"
       }
     ],
     [
-      "ARG_retiredate",
+      "ARG_RetireDate",
       {
-        "de": "",
+        "de": "Ruhestandsdatum",
         "en": "retiredate"
       }
     ],
     [
-      "ARG_conceptdate",
+      "ARG_ConceptDate",
       {
-        "de": "",
+        "de": "Konzeptdatum",
         "en": "conceptdate"
       }
     ],
     [
-      "ARG_saledate",
+      "ARG_SaleDate",
       {
         "de": "",
         "en": "saledate"
       }
     ],
     [
-      "ARG_galactapediaurl",
+      "ARG_GalactapediaUrl",
       {
-        "de": "",
+        "de": "Glactapedia URL",
         "en": "galactapediaurl"
       }
     ],
     [
-      "ARG_rsistoreurl",
+      "ARG_RsiStoreUrl",
       {
-        "de": "",
+        "de": "RSI Shop URL",
         "en": "rsistoreurl"
       }
     ],
     [
-      "ARG_brochureurl",
+      "ARG_BrochureUrl",
       {
-        "de": "",
+        "de": "Broschüre URL",
         "en": "brochureurl"
       }
     ],
     [
-      "ARG_trailerurl",
+      "ARG_TrailerUrl",
       {
-        "de": "",
+        "de": "Tailer URL",
         "en": "trailerurl"
       }
     ],
     [
-      "ARG_whitleysguideurl",
+      "ARG_WhitleysGuideUrl",
       {
-        "de": "",
+        "de": "Whitleys Guide URL",
         "en": "whitleysguideurl"
       }
     ],
@@ -715,6 +764,490 @@
       {
         "de": "Zeit von Null bis SCM-Geschwindigkeit",
         "en": "Zero to SCM speed time"
+      }
+    ],
+
+    [
+      "LBL_Role",
+      {
+        "de": "Rolle",
+        "en": "Role"
+      }
+    ],
+    [
+      "LBL_Size",
+      {
+        "de": "Größe",
+        "en": "Size"
+      }
+    ],
+    [
+      "LBL_Series",
+      {
+        "de": "Serie",
+        "en": "Series"
+      }
+    ],
+    [
+      "LBL_Loaner",
+      {
+        "de": "Leihschiff",
+        "en": "Loaner"
+      }
+    ],
+    [
+      "LBL_Crew",
+      {
+        "de": "Besatzung",
+        "en": "Crew"
+      }
+    ],
+    [
+      "LBL_Cargo",
+      {
+        "de": "Frachtkapazität",
+        "en": "Cargo"
+      }
+    ],
+    [
+      "LBL_Stowage",
+      {
+        "de": "Stauraum",
+        "en": "Stowage"
+      }
+    ],
+    [
+      "LBL_Capacity",
+      {
+        "de": "Kapazität",
+        "en": "Capacity"
+      }
+    ],
+    [
+      "LBL_Pledge",
+      {
+        "de": "Pledge",
+        "en": "Pledge"
+      }
+    ],
+    [
+      "LBL_Standalone",
+      {
+        "de": "Standalone",
+        "en": "Standalone"
+      }
+    ],
+    [
+      "LBL_Warbond",
+      {
+        "de": "Warbond",
+        "en": "Warbond"
+      }
+    ],
+    [
+      "LBL_Avaliblity",
+      {
+        "de": "Verfügbarkeit",
+        "en": "Avaliblity"
+      }
+    ],
+    [
+      "LBL_Insurance",
+      {
+        "de": "Versicherung",
+        "en": "Insurance"
+      }
+    ],
+    [
+      "LBL_Claim",
+      {
+        "de": "Claim",
+        "en": "Claim"
+      }
+    ],
+    [
+      "LBL_Expedite",
+      {
+        "de": "Expedite",
+        "en": "Expedite"
+      }
+    ],
+    [
+      "LBL_ExpediteFee",
+      {
+        "de": "ExpediteFee",
+        "en": "Expedite fee"
+      }
+    ],
+    [
+      "LBL_Dimensions",
+      {
+        "de": "Dimensionen",
+        "en": "Dimensions"
+      }
+    ],
+    [
+      "LBL_Length",
+      {
+        "de": "Länge",
+        "en": "Length"
+      }
+    ],
+    [
+      "LBL_Width",
+      {
+        "de": "Breite",
+        "en": "Width"
+      }
+    ],
+    [
+      "LBL_Height",
+      {
+        "de": "Höhe",
+        "en": "Height"
+      }
+    ],
+    [
+      "LBL_Mass",
+      {
+        "de": "Masse",
+        "en": "Mass"
+      }
+    ],
+
+    [
+      "LBL_Speed",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Speed"
+      }
+    ],
+    [
+      "LBL_ScmSpeed",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Scm speed"
+      }
+    ],
+    [
+      "LBL_0ToScm",
+      {
+        "de": "Geschwindigkeit",
+        "en": "0 to scm"
+      }
+    ],
+    [
+      "LBL_ScmTo0",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Scm to 0"
+      }
+    ],
+    [
+      "LBL_MaxSpeed",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Max speed"
+      }
+    ],
+    [
+      "LBL_0ToMax",
+      {
+        "de": "Geschwindigkeit",
+        "en": "0 to max"
+      }
+    ],
+    [
+      "LBL_MaxTo0",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Max to 0"
+      }
+    ],
+    [
+      "LBL_ReverseSpeed",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Reverse speed"
+      }
+    ],
+    [
+      "LBL_RollRate",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Roll rate"
+      }
+    ],
+    [
+      "LBL_PitchRate",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Pitch rate"
+      }
+    ],
+    [
+      "LBL_YawRate",
+      {
+        "de": "Geschwindigkeit",
+        "en": "Yaw rate"
+      }
+    ],
+    [
+      "LBL_Fuel",
+      {
+        "de": "Treibstoff",
+        "en": "Fuel"
+      }
+    ],
+    [
+      "LBL_HydrogenCapacity",
+      {
+        "de": "Wasserstoffkapazität",
+        "en": "Hydrogen capacity"
+      }
+    ],
+    [
+      "LBL_HydrogenIntake",
+      {
+        "de": "Sammelrate",
+        "en": "Hydrogen intake"
+      }
+    ],
+    [
+      "LBL_QuantumCapacity",
+      {
+        "de": "Quantumkapazität",
+        "en": "Quantum capacity"
+      }
+    ],
+    [
+      "LBL_Hull",
+      {
+        "de": "Hülle",
+        "en": "Hull"
+      }
+    ],
+
+    [
+      "LBL_CrossSection",
+      {
+        "de": "Hülle",
+        "en": "Cross section"
+      }
+    ],
+    [
+      "LBL_Electromagnetic",
+      {
+        "de": "Hülle",
+        "en": "Electromagnetic"
+      }
+    ],
+    [
+      "LBL_Infrared",
+      {
+        "de": "Hülle",
+        "en": "Infrared"
+      }
+    ],
+    [
+      "LBL_Physical",
+      {
+        "de": "Hülle",
+        "en": "Physical"
+      }
+    ],
+    [
+      "LBL_Energy",
+      {
+        "de": "Hülle",
+        "en": "Energy"
+      }
+    ],
+    [
+      "LBL_Distortion",
+      {
+        "de": "Hülle",
+        "en": "Distortion"
+      }
+    ],
+    [
+      "LBL_Thermal",
+      {
+        "de": "Hülle",
+        "en": "Thermal"
+      }
+    ],
+    [
+      "LBL_Biochemical",
+      {
+        "de": "Hülle",
+        "en": "Biochemical"
+      }
+    ],
+    [
+      "LBL_Stun",
+      {
+        "de": "Hülle",
+        "en": "Stun"
+      }
+    ],
+    [
+      "LBL_Health",
+      {
+        "de": "Hülle",
+        "en": "Health"
+      }
+    ],
+
+    [
+      "LBL_Cost",
+      {
+        "de": "Kosten",
+        "en": "Cost"
+      }
+    ],
+
+    [
+      "LBL_Specifications",
+      {
+        "de": "Spezifikation",
+        "en": "Specifications"
+      }
+    ],
+
+    [
+      "LBL_Released",
+      {
+        "de": "Released",
+        "en": "Released"
+      }
+    ],
+
+    [
+      "LBL_Retired",
+      {
+        "de": "Retired",
+        "en": "Retired"
+      }
+    ],
+
+    [
+      "LBL_Lore",
+      {
+        "de": "Lore",
+        "en": "Lore"
+      }
+    ],
+
+    [
+      "LBL_Announced",
+      {
+        "de": "Announced",
+        "en": "Announced"
+      }
+    ],
+    [
+      "LBL_ConceptSale",
+      {
+        "de": "Concept Sale",
+        "en": "Concept sale"
+      }
+    ],
+
+    [
+      "LBL_Development",
+      {
+        "de": "Entwicklung",
+        "en": "Development"
+      }
+    ],
+
+    [
+      "LBL_OfficialSites",
+      {
+        "de": "Offizielle Seiten",
+        "en": "Official sites"
+      }
+    ],
+    [
+      "LBL_CommunitySites",
+      {
+        "de": "Community Seiten",
+        "en": "Community sites"
+      }
+    ],
+
+    [
+      "LBL_OtherSites",
+      {
+        "de": "Andere Seiten",
+        "en": "Other sites"
+      }
+    ],
+
+    [
+      "LBL_Galactapedia",
+      {
+        "de": "Andere Seiten",
+        "en": "Galactapedia"
+      }
+    ],
+    [
+      "LBL_PledgeStore",
+      {
+        "de": "Andere Seiten",
+        "en": "Pledge store"
+      }
+    ],
+    [
+      "LBL_Presentation",
+      {
+        "de": "Andere Seiten",
+        "en": "Presentation"
+      }
+    ],
+    [
+      "LBL_Portfolio",
+      {
+        "de": "Andere Seiten",
+        "en": "Portfolio"
+      }
+    ],
+    [
+      "LBL_WhitleysGuide",
+      {
+        "de": "Whitley's Guide",
+        "en": "Whitley's Guide"
+      }
+    ],
+    [
+      "LBL_Brochure",
+      {
+        "de": "Broschüre",
+        "en": "Brochure"
+      }
+    ],
+    [
+      "LBL_Trailer",
+      {
+        "de": "Trailer",
+        "en": "Trailer"
+      }
+    ],
+    [
+      "LBL_QA",
+      {
+        "de": "Q&A",
+        "en": "Q&A"
+      }
+    ],
+
+
+    [
+      "category_series",
+      {
+        "de": "$1 (Serie)",
+        "en": "$1 series"
 
       }
     ],

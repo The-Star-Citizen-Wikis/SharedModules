@@ -37,10 +37,12 @@ end
 ---
 --- @param data table {title, desc)
 --- @return string html
-function methodtable.renderMessage( self, data )
+function methodtable.renderMessage( self, data, noInsert )
 	local item = self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) } )
 
-	table.insert( self.entries, item )
+	if not noInsert then
+		table.insert( self.entries, item )
+	end
 
 	return item
 end

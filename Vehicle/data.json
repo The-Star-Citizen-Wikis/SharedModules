@@ -1,6 +1,6 @@
 {
   "%api_locale": "Locale the api should return. If set to null, all languages are returned. Allowed values are 'de_DE' and 'en_EN",
-  "api_locale": null,
+  "api_locale": "en_EN",
 
   "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
   "smw_multilingual_text": false,
@@ -19,7 +19,7 @@
     "parts"
   ],
 
-  "%name_suffixes": "List suffixes that should be removed from the entity's name",
+  "%name_suffixes": "List suffixes that should be removed from the entity's name. Data values are converted to lowercase",
   "name_suffixes": [ "ship", "ground vehicle" ],
 
   "%smw_data": "Sets which data gets added to SMW",
@@ -60,7 +60,13 @@
       "type": "number"
     },
 
-    { "SMW_ScmSpeed": "ARG_ScmSpeed" },
+    {
+      "SMW_ScmSpeed": [
+        "ARG_ScmSpeed",
+        "API_speed.scm"
+      ],
+      "type": "number"
+    },
     {
       "SMW_MaximumSpeed": [
         "ARG_MaximumSpeed",
@@ -95,7 +101,7 @@
       "max": 5
     },
     {
-      "SMW_QandAUrl": "ARG_QandAUrl",
+      "SMW_QAndAUrl": "ARG_QAndAUrl",
       "type": "range",
       "max": 5
     },
@@ -123,7 +129,6 @@
 
     { "SMW_ReverseSpeed": "API_speed.reverse", "type": "number" },
 
-    { "SMW_ScmSpeed": "API_speed.scm", "type": "number" },
     { "SMW_ZeroToScmSpeedTime": "API_speed.zero_to_scm", "type": "number" },
     { "SMW_ScmSpeedToZeroTime": "API_speed.scm_to_zero", "type": "number" },
     { "SMW_RollRate": "API_agility.roll", "type": "number" },
@@ -136,6 +141,76 @@
 
     { "SMW_InsuranceClaimTime": "API_insurance.claim_time", "type": "number" },
     { "SMW_InsuranceExpediteTime": "API_insurance.expedite_time", "type": "number" },
-    { "SMW_InsuranceExpediteCost": "API_insurance.expedite_cost", "type": "number" },
+    { "SMW_InsuranceExpediteCost": "API_insurance.expedite_cost", "type": "number" }
+  ],
+
+  "%community_sites": "List of format strings which link to community sites",
+  "community_sites": [
+    {
+      "label": "Universal Item Finder",
+      "format": "https://finder.cstone.space/search/%s",
+      "data": "SMW_UUID"
+    },
+    {
+      "label": "#DPSCalculator",
+      "format": "https://finder.cstone.space/search/%s",
+      "data": "SMW_ClassName"
+    },
+    {
+      "label": "SPViewer",
+      "format": "https://www.spviewer.eu/pages/ship-performances.html?ship=%s",
+      "data": "SMW_ClassName"
+    },
+    {
+      "label": "TIS Ship Map",
+      "format": "https://tradein.space/#/ship_maps/%s",
+      "data": "SMW_ClassName"
+    },
+    {
+      "label": "StarShip 42",
+      "format": "https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s",
+      "data": "SMW_ShipMatrixName"
+    },
+    {
+      "label": "FleetYards",
+      "format": "https://fleetyards.net/ships/%s",
+      "data": "SMW_ShipMatrixName"
+    }
+  ],
+
+  "%official_sites": "List of attributes that link to official sites",
+  "official_sites": [
+    {
+      "label": "LBL_Galactapedia",
+      "attribute": "SMW_GalactapediaUrl"
+    },
+    {
+      "label": "LBL_PledgeStore",
+      "attribute": "SMW_PledgeStoreUrl"
+    },
+    {
+      "label": "LBL_Presentation",
+      "attribute": "SMW_PresentationUrl"
+    },
+    {
+      "label": "LBL_Portfolio",
+      "attribute": "SMW_PortfolioUrl"
+    },
+    {
+      "label": "LBL_WhitleysGuide",
+      "attribute": "SMW_WhitleysGuideUrl"
+    },
+    {
+      "label": "LBL_Brochure",
+      "attribute": "SMW_BrochureUrl"
+    },
+    {
+      "label": "LBL_Trailer",
+      "attribute": "SMW_TrailerUrl"
+    },
+    {
+      "label": "LBL_QA",
+      "attribute": "SMW_QAndAUrl"
+    }
   ]
 }
