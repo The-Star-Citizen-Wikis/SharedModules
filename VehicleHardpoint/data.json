@@ -313,6 +313,11 @@
       "matches": [],
       "type": "PersonalStorage"
     },
+    "SelfDestruct": {
+      "class": "Systems",
+      "matches": [],
+      "type": "SelfDestruct"
+    },
     "Shield": {
       "class": "Systems",
       "matches": [
