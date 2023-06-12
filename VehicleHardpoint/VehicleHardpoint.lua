@@ -785,22 +785,12 @@ function methodtable.makeSubtitle( self, item )
 
     -- Show SCU in subtitle
     if item.scu ~= nil then
-        -- Fix for german number format
-        if string.find( item.scu, ',', 1, true ) then
-            item.scu = string.gsub( item.scu, ',', '.' )
-        end
-
-        local success, scu = pcall( tonumber, string.gsub( item.scu, ',', '.' ), 10 )
-        if success then
-            item.scu = scu
-        end
-
-        if type( item.scu ) == 'number' then
-            if item.type == translate( 'CargoGrid' ) then
-                subtitle = item.scu .. ' SCU' or 'N/A'
-            elseif item.type == translate( 'PersonalStorage' ) then
-                subtitle = item.scu * 1000 .. 'K µSCU' or 'N/A'
-            end
+        -- We need to use raw value from SMW to show scu in different units (SCU, K µSCU)
+        -- So we need to format the number manually
+        if item.type == translate( 'CargoGrid' ) then
+            subtitle = common.formatNum( item.scu ) .. ' SCU' or 'N/A'
+        elseif item.type == translate( 'PersonalStorage' ) then
+            subtitle = common.formatNum( item.scu * 1000 ) .. 'K µSCU' or 'N/A'
         end
     end
 
