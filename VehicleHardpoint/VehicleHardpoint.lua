@@ -913,7 +913,7 @@ function methodtable.makeSubtitle( self, item )
     
             local converted = {}
             for _, position in ipairs( item.position ) do
-                table.insert( converted, mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) )
+                table.insert( converted, mw.text.trim( mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) ) )
             end
 
             table.insert( subtitle,
