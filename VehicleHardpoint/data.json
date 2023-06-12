@@ -25,8 +25,7 @@
     "Armor": {
       "class": "Facilities",
       "matches": [],
-      "type": "Armor",
-      "icon": ""
+      "type": "Armor"
     },
     "ArmorLocker": {
       "class": "CargoGrid",
@@ -91,6 +90,12 @@
       ],
       "type": "Cooler"
     },
+    "DecoyLauncher": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "DefensiveDevices",
+      "subtype": "DecoyLauncher"
+    },
     "DecoyLauncherMagazine": {
       "class": "Weapons",
       "matches": [],
@@ -111,12 +116,14 @@
     "EMP": {
       "class": "Utility",
       "matches": [],
-      "type": "OffensiveDevices"
+      "type": "OffensiveDevices",
+      "subtype": "EMP"
     },
     "ExternalFuelTank": {
       "class": "Cargo",
       "matches": [],
-      "type": "CargoPod"
+      "type": "CargoPod",
+      "subtype": "FuelPod"
     },
     "FireExtinguisher": {
       "class": "Facilities",
@@ -143,7 +150,8 @@
       "matches": [
         "hardpoint_fuel_refinery.*"
       ],
-      "type": "FuelRefinery"
+      "type": "UtilityDevices",
+      "subtype": "FuelRefinery"
     },
     "FuelTank": {
       "class": "Propulsion",
@@ -152,12 +160,22 @@
       ],
       "type": "FuelTank"
     },
+    "GimbalMount": {
+      "class": "Weapons",
+      "type": "Weapons",
+      "subtype": "GimbalMount"
+    },
     "GravityGenerator": {
       "class": "Systems",
       "matches": [
         "hardpoint_gravity_generator"
       ],
       "type": "GravityGenerator"
+    },
+    "GravLev": {
+      "class": "Thrusters",
+      "type": "ManneuverThruster",
+      "subtype": "GravLev"
     },
     "LifeSupportGenerator": {
       "class": "Systems",
@@ -210,20 +228,34 @@
       ],
       "type": "ManneuverThruster"
     },
+    "MiningArm": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityDevices",
+      "subtype": "MiningArm"
+    },
     "Missile": {
       "class": "Weapons",
       "matches": [
         "missile_.+_attach",
         "missile_attach_.+"
       ],
-      "type": "Ordnance"
+      "type": "Ordnance",
+      "subtype": "Missile"
     },
     "MissileLauncher": {
       "class": "Weapons",
       "matches": [
         "hardpoint_missile_+"
       ],
-      "type": "Ordnance"
+      "type": "Ordnance",
+      "subtype": "MissileLauncher"
+    },
+    "NoiseLauncher": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "DefensiveDevices",
+      "subtype": "NoiseLauncher"
     },
     "NoiseLauncherMagazine": {
       "class": "Weapons",
@@ -272,7 +304,8 @@
     "QuantumInterdictionGenerator": {
       "class": "Utility",
       "matches": [],
-      "type": "OffensiveDevices"
+      "type": "OffensiveDevices",
+      "subtype": "QuantumInterdictionGenerator"
     },
     "Radar": {
       "class": "Avionics",
@@ -280,6 +313,17 @@
         "hardpoint_radar.*"
       ],
       "type": "Radar"
+    },
+    "RetroThruster": {
+      "class": "Thrusters",
+      "type": "ManneuverThruster",
+      "subtype": "RetroThruster"
+    },
+    "SalvageArm": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityDevices",
+      "subtype": "SalvageArm"
     },
     "SalvageFillerStation": {
       "class": "Facilities",
@@ -328,7 +372,8 @@
     "ToolArm": {
       "class": "Utility",
       "matches": [],
-      "type": "UtilityDevices"
+      "type": "UtilityDevices",
+      "subtype": "ToolArm"
     },
     "Turret": {
       "class": "Weapons",
@@ -352,10 +397,16 @@
       "matches": [],
       "type": "VehiclePart"
     },
+    "VtolThruster": {
+      "class": "Thrusters",
+      "type": "ManneuverThruster",
+      "subtype": "VtolThruster"
+    },
     "WeaponDefensive": {
       "class": "Utility",
       "matches": [],
-      "type": "DefensiveDevices"
+      "type": "DefensiveDevices",
+      "subtype": "CountermeasureLauncher"
     },
     "WeaponGun": {
       "class": "Weapons",
@@ -363,7 +414,8 @@
         "hardpoint_weapon_left",
         "hardpoint_weapon_right"
       ],
-      "type": "Weapons"
+      "type": "Weapons",
+      "subtype": "WeaponGun"
     },
     "WeaponLocker": {
       "class": "Cargo",
@@ -387,7 +439,8 @@
       "matches": [
         "hardpoint_weapon_mining"
       ],
-      "type": "WeaponMining"
+      "type": "UtilityDevices",
+      "subtype": "WeaponMining"
     },
     "WeaponPort": {
       "class": "Weapons",
@@ -507,7 +560,7 @@
           "if": [
             [ "sub_type:JointThruster", "or", "sub_type:UNDEFINED" ],
             "and",
-            [ "name:match:vtol" ]
+            [ "name:match:grav" ]
           ],
           "then": "sub_type=GravLev"
         },

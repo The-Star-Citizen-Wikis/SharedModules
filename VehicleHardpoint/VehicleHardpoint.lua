@@ -321,17 +321,24 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         object[ translate( 'SMW_HardpointClassName' ) ] = row.class_name
     end
 
-    if data.matches[ row.type ] ~= nil then
-        object[ translate( 'SMW_HardpointType' ) ] = translate( data.matches[ row.type ].type, true )
-    else
-        object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type, true )
+    object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type, true )
+    object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type, true )
+
+    -- FIXME: Is there a way to use Lua table key directly instead of setting subtype separately in data.json?
+    -- For some components (e.g. missile), the key is the subtype of the component
+    local function setTypeSubtype( match )
+        if match ~= nil then
+            if match.type ~= nil then
+                object[ translate( 'SMW_HardpointType' ) ] = translate( match.type, true )
+            end
+            if match.subtype ~= nil then
+                object[ translate( 'SMW_HardpointSubtype' ) ] = translate( match.subtype, true )
+            end
+        end
     end
 
-    if data.matches[ row.sub_type ] ~= nil then
-        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( data.matches[ row.sub_type ].type, true )
-    else
-        object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type, true )
-    end
+    setTypeSubtype( data.matches[ row.type ] )
+    setTypeSubtype( data.matches[ row.sub_type ] )
 
     if hardpointData.item ~= nil and type( hardpointData.item.name ) == 'string' then
         object[ translate( 'SMW_Name' ) ] = hardpointData.item.name
@@ -355,7 +362,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
                 object[ translate( 'SMW_Name' ) ] = itemObj.name
             end
         else
-            object[ translate( 'SMW_Name' ) ] = translate( hardpointData.type )
+            object[ translate( 'SMW_Name' ) ] = object[ translate( 'SMW_HardpointSubtype' ) ]
         end
 
         object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity

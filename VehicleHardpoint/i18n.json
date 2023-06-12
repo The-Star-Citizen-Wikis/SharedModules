@@ -122,10 +122,17 @@
             }
         ],
         [
+            "CountermeasureLauncher",
+            {
+                "de": "Täuschkörper",
+                "en": "Countermeasure launcher"
+            }
+        ],
+        [
             "DecoyLauncher",
             {
                 "de": "Täuschkörper (Köder)",
-                "en": "Decoy (Bait)"
+                "en": "Decoy launcher"
             }
         ],
         [
@@ -700,6 +707,13 @@
             {
                 "de": "Bewaffnung",
                 "en": "Weapons"
+            }
+        ],
+        [
+            "WeaponsGun",
+            {
+                "de": "Waffe",
+                "en": "Gun"
             }
         ],
         [
