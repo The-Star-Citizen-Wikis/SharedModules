@@ -417,7 +417,7 @@
       "type": "Weapons",
       "subtype": "WeaponGun"
     },
-    "WeaponLocker": {
+    "WeaponRack": {
       "class": "Cargo",
       "matches": [
         "hardpoint_.*weapon_?locker.*",
@@ -453,7 +453,7 @@
   "hardpoint_type_fixes": [
     "PersonalInventory",
     "ArmorLocker",
-    "WeaponLocker",
+    "WeaponRack",
     "Bed",
     "Container",
     "FuelRefinery",

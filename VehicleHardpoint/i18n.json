@@ -717,9 +717,16 @@
             }
         ],
         [
-            "WeaponRack",
+            "WeaponLocker",
             {
                 "de": "Waffenschrank",
+                "en": "Weapon locker"
+            }
+        ],
+        [
+            "WeaponRack",
+            {
+                "de": "Waffenständer",
                 "en": "Weapon rack"
             }
         ],
