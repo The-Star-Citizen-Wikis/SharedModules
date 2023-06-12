@@ -775,23 +775,104 @@ end
 
 --- Creates the subtitle that is shown in the card
 ---
+--- Show info based on importance to readers
+--- When the first tier is not available, show the next tier
+---
 --- @param item table Item i.e. row from the smw query
 --- @return string
 function methodtable.makeSubtitle( self, item )
-    local subtitle = item.manufacturer or 'N/A'
-    if item.manufacturer ~= nil and item.manufacturer ~= 'N/A' then
-        subtitle = string.format( '[[%s]]', item.manufacturer )
-    end
+    local subtitle = {}
 
-    -- Show SCU in subtitle
+    -- Tier 1
+    -- Component-specific stats that affects gameplay
+
+    -- SCU
     if item.scu ~= nil then
         -- We need to use raw value from SMW to show scu in different units (SCU, K µSCU)
         -- So we need to format the number manually
         if item.type == translate( 'CargoGrid' ) then
-            subtitle = common.formatNum( item.scu ) .. ' SCU' or 'N/A'
+            table.insert( subtitle,
+                common.formatNum( item.scu ) .. ' SCU' or 'N/A'
+            )
         elseif item.type == translate( 'PersonalStorage' ) then
-            subtitle = common.formatNum( item.scu * 1000 ) .. 'K µSCU' or 'N/A'
+            table.insert( subtitle,
+                common.formatNum( item.scu * 1000 ) .. 'K µSCU' or 'N/A'
+            )
         end
+    end
+
+    -- Components that don't have a wiki page currently
+    -- Magazine Capacity
+    if item.magazine_capacity ~= nil then
+        if type( item.magazine_capacity ) == 'table' then
+            table.insert( subtitle,
+                string.format(
+                    '%s/∞ %s',
+                    item.magazine_capacity[ 1 ],
+                    translate( 'Ammunition' )
+                )
+            )
+        else
+            table.insert( subtitle,
+                string.format(
+                    '%s/%s %s',
+                    item.magazine_capacity,
+                    item.magazine_capacity,
+                    translate( 'Ammunition' )
+                )
+            )
+        end
+    end
+
+    -- Parts
+    if item.hp ~= nil then
+        table.insert( subtitle,
+            item.hp
+        )
+    end
+
+    -- Fuel tanks
+    if item.fuel_capacity ~= nil then
+        table.insert( subtitle,
+            item.fuel_capacity
+        )
+    end
+
+    -- Fuel intake
+    if item.fuel_intake_rate ~= nil then
+        table.insert( subtitle,
+            item.fuel_intake_rate
+        )
+    end
+
+    -- Self destruct
+    if item.damage ~= nil and item.damage_radius ~= nil then
+        table.insert( subtitle,
+            string.format(
+                '%s · %s',
+                item.damage,
+                item.damage_radius
+            )
+        )
+    end
+
+    -- Thrusters
+    if item.thrust_capacity ~= nil then
+        table.insert( subtitle,
+            item.thrust_capacity
+        )
+    end
+
+    -- Weapon ports
+    if item.type == translate( 'WeaponPort' ) then
+        table.insert( subtitle,
+            string.format(
+                '%s (S%s – S%s)',
+                translate( 'Weapon' ),
+                item.min_size or 0,
+                item.max_size or 0
+            )
+        )
     end
 
     -- Items with Grade and/or Class
@@ -816,72 +897,48 @@ function methodtable.makeSubtitle( self, item )
             grade_class = item.item_grade
         end
 
-        -- Show the manufacturer if it is not N/A
-        if subtitle ~= 'N/A' then
-            subtitle = string.format( '%s · %s', grade_class, subtitle )
-        else
-            subtitle = grade_class
-        end
-    end
-
-    -- Magazine Capacity
-    if item.magazine_capacity ~= nil then
-        if type( item.magazine_capacity ) == 'table' then
-            subtitle = string.format(
-                    '%s/∞ %s',
-                    item.magazine_capacity[ 1 ],
-                    translate( 'Ammunition' )
-            )
-        else
-            subtitle = string.format(
-                '%s/%s %s',
-                item.magazine_capacity,
-                item.magazine_capacity,
-                translate( 'Ammunition' )
-            )
-        end
-    end
-
-    -- Self destruct
-    if item.damage ~= nil and item.damage_radius ~= nil then
-        subtitle = string.format(
-            '%s · %s',
-            item.damage,
-            item.damage_radius
+        table.insert( subtitle,
+            grade_class
         )
     end
 
-    -- Fuel tanks
-    if item.fuel_capacity ~= nil then
-        subtitle = item.fuel_capacity
+    -- Tier 2
+    -- Info that might affect gameplay but not as important
+    if next( subtitle ) == nil then
+        -- Position
+        if item.position ~= nil then
+            if type( item.position ) ~= 'table' then
+                item.position = { item.position }
+            end
+    
+            local converted = {}
+            for _, position in ipairs( item.position ) do
+                table.insert( converted, mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) )
+            end
+
+            table.insert( subtitle,
+                table.concat( converted, ', ' )
+            )
+        end
     end
 
-    -- Fuel intake
-    if item.fuel_intake_rate ~= nil then
-        subtitle = item.fuel_intake_rate
+    -- Tier 3
+    -- Info that does not affect gameplay
+    if next( subtitle ) == nil then
+        -- Manufacturer
+        if item.manufacturer ~= nil and item.manufacturer ~= 'N/A' then
+            table.insert( subtitle,
+                string.format( '[[%s]]', item.manufacturer )
+            )
+        end
     end
 
-    -- Thrusters
-    if item.thrust_capacity ~= nil then
-        subtitle = item.thrust_capacity
+    -- Return if there are no information at all
+    if next( subtitle ) == nil then
+        return 'N/A'
     end
 
-    -- Weapon Ports
-    if item.type == translate( 'WeaponPort' ) then
-        subtitle = string.format(
-            '%s (S%s – S%s)',
-            translate( 'Weapon' ),
-            item.min_size or 0,
-            item.max_size or 0
-        )
-    end
-
-    -- Parts
-    if item.hp ~= nil then
-        subtitle = item.hp
-    end
-
-    return subtitle
+    return table.concat( subtitle, ' · ' )
 end
 
 
