@@ -955,7 +955,7 @@ function methodtable.makeSubtitle( self, item )
 
     -- Return if there are no information at all
     if next( subtitle ) == nil then
-        return 'N/A'
+        return ''
     end
 
     return table.concat( subtitle, ' · ' )
@@ -1042,22 +1042,24 @@ function methodtable.makeOutput( self, groupedData )
             end
         end
 
-        local nodeItemManufacturer = mw.html.create( 'div' )
+        local nodeItem = mw.html.create( 'div' )
                :addClass( 'template-component__item' )
                     :tag( 'div' )
                     :addClass( 'template-component__title' )
                     :wikitext( name )
-               :done()
-               :tag( 'div' )
-                    :addClass( 'template-component__subtitle' )
-                    :wikitext( self:makeSubtitle( item )  )
-               :done()
-               :allDone()
+                    :done()
+        
+        local subtitle = self:makeSubtitle( item )
+        if subtitle ~= '' then
+            nodeItem:tag( 'div' )
+                :addClass( 'template-component__subtitle' )
+                :wikitext( subtitle )
+        end
 
         row:tag( 'div' )
            :addClass( 'template-component__card' )
            :node( nodeSizeCount )
-           :node( nodeItemManufacturer )
+           :node( nodeItem )
        :done()
 
         row = tostring( row )
