@@ -794,6 +794,20 @@
             }
         ],
         [
+            "SMW_Damage",
+            {
+                "de": "Schaden",
+                "en": "Damage"
+            }
+        ],
+        [
+            "SMW_DamageRadius",
+            {
+                "de": "Schadensradius",
+                "en": "Damage radius"
+            }
+        ],
+        [
             "SMW_FromGameData",
             {
                 "de": "Aus Spieldaten",

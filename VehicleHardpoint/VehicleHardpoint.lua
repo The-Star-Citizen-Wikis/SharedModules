@@ -80,6 +80,8 @@ local function makeSmwQueryObject( page )
         string.format( '?%s#-=class_name', translate( 'SMW_HardpointClassName' ) ) ,
         string.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
         string.format( '?%s=thrust_capacity', translate( 'SMW_ThrustCapacity' ) ),
+        string.format( '?%s=damage', translate( 'SMW_Damage' ) ),
+        string.format( '?%s=damage_radius', translate( 'SMW_DamageRadius' ) ),
         string.format( '?%s=fuel_capacity', translate( 'SMW_FuelCapacity' ) ),
         string.format( '?%s=fuel_intake_rate', translate( 'SMW_FuelIntakeRate' ) ),
         string.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
@@ -343,6 +345,12 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
 
             if row.type == 'SelfDestruct' and match ~= nil then
                 object[ translate( 'SMW_Name' ) ] = string.format( '%s (%s)', translate( 'SMW_SelfDestruct' ), match )
+                -- Set self-destruct stats
+                -- FIXME: Do subquery instead when CIG properly implement self-destruct components
+                if itemObj.self_destruct then
+                    object[ translate( 'SMW_Damage' ) ] = itemObj.self_destruct.damage
+                    object[ translate( 'SMW_DamageRadius' ) ] = itemObj.self_destruct.radius
+                end
             else
                 object[ translate( 'SMW_Name' ) ] = itemObj.name
             end
@@ -844,14 +852,26 @@ function methodtable.makeSubtitle( self, item )
         end
     end
 
+    -- Self destruct
+    if item.damage ~= nil and item.damage_radius ~= nil then
+        subtitle = string.format(
+            '%s · %s',
+            item.damage,
+            item.damage_radius
+        )
+    end
+
+    -- Fuel tanks
     if item.fuel_capacity ~= nil then
         subtitle = item.fuel_capacity
     end
 
+    -- Fuel intake
     if item.fuel_intake_rate ~= nil then
         subtitle = item.fuel_intake_rate
     end
 
+    -- Thrusters
     if item.thrust_capacity ~= nil then
         subtitle = item.thrust_capacity
     end
