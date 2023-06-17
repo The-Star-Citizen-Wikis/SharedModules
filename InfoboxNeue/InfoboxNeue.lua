@@ -22,13 +22,13 @@ end
 
 --- Put table values into a comma-separated list
 ---
---- @param self table
+--- @param data table
 --- @return string
-function methodtable.tableToCommaList( self )
-	if type( self ) == 'table' then
-		return table.concat( self, ', ' )
+function methodtable.tableToCommaList( data )
+	if type( data ) == 'table' then
+		return table.concat( data, ', ' )
 	else
-		return self
+		return data
 	end
 end
 
@@ -38,7 +38,9 @@ end
 --- @param data table {title, desc)
 --- @return string html
 function methodtable.renderMessage( self, data, noInsert )
-	local item = self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) } )
+	noInsert = noInsert or false
+
+	local item = self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) }, noInsert )
 
 	if not noInsert then
 		table.insert( self.entries, item )

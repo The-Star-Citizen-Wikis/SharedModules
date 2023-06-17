@@ -8,6 +8,9 @@
   "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
   "module_lang": null,
 
+  "%set_categories": "Whether the module should automatically set categories.",
+  "set_categories": false,
+
   "%placeholder_image": "Placeholder image to use if no image was found",
   "placeholder_image": "Placeholderv2.png",
 
@@ -25,31 +28,45 @@
   "%smw_data": "Sets which data gets added to SMW",
   "smw_data": [
     { "%SMW_Name": [ "ARG_Name", "API_name" ] },
-    { "SMW_ProductionState": "ARG_ProductionState" },
+
+    {
+      "SMW_Description": [ "API_description" ],
+      "type": "multilingual_text"
+    },
+    {
+      "SMW_ProductionState": [ "API_production_status", "ARG_ProductionState" ],
+      "format": "replace-dash",
+      "type": "multilingual_text"
+    },
     {
       "SMW_Role": [
         "ARG_Role",
         "API_foci"
-      ]
+      ],
+      "type": "multilingual_text"
     },
     { "SMW_Series": "ARG_Series" },
-    { "SMW_ShipMatrixSize": [ "ARG_Size", "API_size" ], "format": "ucfirst" },
+    {
+      "SMW_ShipMatrixSize": [ "ARG_Size", "API_size" ],
+      "format": "ucfirst",
+      "type": "multilingual_text"
+    },
 
     { "SMW_PledgeAvailability": "ARG_PledgeAvailability" },
-    { "SMW_PledgePrice": "ARG_PledgePrice" },
+    { "SMW_PledgePrice": [ "ARG_PledgePrice", "API_msrp" ] },
     { "SMW_OriginalPledgePrice": "ARG_OriginalPledgePrice" },
     { "SMW_WarbondPledgePrice": "ARG_WarbondPledgePrice" },
     { "SMW_OriginalWarbondPledgePrice": "ARG_OriginalWarbondPledgePrice" },
 
-    { "SMW_MinimumCrew": "ARG_MinimumCrew" },
-    { "SMW_MaximumCrew": "ARG_MaximumCrew" },
+    { "SMW_MinimumCrew": [ "ARG_MinimumCrew", "API_crew.min" ] },
+    { "SMW_MaximumCrew": [ "ARG_MaximumCrew", "API_crew.max" ] },
 
     {
       "SMW_Manufacturer": [
         "ARG_manufacturer",
         "API_manufacturer.code"
       ],
-      "format": "[[%s]]"
+      "%format": "[[%s]]"
     },
 
     {
@@ -57,6 +74,10 @@
         "ARG_CargoCapacity",
         "API_cargo_capacity"
       ],
+      "type": "number"
+    },
+    {
+      "SMW_VehicleInventory": [ "API_vehicle_inventory" ],
       "type": "number"
     },
 
@@ -74,9 +95,21 @@
       ],
       "type": "number"
     },
+    {
+      "SMW_QuantumSpeed": [
+        "API_quantum.quantum_speed"
+      ],
+      "type": "number"
+    },
+    {
+      "SMW_QuantumRange": [
+        "API_quantum.quantum_range"
+      ],
+      "type": "number"
+    },
 
     { "SMW_EntityLength": [ "ARG_Length", "API_sizes.length" ] },
-    { "SMW_EntityWidth": [ "ARG_Width", "API_sizes.width" ] },
+    { "SMW_EntityWidth": [ "ARG_Width", "API_sizes.beam" ] },
     { "SMW_EntityHeight": [ "ARG_Height", "API_sizes.height" ] },
     { "SMW_RetractedLength": "ARG_RetractedLength" },
     { "SMW_RetractedWidth": "ARG_RetractedWidth" },
@@ -86,8 +119,8 @@
     { "SMW_LoreReleaseDate": "ARG_LoreReleaseDate" },
     { "SMW_LoreRetirementDate": "ARG_LoreRetirementDate" },
 
-    { "SMW_ConceptAnnouncementDate": "ARG_ConceptAnnouncementDate" },
-    { "SMW_ConceptSaleDate": "ARG_ConceptSaleDate" },
+    { "SMW_ConceptAnnouncementDate": "ARG_ConceptDate" },
+    { "SMW_ConceptSaleDate": "ARG_SaleDate" },
 
     { "SMW_GalactapediaUrl": "ARG_GalactapediaUrl" },
     { "SMW_PledgeStoreUrl": "ARG_PledgeStoreUrl" },

@@ -26,14 +26,14 @@
     [
       "ARG_ProductionStateDesc",
       {
-        "de": "Produktionsstatus Beschreibung",
+        "de": "Produktionsstatus",
         "en": "productionstatedesc"
       }
     ],
     [
       "ARG_SmwQueryName",
       {
-        "de": "SMW Query Name",
+        "de": "SMWQueryName",
         "en": "smwqueryname"
       }
     ],
@@ -68,7 +68,7 @@
     [
       "ARG_Series",
       {
-        "de": "Serie",
+        "de": "Reihe",
         "en": "series"
       }
     ],
@@ -82,35 +82,35 @@
     [
       "ARG_PledgeAvailability",
       {
-        "de": "",
+        "de": "Pledge Verfügbarkeit",
         "en": "pledgeavailability"
       }
     ],
     [
       "ARG_PledgePrice",
       {
-        "de": "Schiffspreis",
+        "de": "Pledge Preis",
         "en": "pledgecost"
       }
     ],
     [
       "ARG_OriginalPledgePrice",
       {
-        "de": "",
+        "de": "Original Pledge Preis",
         "en": "originalpledgecost"
       }
     ],
     [
       "ARG_WarbondPledgePrice",
       {
-        "de": "",
+        "de": "Warbond Pledge Preis",
         "en": "warbondcost"
       }
     ],
     [
       "ARG_OriginalWarbondPledgePrice",
       {
-        "de": "",
+        "de": "Original Warbond Pledge Preis",
         "en": "originalwarbondcost"
       }
     ],
@@ -187,21 +187,21 @@
     [
       "ARG_RetractedLength",
       {
-        "de": "",
+        "de": "Eingezogene Länge",
         "en": "retractedlength"
       }
     ],
     [
       "ARG_RetractedWidth",
       {
-        "de": "",
+        "de": "Eingezogene Breite",
         "en": "retractedwidth"
       }
     ],
     [
       "ARG_RetractedHeight",
       {
-        "de": "",
+        "de": "Eingezogene Höhe",
         "en": "retractedheight"
       }
     ],
@@ -236,7 +236,7 @@
     [
       "ARG_SaleDate",
       {
-        "de": "",
+        "de": "Verkaufsdatum",
         "en": "saledate"
       }
     ],
@@ -276,6 +276,20 @@
       }
     ],
     [
+      "ARG_LoreReleaseDate",
+      {
+        "de": "releasedate",
+        "en": "releasedate"
+      }
+    ],
+    [
+      "ARG_LoreRetirementDate",
+      {
+        "de": "retiredate",
+        "en": "retiredate"
+      }
+    ],
+    [
       "InConcept",
       {
         "de": "Im Konzept",
@@ -287,6 +301,13 @@
       {
         "de": "Aktiv für Squadron 42",
         "en": "Active for Squadron 42"
+      }
+    ],
+    [
+      "FlightReady",
+      {
+        "de": "Flugbereit",
+        "en": "Flight ready"
       }
     ],
     [
@@ -388,13 +409,6 @@
       }
     ],
     [
-      "SMW_FlightReady",
-      {
-        "de": "Flugbereit",
-        "en": "Flight ready"
-      }
-    ],
-    [
       "SMW_GalactapediaUrl",
       {
         "de": "Galactapedia-URL",
@@ -418,7 +432,7 @@
     [
       "SMW_HydrogenFuelCapacity",
       {
-        "de": "Wasserstoff-Kraftstoffkapazität",
+        "de": "Kraftstoffkapazität",
         "en": "Hydrogen fuel capacity"
       }
     ],
@@ -468,7 +482,7 @@
     [
       "SMW_LoreReleaseDate",
       {
-        "de": "Lore-Releasedatum",
+        "de": "Lore Releasedatum",
         "en": "Lore release date"
       }
     ],
@@ -489,7 +503,7 @@
     [
       "SMW_Mass",
       {
-        "de": "Masse",
+        "de": "Gewicht",
         "en": "Mass"
       }
     ],
@@ -524,7 +538,7 @@
     [
       "SMW_MaximumSpeedToZeroTime",
       {
-        "de": "Höchstgeschwindigkeit bis Null Zeit",
+        "de": "Entschleunigung Maximum",
         "en": "Maximum speed to zero time"
       }
     ],
@@ -559,7 +573,7 @@
     [
       "SMW_PitchRate",
       {
-        "de": "Neigungsrate",
+        "de": "Neigen",
         "en": "Pitch rate"
       }
     ],
@@ -573,7 +587,7 @@
     [
       "SMW_PledgePrice",
       {
-        "de": "Pledge-Preis",
+        "de": "Schiffspreis",
         "en": "Pledge price"
       }
     ],
@@ -608,7 +622,7 @@
     [
       "SMW_QuantumFuelCapacity",
       {
-        "de": "Quantum Treibstoffkapazität",
+        "de": "Quantenkraftstoffkapazität",
         "en": "Quantum fuel capacity"
       }
     ],
@@ -643,28 +657,28 @@
     [
       "SMW_Role",
       {
-        "de": "Rolle",
+        "de": "Fokus",
         "en": "Role"
       }
     ],
     [
       "SMW_RollRate",
       {
-        "de": "Rollrate",
+        "de": "Rollen",
         "en": "Roll rate"
       }
     ],
     [
       "SMW_ScmSpeed",
       {
-        "de": "SCM-Geschwindigkeit",
+        "de": "Kampfgeschwindigkeit",
         "en": "SCM speed"
       }
     ],
     [
-      "SMW_ScmSpeedToZeroTime",
+      "SMW_MaximumSpeedToZeroTime",
       {
-        "de": "SCM-Geschwindigkeit bis Null Zeit",
+        "de": "Entschleunigung SCM",
         "en": "SCM speed to zero time"
       }
     ],
@@ -727,7 +741,7 @@
     [
       "SMW_VehicleInventory",
       {
-        "de": "Fahrzeuginventar",
+        "de": "Fahrzeuginventarkapazität",
         "en": "Vehicle inventory"
       }
     ],
@@ -748,22 +762,43 @@
     [
       "SMW_YawRate",
       {
-        "de": "Gierrate",
+        "de": "Gieren",
         "en": "Yaw rate"
       }
     ],
     [
       "SMW_ZeroToMaximumSpeedTime",
       {
-        "de": "Zeit von Null bis zur Höchstgeschwindigkeit",
+        "de": "Beschleunigung Maximum",
         "en": "Zero to Maximum speed time"
       }
     ],
     [
       "SMW_ZeroToScmSpeedTime",
       {
-        "de": "Zeit von Null bis SCM-Geschwindigkeit",
+        "de": "Beschleunigung SCM",
         "en": "Zero to SCM speed time"
+      }
+    ],
+    [
+      "SMW_Description",
+      {
+        "de": "Beschreibung",
+        "en": "Description"
+      }
+    ],
+    [
+      "SMW_QuantumSpeed",
+      {
+        "de": "Quantengeschwindigkeit",
+        "en": "Quantum speed"
+      }
+    ],
+    [
+      "SMW_QuantumRange",
+      {
+        "de": "Quantenreichweite",
+        "en": "Quantum range"
       }
     ],
 
@@ -974,22 +1009,36 @@
     [
       "LBL_RollRate",
       {
-        "de": "Geschwindigkeit",
+        "de": "Rollen",
         "en": "Roll rate"
       }
     ],
     [
       "LBL_PitchRate",
       {
-        "de": "Geschwindigkeit",
+        "de": "Neigen",
         "en": "Pitch rate"
       }
     ],
     [
       "LBL_YawRate",
       {
-        "de": "Geschwindigkeit",
+        "de": "Gieren",
         "en": "Yaw rate"
+      }
+    ],
+    [
+      "LBL_QuantumSpeed",
+      {
+        "de": "Quantum",
+        "en": "Quantum"
+      }
+    ],
+    [
+      "LBL_QuantumRange",
+      {
+        "de": "Quantum",
+        "en": "Quantum"
       }
     ],
     [
@@ -1241,16 +1290,52 @@
         "en": "Q&A"
       }
     ],
+    [
+      "LBL_Universe",
+      {
+        "de": "Universum",
+        "en": "Universe"
+      }
+    ],
 
 
     [
       "category_series",
       {
-        "de": "$1 (Serie)",
+        "de": "$1 (Reihe)",
         "en": "$1 series"
-
       }
     ],
+    [
+      "category_ground_vehicle",
+      {
+        "de": "Bodenfahrzeug",
+        "en": "Ground vehicles"
+      }
+    ],
+    [
+      "category_ship",
+      {
+        "de": "Raumschiff",
+        "en": "Ships"
+      }
+    ],
+
+    [
+      "msg_ingame_prices_title",
+      {
+        "de": "In-Game Preise sind umgezogen",
+        "en": "Persistent Universe data has moved"
+      }
+    ],
+    [
+      "msg_ingame_prices_content",
+      {
+        "de": "Kauf- und Mietinformationen findest du jetzt im [[{{FULLPAGENAMEE}}#Kauf-_&_Mietpreise_im_PU|Kauf- & Mietpreise im PU]]-Abschnitt auf der Seite.",
+        "en": "Buy and rent information are now at the [[{{FULLPAGENAMEE}}#Universe_availability|universe availability]] section on the page."
+      }
+    ],
+
     [
       "error_no_data_title",
       {
@@ -1277,6 +1362,14 @@
       {
         "de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
         "en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+      }
+    ],
+
+    [
+      "none",
+      {
+        "de": "Keine",
+        "en": "None"
       }
     ]
   ]
