@@ -110,12 +110,12 @@ html.skin-citizen-dark .template-components__label img {
 
 .template-component__port,
 .template-component__item {
-    padding: var( --space-sm ) var( --space-md );
     display: grid;
     align-items: center;
 }
 
 .template-component__port {
+    padding: var( --space-sm ) 0;
     border-right: 1px solid var( --border-color-base );
     border-top-left-radius: var( --border-radius--medium );
     border-bottom-left-radius: var( --border-radius--medium );
@@ -132,6 +132,7 @@ html.skin-citizen-dark .template-components__label img {
 }
 
 .template-component__item {
+    padding: var( --space-sm ) var( --space-md );
     border-top-right-radius: var( --border-radius--medium );
     border-bottom-right-radius: var( --border-radius--medium );
     background-color: var( --color-surface-2 );
