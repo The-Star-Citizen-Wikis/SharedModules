@@ -49,6 +49,21 @@
       ],
       "type": "Bed"
     },
+    "Bomb": {
+      "class": "Weapons",
+      "type": "Ordnance",
+      "subtype": "Bomb"
+    },
+    "BombLauncher": {
+      "class": "Weapons",
+      "type": "Ordnance",
+      "subtype": "BombLauncher"
+    },
+    "BombRack": {
+      "class": "Weapons",
+      "type": "Ordnance",
+      "subtype": "BombRack"
+    },
     "Cargo": {
       "class": "Cargo",
       "matches": [

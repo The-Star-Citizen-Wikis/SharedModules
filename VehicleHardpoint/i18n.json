@@ -66,6 +66,27 @@
             }
         ],
         [
+            "Bomb",
+            {
+                "de": "Bombe",
+                "en": "Bomb"
+            }
+        ],
+        [
+            "BombLauncher",
+            {
+                "de": "Bombenwerfer",
+                "en": "Bomb launcher"
+            }
+        ],
+        [
+            "BombRack",
+            {
+                "de": "Bombenständer",
+                "en": "Bomb rack"
+            }
+        ],
+        [
             "Capacitor",
             {
                 "de": "Kondensator",
@@ -381,17 +402,17 @@
             }
         ],
         [
+            "Missile",
+            {
+                "de": "Raketen",
+                "en": "Missile"
+            }
+        ],
+        [
             "MissileLauncher",
             {
                 "de": "Raketenwerfer",
                 "en": "Missile launcher"
-            }
-        ],
-        [
-            "Missiles",
-            {
-                "de": "Raketen",
-                "en": "Missiles"
             }
         ],
         [
