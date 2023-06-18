@@ -269,6 +269,7 @@
     margin-right: -8px; /* negative space-xs */
     display: flex;
     flex-wrap: wrap;
+    align-items: baseline;
 }
 
 .infobox__buttonLabel img[src$=".svg"] {

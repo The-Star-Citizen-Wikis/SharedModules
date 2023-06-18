@@ -7,20 +7,25 @@ metatable.__index = methodtable
 
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
-local api = require( 'Module:Common/Api' )
 local manufacturer = require( 'Module:Manufacturer' )._manufacturer
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
 
-local lang = mw.getContentLanguage()
+local lang
+if data.module_lang then
+	lang = mw.getLanguage( data.module_lang )
+else
+	lang = mw.getContentLanguage()
+end
 
 
+--- FIXME: This should go to somewhere else, like Module:Common
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
 --- @param addSuffix boolean Adds a language suffix if data.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
-local function translate( key, addSuffix )
+local function translate( key, addSuffix, ... )
     addSuffix = addSuffix or false
     local success, translation
 
@@ -33,9 +38,9 @@ local function translate( key, addSuffix )
     end
 
     if data.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'Module:Vehicle/i18n.json', key or '' )
+        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'Module:Vehicle/i18n.json', key or '', ... )
     else
-        success, translation = pcall( TNT.format, 'Module:Vehicle/i18n.json', key or '' )
+        success, translation = pcall( TNT.format, 'Module:Vehicle/i18n.json', key or '', ... )
     end
 
     if not success or translation == nil then
@@ -56,78 +61,43 @@ local function makeSmwQueryObject( page )
         langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
     end
 
-    return {
-        string.format( '[[%s]]', page ),
-        string.format( '?%s#-', translate( 'SMW_Name' ) ),
-        string.format( '?%s#-', translate( 'SMW_Manufacturer' ) ),
-        string.format( '?%s#-', translate( 'SMW_ProductionState' ) ), langSuffix,
-        string.format( '?%s#-', translate( 'SMW_Role' ) ), langSuffix,
-        string.format( '?%s#-', translate( 'SMW_ShipMatrixSize' ) ), langSuffix,
-        string.format( '?%s#-', translate( 'SMW_Size' ) ),
-        string.format( '?%s#-', translate( 'SMW_Series' ) ),
-        string.format( '?%s', translate( 'SMW_LoanerVehicle' ) ),
-        string.format( '?%s#-', translate( 'SMW_MinimumCrew' ) ),
-        string.format( '?%s#-', translate( 'SMW_MaximumCrew' ) ),
-        string.format( '?%s', translate( 'SMW_CargoCapacity' ) ) ,
-        string.format( '?%s', translate( 'SMW_VehicleInventory' ) ) ,
-        string.format( '?%s', translate( 'SMW_PledgePrice' ) ),
-        string.format( '?%s', translate( 'SMW_OriginalPledgePrice' ) ),
-        string.format( '?%s', translate( 'SMW_WarbondPledgePrice' ) ),
-        string.format( '?%s', translate( 'SMW_OriginalWarbondPledgePrice' ) ),
-        string.format( '?%s#-', translate( 'SMW_PledgeAvailability' ) ),
-        string.format( '?%s#-n', translate( 'SMW_InsuranceClaimTime' ) ),
-        string.format( '?%s#-n', translate( 'SMW_InsuranceExpediteTime' ) ),
-        string.format( '?%s', translate( 'SMW_InsuranceExpediteCost' ) ),
-        string.format( '?%s', translate( 'SMW_EntityLength' ) ),
-        string.format( '?%s', translate( 'SMW_RetractedLength' ) ),
-        string.format( '?%s', translate( 'SMW_EntityWidth' ) ),
-        string.format( '?%s', translate( 'SMW_RetractedWidth' ) ),
-        string.format( '?%s', translate( 'SMW_EntityHeight' ) ),
-        string.format( '?%s', translate( 'SMW_RetractedHeight' ) ),
-        string.format( '?%s', translate( 'SMW_Mass' ) ),
-        string.format( '?%s', translate( 'SMW_ScmSpeed' ) ),
-        string.format( '?%s', translate( 'SMW_ZeroToScmSpeedTime' ) ),
-        string.format( '?%s', translate( 'SMW_ScmSpeedToZeroTime' ) ),
-        string.format( '?%s', translate( 'SMW_MaximumSpeed' ) ),
-        string.format( '?%s', translate( 'SMW_ZeroToMaximumSpeedTime' ) ),
-        string.format( '?%s', translate( 'SMW_MaximumSpeedToZeroTime' ) ),
-        string.format( '?%s', translate( 'SMW_ReverseSpeed' ) ),
-        string.format( '?%s', translate( 'SMW_RollRate' ) ),
-        string.format( '?%s', translate( 'SMW_PitchRate' ) ),
-        string.format( '?%s', translate( 'SMW_YawRate' ) ),
-        string.format( '?%s', translate( 'SMW_HydrogenFuelCapacity' ) ),
-        string.format( '?%s', translate( 'SMW_HydrogenFuelIntakeRate' ) ),
-        string.format( '?%s', translate( 'SMW_QuantumFuelCapacity' ) ),
-        string.format( '?%s#-', translate( 'SMW_CrossSectionSignatureModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_ElectromagneticSignatureModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_InfraredSignatureModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_PhysicalDamageModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_EnergyDamageModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_DistortionDamageModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_ThermalDamageModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_BiochemicalDamageModifier' ) ),
-        string.format( '?%s#-', translate( 'SMW_StunDamageModifier' ) ),
-        string.format( '?%s', translate( 'SMW_HealthPoint' ) ),
-        string.format( '?%s', translate( 'SMW_LoreReleaseDate' ) ),
-        string.format( '?%s', translate( 'SMW_LoreRetirementDate' ) ),
-        string.format( '?%s', translate( 'SMW_ConceptAnnouncementDate' ) ),
-        string.format( '?%s#-', translate( 'SMW_ConceptSaleDate' ) ),
-        string.format( '?%s#-', translate( 'SMW_GalactapediaUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_PledgeStoreUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_PresentationUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_PortfolioUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_WhitleysGuideUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_BrochureUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_TrailerUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_QAndAUrl' ) ),
-        string.format( '?%s#-', translate( 'SMW_UUID' ) ),
-        string.format( '?%s#-', translate( 'SMW_ClassName' ) ),
-        string.format( '?%s#-', translate( 'SMW_ShipMatrixName' ) ),
+	local query = {
+		string.format( '[[%s]]', page ),
 		'?Page image#-=image'
-    }
+	}
+
+	for _, queryPart in pairs( data.smw_data ) do
+		local smwKey
+		for key, _ in pairs( queryPart ) do
+			if string.sub( key, 1, 3 ) == 'SMW' then
+				smwKey = key
+				break
+			end
+		end
+
+		local formatString = '?%s'
+
+		if queryPart.smw_format then
+			formatString = formatString .. queryPart.smw_format
+		end
+
+		-- safeguard
+		if smwKey ~= nil then
+			table.insert( query, string.format( formatString, translate( smwKey ) ) )
+
+			if queryPart.type == 'multilingual_text' then
+				table.insert( query, langSuffix )
+			end
+		end
+	end
+
+	table.insert( query, 'limit=1' )
+
+	return query
 end
 
 
+--- FIXME: This should go to somewhere else, like Module:Common
 local function makeTimeReadable( t )
 	if type( t ) == 'string' then t = tonumber( t, 10 ) end
 	if t == nil then return end
@@ -186,6 +156,8 @@ end
 --- Using current subpage name without vehicle type suffix
 --- @return table or nil
 function methodtable.getApiDataForCurrentPage( self )
+	local api = require( 'Module:Common/Api' )
+
 	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
         mw.title.getCurrentTitle().rootText,
 		data.name_suffixes
@@ -218,7 +190,7 @@ function methodtable.setSemanticProperties( self )
 	--- @return string|number|table|nil
 	local function getFromArgs( datum, argKey )
 		local value
-		-- Numbered parameters
+		-- Numbered parameters, e.g. URL1, URL2, URL3, etc.
 		if datum.type == 'range' and type( datum.max ) == 'number' then
 			value = {}
 
@@ -226,6 +198,7 @@ function methodtable.setSemanticProperties( self )
 				local argValue = self.frameArgs[ argKey .. i ]
 				if argValue then table.insert( value, argValue ) end
 			end
+		-- A "simple" arg
 		else
 			value = self.frameArgs[ argKey ]
 		end
@@ -233,7 +206,9 @@ function methodtable.setSemanticProperties( self )
 		return value
 	end
 
+	-- Iterate through the list of SMW attributes that shall be filled
 	for _, datum in ipairs( data.smw_data ) do
+		-- Retrieve the SMW key and from where the data should be pulled
 		local smwKey, from
 		for key, get_from in pairs( datum ) do
 			if string.sub( key, 1, 3 ) == 'SMW' then
@@ -248,6 +223,8 @@ function methodtable.setSemanticProperties( self )
 			from = { from }
 		end
 
+		-- Iterate the list of data sources in order, later sources override previous ones
+		-- I.e. if the list is Frame Args, API; The api will override possible values set from the frame
 		for _, key in ipairs( from ) do
 			local parts = mw.text.split( key, '_', true )
 			local value
@@ -264,12 +241,13 @@ function methodtable.setSemanticProperties( self )
 
 			mw.logObject( parts, 'Key Parts' )
 
+			-- safeguard check if we have two parts
 			if #parts == 2 then
 				-- Retrieve data from frameArgs
 				if parts[ 1 ] == 'ARG' then
 					value = getFromArgs( datum, translate( key ) )
 
-					-- Use EN lang as fallback for arg names
+					-- Use EN lang as fallback for arg names that are empty
 					if value == nil then
 						local success, translation = pcall( TNT.formatInLanguage, 'en', 'Module:Vehicle/i18n.json', key )
 						if success then
@@ -295,7 +273,7 @@ function methodtable.setSemanticProperties( self )
 				end
 			end
 
-			-- Transform value
+			-- Transform value based on 'format' key
 			if value ~= nil then
 				if type( value ) ~= 'table' then
 					value = { value }
@@ -387,7 +365,10 @@ function methodtable.getSmwData( self )
         return self.smwData
     end
 
-    local queryName = self.frameArgs[ translate( 'ARG_smwqueryname' ) ] or mw.title.getCurrentTitle().fullText
+	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
+					  self.frameArgs[ translate( 'ARG_Name' ) ] or
+					  self.frameArgs[ translate( 'ARG_UUID' ) ] or
+					  mw.title.getCurrentTitle().fullText
 
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
@@ -473,11 +454,12 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getSeries()
-		if smwData[ translate( 'SMW_Series' ) ] == nil then return end
+		local series = smwData[ translate( 'SMW_Series' ) ]
+		if series == nil then return end
 		return string.format(
 			'[[:Category:%s|%s]]',
-			TNT.format( 'Vehicle', 'category_series', smwData[ translate( 'SMW_Series' ) ] ),
-			smwData[ translate( 'SMW_Series' ) ]
+			translate( 'category_series', false, series ),
+			series
 		)
 	end
 
@@ -734,7 +716,8 @@ function methodtable.getInfobox( self )
 	end
 
 
-	infobox:renderImage( self.frameArgs[ translate( 'ARG_Image' ) ] or smwData[ 'image' ] )
+	local image = self.frameArgs[ translate( 'ARG_Image' ) ] or self.frameArgs[ 'image' ] or smwData[ 'image' ]
+	infobox:renderImage( image )
 
 	infobox:renderIndicator( {
 		data = smwData[ translate( 'SMW_ProductionState' ) ],
@@ -853,11 +836,11 @@ function methodtable.getInfobox( self )
 			content = {
 				infobox:renderItem( {
 					label = translate( 'LBL_OfficialSites' ),
-					data = getOfficialSites()
+					data = table.concat( getOfficialSites(), ' · ' )
 				} ),
 				infobox:renderItem( {
 					label = translate( 'LBL_CommunitySites' ),
-					data = getCommunitySites()
+					data = table.concat( getCommunitySites(), ' · ' )
 				} ),
 			},
 			class = 'infobox__section--linkButtons',
@@ -878,26 +861,43 @@ end
 
 --- Sets the main categories for this object
 function methodtable.setCategories( self )
-	if data.set_categories == false then
+	if data.set_categories == false or self.smwData == nil then
 		return
 	end
 
+	local size = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
+	local size_cat, pledge_cat
+
 	if self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil then
+		-- size_cat = 'category_ground_vehicle_size'
+		-- pledge_cat = 'category_ground_vehicle_pledge'
 		table.insert(
 			self.categories,
 			string.format( '[[Category:%s]]', translate( 'category_ground_vehicle' ) )
 		)
 	else
+		-- size_cat = 'category_ship_size'
+		-- pledge_cat = 'category_ship_pledge'
 		table.insert(
 			self.categories,
 			string.format( '[[Category:%s]]', translate( 'category_ship' ) )
 		)
 	end
 
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+	if size ~= nil and size_cat then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', self.smwData[ translate( 'SMW_Manufacturer' ) ] )
+			string.format( '[[Category:%s]]', translate( size_cat, false, size ) )
+		)
+	end
+
+	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = string.gsub( manufacturer, '%]+', '' )
+
+		table.insert(
+			self.categories,
+			string.format( '[[Category:%s]]', manufacturer )
 		)
 	end
 
@@ -907,6 +907,20 @@ function methodtable.setCategories( self )
 			string.format( '[[Category:%s]]', self.smwData[ translate( 'SMW_ProductionState' ) ] )
 		)
 	end
+
+	if self.smwData[ translate( 'SMW_Series' ) ] ~= nil then
+		table.insert(
+			self.categories,
+			string.format( '[[Category:%s]]', translate( 'category_series', false, self.smwData[ translate( 'SMW_Series' ) ] ) )
+		)
+	end
+
+	if pledge_cat and self.smwData[ translate( 'SMW_PledgePrice' ) ] ~= nil then
+		table.insert(
+			self.categories,
+			string.format( '[[Category:%s]]', translate( pledge_cat ) )
+		)
+	end
 end
 
 
@@ -914,7 +928,6 @@ end
 function methodtable.saveApiData( self )
     self:getApiDataForCurrentPage()
     self:setSemanticProperties()
-	self:setCategories()
 end
 
 
@@ -925,7 +938,10 @@ function methodtable.makeDebugOutput( self )
 	self.smwData = nil
 	local smwData = self:getSmwData()
 
-	local queryName = self.frameArgs[ translate( 'ARG_smwqueryname' ) ] or mw.title.getCurrentTitle().fullText
+	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
+					  self.frameArgs[ translate( 'ARG_Name' ) ] or
+					  self.frameArgs[ translate( 'ARG_UUID' ) ] or
+					  mw.title.getCurrentTitle().fullText
 
 	return debug.collapsedDebugSections({
 		{
@@ -934,12 +950,12 @@ function methodtable.makeDebugOutput( self )
 		},
 		{
 			title = 'SMW Data',
-			content = debug.parseSmwQueryObject( smwData ),
+			content = smwData,
 			tag = 'pre',
 		},
 		{
 			title = 'Frame Args',
-			content = debug.parseSmwQueryObject( self.frameArgs ),
+			content = self.frameArgs,
 			tag = 'pre',
 		},
 	})
@@ -947,17 +963,21 @@ end
 
 
 --- New Instance
---- @param type string Term used remove suffix from page title
 function Vehicle.new( self )
     local instance = {
         categories = {}
     }
+
     setmetatable( instance, metatable )
+
     return instance
 end
 
 
--- Load and save data from api.star-citizen.wiki
+--- Load data from api.star-citizen.wiki and save it to SMW
+---
+--- @param frame table Invocation frame
+--- @return string|nil
 function Vehicle.loadApiData( frame )
 	local instance = Vehicle:new()
 	instance:setFrame( frame )
@@ -979,6 +999,10 @@ function Vehicle.loadApiData( frame )
 end
 
 
+--- Generates an infobox based on passed frame args and SMW data
+---
+--- @param frame table Invocation frame
+--- @return string
 function Vehicle.infobox( frame )
 	local instance = Vehicle:new()
 	instance:setFrame( frame )
@@ -993,6 +1017,9 @@ end
 
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
+---
+--- @param frame table Invocation frame
+--- @return string
 function Vehicle.main( frame )
 	local instance = Vehicle:new()
 	instance:setFrame( frame )
@@ -1003,7 +1030,15 @@ function Vehicle.main( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
-	return tostring( instance:getInfobox() ) .. debugOutput
+	local infobox = tostring( instance:getInfobox() )
+
+	-- Only set categories if this is the page that also holds the smw attributes
+	-- Allows outputting vehicle infoboxes on other pages without setting categories
+	if instance.smwData ~= nil then
+		instance:setCategories()
+	end
+
+	return infobox .. debugOutput .. table.concat( instance.categories )
 end
 
 
@@ -1013,7 +1048,7 @@ function Vehicle.test( page )
 
 	local instance = Vehicle:new()
 	instance.frameArgs = {}
-	instance.frameArgs[translate( 'ARG_Name' )] = page
+	instance.frameArgs[ translate( 'ARG_Name' ) ] = page
 
 	instance:saveApiData()
 end

@@ -59,12 +59,22 @@ function Common.collapsedDebugSections( sections )
         end
 
         local sectionOutput = mw.html.create( 'div' )
-                              :addClass( 'mw-collapsible' )
-                              :addClass( 'mw-collapsed' )
-                              :tag( 'h3' ):wikitext( section.title or '' ):done()
-                              :tag( tag ):wikitext( content ):done()
+            :addClass( 'mw-collapsible' )
+            :addClass( 'mw-collapsed' )
+            :tag( 'h3' ):wikitext( section.title or '' ):done()
+            :tag( tag ):addClass( 'mw-collapsible-content' ):wikitext( content ):done()
+            :allDone()
 
         html = html .. tostring( sectionOutput )
+    end
+
+    if #html > 0 then
+        html = mw.html.create( 'div' )
+            :addClass( 'debug' )
+            :addClass( 'mw-collapsible' )
+            :addClass( 'mw-collapsed' )
+            :node( html )
+            :done()
     end
 
     return tostring( html )

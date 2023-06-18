@@ -68,7 +68,7 @@
     [
       "ARG_Series",
       {
-        "de": "Reihe",
+        "de": "Baureihe",
         "en": "series"
       }
     ],
@@ -320,7 +320,7 @@
     [
       "SMW_BiochemicalDamageModifier",
       {
-        "de": "Modifikator für biochemischen Schaden",
+        "de": "Modifikator Biochemieschaden",
         "en": "Biochemical damage modifier"
       }
     ],
@@ -348,42 +348,42 @@
     [
       "SMW_ConceptAnnouncementDate",
       {
-        "de": "Datum der Konzeptankündigung",
+        "de": "Konzeptdatum",
         "en": "Concept announcement date"
       }
     ],
     [
       "SMW_ConceptSaleDate",
       {
-        "de": "Verkaufsdatum des Konzepts",
+        "de": "Konzeptverkaufsdatum",
         "en": "Concept sale date"
       }
     ],
     [
       "SMW_CrossSectionSignatureModifier",
       {
-        "de": "Modifikator für die Querschnittssignatur",
+        "de": "Modifikator Querschnittssignatur",
         "en": "Cross section signature modifier"
       }
     ],
     [
       "SMW_DistortionDamageModifier",
       {
-        "de": "Modifikator für Verzerrungsschaden",
+        "de": "Modifikator Verzerrungsschaden",
         "en": "Distortion damage modifier"
       }
     ],
     [
       "SMW_ElectromagneticSignatureModifier",
       {
-        "de": "Modifikator der elektromagnetischen Signatur",
+        "de": "Modifikator EM-Signatur",
         "en": "Electromagnetic signature modifier"
       }
     ],
     [
       "SMW_EnergyDamageModifier",
       {
-        "de": "Modifikator für Energieschaden",
+        "de": "Modifikator Energieschaden",
         "en": "Energy damage modifier"
       }
     ],
@@ -411,7 +411,7 @@
     [
       "SMW_GalactapediaUrl",
       {
-        "de": "Galactapedia-URL",
+        "de": "Galactapedia URL",
         "en": "Galactapedia URL"
       }
     ],
@@ -439,14 +439,14 @@
     [
       "SMW_HydrogenFuelIntakeRate",
       {
-        "de": "Wasserstoff-Kraftstoff-Einlassrate",
+        "de": "Kraftstoffaufnahmerate",
         "en": "Hydrogen fuel intake rate"
       }
     ],
     [
       "SMW_InfraredSignatureModifier",
       {
-        "de": "Modifikator für Infrarot-Signatur",
+        "de": "Modifikator Infrarotsignatur",
         "en": "Infrared signature modifier"
       }
     ],
@@ -566,7 +566,7 @@
     [
       "SMW_PhysicalDamageModifier",
       {
-        "de": "Modifikator für physischen Schaden",
+        "de": "Modifikator physischer Schaden",
         "en": "Physical damage modifier"
       }
     ],
@@ -580,7 +580,7 @@
     [
       "SMW_PledgeAvailability",
       {
-        "de": "Pledge-Verfügbarkeit",
+        "de": "Pledge Verfügbarkeit",
         "en": "Pledge availability"
       }
     ],
@@ -594,7 +594,7 @@
     [
       "SMW_PledgeStoreUrl",
       {
-        "de": "Pledgestore-URL",
+        "de": "Pledgestore URL",
         "en": "Pledge store URL"
       }
     ],
@@ -685,7 +685,7 @@
     [
       "SMW_Series",
       {
-        "de": "Reihe",
+        "de": "Baureihe",
         "en": "Series"
       }
     ],
@@ -713,21 +713,21 @@
     [
       "SMW_StunDamageModifier",
       {
-        "de": "Modifikator für Betäubungsschaden",
+        "de": "Modifikator Betäubungsschaden",
         "en": "Stun damage modifier"
       }
     ],
     [
       "SMW_ThermalDamageModifier",
       {
-        "de": "Modifikator für thermischen Schaden",
+        "de": "Modifikator Thermieschaden",
         "en": "Thermal damage modifier"
       }
     ],
     [
       "SMW_TrailerUrl",
       {
-        "de": "Trailer-URL",
+        "de": "Trailer URL",
         "en": "Trailer URL"
       }
     ],
@@ -748,7 +748,7 @@
     [
       "SMW_WarbondPledgePrice",
       {
-        "de": "Warbond-Pledgepreis",
+        "de": "Warbond Pledgepreis",
         "en": "Warbond pledge price"
       }
     ],
@@ -778,6 +778,13 @@
       {
         "de": "Beschleunigung SCM",
         "en": "Zero to SCM speed time"
+      }
+    ],
+    [
+      "SMW_ScmSpeedToZeroTime",
+      {
+        "de": "Entschleuningung SCM",
+        "en": "SCM speed to zero time"
       }
     ],
     [
@@ -819,7 +826,7 @@
     [
       "LBL_Series",
       {
-        "de": "Serie",
+        "de": "Baureihe",
         "en": "Series"
       }
     ],
@@ -896,21 +903,21 @@
     [
       "LBL_Claim",
       {
-        "de": "Claim",
+        "de": "Dauer",
         "en": "Claim"
       }
     ],
     [
       "LBL_Expedite",
       {
-        "de": "Expedite",
+        "de": "Beschleunigt",
         "en": "Expedite"
       }
     ],
     [
       "LBL_ExpediteFee",
       {
-        "de": "ExpediteFee",
+        "de": "Beschleunigungskosten",
         "en": "Expedite fee"
       }
     ],
@@ -960,49 +967,49 @@
     [
       "LBL_ScmSpeed",
       {
-        "de": "Geschwindigkeit",
+        "de": "SCM",
         "en": "Scm speed"
       }
     ],
     [
       "LBL_0ToScm",
       {
-        "de": "Geschwindigkeit",
+        "de": "0 → SCM",
         "en": "0 to scm"
       }
     ],
     [
       "LBL_ScmTo0",
       {
-        "de": "Geschwindigkeit",
+        "de": "SCM → 0",
         "en": "Scm to 0"
       }
     ],
     [
       "LBL_MaxSpeed",
       {
-        "de": "Geschwindigkeit",
+        "de": "Max.",
         "en": "Max speed"
       }
     ],
     [
       "LBL_0ToMax",
       {
-        "de": "Geschwindigkeit",
+        "de": "0 → Max.",
         "en": "0 to max"
       }
     ],
     [
       "LBL_MaxTo0",
       {
-        "de": "Geschwindigkeit",
+        "de": "Max. → 0",
         "en": "Max to 0"
       }
     ],
     [
       "LBL_ReverseSpeed",
       {
-        "de": "Geschwindigkeit",
+        "de": "Rückwärts",
         "en": "Reverse speed"
       }
     ],
@@ -1037,8 +1044,8 @@
     [
       "LBL_QuantumRange",
       {
-        "de": "Quantum",
-        "en": "Quantum"
+        "de": "Quantenreichweite",
+        "en": "Quantum range"
       }
     ],
     [
@@ -1051,7 +1058,7 @@
     [
       "LBL_HydrogenCapacity",
       {
-        "de": "Wasserstoffkapazität",
+        "de": "Kapazität",
         "en": "Hydrogen capacity"
       }
     ],
@@ -1080,70 +1087,70 @@
     [
       "LBL_CrossSection",
       {
-        "de": "Hülle",
+        "de": "Querschnitt",
         "en": "Cross section"
       }
     ],
     [
       "LBL_Electromagnetic",
       {
-        "de": "Hülle",
+        "de": "Elektromagnetisch",
         "en": "Electromagnetic"
       }
     ],
     [
       "LBL_Infrared",
       {
-        "de": "Hülle",
+        "de": "Infrarot",
         "en": "Infrared"
       }
     ],
     [
       "LBL_Physical",
       {
-        "de": "Hülle",
+        "de": "Physisch",
         "en": "Physical"
       }
     ],
     [
       "LBL_Energy",
       {
-        "de": "Hülle",
+        "de": "Energie",
         "en": "Energy"
       }
     ],
     [
       "LBL_Distortion",
       {
-        "de": "Hülle",
+        "de": "Distortion",
         "en": "Distortion"
       }
     ],
     [
       "LBL_Thermal",
       {
-        "de": "Hülle",
+        "de": "Termisch",
         "en": "Thermal"
       }
     ],
     [
       "LBL_Biochemical",
       {
-        "de": "Hülle",
+        "de": "Biochemisch",
         "en": "Biochemical"
       }
     ],
     [
       "LBL_Stun",
       {
-        "de": "Hülle",
+        "de": "Betäubung",
         "en": "Stun"
       }
     ],
     [
       "LBL_Health",
       {
-        "de": "Hülle",
+        "de": "Schadenspunkte",
         "en": "Health"
       }
     ],
@@ -1167,7 +1174,7 @@
     [
       "LBL_Released",
       {
-        "de": "Released",
+        "de": "Veröffentlicht",
         "en": "Released"
       }
     ],
@@ -1191,7 +1198,7 @@
     [
       "LBL_Announced",
       {
-        "de": "Announced",
+        "de": "Angekündigt",
         "en": "Announced"
       }
     ],
@@ -1237,28 +1244,28 @@
     [
       "LBL_Galactapedia",
       {
-        "de": "Andere Seiten",
+        "de": "Galactapedia",
         "en": "Galactapedia"
       }
     ],
     [
       "LBL_PledgeStore",
       {
-        "de": "Andere Seiten",
+        "de": "Pledge Store",
         "en": "Pledge store"
       }
     ],
     [
       "LBL_Presentation",
       {
-        "de": "Andere Seiten",
+        "de": "Präsentation",
         "en": "Presentation"
       }
     ],
     [
       "LBL_Portfolio",
       {
-        "de": "Andere Seiten",
+        "de": "Portfolio",
         "en": "Portfolio"
       }
     ],
@@ -1302,7 +1309,7 @@
     [
       "category_series",
       {
-        "de": "$1 (Reihe)",
+        "de": "$1 (Baureihe)",
         "en": "$1 series"
       }
     ],
@@ -1318,6 +1325,34 @@
       {
         "de": "Raumschiff",
         "en": "Ships"
+      }
+    ],
+    [
+      "category_ship_size",
+      {
+        "de": "Raumschiff ($1)",
+        "en": "$1 ships"
+      }
+    ],
+    [
+      "category_ground_vehicle_size",
+      {
+        "de": "Bodenfahrzeug ($1)",
+        "en": "$1 vehicles"
+      }
+    ],
+    [
+      "category_ship_pledge",
+      {
+        "de": "Pledge Raumschiff",
+        "en": "Pledge ships"
+      }
+    ],
+    [
+      "category_ground_vehicle_pledge",
+      {
+        "de": "Pledge Bodenfahrzeug",
+        "en": "Pledge vehicles"
       }
     ],
 
