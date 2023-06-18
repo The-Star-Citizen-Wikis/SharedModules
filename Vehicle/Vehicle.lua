@@ -99,7 +99,15 @@ end
 
 --- FIXME: This should go to somewhere else, like Module:Common
 local function makeTimeReadable( t )
-	if type( t ) == 'string' then t = tonumber( t, 10 ) end
+	-- Fix for german number format
+	if string.find( t, ',', 1, true ) then
+		t = string.gsub( t, ',', '.' )
+	end
+
+	if type( t ) == 'string' then
+		t = tonumber( t, 10 )
+	end
+
 	if t == nil then return end
 	t = lang:formatDuration( t * 60 )
 
@@ -135,6 +143,11 @@ end
 --- FIXME: This should go to somewhere else, like Module:Common
 --- TODO: Should we color code this for buff and debuff?
 local function formatModifier( x )
+	-- Fix for german number format
+	if string.find( x, ',', 1, true ) then
+		x = string.gsub( x, ',', '.' )
+	end
+
 	if type( x ) == 'string' then x = tonumber( x, 10 ) end
 	if x == nil then return end
 	local diff = x - 1
@@ -290,7 +303,7 @@ function methodtable.setSemanticProperties( self )
 						val = common.formatNum( val )
 					-- Multilingual Text, add a suffix
 					elseif datum.type == 'multilingual_text' and data.smw_multilingual_text == true then
-						value = string.format( '%s@%s', value, data.module_lang or mw.getContentLanguage():getCode() )
+						val = string.format( '%s@%s', val, data.module_lang or mw.getContentLanguage():getCode() )
 					-- Num format
 					elseif datum.type == 'number' then
 						val = common.formatNum( val )
@@ -367,7 +380,6 @@ function methodtable.getSmwData( self )
 
 	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
 					  self.frameArgs[ translate( 'ARG_Name' ) ] or
-					  self.frameArgs[ translate( 'ARG_UUID' ) ] or
 					  mw.title.getCurrentTitle().fullText
 
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
@@ -940,7 +952,6 @@ function methodtable.makeDebugOutput( self )
 
 	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
 					  self.frameArgs[ translate( 'ARG_Name' ) ] or
-					  self.frameArgs[ translate( 'ARG_UUID' ) ] or
 					  mw.title.getCurrentTitle().fullText
 
 	return debug.collapsedDebugSections({

@@ -54,7 +54,6 @@
     {
       "SMW_ShipMatrixSize": [ "ARG_Size", "API_size" ],
       "format": "ucfirst",
-      "type": "multilingual_text",
       "smw_format": "#-"
     },
 
