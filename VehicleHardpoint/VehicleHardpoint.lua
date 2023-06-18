@@ -363,6 +363,9 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             end
         else
             object[ translate( 'SMW_Name' ) ] = object[ translate( 'SMW_HardpointSubtype' ) ]
+            -- Remove lang suffix
+            local parts = mw.text.split( object[ translate( 'SMW_Name' ) ], '@', true )
+            object[ translate( 'SMW_Name' ) ] = parts[ 1 ] or object[ translate( 'SMW_Name' ) ]
         end
 
         object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity
@@ -1189,22 +1192,22 @@ function methodtable.makeDebugOutput( self )
         },
         {
             title = 'SMW Data',
-            content = debug.parseSmwQueryObject( smwData ),
+            content = smwData,
             tag = 'pre',
         },
         {
             title = 'Datastructure',
-            content = debug.parseSmwQueryObject( struct ),
+            content = struct,
             tag = 'pre',
         },
         {
             title = 'Grouped',
-            content = debug.parseSmwQueryObject( group ),
+            content = group,
             tag = 'pre',
         },
         {
             title = 'Output',
-            content = debug.parseSmwQueryObject( self:makeOutput( group ) ),
+            content = self:makeOutput( group ),
             tag = 'pre',
         },
     })
