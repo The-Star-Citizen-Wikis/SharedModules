@@ -859,7 +859,7 @@
         [
             "SMW_FuelBurnRate",
             {
-                "de": "Kraftstoffverbrauchsrate",
+                "de": "Kraftstoffverbrauch",
                 "en": "Fuel burn rate"
             }
         ],
