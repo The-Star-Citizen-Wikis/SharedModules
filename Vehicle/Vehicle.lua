@@ -920,54 +920,29 @@ end
 
 --- Generates debug output
 function methodtable.makeDebugOutput( self )
+	local debug = require( 'Module:Common/Debug' )
+
 	self.smwData = nil
 	local smwData = self:getSmwData()
 
 	local queryName = self.frameArgs[ translate( 'ARG_smwqueryname' ) ] or mw.title.getCurrentTitle().fullText
 
-	local query = makeSmwQueryObject( queryName )
-	local queryParts = {
-		restrictions = {},
-		output = {},
-		other = {}
-	}
-	for _, part in ipairs( query ) do
-		if string.sub( part, 1, 1 ) == '?' then
-			table.insert( queryParts.output, part )
-		elseif string.sub( part, 1, 5 ) == '+lang' then
-			local index = #queryParts.output
-			queryParts.output[ index ] = string.format( '%s|%s', queryParts.output[ index ], part )
-		elseif string.sub( part, 1, 2 ) == '[[' then
-			table.insert( queryParts.restrictions, mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', part } ) )
-		elseif #part > 0 and part ~= nil then
-			table.insert( queryParts.other, part )
-		end
-	end
-	local queryString = string.format(
-		'Restrictions:<pre>%s</pre>Outputs:<pre>%s</pre>Other:<pre>%s</pre>',
-		table.concat( queryParts.restrictions, "\n" ),
-		table.concat( queryParts.output, "\n"),
-		table.concat( queryParts.other, "\n")
-	)
-
-	local debugOutput = mw.html.create( 'div' )
-	  :addClass( 'mw-collapsible' )
-	  :addClass( 'mw-collapsed' )
-	  :tag( 'h3' ):wikitext( 'SMW Query' ):done()
-	  :tag( 'div' ):wikitext( queryString ):done()
-		-- SMW Data
-	  :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-	  :tag( 'h3' ):wikitext( 'SMW Data' ):done()
-	  :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( smwData ) ):done()
-	  :done()
-		-- Args
-	  :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-	  :tag( 'h3' ):wikitext( 'Frame Args' ):done()
-	  :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( self.frameArgs ) ):done()
-	  :done()
-	  :allDone()
-
-	return tostring( debugOutput )
+	return debug.collapsedDebugSections({
+		{
+			title = 'SMW Query',
+			content = debug.convertSmwQueryObject( makeSmwQueryObject( queryName ) ),
+		},
+		{
+			title = 'SMW Data',
+			content = debug.parseSmwQueryObject( smwData ),
+			tag = 'pre',
+		},
+		{
+			title = 'Frame Args',
+			content = debug.parseSmwQueryObject( self.frameArgs ),
+			tag = 'pre',
+		},
+	})
 end
 
 
@@ -990,12 +965,14 @@ function Vehicle.loadApiData( frame )
 
 	local debugOutput
 	if instance.frameArgs[ 'debug' ] ~= nil then
-		debugOutput = mw.html.create( 'div' )
-			:addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-			:tag( 'h3' ):wikitext( 'SMW Set Data' ):done()
-			:tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', mw.dumpObject( instance.setData or {} ) } ) ):done()
-			:done()
-			:allDone()
+		local debug = require( 'Module:Common/Debug' )
+
+		debugOutput = debug.collapsedDebugSections({
+			{
+				title = 'SMW Set Data',
+				content = mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', mw.dumpObject( instance.setData or {} ) } ),
+			},
+		})
 	end
 
 	return debugOutput

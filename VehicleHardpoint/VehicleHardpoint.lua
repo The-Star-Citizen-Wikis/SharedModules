@@ -1176,64 +1176,38 @@ end
 
 --- Generates debug output
 function methodtable.makeDebugOutput( self )
+    local debug = require( 'Module:Common/Debug' )
     self.smwData = nil
     local smwData = self:querySmwStore( self.page )
     local struct = self:createDataStructure( smwData or {} )
     local group = self:group( struct )
 
-    local query = makeSmwQueryObject( self.page )
-    local queryParts = {
-        restrictions = {},
-        output = {},
-        other = {}
-    }
-    for _, part in ipairs( query ) do
-        if string.sub( part, 1, 1 ) == '?' then
-            table.insert( queryParts.output, part )
-        elseif string.sub( part, 1, 5 ) == '+lang' then
-            local index = #queryParts.output
-            queryParts.output[ index ] = string.format( '%s|%s', queryParts.output[ index ], part )
-        elseif string.sub( part, 1, 2 ) == '[[' then
-            table.insert( queryParts.restrictions, mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', part } ) )
-        elseif #part > 0 and part ~= nil then
-            table.insert( queryParts.other, part )
-        end
-    end
-    local queryString = string.format(
-            'Restrictions:<pre>%s</pre>Outputs:<pre>%s</pre>Other:<pre>%s</pre>',
-            table.concat( queryParts.restrictions, "\n" ),
-            table.concat( queryParts.output, "\n"),
-            table.concat( queryParts.other, "\n")
-    )
-
-    local debugOutput = mw.html.create( 'div' )
-        :addClass( 'mw-collapsible' )
-        :addClass( 'mw-collapsed' )
-        :tag( 'h3' ):wikitext( 'SMW Query' ):done()
-        :tag( 'div' ):wikitext( queryString ):done()
-        -- SMW Data
-        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-        :tag( 'h3' ):wikitext( 'SMW Data' ):done()
-        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( smwData ) ):done()
-        :done()
-        -- Datastructure
-        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-        :tag( 'h3' ):wikitext( 'Datastructure' ):done()
-        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( struct ) ):done()
-        :done()
-        -- Grouped
-        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-        :tag( 'h3' ):wikitext( 'Grouped' ):done()
-        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( group ) ):done()
-        :done()
-        -- Output
-        :tag( 'div' ):addClass( 'mw-collapsible' ):addClass( 'mw-collapsed' )
-        :tag( 'h3' ):wikitext( 'Output' ):done()
-        :tag( 'pre' ):addClass( 'mw-collapsible-content' ):wikitext( mw.dumpObject( self:makeOutput( group ) ) ):done()
-        :done()
-        :allDone()
-
-    return tostring( debugOutput )
+    return debug.collapsedDebugSections({
+        {
+            title = 'SMW Query',
+            content = debug.convertSmwQueryObject( makeSmwQueryObject( self.page ) ),
+        },
+        {
+            title = 'SMW Data',
+            content = debug.parseSmwQueryObject( smwData ),
+            tag = 'pre',
+        },
+        {
+            title = 'Datastructure',
+            content = debug.parseSmwQueryObject( struct ),
+            tag = 'pre',
+        },
+        {
+            title = 'Grouped',
+            content = debug.parseSmwQueryObject( group ),
+            tag = 'pre',
+        },
+        {
+            title = 'Output',
+            content = debug.parseSmwQueryObject( self:makeOutput( group ) ),
+            tag = 'pre',
+        },
+    })
 end
 
 
