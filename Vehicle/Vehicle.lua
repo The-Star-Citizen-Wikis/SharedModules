@@ -881,10 +881,11 @@ function methodtable.setCategories( self )
 
 	local size = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
 	local size_cat, pledge_cat
-	local isGroundVehicle = ( size ~= nil and size == 'vehicle' ) or self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
+	local isGroundVehicle = ( size ~= nil and size == 'Vehicle' ) or self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
 
 	if isGroundVehicle then
-		size_cat = 'category_ground_vehicle_size'
+		--Ground vehicle has no ship matrix size currently
+		--size_cat = 'category_ground_vehicle_size'
 		pledge_cat = 'category_ground_vehicle_pledge'
 		table.insert(
 			self.categories,
