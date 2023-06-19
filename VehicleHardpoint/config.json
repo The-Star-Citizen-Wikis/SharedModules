@@ -1,0 +1,22 @@
+{
+  "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
+  "smw_multilingual_text": false,
+
+  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+  "module_lang": null,
+
+  "%icon_prefix": "Prefix used to generate the icon file name. File names are then generated as 'icon_prefix ICON.svg",
+  "icon_prefix": "sc-icon-",
+
+  "%icon_name_lowercase": "Use lower-cased version of icon names",
+  "icon_name_lowercase": true,
+
+  "%icon_name_localized": "Use the translated hardpoint type as the icon name, else the hardpoint type is taken as is.",
+  "icon_name_localized": false,
+
+  "%template_styles_page": "Page that containing the hardpoint styles",
+  "template_styles_page": "Module:VehicleHardpoint/styles.css",
+
+  "%name_fixes": "List of item names that as ambiguous. Maps a key (the name of the equipped hardpoint item) to the correct page on the wiki.",
+  "name_fixes": {}
+}

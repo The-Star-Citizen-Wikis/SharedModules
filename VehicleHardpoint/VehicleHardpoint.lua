@@ -9,27 +9,28 @@ local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' ) -- formatNum and spairs
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:VehicleHardpoint/data.json' )
+local config = mw.loadJsonData( 'Module:VehicleHardpoint/config.json' )
 
 
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
---- @param addSuffix boolean Adds a language suffix if data.smw_multilingual_text is true
+--- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix )
     addSuffix = addSuffix or false
     local success, translation
 
     local function multilingualIfActive( input )
-        if addSuffix and data.smw_multilingual_text == true then
-            return string.format( '%s@%s', input, data.module_lang or mw.getContentLanguage():getCode() )
+        if addSuffix and config.smw_multilingual_text == true then
+            return string.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
         end
 
         return input
     end
 
-    if data.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'Module:VehicleHardpoint/i18n.json', key or '' )
+    if config.module_lang ~= nil then
+        success, translation = pcall( TNT.formatInLanguage, config.module_lang, 'Module:VehicleHardpoint/i18n.json', key or '' )
     else
         success, translation = pcall( TNT.format, 'Module:VehicleHardpoint/i18n.json', key or '' )
     end
@@ -56,8 +57,8 @@ end
 --- @return table
 local function makeSmwQueryObject( page )
     local langSuffix = ''
-    if data.smw_multilingual_text == true then
-        langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
+    if config.smw_multilingual_text == true then
+        langSuffix = '+lang=' .. ( config.module_lang or mw.getContentLanguage():getCode() )
     end
 
     return {
@@ -425,15 +426,15 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     end
 
     if icon ~= nil then
-        if data.icon_name_localized == true then
+        if config.icon_name_localized == true then
             icon = translate( icon )
         end
 
-        if data.icon_name_lowercase == true then
+        if config.icon_name_lowercase == true then
             icon = string.lower( icon )
         end
 
-        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s%s.svg', data.icon_prefix, icon )
+        object[ translate( 'SMW_Icon' ) ] = string.format( 'File:%s%s.svg', config.icon_prefix, icon )
     end
 
     -- Remove SeatAccess Hardpoints without storage
@@ -1038,8 +1039,8 @@ function methodtable.makeOutput( self, groupedData )
 
         local name = item.sub_type or item.type
         if item.name ~= nil then
-            if data.name_fixes[ item.name ] ~= nil then
-                name = string.format( '[[%s|%s]]', data.name_fixes[ item.name ], item.name )
+            if config.name_fixes[ item.name ] ~= nil then
+                name = string.format( '[[%s|%s]]', config.name_fixes[ item.name ], item.name )
             else
                 name = string.format( '[[%s]]', item.name )
             end
@@ -1172,7 +1173,7 @@ function methodtable.out( self )
     end
 
     return require( 'Module:Tabber' ).renderTabber( tabberData ) .. mw.getCurrentFrame():extensionTag{
-        name = 'templatestyles', args = { src = data.template_styles_page }
+        name = 'templatestyles', args = { src = config.template_styles_page }
     }
 end
 

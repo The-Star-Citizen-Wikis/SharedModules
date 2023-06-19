@@ -10,10 +10,11 @@ local common = require( 'Module:Common' )
 local manufacturer = require( 'Module:Manufacturer' )._manufacturer
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
+local config = mw.loadJsonData( 'Module:Vehicle/config.json' )
 
 local lang
-if data.module_lang then
-	lang = mw.getLanguage( data.module_lang )
+if config.module_lang then
+	lang = mw.getLanguage( config.module_lang )
 else
 	lang = mw.getContentLanguage()
 end
@@ -23,22 +24,22 @@ end
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
---- @param addSuffix boolean Adds a language suffix if data.smw_multilingual_text is true
+--- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
     addSuffix = addSuffix or false
     local success, translation
 
     local function multilingualIfActive( input )
-        if addSuffix and data.smw_multilingual_text == true then
-            return string.format( '%s@%s', input, data.module_lang or mw.getContentLanguage():getCode() )
+        if addSuffix and config.smw_multilingual_text == true then
+            return string.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
         end
 
         return input
     end
 
-    if data.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, data.module_lang, 'Module:Vehicle/i18n.json', key or '', ... )
+    if config.module_lang ~= nil then
+        success, translation = pcall( TNT.formatInLanguage, config.module_lang, 'Module:Vehicle/i18n.json', key or '', ... )
     else
         success, translation = pcall( TNT.format, 'Module:Vehicle/i18n.json', key or '', ... )
     end
@@ -57,8 +58,8 @@ end
 --- @return table
 local function makeSmwQueryObject( page )
     local langSuffix = ''
-    if data.smw_multilingual_text == true then
-        langSuffix = '+lang=' .. ( data.module_lang or mw.getContentLanguage():getCode() )
+    if config.smw_multilingual_text == true then
+        langSuffix = '+lang=' .. ( config.module_lang or mw.getContentLanguage():getCode() )
     end
 
 	local query = {
@@ -175,12 +176,12 @@ function methodtable.getApiDataForCurrentPage( self )
 
 	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
         mw.title.getCurrentTitle().rootText,
-		data.name_suffixes
+		config.name_suffixes
     )
 
     local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
         include = data.includes,
-        locale = data.api_locale
+        locale = config.api_locale
     } ) )
 
     if api.checkResponseStructure( json, true, false ) == false then return end
@@ -304,8 +305,8 @@ function methodtable.setSemanticProperties( self )
 					if datum.type == 'number' then
 						val = common.formatNum( val )
 					-- Multilingual Text, add a suffix
-					elseif datum.type == 'multilingual_text' and data.smw_multilingual_text == true then
-						val = string.format( '%s@%s', val, data.module_lang or mw.getContentLanguage():getCode() )
+					elseif datum.type == 'multilingual_text' and config.smw_multilingual_text == true then
+						val = string.format( '%s@%s', val, config.module_lang or mw.getContentLanguage():getCode() )
 					-- Num format
 					elseif datum.type == 'number' then
 						val = common.formatNum( val )
@@ -335,7 +336,7 @@ function methodtable.setSemanticProperties( self )
 
 	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().rootText,
-		data.name_suffixes
+		config.name_suffixes
 	)
 
 	if type( setData[ translate( 'SMW_Manufacturer' ) ] ) == 'string' then
@@ -407,7 +408,7 @@ function methodtable.getInfobox( self )
 	local smwData = self:getSmwData()
 
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
-		placeholderImage = data.placeholder_image
+		placeholderImage = config.placeholder_image
 	} )
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
@@ -875,7 +876,7 @@ end
 
 --- Sets the main categories for this object
 function methodtable.setCategories( self )
-	if data.set_categories == false or self.smwData == nil then
+	if config.set_categories == false or self.smwData == nil then
 		return
 	end
 

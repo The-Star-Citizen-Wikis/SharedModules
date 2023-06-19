@@ -1,19 +1,4 @@
 {
-  "%api_locale": "Locale the api should return. If set to null, all languages are returned. Allowed values are 'de_DE' and 'en_EN",
-  "api_locale": "en_EN",
-
-  "%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
-  "smw_multilingual_text": false,
-
-  "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
-  "module_lang": null,
-
-  "%set_categories": "Whether the module should automatically set categories.",
-  "set_categories": false,
-
-  "%placeholder_image": "Placeholder image to use if no image was found",
-  "placeholder_image": "Placeholderv2.png",
-
   "%includes": "Additional vehicle information that should be returned",
   "includes": [
     "hardpoints",
@@ -21,9 +6,6 @@
     "shops",
     "parts"
   ],
-
-  "%name_suffixes": "List suffixes that should be removed from the entity's name. Data values are converted to lowercase",
-  "name_suffixes": [ "ship", "ground vehicle" ],
 
   "%smw_data": "Sets which data gets added to SMW",
   "smw_data": [
