@@ -1368,6 +1368,13 @@
 			}
 		],
 		[
+			"shortdesc_single_seat",
+			{
+				"de": "Einzelsitz",
+				"en": "single-seat"
+			}
+		],
+		[
 			"shortdesc_manufactured_by",
 			{
 				"de": "$1 hergestellt von $2",
