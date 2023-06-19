@@ -271,7 +271,7 @@ function methodtable.setSemanticProperties( self )
 						end
 					end
 				-- Retrieve data from API
-				elseif parts[ 1 ] == 'API' then
+				elseif parts[ 1 ] == 'API' and self.apiData ~= nil then
 					mw.logObject({
 						key_access = parts[2],
 						value = self.apiData:get( parts[ 2 ] )
