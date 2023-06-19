@@ -99,6 +99,8 @@ end
 
 --- FIXME: This should go to somewhere else, like Module:Common
 local function makeTimeReadable( t )
+	if t == nil then return end
+
 	-- Fix for german number format
 	if string.find( t, ',', 1, true ) then
 		t = string.gsub( t, ',', '.' )
@@ -108,7 +110,6 @@ local function makeTimeReadable( t )
 		t = tonumber( t, 10 )
 	end
 
-	if t == nil then return end
 	t = lang:formatDuration( t * 60 )
 
 	local regex
@@ -143,13 +144,14 @@ end
 --- FIXME: This should go to somewhere else, like Module:Common
 --- TODO: Should we color code this for buff and debuff?
 local function formatModifier( x )
+	if x == nil then return end
 	-- Fix for german number format
 	if string.find( x, ',', 1, true ) then
 		x = string.gsub( x, ',', '.' )
 	end
 
 	if type( x ) == 'string' then x = tonumber( x, 10 ) end
-	if x == nil then return end
+
 	local diff = x - 1
 	local sign = ''
 	if diff == 0 then
