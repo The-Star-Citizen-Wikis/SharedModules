@@ -1054,7 +1054,7 @@ function Vehicle.main( frame )
 		instance:setCategories()
 	end
 
-	return infobox .. debugOutput .. table.concat( instance.categories )
+	return infobox .. debugOutput .. table.concat( instance.categories ) .. common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
 end
 
 
