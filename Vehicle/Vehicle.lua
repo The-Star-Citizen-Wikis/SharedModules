@@ -880,7 +880,7 @@ function methodtable.setCategories( self )
 	local size = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
 	local size_cat, pledge_cat
 
-	if self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil then
+	if self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil or size == 'vehicle' then
 		-- size_cat = 'category_ground_vehicle_size'
 		-- pledge_cat = 'category_ground_vehicle_pledge'
 		table.insert(
