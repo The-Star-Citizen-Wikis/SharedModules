@@ -248,7 +248,7 @@
       }
     ],
     [
-      "ARG_RsiStoreUrl",
+      "ARG_PledgeStoreUrl",
       {
         "de": "RSI Shop URL",
         "en": "rsistoreurl"
