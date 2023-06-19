@@ -876,7 +876,7 @@ end
 
 --- Sets the main categories for this object
 function methodtable.setCategories( self )
-	if config.set_categories == false or self.smwData == nil then
+	if config.set_categories == false then
 		return
 	end
 
@@ -938,6 +938,51 @@ function methodtable.setCategories( self )
 			string.format( '[[Category:%s]]', translate( pledge_cat ) )
 		)
 	end
+end
+
+--- Sets the short description for this object
+--- TODO: Make it i18n friendly
+function methodtable.setShortDescription( self )
+	local shortdesc
+	local vehicleType
+	-- FIXME: Same thing is used in setCategories too, should this be merged or something?
+	local isGroundVehicle = ( size ~= nil and size == 'Vehicle' ) or self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
+
+	if isGroundVehicle then
+		vehicleType = translate( 'shortdesc_ground_vehicle' )
+	else
+		vehicleType = translate( 'shortdesc_ship' )
+	end
+
+	if self.smwData[ translate( 'SMW_Role' ) ] ~= nil then
+		local vehicleRole = self.smwData[ translate( 'SMW_Role' ) ]
+		if type( vehicleRole ) == 'table' then
+			vehicleRole = table.concat( vehicleRole, ' ' )
+		end
+
+		vehicleRole = string.lower( vehicleRole )
+		
+		for _, noun in pairs( config.role_suffixes ) do
+			local match = string.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
+			--- Remove suffix from role
+			if match then
+				vehicleRole = mw.text.trim( string.gsub( vehicleRole, noun, '' ) )
+				vehicleType = noun
+			end
+		end
+
+		shortdesc = string.format( '%s %s', vehicleRole, vehicleType )
+	else
+		shortdesc = vehicleType
+	end
+
+	shortdesc = lang:ucfirst( shortdesc )
+
+	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, self.smwData[ translate( 'SMW_Manufacturer' ) ] )
+	end
+
+	self.currentFrame:callParserFunction( 'SHORTDESC', shortdesc )
 end
 
 
@@ -1048,13 +1093,16 @@ function Vehicle.main( frame )
 
 	local infobox = tostring( instance:getInfobox() )
 
-	-- Only set categories if this is the page that also holds the smw attributes
+	-- Only set categories and short desc if this is the page that also holds the smw attributes
 	-- Allows outputting vehicle infoboxes on other pages without setting categories
 	if instance.smwData ~= nil then
 		instance:setCategories()
+		instance:setShortDescription()
+		-- FIXME: Is there a cleaner way?
+		infobox = infobox .. common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
 	end
 
-	return infobox .. debugOutput .. table.concat( instance.categories ) .. common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
+	return infobox .. debugOutput .. table.concat( instance.categories )
 end
 
 

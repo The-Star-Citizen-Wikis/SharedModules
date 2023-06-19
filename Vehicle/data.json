@@ -1,252 +1,414 @@
 {
-  "%includes": "Additional vehicle information that should be returned",
-  "includes": [
-    "hardpoints",
-    "components",
-    "shops",
-    "parts"
-  ],
-
-  "%smw_data": "Sets which data gets added to SMW",
-  "smw_data": [
-    {
-      "SMW_Name": [ "API_name", "ARG_Name" ],
-      "smw_format": "#-"
-    },
-
-    {
-      "SMW_Description": [ "API_description" ],
-      "type": "multilingual_text"
-    },
-    {
-      "SMW_ProductionState": [ "API_production_status", "ARG_ProductionState" ],
-      "format": "replace-dash",
-      "type": "multilingual_text",
-      "smw_format": "#-"
-    },
-    {
-      "SMW_Role": [
-        "ARG_Role",
-        "API_foci"
-      ],
-      "type": "multilingual_text",
-      "smw_format": "#-"
-    },
-    { "SMW_Series": "ARG_Series", "smw_format": "#-" },
-    {
-      "SMW_ShipMatrixSize": [ "API_size", "ARG_Size" ],
-      "format": "ucfirst",
-      "smw_format": "#-"
-    },
-
-    { "SMW_PledgeAvailability": "ARG_PledgeAvailability", "smw_format": "#-" },
-    { "SMW_PledgePrice": [ "ARG_PledgePrice", "API_msrp" ] },
-    { "SMW_OriginalPledgePrice": "ARG_OriginalPledgePrice" },
-    { "SMW_WarbondPledgePrice": "ARG_WarbondPledgePrice" },
-    { "SMW_OriginalWarbondPledgePrice": "ARG_OriginalWarbondPledgePrice" },
-
-    { "SMW_MinimumCrew": [ "ARG_MinimumCrew", "API_crew.min" ], "smw_format": "#-" },
-    { "SMW_MaximumCrew": [ "ARG_MaximumCrew", "API_crew.max" ], "smw_format": "#-" },
-
-    {
-      "SMW_Manufacturer": [
-        "ARG_manufacturer",
-        "API_manufacturer.code"
-      ],
-      "%format": "[[%s]]",
-      "smw_format": "#-"
-    },
-
-    {
-      "SMW_CargoCapacity": [
-        "ARG_CargoCapacity",
-        "API_cargo_capacity"
-      ],
-      "type": "number"
-    },
-    {
-      "SMW_VehicleInventory": [ "API_vehicle_inventory" ],
-      "type": "number"
-    },
-
-    {
-      "SMW_ScmSpeed": [
-        "ARG_ScmSpeed",
-        "API_speed.scm"
-      ],
-      "type": "number"
-    },
-    {
-      "SMW_MaximumSpeed": [
-        "ARG_MaximumSpeed",
-        "API_speed.max"
-      ],
-      "type": "number"
-    },
-    {
-      "SMW_QuantumSpeed": [
-        "API_quantum.quantum_speed"
-      ],
-      "type": "number"
-    },
-    {
-      "SMW_QuantumRange": [
-        "API_quantum.quantum_range"
-      ],
-      "type": "number"
-    },
-
-    { "SMW_EntityLength": [ "ARG_Length", "API_sizes.length" ] },
-    { "SMW_EntityWidth": [ "ARG_Width", "API_sizes.beam" ] },
-    { "SMW_EntityHeight": [ "ARG_Height", "API_sizes.height" ] },
-    { "SMW_RetractedLength": "ARG_RetractedLength" },
-    { "SMW_RetractedWidth": "ARG_RetractedWidth" },
-    { "SMW_RetractedHeight": "ARG_RetractedHeight" },
-    { "SMW_Mass": [ "ARG_mass", "API_mass" ] },
-
-    { "SMW_LoreReleaseDate": "ARG_LoreReleaseDate" },
-    { "SMW_LoreRetirementDate": "ARG_LoreRetirementDate" },
-
-    { "SMW_ConceptAnnouncementDate": "ARG_ConceptDate" },
-    { "SMW_ConceptSaleDate": "ARG_SaleDate" },
-
-    { "SMW_GalactapediaUrl": "ARG_GalactapediaUrl", "smw_format": "#-" },
-    { "SMW_PledgeStoreUrl": "ARG_PledgeStoreUrl", "smw_format": "#-" },
-    { "SMW_BrochureUrl": "ARG_BrochureUrl", "smw_format": "#-" },
-    { "SMW_TrailerUrl": "ARG_TrailerUrl", "smw_format": "#-" },
-    { "SMW_WhitleysGuideUrl": "ARG_WhitleysGuideUrl", "smw_format": "#-" },
-
-    {
-      "SMW_PresentationUrl": "ARG_PresentationUrl",
-      "type": "range",
-      "max": 5,
-      "smw_format": "#-"
-    },
-    {
-      "SMW_QAndAUrl": "ARG_QAndAUrl",
-      "type": "range",
-      "max": 5,
-      "smw_format": "#-"
-    },
-
-    { "SMW_ShipMatrixName": "API_name", "smw_format": "#-" },
-    { "SMW_LoanerVehicle": "API_loaner", "format": "[[%s]]" },
-
-    { "SMW_GameBuild": "API_version" },
-    { "SMW_UUID": "API_uuid", "smw_format": "#-" },
-    { "SMW_ClassName": "API_class_name", "smw_format": "#-" },
-    { "SMW_Size": "API_size_class", "smw_format": "#-" },
-    { "SMW_ZeroToMaximumSpeedTime": "API_speed.zero_to_max", "type": "number" },
-    { "SMW_MaximumSpeedToZeroTime": "API_speed.max_to_zero", "type": "number" },
-    { "SMW_HealthPoint": "API_health", "type": "number" },
-
-    { "SMW_InfraredSignatureModifier": "API_armor.signal_infrared", "type": "number", "smw_format": "#-" },
-    { "SMW_ElectromagneticSignatureModifier": "API_armor.signal_electromagnetic", "type": "number", "smw_format": "#-" },
-    { "SMW_CrossSectionSignatureModifier": "API_armor.signal_cross_section", "type": "number", "smw_format": "#-" },
-    { "SMW_PhysicalDamageModifier": "API_armor.damage_physical", "type": "number", "smw_format": "#-" },
-    { "SMW_EnergyDamageModifier": "API_armor.damage_energy", "type": "number", "smw_format": "#-" },
-    { "SMW_DistortionDamageModifier": "API_armor.damage_distortion", "type": "number", "smw_format": "#-" },
-    { "SMW_ThermalDamageModifier": "API_armor.damage_thermal", "type": "number", "smw_format": "#-" },
-    { "SMW_BiochemicalDamageModifier": "API_armor.damage_biochemical", "type": "number", "smw_format": "#-" },
-    { "SMW_StunDamageModifier": "API_armor.damage_stun", "type": "number", "smw_format": "#-" },
-
-    { "SMW_ReverseSpeed": "API_speed.reverse", "type": "number" },
-
-    { "SMW_ZeroToScmSpeedTime": "API_speed.zero_to_scm", "type": "number" },
-    { "SMW_ScmSpeedToZeroTime": "API_speed.scm_to_zero", "type": "number" },
-    { "SMW_RollRate": "API_agility.roll", "type": "number" },
-    { "SMW_PitchRate": "API_agility.pitch", "type": "number" },
-    { "SMW_YawRate": "API_agility.yaw", "type": "number" },
-    { "SMW_HydrogenFuelCapacity": "API_fuel.capacity", "type": "number" },
-    { "SMW_HydrogenFuelIntakeRate": "API_fuel.intake_rate", "type": "number" },
-
-    { "SMW_QuantumFuelCapacity": "API_quantum.quantum_fuel_capacity", "type": "number" },
-
-    {
-      "SMW_InsuranceClaimTime": "API_insurance.claim_time",
-      "type": "number",
-      "smw_format": "#-n"
-    },
-    {
-      "SMW_InsuranceExpediteTime": "API_insurance.expedite_time",
-      "type": "number",
-      "smw_format": "#-n"
-    },
-    { "SMW_InsuranceExpediteCost": "API_insurance.expedite_cost", "type": "number" }
-  ],
-
-  "%community_sites": "List of format strings which link to community sites",
-  "community_sites": [
-    {
-      "label": "Universal Item Finder",
-      "format": "https://finder.cstone.space/search/%s",
-      "data": "SMW_UUID"
-    },
-    {
-      "label": "#DPSCalculator",
-      "format": "https://finder.cstone.space/search/%s",
-      "data": "SMW_ClassName"
-    },
-    {
-      "label": "SPViewer",
-      "format": "https://www.spviewer.eu/pages/ship-performances.html?ship=%s",
-      "data": "SMW_ClassName"
-    },
-    {
-      "label": "TIS Ship Map",
-      "format": "https://tradein.space/#/ship_maps/%s",
-      "data": "SMW_ClassName"
-    },
-    {
-      "label": "StarShip 42",
-      "format": "https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s",
-      "data": "SMW_ShipMatrixName"
-    },
-    {
-      "label": "FleetYards",
-      "format": "https://fleetyards.net/ships/%s",
-      "data": "SMW_ShipMatrixName"
-    },
-    {
-      "label": "Wiki API",
-      "format": "https://api.star-citizen.wiki/api/v2/vehicles/%s",
-      "data": "SMW_UUID"
-    }
-  ],
-
-  "%official_sites": "List of attributes that link to official sites",
-  "official_sites": [
-    {
-      "label": "LBL_Galactapedia",
-      "attribute": "SMW_GalactapediaUrl"
-    },
-    {
-      "label": "LBL_PledgeStore",
-      "attribute": "SMW_PledgeStoreUrl"
-    },
-    {
-      "label": "LBL_Presentation",
-      "attribute": "SMW_PresentationUrl"
-    },
-    {
-      "label": "LBL_Portfolio",
-      "attribute": "SMW_PortfolioUrl"
-    },
-    {
-      "label": "LBL_WhitleysGuide",
-      "attribute": "SMW_WhitleysGuideUrl"
-    },
-    {
-      "label": "LBL_Brochure",
-      "attribute": "SMW_BrochureUrl"
-    },
-    {
-      "label": "LBL_Trailer",
-      "attribute": "SMW_TrailerUrl"
-    },
-    {
-      "label": "LBL_QA",
-      "attribute": "SMW_QAndAUrl"
-    }
-  ]
+	"%includes": "Additional vehicle information that should be returned",
+	"includes": [
+		"hardpoints",
+		"components",
+		"shops",
+		"parts"
+	],
+	"%smw_data": "Sets which data gets added to SMW",
+	"smw_data": [
+		{
+			"SMW_Name": [
+				"API_name",
+				"ARG_Name"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Description": [
+				"API_description"
+			],
+			"type": "multilingual_text"
+		},
+		{
+			"SMW_ProductionState": [
+				"API_production_status",
+				"ARG_ProductionState"
+			],
+			"format": "replace-dash",
+			"type": "multilingual_text",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Role": [
+				"ARG_Role",
+				"API_foci"
+			],
+			"type": "multilingual_text",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Series": "ARG_Series",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ShipMatrixSize": [
+				"API_size",
+				"ARG_Size"
+			],
+			"format": "ucfirst",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_PledgeAvailability": "ARG_PledgeAvailability",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_PledgePrice": [
+				"ARG_PledgePrice",
+				"API_msrp"
+			]
+		},
+		{
+			"SMW_OriginalPledgePrice": "ARG_OriginalPledgePrice"
+		},
+		{
+			"SMW_WarbondPledgePrice": "ARG_WarbondPledgePrice"
+		},
+		{
+			"SMW_OriginalWarbondPledgePrice": "ARG_OriginalWarbondPledgePrice"
+		},
+		{
+			"SMW_MinimumCrew": [
+				"ARG_MinimumCrew",
+				"API_crew.min"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_MaximumCrew": [
+				"ARG_MaximumCrew",
+				"API_crew.max"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Manufacturer": [
+				"ARG_manufacturer",
+				"API_manufacturer.code"
+			],
+			"%format": "[[%s]]",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_CargoCapacity": [
+				"ARG_CargoCapacity",
+				"API_cargo_capacity"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_VehicleInventory": [
+				"API_vehicle_inventory"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_ScmSpeed": [
+				"ARG_ScmSpeed",
+				"API_speed.scm"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_MaximumSpeed": [
+				"ARG_MaximumSpeed",
+				"API_speed.max"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_QuantumSpeed": [
+				"API_quantum.quantum_speed"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_QuantumRange": [
+				"API_quantum.quantum_range"
+			],
+			"type": "number"
+		},
+		{
+			"SMW_EntityLength": [
+				"ARG_Length",
+				"API_sizes.length"
+			]
+		},
+		{
+			"SMW_EntityWidth": [
+				"ARG_Width",
+				"API_sizes.beam"
+			]
+		},
+		{
+			"SMW_EntityHeight": [
+				"ARG_Height",
+				"API_sizes.height"
+			]
+		},
+		{
+			"SMW_RetractedLength": "ARG_RetractedLength"
+		},
+		{
+			"SMW_RetractedWidth": "ARG_RetractedWidth"
+		},
+		{
+			"SMW_RetractedHeight": "ARG_RetractedHeight"
+		},
+		{
+			"SMW_Mass": [
+				"ARG_mass",
+				"API_mass"
+			]
+		},
+		{
+			"SMW_LoreReleaseDate": "ARG_LoreReleaseDate"
+		},
+		{
+			"SMW_LoreRetirementDate": "ARG_LoreRetirementDate"
+		},
+		{
+			"SMW_ConceptAnnouncementDate": "ARG_ConceptDate"
+		},
+		{
+			"SMW_ConceptSaleDate": "ARG_SaleDate"
+		},
+		{
+			"SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_PledgeStoreUrl": "ARG_PledgeStoreUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_BrochureUrl": "ARG_BrochureUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_TrailerUrl": "ARG_TrailerUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_WhitleysGuideUrl": "ARG_WhitleysGuideUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_PresentationUrl": "ARG_PresentationUrl",
+			"type": "range",
+			"max": 5,
+			"smw_format": "#-"
+		},
+		{
+			"SMW_QAndAUrl": "ARG_QAndAUrl",
+			"type": "range",
+			"max": 5,
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ShipMatrixName": "API_name",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_LoanerVehicle": "API_loaner",
+			"format": "[[%s]]"
+		},
+		{
+			"SMW_GameBuild": "API_version"
+		},
+		{
+			"SMW_UUID": "API_uuid",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ClassName": "API_class_name",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Size": "API_size_class",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ZeroToMaximumSpeedTime": "API_speed.zero_to_max",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumSpeedToZeroTime": "API_speed.max_to_zero",
+			"type": "number"
+		},
+		{
+			"SMW_HealthPoint": "API_health",
+			"type": "number"
+		},
+		{
+			"SMW_InfraredSignatureModifier": "API_armor.signal_infrared",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ElectromagneticSignatureModifier": "API_armor.signal_electromagnetic",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_CrossSectionSignatureModifier": "API_armor.signal_cross_section",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_PhysicalDamageModifier": "API_armor.damage_physical",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_EnergyDamageModifier": "API_armor.damage_energy",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_DistortionDamageModifier": "API_armor.damage_distortion",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ThermalDamageModifier": "API_armor.damage_thermal",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_BiochemicalDamageModifier": "API_armor.damage_biochemical",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_StunDamageModifier": "API_armor.damage_stun",
+			"type": "number",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ReverseSpeed": "API_speed.reverse",
+			"type": "number"
+		},
+		{
+			"SMW_ZeroToScmSpeedTime": "API_speed.zero_to_scm",
+			"type": "number"
+		},
+		{
+			"SMW_ScmSpeedToZeroTime": "API_speed.scm_to_zero",
+			"type": "number"
+		},
+		{
+			"SMW_RollRate": "API_agility.roll",
+			"type": "number"
+		},
+		{
+			"SMW_PitchRate": "API_agility.pitch",
+			"type": "number"
+		},
+		{
+			"SMW_YawRate": "API_agility.yaw",
+			"type": "number"
+		},
+		{
+			"SMW_HydrogenFuelCapacity": "API_fuel.capacity",
+			"type": "number"
+		},
+		{
+			"SMW_HydrogenFuelIntakeRate": "API_fuel.intake_rate",
+			"type": "number"
+		},
+		{
+			"SMW_QuantumFuelCapacity": "API_quantum.quantum_fuel_capacity",
+			"type": "number"
+		},
+		{
+			"SMW_InsuranceClaimTime": "API_insurance.claim_time",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_InsuranceExpediteTime": "API_insurance.expedite_time",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_InsuranceExpediteCost": "API_insurance.expedite_cost",
+			"type": "number"
+		}
+	],
+	"%community_sites": "List of format strings which link to community sites",
+	"community_sites": [
+		{
+			"label": "Universal Item Finder",
+			"format": "https://finder.cstone.space/search/%s",
+			"data": "SMW_UUID"
+		},
+		{
+			"label": "#DPSCalculator",
+			"format": "https://finder.cstone.space/search/%s",
+			"data": "SMW_ClassName"
+		},
+		{
+			"label": "SPViewer",
+			"format": "https://www.spviewer.eu/pages/ship-performances.html?ship=%s",
+			"data": "SMW_ClassName"
+		},
+		{
+			"label": "TIS Ship Map",
+			"format": "https://tradein.space/#/ship_maps/%s",
+			"data": "SMW_ClassName"
+		},
+		{
+			"label": "StarShip 42",
+			"format": "https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s",
+			"data": "SMW_ShipMatrixName"
+		},
+		{
+			"label": "FleetYards",
+			"format": "https://fleetyards.net/ships/%s",
+			"data": "SMW_ShipMatrixName"
+		},
+		{
+			"label": "Wiki API",
+			"format": "https://api.star-citizen.wiki/api/v2/vehicles/%s",
+			"data": "SMW_UUID"
+		}
+	],
+	"%official_sites": "List of attributes that link to official sites",
+	"official_sites": [
+		{
+			"label": "LBL_Galactapedia",
+			"attribute": "SMW_GalactapediaUrl"
+		},
+		{
+			"label": "LBL_PledgeStore",
+			"attribute": "SMW_PledgeStoreUrl"
+		},
+		{
+			"label": "LBL_Presentation",
+			"attribute": "SMW_PresentationUrl"
+		},
+		{
+			"label": "LBL_Portfolio",
+			"attribute": "SMW_PortfolioUrl"
+		},
+		{
+			"label": "LBL_WhitleysGuide",
+			"attribute": "SMW_WhitleysGuideUrl"
+		},
+		{
+			"label": "LBL_Brochure",
+			"attribute": "SMW_BrochureUrl"
+		},
+		{
+			"label": "LBL_Trailer",
+			"attribute": "SMW_TrailerUrl"
+		},
+		{
+			"label": "LBL_QA",
+			"attribute": "SMW_QAndAUrl"
+		}
+	]
 }
