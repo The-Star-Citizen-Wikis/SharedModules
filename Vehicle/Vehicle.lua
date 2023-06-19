@@ -851,11 +851,11 @@ function methodtable.getInfobox( self )
 			content = {
 				infobox:renderItem( {
 					label = translate( 'LBL_OfficialSites' ),
-					data = table.concat( getOfficialSites(), ' · ' )
+					data = table.concat( getOfficialSites(), '' )
 				} ),
 				infobox:renderItem( {
 					label = translate( 'LBL_CommunitySites' ),
-					data = table.concat( getCommunitySites(), ' · ' )
+					data = table.concat( getCommunitySites(), '' )
 				} ),
 			},
 			class = 'infobox__section--linkButtons',
