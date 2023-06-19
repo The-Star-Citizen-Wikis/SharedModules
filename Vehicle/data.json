@@ -119,12 +119,14 @@
     {
       "SMW_PresentationUrl": "ARG_PresentationUrl",
       "type": "range",
-      "max": 5
+      "max": 5,
+      "smw_format": "#-"
     },
     {
       "SMW_QAndAUrl": "ARG_QAndAUrl",
       "type": "range",
-      "max": 5
+      "max": 5,
+      "smw_format": "#-"
     },
 
     { "SMW_ShipMatrixName": "API_name", "smw_format": "#-" },

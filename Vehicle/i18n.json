@@ -255,10 +255,24 @@
       }
     ],
     [
+      "ARG_PresentationUrl",
+      {
+        "de": "Präsentation URL",
+        "en": "presentationurl"
+      }
+    ],
+    [
       "ARG_BrochureUrl",
       {
         "de": "Broschüre URL",
         "en": "brochureurl"
+      }
+    ],
+    [
+      "ARG_QAndAUrl",
+      {
+        "de": "Q&A URL",
+        "en": "qandaurl"
       }
     ],
     [
