@@ -52,7 +52,7 @@
     },
     { "SMW_Series": "ARG_Series", "smw_format": "#-" },
     {
-      "SMW_ShipMatrixSize": [ "ARG_Size", "API_size" ],
+      "SMW_ShipMatrixSize": [ "API_size", "ARG_Size" ],
       "format": "ucfirst",
       "smw_format": "#-"
     },
