@@ -15,6 +15,7 @@ On other pages, it can be used to display the infobox of other vehicles.
 - [Extension:Apiunto](https://github.com/StarCitizenWiki/Apiunto)
 - [Extension:TabberNeue](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue)
 - [Module:Arguments](https://www.mediawiki.org/wiki/Module:Arguments)
+- Module:Common
 - Module:Commodity
 - Module:Hatnote
 - [Module:InfoboxNeue](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/InfoboxNeue)

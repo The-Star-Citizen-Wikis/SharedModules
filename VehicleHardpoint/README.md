@@ -13,25 +13,26 @@ This module saves and displays the hardpoints found on a vehicle.
 - [Module:Translate](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Translate)
 
 ## Installation
-1. Create `Module:VehicleHardpoint/data.json` with the content found in `data.json` on your wiki 
-2. Create `Module:VehicleHardpoint/styles.css` with the content found in `styles.css` on your wiki 
-3. Create `Module:VehicleHardpoint/i18n.json` with the content found in `i18n.json` on your wiki
-4. Create `Module:VehicleHardpoint`
-5. Upload all icons from the `SharedIcons` repository 
+1. Create `Module:VehicleHardpoint/data.json` with the content found in `data.json` on your wiki
+2. Create `Module:VehicleHardpoint/config.json` with the content found in `config.json` on your wiki 
+3. Create `Module:VehicleHardpoint/styles.css` with the content found in `styles.css` on your wiki 
+4. Create `Module:VehicleHardpoint/i18n.json` with the content found in `i18n.json` on your wiki
+5. Create `Module:VehicleHardpoint`
+6. Upload all icons from the `SharedIcons` repository 
 
 ## Configuration
-All configuration of this module is handled in `data.json`.
+All configuration of this module is handled in `config.json`.
 
 ### `smw_multilingual_text`
 If this flag is set to true, a language suffix is added to the data that is saved to SMW.
 
 ### `module_lang`
-Manually select the language from the `.tab` page. Also overrides the language suffix that is added to SMW (if active).  
+Manually select the language from the `i18n.json` page. Also overrides the language suffix that is added to SMW (if active).  
 If left empty, the language is guessed based on the content language.
 
 ### `icon_prefix`
-This prefix is used to generate the icon filenames. The default is `Hardpoints icon` which generates filenames like:   
-`Hardpoints icon ICON.svg`
+This prefix is used to generate the icon filenames. The default is `sc-icon-` which generates filenames like:   
+`sc-icon-ICON.svg`
 
 ### `icon_name_lowercase`
 Set this to false to not lowercase the icon names in the generated file links.
