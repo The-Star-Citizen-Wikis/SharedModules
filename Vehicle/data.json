@@ -85,8 +85,8 @@
 		},
 		{
 			"SMW_Manufacturer": [
-				"ARG_manufacturer",
-				"API_manufacturer.code"
+				"API_manufacturer.code",
+				"ARG_Manufacturer"
 			],
 			"%format": "[[%s]]",
 			"smw_format": "#-"
