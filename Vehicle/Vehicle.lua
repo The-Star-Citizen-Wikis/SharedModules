@@ -941,7 +941,6 @@ function methodtable.setCategories( self )
 end
 
 --- Sets the short description for this object
---- TODO: Make it i18n friendly
 function methodtable.setShortDescription( self )
 	local shortdesc
 	local vehicleType
@@ -976,11 +975,15 @@ function methodtable.setShortDescription( self )
 		shortdesc = vehicleType
 	end
 
-	shortdesc = lang:ucfirst( shortdesc )
+	if self.smwData[ translate( 'SMW_ShipMatrixSize' ) ] ~= nil then
+		shortdesc = string.format( '%s %s', self.smwData[ translate( 'SMW_ShipMatrixSize' ) ], shortdesc )
+	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
 		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, self.smwData[ translate( 'SMW_Manufacturer' ) ] )
 	end
+
+	shortdesc = lang:ucfirst( shortdesc )
 
 	self.currentFrame:callParserFunction( 'SHORTDESC', shortdesc )
 end
