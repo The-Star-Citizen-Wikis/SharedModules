@@ -1356,21 +1356,21 @@
 		[
 			"shortdesc_ground_vehicle",
 			{
-				"de": "bodenfahrzeug",
+				"de": "Bodenfahrzeug",
 				"en": "ground vehicle"
 			}
 		],
 		[
 			"shortdesc_ship",
 			{
-				"de": "raumschiff",
+				"de": "Raumschiff",
 				"en": "ship"
 			}
 		],
 		[
 			"shortdesc_manufactured_by",
 			{
-				"de": "Von $2 hergestellter $1",
+				"de": "$1 hergestellt von $2",
 				"en": "$1 manufactured by $2"
 			}
 		],
