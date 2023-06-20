@@ -970,12 +970,13 @@ function methodtable.setShortDescription( self )
 		shortdesc = vehicleType
 	end
 
-	if self.smwData[ translate( 'SMW_ShipMatrixSize' ) ] ~= nil then
+	if not isGroundVehicle and self.smwData[ translate( 'SMW_ShipMatrixSize' ) ] ~= nil then
 		local vehicleSize = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
 		--- Special handling for single-seat ship
 		if self.smwData[ translate( 'SMW_MaximumCrew' ) ] ~= nil and self.smwData[ translate( 'SMW_MaximumCrew' ) ] == 1 then
 			vehicleSize = translate( 'shortdesc_single_seat' )
 		end
+
 		shortdesc = string.format( '%s %s', vehicleSize, shortdesc )
 	end
 
