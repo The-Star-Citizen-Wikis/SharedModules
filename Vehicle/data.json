@@ -31,6 +31,12 @@
 			"smw_format": "#-"
 		},
 		{
+			"SMW_ProductionStateDesc": [
+				"ARG_ProductionStateDesc"
+			],
+			"type": "multilingual_text"
+		},
+		{
 			"SMW_Role": [
 				"ARG_Role",
 				"API_foci"

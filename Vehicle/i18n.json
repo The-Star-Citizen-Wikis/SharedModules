@@ -24,13 +24,6 @@
 			}
 		],
 		[
-			"ARG_ProductionStateDesc",
-			{
-				"de": "Produktionsstatus Beschreibung",
-				"en": "productionstatedesc"
-			}
-		],
-		[
 			"ARG_SmwQueryName",
 			{
 				"de": "SMWQueryName",
@@ -56,6 +49,13 @@
 			{
 				"de": "Produktionsstatus",
 				"en": "productionstate"
+			}
+		],
+		[
+			"ARG_ProductionStateDesc",
+			{
+				"de": "Produktionsstatus Beschreibung",
+				"en": "productionstatedesc"
 			}
 		],
 		[
@@ -630,6 +630,13 @@
 			{
 				"de": "Produktionsstatus",
 				"en": "Production state"
+			}
+		],
+		[
+			"SMW_ProductionStateDesc",
+			{
+				"de": "Produktionsstatus Beschreibung",
+				"en": "Production state description"
 			}
 		],
 		[

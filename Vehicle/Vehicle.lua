@@ -731,7 +731,7 @@ function methodtable.getInfobox( self )
 
 	infobox:renderIndicator( {
 		data = smwData[ translate( 'SMW_ProductionState' ) ],
-		desc = self.frameArgs[ translate( 'ARG_ProductionStateDesc' ) ],
+		desc = smwData[ translate( 'SMW_ProductionStateDesc' ) ],
 		class = getIndicatorClass()
 	} )
 	infobox:renderHeader( {
