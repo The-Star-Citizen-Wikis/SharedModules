@@ -24,5 +24,27 @@
 		"gunship",
 		"interceptor",
 		"ship"
+	],
+	"productionstate_map": [
+		{
+			"name": "FlightReady",
+			"color": "green"
+		},
+		{
+			"name": "ActiveProduction",
+			"color": "yellow"
+		},
+		{
+			"name": "ActiveForSquadron42",
+			"color": "yellow"
+		},
+		{
+			"name": "LongTermProduction",
+			"color": "yellow"
+		},
+		{
+			"name": "InConcept",
+			"color": "red"
+		}
 	]
 }

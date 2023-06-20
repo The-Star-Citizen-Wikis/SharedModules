@@ -325,10 +325,17 @@
 			}
 		],
 		[
-			"InProduction",
+			"ActiveProduction",
 			{
-				"de": "In Produktion",
-				"en": "In production"
+				"de": "Aktive Produktion",
+				"en": "Active production"
+			}
+		],
+		[
+			"LongTermProduction",
+			{
+				"de": "Langfristige Produktion",
+				"en": "Long term production"
 			}
 		],
 		[

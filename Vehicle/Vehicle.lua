@@ -425,16 +425,11 @@ function methodtable.getInfobox( self )
 		local state = smwData[ translate( 'SMW_ProductionState' ) ]
 		if state == nil then return end
 
-		local classMap = {
-			[ translate( 'FlightReady' ) ] = 'green',
-			[ translate( 'InProduction' ) ] = 'yellow',
-			[ translate( 'ActiveForSquadron42' ) ] = 'yellow',
-			[ translate( 'InConcept' ) ] = 'red'
-		}
+		local classMap = config.productionstate_map
 
-		for matcher, class in pairs( classMap ) do
-			if string.match( state, matcher ) ~= nil then
-				return 'infobox__indicator--' .. class
+		for _, map in pairs( classMap ) do
+			if string.match( state, translate( map.name ) ) ~= nil then
+				return 'infobox__indicator--' .. map.color
 			end
 		end
 	end
