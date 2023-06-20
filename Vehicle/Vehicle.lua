@@ -505,7 +505,7 @@ function methodtable.getInfobox( self )
 				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_WarbondPledgePrice' ) ], smwData[ translate( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Avaliblity' ),
+				label = translate( 'LBL_Availability' ),
 				data = smwData[ translate( 'SMW_PledgeAvailability' ) ],
 			} ),
 		}
