@@ -715,6 +715,10 @@ function methodtable.getInfobox( self )
 					query = mw.uri.encode( query, 'PATH' )
 				end
 
+				if site.label == 'FleetYards' then
+					query = string.lower( string.gsub( query, '%%20', '-' ) )
+				end
+
 				table.insert( links, infobox:renderLinkButton( {
 					label = site.label,
 					link = string.format( site.format, query )

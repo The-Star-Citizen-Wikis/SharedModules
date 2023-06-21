@@ -379,7 +379,7 @@
 		},
 		{
 			"label": "FleetYards",
-			"format": "https://fleetyards.net/ships/%s",
+			"format": "https://fleetyards.net/ships/%s/",
 			"data": "SMW_ShipMatrixName"
 		},
 		{
