@@ -334,8 +334,15 @@
 		[
 			"LongTermProduction",
 			{
-				"de": "Langfristige Produktion",
+				"de": "Langzeit Produktion",
 				"en": "Long term production"
+			}
+		],
+		[
+			"Vehicle",
+			{
+				"de": "Fahrzeug",
+				"en": "Vehicle"
 			}
 		],
 		[
@@ -677,7 +684,7 @@
 		[
 			"SMW_ReverseSpeed",
 			{
-				"de": "Umkehrgeschwindigkeit",
+				"de": "Rückwärtsgeschwindigkeit",
 				"en": "Reverse speed"
 			}
 		],

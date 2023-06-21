@@ -33,8 +33,7 @@
 		{
 			"SMW_ProductionStateDesc": [
 				"ARG_ProductionStateDesc"
-			],
-			"type": "multilingual_text"
+			]
 		},
 		{
 			"SMW_Role": [
@@ -140,34 +139,41 @@
 			"SMW_EntityLength": [
 				"ARG_Length",
 				"API_sizes.length"
-			]
+			],
+			"type": "number"
 		},
 		{
 			"SMW_EntityWidth": [
 				"ARG_Width",
 				"API_sizes.beam"
-			]
+			],
+			"type": "number"
 		},
 		{
 			"SMW_EntityHeight": [
 				"ARG_Height",
 				"API_sizes.height"
-			]
+			],
+			"type": "number"
 		},
 		{
-			"SMW_RetractedLength": "ARG_RetractedLength"
+			"SMW_RetractedLength": "ARG_RetractedLength",
+			"type": "number"
 		},
 		{
-			"SMW_RetractedWidth": "ARG_RetractedWidth"
+			"SMW_RetractedWidth": "ARG_RetractedWidth",
+			"type": "number"
 		},
 		{
-			"SMW_RetractedHeight": "ARG_RetractedHeight"
+			"SMW_RetractedHeight": "ARG_RetractedHeight",
+			"type": "number"
 		},
 		{
 			"SMW_Mass": [
 				"ARG_mass",
 				"API_mass"
-			]
+			],
+			"type": "number"
 		},
 		{
 			"SMW_LoreReleaseDate": "ARG_LoreReleaseDate"
