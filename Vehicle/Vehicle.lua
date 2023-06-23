@@ -179,12 +179,12 @@ function methodtable.getApiDataForCurrentPage( self )
 		config.name_suffixes
     )
 
-    local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
-        include = data.includes,
-        locale = config.api_locale
-    } ) )
+	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
+		include = data.includes,
+		locale = config.api_locale
+	} ) )
 
-    if api.checkResponseStructure( json, true, false ) == false then return end
+	if not success or api.checkResponseStructure( json, true, false ) == false then return end
 
     self.apiData = json[ 'data' ]
     self.apiData = api.makeAccessSafe( self.apiData )
