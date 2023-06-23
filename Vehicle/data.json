@@ -137,22 +137,22 @@
 		},
 		{
 			"SMW_EntityLength": [
-				"ARG_Length",
-				"API_sizes.length"
+				"API_sizes.length",
+				"ARG_Length"
 			],
 			"type": "number"
 		},
 		{
 			"SMW_EntityWidth": [
-				"ARG_Width",
-				"API_sizes.beam"
+				"API_sizes.beam",
+				"ARG_Width"
 			],
 			"type": "number"
 		},
 		{
 			"SMW_EntityHeight": [
-				"ARG_Height",
-				"API_sizes.height"
+				"API_sizes.height",
+				"ARG_Height"
 			],
 			"type": "number"
 		},
