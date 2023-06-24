@@ -1,0 +1,67 @@
+.mbox {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-top: var( --space-xs );
+    margin-bottom: var( --space-md );
+    background-color: var( --color-surface-2 );
+    border-radius: var( --border-radius--medium );
+    color: var( --color-base--subtle );
+    font-size: 0.875rem;
+    line-height: var( --line-height-xs );
+}
+
+.mbox.mbox-high {
+    /* FIXME: Update back to Citzen CSS var when patched */
+    background-color: rgba( 221, 51, 51, 0.1 );
+}
+
+.mbox.mbox-med {
+    /* FIXME: Update back to Citzen CSS var when patched */
+    background-color: rgba( 255, 204, 51, 0.1 );
+}
+
+.mbox-title {
+    display: flex;
+    align-items: center;
+    padding: var( --space-sm ) var( --space-md );
+}
+
+.mbox-icon img {
+    width: 14px;
+    height: auto;
+    margin-right: var( --space-xs );
+    opacity: 0.5;
+}
+
+.mbox-text {
+    position: absolute;
+    top: 100%;
+    z-index: 10;
+    padding: var( --space-md );
+    width: 100%;
+    box-sizing: border-box;
+    background-color: var( --color-surface-1 );
+    border-bottom-left-radius: var( --border-radius--medium );
+    border-bottom-right-radius: var( --border-radius--medium );
+    box-shadow: var( --box-shadow-dialog );
+    opacity: 0;
+    visibility: hidden;
+}
+
+.mbox:hover {
+    /* Merge with popup */
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    box-shadow: var( --box-shadow-dialog );
+}
+
+.mbox:hover .mbox-text {
+    opacity: 1;
+    visibility: visible;
+}
+
+/* Dark mode */
+html.skin-citizen-dark .mbox-icon img {
+    filter: invert( 1 );
+}

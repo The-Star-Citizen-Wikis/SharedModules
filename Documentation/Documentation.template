@@ -1,0 +1,6 @@
+<includeonly>{{#invoke:Documentation|doc}}__NOEDITSECTION__{{#seo:
+|type			= website
+|description	= {{FULLPAGENAME}} is a template page used on the Star Citizen Wiki. Templates are pages that are embedded (transcluded) into other pages to allow for the repetition of information.
+|site_name		= Star Citizen Wiki
+|locale			= {{PAGELANGUAGE}}
+}}</includeonly><noinclude>{{/doc}}</noinclude>

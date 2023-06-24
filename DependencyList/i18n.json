@@ -1,0 +1,160 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:DependencyList"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "message_unused_module_title",
+      {
+        "de": "Dieses Modul wird nicht verwendet.",
+        "en": "This module is unused."
+      }
+    ],
+    [
+      "message_unused_module_desc",
+      {
+        "de": "Dieses Modul wird weder von einer Vorlage aufgerufen noch von einem anderen Modul benötigt/geladen. Wenn dies ein Fehler ist, stelle bitte sicher, dass <code>{{[[Vorlage:Dokumentation|Dokumentation]]}}</code>/<code>{{[[Vorlage:Keine Dokumentation|Keine&nbsp;Dokumentation]]}}</code> auf der Dokumentationsseite der Vorlage oder des Moduls eingebunden ist.",
+        "en": "This module is neither invoked by a template nor required/loaded by another module. If this is in error, make sure to add <code>{{[[Template:Documentation|Documentation]]}}</code>/<code>{{[[Template:No documentation|No&nbsp;documentation]]}}</code> to the calling template's or parent's module documentation."
+      }
+    ],
+    [
+      "message_not_exists",
+      {
+        "de": "$1 existiert nicht",
+        "en": "$1 does not exist"
+      }
+    ],
+    [
+      "message_invokes_function",
+      {
+        "de": "'''$1''' verwendet die Funktion '''$2''' in [[$3]] durch [[Star Citizen:Lua|Lua]].",
+        "en": "'''$1''' invokes function '''$2''' in [[$3]] using [[Star Citizen:Lua|Lua]]."
+      }
+    ],
+    [
+      "message_function_invoked_by",
+      {
+        "de": "Function '''$1''' wird aufgerufen von [[$2]]",
+        "en": "function '''$1''' is invoked by [[$2]]"
+      }
+    ],
+    [
+      "message_required_by",
+      {
+        "de": "'''$1''' wird benötigt von $2.",
+        "en": "'''$1''' is required by $2."
+      }
+    ],
+    [
+      "message_loaded_by",
+      {
+        "de": "'''$1''' geladen von $2.",
+        "en": "'''$1''' loaded by $2."
+      }
+    ],
+    [
+      "message_loads_data_from",
+      {
+        "de": "'''$1''' lädt Daten von $2.",
+        "en": "'''$1''' loads data from $2."
+      }
+    ],
+    [
+      "message_transcludes",
+      {
+        "de": "'''$1''' bindet $2 ein, durch <samp>frame:preprocess()</samp>.",
+        "en": "'''$1''' transcludes $2 using <samp>frame:preprocess()</samp>."
+      }
+    ],
+    [
+      "message_requires",
+      {
+        "de": "'''$1''' benötigt $2",
+        "en": "'''$1''' requires $2."
+      }
+    ],
+    [
+      "category_strict_mode_modules",
+      {
+        "de": "Modul (strikt)",
+        "en": "Strict mode modules"
+      }
+    ],
+    [
+      "category_lua_based_template",
+      {
+        "de": "Lua-basierte Vorlage",
+        "en": "Lua-based templates"
+      }
+    ],
+    [
+      "category_template_invoked_modules",
+      {
+        "de": "Vorlag aufgerufen von Modulen",
+        "en": "Template invoked modules"
+      }
+    ],
+    [
+      "category_modules_required_by_modules",
+      {
+        "de": "Modul benötigt von Modulen",
+        "en": "Modules required by modules"
+      }
+    ],
+    [
+      "category_module_data",
+      {
+        "de": "Moduldaten",
+        "en": "Module data"
+      }
+    ],
+    [
+      "category_modules_using_data",
+      {
+        "de": "Moduldaten",
+        "en": "Modules using data"
+      }
+    ],
+    [
+      "ns_module",
+      {
+        "de": "Modul",
+        "en": "Module"
+      }
+    ],
+    [
+      "ns_template",
+      {
+        "de": "Vorlage",
+        "en": "Template"
+      }
+    ],
+    [
+      "list_type_modules",
+      {
+        "de": "Module",
+        "en": "modules"
+      }
+    ],
+    [
+      "list_type_templates",
+      {
+        "de": "Vorlagen",
+        "en": "templates"
+      }
+    ]
+  ]
+}

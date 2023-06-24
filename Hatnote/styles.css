@@ -1,0 +1,24 @@
+.hatnote-container {
+    display: flex;
+    align-items: center;
+    padding: var( --space-sm ) var( --space-md );
+    margin-top: var( --space-xs );
+    margin-bottom: var( --space-md );
+    background: var( --color-surface-2 );
+    border-radius: var( --border-radius--medium );
+    color: var( --color-base--subtle );
+    font-size: 0.875rem;
+    line-height: var( --line-height-xs );
+}
+
+.hatnote-icon img {
+    width: 14px;
+    height: auto;
+    margin-right: var( --space-xs );
+    opacity: var( --opacity-icon-base );
+}
+
+/* Dark theme */
+html.skin-citizen-dark .hatnote-icon img {
+    filter: invert( 1 );
+}

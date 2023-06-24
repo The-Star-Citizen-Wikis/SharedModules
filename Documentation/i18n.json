@@ -1,0 +1,169 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:Documentation"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "module",
+      {
+        "de": "Modul",
+        "en": "module"
+      }
+    ],
+    [
+      "template",
+      {
+        "de": "Vorlage",
+        "en": "template"
+      }
+    ],
+
+    [
+      "message_subpage_title",
+      {
+        "de": "Dies ist die Dokumentationsseite für '$1'.",
+        "en": "This is a documentation subpage for '$1'."
+      }
+    ],
+    [
+      "message_subpage_desc",
+      {
+        "de": "Es enthält Nutzungsinformationen, Kategorien und andere Inhalte, die nicht Teil der [[$1|Original $2-Seite]] sind.",
+        "en": "It contains usage information, categories, and other content that is not part of the [[$1|original $2 page]]."
+      }
+    ],
+    [
+      "message_documentation_title",
+      {
+        "de": "$1 Dokumentation",
+        "en": "$1 documentation"
+      }
+    ],
+    [
+      "message_transclude_desc",
+      {
+        "de": "Diese Dokumentation wird von [[$1/doc]] aus übernommen. Änderungen können auf der Diskussionsseite vorgeschlagen werden.",
+        "en": "This documentation is transcluded from [[$1/doc]]. Changes can be proposed in the talk page."
+      }
+    ],
+    [
+      "message_shared_across",
+      {
+        "de": "'''$1''' wird von den [https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/$2 Star Citizen Wikis] verwendet.",
+        "en": "'''$1''' is [https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/$2 shared across] the Star Citizen Wikis."
+      }
+    ],
+    [
+      "message_shared_across_subtext",
+      {
+        "de": "Dieses $1 wird über die Star Citizen Wikis geteilt. Alle Änderungen sollten auch an das GitHub-Repository weitergeleitet werden.",
+        "en": "This $1 is shared across the Star Citizen Wikis. Any changes should also be relayed to the GitHub repository."
+      }
+    ],
+    [
+      "message_from_wikipedia",
+      {
+        "de": "'''$1''' wird von [https://en.wikipedia.org/wiki/$2 $3] Wikipedia importiert.",
+        "en": "'''$1''' is imported from [https://en.wikipedia.org/wiki/$2 $3] on Wikipedia."
+      }
+    ],
+    [
+      "message_from_wikipedia_subtext",
+      {
+        "de": "Dieses $1 wurde aus der englischen Wikipedia importiert. Obwohl das visuelle Erscheinungsbild unterschiedlich sein kann, ist die Funktionalität identisch. Eine ausführliche Dokumentation finden Sie auf der Wikipedia-Seite.",
+        "en": "This $1 is imported from the English Wikipedia. Although the visual appearance might be different, the functionality is identical. Please refer to the Wikipedia page for detailed documentation."
+      }
+    ],
+    [
+      "message_module_configuration",
+      {
+        "de": "'''$1''' lädt Konfiguration von [[$1/config.json]].",
+        "en": "'''$1''' loads configuration from [[$1/config.json]]."
+      }
+    ],
+    [
+      "message_module_configuration_subtext",
+      {
+        "de": "Dieses Modul kann über die Unterseite config.json konfiguriert werden.",
+        "en": "This module can be configurated from the config.json subpage."
+      }
+    ],
+    [
+      "message_module_i18n",
+      {
+        "de": "'''$1''' lädt Sprachen von [[$2/i18n.json]].",
+        "en": "'''$1''' loads messages from [[$2/i18n.json]]."
+      }
+    ],
+    [
+      "message_module_i18n_subtext",
+      {
+        "de": "Dieses Modul ist sprachneutral konzipiert. Alle Meldungen werden auf der Unterseite i18n.json gespeichert.",
+        "en": "This module is designed to be language-neutral. All of the messages are saved in the i18n.json subpage."
+      }
+    ],
+    [
+      "message_module_tests",
+      {
+        "de": "Dies ist die Seite mit Testfällen für das Modul [[Modul:$1]].",
+        "en": "This is the test cases page for the module [[Module:$1]]."
+      }
+    ],
+    [
+      "message_styles",
+      {
+        "de": "'''$1''' lädt Styles aus [[$2/styles.css]].",
+        "en": "'''$1''' loads styles from [[$2/styles.css]]."
+      }
+    ],
+
+    [
+      "category_template_documentation",
+      {
+        "de": "Vorlagendokumentation",
+        "en": "Template documentation"
+      }
+    ],
+    [
+      "category_module_documentation",
+      {
+        "de": "Moduldokumentation",
+        "en": "Module documentation"
+      }
+    ],
+    [
+      "category_module",
+      {
+        "de": "Modul",
+        "en": "Module"
+      }
+    ],
+    [
+      "category_shared_across",
+      {
+        "de": "$1 genutzt von den Star Citizen Wikis",
+        "en": "$1s shared by the Star Citizen Wikis"
+      }
+    ],
+    [
+      "category_from_wikipedia",
+      {
+        "de": "$1 (Wikipedia)",
+        "en": "$1s imported from Wikipedia"
+      }
+    ]
+  ]
+}
