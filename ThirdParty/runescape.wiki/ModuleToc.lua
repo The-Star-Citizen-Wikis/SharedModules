@@ -40,7 +40,7 @@ local function getFunctionLocations( content )
         local name
         name, start = string.match( content, '%sfunction%s+([^%s%(]+)%s*%(()', start + 1 )
         if start then
-            table.insert( locs, { name=name, line=findLineNumber( start, newLineLocs ) } )
+            table.insert( locs, { name=name, line = findLineNumber( start, newLineLocs ) } )
         end
     until not start
 
@@ -49,7 +49,7 @@ local function getFunctionLocations( content )
         local name
         name, start = string.match( content, '%s([^%s=])%s*=%s*function%s*%(()', start + 1 )
         if start then
-            table.insert( locs, { name=name, line=findLineNumber( start, newLineLocs ) } )
+            table.insert( locs, { name=name, line = findLineNumber( start, newLineLocs ) } )
         end
     until not start
 
@@ -61,7 +61,7 @@ function p.main()
     local moduleName = string.gsub( title.text, '/[Dd]oc$', '' )
 
     if
-        title.nsText ~= 'Module'
+        ( title.nsText ~= 'Module' and title.nsText ~= 'Modul' )
         or string.find( moduleName, '^Exchange/' )
         or string.find( moduleName, '^Exchange historical/' )
         or string.find( moduleName, '^Data/' )
