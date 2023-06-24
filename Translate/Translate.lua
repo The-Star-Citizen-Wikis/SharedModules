@@ -1,3 +1,5 @@
+require( 'strict' )
+
 local Translate = {}
 
 local metatable = {}

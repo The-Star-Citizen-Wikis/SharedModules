@@ -1,3 +1,5 @@
+require( 'strict' )
+
 local Vehicle = {}
 
 local metatable = {}
@@ -49,6 +51,17 @@ local function translate( key, addSuffix, ... )
     end
 
     return multilingualIfActive( translation )
+end
+
+
+--- Check if the current vehicle is a ground vehicle
+---
+--- @param smwData table
+--- @return boolean
+local function isGroundVehicle( smwData )
+	local size = smwData[ translate( 'SMW_ShipMatrixSize' ) ]
+
+	return ( size ~= nil and size == translate( 'Vehicle' ) ) or smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
 end
 
 
@@ -881,7 +894,7 @@ function methodtable.setCategories( self )
 
 	local size = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
 	local size_cat, pledge_cat
-	local isGroundVehicle = ( size ~= nil and size == translate( 'Vehicle' ) ) or self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
+	local isGroundVehicle = isGroundVehicle( self.smwData )
 
 	if isGroundVehicle then
 		--Ground vehicle has no ship matrix size currently
@@ -943,8 +956,7 @@ end
 function methodtable.setShortDescription( self )
 	local shortdesc
 	local vehicleType
-	-- FIXME: Same thing is used in setCategories too, should this be merged or something?
-	local isGroundVehicle = ( size ~= nil and size == 'Vehicle' ) or self.smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
+	local isGroundVehicle = isGroundVehicle( self.smwData )
 
 	if isGroundVehicle then
 		vehicleType = translate( 'shortdesc_ground_vehicle' )
