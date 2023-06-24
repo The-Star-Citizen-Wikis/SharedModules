@@ -1,6 +1,6 @@
 -- Imported from: https://runescape.wiki/w/Module:Array
 
--- <nowiki> awawa
+-- <nowiki>
 local libraryUtil = require('libraryUtil')
 local checkType = libraryUtil.checkType
 local checkTypeMulti = libraryUtil.checkTypeMulti
@@ -25,9 +25,8 @@ function arr.__index(t, k)
 end
 
 function arr.__tostring(array)
-    local dumpObject = require('Module:Logger').dumpObject
     setmetatable(array, nil)
-    local str = dumpObject(array, {clean=true, collapseLimit=100})
+    local str = mw.logObject( array )
     setmetatable(array, arr)
     return str
 end
