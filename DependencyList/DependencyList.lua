@@ -629,7 +629,7 @@ function p._main( currentPageName, addCategories, isUsed )
 
     -- Leave early if not in module or template namespace
     if param.is_empty( currentPageName ) and
-        ( not arr.contains( { moduleNSName, 'Template' }, title.nsText ) ) then
+        ( not arr.contains( { moduleNSName, templateNSName }, title.nsText ) ) then
         return ''
     end
 
