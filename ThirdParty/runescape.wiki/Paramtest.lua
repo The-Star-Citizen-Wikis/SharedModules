@@ -14,9 +14,23 @@
 |fuse3 = If arg1 exists and does not only contain whitespace, the function returns arg1, otherwise returns arg2
 |fname4 = defaults{ {arg1,arg2},...}
 |ftype4 = {String, Any value}...
-|fuse4 = Does the same as <code>default_to()</code> run over every table passed; for technical reasons, all <code>nil</code> are replaced with <code>false</code>
+|fuse4 = Does the same as <code>default_to()</code> run over every table passed
+|fname5 = table_is_empty(arg)
+|ftype5 = Table
+|fuse5 = Returns true if the table has no content, it does not check if the content of the table contains anything
+|fname6 = table_has_content(arg)
+|ftype6 = Table
+|fuse6 = returns true if the table has content, it does not check if the content of the table contains anything
 }}
 --]]
+
+local checkType, checkTypeForNamedArg
+do
+	local _libraryUtil = require("libraryUtil");
+	checkType = _libraryUtil.checkType;
+	checkTypeForNamedArg = _libraryUtil.checkTypeForNamedArg;
+end
+
 --
 -- Tests basic properties of parameters
 --
@@ -28,7 +42,18 @@ local p = {}
 --
 
 function p.is_empty(arg)
-    return not string.find(arg or '', '%S')
+	return not string.find(arg or '', '%S')
+end
+
+--
+-- Tests if the table parameter is empty
+--
+
+function p.table_is_empty(arg)
+	for _, _ in pairs(arg) do
+		return false
+	end
+	return true
 end
 
 --
@@ -36,27 +61,24 @@ end
 --
 
 function p.default_to(arg, default)
-    if string.find(arg or '', '%S') then
-        return arg
-    else
-        return default
-    end
+	if string.find(arg or '', '%S') then
+		return arg
+	else
+		return default
+	end
 end
 
 --
 -- Returns a list of paramaters if it has any content, or the default
 --
-function p.defaults(...)
-    local ret = {}
-    for i, v in ipairs(...) do
-        if string.find(v[1] or '', '%S') then
-            table.insert(ret,v[1])
-        else
-            -- or false, because nil is removed
-            table.insert(ret,v[2] or false)
-        end
-    end
-    return unpack(ret)
+function p.defaults(args)
+	checkType("defaults", 1, args, "table");
+	local ret = {}
+	for i, v in ipairs(args) do
+		checkTypeForNamedArg("defaults", i, v, "table");
+		ret[i] = p.default_to(v[1], v[2]);
+	end
+	return unpack(ret, 1, #args);
 end
 
 --
@@ -65,7 +87,19 @@ end
 --
 
 function p.has_content(arg)
-    return string.find(arg or '', '%S')
+	return string.find(arg or '', '%S')
+end
+
+--
+-- Tests if the table parameter has content
+-- The same as !table_is_empty, but this is more readily clear
+--
+
+function p.table_has_content(arg)
+	for _, _ in pairs(arg) do
+		return true
+	end
+	return false
 end
 
 --
@@ -73,13 +107,13 @@ end
 --
 
 function p.ucfirst(arg)
-    if not arg or arg:len() == 0 then
-        return nil
-    elseif arg:len() == 1 then
-        return arg:upper()
-    else
-        return arg:sub(1,1):upper() .. arg:sub(2)
-    end
+	if not arg or arg:len() == 0 then
+		return nil
+	elseif arg:len() == 1 then
+		return arg:upper()
+	else
+		return arg:sub(1,1):upper() .. arg:sub(2)
+	end
 end
 
 --
@@ -87,13 +121,13 @@ end
 --
 
 function p.ucflc(arg)
-    if not arg or arg:len() == 0 then
-        return nil
-    elseif arg:len() == 1 then
-        return arg:upper()
-    else
-        return arg:sub(1,1):upper() .. arg:sub(2):lower()
-    end
+	if not arg or arg:len() == 0 then
+		return nil
+	elseif arg:len() == 1 then
+		return arg:upper()
+	else
+		return arg:sub(1,1):upper() .. arg:sub(2):lower()
+	end
 end
 
 return p
