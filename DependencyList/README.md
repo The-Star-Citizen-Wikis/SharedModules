@@ -30,6 +30,8 @@ $sespgLocalDefinitions['_LINKSTO'] = [
     'desc' => 'sesp-property-links-to-desc',
     'label' => 'Links to',
     'callback'  => static function(\SESP\AppFactory $appFactory, \SMW\DIProperty $property, \SMW\SemanticData $semanticData ) {
+        $page = $semanticData->getSubject()->getTitle();
+
         // The namespaces where the property will be added
         $targetNS = [ 10, 828 ];
 

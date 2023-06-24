@@ -103,7 +103,7 @@
     [
       "category_template_invoked_modules",
       {
-        "de": "Vorlag aufgerufen von Modulen",
+        "de": "Modul aufgerufen von Vorlagen",
         "en": "Template invoked modules"
       }
     ],
@@ -124,8 +124,15 @@
     [
       "category_modules_using_data",
       {
-        "de": "Moduldaten",
+        "de": "Modul das Daten verwendet",
         "en": "Modules using data"
+      }
+    ],
+    [
+      "category_unused_module",
+      {
+        "de": "Unbenutztes Modul",
+        "en": "Unused modules"
       }
     ],
     [
