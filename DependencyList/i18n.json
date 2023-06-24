@@ -47,8 +47,8 @@
     [
       "message_function_invoked_by",
       {
-        "de": "Function '''$1''' wird aufgerufen von [[$2]]",
-        "en": "function '''$1''' is invoked by [[$2]]"
+        "de": "Function '''$1''' wird aufgerufen von $2",
+        "en": "function '''$1''' is invoked by $2"
       }
     ],
     [

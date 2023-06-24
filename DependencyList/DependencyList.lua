@@ -445,7 +445,7 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
     	local msg = translate(
         'message_function_invoked_by',
             moduleName,
-    		collapseList( invokedByList, 'invokedBy', 'templates' )[ 1 ]
+    		collapseList( invokedByList, 'invokedBy', translate( 'list_type_templates' ) )[ 1 ]
     	)
 
         table.insert( res, mHatnote._hatnote( msg, { icon='WikimediaUI-Code.svg' } ) )
