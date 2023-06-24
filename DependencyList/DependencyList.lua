@@ -9,11 +9,9 @@ local userError = require("Module:User error")
 local mHatnote = require('Module:Hatnote')
 local mHatlist = require('Module:Hatnote list')
 local TNT = require( 'Module:Translate' ):new()
-local config = mw.loadJsonData( 'Module:DependencyList/config.json' )
 
 local moduleIsUsed = false
 local COLLAPSE_LIST_LENGTH_THRESHOLD = 1
-local MAX_DYNAMIC_REQUIRE_LIST_LENGTH = 30
 local dynamicRequireListQueryCache = {}
 
 
