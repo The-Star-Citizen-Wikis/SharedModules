@@ -60,12 +60,7 @@ function p.main()
     local title = mw.title.getCurrentTitle()
     local moduleName = string.gsub( title.text, '/[Dd]oc$', '' )
 
-    if
-        ( title.nsText ~= 'Module' and title.nsText ~= 'Modul' )
-        or string.find( moduleName, '^Exchange/' )
-        or string.find( moduleName, '^Exchange historical/' )
-        or string.find( moduleName, '^Data/' )
-    then
+    if not title:inNamespaces( 828 ) then
         return ''
     end
 
