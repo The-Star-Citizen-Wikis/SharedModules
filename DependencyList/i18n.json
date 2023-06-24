@@ -136,20 +136,6 @@
       }
     ],
     [
-      "ns_module",
-      {
-        "de": "Modul",
-        "en": "Module"
-      }
-    ],
-    [
-      "ns_template",
-      {
-        "de": "Vorlage",
-        "en": "Template"
-      }
-    ],
-    [
       "list_type_modules",
       {
         "de": "Module",

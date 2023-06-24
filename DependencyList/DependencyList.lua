@@ -38,8 +38,8 @@ local builtins = {
 	},
 }
 
-local moduleNSName = translate( 'ns_module' )
-local templateNSName = translate( 'ns_template' )
+local moduleNSName =  mw.site.namespaces[828].name
+local templateNSName = mw.site.namespaces[10].name
 
 
 --- Used in case 'require( varName )' is found. Attempts to find a string value stored in 'varName'.
