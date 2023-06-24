@@ -141,10 +141,6 @@ local function getDynamicRequireList( query )
 
     query = query:gsub( '^[Mm]odule?:', '' )
 
-    if query:find( '^[Dd]ata/' ) then
-        return { moduleNSName .. ':' .. query }, isDynamic;   -- This format will later be used by formatDynamicQueryLink()
-    end
-
     if dynamicRequireListQueryCache[ query ] then
         return dynamicRequireListQueryCache[ query ], isDynamic;
     end
