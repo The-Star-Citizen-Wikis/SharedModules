@@ -115,8 +115,6 @@ end
 --- @param data table {title, subtitle)
 --- @return string html
 function methodtable.renderHeader( self, data )
-	if data == nil or data[ 'title' ] == nil then return '' end
-
 	if type( data ) == 'string' then
 		data = {
 			title = data
