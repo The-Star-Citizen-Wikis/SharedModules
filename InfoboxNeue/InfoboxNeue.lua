@@ -3,8 +3,12 @@ local InfoboxNeue = {}
 local metatable = {}
 local methodtable = {}
 
-metatable.__index = methodtable
+local libraryUtil = require( 'libraryUtil' )
+local checkType = libraryUtil.checkType
+local checkTypeMulti = libraryUtil.checkTypeMulti
 
+
+metatable.__index = methodtable
 
 metatable.__tostring = function( self )
 	return tostring( self:renderInfobox() )
@@ -38,6 +42,10 @@ end
 --- @param data table {title, desc)
 --- @return string html
 function methodtable.renderMessage( self, data, noInsert )
+	checkType( 'Module:InfoboxNeue.renderMessage', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderMessage', 2, data, 'table' )
+	checkType( 'Module:InfoboxNeue.renderMessage', 3, noInsert, 'boolean', true )
+
 	noInsert = noInsert or false
 
 	local item = self:renderSection( { content = self:renderItem( { data = data.title, desc = data.desc } ) }, noInsert )
@@ -55,6 +63,9 @@ end
 --- @param filename string
 --- @return string html
 function methodtable.renderImage( self, filename )
+	checkType( 'Module:InfoboxNeue.renderImage', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderImage', 2, filename, 'string' )
+
 	if type( filename ) ~= 'string' and self.config.displayPlaceholder == true then
 		filename = self.config.placeholderImage
 	end
@@ -86,11 +97,14 @@ end
 --- @param data table {data, desc, class)
 --- @return string html
 function methodtable.renderIndicator( self, data )
+	checkType( 'Module:InfoboxNeue.renderIndicator', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderIndicator', 2, data, 'table' )
+
 	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__indicator' )
 	html:wikitext(
-            self:renderItem(
+		self:renderItem(
 			{
 				[ 'data' ] = data[ 'data' ],
 				[ 'desc' ] = data[ 'desc' ] or nil,
@@ -115,6 +129,9 @@ end
 --- @param data table {title, subtitle)
 --- @return string html
 function methodtable.renderHeader( self, data )
+	checkType( 'Module:InfoboxNeue.renderHeader', 1, self, 'table' )
+	checkTypeMulti( 'Module:InfoboxNeue.renderHeader', 2, data, { 'table', 'string' } )
+
 	if type( data ) == 'string' then
 		data = {
 			title = data
@@ -150,6 +167,10 @@ end
 --- @param noInsert boolean whether to insert this section into the internal table table
 --- @return string html
 function methodtable.renderSection( self, data, noInsert )
+	checkType( 'Module:InfoboxNeue.renderSection', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderSection', 2, data, 'table' )
+	checkType( 'Module:InfoboxNeue.renderSection', 3, noInsert, 'boolean', true )
+
 	noInsert = noInsert or false
 
 	if type( data.content ) == 'table' then
@@ -194,6 +215,9 @@ end
 --- @param data table {label, link, page}
 --- @return string html
 function methodtable.renderLinkButton( self, data )
+	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
+
 	if data == nil or data[ 'label' ] == nil or ( data[ 'link' ] == nil and data[ 'page' ] == nil ) then return '' end
 
 	--- Render multiple linkButton when link is a table
@@ -229,6 +253,9 @@ end
 --- @param data table {icon, label, type, content}
 --- @return string html
 function methodtable.renderFooterButton( self, data )
+	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
+
 	if data == nil or data[ 'label' ] == nil or data[ 'type' ] == nil or data[ 'content' ] == nil or data[ 'content' ] == '' then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__footer' )
@@ -265,6 +292,10 @@ end
 --- @param content string|number optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
+	checkType( 'Module:InfoboxNeue.renderItem', 1, self, 'table' )
+	checkTypeMulti( 'Module:InfoboxNeue.renderItem', 2, data, { 'table', 'string' } )
+	checkTypeMulti( 'Module:InfoboxNeue.renderItem', 3, content, { 'string', 'number', 'nil' } )
+
 	-- The arguments are not passed as a table
 	-- Allows to call this as box:renderItem( 'Label', 'Data' )
 	if content ~= nil then
@@ -310,6 +341,10 @@ end
 --- @param snippetText string text used in snippet in mobile view
 --- @return string html infobox html with templatestyles
 function methodtable.renderInfobox( self, innerHtml, snippetText )
+	checkType( 'Module:InfoboxNeue.renderInfobox', 1, self, 'table' )
+	checkTypeMulti( 'Module:InfoboxNeue.renderInfobox', 2, innerHtml, { 'table', 'string', 'nil' } )
+	checkType( 'Module:InfoboxNeue.renderInfobox', 3, snippetText, 'string', true )
+
 	innerHtml = innerHtml or self.entries
 	if type( innerHtml ) == 'table' then
 		innerHtml = table.concat( self.entries )
