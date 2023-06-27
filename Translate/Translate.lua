@@ -36,9 +36,9 @@ local function load( dataset )
         return cache[ dataset ]
     end
 
-    local data = mw.loadJsonData( dataset ).data
+    local data = mw.loadJsonData( dataset )
     local keys = {}
-    for index, row in ipairs( data ) do
+    for index, row in ipairs( data.data ) do
         keys[ row[ 1 ] ] = index
     end
 
@@ -64,7 +64,7 @@ local function formatMessage( dataset, key, params, lang )
         error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, dataset }, mw.getContentLanguage():getCode() ) )
     end
 
-    local msg = data.data[ data.keys[ key ] ][ 2 ]
+    local msg = data.data.data[ data.keys[ key ] ][ 2 ]
 
     if msg == nil then
         error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, dataset }, mw.getContentLanguage():getCode() ) )
@@ -113,6 +113,102 @@ function methodtable.formatInLanguage( lang, dataset, key, ... )
     checkType('formatInLanguage', 3, key, 'string')
 
     return formatMessage( dataset, key, {...}, lang )
+end
+
+
+function Translate.doc( frame )
+    local dataset = frame.args[ 'dataset' ] or ( mw.title.getCurrentTitle().prefixedText .. '/i18n.json' )
+
+    return frame:extensionTag( 'templatedata', Translate.getTemplateData( dataset ) )
+end
+
+
+function Translate.getTemplateData( dataset )
+    local data = load( guessDataset( dataset ) )
+    local instance = Translate:new( dataset )
+
+    local names = {}
+    for _, field in ipairs( data.data.schema.fields ) do
+        table.insert( names, field.name )
+    end
+
+    local numOnly = true
+    local params = {}
+    local paramOrder = {}
+
+    for _, row in ipairs( data.data.data ) do
+        local newVal = {}
+        local name
+
+        if row[ 1 ]:sub( 1, 3 ) == 'ARG' then
+            for pos, columnName in ipairs( names ) do
+                if columnName == 'id' then
+                    name = instance.format( dataset, row[ pos ] )
+                elseif columnName ~= 'message' then
+                    newVal[ columnName ] = row[ pos ]
+
+                    -- Allow to share examples and label
+                    if ( columnName == 'example' or columnName == 'label' ) and type( row[ pos ] ) == 'string' then
+                        newVal[ columnName ] = {
+                            de = row[ pos ],
+                            en = row[ pos ],
+                        }
+                    end
+                end
+            end
+
+            if name and newVal[ 'type' ] ~= nil then
+                if type( name ) ~= "number" and ( type( name ) ~= "string" or not string.match( name, "^%d+$" ) ) then
+                    numOnly = false
+                end
+
+                params[ name ] = newVal
+
+                table.insert( paramOrder, name )
+
+                -- TODO: Limit this to a specified subset of url args
+                if row[ 1 ]:sub( -3 ) == 'Url' then
+                    for i = 1, 4 do
+                        local tmp = {}
+                        for k, v in pairs( newVal ) do
+                            if type( v ) == 'table' then
+                                tmp[ k ] = {}
+                                for k1, v1 in pairs( v ) do
+                                    tmp[ k ][ k1 ] = v1
+                                end
+                            else
+                                tmp[ k ] = v
+                            end
+                        end
+
+                        local nameI = name .. tostring( i )
+                        tmp[ 'required' ] = false
+                        tmp[ 'suggested' ] = false
+                        params[ nameI ] = tmp
+
+                        table.insert( paramOrder, nameI )
+                    end
+                end
+            end
+        end
+    end
+
+    -- Work around json encoding treating {"1":{...}} as an [{...}]
+    if numOnly then
+        params['zzz123']=''
+    end
+
+    local json = mw.text.jsonEncode({
+        params = params,
+        paramOrder = paramOrder,
+        description = data.template_description,
+    })
+
+    if numOnly then
+        json = string.gsub( json,'"zzz123":"",?', "" )
+    end
+
+    return json
 end
 
 

@@ -176,10 +176,10 @@
 			"type": "number"
 		},
 		{
-			"SMW_LoreReleaseDate": "ARG_LoreReleaseDate"
+			"SMW_LoreReleaseDate": "ARG_ReleaseDate"
 		},
 		{
-			"SMW_LoreRetirementDate": "ARG_LoreRetirementDate"
+			"SMW_LoreRetirementDate": "ARG_RetireDate"
 		},
 		{
 			"SMW_ConceptAnnouncementDate": "ARG_ConceptDate"
