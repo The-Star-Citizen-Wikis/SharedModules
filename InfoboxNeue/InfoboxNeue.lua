@@ -15,6 +15,22 @@ metatable.__tostring = function( self )
 end
 
 
+--- FIXME: This should go to somewhere else, like Module:Common
+--- Calls TNT with the given key
+---
+--- @param key string The translation key
+--- @return string If the key was not found in the .tab page, the key is returned
+local function translate( key, ... )
+	local success, translation = pcall( require( 'Module:Translate' ).format, 'Module:InfoboxNeue/i18n.json', key or '', ... )
+
+	if not success or translation == nil then
+		return key
+	end
+
+	return translation
+end
+
+
 --- Helper function to restore underscore from space
 --- so that it does not screw up the external link wikitext syntax
 --- For some reason SMW property converts underscore into space
@@ -362,7 +378,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__data' )
-				:wikitext( 'Quick facts:' )
+				:wikitext( string.format( '%s:', translate( 'LBL_quick_facts' ) ) )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__desc' )

@@ -1,0 +1,27 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:InfoboxNeue"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "LBL_quick_facts",
+      {
+        "de": "Kurze Fakten",
+        "en": "Quick facts"
+      }
+    ]
+  ]
+}
