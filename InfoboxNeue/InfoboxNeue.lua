@@ -80,7 +80,6 @@ end
 --- @return string html
 function methodtable.renderImage( self, filename )
 	checkType( 'Module:InfoboxNeue.renderImage', 1, self, 'table' )
-	checkType( 'Module:InfoboxNeue.renderImage', 2, filename, 'string' )
 
 	if type( filename ) ~= 'string' and self.config.displayPlaceholder == true then
 		filename = self.config.placeholderImage
