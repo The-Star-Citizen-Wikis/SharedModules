@@ -21,7 +21,7 @@
         {
             "SMW_Manufacturer": [
                 "API_manufacturer.code",
-                "ARG_Manufacturer"
+                "ARG_manufacturer"
             ],
             "%format": "[[%s]]",
             "smw_format": "#-"
