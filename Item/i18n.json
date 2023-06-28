@@ -123,6 +123,13 @@
                 "en": "Description"
             }
         ],
+		[
+			"SMW_Size",
+			{
+				"de": "Größe",
+				"en": "Size"
+			}
+		],
         [
             "SMW_GameBuild",
             {

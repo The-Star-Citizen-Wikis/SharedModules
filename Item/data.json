@@ -26,6 +26,10 @@
             "%format": "[[%s]]",
             "smw_format": "#-"
         },
+		{
+			"SMW_Size": "API_size",
+			"type": "number"
+		},
         {
             "SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
             "smw_format": "#-"
