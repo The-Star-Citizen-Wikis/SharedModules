@@ -57,6 +57,25 @@
                 "de": "Cirrus"
             }
         ],
+		[
+			"ARG_Manufacturer",
+			{
+				"de": "Hersteller",
+				"en": "manufacturer"
+			},
+			"string",
+			{
+				"de": "Hersteller",
+				"en": "Manufacturer"
+			},
+			false,
+			true,
+			{
+				"en": "The manufacturer code of the manufacturer who made the item",
+				"de": "Der Herstellercode des Herstellers, der das Artikel hergestellt hat"
+			},
+			"BANU"
+		],
         [
             "ARG_UUID",
             {
