@@ -8,7 +8,7 @@
         {
             "SMW_Name": [
                 "API_name",
-                "ARG_name"
+                "ARG_Name"
             ],
             "smw_format": "#-"
         },
@@ -21,7 +21,7 @@
         {
             "SMW_Manufacturer": [
                 "API_manufacturer.code",
-                "ARG_manufacturer"
+                "ARG_Manufacturer"
             ],
             "%format": "[[%s]]",
             "smw_format": "#-"
