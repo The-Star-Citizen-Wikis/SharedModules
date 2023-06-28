@@ -20,7 +20,7 @@
             "ARG_Name",
             {
                 "de": "Name",
-                "en": "name"
+                "en": "Name"
             },
             "string",
             {
@@ -61,7 +61,7 @@
 			"ARG_Manufacturer",
 			{
 				"de": "Hersteller",
-				"en": "manufacturer"
+				"en": "Manufacturer"
 			},
 			"string",
 			{
