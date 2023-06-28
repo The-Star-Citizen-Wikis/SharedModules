@@ -270,6 +270,13 @@ function methodtable.setSemanticProperties( self )
 		setData[ translate( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
 	end
 
+	-- Set properties with API data
+    if self.apiData ~= nil and self.apiData.uuid ~= nil then
+		--- Commodity
+		local commodity = require( 'Module:Commodity' ):new()
+		commodity:addShopData( self.apiData )
+	end
+
 	mw.logObject( setData, 'SET' )
 
 	self.setData = setData
