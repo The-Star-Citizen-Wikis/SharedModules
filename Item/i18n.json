@@ -130,6 +130,13 @@
 				"en": "Size"
 			}
 		],
+		[
+			"SMW_Occupancy",
+			{
+				"de": "Belegung",
+				"en": "Occupancy"
+			}
+		],
         [
             "SMW_GameBuild",
             {
