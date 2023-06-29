@@ -798,7 +798,6 @@ function methodtable.getInfobox( self )
 			infobox:renderItem( {
 				label = translate( 'LBL_Stowage' ),
 				data = smwData[ translate( 'SMW_VehicleInventory' ) ],
-				data = smwData[ translate( 'SMW_VehicleInventory' ) ],
 			} ),
 		},
 	} )
