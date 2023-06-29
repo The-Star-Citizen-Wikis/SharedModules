@@ -17,6 +17,25 @@
 	},
 	"data": [
 		[
+			"ARG_Image",
+			{
+				"de": "Bild",
+				"en": "Image"
+			},
+			"wiki-file-name",
+			{
+				"en": "Image",
+				"de": "Bild"
+			},
+			false,
+			true,
+			{
+				"en": "The file name of the image of the ship/vehicle",
+				"de": "Der Dateiname des Bildes des Schiffes/Fahrzeugs"
+			},
+			"Defender.jpg"
+		],
+		[
 			"ARG_Name",
 			{
 				"de": "Name",
@@ -219,6 +238,41 @@
 			{
 				"de": "Galactapedia",
 				"en": "Galactapedia"
+			}
+		],
+		[
+			"error_no_data_title",
+			{
+				"de": "ERROR - Semantic MediaWiki (CODE 16008)",
+				"en": "ERROR - Semantic MediaWiki (CODE 16008)"
+			}
+		],
+		[
+			"error_no_data_text",
+			{
+				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+			}
+		],
+		[
+			"error_script_error_cat",
+			{
+				"de": "Seiten mit Skriptfehlern",
+				"en": "Pages with script errors"
+			}
+		],
+		[
+			"error_no_data_text",
+			{
+				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+			}
+		],
+		[
+			"none",
+			{
+				"de": "Keine",
+				"en": "None"
 			}
 		]
 	]

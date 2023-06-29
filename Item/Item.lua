@@ -314,6 +314,154 @@ function methodtable.getSmwData( self )
     return self.smwData
 end
 
+--- Creates the infobox
+function methodtable.getInfobox( self )
+	local smwData = self:getSmwData()
+
+	local infobox = require( 'Module:InfoboxNeue' ):new( {
+		placeholderImage = config.placeholder_image
+	} )
+	local tabber = require( 'Module:Tabber' ).renderTabber
+
+	--- SMW Data load error
+	--- Infobox data should always have Name property
+	if type( smwData ) ~= 'table' then
+		return infobox:renderInfobox( infobox:renderMessage( {
+			title = translate( 'error_no_data_title' ),
+			desc = translate( 'error_no_data_text' ),
+		} ) )
+	end
+
+	local function getManufacturer()
+		if smwData[ translate( 'SMW_Manufacturer' ) ] == nil then return end
+
+		local mfu = manufacturer( smwData[ translate( 'SMW_Manufacturer' ) ] )
+		if mfu == nil then return smwData[ translate( 'SMW_Manufacturer' ) ] end
+
+		return infobox.showDescIfDiff(
+			table.concat( { '[[', smwData[ translate( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
+			mfu.code
+		)
+	end
+
+	local function getSize()
+		if smwData[ translate( 'SMW_Size' ) ] == nil then return end
+		return 'S' .. smwData[ translate( 'SMW_Size' ) ]
+	end
+
+	local function getClass()
+		if smwData[ translate( 'SMW_Class' ) ] == nil then return end
+
+		local class = smwData[ translate( 'SMW_Class' ) ]
+	
+		if smwData[ translate( 'SMW_Grade' ) ] ~= nil then
+			class = class .. ' (' .. smwData[ translate( 'SMW_Grade' ) ] .. ')'
+		end
+
+		return class
+	end
+
+	--- Other sites
+	local function getOfficialSites()
+		local links = {}
+
+		for _, site in ipairs( data.official_sites ) do
+			local query = smwData[ translate( site.attribute ) ]
+
+			if query ~= nil then
+				table.insert( links, infobox:renderLinkButton( {
+					label = translate( site.label ),
+					link = query
+				} ) )
+			end
+		end
+
+		return links
+	end
+
+	local function getCommunitySites()
+		local links = {}
+
+		for _, site in ipairs( data.community_sites ) do
+			local query = smwData[ translate( site.data ) ]
+
+			if query ~= nil then
+				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
+					query = string.lower( query )
+				elseif site.data == 'SMW_ShipMatrixName' then
+					query = mw.uri.encode( query, 'PATH' )
+				end
+
+				if site.label == 'FleetYards' then
+					query = string.lower( string.gsub( query, '%%20', '-' ) )
+				end
+
+				table.insert( links, infobox:renderLinkButton( {
+					label = site.label,
+					link = string.format( site.format, query )
+				} ) )
+			end
+		end
+
+		return links
+	end
+
+
+	local image = self.frameArgs[ translate( 'ARG_Image' ) ] or self.frameArgs[ 'image' ] or smwData[ 'image' ]
+	infobox:renderImage( image )
+
+	infobox:renderHeader( {
+		title = smwData[ translate( 'SMW_Name' ) ],
+		--- e.g. Aegis Dynamics (AEGS)
+		subtitle = getManufacturer()
+	} )
+
+
+	--- Size, Class, Health
+	infobox:renderSection( {
+		content = {
+			infobox:renderItem( {
+				label = translate( 'LBL_Size' ),
+				data = getSize(),
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Class' ),
+				data = getClass(),
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Occupancy' ),
+				data = smwData[ translate( 'SMW_Occupancy' ) ],
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Health' ),
+				data = smwData[ translate( 'SMW_HealthPoint' ) ],
+			} ),
+		},
+		col = 2
+	} )
+
+	--- Footer
+	infobox:renderFooterButton( {
+		icon = 'WikimediaUI-Globe.svg',
+		label = translate( 'LBL_OtherSites' ),
+		type = 'popup',
+		content = infobox:renderSection( {
+			content = {
+				infobox:renderItem( {
+					label = translate( 'LBL_OfficialSites' ),
+					data = table.concat( getOfficialSites(), '' )
+				} ),
+				infobox:renderItem( {
+					label = translate( 'LBL_CommunitySites' ),
+					data = table.concat( getCommunitySites(), '' )
+				} ),
+			},
+			class = 'infobox__section--linkButtons',
+		}, true )
+	} )
+
+	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
+end
 
 --- Set the frame and load args
 --- @param frame table
@@ -394,6 +542,22 @@ function Item.loadApiData( frame )
 	end
 
 	return debugOutput
+end
+
+--- Generates an infobox based on passed frame args and SMW data
+---
+--- @param frame table Invocation frame
+--- @return string
+function Item.infobox( frame )
+	local instance = Item:new()
+	instance:setFrame( frame )
+
+	local debugOutput = ''
+	if instance.frameArgs[ 'debug' ] ~= nil then
+		debugOutput = instance:makeDebugOutput()
+	end
+
+	return tostring( instance:getInfobox() ) .. debugOutput
 end
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
