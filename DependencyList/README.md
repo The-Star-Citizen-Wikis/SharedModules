@@ -1,6 +1,6 @@
 # Module:DependencyList
 
-This module generates a list of dependency used by template and module documentation.
+This module generates a list of dependencies used by template and module documentation.
 
 ## Requirements
 - [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
@@ -9,7 +9,7 @@ This module generates a list of dependency used by template and module documenta
 
 ## Installation
 1. Create `Module:DependencyList`
-2. Upload all icons from the `SharedIcons` repository
+2. Upload all icons from the `SharedIcons/wikimedia` repository
 
 Change the message `MediaWiki:scribunto-doc-page-name` to `Module:$1/doc`.
 
