@@ -1,62 +1,62 @@
 {
-    "license": "CC0-1.0",
-    "description": {
-        "en": "Translation table for the Module:Item"
-    },
-    "schema": {
-        "fields": [
-            {
-                "name": "id",
-                "type": "string"
-            },
-            {
-                "name": "message",
-                "type": "localized"
-            }
-        ]
-    },
-    "data": [
-        [
-            "ARG_Name",
-            {
-                "de": "Name",
-                "en": "Name"
-            },
-            "string",
-            {
-                "de": "Name",
-                "en": "Name"
-            },
-            true,
-            true,
-            {
-                "en": "The name of the item",
-                "de": "Der Name des Items"
-            },
-            "Cirrus"
-        ],
-        [
-            "ARG_SmwQueryName",
-            {
-                "de": "SMWQueryName",
-                "en": "smwqueryname"
-            },
-            "string",
-            {
-                "de": "SMWQueryName",
-                "en": "smwqueryname"
-            },
-            false,
-            true,
-            {
-                "en": "The page name to load data from",
-                "de": "Seitenname aus denen Daten geladen werden"
-            },
-            {
-                "en": "Cirrus",
-                "de": "Cirrus"
-            }
-        ],
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"ARG_Name",
+			{
+				"de": "Name",
+				"en": "Name"
+			},
+			"string",
+			{
+				"de": "Name",
+				"en": "Name"
+			},
+			true,
+			true,
+			{
+				"en": "The name of the item",
+				"de": "Der Name des Items"
+			},
+			"Cirrus"
+		],
+		[
+			"ARG_SmwQueryName",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			"string",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			false,
+			true,
+			{
+				"en": "The page name to load data from",
+				"de": "Seitenname aus denen Daten geladen werden"
+			},
+			{
+				"en": "Cirrus",
+				"de": "Cirrus"
+			}
+		],
 		[
 			"ARG_Manufacturer",
 			{
@@ -76,53 +76,53 @@
 			},
 			"BANU"
 		],
-        [
-            "ARG_UUID",
-            {
-                "de": "UUID",
-                "en": "uuid"
-            },
-            "string",
-            {
-                "de": "UUID",
-                "en": "UUID"
-            },
-            false,
-            true,
-            {
-                "en": "UUID of the item from the API.",
-                "de": "UUID des Items aus der API."
-            },
-            "aff1d3cf-2e01-48a1-8ce3-47fbdbeceb16"
-        ],
-        [
-            "SMW_Name",
-            {
-                "de": "Name",
-                "en": "Name"
-            }
-        ],
-        [
-            "SMW_Manufacturer",
-            {
-                "de": "Hersteller",
-                "en": "Manufacturer"
-            }
-        ],
-        [
-            "SMW_UUID",
-            {
-                "de": "UUID",
-                "en": "UUID"
-            }
-        ],
-        [
-            "SMW_Description",
-            {
-                "de": "Beschreibung",
-                "en": "Description"
-            }
-        ],
+		[
+			"ARG_UUID",
+			{
+				"de": "UUID",
+				"en": "uuid"
+			},
+			"string",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			},
+			false,
+			true,
+			{
+				"en": "UUID of the item from the API.",
+				"de": "UUID des Items aus der API."
+			},
+			"aff1d3cf-2e01-48a1-8ce3-47fbdbeceb16"
+		],
+		[
+			"SMW_Name",
+			{
+				"de": "Name",
+				"en": "Name"
+			}
+		],
+		[
+			"SMW_Manufacturer",
+			{
+				"de": "Hersteller",
+				"en": "Manufacturer"
+			}
+		],
+		[
+			"SMW_UUID",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			}
+		],
+		[
+			"SMW_Description",
+			{
+				"de": "Beschreibung",
+				"en": "Description"
+			}
+		],
 		[
 			"SMW_Size",
 			{
@@ -151,12 +151,75 @@
 				"en": "Grade"
 			}
 		],
-        [
-            "SMW_GameBuild",
-            {
-                "de": "Spielversion",
-                "en": "Game build"
-            }
-        ]
-    ]
+		[
+			"SMW_HealthPoint",
+			{
+				"de": "Schadenspunkte",
+				"en": "Health point"
+			}
+		],
+		[
+			"SMW_GameBuild",
+			{
+				"de": "Spielversion",
+				"en": "Game build"
+			}
+		],
+		[
+			"LBL_Size",
+			{
+				"de": "Größe",
+				"en": "Size"
+			}
+		],
+		[
+			"LBL_Class",
+			{
+				"de": "Klasse",
+				"en": "Class"
+			}
+		],
+		[
+			"LBL_Occupancy",
+			{
+				"de": "Belegung",
+				"en": "Occupancy"
+			}
+		],
+		[
+			"LBL_Health",
+			{
+				"de": "Schadenspunkte",
+				"en": "Health"
+			}
+		],
+		[
+			"LBL_OfficialSites",
+			{
+				"de": "Offizielle Seiten",
+				"en": "Official sites"
+			}
+		],
+		[
+			"LBL_CommunitySites",
+			{
+				"de": "Community Seiten",
+				"en": "Community sites"
+			}
+		],
+		[
+			"LBL_OtherSites",
+			{
+				"de": "Andere Seiten",
+				"en": "Other sites"
+			}
+		],
+		[
+			"LBL_Galactapedia",
+			{
+				"de": "Galactapedia",
+				"en": "Galactapedia"
+			}
+		]
+	]
 }

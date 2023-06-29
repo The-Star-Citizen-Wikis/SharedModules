@@ -1,77 +1,79 @@
 {
-    "%includes": "Additional item information that should be returned",
-    "includes": [
-        "shops.items"
-    ],
-    "%smw_data": "Sets which data gets added to SMW",
-    "smw_data": [
-        {
-            "SMW_Name": [
-                "API_name",
-                "ARG_Name"
-            ],
-            "smw_format": "#-"
-        },
-        {
-            "SMW_Description": [
-                "API_description"
-            ],
-            "type": "multilingual_text"
-        },
-        {
-            "SMW_Manufacturer": [
-                "API_manufacturer.code",
-                "ARG_Manufacturer"
-            ],
-            "%format": "[[%s]]",
-            "smw_format": "#-"
-        },
+	"%includes": "Additional item information that should be returned",
+	"includes": [
+		"shops.items"
+	],
+	"%smw_data": "Sets which data gets added to SMW",
+	"smw_data": [
+		{
+			"SMW_Name": [
+				"API_name",
+				"ARG_Name"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Description": [
+				"API_description"
+			],
+			"type": "multilingual_text"
+		},
+		{
+			"SMW_Manufacturer": [
+				"API_manufacturer.code",
+				"ARG_Manufacturer"
+			],
+			"%format": "[[%s]]",
+			"smw_format": "#-"
+		},
 		{
 			"SMW_Size": "API_size",
 			"type": "number"
 		},
 		{
-            "SMW_Occupancy": [
-                "API_dimension.volume"
-            ],
-            "type": "number"
-        },
+			"SMW_Occupancy": "API_dimension.volume",
+			"type": "number"
+		},
 		{
-            "SMW_Class": "API_class"
-        },
+			"SMW_Class": "API_class"
+		},
 		{
-            "SMW_Grade": "API_grade"
-        },
-        {
-            "SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
-            "smw_format": "#-"
-        },
-        {
-            "SMW_GameBuild": "API_version"
-        },
-        {
-            "SMW_UUID": "API_uuid",
-            "smw_format": "#-"
-        }
-    ],
-    "%community_sites": "List of format strings which link to community sites",
-    "community_sites": [
-        {
-            "label": "Universal Item Finder",
-            "format": "https://finder.cstone.space/search/%s",
-            "data": "SMW_UUID"
-        },
-        {
-            "label": "Wiki API",
-            "format": "https://api.star-citizen.wiki/api/v2/items/%s",
-            "data": "SMW_UUID"
-        }
-    ],
-    "%official_sites": "List of attributes that link to official sites",
-    "official_sites": [
-        {
-            "label": "LBL_Galactapedia",
-            "attribute": "SMW_GalactapediaUrl"
-        }
-    ]
+			"SMW_Grade": "API_grade"
+		},
+		{
+			"SMW_HealthPoint": "API_durability.health",
+			"type": "number"
+		},
+		{
+			"SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_GameBuild": "API_version"
+		},
+		{
+			"SMW_UUID": "API_uuid",
+			"smw_format": "#-"
+		}
+	],
+	"%community_sites": "List of format strings which link to community sites",
+	"community_sites": [
+		{
+			"label": "Universal Item Finder",
+			"format": "https://finder.cstone.space/search/%s",
+			"data": "SMW_UUID"
+		},
+		{
+			"label": "Wiki API",
+			"format": "https://api.star-citizen.wiki/api/v2/items/%s",
+			"data": "SMW_UUID"
+		}
+	],
+	"%official_sites": "List of attributes that link to official sites",
+	"official_sites": [
+		{
+			"label": "LBL_Galactapedia",
+			"attribute": "SMW_GalactapediaUrl"
+		}
+	]
 }
