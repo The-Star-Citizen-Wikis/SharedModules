@@ -137,6 +137,20 @@
 				"en": "Occupancy"
 			}
 		],
+		[
+			"SMW_Class",
+			{
+				"de": "Klasse",
+				"en": "Class"
+			}
+		],
+		[
+			"SMW_Grade",
+			{
+				"de": "Grad",
+				"en": "Grade"
+			}
+		],
         [
             "SMW_GameBuild",
             {

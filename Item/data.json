@@ -36,6 +36,12 @@
             ],
             "type": "number"
         },
+		{
+            "SMW_Class": "API_class"
+        },
+		{
+            "SMW_Grade": "API_grade"
+        },
         {
             "SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
             "smw_format": "#-"
