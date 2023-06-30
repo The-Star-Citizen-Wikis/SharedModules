@@ -21,7 +21,8 @@ end
 --- @param key string The translation key
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, ... )
-	local success, translation = pcall( require( 'Module:Translate' ).format, 'Module:InfoboxNeue/i18n.json', key or '', ... )
+	local TNT = require( 'Module:Translate' ):new()
+	local success, translation = pcall( TNT.format, 'Module:InfoboxNeue/i18n.json', key or '', ... )
 
 	if not success or translation == nil then
 		return key
