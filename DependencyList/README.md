@@ -48,10 +48,16 @@ $sespgLocalDefinitions['_LINKSTO'] = [
             $con->addQuotes( $page->getDBkey() )
         );
 
+        $where = [ $where ];
+
+        if ( !empty( $targetNS ) ) {
+            $where[] = [ 'pl.pl_namespace' => $targetNS ];
+        }
+
         $res = $con->select(
             [ 'pl' => 'pagelinks', 'page' ],
             [ 'sel_title' => 'pl.pl_title', 'sel_ns' => 'pl.pl_namespace' ],
-            [ $where ],
+            $where,
             __METHOD__,
             [ 'DISTINCT' ],
             [ 'page' => [ 'JOIN', 'page_id=pl_from' ] ]
