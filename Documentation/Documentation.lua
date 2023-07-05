@@ -118,7 +118,7 @@ function p.doc( frame )
 	    		translate(
 					'message_from_wikipedia',
 					title.fullText,
-					page,
+					mw.uri.encode( page, 'WIKI' ),
 					page
 				),
 				translate(
