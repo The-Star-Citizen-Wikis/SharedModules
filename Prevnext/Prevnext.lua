@@ -13,7 +13,8 @@ metatable.__index = methodtable
 --- @param page string
 --- @return boolean
 local function pageExists( page )
-	return mw.title.new( page ).exists
+	local title = mw.title.new( page )
+	return title and title.exists
 end
 
 
