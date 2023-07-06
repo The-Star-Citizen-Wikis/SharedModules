@@ -117,7 +117,7 @@ end
 
 
 function Translate.doc( frame )
-    local dataset = frame.args[ 'dataset' ] or ( mw.title.getCurrentTitle().prefixedText .. '/i18n.json' )
+    local dataset = frame.args[ 1 ] or frame.args[ 'dataset' ] or ( mw.title.getCurrentTitle().prefixedText .. '/i18n.json' )
 
     return frame:extensionTag( 'templatedata', Translate.getTemplateData( dataset ) )
 end
