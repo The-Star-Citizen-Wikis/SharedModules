@@ -1,3 +1,5 @@
+require( 'strict' )
+
 local VehicleHardpoint = {}
 
 local metatable = {}
@@ -581,8 +583,8 @@ end
 --- Sets all available vehicle parts as SMW subobjects
 --- This method should be called by the accompanying Vehicle Module
 ---
---- @param parts table API Hardpoint data
-function methodtable.setParts(self, parts )
+--- @param parts table API Parts data
+function methodtable.setParts( self, parts )
     if type( parts ) ~= 'table' then
         error( translate( 'msg_invalid_hardpoints_object' ) )
     end
@@ -661,6 +663,46 @@ function methodtable.setParts(self, parts )
     end
 
     addParts( parts )
+
+    mw.logObject( objects, 'setParts' )
+
+    for _, subobject in pairs( objects ) do
+        mw.smw.subobject( subobject )
+    end
+end
+
+
+--- Sets all available ship-matrix components as SMW subobjects
+--- This method should be called by the accompanying Vehicle Module
+---
+--- @param components table API components data
+function methodtable.setComponents( self, components )
+    if type( components ) ~= 'table' then
+        error( translate( 'msg_invalid_hardpoints_object' ) )
+    end
+
+    local lang = mw.getContentLanguage()
+
+    for _, component in pairs( components ) do
+        local parts = mw.text.split( components.type, '_', true )
+        local type = ''
+        for _, part in ipairs( parts ) do
+            type = type .. lang:ucfirst( part )
+        end
+
+        type = mw.text.trim( type, 's' )
+
+        mw.smw.subobject( {
+            [ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( component.class, true ),
+            [ translate( 'SMW_HardpointType' ) ] = translate( type, true ),
+            [ translate( 'SMW_Name' ) ] = translate( component.name:gsub( ' ', '' ) ),
+            [ translate( 'SMW_ItemQuantity' ) ] = component.quantity,
+            --[ 'Komponentenbefestigungen' ] = component.mounts,
+            [ translate( 'SMW_Size' ) ] = component.component_size,
+            [ translate( 'SMW_HardpointMaximumSize' ) ] = component.size,
+            [ translate( 'SMW_FromGameData' ) ] = false,
+        } )
+    end
 
     mw.logObject( objects, 'setParts' )
 

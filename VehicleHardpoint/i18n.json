@@ -1058,6 +1058,42 @@
                 "de": "Keine Hardpoints für die Seite [[$1]] gefunden.",
                 "en": "SMW data not found on [[$1]]."
             }
+        ],
+
+        [
+            "RSIAvionic",
+            {
+                "de": "Avionik",
+                "en": "Avionics"
+            }
+        ],
+        [
+            "RSIPropulsion",
+            {
+                "de": "Antrieb",
+                "en": "Propulsion"
+            }
+        ],
+        [
+            "RSIThruster",
+            {
+                "de": "Triebwerk",
+                "en": "Thrusters"
+            }
+        ],
+        [
+            "RSIModular",
+            {
+                "de": "Systeme",
+                "en": "Systems"
+            }
+        ],
+        [
+            "RSIWeapon ",
+            {
+                "de": "Bewaffnung",
+                "en": "Weapons"
+            }
         ]
     ]
 }

@@ -370,6 +370,10 @@ function methodtable.setSemanticProperties( self )
 				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ translate( 'ARG_name' ) ] or mw.title.getCurrentTitle().fullText )
 				hardpoint:setHardPointObjects( self.apiData.hardpoints )
 				hardpoint:setParts( self.apiData.parts )
+
+				if not self.apiData.hardpoints and type( self.apiData.components ) == 'table' and #self.apiData.components > 0 then
+					hardpoint:setComponents( self.apiData.components )
+				end
 			end
 
 			--- Commodity
