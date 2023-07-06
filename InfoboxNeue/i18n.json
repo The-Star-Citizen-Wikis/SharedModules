@@ -12,6 +12,34 @@
       {
         "name": "message",
         "type": "localized"
+      },
+      {
+        "name": "type",
+        "type": "string"
+      },
+      {
+        "name": "label",
+        "type": "localized"
+      },
+      {
+        "name": "required",
+        "type": "boolean"
+      },
+      {
+        "name": "suggested",
+        "type": "boolean"
+      },
+      {
+        "name": "description",
+        "type": "localized"
+      },
+      {
+        "name": "example",
+        "type": "string"
+      },
+      {
+        "name": "default",
+        "type": "string"
       }
     ]
   },
@@ -22,6 +50,607 @@
         "de": "Kurze Fakten",
         "en": "Quick facts"
       }
+    ],
+    [
+      "ARG_Title",
+      {
+        "de": "title",
+        "en": "title"
+      },
+      "string",
+      {
+        "en": "Title",
+        "de": "Titel"
+      },
+      false,
+      true,
+      {
+        "en": "The title of the infobox",
+        "de": "Titel der Infobox"
+      }
+    ],
+    [
+      "ARG_Subtitle",
+      {
+        "de": "subtitle",
+        "en": "subtitle"
+      },
+      "string",
+      {
+        "en": "Subtitle",
+        "de": "Untertitel"
+      },
+      false,
+      true,
+      {
+        "en": "The subtitle of the infobox",
+        "de": "Untertitel der Infobox"
+      }
+    ],
+    [
+      "ARG_Col",
+      {
+        "de": "col",
+        "en": "col"
+      },
+      "number",
+      {
+        "en": "Default Cols",
+        "de": "Standard Anzahl an Spalten"
+      },
+      false,
+      true,
+      {
+        "en": "Default number of cols, if not set it defaults to '2'",
+        "de": "Standard Anzahl von Spalten, wenn nicht gesetzt dann '2'"
+      }
+    ],
+    [
+      "ARG_Image",
+      {
+        "de": "image",
+        "en": "image"
+      },
+      "wiki-file-name",
+      {
+        "en": "Image",
+        "de": "Bild"
+      },
+      false,
+      true,
+      {
+        "en": "Infobox Image",
+        "de": "Infobox Bild"
+      }
+    ],
+    [
+      "ARG_Snippet",
+      {
+        "de": "snippet",
+        "en": "snippet"
+      },
+      "string",
+      {
+        "en": "Snippet",
+        "de": "Kurztext"
+      },
+      false,
+      true,
+      {
+        "en": "Infobox Quick Facts",
+        "de": "Kurztext / Quick Facts"
+      }
+    ],
+
+    [
+      "ARG_section1",
+      {
+        "de": "section1",
+        "en": "section1"
+      },
+      "string",
+      {
+        "en": "Section 1",
+        "de": "Sektion 1"
+      },
+      false,
+      true,
+      {
+        "en": "Numbers following this section are placed into the current section. Example: When 'Section 1' is set, all following label/content entries are placed into this section until the next 'Section N' is set.",
+        "de": "Die Zahlen, die auf diesen Abschnitt folgen, werden in den aktuellen Abschnitt eingefügt. Beispiel: Wenn \"Abschnitt 1\" eingestellt ist, werden alle folgenden Beschriftungen/Inhalte in diesen Abschnitt eingefügt, bis der nächste \"Abschnitt N\" eingestellt wird."
+      }
+    ],
+    [
+      "ARG_section-col1",
+      {
+        "de": "section-col1",
+        "en": "section-col1"
+      },
+      "number",
+      {
+        "en": "Cols for this section",
+        "de": "Anzahl an Spalten für diese Sektion"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label1",
+      {
+        "de": "label1",
+        "en": "label1"
+      },
+      "string",
+      {
+        "en": "Label 1",
+        "de": "Label 1"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content2",
+      {
+        "de": "content2",
+        "en": "content2"
+      },
+      "string",
+      {
+        "en": "Content 2",
+        "de": "Content 2"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label3",
+      {
+        "de": "label3",
+        "en": "label3"
+      },
+      "string",
+      {
+        "en": "Label 3",
+        "de": "Label 3"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content4",
+      {
+        "de": "content4",
+        "en": "content4"
+      },
+      "string",
+      {
+        "en": "Content 4",
+        "de": "Content 4"
+      },
+      false,
+      true
+    ],
+
+
+    [
+      "ARG_section5",
+      {
+        "de": "section5",
+        "en": "section5"
+      },
+      "string",
+      {
+        "en": "Section 2",
+        "de": "Sektion 2"
+      },
+      false,
+      true,
+      {
+        "en": "Numbers following this section are placed into the current section. Example: When 'Section 1' is set, all following label/content entries are placed into this section until the next 'Section N' is set.",
+        "de": "Die Zahlen, die auf diesen Abschnitt folgen, werden in den aktuellen Abschnitt eingefügt. Beispiel: Wenn \"Abschnitt 1\" eingestellt ist, werden alle folgenden Beschriftungen/Inhalte in diesen Abschnitt eingefügt, bis der nächste \"Abschnitt N\" eingestellt wird."
+      }
+    ],
+    [
+      "ARG_section-col5",
+      {
+        "de": "section-col5",
+        "en": "section-col5"
+      },
+      "number",
+      {
+        "en": "Cols for this section",
+        "de": "Anzahl an Spalten für diese Sektion"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label5",
+      {
+        "de": "label5",
+        "en": "label5"
+      },
+      "string",
+      {
+        "en": "Label 5",
+        "de": "Label 5"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content5",
+      {
+        "de": "content5",
+        "en": "content5"
+      },
+      "string",
+      {
+        "en": "Content 5",
+        "de": "Content 5"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label6",
+      {
+        "de": "label6",
+        "en": "label6"
+      },
+      "string",
+      {
+        "en": "Label 6",
+        "de": "Label 6"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content6",
+      {
+        "de": "content6",
+        "en": "content6"
+      },
+      "string",
+      {
+        "en": "Content 6",
+        "de": "Content 6"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label7",
+      {
+        "de": "label7",
+        "en": "label7"
+      },
+      "string",
+      {
+        "en": "Label 7",
+        "de": "Label 7"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content7",
+      {
+        "de": "content7",
+        "en": "content7"
+      },
+      "string",
+      {
+        "en": "Content 7",
+        "de": "Content 7"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label8",
+      {
+        "de": "label8",
+        "en": "label8"
+      },
+      "string",
+      {
+        "en": "Label 8",
+        "de": "Label 8"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content8",
+      {
+        "de": "content8",
+        "en": "content8"
+      },
+      "string",
+      {
+        "en": "Content 8",
+        "de": "Content 8"
+      },
+      false,
+      true
+    ],
+
+    [
+      "ARG_section9",
+      {
+        "de": "section9",
+        "en": "section9"
+      },
+      "string",
+      {
+        "en": "Section 3",
+        "de": "Sektion 3"
+      },
+      false,
+      true,
+      {
+        "en": "Numbers following this section are placed into the current section. Example: When 'Section 1' is set, all following label/content entries are placed into this section until the next 'Section N' is set.",
+        "de": "Die Zahlen, die auf diesen Abschnitt folgen, werden in den aktuellen Abschnitt eingefügt. Beispiel: Wenn \"Abschnitt 1\" eingestellt ist, werden alle folgenden Beschriftungen/Inhalte in diesen Abschnitt eingefügt, bis der nächste \"Abschnitt N\" eingestellt wird."
+      }
+    ],
+    [
+      "ARG_section-col9",
+      {
+        "de": "section-col9",
+        "en": "section-col9"
+      },
+      "number",
+      {
+        "en": "Cols for this section",
+        "de": "Anzahl an Spalten für diese Sektion"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label9",
+      {
+        "de": "label9",
+        "en": "label9"
+      },
+      "string",
+      {
+        "en": "Label 9",
+        "de": "Label 9"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content9",
+      {
+        "de": "content9",
+        "en": "content9"
+      },
+      "string",
+      {
+        "en": "Content 9",
+        "de": "Content 9"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label10",
+      {
+        "de": "label10",
+        "en": "label10"
+      },
+      "string",
+      {
+        "en": "Label 10",
+        "de": "Label 10"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content10",
+      {
+        "de": "content10",
+        "en": "content10"
+      },
+      "string",
+      {
+        "en": "Content 10",
+        "de": "Content 10"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label11",
+      {
+        "de": "label11",
+        "en": "label11"
+      },
+      "string",
+      {
+        "en": "Label 11",
+        "de": "Label 11"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content11",
+      {
+        "de": "content11",
+        "en": "content11"
+      },
+      "string",
+      {
+        "en": "Content 11",
+        "de": "Content 11"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label12",
+      {
+        "de": "label12",
+        "en": "label12"
+      },
+      "string",
+      {
+        "en": "Label 12",
+        "de": "Label 12"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content12",
+      {
+        "de": "content12",
+        "en": "content12"
+      },
+      "string",
+      {
+        "en": "Content 12",
+        "de": "Content 12"
+      },
+      false,
+      true
+    ],
+
+    [
+      "ARG_section13",
+      {
+        "de": "section13",
+        "en": "section13"
+      },
+      "string",
+      {
+        "en": "Section 4",
+        "de": "Sektion 4"
+      },
+      false,
+      true,
+      {
+        "en": "Numbers following this section are placed into the current section. Example: When 'Section 1' is set, all following label/content entries are placed into this section until the next 'Section N' is set.",
+        "de": "Die Zahlen, die auf diesen Abschnitt folgen, werden in den aktuellen Abschnitt eingefügt. Beispiel: Wenn \"Abschnitt 1\" eingestellt ist, werden alle folgenden Beschriftungen/Inhalte in diesen Abschnitt eingefügt, bis der nächste \"Abschnitt N\" eingestellt wird."
+      }
+    ],
+    [
+      "ARG_label13",
+      {
+        "de": "label13",
+        "en": "label13"
+      },
+      "string",
+      {
+        "en": "Label 13",
+        "de": "Label 13"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content13",
+      {
+        "de": "content13",
+        "en": "content13"
+      },
+      "string",
+      {
+        "en": "Content 13",
+        "de": "Content 13"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label14",
+      {
+        "de": "label14",
+        "en": "label14"
+      },
+      "string",
+      {
+        "en": "Label 14",
+        "de": "Label 14"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content14",
+      {
+        "de": "content14",
+        "en": "content14"
+      },
+      "string",
+      {
+        "en": "Content 14",
+        "de": "Content 14"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label15",
+      {
+        "de": "label15",
+        "en": "label15"
+      },
+      "string",
+      {
+        "en": "Label 15",
+        "de": "Label 15"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content15",
+      {
+        "de": "content15",
+        "en": "content15"
+      },
+      "string",
+      {
+        "en": "Content 15",
+        "de": "Content 15"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_label16",
+      {
+        "de": "label16",
+        "en": "label16"
+      },
+      "string",
+      {
+        "en": "Label 16",
+        "de": "Label 16"
+      },
+      false,
+      true
+    ],
+    [
+      "ARG_content16",
+      {
+        "de": "content16",
+        "en": "content16"
+      },
+      "string",
+      {
+        "en": "Content 16",
+        "de": "Content 16"
+      },
+      false,
+      true
     ]
   ]
 }
