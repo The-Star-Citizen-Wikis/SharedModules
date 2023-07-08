@@ -8,10 +8,8 @@
 
 local libraryUtil = require('libraryUtil')
 local checkType = libraryUtil.checkType
-local checkTypeForNamedArg = libraryUtil.checkTypeForNamedArg
 local mArguments -- lazily initialise [[Module:Arguments]]
 local yesno -- lazily initialise [[Module:Yesno]]
-local formatLink -- lazily initialise [[Module:Format link]] ._formatLink
 
 local p = {}
 
