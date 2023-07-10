@@ -75,5 +75,9 @@
 			"label": "LBL_Galactapedia",
 			"attribute": "SMW_GalactapediaUrl"
 		}
+	],
+	"%extension_modules": "List of modules that can extend item data",
+	"extension_modules": [
+		"Module:VehicleItem"
 	]
 }
