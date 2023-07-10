@@ -10,7 +10,7 @@ metatable.__index = methodtable
 
 
 local TNT = require( 'Module:Translate' ):new()
-local data = mw.loadJsonData( 'Module:VehicleItem/data.json' )
+local data = mw.loadJsonData( 'Module:Item/VehicleItem/data.json' )
 -- Intentionally re-use the config from Module:Item
 local config = mw.loadJsonData( 'Module:Item/config.json' )
 
@@ -42,9 +42,9 @@ local function translate( key, addSuffix, ... )
     end
 
     if config.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, config.module_lang, 'Module:VehicleItem/i18n.json', key or '', ... )
+        success, translation = pcall( TNT.formatInLanguage, config.module_lang, 'Module:Item/VehicleItem/i18n.json', key or '', ... )
     else
-        success, translation = pcall( TNT.format, 'Module:VehicleItem/i18n.json', key or '', ... )
+        success, translation = pcall( TNT.format, 'Module:Item/VehicleItem/i18n.json', key or '', ... )
     end
 
     if not success or translation == nil then
