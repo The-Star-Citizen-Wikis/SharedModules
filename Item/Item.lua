@@ -147,9 +147,16 @@ function methodtable.setSemanticProperties( self )
 	end
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, mod = pcall( require, module )
-		if success then
-			mod:new( self.apiData, self.frameArgs ):addSmwProperties( setData )
+		if module.type ~= nil and type( module.type ) == 'table' then
+			for _, type in pairs( module.type ) do
+				if setData[ translate( 'SMW_Type' ) ] == type then
+					local success, mod = pcall( require, module.name )
+					if success then
+						mod:new( self.apiData, self.frameArgs ):addSmwProperties( setData )
+					end
+					break
+				end
+			end
 		end
 	end
 
