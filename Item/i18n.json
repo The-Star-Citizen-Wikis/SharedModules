@@ -80,7 +80,7 @@
 			"ARG_Manufacturer",
 			{
 				"de": "Hersteller",
-				"en": "Manufacturer"
+				"en": "manufacturer"
 			},
 			"string",
 			{
@@ -143,6 +143,13 @@
 			}
 		],
 		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
 			"SMW_Size",
 			{
 				"de": "Größe",
@@ -182,6 +189,13 @@
 			{
 				"de": "Spielversion",
 				"en": "Game build"
+			}
+		],
+		[
+			"LBL_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
 			}
 		],
 		[

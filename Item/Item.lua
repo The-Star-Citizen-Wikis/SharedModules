@@ -149,7 +149,7 @@ function methodtable.setSemanticProperties( self )
 	for _, module in pairs( data.extension_modules ) do
 		local success, mod = pcall( require, module )
 		if success then
-			mod:new( self.apiData, self.frameArgs ):addSmwAskProperties( setData )
+			mod:new( self.apiData, self.frameArgs ):addSmwProperties( setData )
 		end
 	end
 
@@ -212,7 +212,7 @@ function methodtable.getInfobox( self )
 		if smwData[ translate( 'SMW_Manufacturer' ) ] == nil then return end
 
 		local mfu = manufacturer( smwData[ translate( 'SMW_Manufacturer' ) ] )
-		if mfu == nil then return smwData[ translate( 'SMW_Manufacturer' ) ] end
+		if mfu == nil then return '[[' .. smwData[ translate( 'SMW_Manufacturer' ) ] .. ']]' end
 
 		return infobox.showDescIfDiff(
 			table.concat( { '[[', smwData[ translate( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
@@ -293,9 +293,13 @@ function methodtable.getInfobox( self )
 	} )
 
 
-	--- Size, Class, Health
+	--- Type, Size, Class, Health
 	infobox:renderSection( {
 		content = {
+			infobox:renderItem( {
+				label = translate( 'LBL_Type' ),
+				data = smwData[ translate( 'SMW_Type' ) ],
+			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Size' ),
 				data = getSize(),
