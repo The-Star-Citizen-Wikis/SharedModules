@@ -7,6 +7,8 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local libraryUtil = require( 'libraryUtil' )
+local checkType = libraryUtil.checkType
 
 local cache = {}
 local i18nDataset = 'Module:Translate/i18n.json'
@@ -116,6 +118,10 @@ function methodtable.formatInLanguage( lang, dataset, key, ... )
 end
 
 
+--- Wrapper function for Translate.getTemplateData that wraps the output in a <templatedata> tag
+---
+--- @param frame table Current MW Frame
+--- @return string
 function Translate.doc( frame )
     local dataset = frame.args[ 1 ] or frame.args[ 'dataset' ] or ( mw.title.getCurrentTitle().prefixedText .. '/i18n.json' )
 
@@ -123,6 +129,11 @@ function Translate.doc( frame )
 end
 
 
+--- Base logic taken from Module:TNT
+--- Iterates through all user settable arguments and outputs json usable in a <templatedata> tag
+---
+--- @param dataset string The data.json page from which the arguments are taken
+--- @return string Json
 function Translate.getTemplateData( dataset )
     local data = load( guessDataset( dataset ) )
     local instance = Translate:new( dataset )
@@ -209,6 +220,45 @@ function Translate.getTemplateData( dataset )
     end
 
     return json
+end
+
+
+--- Calls TNT with the given key
+---
+--- @param dataset string The i18n.json page
+--- @param config table The calling module's config
+--- @param key string The translation key
+--- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
+--- @return string If the key was not found in the .tab page, the key is returned
+function methodtable.translate( self, dataset, config, key, addSuffix, ... )
+    checkType( 'Module:Translate.translate', 1, self, 'table' )
+    checkType( 'Module:Translate.translate', 2, dataset, 'string' )
+    checkType( 'Module:Translate.translate', 3, config, 'table' )
+    checkType( 'Module:Translate.translate', 4, key, 'string' )
+    checkType( 'Module:Translate.translate', 4, addSuffix, 'boolean', true )
+
+	addSuffix = addSuffix or false
+	local success, translation
+
+	local function multilingualIfActive( input )
+		if addSuffix and config.smw_multilingual_text == true then
+			return string.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
+		end
+
+		return input
+	end
+
+	if config.module_lang ~= nil then
+		success, translation = pcall( self.formatInLanguage, config.module_lang, dataset, key or '', ... )
+	else
+		success, translation = pcall( self.format, dataset, key or '', ... )
+	end
+
+	if not success or translation == nil then
+		return multilingualIfActive( key )
+	end
+
+	return multilingualIfActive( translation )
 end
 
 

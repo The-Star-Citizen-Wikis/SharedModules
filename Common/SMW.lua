@@ -173,7 +173,12 @@ end
 --- @param moduleConfig table The module config from config.json
 --- @param moduleData table The module data from data.json
 --- @return void
-function commonSMW.addSmwQueryParams( smwAskObject, translateFn, moduleConfig, moduleData )
+function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig, moduleData )
+	checkType( 'Module:Common/SMW.addSmwAskProperties', 1, smwAskObject, 'table' )
+	checkType( 'Module:Common/SMW.addSmwAskProperties', 2, translateFn, 'function' )
+	checkType( 'Module:Common/SMW.addSmwAskProperties', 3, moduleConfig, 'table' )
+	checkType( 'Module:Common/SMW.addSmwAskProperties', 4, moduleData, 'table' )
+
 	local langSuffix = ''
 	if moduleConfig.smw_multilingual_text == true then
 		langSuffix = '+lang=' .. ( moduleConfig.module_lang or mw.getContentLanguage():getCode() )

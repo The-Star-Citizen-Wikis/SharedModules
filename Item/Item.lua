@@ -22,35 +22,13 @@ else
 end
 
 
---- FIXME: This should go to somewhere else, like Module:Common
---- Calls TNT with the given key
+--- Wrapper function for Module:Translate.translate
 ---
 --- @param key string The translation key
 --- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-    addSuffix = addSuffix or false
-    local success, translation
-
-    local function multilingualIfActive( input )
-        if addSuffix and config.smw_multilingual_text == true then
-            return string.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
-        end
-
-        return input
-    end
-
-    if config.module_lang ~= nil then
-        success, translation = pcall( TNT.formatInLanguage, config.module_lang, 'Module:Item/i18n.json', key or '', ... )
-    else
-        success, translation = pcall( TNT.format, 'Module:Item/i18n.json', key or '', ... )
-    end
-
-    if not success or translation == nil then
-        return multilingualIfActive( key )
-    end
-
-    return multilingualIfActive( translation )
+	return TNT:translate( 'Module:Item/Item/i18n.json', config, key, addSuffix, {...} )
 end
 
 
@@ -64,7 +42,7 @@ local function makeSmwQueryObject( page )
 		'?Page image#-=image'
 	}
 
-	require( 'Module:Common/SMW' ).addSmwQueryParams(
+	require( 'Module:Common/SMW' ).addSmwAskProperties(
 		query,
 		translate,
 		config,
@@ -72,9 +50,9 @@ local function makeSmwQueryObject( page )
 	)
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, mod = pcall( require, module )
+		local success, module = pcall( require, module )
 		if success then
-			mod:new():addSmwAskProperties( query )
+			module.addSmwAskProperties( query )
 		end
 	end
 
@@ -150,9 +128,9 @@ function methodtable.setSemanticProperties( self )
 		if module.type ~= nil and type( module.type ) == 'table' then
 			for _, type in pairs( module.type ) do
 				if setData[ translate( 'SMW_Type' ) ] == type then
-					local success, mod = pcall( require, module.name )
+					local success, module = pcall( require, module.name )
 					if success then
-						mod:new( self.apiData, self.frameArgs ):addSmwProperties( setData )
+						module.addSmwProperties( self.apiData, self.frameArgs, setData )
 					end
 					break
 				end
@@ -328,9 +306,9 @@ function methodtable.getInfobox( self )
 	} )
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, mod = pcall( require, module )
+		local success, module = pcall( require, module )
 		if success then
-			mod:new():addInfoboxData( infobox, smwData )
+			module.addInfoboxData( infobox, smwData )
 		end
 	end
 
