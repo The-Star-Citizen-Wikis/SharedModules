@@ -17,6 +17,13 @@
 	},
 	"data": [
         [
+			"SMW_Manufacturer",
+			{
+				"de": "Hersteller",
+				"en": "Manufacturer"
+			}
+		],
+        [
 			"SMW_Size",
 			{
 				"de": "Größe",
