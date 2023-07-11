@@ -327,6 +327,26 @@ function methodtable.getInfobox( self )
 		end
 	end
 
+	--- Dimensions
+	infobox:renderSection( {
+		title = translate( 'LBL_Dimensions' ),
+		content = {
+			infobox:renderItem( {
+				label = translate( 'LBL_Length' ),
+				data = smwData[ translate( 'SMW_EntityLength' ) ],
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Width' ),
+				data = smwData[ translate( 'SMW_EntityWidth' ) ],
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Height' ),
+				data = smwData[ translate( 'SMW_EntityHeight' ) ],
+			} )
+		},
+		col = 3
+	} )
+
 	--- Footer
 	infobox:renderFooterButton( {
 		icon = 'WikimediaUI-Globe.svg',

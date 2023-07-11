@@ -185,6 +185,27 @@
 			}
 		],
 		[
+			"SMW_EntityHeight",
+			{
+				"de": "Höhe",
+				"en": "Entity height"
+			}
+		],
+		[
+			"SMW_EntityLength",
+			{
+				"de": "Länge",
+				"en": "Entity length"
+			}
+		],
+		[
+			"SMW_EntityWidth",
+			{
+				"de": "Breite",
+				"en": "Entity width"
+			}
+		],
+		[
 			"SMW_GameBuild",
 			{
 				"de": "Spielversion",
@@ -224,6 +245,34 @@
 			{
 				"de": "Schadenspunkte",
 				"en": "Health"
+			}
+		],
+		[
+			"LBL_Dimensions",
+			{
+				"de": "Dimensionen",
+				"en": "Dimensions"
+			}
+		],
+		[
+			"LBL_Length",
+			{
+				"de": "Länge",
+				"en": "Length"
+			}
+		],
+		[
+			"LBL_Width",
+			{
+				"de": "Breite",
+				"en": "Width"
+			}
+		],
+		[
+			"LBL_Height",
+			{
+				"de": "Höhe",
+				"en": "Height"
 			}
 		],
 		[
