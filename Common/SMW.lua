@@ -1,5 +1,6 @@
-local common = {}
+local commonSMW = {}
 
+local common = require( 'Module:Common' )
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 
@@ -14,7 +15,7 @@ local checkType = libraryUtil.checkType
 --- @param moduleData table Table from data.json
 --- @param moduleName string The module name used to retrieve fallback attribute names
 --- @return void
-function common.addSmwProperties( apiData, frameArgs, smwSetObject, translateFn, moduleConfig, moduleData, moduleName )
+function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translateFn, moduleConfig, moduleData, moduleName )
     checkType( 'Module:Common/SMW.addSmwProperties', 1, apiData, 'table' )
     checkType( 'Module:Common/SMW.addSmwProperties', 2, frameArgs, 'table' )
     checkType( 'Module:Common/SMW.addSmwProperties', 3, smwSetObject, 'table' )
@@ -172,7 +173,7 @@ end
 --- @param moduleConfig table The module config from config.json
 --- @param moduleData table The module data from data.json
 --- @return void
-function common.addSmwQueryParams( smwAskObject, translateFn, moduleConfig, moduleData )
+function commonSMW.addSmwQueryParams( smwAskObject, translateFn, moduleConfig, moduleData )
 	local langSuffix = ''
 	if moduleConfig.smw_multilingual_text == true then
 		langSuffix = '+lang=' .. ( moduleConfig.module_lang or mw.getContentLanguage():getCode() )
@@ -205,4 +206,4 @@ function common.addSmwQueryParams( smwAskObject, translateFn, moduleConfig, modu
 end
 
 
-return common
+return commonSMW
