@@ -172,7 +172,6 @@ function methodtable.getSmwData( self )
     end
 
 	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
-					  self.frameArgs[ translate( 'ARG_Name' ) ] or
 					  mw.title.getCurrentTitle().fullText
 
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
