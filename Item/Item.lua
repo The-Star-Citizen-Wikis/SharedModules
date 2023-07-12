@@ -50,7 +50,7 @@ local function makeSmwQueryObject( page )
 	)
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, module = pcall( require, module )
+		local success, module = pcall( require, module.name )
 		if success then
 			module.addSmwAskProperties( query )
 		end
@@ -306,11 +306,20 @@ function methodtable.getInfobox( self )
 	} )
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, module = pcall( require, module )
-		if success then
-			module.addInfoboxData( infobox, smwData )
+		if module.type ~= nil and type( module.type ) == 'table' then
+			for _, type in pairs( module.type ) do
+				if smwData[ translate( 'SMW_Type' ) ] == type then
+					local success, module = pcall( require, module.name )
+					if success then
+						module.addInfoboxData( infobox, smwData )
+					end
+					break
+				end
+			end
 		end
 	end
+
+	
 
 	--- Dimensions
 	infobox:renderSection( {
@@ -379,9 +388,16 @@ function methodtable.setCategories( self )
 	end
 
 	for _, module in pairs( data.extension_modules ) do
-		local success, module = pcall( require, module )
-		if success then
-			module.addCategories( self.categories, self.frameArgs, smwData )
+		if module.type ~= nil and type( module.type ) == 'table' then
+			for _, type in pairs( module.type ) do
+				if self.smwData[ translate( 'SMW_Type' ) ] == type then
+					local success, module = pcall( require, module.name )
+					if success then
+						module.addCategories( self.categories, self.frameArgs, self.smwData )
+					end
+					break
+				end
+			end
 		end
 	end
 end
