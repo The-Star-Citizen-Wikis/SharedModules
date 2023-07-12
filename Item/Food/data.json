@@ -13,7 +13,7 @@
 			"type": "number"
 		},
 		{
-			"SMW_Effects": "API_food.effects",
+			"SMW_Effect": "API_food.effects",
 			"type": "table"
 		}
 	]

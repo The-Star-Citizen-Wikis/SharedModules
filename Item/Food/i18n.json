@@ -52,16 +52,16 @@
 			}
 		],
         [
-			"SMW_Effects",
+			"SMW_Effect",
 			{
-				"de": "Effects",
-				"en": "Effects"
+				"de": "Effekt",
+				"en": "Effect"
 			}
 		],
         [
 			"LBL_Usage",
 			{
-				"de": "Usage",
+				"de": "Verwendung",
 				"en": "Usage"
 			}
 		],
@@ -87,10 +87,24 @@
 			}
 		],
         [
-			"LBL_Effects",
+			"LBL_Effect",
 			{
-				"de": "Effects",
-				"en": "Effects"
+				"de": "Effekt",
+				"en": "Effect"
+			}
+		],
+		[
+			"category_drink",
+			{
+				"de": "Getränke",
+				"en": "Drinks"
+			}
+		],
+		[
+			"category_food",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
 			}
 		]
 	]

@@ -48,6 +48,10 @@ function Food.addSmwProperties( apiData, frameArgs, smwSetObject )
 	else
 		smwSetObject[ translate( 'SMW_Uses' ) ] = nil
 	end
+
+	if smwSetObject[ translate( 'SMW_Effect' ) ] == 'None' then
+		smwSetObject[ translate( 'SMW_Effect' ) ] = nil
+	end
 end
 
 
