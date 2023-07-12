@@ -478,7 +478,7 @@ function Item.infobox( frame )
 		instance:setCategories()
 	end
 
-	return tostring( instance:getInfobox() ) .. debugOutput
+	return tostring( instance:getInfobox() ) .. debugOutput .. table.concat( instance.categories )
 end
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
