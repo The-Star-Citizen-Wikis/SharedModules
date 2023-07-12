@@ -500,12 +500,7 @@ function Item.infobox( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
-	-- This is only here temporarily, will be move to main eventually
-	if instance.smwData ~= nil then
-		instance:setCategories()
-	end
-
-	return tostring( instance:getInfobox() ) .. debugOutput .. instance:getCategories()
+	return tostring( instance:getInfobox() ) .. debugOutput
 end
 
 
@@ -523,7 +518,11 @@ function Item.main( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
-	return tostring( instance:getInfobox() ) .. debugOutput .. instance:getCategories()
+	if instance.smwData ~= nil then
+		instance:setCategories()
+	end
+
+	return debugOutput .. instance:getCategories()
 end
 
 
