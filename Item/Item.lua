@@ -515,11 +515,13 @@ function Item.main( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
+	local infobox = tostring( instance:getInfobox() )
+
 	if instance.smwData ~= nil then
 		instance:setCategories()
 	end
 
-	return debugOutput .. instance:getCategories()
+	return infobox .. debugOutput .. instance:getCategories()
 end
 
 
