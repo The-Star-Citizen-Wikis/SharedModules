@@ -309,6 +309,7 @@ function methodtable.getInfobox( self )
 		local success, module = pcall( require, module )
 		if success then
 			module.addInfoboxData( infobox, smwData )
+			module.addCategories( self.categories, self.frameArgs, smwData )
 		end
 	end
 

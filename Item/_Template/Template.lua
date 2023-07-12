@@ -29,7 +29,7 @@ function Template.addSmwProperties( apiData, frameArgs, smwSetObject )
         translate,
         config,
         data,
-        'VehicleItem'
+        'TEMPLATE'
     )
 end
 
@@ -54,6 +54,18 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
 function Template.addInfoboxData( infobox, smwData )
+
+end
+
+
+--- Add categories that are set on the page.
+--- The categories table should only contain category names, no MW Links, i.e. 'Foo' instead of '[[Category:Foo]]'
+---
+--- @param categories table The categories table
+--- @param frameArgs table Frame arguments from Module:Arguments
+--- @param smwData table Data from Semantic MediaWiki
+--- @return void
+function Template.addCategories( categories, frameArgs, smwData )
 
 end
 
