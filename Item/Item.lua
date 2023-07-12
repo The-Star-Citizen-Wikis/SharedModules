@@ -21,6 +21,8 @@ else
 	lang = mw.getContentLanguage()
 end
 
+local moduleCache = {}
+
 
 --- Wrapper function for Module:Translate.translate
 ---
@@ -29,6 +31,38 @@ end
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
 	return TNT:translate( 'Module:Item/i18n.json', config, key, addSuffix, {...} )
+end
+
+
+--- Invokes a method on the required module, if the modules type matches targetType
+--- Utilizes the moduleCache to only load modules once
+---
+--- @param targetType string|boolean The type to check against extension_modules.type or 'true' to run against all modules
+--- @param methodName string The method to invoke
+--- @param args table Arguments passed to the method
+local function runModuleFN( targetType, methodName, args )
+	for _, module in pairs( data.extension_modules ) do
+		if targetType == true or ( module.type ~= nil and type( module.type ) == 'table' ) then
+			for _, type in pairs( module.type ) do
+				if targetType == true or targetType == type then
+					if moduleCache[ module.name ] == nil then
+						local key = module.name
+						local success, module = pcall( require, module.name )
+						if success then
+							moduleCache[ key ] = module
+						end
+					end
+					module = moduleCache[ module.name ]
+
+					if module ~= nil then
+						module[ methodName ]( unpack( args ) )
+						-- Exit early
+						return
+					end
+				end
+			end
+		end
+	end
 end
 
 
@@ -49,12 +83,7 @@ local function makeSmwQueryObject( page )
 		data
 	)
 
-	for _, module in pairs( data.extension_modules ) do
-		local success, module = pcall( require, module.name )
-		if success then
-			module.addSmwAskProperties( query )
-		end
-	end
+	runModuleFN( true, 'addSmwAskProperties', { query } )
 
 	table.insert( query, 'limit=1' )
 
@@ -124,19 +153,7 @@ function methodtable.setSemanticProperties( self )
 		commodity:addShopData( self.apiData )
 	end
 
-	for _, module in pairs( data.extension_modules ) do
-		if module.type ~= nil and type( module.type ) == 'table' then
-			for _, type in pairs( module.type ) do
-				if setData[ translate( 'SMW_Type' ) ] == type then
-					local success, module = pcall( require, module.name )
-					if success then
-						module.addSmwProperties( self.apiData, self.frameArgs, setData )
-					end
-					break
-				end
-			end
-		end
-	end
+	runModuleFN( setData[ translate( 'SMW_Type' ) ], 'addSmwProperties', { self.apiData, self.frameArgs, setData } )
 
 	mw.logObject( setData, 'SET' )
 
@@ -174,6 +191,7 @@ function methodtable.getSmwData( self )
 
     return self.smwData
 end
+
 
 --- Creates the infobox
 function methodtable.getInfobox( self )
@@ -305,21 +323,7 @@ function methodtable.getInfobox( self )
 		col = 2
 	} )
 
-	for _, module in pairs( data.extension_modules ) do
-		if module.type ~= nil and type( module.type ) == 'table' then
-			for _, type in pairs( module.type ) do
-				if smwData[ translate( 'SMW_Type' ) ] == type then
-					local success, module = pcall( require, module.name )
-					if success then
-						module.addInfoboxData( infobox, smwData )
-					end
-					break
-				end
-			end
-		end
-	end
-
-	
+	runModuleFN( smwData[ translate( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData } )
 
 	--- Dimensions
 	infobox:renderSection( {
@@ -364,12 +368,14 @@ function methodtable.getInfobox( self )
 	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
 end
 
+
 --- Set the frame and load args
 --- @param frame table
 function methodtable.setFrame( self, frame )
 	self.currentFrame = frame
 	self.frameArgs = require( 'Module:Arguments' ).getArgs( frame )
 end
+
 
 --- Sets the main categories for this object
 function methodtable.setCategories( self )
@@ -387,19 +393,7 @@ function methodtable.setCategories( self )
 		)
 	end
 
-	for _, module in pairs( data.extension_modules ) do
-		if module.type ~= nil and type( module.type ) == 'table' then
-			for _, type in pairs( module.type ) do
-				if self.smwData[ translate( 'SMW_Type' ) ] == type then
-					local success, module = pcall( require, module.name )
-					if success then
-						module.addCategories( self.categories, self.frameArgs, self.smwData )
-					end
-					break
-				end
-			end
-		end
-	end
+	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
 end
 
 
@@ -440,6 +434,22 @@ function methodtable.makeDebugOutput( self )
 end
 
 
+--- Get the wikitext valid categories for this item
+function methodtable.getCategories( self )
+	local mapped = {}
+
+	for _, category in pairs( self.categories ) do
+		if string.sub( category, 1, 2 ) ~= '[[' then
+			category = string.format( '[[%s]]', category )
+		end
+
+		table.insert( mapped, category )
+	end
+
+	return table.concat( mapped )
+end
+
+
 --- New Instance
 function Item.new( self )
     local instance = {
@@ -476,6 +486,7 @@ function Item.loadApiData( frame )
 	return debugOutput
 end
 
+
 --- Generates an infobox based on passed frame args and SMW data
 ---
 --- @param frame table Invocation frame
@@ -494,8 +505,9 @@ function Item.infobox( frame )
 		instance:setCategories()
 	end
 
-	return tostring( instance:getInfobox() ) .. debugOutput .. table.concat( instance.categories )
+	return tostring( instance:getInfobox() ) .. debugOutput .. instance:getCategories()
 end
+
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
 ---
@@ -510,6 +522,8 @@ function Item.main( frame )
 	if instance.frameArgs[ 'debug' ] ~= nil then
 		debugOutput = instance:makeDebugOutput()
 	end
+
+	return tostring( instance:getInfobox() ) .. debugOutput .. instance:getCategories()
 end
 
 
