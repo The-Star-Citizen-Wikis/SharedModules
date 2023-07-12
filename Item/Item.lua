@@ -28,7 +28,7 @@ end
 --- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-	return TNT:translate( 'Module:Item/Item/i18n.json', config, key, addSuffix, {...} )
+	return TNT:translate( 'Module:Item/i18n.json', config, key, addSuffix, {...} )
 end
 
 
