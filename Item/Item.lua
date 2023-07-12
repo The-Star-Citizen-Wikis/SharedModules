@@ -387,10 +387,7 @@ function methodtable.setCategories( self )
 		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
 		manufacturer = string.gsub( manufacturer, '%]+', '' )
 
-		table.insert(
-			self.categories,
-			string.format( '[[Category:%s]]', manufacturer )
-		)
+		table.insert( self.categories, manufacturer )
 	end
 
 	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
@@ -440,7 +437,7 @@ function methodtable.getCategories( self )
 
 	for _, category in pairs( self.categories ) do
 		if string.sub( category, 1, 2 ) ~= '[[' then
-			category = string.format( '[[%s]]', category )
+			category = string.format( '[[Category:%s]]', category )
 		end
 
 		table.insert( mapped, category )
