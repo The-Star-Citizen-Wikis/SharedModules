@@ -1,6 +1,31 @@
 {
   "%smw_data": "Sets which data gets added to SMW",
   "smw_data": [
+    {
+      "SMW_CoolingRate": "API_cooler.cooling_rate",
+      "type": "number"
+    },
 
+    {
+      "SMW_PowerOutput": "API_power_plant.power_output",
+      "type": "number"
+    },
+
+    {
+      "SMW_ShieldPoints": "API_shield.max_shield_health",
+      "type": "number"
+    },
+    {
+      "SMW_ShieldPointRegeneration": "API_shield.max_shield_regen",
+      "type": "number"
+    },
+    {
+      "SMW_ShieldDownTime": "API_shield.regen_delay.downed",
+      "type": "number"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.regen_delay.damage",
+      "type": "number"
+    }
   ]
 }
