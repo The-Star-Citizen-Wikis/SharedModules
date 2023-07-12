@@ -392,6 +392,18 @@ function methodtable.setCategories( self )
 	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
 end
 
+--- Sets the short description for this object
+function methodtable.setShortDescription( self )
+	local shortdesc = ''
+
+	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'setShortDescription', { shortdesc, self.frameArgs, self.smwData } )
+
+	if shortdesc ~= '' then
+		shortdesc = lang:ucfirst( shortdesc )
+		self.currentFrame:callParserFunction( 'SHORTDESC', shortdesc )
+	end
+end
+
 
 --- Save Api Data to SMW store
 function methodtable.saveApiData( self )
@@ -518,6 +530,7 @@ function Item.main( frame )
 
 	if instance.smwData ~= nil then
 		instance:setCategories()
+		instance:setShortDescription()
 	end
 
 	return infobox .. debugOutput .. instance:getCategories()

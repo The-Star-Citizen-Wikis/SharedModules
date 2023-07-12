@@ -69,5 +69,15 @@ function VehicleItem.addCategories( categories, frameArgs, smwData )
 
 end
 
+--- Set the short description for this object
+---
+--- @param shortdesc string Short description
+--- @param frameArgs table Frame arguments from Module:Arguments
+--- @param smwData table Data from Semantic MediaWiki
+--- @return void
+function VehicleItem.setShortDescription( shortdesc, frameArgs, smwData )
+	
+end
+
 
 return VehicleItem

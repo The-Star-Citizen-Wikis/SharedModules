@@ -113,10 +113,20 @@ function Food.addCategories( categories, frameArgs, smwData )
 	--- But we do not have a full Type <--> Category mapping yet
 	if smwData[ translate( 'SMW_Type' ) ] ~= nil then
 		table.insert(
-			self.categories,
+			categories,
 			translate( 'category_' .. string.lower( smwData[ translate( 'SMW_Type' ) ] ) )
 		)
 	end
+end
+
+--- Set the short description for this object
+---
+--- @param shortdesc string Short description
+--- @param frameArgs table Frame arguments from Module:Arguments
+--- @param smwData table Data from Semantic MediaWiki
+--- @return void
+function Food.setShortDescription( shortdesc, frameArgs, smwData )
+	shortdesc = smwData[ translate( 'SMW_Type' ) ]
 end
 
 
