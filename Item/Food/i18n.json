@@ -23,6 +23,13 @@
 				"en": "Manufacturer"
 			}
 		],
+		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
         [
 			"SMW_Size",
 			{

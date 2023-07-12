@@ -109,7 +109,14 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
 function Food.addCategories( categories, frameArgs, smwData )
-
+	--- TODO: This should be in Module:Item eventually
+	--- But we do not have a full Type <--> Category mapping yet
+	if smwData[ translate( 'SMW_Type' ) ] ~= nil then
+		table.insert(
+			self.categories,
+			translate( 'category_' .. string.lower( smwData[ translate( 'SMW_Type' ) ] ) )
+		)
+	end
 end
 
 

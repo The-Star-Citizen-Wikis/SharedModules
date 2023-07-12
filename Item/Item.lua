@@ -309,7 +309,6 @@ function methodtable.getInfobox( self )
 		local success, module = pcall( require, module )
 		if success then
 			module.addInfoboxData( infobox, smwData )
-			module.addCategories( self.categories, self.frameArgs, smwData )
 		end
 	end
 
@@ -361,6 +360,30 @@ end
 function methodtable.setFrame( self, frame )
 	self.currentFrame = frame
 	self.frameArgs = require( 'Module:Arguments' ).getArgs( frame )
+end
+
+--- Sets the main categories for this object
+function methodtable.setCategories( self )
+	if config.set_categories == false then
+		return
+	end
+
+	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = string.gsub( manufacturer, '%]+', '' )
+
+		table.insert(
+			self.categories,
+			string.format( '[[Category:%s]]', manufacturer )
+		)
+	end
+
+	for _, module in pairs( data.extension_modules ) do
+		local success, module = pcall( require, module )
+		if success then
+			module.addCategories( self.categories, self.frameArgs, smwData )
+		end
+	end
 end
 
 
@@ -448,6 +471,11 @@ function Item.infobox( frame )
 	local debugOutput = ''
 	if instance.frameArgs[ 'debug' ] ~= nil then
 		debugOutput = instance:makeDebugOutput()
+	end
+
+	-- This is only here temporarily, will be move to main eventually
+	if instance.smwData ~= nil then
+		instance:setCategories()
 	end
 
 	return tostring( instance:getInfobox() ) .. debugOutput
