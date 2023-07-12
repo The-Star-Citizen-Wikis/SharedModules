@@ -79,8 +79,8 @@ function Food.addInfoboxData( infobox, smwData )
 		title = translate( 'LBL_Usage' ),
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Effects' ),
-				data = infobox.tableToCommaList( smwData[ translate( 'SMW_Effects' ) ] ),
+				label = translate( 'LBL_Effect' ),
+				data = infobox.tableToCommaList( smwData[ translate( 'SMW_Effect' ) ] ),
 				colspan = 2
 			} ),
 			infobox:renderItem( {
