@@ -189,6 +189,8 @@
 .infobox__footer > .infobox__section {
     margin: 0;
     padding: var( --space-sm ) var( --space-md );
+    display: grid;
+    gap: var( --space-xxs );
 }
 
 .infobox__footer > .infobox__section .infobox__label,

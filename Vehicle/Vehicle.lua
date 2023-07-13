@@ -861,11 +861,23 @@ function methodtable.getInfobox( self )
 	infobox:renderFooter( {
 		content = {
 			infobox:renderItem( {
+				label = translate( 'SMW_UUID' ),
+				data = smwData[ translate( 'SMW_UUID' ) ],
+				row = true,
+				spacebetween = true
+			} ),
+			infobox:renderItem( {
+				label = translate( 'SMW_ClassName' ),
+				data = smwData[ translate( 'SMW_ClassName' ) ],
+				row = true,
+				spacebetween = true
+			} ),
+			infobox:renderItem( {
 				label = translate( 'SMW_GameBuild' ),
 				data = smwData[ translate( 'SMW_GameBuild' ) ],
 				row = true,
 				spacebetween = true
-			} )
+			} ),
 		},
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
