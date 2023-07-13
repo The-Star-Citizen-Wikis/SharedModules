@@ -3,6 +3,7 @@ local commonSMW = {}
 local common = require( 'Module:Common' )
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
+local checkTypeMulti = libraryUtil.checkTypeMulti
 
 
 --- Adds SMW properties to a table either from the API or Frame arguments
@@ -16,7 +17,7 @@ local checkType = libraryUtil.checkType
 --- @param moduleName string The module name used to retrieve fallback attribute names
 --- @return void
 function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translateFn, moduleConfig, moduleData, moduleName )
-    checkType( 'Module:Common/SMW.addSmwProperties', 1, apiData, 'table' )
+	checkTypeMulti( 'Module:Common/SMW.addSmwProperties', 1, apiData, { 'table', 'nil' } )
     checkType( 'Module:Common/SMW.addSmwProperties', 2, frameArgs, 'table' )
     checkType( 'Module:Common/SMW.addSmwProperties', 3, smwSetObject, 'table' )
     checkType( 'Module:Common/SMW.addSmwProperties', 4, translateFn, 'function' )
