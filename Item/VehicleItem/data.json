@@ -12,6 +12,36 @@
     },
 
     {
+      "SMW_QuantumFuelRequirement": "API_quantum_drive.quantum_fuel_requirement",
+      "type": "number"
+    },
+    {
+      "SMW_QuantumJumpRange": "API_quantum_drive.jump_range",
+      "type": "number"
+    },
+    {
+      "SMW_QuantumJumpRange": "API_quantum_drive.modes",
+      "type": "subobject",
+      "smw_data": [
+        {
+          "SMW_QuantumJumpType": "API_type"
+        },
+        {
+          "SMW_QuantumJumpDriveSpeed": "API_drive_speed",
+          "type": "number"
+        },
+        {
+          "SMW_QuantumCooldownTime": "API_cooldown_time",
+          "type": "number"
+        },
+        {
+          "SMW_QuantumSpoolUpTime": "API_spool_up_time",
+          "type": "number"
+        }
+      ]
+    },
+
+    {
       "SMW_ShieldPoints": "API_shield.max_shield_health",
       "type": "number"
     },
@@ -26,6 +56,63 @@
     {
       "SMW_ShieldDamageDelay": "API_shield.regen_delay.damage",
       "type": "number"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.physical",
+      "type": "minmax"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.energy",
+      "type": "minmax"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.distortion",
+      "type": "minmax"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.thermal",
+      "type": "minmax"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.biochemical",
+      "type": "minmax"
+    },
+    {
+      "SMW_ShieldDamageDelay": "API_shield.absorption.stun",
+      "type": "minmax"
+    },
+
+    {
+      "SMW_MaxMissiles": "API_max_missiles"
+    },
+    {
+      "SMW_MissileSize": "API_min_size"
+    },
+
+    {
+      "SMW_PowerTransfer": "API_mining_laser.power_transfer",
+      "type": "number"
+    },
+    {
+      "SMW_OptimalRange": "API_mining_laser.optimal_range",
+      "type": "number"
+    },
+    {
+      "SMW_MaximumRange": "API_mining_laser.maximum_range",
+      "type": "number"
+    },
+    {
+      "SMW_ExtractionThroughput": "API_mining_laser.extraction_throughput",
+      "type": "number"
+    },
+    {
+      "SMW_MiningLaserPower": "API_mining_laser.mining_laser_power"
+    },
+    {
+      "SMW_ExtractionLaserPower": "API_mining_laser.extraction_laser_power"
+    },
+    {
+      "SMW_ModuleSlots": "API_mining_laser.module_slots"
     }
   ]
 }

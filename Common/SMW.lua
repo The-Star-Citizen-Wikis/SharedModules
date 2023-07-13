@@ -99,10 +99,10 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					-- Use EN lang as fallback for arg names that are empty
 					if value == nil then
 						local success, translation = pcall(
-                                TNT.formatInLanguage,
-                                'en',
-                                string.format( 'Module:%s/i18n.json', moduleName ),
-                                key
+							TNT.formatInLanguage,
+							'en',
+							string.format( 'Module:%s/i18n.json', moduleName ),
+							key
                         )
 						if success then
 							value = getFromArgs( datum, translation )
@@ -127,7 +127,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
 				for index, val in ipairs( value ) do
 					-- This should not happen
-					if type( val ) == 'table' then
+					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' then
 						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
 					end
 
@@ -137,9 +137,6 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					-- Multilingual Text, add a suffix
 					elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
 						val = string.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
-					-- Num format
-					elseif datum.type == 'number' then
-						val = common.formatNum( val )
 					-- String format
 					elseif type( datum.format ) == 'string' then
 						if string.find( datum.format, '%', 1, true  ) then
@@ -149,17 +146,34 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 						elseif datum.format == 'replace-dash' then
 							val = string.gsub( val, '%-', ' ' )
 						end
+					-- Min/Max
+					elseif datum.type == 'minmax' then
+						val = {
+							common.formatNum( val.min ),
+							common.formatNum( val.max ),
+						}
+					-- Subobject
+					elseif datum.type == 'subobject' then
+						local api = require( 'Module:Common/Api' )
+						for _, data in ipairs( value ) do
+							local subobject = {}
+							data = api.makeAccessSafe( data )
+							commonSMW.addSmwProperties( data, {}, subobject, translateFn, moduleConfig, datum, moduleName )
+							mw.smw.subobject( subobject )
+						end
 					end
 
 					table.remove( value, index )
 					table.insert( value, index, val )
 				end
 
-				if type( value ) == 'table' and #value == 1 then
-					value = value[ 1 ]
-				end
+				if datum.type ~= 'subobject' then
+					if type( value ) == 'table' and #value == 1 then
+						value = value[ 1 ]
+					end
 
-                smwSetObject[ smwKey ] = value
+					smwSetObject[ smwKey ] = value
+				end
 			end
 		end
 	end
