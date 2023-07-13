@@ -55,9 +55,7 @@ local function runModuleFN( targetType, methodName, args )
 					module = moduleCache[ module.name ]
 
 					if module ~= nil then
-						module[ methodName ]( unpack( args ) )
-						-- Exit early
-						return
+						return module[ methodName ]( unpack( args ) )
 					end
 				end
 			end
@@ -392,13 +390,12 @@ function methodtable.setCategories( self )
 	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
 end
 
+
 --- Sets the short description for this object
 function methodtable.setShortDescription( self )
-	local shortdesc = ''
+	local shortdesc = runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'setShortDescription', { self.frameArgs, self.smwData } )
 
-	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'setShortDescription', { shortdesc, self.frameArgs, self.smwData } )
-
-	if shortdesc ~= '' then
+	if type( shortdesc ) == 'string' and shortdesc ~= '' then
 		shortdesc = lang:ucfirst( shortdesc )
 		self.currentFrame:callParserFunction( 'SHORTDESC', shortdesc )
 	end

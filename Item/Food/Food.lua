@@ -119,14 +119,14 @@ function Food.addCategories( categories, frameArgs, smwData )
 	end
 end
 
---- Set the short description for this object
+
+--- Return the short description for this object
 ---
---- @param shortdesc string Short description
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
---- @return void
-function Food.setShortDescription( shortdesc, frameArgs, smwData )
-	shortdesc = smwData[ translate( 'SMW_Type' ) ]
+--- @return string|nil
+function Food.getShortDescription( frameArgs, smwData )
+	return smwData[ translate( 'SMW_Type' ) ]
 end
 
 
