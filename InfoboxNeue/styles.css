@@ -186,10 +186,14 @@
     background-color: var( --color-surface-2--active );
 }
 
-.infobox__footer .infobox__desc {
-    padding: var( --space-xs ) var( --space-md );
-    text-align: center;
-    font-weight: var( --font-weight-medium );
+.infobox__footer > .infobox__section {
+    margin: 0;
+    padding: var( --space-sm ) var( --space-md );
+}
+
+.infobox__footer > .infobox__section .infobox__label,
+.infobox__footer > .infobox__section .infobox__data {
+    font-size: 0.8125rem;
 }
 
 .infobox__button {

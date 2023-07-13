@@ -265,7 +265,7 @@ end
 
 --- Return the HTML of the infobox footer component as string
 ---
---- @param data table {desc, button}
+--- @param data table {content, button}
 --- @return string html
 function methodtable.renderFooter( self, data )
 	checkType( 'Module:InfoboxNeue.renderFooter', 1, self, 'table' )
@@ -273,16 +273,20 @@ function methodtable.renderFooter( self, data )
 
 	if data == nil then return '' end
 
-	local hasDesc = data[ 'desc' ] ~= '' and data[ 'desc' ] ~= nil
+	local hasContent = data[ 'content' ] ~= '' and data[ 'content' ] ~= nil
 	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'label' ] ~= nil
 
-	if not hasDesc and not hasButton then return '' end
+	if not hasContent and not hasButton then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__footer' )
 
-	if hasDesc then
-		local desc = html:tag( 'div' ):addClass( 'infobox__desc' )
-			desc:wikitext( data[ 'desc' ] )
+	if hasContent then
+		local content = data[ 'content' ]
+		if type( content ) == 'table' then content = table.concat( content ) end
+
+		html:tag( 'div' )
+			:addClass( 'infobox__section' )
+			:wikitext( content )
 	end
 
 	if hasButton then

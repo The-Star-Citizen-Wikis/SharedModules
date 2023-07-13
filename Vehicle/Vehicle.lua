@@ -859,7 +859,14 @@ function methodtable.getInfobox( self )
 
 	--- Footer
 	infobox:renderFooter( {
-		desc = smwData[ translate( 'SMW_GameBuild' ) ],
+		content = {
+			infobox:renderItem( {
+				label = translate( 'SMW_GameBuild' ),
+				data = smwData[ translate( 'SMW_GameBuild' ) ],
+				row = true,
+				spacebetween = true
+			} )
+		},
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
 			label = translate( 'LBL_OtherSites' ),
