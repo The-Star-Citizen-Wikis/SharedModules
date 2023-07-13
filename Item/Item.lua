@@ -343,23 +343,26 @@ function methodtable.getInfobox( self )
 	} )
 
 	--- Footer
-	infobox:renderFooterButton( {
-		icon = 'WikimediaUI-Globe.svg',
-		label = translate( 'LBL_OtherSites' ),
-		type = 'popup',
-		content = infobox:renderSection( {
-			content = {
-				infobox:renderItem( {
-					label = translate( 'LBL_OfficialSites' ),
-					data = table.concat( getOfficialSites(), '' )
-				} ),
-				infobox:renderItem( {
-					label = translate( 'LBL_CommunitySites' ),
-					data = table.concat( getCommunitySites(), '' )
-				} ),
-			},
-			class = 'infobox__section--linkButtons',
-		}, true )
+	infobox:renderFooter( {
+		desc = smwData[ translate( 'SMW_GameBuild' ) ],
+		button = {
+			icon = 'WikimediaUI-Globe.svg',
+			label = translate( 'LBL_OtherSites' ),
+			type = 'popup',
+			content = infobox:renderSection( {
+				content = {
+					infobox:renderItem( {
+						label = translate( 'LBL_OfficialSites' ),
+						data = table.concat( getOfficialSites(), '' )
+					} ),
+					infobox:renderItem( {
+						label = translate( 'LBL_CommunitySites' ),
+						data = table.concat( getCommunitySites(), '' )
+					} ),
+				},
+				class = 'infobox__section--linkButtons',
+			}, true )
+		}
 	} )
 
 	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )

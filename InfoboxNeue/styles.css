@@ -182,6 +182,14 @@
 
 .infobox__footer {
     margin-top: var( --space-lg );
+    border-top: 1px solid var( --border-color-base );
+    background-color: var( --color-surface-2--active );
+}
+
+.infobox__footer .infobox__desc {
+    padding: var( --space-xs ) var( --space-md );
+    text-align: center;
+    font-weight: var( --font-weight-medium );
 }
 
 .infobox__button {

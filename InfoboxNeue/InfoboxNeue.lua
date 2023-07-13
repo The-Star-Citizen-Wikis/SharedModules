@@ -263,6 +263,56 @@ function methodtable.renderLinkButton( self, data )
 	return tostring( html )
 end
 
+--- Return the HTML of the infobox footer component as string
+---
+--- @param data table {desc, button}
+--- @return string html
+function methodtable.renderFooter( self, data )
+	checkType( 'Module:InfoboxNeue.renderFooter', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderFooter', 1, self, 'table' )
+
+	if data == nil then return '' end
+
+	local hasDesc = data[ 'desc' ] ~= '' and data[ 'desc' ] ~= nil
+	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'label' ] ~= nil
+
+	if not hasDesc and not hasButton then return '' end
+
+	local html = mw.html.create( 'div' ):addClass( 'infobox__footer' )
+
+	if hasDesc then
+		local desc = html:tag( 'div' ):addClass( 'infobox__desc' )
+			desc:wikitext( data[ 'desc' ] )
+	end
+
+	if hasButton then
+		local buttonData = data[ 'button' ];
+		local button = html:tag( 'div' ):addClass( 'infobox__button' )
+		local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
+
+		if buttonData[ 'icon' ] ~= nil then
+			label:wikitext( string.format( '[[File:%s|16px|link=]]%s', buttonData[ 'icon' ], buttonData[ 'label' ] ) )
+		else
+			label:wikitext( buttonData[ 'label' ] )
+		end
+
+		if buttonData[ 'type' ] == 'link' then
+			button:tag( 'div' )
+				:addClass( 'infobox__buttonLink' )
+				:wikitext( buttonData[ 'content' ] )
+		elseif buttonData[ 'type' ] == 'popup' then
+			button:tag( 'div' )
+				:addClass( 'infobox__buttonCard' )
+				:wikitext( buttonData[ 'content' ] )
+		end
+	end
+
+	local item = tostring( html )
+
+	table.insert( self.entries, item )
+
+	return item
+end
 
 --- Return the HTML of the infobox footer button component as string
 ---
@@ -272,34 +322,9 @@ function methodtable.renderFooterButton( self, data )
 	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
 	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
 
-	if data == nil or data[ 'label' ] == nil or data[ 'type' ] == nil or data[ 'content' ] == nil or data[ 'content' ] == '' then return '' end
+	if data == nil then return '' end
 
-	local html = mw.html.create( 'div' ):addClass( 'infobox__footer' )
-
-	local button = html:tag( 'div' ):addClass( 'infobox__button' )
-	local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
-
-	if data[ 'icon' ] ~= nil then
-		label:wikitext( string.format( '[[File:%s|16px|link=]]%s', data[ 'icon' ], data[ 'label' ] ) )
-	else
-		label:wikitext( data[ 'label' ] )
-	end
-
-	if data[ 'type' ] == 'link' then
-		button:tag( 'div' )
-			:addClass( 'infobox__buttonLink' )
-			:wikitext( data[ 'content' ] )
-	elseif data[ 'type' ] == 'popup' then
-		button:tag( 'div' )
-			:addClass( 'infobox__buttonCard' )
-			:wikitext( data[ 'content' ] )
-	end
-
-	local item = tostring( html )
-
-	table.insert( self.entries, item )
-
-	return item
+	return self:renderFooter( { button = data } )
 end
 
 --- Return the HTML of the infobox item component as string
