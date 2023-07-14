@@ -102,6 +102,10 @@
 				"Drink",
 				"Food"
 			]
+		},
+		{
+			"name": "Module:Item/PersonalWeaponAttachment",
+			"type": [ "WeaponAttachment" ]
 		}
 	]
 }

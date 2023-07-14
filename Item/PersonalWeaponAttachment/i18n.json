@@ -1,0 +1,19 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item/PersonalWeaponAttachment"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": []
+}
