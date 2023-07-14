@@ -20,7 +20,7 @@
       "type": "number"
     },
     {
-      "SMW_QuantumJumpRange": "API_quantum_drive.modes",
+      "SMW_QuantumModes": "API_quantum_drive.modes",
       "type": "subobject",
       "smw_data": [
         {
@@ -58,27 +58,27 @@
       "type": "number"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.physical",
+      "SMW_ShieldPhysicalAbsorption": "API_shield.absorption.physical",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.energy",
+      "SMW_ShieldEnergyAbsorption": "API_shield.absorption.energy",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.distortion",
+      "SMW_ShieldDistortionAbsorption": "API_shield.absorption.distortion",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.thermal",
+      "SMW_ShieldThermalAbsorption": "API_shield.absorption.thermal",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.biochemical",
+      "SMW_ShieldBiochemicalAbsorption": "API_shield.absorption.biochemical",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDamageDelay": "API_shield.absorption.stun",
+      "SMW_ShieldStunAbsorption": "API_shield.absorption.stun",
       "type": "minmax"
     },
 

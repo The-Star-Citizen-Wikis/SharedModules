@@ -1,0 +1,209 @@
+{
+  "license": "CC0-1.0",
+  "description": {
+    "en": "Translation table for the Module:Item/VehicleItem"
+  },
+  "schema": {
+    "fields": [
+      {
+        "name": "id",
+        "type": "string"
+      },
+      {
+        "name": "message",
+        "type": "localized"
+      }
+    ]
+  },
+  "data": [
+    [
+      "SMW_CoolingRate",
+      {
+        "de": "Kühlrate",
+        "en": "Cooling rate"
+      }
+    ],
+    [
+      "SMW_PowerOutput",
+      {
+        "de": "Ausgangsleistung",
+        "en": "Power output"
+      }
+    ],
+    [
+      "SMW_QuantumFuelRequirement",
+      {
+        "de": "Quantum Kraftstoffbedarf",
+        "en": "Quantum fuel requirement"
+      }
+    ],
+    [
+      "SMW_QuantumJumpRange",
+      {
+        "de": "Quantensprungweite",
+        "en": "Quantum jump range"
+      }
+    ],
+    [
+      "SMW_QuantumJumpType",
+      {
+        "de": "Quantensprungtyp",
+        "en": "Quantum jump type"
+      }
+    ],
+    [
+      "SMW_QuantumJumpDriveSpeed",
+      {
+        "de": "Quantum-Antriebsgeschwindigkeit",
+        "en": "Quantum drive speed"
+      }
+    ],
+    [
+      "SMW_QuantumCooldownTime",
+      {
+        "de": "Quantum Abkühlzeit",
+        "en": "Quantum cooldown time"
+      }
+    ],
+    [
+      "SMW_QuantumSpoolUpTime",
+      {
+        "de": "Quantum Spool-up Zeit",
+        "en": "Quantum spool-up time"
+      }
+    ],
+    [
+      "SMW_ShieldPoints",
+      {
+        "de": "Schildpunkte",
+        "en": "Shield points"
+      }
+    ],
+    [
+      "SMW_ShieldPointRegeneration",
+      {
+        "de": "Schildpunktregeneration",
+        "en": "Shield point regeneration"
+      }
+    ],
+    [
+      "SMW_ShieldDownTime",
+      {
+        "de": "Schild Ausfallzeit",
+        "en": "Shield down time"
+      }
+    ],
+    [
+      "SMW_ShieldDamageDelay",
+      {
+        "de": "Schadensverzögerung",
+        "en": "Shield damage delay"
+      }
+    ],
+    [
+      "SMW_ShieldPhysicalAbsorption",
+      {
+        "de": "Physikalische Absorption",
+        "en": "Shield physical absorption"
+      }
+    ],
+    [
+      "SMW_ShieldEnergyAbsorption",
+      {
+        "de": "Energie Absorption",
+        "en": "Shield energy absorption"
+      }
+    ],
+    [
+      "SMW_ShieldDistortionAbsorption",
+      {
+        "de": "Distortion Absorption",
+        "en": "Shield distortion absorption"
+      }
+    ],
+    [
+      "SMW_ShieldThermalAbsorption",
+      {
+        "de": "Termische Absorption",
+        "en": "Shield thermal absorption"
+      }
+    ],
+    [
+      "SMW_ShieldBiochemicalAbsorption",
+      {
+        "de": "Biochemische Absorption",
+        "en": "Shield biochemical absorption"
+      }
+    ],
+    [
+      "SMW_ShieldStunAbsorption",
+      {
+        "de": "Stun Absorption",
+        "en": "Shield stun absorption"
+      }
+    ],
+    [
+      "SMW_MaxMissiles",
+      {
+        "de": "Anzahl Raketen",
+        "en": "Max missiles"
+      }
+    ],
+    [
+      "SMW_MissileSize",
+      {
+        "de": "Raketengröße",
+        "en": "Missile size"
+      }
+    ],
+    [
+      "SMW_PowerTransfer",
+      {
+        "de": "Energierate",
+        "en": "Power transfer"
+      }
+    ],
+    [
+      "SMW_OptimalRange",
+      {
+        "de": "Effektive Reichweite",
+        "en": "Optimal range"
+      }
+    ],
+    [
+      "SMW_MaximumRange",
+      {
+        "de": "Maximalreichweite",
+        "en": "Maximum range"
+      }
+    ],
+    [
+      "SMW_ExtractionThroughput",
+      {
+        "de": "Entnahmedurchsatz",
+        "en": "Extraction throughput"
+      }
+    ],
+    [
+      "SMW_MiningLaserPower",
+      {
+        "de": "Bergbau Laserleistung",
+        "en": "Mining laser power"
+      }
+    ],
+    [
+      "SMW_ExtractionLaserPower",
+      {
+        "de": "Extraktion Laserleistung",
+        "en": "Extraction laser power"
+      }
+    ],
+    [
+      "SMW_ModuleSlots",
+      {
+        "de": "Anzahl Verbrauchsplätze",
+        "en": "Module slots"
+      }
+    ]
+  ]
+}
