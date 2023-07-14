@@ -304,6 +304,34 @@
 			}
 		],
 		[
+			"type_drink",
+			{
+				"de": "Getränk",
+				"en": "Drink"
+			}
+		],
+		[
+			"type_food",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_weaponattachment",
+			{
+				"de": "Waffenbefestigung",
+				"en": "Weapon attachment"
+			}
+		],
+		[
+			"type_ironsight",
+			{
+				"de": "Zielfernrohr",
+				"en": "Scope"
+			}
+		],
+		[
 			"error_no_data_title",
 			{
 				"de": "ERROR - Semantic MediaWiki (CODE 16008)",

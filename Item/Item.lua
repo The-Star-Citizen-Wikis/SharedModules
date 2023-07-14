@@ -220,6 +220,18 @@ function methodtable.getInfobox( self )
 		)
 	end
 
+	local function getType()
+		if smwData[ translate( 'SMW_Type' ) ] == nil then return end
+
+		local itemType = translate( string.format( 'type_%s', string.lower( smwData[ translate( 'SMW_Type' ) ] ) ) )
+
+		if string.find( itemType, 'type_' ) then
+			itemType = smwData[ translate( 'SMW_Type' ) ]
+		end
+
+		return itemType
+	end
+
 	local function getSize()
 		if smwData[ translate( 'SMW_Size' ) ] == nil then return end
 		return 'S' .. smwData[ translate( 'SMW_Size' ) ]
@@ -298,7 +310,7 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Type' ),
-				data = smwData[ translate( 'SMW_Type' ) ],
+				data = getType(),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Size' ),
