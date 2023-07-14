@@ -1,4 +1,14 @@
 {
 	"%smw_data": "Sets which data gets added to SMW",
-	"smw_data": []
+	"smw_data": [
+		{
+			"SMW_Slot": "API_position"
+		},
+		{
+			"SMW_OpticMagnification": "API_iron_sight.magnification"
+		},
+		{
+			"SMW_OpticType": "API_iron_sight.optic_type"
+		}
+	]
 }

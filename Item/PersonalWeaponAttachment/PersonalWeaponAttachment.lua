@@ -1,6 +1,6 @@
 require( 'strict' )
 
-local Template = {}
+local PersonalWeaponAttachment = {}
 
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
@@ -29,7 +29,7 @@ function PersonalWeaponAttachment.addSmwProperties( apiData, frameArgs, smwSetOb
         translate,
         config,
         data,
-        'PersonalWeaponAttachment'
+        'Item/PersonalWeaponAttachment'
     )
 end
 

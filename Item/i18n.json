@@ -325,13 +325,6 @@
 			}
 		],
 		[
-			"type_ironsight",
-			{
-				"de": "Zielfernrohr",
-				"en": "Scope"
-			}
-		],
-		[
 			"error_no_data_title",
 			{
 				"de": "ERROR - Semantic MediaWiki (CODE 16008)",

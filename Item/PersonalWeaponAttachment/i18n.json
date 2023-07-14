@@ -11,9 +11,31 @@
 			},
 			{
 				"name": "message",
-				"type": "localized"
+				"type": "localized" 
 			}
 		]
 	},
-	"data": []
+	"data": [
+		[
+			"SMW_Slot",
+			{
+				"de": "Slot",
+				"en": "Slot"
+			}
+		],
+		[
+			"SMW_OpticMagnification",
+			{
+				"de": "Optic magnification",
+				"en": "Optic magnification"
+			}
+		],
+		[
+			"SMW_OpticType",
+			{
+				"de": "Optic type",
+				"en": "Optic type"
+			}
+		]
+	]
 }

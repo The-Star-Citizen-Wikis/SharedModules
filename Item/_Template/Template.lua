@@ -29,7 +29,7 @@ function Template.addSmwProperties( apiData, frameArgs, smwSetObject )
         translate,
         config,
         data,
-        'TEMPLATE'
+        'Item/TEMPLATE'
     )
 end
 
