@@ -63,11 +63,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 		for key, get_from in pairs( datum ) do
 			if string.sub( key, 1, 3 ) == 'SMW' then
 				smwKey = key
-				from = get_from
+				from = get_from or {}
 			end
 		end
-
-		smwKey = translateFn( smwKey )
 
 		if type( from ) ~= 'table' then
 			from = { from }
@@ -95,7 +93,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 			if #parts == 2 then
 				-- Retrieve data from frameArgs
 				if parts[ 1 ] == 'ARG' then
-					value = getFromArgs( datum, translateFn( key ) )
+					value = getFromArgs( datum, translateFn( key ) or '<UNSET>' )
 
 					-- Use EN lang as fallback for arg names that are empty
 					if value == nil then
@@ -153,6 +151,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 							common.formatNum( val.min ),
 							common.formatNum( val.max ),
 						}
+					-- Remove part of the value
+					elseif type( datum.format ) == 'string' and datum.format:sub( 1, 5 ) == 'remove' then
+						val = tostring( val ):gsub( mw.test.split( datum.format, ':', true )[ 2 ], '' )
 					-- Subobject
 					elseif datum.type == 'subobject' then
 						local api = require( 'Module:Common/Api' )
@@ -168,12 +169,12 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					table.insert( value, index, val )
 				end
 
-				if datum.type ~= 'subobject' then
+				if datum.type ~= 'subobject' and type( smwKey ) == 'string' then
 					if type( value ) == 'table' and #value == 1 then
 						value = value[ 1 ]
 					end
 
-					smwSetObject[ smwKey ] = value
+					smwSetObject[ translateFn( smwKey ) ] = value
 				end
 			end
 		end
@@ -199,7 +200,7 @@ function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig,
 		langSuffix = '+lang=' .. ( moduleConfig.module_lang or mw.getContentLanguage():getCode() )
 	end
 
-	for _, queryPart in pairs( moduleData.smw_data ) do
+	for _, queryPart in ipairs( moduleData.smw_data ) do
 		local smwKey
 		for key, _ in pairs( queryPart ) do
 			if string.sub( key, 1, 3 ) == 'SMW' then
@@ -215,7 +216,7 @@ function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig,
 		end
 
 		-- safeguard
-		if smwKey ~= nil then
+		if smwKey ~= nil and translateFn( smwKey ) ~= nil then
 			table.insert( smwAskObject, string.format( formatString, translateFn( smwKey ) ) )
 
 			if queryPart.type == 'multilingual_text' then
