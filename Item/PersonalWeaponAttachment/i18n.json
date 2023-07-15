@@ -26,14 +26,14 @@
 		[
 			"SMW_OpticMagnification",
 			{
-				"de": "Optic magnification",
+				"de": "Vergrößerungsfaktor",
 				"en": "Optic magnification"
 			}
 		],
 		[
 			"SMW_OpticType",
 			{
-				"de": "Optic type",
+				"de": "Optik Type",
 				"en": "Optic type"
 			}
 		]
