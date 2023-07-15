@@ -255,7 +255,7 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
 	end
 
 	if not success or translation == nil then
-		return multilingualIfActive( key )
+		return nil
 	end
 
 	return multilingualIfActive( translation )
