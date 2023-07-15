@@ -30,7 +30,7 @@ local moduleCache = {}
 --- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-	return TNT:translate( 'Module:Item/i18n.json', config, key, addSuffix, {...} )
+	return TNT:translate( 'Module:Item/i18n.json', config, key, addSuffix, {...} ) or key
 end
 
 
@@ -40,22 +40,25 @@ end
 --- @param targetType string|boolean The type to check against extension_modules.type or 'true' to run against all modules
 --- @param methodName string The method to invoke
 --- @param args table Arguments passed to the method
-local function runModuleFN( targetType, methodName, args )
-	for _, module in pairs( data.extension_modules ) do
+local function runModuleFN( targetType, methodName, args, returnsData )
+	returnsData = returnsData or false
+	for _, module in ipairs( data.extension_modules ) do
 		if targetType == true or ( module.type ~= nil and type( module.type ) == 'table' ) then
-			for _, type in pairs( module.type ) do
-				if targetType == true or targetType == type then
+			for _, type in ipairs( module.type ) do
+				if module ~= nil and ( targetType == true or targetType == type ) then
 					if moduleCache[ module.name ] == nil then
-						local key = module.name
-						local success, module = pcall( require, module.name )
+						local success, mod = pcall( require, module.name )
 						if success then
-							moduleCache[ key ] = module
+							moduleCache[ module.name ] = mod
 						end
 					end
 					module = moduleCache[ module.name ]
 
 					if module ~= nil then
-						return module[ methodName ]( unpack( args ) )
+						local result = module[ methodName ]( unpack( args ) )
+						if returnsData then
+							return result
+						end
 					end
 				end
 			end
@@ -332,7 +335,8 @@ function methodtable.getInfobox( self )
 		col = 2
 	} )
 
-	runModuleFN( smwData[ translate( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData } )
+	local pageIdentifier = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or mw.title.getCurrentTitle().fullText
+	runModuleFN( smwData[ translate( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData, pageIdentifier } )
 
 	--- Dimensions
 	infobox:renderSection( {
@@ -421,7 +425,12 @@ end
 
 --- Sets the short description for this object
 function methodtable.setShortDescription( self )
-	local shortdesc = runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'getShortDescription', { self.frameArgs, self.smwData } )
+	local shortdesc = runModuleFN(
+		self.smwData[ translate( 'SMW_Type' ) ],
+		'getShortDescription',
+		{ self.frameArgs, self.smwData },
+		true
+	)
 
 	if type( shortdesc ) == 'string' and shortdesc ~= '' then
 		shortdesc = lang:ucfirst( shortdesc )

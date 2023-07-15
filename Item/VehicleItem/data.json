@@ -1,16 +1,19 @@
 {
   "%smw_data": "Sets which data gets added to SMW",
   "smw_data": [
+    { "%": "Coolers" },
     {
       "SMW_CoolingRate": "API_cooler.cooling_rate",
       "type": "number"
     },
 
+    { "%": "Power Plant" },
     {
       "SMW_PowerOutput": "API_power_plant.power_output",
       "type": "number"
     },
 
+    { "%": "Quantum Jump Drives" },
     {
       "SMW_QuantumFuelRequirement": "API_quantum_drive.quantum_fuel_requirement",
       "type": "number"
@@ -41,6 +44,7 @@
       ]
     },
 
+    { "%": "Shields" },
     {
       "SMW_ShieldPoints": "API_shield.max_shield_health",
       "type": "number"
@@ -58,30 +62,31 @@
       "type": "number"
     },
     {
-      "SMW_ShieldPhysicalAbsorption": "API_shield.absorption.physical",
+      "SMW_ShieldPhysicalResistance": "API_shield.resistance.physical",
       "type": "minmax"
     },
     {
-      "SMW_ShieldEnergyAbsorption": "API_shield.absorption.energy",
+      "SMW_ShieldEnergyResistance": "API_shield.resistance.energy",
       "type": "minmax"
     },
     {
-      "SMW_ShieldDistortionAbsorption": "API_shield.absorption.distortion",
+      "SMW_ShieldDistortionResistance": "API_shield.resistance.distortion",
       "type": "minmax"
     },
     {
-      "SMW_ShieldThermalAbsorption": "API_shield.absorption.thermal",
+      "SMW_ShieldThermalResistance": "API_shield.resistance.thermal",
       "type": "minmax"
     },
     {
-      "SMW_ShieldBiochemicalAbsorption": "API_shield.absorption.biochemical",
+      "SMW_ShieldBiochemicalResistance": "API_shield.resistance.biochemical",
       "type": "minmax"
     },
     {
-      "SMW_ShieldStunAbsorption": "API_shield.absorption.stun",
+      "SMW_ShieldStunResistance": "API_shield.resistance.stun",
       "type": "minmax"
     },
 
+    { "%": "Missile Racks" },
     {
       "SMW_MaxMissiles": "API_max_missiles"
     },
@@ -89,6 +94,7 @@
       "SMW_MissileSize": "API_min_size"
     },
 
+    { "%": "Mining Laser" },
     {
       "SMW_PowerTransfer": "API_mining_laser.power_transfer",
       "type": "number"
@@ -113,6 +119,27 @@
     },
     {
       "SMW_ModuleSlots": "API_mining_laser.module_slots"
-    }
+    },
+
+    { "%": "Mining Modules" },
+    {
+      "SMW_ModuleUses": "API_mining_module.uses"
+    },
+    {
+      "SMW_ModuleDuration": "API_mining_module.duration",
+      "format": "remove:seconds"
+    },
+
+    { "%": "Mining Modifiers, defined here so that they are retrieved on ASK" },
+    { "SMW_ModifierCatastrophicChargeRate": "" },
+    { "SMW_ModifierExtractionLaserPower": "" },
+    { "SMW_ModifierLaserInstability": "" },
+    { "SMW_ModifierMiningLaserPower": "" },
+    { "SMW_ModifierOptimalChargeWindowRate": "" },
+    { "SMW_ModifierInertMaterials": "" },
+    { "SMW_ModifierOptimalChargeRate": "" },
+    { "SMW_ModifierResistance": "" },
+    { "SMW_ModifierShatterDamage": "" },
+    { "SMW_ModifierSize": "" }
   ]
 }

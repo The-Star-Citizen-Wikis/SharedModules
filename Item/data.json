@@ -106,6 +106,18 @@
 		{
 			"name": "Module:Item/PersonalWeaponAttachment",
 			"type": [ "WeaponAttachment" ]
+		},
+		{
+			"name": "Module:Item/VehicleItem",
+			"type": [
+				"Gadget",
+				"MiningModifier",
+				"MissileLauncher",
+				"PowerPlant",
+				"QuantumDrive",
+				"Shield",
+				"WeaponMining"
+			]
 		}
 	]
 }
