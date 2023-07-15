@@ -11,7 +11,15 @@
 }
 
 .infobox.mw-collapsed {
+    border: 1px inset;
+    border-color: var( --border-color-base );
+    background-color: transparent;
     box-shadow: none;
+    /* box-shadow: inset 0 0 0 1px var( --border-color-base ); */
+}
+
+.infobox.mw-collapsed:hover {
+    background-color: var( --background-color-quiet--hover );
 }
 
 .infobox__image img {
