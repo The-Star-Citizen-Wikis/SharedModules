@@ -46,7 +46,7 @@
 
     { "%": "Shields" },
     {
-      "SMW_ShieldPoints": "API_shield.max_shield_health",
+      "SMW_ShieldPoint": "API_shield.max_shield_health",
       "type": "number"
     },
     {

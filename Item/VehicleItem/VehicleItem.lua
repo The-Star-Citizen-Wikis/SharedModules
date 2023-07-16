@@ -41,7 +41,7 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
         translate,
         config,
         data,
-        'VehicleItem'
+        'Item/VehicleItem'
     )
 
     local setData = {}
@@ -139,12 +139,12 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             end
         end
     -- Shield
-    elseif smwData[ translate( 'SMW_ShieldPoints' ) ] then
+    elseif smwData[ translate( 'SMW_ShieldPoint' ) ] then
         infobox:renderSection( {
             title = translate( 'LBL_Shield' ),
             col = 2,
             content = {
-                infobox:renderItem( translate( 'LBL_ShieldPoints' ), smwData[ translate( 'SMW_ShieldPoints' ) ] ),
+                infobox:renderItem( translate( 'LBL_ShieldPoint' ), smwData[ translate( 'SMW_ShieldPoint' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldPointRegeneration' ), smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldDownTime' ), smwData[ translate( 'SMW_ShieldDownTime' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldDamageDelay' ), smwData[ translate( 'SMW_ShieldDamageDelay' ) ] ),

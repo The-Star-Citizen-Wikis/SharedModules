@@ -73,10 +73,10 @@
       }
     ],
     [
-      "SMW_ShieldPoints",
+      "SMW_ShieldPoint",
       {
-        "de": "Schildpunkte",
-        "en": "Shield points"
+        "de": "Schildpunkt",
+        "en": "Shield point"
       }
     ],
     [
@@ -429,7 +429,7 @@
       }
     ],
     [
-      "LBL_ShieldPoints",
+      "LBL_ShieldPoint",
       {
         "de": "SP",
         "en": "SP"
