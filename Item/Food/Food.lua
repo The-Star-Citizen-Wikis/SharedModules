@@ -43,10 +43,10 @@ function Food.addSmwProperties( apiData, frameArgs, smwSetObject )
 	end
 
 	--- We only know whether the item is single use or not
-	if smwSetObject[ translate( 'SMW_Uses' ) ] == true then
-		smwSetObject[ translate( 'SMW_Uses' ) ] = 1
+	if smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] == true then
+		smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] = 1
 	else
-		smwSetObject[ translate( 'SMW_Uses' ) ] = nil
+		smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] = nil
 	end
 
 	if smwSetObject[ translate( 'SMW_Effect' ) ] == 'None' then
