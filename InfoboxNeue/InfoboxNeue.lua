@@ -273,7 +273,7 @@ function methodtable.renderFooter( self, data )
 
 	if data == nil then return '' end
 
-	local hasContent = data[ 'content' ] ~= '' and data[ 'content' ] ~= nil
+	local hasContent = data[ 'content' ] ~= nil and data[ 'content' ] ~= '' and next( data[ 'content' ] ) ~= nil
 	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'label' ] ~= nil
 
 	if not hasContent and not hasButton then return '' end
@@ -284,9 +284,12 @@ function methodtable.renderFooter( self, data )
 		local content = data[ 'content' ]
 		if type( content ) == 'table' then content = table.concat( content ) end
 
-		html:tag( 'div' )
-			:addClass( 'infobox__section' )
-			:wikitext( content )
+		--- For some reason empty content can still get through hasContent, idk why
+		if content ~= '' then
+			html:tag( 'div' )
+				:addClass( 'infobox__section' )
+				:wikitext( content )
+		end
 	end
 
 	if hasButton then
