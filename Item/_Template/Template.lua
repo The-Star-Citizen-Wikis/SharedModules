@@ -39,7 +39,7 @@ end
 --- @param smwAskObject table
 --- @return void
 function Template.addSmwAskProperties( smwAskObject )
-    smwCommon.addSmwQueryParams(
+    smwCommon.addSmwAskProperties(
         smwAskObject,
         translate,
         config,
