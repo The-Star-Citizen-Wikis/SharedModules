@@ -144,7 +144,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             title = translate( 'LBL_Shield' ),
             col = 2,
             content = {
-                infobox:renderItem( translate( 'LBL_ShieldPoints' ), smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ),
+                infobox:renderItem( translate( 'LBL_ShieldPoints' ), smwData[ translate( 'SMW_ShieldPoints' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldPointRegeneration' ), smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldDownTime' ), smwData[ translate( 'SMW_ShieldDownTime' ) ] ),
                 infobox:renderItem( translate( 'LBL_ShieldDamageDelay' ), smwData[ translate( 'SMW_ShieldDamageDelay' ) ] ),
