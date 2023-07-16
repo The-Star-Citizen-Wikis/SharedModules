@@ -3,6 +3,7 @@ require( 'strict' )
 local VehicleItem = {}
 
 local TNT = require( 'Module:Translate' ):new()
+local common = require( 'Module:Common' )
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/VehicleItem/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
@@ -140,14 +141,39 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         end
     -- Shield
     elseif smwData[ translate( 'SMW_ShieldPoint' ) ] then
+        -- We need raw number from SMW to calculate shield regen, so we add the unit back
+        local function getShieldPoint()
+            if smwData[ translate( 'SMW_ShieldPoint' ) ] == nil then return end
+            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPoint' ) ] ) ) .. ' SP'
+        end
+
+        local function getShieldRegen()
+            if smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] == nil then return end
+            if smwData[ translate( 'SMW_ShieldPoint' ) ] == nil then return smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] end
+
+            local fullChargeTime = math.ceil( smwData[ translate( 'SMW_ShieldPoint' ) ] / smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] )
+
+            return infobox.showDescIfDiff(
+                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' SP/s',
+                translate( 'unit_secondtillfull', false, fullChargeTime )
+            )
+        end
+
+        local function getShieldRegenDelay()
+            if smwData[ translate( 'SMW_ShieldDownTime' ) ] == nil or smwData[ translate( 'SMW_ShieldDamageDelay' ) ] == nil then return end
+            return infobox.showDescIfDiff(
+                smwData[ translate( 'SMW_ShieldDamageDelay' ) ],
+                translate( 'unit_whendown', false, smwData[ translate( 'SMW_ShieldDownTime' ) ] )
+            )
+        end
+
         infobox:renderSection( {
             title = translate( 'LBL_Shield' ),
             col = 2,
             content = {
-                infobox:renderItem( translate( 'LBL_ShieldPoint' ), smwData[ translate( 'SMW_ShieldPoint' ) ] ),
-                infobox:renderItem( translate( 'LBL_ShieldPointRegeneration' ), smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ),
-                infobox:renderItem( translate( 'LBL_ShieldDownTime' ), smwData[ translate( 'SMW_ShieldDownTime' ) ] ),
-                infobox:renderItem( translate( 'LBL_ShieldDamageDelay' ), smwData[ translate( 'SMW_ShieldDamageDelay' ) ] ),
+                infobox:renderItem( translate( 'LBL_ShieldPoint' ), getShieldPoint() ),
+                infobox:renderItem( translate( 'LBL_ShieldPointRegeneration' ), getShieldRegen() ),
+                infobox:renderItem( translate( 'LBL_ShieldRegenDelay' ), getShieldRegenDelay() ),
             }
         } )
 

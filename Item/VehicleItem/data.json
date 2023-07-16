@@ -47,11 +47,13 @@
     { "%": "Shields" },
     {
       "SMW_ShieldPoint": "API_shield.max_shield_health",
-      "type": "number"
+      "type": "number",
+      "smw_format": "#-n"
     },
     {
       "SMW_ShieldPointRegeneration": "API_shield.max_shield_regen",
-      "type": "number"
+      "type": "number",
+      "smw_format": "#-n"
     },
     {
       "SMW_ShieldDownTime": "API_shield.regen_delay.downed",

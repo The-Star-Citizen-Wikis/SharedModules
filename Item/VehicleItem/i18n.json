@@ -1,692 +1,685 @@
 {
-  "license": "CC0-1.0",
-  "description": {
-    "en": "Translation table for the Module:Item/VehicleItem"
-  },
-  "schema": {
-    "fields": [
-      {
-        "name": "id",
-        "type": "string"
-      },
-      {
-        "name": "message",
-        "type": "localized"
-      }
-    ]
-  },
-  "data": [
-    [
-      "SMW_CoolingRate",
-      {
-        "de": "Kühlrate",
-        "en": "Cooling rate"
-      }
-    ],
-    [
-      "SMW_PowerOutput",
-      {
-        "de": "Ausgangsleistung",
-        "en": "Power output"
-      }
-    ],
-    [
-      "SMW_QuantumFuelRequirement",
-      {
-        "de": "Quantum Kraftstoffbedarf",
-        "en": "Quantum fuel requirement"
-      }
-    ],
-    [
-      "SMW_QuantumJumpRange",
-      {
-        "de": "Quantensprungweite",
-        "en": "Quantum jump range"
-      }
-    ],
-    [
-      "SMW_QuantumJumpType",
-      {
-        "de": "Quantensprungtyp",
-        "en": "Quantum jump type"
-      }
-    ],
-    [
-      "SMW_QuantumJumpDriveSpeed",
-      {
-        "de": "Quantumgeschwindigkeit",
-        "en": "Quantum drive speed"
-      }
-    ],
-    [
-      "SMW_QuantumCooldownTime",
-      {
-        "de": "Quantum Abkühlzeit",
-        "en": "Quantum cooldown time"
-      }
-    ],
-    [
-      "SMW_QuantumSpoolUpTime",
-      {
-        "de": "Quantum Spool-up Zeit",
-        "en": "Quantum spool-up time"
-      }
-    ],
-    [
-      "SMW_ShieldPoint",
-      {
-        "de": "Schildpunkt",
-        "en": "Shield point"
-      }
-    ],
-    [
-      "SMW_ShieldPointRegeneration",
-      {
-        "de": "Schildpunktregeneration",
-        "en": "Shield point regeneration"
-      }
-    ],
-    [
-      "SMW_ShieldDownTime",
-      {
-        "de": "Schild Ausfallzeit",
-        "en": "Shield down time"
-      }
-    ],
-    [
-      "SMW_ShieldDamageDelay",
-      {
-        "de": "Schadensverzögerung",
-        "en": "Shield damage delay"
-      }
-    ],
-    [
-      "SMW_ShieldPhysicalResistance",
-      {
-        "de": "Physikalische Resistance",
-        "en": "Shield physical resistance"
-      }
-    ],
-    [
-      "SMW_ShieldEnergyResistance",
-      {
-        "de": "Energie Resistance",
-        "en": "Shield energy resistance"
-      }
-    ],
-    [
-      "SMW_ShieldDistortionResistance",
-      {
-        "de": "Distortion Resistance",
-        "en": "Shield distortion resistance"
-      }
-    ],
-    [
-      "SMW_ShieldThermalResistance",
-      {
-        "de": "Termische Resistance",
-        "en": "Shield thermal resistance"
-      }
-    ],
-    [
-      "SMW_ShieldBiochemicalResistance",
-      {
-        "de": "Biochemische Resistance",
-        "en": "Shield biochemical resistance"
-      }
-    ],
-    [
-      "SMW_ShieldStunResistance",
-      {
-        "de": "Stun Resistance",
-        "en": "Shield stun resistance"
-      }
-    ],
-    [
-      "SMW_MaxMissiles",
-      {
-        "de": "Anzahl Raketen",
-        "en": "Max missiles"
-      }
-    ],
-    [
-      "SMW_MissileSize",
-      {
-        "de": "Raketengröße",
-        "en": "Missile size"
-      }
-    ],
-    [
-      "SMW_PowerTransfer",
-      {
-        "de": "Energierate",
-        "en": "Power transfer"
-      }
-    ],
-    [
-      "SMW_OptimalRange",
-      {
-        "de": "Effektive Reichweite",
-        "en": "Optimal range"
-      }
-    ],
-    [
-      "SMW_MaximumRange",
-      {
-        "de": "Maximalreichweite",
-        "en": "Maximum range"
-      }
-    ],
-    [
-      "SMW_ExtractionThroughput",
-      {
-        "de": "Entnahmedurchsatz",
-        "en": "Extraction throughput"
-      }
-    ],
-    [
-      "SMW_MiningLaserPower",
-      {
-        "de": "Bergbau Laserleistung",
-        "en": "Mining laser power"
-      }
-    ],
-    [
-      "SMW_ExtractionLaserPower",
-      {
-        "de": "Extraktion Laserleistung",
-        "en": "Extraction laser power"
-      }
-    ],
-    [
-      "SMW_ModuleSlots",
-      {
-        "de": "Anzahl Verbrauchsplätze",
-        "en": "Module slots"
-      }
-    ],
-
-    [
-      "SMW_ModifierCatastrophicChargeRate",
-      {
-        "de": "Modifikator Katastrophische Laderate",
-        "en": "Modifier catastrophic charge rate"
-      }
-    ],
-    [
-      "SMW_ModifierExtractionLaserPower",
-      {
-        "de": "Modifikator Extraktion-Laserleistung",
-        "en": "Modifier extraction laser power"
-      }
-    ],
-    [
-      "SMW_ModifierLaserInstability",
-      {
-        "de": "Modifikator Laser-Instabilität",
-        "en": "Modifier laser instability"
-      }
-    ],
-    [
-      "SMW_ModifierMiningLaserPower",
-      {
-        "de": "Modifikator Bergbau-Laserleistung",
-        "en": "Modifier mining laser power"
-      }
-    ],
-    [
-      "SMW_ModifierOptimalChargeWindowRate",
-      {
-        "de": "Modifikator Optimale Ladefensterrate",
-        "en": "Modifier optimal charge window rate"
-      }
-    ],
-    [
-      "SMW_ModifierInertMaterials",
-      {
-        "de": "Modifikator Inerte Materialien",
-        "en": "Modifier inert materials"
-      }
-    ],
-    [
-      "SMW_ModifierOptimalChargeRate",
-      {
-        "de": "Modifikator Optimale Laderate",
-        "en": "Modifier optimal charge rate"
-      }
-    ],
-    [
-      "SMW_ModifierResistance",
-      {
-        "de": "Modifikator Resistenz",
-        "en": "Modifier resistance"
-      }
-    ],
-    [
-      "SMW_ModifierShatterDamage",
-      {
-        "de": "Modifikator Splitterschaden",
-        "en": "Modifier shatter damage"
-      }
-    ],
-    [
-      "SMW_ModifierSize",
-      {
-        "de": "Modifikator Größe",
-        "en": "Modifier size"
-      }
-    ],
-    [
-      "SMW_ModuleUses",
-      {
-        "de": "Anwendungen",
-        "en": "Module uses"
-      }
-    ],
-    [
-      "SMW_ModuleDuration",
-      {
-        "de": "Dauer",
-        "en": "Module duration"
-      }
-    ],
-
-    [
-      "Competition",
-      {
-        "de": "Wettkampf",
-        "en": "Competition"
-      }
-    ],
-    [
-      "Military",
-      {
-        "de": "Militär",
-        "en": "Military"
-      }
-    ],
-    [
-      "Civilian",
-      {
-        "de": "Zivil",
-        "en": "Civilian"
-      }
-    ],
-    [
-      "Industrial",
-      {
-        "de": "Industrie",
-        "en": "Industrial"
-      }
-    ],
-    [
-      "Stealth",
-      {
-        "de": "Stealth",
-        "en": "Stealth"
-      }
-    ],
-    [
-      "Unknown Class",
-      {
-        "de": "Unbekannte Klasse",
-        "en": "Unknown Class"
-      }
-    ],
-
-    [
-      "LBL_Cooler",
-      {
-        "de": "Kühler",
-        "en": "Cooler"
-      }
-    ],
-    [
-      "LBL_CoolingRate",
-      {
-        "de": "Kühlrate",
-        "en": "Cooling rate"
-      }
-    ],
-
-    [
-      "LBL_PowerPlant",
-      {
-        "de": "Generator",
-        "en": "Power plant"
-      }
-    ],
-    [
-      "LBL_PowerOutput",
-      {
-        "de": "Ausgangsleistung",
-        "en": "Power output"
-      }
-    ],
-
-    [
-      "LBL_QuantumDrive",
-      {
-        "de": "Quantenantrieb",
-        "en": "Quantum drive"
-      }
-    ],
-    [
-      "LBL_QuantumFuelRequirement",
-      {
-        "de": "Kraftstoffverbrauch",
-        "en": "Fuel requirement"
-      }
-    ],
-    [
-      "LBL_QuantumJumpRange",
-      {
-        "de": "Sprungreichweite",
-        "en": "Jump range"
-      }
-    ],
-    [
-      "normal_jump",
-      {
-        "de": "Systemsprung",
-        "en": "System jump"
-      }
-    ],
-    [
-      "spline_jump",
-      {
-        "de": "Planetensprung",
-        "en": "Planet jump"
-      }
-    ],
-    [
-      "LBL_QuantumJumpDriveSpeed",
-      {
-        "de": "Antriebsgeschwindigkeit",
-        "en": "Jump speed"
-      }
-    ],
-    [
-      "LBL_QuantumCooldownTime",
-      {
-        "de": "Abkühlzeit",
-        "en": "Cooldown time"
-      }
-    ],
-    [
-      "LBL_QuantumSpoolUpTime",
-      {
-        "de": "Spool-up Zeit",
-        "en": "Spool-up time"
-      }
-    ],
-
-    [
-      "LBL_Shield",
-      {
-        "de": "Schildgenerator",
-        "en": "Shield generator"
-      }
-    ],
-    [
-      "LBL_ShieldPoint",
-      {
-        "de": "SP",
-        "en": "SP"
-      }
-    ],
-    [
-      "LBL_ShieldPointRegeneration",
-      {
-        "de": "SP Regeneration",
-        "en": "SP regeneration"
-      }
-    ],
-    [
-      "LBL_ShieldDownTime",
-      {
-        "de": "Ausfallzeit",
-        "en": "Down time"
-      }
-    ],
-    [
-      "LBL_ShieldDamageDelay",
-      {
-        "de": "Schadensverzögerung",
-        "en": "Damage delay"
-      }
-    ],
-
-    [
-      "LBL_Resistances",
-      {
-        "de": "Resistenzen",
-        "en": "Resistances"
-      }
-    ],
-    [
-      "LBL_ShieldPhysicalResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-    [
-      "LBL_ShieldEnergyResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-    [
-      "LBL_ShieldDistortionResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-    [
-      "LBL_ShieldThermalResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-    [
-      "LBL_ShieldBiochemicalResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-    [
-      "LBL_ShieldStunResistance",
-      {
-        "de": "",
-        "en": ""
-      }
-    ],
-
-    [
-      "LBL_MissileRack",
-      {
-        "de": "Raketenwerfer",
-        "en": "Missile rack"
-      }
-    ],
-    [
-      "LBL_MaxMissiles",
-      {
-        "de": "Anzahl Raketen",
-        "en": "Missile count"
-      }
-    ],
-    [
-      "LBL_MissileSize",
-      {
-        "de": "Raketengröße",
-        "en": "Missile size"
-      }
-    ],
-
-    [
-      "LBL_MiningLaser",
-      {
-        "de": "Bergbaulaser",
-        "en": "Mining laser"
-      }
-    ],
-    [
-      "LBL_PowerTransfer",
-      {
-        "de": "Energierate",
-        "en": "Power transfer"
-      }
-    ],
-    [
-      "LBL_OptimalRange",
-      {
-        "de": "Effektive Reichweite",
-        "en": "Optimal range"
-      }
-    ],
-    [
-      "LBL_MaximumRange",
-      {
-        "de": "Maximalreichweite",
-        "en": "Maximum range"
-      }
-    ],
-    [
-      "LBL_ExtractionThroughput",
-      {
-        "de": "Entnahmedurchsatz",
-        "en": "Extraction throughput"
-      }
-    ],
-    [
-      "LBL_MiningLaserPower",
-      {
-        "de": "Bergbau Laserleistung",
-        "en": "Mining laser power"
-      }
-    ],
-    [
-      "LBL_ExtractionLaserPower",
-      {
-        "de": "Extraktion Laserleistung",
-        "en": "Extraction laser power"
-      }
-    ],
-    [
-      "LBL_ModuleSlots",
-      {
-        "de": "Anzahl Verbrauchsplätze",
-        "en": "Module slots"
-      }
-    ],
-
-    [
-      "LBL_MiningModule",
-      {
-        "de": "Bergbaumodul",
-        "en": "Mining module"
-      }
-    ],
-    [
-      "LBL_ModuleUses",
-      {
-        "de": "Anwendungen",
-        "en": "Module uses"
-      }
-    ],
-    [
-      "LBL_ModuleDuration",
-      {
-        "de": "Dauer",
-        "en": "Duration"
-      }
-    ],
-
-    [
-      "LBL_Modifiers",
-      {
-        "de": "Modifikatoren",
-        "en": "Modifiers"
-      }
-    ],
-
-    [
-      "LBL_ModifierCatastrophicChargeRate",
-      {
-        "de": "Katastrophische Laderate",
-        "en": "Catastrophic charge rate"
-      }
-    ],
-    [
-      "LBL_ModifierExtractionLaserPower",
-      {
-        "de": "Extraktion-Laserleistung",
-        "en": "Extraction laser power"
-      }
-    ],
-    [
-      "LBL_ModifierLaserInstability",
-      {
-        "de": "Laser-Instabilität",
-        "en": "Laser instability"
-      }
-    ],
-    [
-      "LBL_ModifierMiningLaserPower",
-      {
-        "de": "Bergbau-Laserleistung",
-        "en": "Mining laser power"
-      }
-    ],
-    [
-      "LBL_ModifierOptimalChargeWindowRate",
-      {
-        "de": "Optimale Ladefensterrate",
-        "en": "Optimal charge window rate"
-      }
-    ],
-    [
-      "LBL_ModifierInertMaterials",
-      {
-        "de": "Inerte Materialien",
-        "en": "Inert materials"
-      }
-    ],
-    [
-      "LBL_ModifierOptimalChargeRate",
-      {
-        "de": "Optimale Laderate",
-        "en": "Optimal charge rate"
-      }
-    ],
-    [
-      "LBL_ModifierResistance",
-      {
-        "de": "Resistenz",
-        "en": "Resistance"
-      }
-    ],
-    [
-      "LBL_ModifierShatterDamage",
-      {
-        "de": "Splitterschaden",
-        "en": "Shatter damage"
-      }
-    ],
-    [
-      "LBL_ModifierSize",
-      {
-        "de": "Größe",
-        "en": "Size"
-      }
-    ]
-
-
-  ]
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item/VehicleItem"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_CoolingRate",
+			{
+				"de": "Kühlrate",
+				"en": "Cooling rate"
+			}
+		],
+		[
+			"SMW_PowerOutput",
+			{
+				"de": "Ausgangsleistung",
+				"en": "Power output"
+			}
+		],
+		[
+			"SMW_QuantumFuelRequirement",
+			{
+				"de": "Quantum Kraftstoffbedarf",
+				"en": "Quantum fuel requirement"
+			}
+		],
+		[
+			"SMW_QuantumJumpRange",
+			{
+				"de": "Quantensprungweite",
+				"en": "Quantum jump range"
+			}
+		],
+		[
+			"SMW_QuantumJumpType",
+			{
+				"de": "Quantensprungtyp",
+				"en": "Quantum jump type"
+			}
+		],
+		[
+			"SMW_QuantumJumpDriveSpeed",
+			{
+				"de": "Quantumgeschwindigkeit",
+				"en": "Quantum drive speed"
+			}
+		],
+		[
+			"SMW_QuantumCooldownTime",
+			{
+				"de": "Quantum Abkühlzeit",
+				"en": "Quantum cooldown time"
+			}
+		],
+		[
+			"SMW_QuantumSpoolUpTime",
+			{
+				"de": "Quantum Spool-up Zeit",
+				"en": "Quantum spool-up time"
+			}
+		],
+		[
+			"SMW_ShieldPoint",
+			{
+				"de": "Schildpunkt",
+				"en": "Shield point"
+			}
+		],
+		[
+			"SMW_ShieldPointRegeneration",
+			{
+				"de": "Schildpunktregeneration",
+				"en": "Shield point regeneration"
+			}
+		],
+		[
+			"SMW_ShieldDownTime",
+			{
+				"de": "Schild Ausfallzeit",
+				"en": "Shield down time"
+			}
+		],
+		[
+			"SMW_ShieldDamageDelay",
+			{
+				"de": "Schadensverzögerung",
+				"en": "Shield damage delay"
+			}
+		],
+		[
+			"SMW_ShieldPhysicalResistance",
+			{
+				"de": "Physikalische Resistance",
+				"en": "Shield physical resistance"
+			}
+		],
+		[
+			"SMW_ShieldEnergyResistance",
+			{
+				"de": "Energie Resistance",
+				"en": "Shield energy resistance"
+			}
+		],
+		[
+			"SMW_ShieldDistortionResistance",
+			{
+				"de": "Distortion Resistance",
+				"en": "Shield distortion resistance"
+			}
+		],
+		[
+			"SMW_ShieldThermalResistance",
+			{
+				"de": "Termische Resistance",
+				"en": "Shield thermal resistance"
+			}
+		],
+		[
+			"SMW_ShieldBiochemicalResistance",
+			{
+				"de": "Biochemische Resistance",
+				"en": "Shield biochemical resistance"
+			}
+		],
+		[
+			"SMW_ShieldStunResistance",
+			{
+				"de": "Stun Resistance",
+				"en": "Shield stun resistance"
+			}
+		],
+		[
+			"SMW_MaxMissiles",
+			{
+				"de": "Anzahl Raketen",
+				"en": "Max missiles"
+			}
+		],
+		[
+			"SMW_MissileSize",
+			{
+				"de": "Raketengröße",
+				"en": "Missile size"
+			}
+		],
+		[
+			"SMW_PowerTransfer",
+			{
+				"de": "Energierate",
+				"en": "Power transfer"
+			}
+		],
+		[
+			"SMW_OptimalRange",
+			{
+				"de": "Effektive Reichweite",
+				"en": "Optimal range"
+			}
+		],
+		[
+			"SMW_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Maximum range"
+			}
+		],
+		[
+			"SMW_ExtractionThroughput",
+			{
+				"de": "Entnahmedurchsatz",
+				"en": "Extraction throughput"
+			}
+		],
+		[
+			"SMW_MiningLaserPower",
+			{
+				"de": "Bergbau Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"SMW_ExtractionLaserPower",
+			{
+				"de": "Extraktion Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"SMW_ModuleSlots",
+			{
+				"de": "Anzahl Verbrauchsplätze",
+				"en": "Module slots"
+			}
+		],
+		[
+			"SMW_ModifierCatastrophicChargeRate",
+			{
+				"de": "Modifikator Katastrophische Laderate",
+				"en": "Modifier catastrophic charge rate"
+			}
+		],
+		[
+			"SMW_ModifierExtractionLaserPower",
+			{
+				"de": "Modifikator Extraktion-Laserleistung",
+				"en": "Modifier extraction laser power"
+			}
+		],
+		[
+			"SMW_ModifierLaserInstability",
+			{
+				"de": "Modifikator Laser-Instabilität",
+				"en": "Modifier laser instability"
+			}
+		],
+		[
+			"SMW_ModifierMiningLaserPower",
+			{
+				"de": "Modifikator Bergbau-Laserleistung",
+				"en": "Modifier mining laser power"
+			}
+		],
+		[
+			"SMW_ModifierOptimalChargeWindowRate",
+			{
+				"de": "Modifikator Optimale Ladefensterrate",
+				"en": "Modifier optimal charge window rate"
+			}
+		],
+		[
+			"SMW_ModifierInertMaterials",
+			{
+				"de": "Modifikator Inerte Materialien",
+				"en": "Modifier inert materials"
+			}
+		],
+		[
+			"SMW_ModifierOptimalChargeRate",
+			{
+				"de": "Modifikator Optimale Laderate",
+				"en": "Modifier optimal charge rate"
+			}
+		],
+		[
+			"SMW_ModifierResistance",
+			{
+				"de": "Modifikator Resistenz",
+				"en": "Modifier resistance"
+			}
+		],
+		[
+			"SMW_ModifierShatterDamage",
+			{
+				"de": "Modifikator Splitterschaden",
+				"en": "Modifier shatter damage"
+			}
+		],
+		[
+			"SMW_ModifierSize",
+			{
+				"de": "Modifikator Größe",
+				"en": "Modifier size"
+			}
+		],
+		[
+			"SMW_ModuleUses",
+			{
+				"de": "Anwendungen",
+				"en": "Module uses"
+			}
+		],
+		[
+			"SMW_ModuleDuration",
+			{
+				"de": "Dauer",
+				"en": "Module duration"
+			}
+		],
+		[
+			"Competition",
+			{
+				"de": "Wettkampf",
+				"en": "Competition"
+			}
+		],
+		[
+			"Military",
+			{
+				"de": "Militär",
+				"en": "Military"
+			}
+		],
+		[
+			"Civilian",
+			{
+				"de": "Zivil",
+				"en": "Civilian"
+			}
+		],
+		[
+			"Industrial",
+			{
+				"de": "Industrie",
+				"en": "Industrial"
+			}
+		],
+		[
+			"Stealth",
+			{
+				"de": "Stealth",
+				"en": "Stealth"
+			}
+		],
+		[
+			"Unknown Class",
+			{
+				"de": "Unbekannte Klasse",
+				"en": "Unknown Class"
+			}
+		],
+		[
+			"LBL_Cooler",
+			{
+				"de": "Kühler",
+				"en": "Cooler"
+			}
+		],
+		[
+			"LBL_CoolingRate",
+			{
+				"de": "Kühlrate",
+				"en": "Cooling rate"
+			}
+		],
+		[
+			"LBL_PowerPlant",
+			{
+				"de": "Generator",
+				"en": "Power plant"
+			}
+		],
+		[
+			"LBL_PowerOutput",
+			{
+				"de": "Ausgangsleistung",
+				"en": "Power output"
+			}
+		],
+		[
+			"LBL_QuantumDrive",
+			{
+				"de": "Quantenantrieb",
+				"en": "Quantum drive"
+			}
+		],
+		[
+			"LBL_QuantumFuelRequirement",
+			{
+				"de": "Kraftstoffverbrauch",
+				"en": "Fuel requirement"
+			}
+		],
+		[
+			"LBL_QuantumJumpRange",
+			{
+				"de": "Sprungreichweite",
+				"en": "Jump range"
+			}
+		],
+		[
+			"normal_jump",
+			{
+				"de": "Systemsprung",
+				"en": "System jump"
+			}
+		],
+		[
+			"spline_jump",
+			{
+				"de": "Planetensprung",
+				"en": "Planet jump"
+			}
+		],
+		[
+			"LBL_QuantumJumpDriveSpeed",
+			{
+				"de": "Antriebsgeschwindigkeit",
+				"en": "Jump speed"
+			}
+		],
+		[
+			"LBL_QuantumCooldownTime",
+			{
+				"de": "Abkühlzeit",
+				"en": "Cooldown time"
+			}
+		],
+		[
+			"LBL_QuantumSpoolUpTime",
+			{
+				"de": "Spool-up Zeit",
+				"en": "Spool-up time"
+			}
+		],
+		[
+			"LBL_Shield",
+			{
+				"de": "Schildgenerator",
+				"en": "Shield generator"
+			}
+		],
+		[
+			"LBL_ShieldPoint",
+			{
+				"de": "SP",
+				"en": "Shield"
+			}
+		],
+		[
+			"LBL_ShieldPointRegeneration",
+			{
+				"de": "Regen rate",
+				"en": "Regen rate"
+			}
+		],
+		[
+			"LBL_ShieldRegenDelay",
+			{
+				"de": "Regen delay",
+				"en": "Regen delay"
+			}
+		],
+		[
+			"LBL_Resistances",
+			{
+				"de": "Resistenzen",
+				"en": "Resistances"
+			}
+		],
+		[
+			"LBL_ShieldPhysicalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldEnergyResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldDistortionResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldThermalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldBiochemicalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldStunResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_MissileRack",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile rack"
+			}
+		],
+		[
+			"LBL_MaxMissiles",
+			{
+				"de": "Anzahl Raketen",
+				"en": "Missile count"
+			}
+		],
+		[
+			"LBL_MissileSize",
+			{
+				"de": "Raketengröße",
+				"en": "Missile size"
+			}
+		],
+		[
+			"LBL_MiningLaser",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining laser"
+			}
+		],
+		[
+			"LBL_PowerTransfer",
+			{
+				"de": "Energierate",
+				"en": "Power transfer"
+			}
+		],
+		[
+			"LBL_OptimalRange",
+			{
+				"de": "Effektive Reichweite",
+				"en": "Optimal range"
+			}
+		],
+		[
+			"LBL_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Maximum range"
+			}
+		],
+		[
+			"LBL_ExtractionThroughput",
+			{
+				"de": "Entnahmedurchsatz",
+				"en": "Extraction throughput"
+			}
+		],
+		[
+			"LBL_MiningLaserPower",
+			{
+				"de": "Bergbau Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"LBL_ExtractionLaserPower",
+			{
+				"de": "Extraktion Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"LBL_ModuleSlots",
+			{
+				"de": "Anzahl Verbrauchsplätze",
+				"en": "Module slots"
+			}
+		],
+		[
+			"LBL_MiningModule",
+			{
+				"de": "Bergbaumodul",
+				"en": "Mining module"
+			}
+		],
+		[
+			"LBL_ModuleUses",
+			{
+				"de": "Anwendungen",
+				"en": "Module uses"
+			}
+		],
+		[
+			"LBL_ModuleDuration",
+			{
+				"de": "Dauer",
+				"en": "Duration"
+			}
+		],
+		[
+			"LBL_Modifiers",
+			{
+				"de": "Modifikatoren",
+				"en": "Modifiers"
+			}
+		],
+		[
+			"LBL_ModifierCatastrophicChargeRate",
+			{
+				"de": "Katastrophische Laderate",
+				"en": "Catastrophic charge rate"
+			}
+		],
+		[
+			"LBL_ModifierExtractionLaserPower",
+			{
+				"de": "Extraktion-Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"LBL_ModifierLaserInstability",
+			{
+				"de": "Laser-Instabilität",
+				"en": "Laser instability"
+			}
+		],
+		[
+			"LBL_ModifierMiningLaserPower",
+			{
+				"de": "Bergbau-Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"LBL_ModifierOptimalChargeWindowRate",
+			{
+				"de": "Optimale Ladefensterrate",
+				"en": "Optimal charge window rate"
+			}
+		],
+		[
+			"LBL_ModifierInertMaterials",
+			{
+				"de": "Inerte Materialien",
+				"en": "Inert materials"
+			}
+		],
+		[
+			"LBL_ModifierOptimalChargeRate",
+			{
+				"de": "Optimale Laderate",
+				"en": "Optimal charge rate"
+			}
+		],
+		[
+			"LBL_ModifierResistance",
+			{
+				"de": "Resistenz",
+				"en": "Resistance"
+			}
+		],
+		[
+			"LBL_ModifierShatterDamage",
+			{
+				"de": "Splitterschaden",
+				"en": "Shatter damage"
+			}
+		],
+		[
+			"LBL_ModifierSize",
+			{
+				"de": "Größe",
+				"en": "Size"
+			}
+		],
+		[
+			"unit_secondtillfull",
+			{
+				"de": "$1 s till full",
+				"en": "$1 s till full"
+			}
+		],
+		[
+			"unit_whendown",
+			{
+				"de": "$1 when down",
+				"en": "$1 when down"
+			}
+		]
+	]
 }
