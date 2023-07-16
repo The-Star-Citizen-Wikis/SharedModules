@@ -359,7 +359,7 @@
 		},
 		{
 			"label": "#DPSCalculator",
-			"format": "https://finder.cstone.space/search/%s",
+			"format": "https://www.erkul.games/ship/%s",
 			"data": "SMW_ClassName"
 		},
 		{
