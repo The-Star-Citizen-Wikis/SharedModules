@@ -273,8 +273,10 @@ function methodtable.renderFooter( self, data )
 
 	if data == nil then return '' end
 
+	--- FIXME: For some reason this validation does not work HELPPPPP
+	--- How can content not be nil, empty string, and empty table still pass through hasContent WTF
 	local hasContent = data[ 'content' ] ~= nil and data[ 'content' ] ~= '' and next( data[ 'content' ] ) ~= nil
-	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'label' ] ~= nil
+	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'content' ] ~= nil and data[ 'button' ][ 'content' ] ~= '' and data[ 'button' ][ 'label' ] ~= nil and data[ 'button' ][ 'label' ] ~= ''
 
 	if not hasContent and not hasButton then return '' end
 
