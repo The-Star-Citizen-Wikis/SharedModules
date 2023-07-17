@@ -105,19 +105,17 @@
 
 .infobox__header,
 .infobox__sectionHeader {
-    margin-bottom: var( --space-md );
     line-height: var( --line-height-xs );
 }
 
 .infobox__header {
     margin-top: var( --space-lg );
+    margin-bottom: var( --space-md );
 }
 
-.infobox__sectionHeader {
-    margin-top: var( --space-md );
-}
-
-.infobox__section {
+.infobox__section,
+.infobox__sectionHeader,
+.infobox__sectionContent {
     margin-top: var( --space-md );
     margin-bottom: var( --space-md );
 }
@@ -144,7 +142,7 @@
 /* Use padding to prevent margin collapse when there is no footer */
 .infobox__content > .infobox__section:last-child {
     margin-bottom: 0;
-    padding-bottom: var( --space-lg );
+    padding-bottom: var( --space-xs );
 }
 
 .infobox__sectionTitle {
