@@ -304,6 +304,13 @@
 			}
 		],
 		[
+			"type_cooler",
+			{
+				"de": "Kühler",
+				"en": "Cooler"
+			}
+		],
+		[
 			"type_drink",
 			{
 				"de": "Getränk",
@@ -315,6 +322,27 @@
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
+			}
+		],
+		[
+			"type_powerplant",
+			{
+				"de": "Generator",
+				"en": "Power plant"
+			}
+		],
+		[
+			"type_quantumdrive",
+			{
+				"de": "Quantenantrieb",
+				"en": "Quantum drive"
+			}
+		],
+		[
+			"type_shield",
+			{
+				"de": "Schildgenerator",
+				"en": "Shield generator"
 			}
 		],
 		[
