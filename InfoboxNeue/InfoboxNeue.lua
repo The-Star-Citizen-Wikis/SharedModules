@@ -275,7 +275,7 @@ function methodtable.renderFooter( self, data )
 
     -- Checks if an input is of type 'table' or 'string' and if it is not empty
     local function isNonEmpty( input )
-        return ( type( input ) == 'table' or type( input ) == 'string' ) and #input > 0
+        return ( type( input ) == 'table' and next( input ) ~= nil ) or ( type( input ) == 'string' and #input > 0 )
     end
 
 	local hasContent = isNonEmpty( data[ 'content' ] )
