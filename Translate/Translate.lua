@@ -235,7 +235,7 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
     checkType( 'Module:Translate.translate', 2, dataset, 'string' )
     checkType( 'Module:Translate.translate', 3, config, 'table' )
     checkType( 'Module:Translate.translate', 4, key, 'string' )
-    checkType( 'Module:Translate.translate', 4, addSuffix, 'boolean', true )
+    checkType( 'Module:Translate.translate', 5, addSuffix, 'boolean', true )
 
 	addSuffix = addSuffix or false
 	local success, translation
