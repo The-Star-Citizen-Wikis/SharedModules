@@ -232,7 +232,7 @@ end
 --- @return string html
 function methodtable.renderLinkButton( self, data )
 	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
-	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderLinkButton', 2, data, 'table' )
 
 	if data == nil or data[ 'label' ] == nil or ( data[ 'link' ] == nil and data[ 'page' ] == nil ) then return '' end
 
@@ -269,14 +269,17 @@ end
 --- @return string html
 function methodtable.renderFooter( self, data )
 	checkType( 'Module:InfoboxNeue.renderFooter', 1, self, 'table' )
-	checkType( 'Module:InfoboxNeue.renderFooter', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderFooter', 2, data, 'table' )
 
 	if data == nil then return '' end
 
-	--- FIXME: For some reason this validation does not work HELPPPPP
-	--- How can content not be nil, empty string, and empty table still pass through hasContent WTF
-	local hasContent = data[ 'content' ] ~= nil and data[ 'content' ] ~= '' and next( data[ 'content' ] ) ~= nil
-	local hasButton = data[ 'button' ] ~= nil and data[ 'button' ][ 'content' ] ~= nil and data[ 'button' ][ 'content' ] ~= '' and data[ 'button' ][ 'label' ] ~= nil and data[ 'button' ][ 'label' ] ~= ''
+    -- Checks if an input is of type 'table' or 'string' and if it is not empty
+    local function isNonEmpty( input )
+        return ( type( input ) == 'table' or type( input ) == 'string' ) and #input > 0
+    end
+
+	local hasContent = isNonEmpty( data[ 'content' ] )
+	local hasButton = isNonEmpty( data[ 'button' ] ) and isNonEmpty( data[ 'button' ][ 'content' ] ) and isNonEmpty( data[ 'button' ][ 'label' ] )
 
 	if not hasContent and not hasButton then return '' end
 
@@ -286,15 +289,14 @@ function methodtable.renderFooter( self, data )
 		local content = data[ 'content' ]
 		if type( content ) == 'table' then content = table.concat( content ) end
 
-		--- For some reason empty content can still get through hasContent, idk why
-		if content ~= '' then
-			html:tag( 'div' )
-				:addClass( 'infobox__section' )
-				:wikitext( content )
-		end
+        html:addClass( 'infobox__footer--has-content')
+        html:tag( 'div' )
+            :addClass( 'infobox__section' )
+            :wikitext( content )
 	end
 
 	if hasButton then
+	    html:addClass( 'infobox__footer--has-button')
 		local buttonData = data[ 'button' ];
 		local button = html:tag( 'div' ):addClass( 'infobox__button' )
 		local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
@@ -323,18 +325,20 @@ function methodtable.renderFooter( self, data )
 	return item
 end
 
+
 --- Return the HTML of the infobox footer button component as string
 ---
 --- @param data table {icon, label, type, content}
 --- @return string html
 function methodtable.renderFooterButton( self, data )
 	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
-	checkType( 'Module:InfoboxNeue.renderFooterButton', 1, self, 'table' )
+	checkType( 'Module:InfoboxNeue.renderFooterButton', 2, data, 'table' )
 
 	if data == nil then return '' end
 
 	return self:renderFooter( { button = data } )
 end
+
 
 --- Return the HTML of the infobox item component as string
 ---
