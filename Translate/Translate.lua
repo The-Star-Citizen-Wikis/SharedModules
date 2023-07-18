@@ -38,6 +38,12 @@ local function load( dataset )
         return cache[ dataset ]
     end
 
+    local title = mw.title.new( dataset )
+
+    if not title.exists then
+        error( string.format( 'I18N table %s does not exist!', dataset ), 3 )
+    end
+
     local data = mw.loadJsonData( dataset )
     local keys = {}
     for index, row in ipairs( data.data ) do
