@@ -15,14 +15,7 @@
     /* box-shadow: inset 0 0 0 1px var( --border-color-base ); */
 }
 
-.infobox.mw-collapsed:hover {
-    background-color: var( --background-color-quiet--hover );
-}
-
 .infobox__image img {
-    /* Perserve rounded border */
-    border-top-left-radius: var( --border-radius--medium );
-    border-top-right-radius: var( --border-radius--medium );
     /* Prevent overflow */
     max-width: 100%;
     height: auto;
@@ -49,7 +42,7 @@
 }
 
 .infobox__snippet {
-    display: none;
+    display: flex;
     gap: var( --space-xs );
     align-items: center;
     white-space: nowrap;
@@ -58,7 +51,17 @@
 .infobox__snippet.mw-collapsible-toggle {
     /* Disable default style */
     float: none;
-    border-radius: var( --border-radius--medium );
+    border-top-left-radius: var( --border-radius--medium );
+    border-top-right-radius: var( --border-radius--medium );
+}
+
+.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed {
+    border-bottom-left-radius: var( --border-radius--medium );
+    border-bottom-right-radius: var( --border-radius--medium );
+}
+
+.infobox__snippet.mw-collapsible-toggle:hover {
+    background-color: var( --background-color-quiet--hover );
 }
 
 /* Might as well steal from skin */
@@ -304,10 +307,6 @@
         margin-right: auto;
         margin-left: auto;
     }
-
-    .infobox__snippet {
-        display: flex;
-    }
 }
 
 /* Tabber styles */
@@ -319,6 +318,13 @@
     padding-left: 0;
     padding-right: 0;
 }
+
+/* Spacing is handled by tabber */
+.infobox__section--tabber .infobox__sectionContent {
+    margin-top: 0;
+    margin-bottom: 0;
+}
+
 
 .infobox__section--tabber .tabber .infobox__section {
     margin-top: var( --space-sm );
