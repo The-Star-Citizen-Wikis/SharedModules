@@ -353,6 +353,10 @@ function methodtable.getInfobox( self )
 			infobox:renderItem( {
 				label = translate( 'LBL_Height' ),
 				data = smwData[ translate( 'SMW_EntityHeight' ) ],
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Mass' ),
+				data = smwData[ translate( 'SMW_Mass' ) ],
 			} )
 		},
 		col = 3

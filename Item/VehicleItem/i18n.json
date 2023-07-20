@@ -332,10 +332,10 @@
 			}
 		],
 		[
-			"LBL_Cooler",
+			"LBL_Overview",
 			{
-				"de": "Kühler",
-				"en": "Cooler"
+				"de": "Overview",
+				"en": "Overview"
 			}
 		],
 		[
@@ -346,24 +346,10 @@
 			}
 		],
 		[
-			"LBL_PowerPlant",
-			{
-				"de": "Generator",
-				"en": "Power plant"
-			}
-		],
-		[
 			"LBL_PowerOutput",
 			{
 				"de": "Ausgangsleistung",
 				"en": "Power output"
-			}
-		],
-		[
-			"LBL_QuantumDrive",
-			{
-				"de": "Quantenantrieb",
-				"en": "Quantum drive"
 			}
 		],
 		[
@@ -413,13 +399,6 @@
 			{
 				"de": "Spool-up Zeit",
 				"en": "Spool-up time"
-			}
-		],
-		[
-			"LBL_Shield",
-			{
-				"de": "Schildgenerator",
-				"en": "Shield generator"
 			}
 		],
 		[
@@ -493,13 +472,6 @@
 			}
 		],
 		[
-			"LBL_MissileRack",
-			{
-				"de": "Raketenwerfer",
-				"en": "Missile rack"
-			}
-		],
-		[
 			"LBL_MaxMissiles",
 			{
 				"de": "Anzahl Raketen",
@@ -511,13 +483,6 @@
 			{
 				"de": "Raketengröße",
 				"en": "Missile size"
-			}
-		],
-		[
-			"LBL_MiningLaser",
-			{
-				"de": "Bergbaulaser",
-				"en": "Mining laser"
 			}
 		],
 		[
@@ -567,13 +532,6 @@
 			{
 				"de": "Anzahl Verbrauchsplätze",
 				"en": "Module slots"
-			}
-		],
-		[
-			"LBL_MiningModule",
-			{
-				"de": "Bergbaumodul",
-				"en": "Mining module"
 			}
 		],
 		[

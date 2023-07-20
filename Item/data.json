@@ -63,6 +63,10 @@
 			"smw_format": "#p2-cm"
 		},
 		{
+			"SMW_Mass": "API_mass",
+			"type": "number"
+		},
+		{
 			"SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
 			"smw_format": "#-"
 		},

@@ -206,6 +206,13 @@
 			}
 		],
 		[
+			"SMW_Mass",
+			{
+				"de": "Masse",
+				"en": "Mass"
+			}
+		],
+		[
 			"SMW_GameBuild",
 			{
 				"de": "Spielversion",
@@ -273,6 +280,13 @@
 			{
 				"de": "Höhe",
 				"en": "Height"
+			}
+		],
+		[
+			"LBL_Mass",
+			{
+				"de": "Masse",
+				"en": "Mass"
 			}
 		],
 		[
