@@ -145,21 +145,21 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         --end
 
     -- Shield
-    elseif smwData[ translate( 'SMW_ShieldPoint' ) ] then
+    elseif smwData[ translate( 'SMW_ShieldHealthPoint' ) ] then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
         local function getShieldPoint()
-            if smwData[ translate( 'SMW_ShieldPoint' ) ] == nil then return end
-            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPoint' ) ] ) ) .. ' SP'
+            if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then return end
+            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] ) ) .. ' HP'
         end
 
         local function getShieldRegen()
             if smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] == nil then return end
-            if smwData[ translate( 'SMW_ShieldPoint' ) ] == nil then return smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] end
+            if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then return smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] end
 
-            local fullChargeTime = math.ceil( smwData[ translate( 'SMW_ShieldPoint' ) ] / smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] )
+            local fullChargeTime = math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] / smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] )
 
             return infobox.showDescIfDiff(
-                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' SP/s',
+                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' HP/s',
                 translate( 'unit_secondtillfull', false, fullChargeTime )
             )
         end
@@ -175,7 +175,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_ShieldPoint' ), getShieldPoint() ),
+            infobox:renderItem( translate( 'LBL_ShieldHealthPoint' ), getShieldPoint() ),
             infobox:renderItem( translate( 'LBL_ShieldPointRegeneration' ), getShieldRegen() ),
             infobox:renderItem( translate( 'LBL_ShieldRegenDelay' ), getShieldRegenDelay() )
         }
@@ -260,11 +260,20 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     end
 
     -- Get the index of the last tab
-    --local tabCount = 0
-    --for _, __ in pairs( tabberData ) do
-    --    tabCount = tabCount + 1
-    --end
-    --tabCount = tabCount / 2
+    local tabCount = 0
+    for _, __ in pairs( tabberData ) do
+        tabCount = tabCount + 1
+    end
+    tabCount = tabCount / 2
+
+    -- Defense
+    tabCount = tabCount + 1
+    tabberData[ 'label' .. tabCount ] = translate( 'LBL_Defense' )
+    section = {
+        infobox:renderItem( translate( 'LBL_Health' ), smwData[ translate( 'SMW_HealthPoint' ) ] ),
+        infobox:renderItem( translate( 'LBL_DistortionHealthPoint' ), smwData[ translate( 'SMW_DistortionHealthPoint' ) ] )
+    }
+    tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
 
     -- Dimensions
     --tabberData[ 'label' .. tabCount ] = translate( 'LBL_Dimensions' )

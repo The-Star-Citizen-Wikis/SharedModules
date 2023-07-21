@@ -44,10 +44,6 @@
 			"SMW_Grade": "API_grade"
 		},
 		{
-			"SMW_HealthPoint": "API_durability.health",
-			"type": "number"
-		},
-		{
 			"SMW_EntityLength": "API_dimension.true_dimension.length",
 			"type": "number",
 			"smw_format": "#p2-cm"

@@ -17,6 +17,20 @@
 	},
 	"data": [
 		[
+			"SMW_HealthPoint",
+			{
+				"de": "Schadenspunkte",
+				"en": "Health point"
+			}
+		],
+		[
+			"SMW_DistortionHealthPoint",
+			{
+				"de": "Distortion health",
+				"en": "Distortion health"
+			}
+		],
+		[
 			"SMW_CoolingRate",
 			{
 				"de": "Kühlrate",
@@ -73,10 +87,10 @@
 			}
 		],
 		[
-			"SMW_ShieldPoint",
+			"SMW_ShieldHealthPoint",
 			{
 				"de": "Schildpunkt",
-				"en": "Shield point"
+				"en": "Shield health point"
 			}
 		],
 		[
@@ -339,6 +353,27 @@
 			}
 		],
 		[
+			"LBL_Defense",
+			{
+				"de": "Defense",
+				"en": "Defense"
+			}
+		],
+		[
+			"LBL_Health",
+			{
+				"de": "Schadenspunkte",
+				"en": "Health"
+			}
+		],
+		[
+			"LBL_DistortionHealthPoint",
+			{
+				"de": "Distortion health",
+				"en": "Distortion health"
+			}
+		],
+		[
 			"LBL_CoolingRate",
 			{
 				"de": "Kühlrate",
@@ -402,10 +437,10 @@
 			}
 		],
 		[
-			"LBL_ShieldPoint",
+			"LBL_ShieldHealthPoint",
 			{
-				"de": "SP",
-				"en": "Shield"
+				"de": "Shield health",
+				"en": "Shield health"
 			}
 		],
 		[

@@ -178,13 +178,6 @@
 			}
 		],
 		[
-			"SMW_HealthPoint",
-			{
-				"de": "Schadenspunkte",
-				"en": "Health point"
-			}
-		],
-		[
 			"SMW_EntityHeight",
 			{
 				"de": "Höhe",
@@ -245,13 +238,6 @@
 			{
 				"de": "Belegung",
 				"en": "Occupancy"
-			}
-		],
-		[
-			"LBL_Health",
-			{
-				"de": "Schadenspunkte",
-				"en": "Health"
 			}
 		],
 		[

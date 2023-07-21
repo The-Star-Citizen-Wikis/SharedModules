@@ -308,7 +308,7 @@ function methodtable.getInfobox( self )
 	} )
 
 
-	--- Type, Size, Class, Health
+	--- Type, Size, Class
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
@@ -326,11 +326,7 @@ function methodtable.getInfobox( self )
 			infobox:renderItem( {
 				label = translate( 'LBL_Occupancy' ),
 				data = smwData[ translate( 'SMW_Occupancy' ) ],
-			} ),
-			infobox:renderItem( {
-				label = translate( 'LBL_Health' ),
-				data = smwData[ translate( 'SMW_HealthPoint' ) ],
-			} ),
+			} )
 		},
 		col = 2
 	} )
