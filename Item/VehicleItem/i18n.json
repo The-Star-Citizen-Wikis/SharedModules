@@ -59,6 +59,13 @@
 			}
 		],
 		[
+			"SMW_QuantumTravelDisconnectRange",
+			{
+				"de": "Quantum travel disconnect range",
+				"en": "Quantum travel disconnect range"
+			}
+		],
+		[
 			"SMW_QuantumTravelType",
 			{
 				"de": "Quantensprungtyp",
@@ -398,7 +405,7 @@
 			"LBL_QuantumFuelRequirement",
 			{
 				"de": "Kraftstoffverbrauch",
-				"en": "Fuel requirement"
+				"en": "Consumption"
 			}
 		],
 		[
@@ -406,6 +413,13 @@
 			{
 				"de": "Sprungreichweite",
 				"en": "Range"
+			}
+		],
+		[
+			"LBL_QuantumTravelDisconnectRange",
+			{
+				"de": "Disconnect range",
+				"en": "Exit distance"
 			}
 		],
 		[
@@ -433,14 +447,14 @@
 			"LBL_QuantumCooldownTime",
 			{
 				"de": "Abkühlzeit",
-				"en": "Cooldown time"
+				"en": "Cooldown"
 			}
 		],
 		[
 			"LBL_QuantumSpoolUpTime",
 			{
 				"de": "Spool-up Zeit",
-				"en": "Spool-up time"
+				"en": "Spool-up"
 			}
 		],
 		[

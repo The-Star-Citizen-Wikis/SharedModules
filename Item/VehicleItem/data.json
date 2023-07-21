@@ -33,6 +33,10 @@
       "type": "number"
     },
     {
+      "SMW_QuantumTravelDisconnectRange": "API_quantum_drive.disconnect_range",
+      "type": "number"
+    },
+    {
       "SMW_QuantumTravelModes": "API_quantum_drive.modes",
       "type": "subobject",
       "smw_data": [

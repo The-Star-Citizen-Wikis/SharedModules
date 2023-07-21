@@ -32,6 +32,8 @@ local function loadQuantumDriveModes( pageName )
     } )
     local modes = {}
 
+    -- FIXME: System and Planet travel can come in random order
+    -- We need a way to ensure the order that is always system > planet
     for _, subobject in ipairs( subobjects ) do
         if subobject[ translate( 'SMW_QuantumTravelType' ) ] then
             table.insert( modes, subobject )
@@ -160,7 +162,9 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_QuantumFuelRequirement' ), smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] ),
-            infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ translate( 'SMW_QuantumTravelRange' ) ] )
+            infobox:renderItem( translate( 'LBL_QuantumTravelDisconnectRange' ), smwData[ translate( 'SMW_QuantumTravelDisconnectRange' ) ] )
+            -- Does range matter currently? The range seems to be limited by the QF fuel tank of the vehicle anyways
+            --infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ translate( 'SMW_QuantumTravelRange' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getQuantumDriveModesSection()
     -- Shield
