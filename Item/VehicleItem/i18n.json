@@ -52,24 +52,24 @@
 			}
 		],
 		[
-			"SMW_QuantumJumpRange",
+			"SMW_QuantumTravelRange",
 			{
 				"de": "Quantensprungweite",
-				"en": "Quantum jump range"
+				"en": "Quantum travel range"
 			}
 		],
 		[
-			"SMW_QuantumJumpType",
+			"SMW_QuantumTravelType",
 			{
 				"de": "Quantensprungtyp",
-				"en": "Quantum jump type"
+				"en": "Quantum travel type"
 			}
 		],
 		[
-			"SMW_QuantumJumpDriveSpeed",
+			"SMW_QuantumTravelSpeed",
 			{
 				"de": "Quantumgeschwindigkeit",
-				"en": "Quantum drive speed"
+				"en": "Quantum travel speed"
 			}
 		],
 		[
@@ -402,31 +402,31 @@
 			}
 		],
 		[
-			"LBL_QuantumJumpRange",
+			"LBL_QuantumTravelRange",
 			{
 				"de": "Sprungreichweite",
-				"en": "Jump range"
+				"en": "Range"
 			}
 		],
 		[
 			"normal_jump",
 			{
 				"de": "Systemsprung",
-				"en": "System jump"
+				"en": "System travel"
 			}
 		],
 		[
 			"spline_jump",
 			{
 				"de": "Planetensprung",
-				"en": "Planet jump"
+				"en": "Planet travel"
 			}
 		],
 		[
-			"LBL_QuantumJumpDriveSpeed",
+			"LBL_QuantumTravelSpeed",
 			{
 				"de": "Antriebsgeschwindigkeit",
-				"en": "Jump speed"
+				"en": "Speed"
 			}
 		],
 		[

@@ -23,24 +23,24 @@
       "type": "number"
     },
 
-    { "%": "Quantum Jump Drives" },
+    { "%": "Quantum Drives" },
     {
       "SMW_QuantumFuelRequirement": "API_quantum_drive.quantum_fuel_requirement",
       "type": "number"
     },
     {
-      "SMW_QuantumJumpRange": "API_quantum_drive.jump_range",
+      "SMW_QuantumTravelRange": "API_quantum_drive.jump_range",
       "type": "number"
     },
     {
-      "SMW_QuantumModes": "API_quantum_drive.modes",
+      "SMW_QuantumTravelModes": "API_quantum_drive.modes",
       "type": "subobject",
       "smw_data": [
         {
-          "SMW_QuantumJumpType": "API_type"
+          "SMW_QuantumTravelType": "API_type"
         },
         {
-          "SMW_QuantumJumpDriveSpeed": "API_drive_speed",
+          "SMW_QuantumTravelSpeed": "API_drive_speed",
           "type": "number"
         },
         {

@@ -24,8 +24,8 @@ local function loadQuantumDriveModes( pageName )
     -- Currently the query gets all the subobjects, including the commodity ones
     local subobjects = mw.smw.ask( {
         '[[-Has subobject::' .. pageName .. ']]',
-        string.format( '?%s', translate( 'SMW_QuantumJumpType' ) ),
-        string.format( '?%s', translate( 'SMW_QuantumJumpDriveSpeed' ) ),
+        string.format( '?%s', translate( 'SMW_QuantumTravelType' ) ),
+        string.format( '?%s', translate( 'SMW_QuantumTravelSpeed' ) ),
         string.format( '?%s', translate( 'SMW_QuantumCooldownTime' ) ),
         string.format( '?%s', translate( 'SMW_QuantumSpoolUpTime' ) ),
         'mainlabel=-'
@@ -33,7 +33,7 @@ local function loadQuantumDriveModes( pageName )
     local modes = {}
 
     for _, subobject in ipairs( subobjects ) do
-        if subobject[ translate( 'SMW_QuantumJumpType' ) ] then
+        if subobject[ translate( 'SMW_QuantumTravelType' ) ] then
             table.insert( modes, subobject )
         end
     end
@@ -137,9 +137,9 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 local modeCount = 1
 
                 for _, mode in ipairs( modes ) do
-                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumJumpType' ) ] )
+                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumTravelType' ) ] )
                     section = {
-                        infobox:renderItem( translate( 'LBL_QuantumJumpDriveSpeed' ), mode[ translate( 'SMW_QuantumJumpDriveSpeed' ) ] ),
+                        infobox:renderItem( translate( 'LBL_QuantumTravelSpeed' ), mode[ translate( 'SMW_QuantumTravelSpeed' ) ] ),
                         infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_QuantumCooldownTime' ) ] ),
                         infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_QuantumSpoolUpTime' ) ] )
                     }
@@ -160,7 +160,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_QuantumFuelRequirement' ), smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] ),
-            infobox:renderItem( translate( 'LBL_QuantumJumpRange' ), smwData[ translate( 'SMW_QuantumJumpRange' ) ] )
+            infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ translate( 'SMW_QuantumTravelRange' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getQuantumDriveModesSection()
     -- Shield
