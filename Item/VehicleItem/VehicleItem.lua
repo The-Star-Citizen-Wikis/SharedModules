@@ -299,7 +299,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     infobox:renderSection( {
 		class = 'infobox__section--tabber',
-		content = tabber( tabberData )
+		content = tabber( tabberData ),
+        border = false
 	} )
 end
 
