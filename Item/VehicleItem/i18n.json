@@ -360,6 +360,13 @@
 			}
 		],
 		[
+			"LBL_Modes",
+			{
+				"de": "Modes",
+				"en": "Modes"
+			}
+		],
+		[
 			"LBL_Health",
 			{
 				"de": "Schadenspunkte",

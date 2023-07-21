@@ -20,7 +20,9 @@ end
 
 
 local function loadQuantumDriveModes( pageName )
-    return mw.smw.ask( {
+    -- FIXME: Is there a way to filter out only subobjects with certain properties?
+    -- Currently the query gets all the subobjects, including the commodity ones
+    local subobjects = mw.smw.ask( {
         '[[-Has subobject::' .. pageName .. ']]',
         string.format( '?%s', translate( 'SMW_QuantumJumpType' ) ),
         string.format( '?%s', translate( 'SMW_QuantumJumpDriveSpeed' ) ),
@@ -28,6 +30,15 @@ local function loadQuantumDriveModes( pageName )
         string.format( '?%s', translate( 'SMW_QuantumSpoolUpTime' ) ),
         'mainlabel=-'
     } )
+    local modes = {}
+
+    for _, subobject in ipairs( subobjects ) do
+        if subobject[ translate( 'SMW_QuantumJumpType' ) ] then
+            table.insert( modes, subobject )
+        end
+    end
+
+    return modes
 end
 
 
@@ -118,7 +129,32 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Quantum Drive
     elseif smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] then
-        local modes = loadQuantumDriveModes( itemPageIdentifier )
+        local function getQuantumDriveModesSection()
+            local modes = loadQuantumDriveModes( itemPageIdentifier )
+
+            if type( modes ) == 'table' then
+                local modeTabberData = {}
+                local modeCount = 1
+
+                for _, mode in ipairs( modes ) do
+                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumJumpType' ) ] )
+                    section = {
+                        infobox:renderItem( translate( 'LBL_QuantumJumpDriveSpeed' ), mode[ translate( 'SMW_QuantumJumpDriveSpeed' ) ] ),
+                        infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_QuantumCooldownTime' ) ] ),
+                        infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_QuantumSpoolUpTime' ) ] )
+                    }
+                    modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 3 }, true )
+                    modeCount = modeCount + 1
+                end
+
+                return infobox:renderSection( {
+                    title = translate( 'LBL_Modes' ),
+                    class = 'infobox__section--tabber',
+                    content = tabber( modeTabberData ),
+                    border = false
+                }, true )
+            end
+        end
 
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
@@ -126,24 +162,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_QuantumFuelRequirement' ), smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] ),
             infobox:renderItem( translate( 'LBL_QuantumJumpRange' ), smwData[ translate( 'SMW_QuantumJumpRange' ) ] )
         }
-        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
-
-        --Will revisit soon, might need to do nested Tabbers
-        --if type( modes ) == 'table' then
-        --    for _, mode in ipairs( modes ) do
-        --        local modeTitle = mode[ translate( 'SMW_QuantumJumpType' ) ]
-        --        infobox:renderSection( {
-        --            title = ( mode[ translate( 'SMW_QuantumJumpType' ) ] ),
-        --            col = 3,
-        --            content = {
-        --                infobox:renderItem( translate( 'LBL_QuantumJumpDriveSpeed' ), mode[ translate( 'SMW_QuantumJumpDriveSpeed' ) ] ),
-        --                infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_QuantumCooldownTime' ) ] ),
-        --                infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_QuantumSpoolUpTime' ) ] ),
-        --            }
-        --        } )
-        --    end
-        --end
-
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getQuantumDriveModesSection()
     -- Shield
     elseif smwData[ translate( 'SMW_ShieldHealthPoint' ) ] then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
