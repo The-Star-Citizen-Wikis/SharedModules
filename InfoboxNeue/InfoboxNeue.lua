@@ -53,6 +53,23 @@ function methodtable.tableToCommaList( data )
 	end
 end
 
+--- Show range if value1 and value2 are different
+---
+--- @param string s1
+--- @param string s2
+--- @return string or nil
+function methodtable.formatRange( s1, s2 )
+	if s1 == nil and s2 == nil then
+		return
+	end
+
+	if s1 and s2 and s1 ~= s2 then
+		return table.concat( { s1, ' – ', s2 } )
+	end
+
+	return s1 or s2
+end
+
 
 --- Shortcut to return the HTML of the infobox message component as string
 ---

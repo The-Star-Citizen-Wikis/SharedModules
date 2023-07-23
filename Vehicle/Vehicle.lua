@@ -468,22 +468,6 @@ function methodtable.getInfobox( self )
 		)
 	end
 
-	--- Capacity section
-	local function getCrew()
-		if smwData[ translate( 'SMW_MinimumCrew' ) ] == nil and smwData[ translate( 'SMW_MaximumCrew' ) ] == nil then
-			return
-		end
-
-		if smwData[ translate( 'SMW_MinimumCrew' ) ] and
-		   smwData[ translate( 'SMW_MaximumCrew' ) ] and
-		   smwData[ translate( 'SMW_MinimumCrew' ) ] ~= smwData[ translate( 'SMW_MaximumCrew' ) ] then
-			return table.concat( { smwData[ translate( 'SMW_MinimumCrew' ) ], ' – ', smwData[ translate( 'SMW_MaximumCrew' ) ] } )
-		end
-
-		return smwData[ translate( 'SMW_MinimumCrew' ) ] or smwData[ translate( 'SMW_MaximumCrew' ) ]
-	end
-
-
 	--- Cost section
 	local function getCostSection()
 		local tabberData = {}
@@ -771,7 +755,7 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Crew' ),
-				data = getCrew(),
+				data = infobox.formatRange( smwData[ translate( 'SMW_MinimumCrew' ) ], smwData[ translate( 'SMW_MaximumCrew' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Cargo' ),
