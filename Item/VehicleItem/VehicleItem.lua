@@ -19,11 +19,14 @@ local function translate( key, addSuffix, ... )
 end
 
 
+--- Retrieve the quantum drive modes
+---
+--- @param pageName string
+--- @return table
 local function loadQuantumDriveModes( pageName )
-    -- FIXME: Is there a way to filter out only subobjects with certain properties?
-    -- Currently the query gets all the subobjects, including the commodity ones
     local subobjects = mw.smw.ask( {
         '[[-Has subobject::' .. pageName .. ']]',
+        '[[' .. translate( 'SMW_QuantumTravelType' ) .. '::+]]',
         string.format( '?%s', translate( 'SMW_QuantumTravelType' ) ),
         string.format( '?%s', translate( 'SMW_QuantumTravelSpeed' ) ),
         string.format( '?%s', translate( 'SMW_QuantumCooldownTime' ) ),
