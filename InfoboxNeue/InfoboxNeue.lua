@@ -58,9 +58,20 @@ end
 --- @param string s1
 --- @param string s2
 --- @return string or nil
-function methodtable.formatRange( s1, s2 )
+function methodtable.formatRange( s1, s2, formatNum )
 	if s1 == nil and s2 == nil then
 		return
+	end
+
+	formatNum = formatNum or false;
+
+	if formatNum then
+		local lang = mw.getContentLanguage()
+		for _, s in ipairs( { s1, s2 } ) do
+			if s ~= nil then
+				lang:formatNum( s )
+			end
+		end
 	end
 
 	if s1 and s2 and s1 ~= s2 then

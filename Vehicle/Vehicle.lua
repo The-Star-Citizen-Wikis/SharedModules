@@ -755,7 +755,7 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Crew' ),
-				data = infobox.formatRange( smwData[ translate( 'SMW_MinimumCrew' ) ], smwData[ translate( 'SMW_MaximumCrew' ) ] ),
+				data = infobox.formatRange( smwData[ translate( 'SMW_MinimumCrew' ) ], smwData[ translate( 'SMW_MaximumCrew' ) ], true ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Cargo' ),
