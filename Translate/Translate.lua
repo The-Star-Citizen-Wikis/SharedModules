@@ -10,6 +10,8 @@ metatable.__index = methodtable
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 
+--- Cache table containing i18n data at the 'data' key, and a key map at the 'keys' key
+--- The table is keyed by the i18n.json module name
 local cache = {}
 local i18nDataset = 'Module:Translate/i18n.json'
 
@@ -86,8 +88,6 @@ end
 --- @param key string
 --- @return string
 function methodtable.format( dataset, key, ... )
-    local checkType = require('libraryUtil').checkType
-
     dataset = guessDataset( dataset )
 
     checkType('format', 1, dataset, 'string')
@@ -106,8 +106,6 @@ end
 --- @param key string
 --- @return string
 function methodtable.formatInLanguage( lang, dataset, key, ... )
-    local checkType = require('libraryUtil').checkType
-
     dataset = guessDataset( dataset )
 
     checkType('formatInLanguage', 1, lang, 'string')
