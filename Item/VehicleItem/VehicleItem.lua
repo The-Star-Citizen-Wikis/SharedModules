@@ -301,11 +301,11 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Emission' )
     section = {
-        infobox:renderItem( translate( 'LBL_EM' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumEM' ) ], smwData[ translate( 'SMW_MaximumEM' ) ], true ), 'EM' ) ),
+        infobox:renderItem( translate( 'LBL_EM' ), smwData[ translate( 'SMW_MinimumEM' ) ], smwData[ translate( 'SMW_MaximumEM' ) ], true ) ),
         infobox:renderItem( translate( 'LBL_PowerToEM' ), smwData[ translate( 'SMW_PowerToEM' ) ] ),
         infobox:renderItem( translate( 'LBL_EMDecayRate' ), smwData[ translate( 'SMW_EMDecayRate' ) ] ),
-        infobox:renderItem( translate( 'LBL_IR' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumIR' ) ], getMaxIR(), true ), 'IR' ) ),
-        infobox:renderItem( translate( 'LBL_TemperatureToIR' ), infobox.addUnitIfExists( smwData[ translate( 'SMW_TemperatureToIR' ) ], '°C/IR' ) )
+        infobox:renderItem( translate( 'LBL_IR' ), infobox.formatRange( smwData[ translate( 'SMW_MinimumIR' ) ], getMaxIR(), true ) ),
+        infobox:renderItem( translate( 'LBL_TemperatureToIR' ), smwData[ translate( 'SMW_TemperatureToIR' ) ] )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
 

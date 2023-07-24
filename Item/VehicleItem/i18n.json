@@ -439,8 +439,8 @@
 		[
 			"LBL_PowerToEM",
 			{
-				"de": "PWR to EM",
-				"en": "PWR to EM"
+				"de": "PWR per EM",
+				"en": "PWR per EM"
 			}
 		],
 		[
@@ -460,8 +460,8 @@
 		[
 			"LBL_TemperatureToIR",
 			{
-				"de": "°C to IR",
-				"en": "°C to IR"
+				"de": "°C per IR",
+				"en": "°C per IR"
 			}
 		],
 		[

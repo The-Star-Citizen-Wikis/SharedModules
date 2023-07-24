@@ -14,7 +14,8 @@
 		},
     {
 			"SMW_PowerToEM": "API_power.power_to_em",
-			"type": "number"
+			"type": "number",
+      "smw_format": "#-n"
 		},
     {
 			"SMW_EMDecayRate": "API_power.decay_rate_em",
