@@ -67,10 +67,11 @@ function methodtable.formatRange( s1, s2, formatNum )
 
 	if formatNum then
 		local lang = mw.getContentLanguage()
-		for _, s in ipairs( { s1, s2 } ) do
-			if s ~= nil then
-				lang:formatNum( s )
-			end
+		if s1 then
+			s1 = lang:formatNum( tonumber( s1 ) )
+		end
+		if s2 then
+			s2 = lang:formatNum( tonumber( s2 ) )
 		end
 	end
 
