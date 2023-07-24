@@ -121,7 +121,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_CoolingRate' ), smwData[ translate( 'SMW_CoolingRate' ) ] )
+            infobox:renderItem( translate( 'LBL_CoolingRate' ), common.formatNum( smwData[ translate( 'SMW_CoolingRate' ) ] ) )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
@@ -129,7 +129,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_PowerOutput' ), smwData[ translate( 'SMW_PowerOutput' ) ] )
+            infobox:renderItem( translate( 'LBL_PowerOutput' ), common.formatNum( smwData[ translate( 'SMW_PowerOutput' ) ] ) )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Quantum Drive
@@ -294,8 +294,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     -- Emission
     local function getMaxIR()
-        if smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] == nil or smwData[ translate( 'SMW_TemperatureToIR' ) ] == nil then return end
-        return smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] * smwData[ translate( 'SMW_TemperatureToIR' ) ]
+        if smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] == nil or smwData[ translate( 'SMW_TemperatureToIR' ) ] == nil and smwData[ translate( 'SMW_MinimumIR' ) ] == nil then return end
+        return smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] * smwData[ translate( 'SMW_TemperatureToIR' ) ] + smwData[ translate( 'SMW_MinimumIR' ) ]
     end
 
     tabCount = tabCount + 1

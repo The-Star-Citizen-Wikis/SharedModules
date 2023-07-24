@@ -110,6 +110,7 @@
 		{
 			"name": "Module:Item/VehicleItem",
 			"type": [
+				"Cooler",
 				"Gadget",
 				"MiningModifier",
 				"MissileLauncher",
