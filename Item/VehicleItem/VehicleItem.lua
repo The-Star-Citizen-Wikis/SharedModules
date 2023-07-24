@@ -292,6 +292,22 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     end
     tabCount = tabCount / 2
 
+    -- Engineering
+    -- TODO: Make temperatures into a graph?
+    -- FIXME: Instead of hardcoding the unit, can we use SMW query to get the unit?
+    tabCount = tabCount + 1
+    tabberData[ 'label' .. tabCount ] = translate( 'LBL_Engineering' )
+    section = {
+        infobox:renderItem( translate( 'LBL_PowerDraw' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ], smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '/s' ) ),
+        infobox:renderItem( translate( 'LBL_ThermalEnergyOutput' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumThermalEnergyOutput' ) ], smwData[ translate( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '/s' ) ),
+        infobox:renderItem( translate( 'LBL_MaximumCoolingRate' ), smwData[ translate( 'SMW_MaximumCoolingRate' ) ] ),
+        infobox:renderItem( translate( 'LBL_StartCoolingTemperature' ), smwData[ translate( 'SMW_StartCoolingTemperature' ) ] ),
+        infobox:renderItem( translate( 'LBL_Temperature' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumTemperature' ) ], smwData[ translate( 'SMW_MaximumTemperature' ) ], true ), '°C' ) ),
+        infobox:renderItem( translate( 'LBL_MisfireTemperature' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumMisfireTemperature' ) ], smwData[ translate( 'SMW_MaximumMisfireTemperature' ) ], true ), '°C' ) ),
+        infobox:renderItem( translate( 'LBL_OverheatTemperature' ), smwData[ translate( 'SMW_OverheatTemperature' ) ] )
+    }
+    tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
+
     -- Emission
     local function getMaxIR()
         if smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] == nil or smwData[ translate( 'SMW_TemperatureToIR' ) ] == nil and smwData[ translate( 'SMW_MinimumIR' ) ] == nil then return end

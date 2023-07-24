@@ -1,204 +1,291 @@
 {
-  "%smw_data": "Sets which data gets added to SMW",
-  "smw_data": [
-    { "%": "Emission" },
-    {
+	"%smw_data": "Sets which data gets added to SMW",
+	"smw_data": [
+		{
+			"%": "Engineering"
+		},
+		{
+			"SMW_MinimumPowerDraw": "API_power.power_base",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumPowerDraw": "API_power.power_draw",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MinimumThermalEnergyOutput": "API_heat.thermal_energy_base",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumThermalEnergyOutput": "API_heat.thermal_energy_draw",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumCoolingRate": "API_heat.max_cooling_rate",
+			"type": "number"
+		},
+		{
+			"SMW_StartCoolingTemperature": "API_heat.start_cooling_temperature",
+			"type": "number"
+		},
+		{
+			"SMW_MinimumTemperature": "API_heat.min_temperature",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumTemperature": "API_heat.max_temperature",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MinimumMisfireTemperature": "API_heat.misfire_min_temperature",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumMisfireTemperature": "API_heat.misfire_max_temperature",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_OverheatTemperature": "API_heat.overheat_temperature",
+			"type": "number"
+		},
+		{
+			"%": "Emission"
+		},
+		{
 			"SMW_MinimumEM": "API_power.em_min",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    {
+		{
 			"SMW_MaximumEM": "API_power.em_max",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    {
+		{
 			"SMW_PowerToEM": "API_power.power_to_em",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    {
+		{
 			"SMW_EMDecayRate": "API_power.decay_rate_em",
 			"type": "number"
 		},
-    {
+		{
 			"SMW_MinimumIR": "API_heat.ir_emission",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    {
+		{
 			"SMW_IRTemperatureThreshold": "API_heat.ir_temperature_threshold",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    {
+		{
 			"SMW_TemperatureToIR": "API_heat.temperature_to_ir",
 			"type": "number",
-      "smw_format": "#-n"
+			"smw_format": "#-n"
 		},
-    { "%": "Defense" },
-    {
+		{
+			"%": "Defense"
+		},
+		{
 			"SMW_HealthPoint": "API_durability.health",
 			"type": "number"
 		},
-    {
+		{
 			"SMW_DistortionHealthPoint": "API_distortion.maximum",
 			"type": "number"
 		},
-    {
+		{
 			"SMW_DistortionDecayRate": "API_distortion.decay_rate",
 			"type": "number"
 		},
-    {
+		{
 			"SMW_DistortionDecayDelay": "API_distortion.decay_delay",
 			"type": "number"
 		},
-
-    { "%": "Coolers" },
-    {
-      "SMW_CoolingRate": "API_cooler.cooling_rate",
-      "type": "number"
-    },
-
-    { "%": "Power Plant" },
-    {
-      "SMW_PowerOutput": "API_power_plant.power_output",
-      "type": "number"
-    },
-
-    { "%": "Quantum Drives" },
-    {
-      "SMW_QuantumFuelRequirement": "API_quantum_drive.quantum_fuel_requirement",
-      "type": "number"
-    },
-    {
-      "SMW_QuantumTravelRange": "API_quantum_drive.jump_range",
-      "type": "number"
-    },
-    {
-      "SMW_QuantumTravelDisconnectRange": "API_quantum_drive.disconnect_range",
-      "type": "number"
-    },
-    {
-      "SMW_QuantumTravelModes": "API_quantum_drive.modes",
-      "type": "subobject",
-      "smw_data": [
-        {
-          "SMW_QuantumTravelType": "API_type"
-        },
-        {
-          "SMW_QuantumTravelSpeed": "API_drive_speed",
-          "type": "number"
-        },
-        {
-          "SMW_QuantumCooldownTime": "API_cooldown_time",
-          "type": "number"
-        },
-        {
-          "SMW_QuantumSpoolUpTime": "API_spool_up_time",
-          "type": "number"
-        }
-      ]
-    },
-
-    { "%": "Shields" },
-    {
-      "SMW_ShieldHealthPoint": "API_shield.max_shield_health",
-      "type": "number",
-      "smw_format": "#-n"
-    },
-    {
-      "SMW_ShieldPointRegeneration": "API_shield.max_shield_regen",
-      "type": "number",
-      "smw_format": "#-n"
-    },
-    {
-      "SMW_ShieldDownTime": "API_shield.regen_delay.downed",
-      "type": "number"
-    },
-    {
-      "SMW_ShieldDamageDelay": "API_shield.regen_delay.damage",
-      "type": "number"
-    },
-    {
-      "SMW_ShieldPhysicalResistance": "API_shield.resistance.physical",
-      "type": "minmax"
-    },
-    {
-      "SMW_ShieldEnergyResistance": "API_shield.resistance.energy",
-      "type": "minmax"
-    },
-    {
-      "SMW_ShieldDistortionResistance": "API_shield.resistance.distortion",
-      "type": "minmax"
-    },
-    {
-      "SMW_ShieldThermalResistance": "API_shield.resistance.thermal",
-      "type": "minmax"
-    },
-    {
-      "SMW_ShieldBiochemicalResistance": "API_shield.resistance.biochemical",
-      "type": "minmax"
-    },
-    {
-      "SMW_ShieldStunResistance": "API_shield.resistance.stun",
-      "type": "minmax"
-    },
-
-    { "%": "Missile Racks" },
-    {
-      "SMW_MaxMissiles": "API_max_missiles"
-    },
-    {
-      "SMW_MissileSize": "API_min_size"
-    },
-
-    { "%": "Mining Laser" },
-    {
-      "SMW_PowerTransfer": "API_mining_laser.power_transfer",
-      "type": "number"
-    },
-    {
-      "SMW_OptimalRange": "API_mining_laser.optimal_range",
-      "type": "number"
-    },
-    {
-      "SMW_MaximumRange": "API_mining_laser.maximum_range",
-      "type": "number"
-    },
-    {
-      "SMW_ExtractionThroughput": "API_mining_laser.extraction_throughput",
-      "type": "number"
-    },
-    {
-      "SMW_MiningLaserPower": "API_mining_laser.mining_laser_power"
-    },
-    {
-      "SMW_ExtractionLaserPower": "API_mining_laser.extraction_laser_power"
-    },
-    {
-      "SMW_ModuleSlots": "API_mining_laser.module_slots"
-    },
-
-    { "%": "Mining Modules" },
-    {
-      "SMW_ModuleUses": "API_mining_module.uses"
-    },
-    {
-      "SMW_ModuleDuration": "API_mining_module.duration",
-      "format": "remove:seconds"
-    },
-
-    { "%": "Mining Modifiers, defined here so that they are retrieved on ASK" },
-    { "SMW_ModifierCatastrophicChargeRate": "" },
-    { "SMW_ModifierExtractionLaserPower": "" },
-    { "SMW_ModifierLaserInstability": "" },
-    { "SMW_ModifierMiningLaserPower": "" },
-    { "SMW_ModifierOptimalChargeWindowRate": "" },
-    { "SMW_ModifierInertMaterials": "" },
-    { "SMW_ModifierOptimalChargeRate": "" },
-    { "SMW_ModifierResistance": "" },
-    { "SMW_ModifierShatterDamage": "" },
-    { "SMW_ModifierSize": "" }
-  ]
+		{
+			"%": "Coolers"
+		},
+		{
+			"SMW_CoolingRate": "API_cooler.cooling_rate",
+			"type": "number"
+		},
+		{
+			"%": "Power Plant"
+		},
+		{
+			"SMW_PowerOutput": "API_power_plant.power_output",
+			"type": "number"
+		},
+		{
+			"%": "Quantum Drives"
+		},
+		{
+			"SMW_QuantumFuelRequirement": "API_quantum_drive.quantum_fuel_requirement",
+			"type": "number"
+		},
+		{
+			"SMW_QuantumTravelRange": "API_quantum_drive.jump_range",
+			"type": "number"
+		},
+		{
+			"SMW_QuantumTravelDisconnectRange": "API_quantum_drive.disconnect_range",
+			"type": "number"
+		},
+		{
+			"SMW_QuantumTravelModes": "API_quantum_drive.modes",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_QuantumTravelType": "API_type"
+				},
+				{
+					"SMW_QuantumTravelSpeed": "API_drive_speed",
+					"type": "number"
+				},
+				{
+					"SMW_QuantumCooldownTime": "API_cooldown_time",
+					"type": "number"
+				},
+				{
+					"SMW_QuantumSpoolUpTime": "API_spool_up_time",
+					"type": "number"
+				}
+			]
+		},
+		{
+			"%": "Shields"
+		},
+		{
+			"SMW_ShieldHealthPoint": "API_shield.max_shield_health",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ShieldPointRegeneration": "API_shield.max_shield_regen",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ShieldDownTime": "API_shield.regen_delay.downed",
+			"type": "number"
+		},
+		{
+			"SMW_ShieldDamageDelay": "API_shield.regen_delay.damage",
+			"type": "number"
+		},
+		{
+			"SMW_ShieldPhysicalResistance": "API_shield.resistance.physical",
+			"type": "minmax"
+		},
+		{
+			"SMW_ShieldEnergyResistance": "API_shield.resistance.energy",
+			"type": "minmax"
+		},
+		{
+			"SMW_ShieldDistortionResistance": "API_shield.resistance.distortion",
+			"type": "minmax"
+		},
+		{
+			"SMW_ShieldThermalResistance": "API_shield.resistance.thermal",
+			"type": "minmax"
+		},
+		{
+			"SMW_ShieldBiochemicalResistance": "API_shield.resistance.biochemical",
+			"type": "minmax"
+		},
+		{
+			"SMW_ShieldStunResistance": "API_shield.resistance.stun",
+			"type": "minmax"
+		},
+		{
+			"%": "Missile Racks"
+		},
+		{
+			"SMW_MaxMissiles": "API_max_missiles"
+		},
+		{
+			"SMW_MissileSize": "API_min_size"
+		},
+		{
+			"%": "Mining Laser"
+		},
+		{
+			"SMW_PowerTransfer": "API_mining_laser.power_transfer",
+			"type": "number"
+		},
+		{
+			"SMW_OptimalRange": "API_mining_laser.optimal_range",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumRange": "API_mining_laser.maximum_range",
+			"type": "number"
+		},
+		{
+			"SMW_ExtractionThroughput": "API_mining_laser.extraction_throughput",
+			"type": "number"
+		},
+		{
+			"SMW_MiningLaserPower": "API_mining_laser.mining_laser_power"
+		},
+		{
+			"SMW_ExtractionLaserPower": "API_mining_laser.extraction_laser_power"
+		},
+		{
+			"SMW_ModuleSlots": "API_mining_laser.module_slots"
+		},
+		{
+			"%": "Mining Modules"
+		},
+		{
+			"SMW_ModuleUses": "API_mining_module.uses"
+		},
+		{
+			"SMW_ModuleDuration": "API_mining_module.duration",
+			"format": "remove:seconds"
+		},
+		{
+			"%": "Mining Modifiers, defined here so that they are retrieved on ASK"
+		},
+		{
+			"SMW_ModifierCatastrophicChargeRate": ""
+		},
+		{
+			"SMW_ModifierExtractionLaserPower": ""
+		},
+		{
+			"SMW_ModifierLaserInstability": ""
+		},
+		{
+			"SMW_ModifierMiningLaserPower": ""
+		},
+		{
+			"SMW_ModifierOptimalChargeWindowRate": ""
+		},
+		{
+			"SMW_ModifierInertMaterials": ""
+		},
+		{
+			"SMW_ModifierOptimalChargeRate": ""
+		},
+		{
+			"SMW_ModifierResistance": ""
+		},
+		{
+			"SMW_ModifierShatterDamage": ""
+		},
+		{
+			"SMW_ModifierSize": ""
+		}
+	]
 }

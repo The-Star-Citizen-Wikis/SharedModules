@@ -17,6 +17,83 @@
 	},
 	"data": [
 		[
+			"SMW_MinimumPowerDraw",
+			{
+				"de": "Minimum power draw",
+				"en": "Minimum power draw"
+			}
+		],
+		[
+			"SMW_MaximumPowerDraw",
+			{
+				"de": "Maximum power draw",
+				"en": "Maximum power draw"
+			}
+		],
+		[
+			"SMW_MinimumThermalEnergyOutput",
+			{
+				"de": "Minimum thermal energy output",
+				"en": "Minimum thermal energy output"
+			}
+		],
+		[
+			"SMW_MaximumThermalEnergyOutput",
+			{
+				"de": "Maximum thermal energy output",
+				"en": "Maximum thermal energy output"
+			}
+		],
+		[
+			"SMW_MaximumCoolingRate",
+			{
+				"de": "Maximum cooling rate",
+				"en": "Maximum cooling rate"
+			}
+		],
+		[
+			"SMW_StartCoolingTemperature",
+			{
+				"de": "Start cooling temperature",
+				"en": "Start cooling temperature"
+			}
+		],
+		[
+			"SMW_MinimumTemperature",
+			{
+				"de": "Minimum temperature",
+				"en": "Minimum temperature"
+			}
+		],
+		[
+			"SMW_MaximumTemperature",
+			{
+				"de": "Maximum temperature",
+				"en": "Maximum temperature"
+			}
+		],
+		[
+			"SMW_MinimumMisfireTemperature",
+			{
+				"de": "Minimum misfire temperature",
+				"en": "Minimum misfire temperature"
+			}
+		],
+		[
+			"SMW_MaximumMisfireTemperature",
+			{
+				"de": "Maximum misfire temperature",
+				"en": "Maximum misfire temperature"
+			}
+		],
+		[
+			"SMW_OverheatTemperature",
+			{
+				"de": "Overheat temperature",
+				"en": "Overheat temperature"
+			}
+		],
+		[
 			"SMW_MinimumEM",
 			{
 				"de": "Minimum EM",
@@ -423,6 +500,13 @@
 			}
 		],
 		[
+			"LBL_Engineering",
+			{
+				"de": "Engineering",
+				"en": "Engineering"
+			}
+		],
+		[
 			"LBL_Emission",
 			{
 				"de": "Emission",
@@ -434,6 +518,55 @@
 			{
 				"de": "Defense",
 				"en": "Defense"
+			}
+		],
+		[
+			"LBL_PowerDraw",
+			{
+				"de": "Power draw",
+				"en": "Power draw"
+			}
+		],
+		[
+			"LBL_ThermalEnergyOutput",
+			{
+				"de": "Heat output",
+				"en": "Heat output"
+			}
+		],
+		[
+			"LBL_MaximumCoolingRate",
+			{
+				"de": "Cooling rate",
+				"en": "Cooling rate"
+			}
+		],
+		[
+			"LBL_StartCoolingTemperature",
+			{
+				"de": "Cooling temperature",
+				"en": "Cooling temperature"
+			}
+		],
+		[
+			"LBL_Temperature",
+			{
+				"de": "Temperature",
+				"en": "Temperature"
+			}
+		],
+		[
+			"LBL_MisfireTemperature",
+			{
+				"de": "Misfire temperature",
+				"en": "Misfire temperature"
+			}
+		],
+		[
+			"LBL_OverheatTemperature",
+			{
+				"de": "Overheat temperature",
+				"en": "Overheat temperature"
 			}
 		],
 		[
