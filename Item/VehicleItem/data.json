@@ -1,6 +1,40 @@
 {
   "%smw_data": "Sets which data gets added to SMW",
   "smw_data": [
+    { "%": "Emission" },
+    {
+			"SMW_MinimumEM": "API_power.em_min",
+			"type": "number",
+      "smw_format": "#-n"
+		},
+    {
+			"SMW_MaximumEM": "API_power.em_max",
+			"type": "number",
+      "smw_format": "#-n"
+		},
+    {
+			"SMW_PowerToEM": "API_power.power_to_em",
+			"type": "number"
+		},
+    {
+			"SMW_EMDecayRate": "API_power.decay_rate_em",
+			"type": "number"
+		},
+    {
+			"SMW_MinimumIR": "API_heat.ir_emission",
+			"type": "number",
+      "smw_format": "#-n"
+		},
+    {
+			"SMW_IRTemperatureThreshold": "API_heat.ir_temperature_threshold",
+			"type": "number",
+      "smw_format": "#-n"
+		},
+    {
+			"SMW_TemperatureToIR": "API_heat.temperature_to_ir",
+			"type": "number",
+      "smw_format": "#-n"
+		},
     { "%": "Defense" },
     {
 			"SMW_HealthPoint": "API_durability.health",

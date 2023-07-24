@@ -292,6 +292,22 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     end
     tabCount = tabCount / 2
 
+    -- Emission
+    local function getMaxIR()
+        if smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] == nil or smwData[ translate( 'SMW_TemperatureToIR' ) ] == nil then return end
+        return smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] * smwData[ translate( 'SMW_TemperatureToIR' ) ]
+    end
+
+    tabCount = tabCount + 1
+    tabberData[ 'label' .. tabCount ] = translate( 'LBL_Emission' )
+    section = {
+        infobox:renderItem( translate( 'LBL_EM' ), infobox.formatRange( smwData[ translate( 'SMW_MinimumEM' ) ], smwData[ translate( 'SMW_MaximumEM' ) ], true ) .. ' EM' ),
+        infobox:renderItem( translate( 'LBL_PowerToEM' ), smwData[ translate( 'SMW_PowerToEM' ) ] ),
+        infobox:renderItem( translate( 'LBL_EMDecayRate' ), smwData[ translate( 'SMW_EMDecayRate' ) ] ),
+        infobox:renderItem( translate( 'LBL_IR' ), infobox.formatRange( smwData[ translate( 'SMW_MinimumIR' ) ], getMaxIR(), true ) .. ' IR' ),
+    }
+    tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
+
     -- Defense
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Defense' )

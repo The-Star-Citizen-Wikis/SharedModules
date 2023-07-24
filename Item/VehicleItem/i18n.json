@@ -17,6 +17,55 @@
 	},
 	"data": [
 		[
+			"SMW_MinimumEM",
+			{
+				"de": "Minimum EM",
+				"en": "Minimum EM"
+			}
+		],
+		[
+			"SMW_MaximumEM",
+			{
+				"de": "Maximum EM",
+				"en": "Maximum EM"
+			}
+		],
+		[
+			"SMW_PowerToEM",
+			{
+				"de": "Power to EM",
+				"en": "Power to EM"
+			}
+		],
+		[
+			"SMW_EMDecayRate",
+			{
+				"de": "EM decay rate",
+				"en": "EM decay rate"
+			}
+		],
+		[
+			"SMW_MinimumIR",
+			{
+				"de": "Minimum IR",
+				"en": "Minimum IR"
+			}
+		],
+		[
+			"SMW_IRTemperatureThreshold",
+			{
+				"de": "IR temperature threshold",
+				"en": "IR temperature threshold"
+			}
+		],
+		[
+			"SMW_TemperatureToIR",
+			{
+				"de": "Temperature to IR",
+				"en": "Temperature to IR"
+			}
+		],
+		[
 			"SMW_HealthPoint",
 			{
 				"de": "Schadenspunkte",
@@ -360,6 +409,13 @@
 			}
 		],
 		[
+			"LBL_Emission",
+			{
+				"de": "Emission",
+				"en": "Emission"
+			}
+		],
+		[
 			"LBL_Defense",
 			{
 				"de": "Defense",
@@ -371,6 +427,34 @@
 			{
 				"de": "Modes",
 				"en": "Modes"
+			}
+		],
+		[
+			"LBL_EM",
+			{
+				"de": "EM",
+				"en": "EM"
+			}
+		],
+		[
+			"LBL_PowerToEM",
+			{
+				"de": "PWR to EM",
+				"en": "PWR to EM"
+			}
+		],
+		[
+			"LBL_EMDecayRate",
+			{
+				"de": "EM decay",
+				"en": "EM decay"
+			}
+		],
+		[
+			"LBL_IR",
+			{
+				"de": "IR",
+				"en": "IR"
 			}
 		],
 		[
