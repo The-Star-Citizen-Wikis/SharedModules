@@ -314,7 +314,9 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Defense' )
     section = {
         infobox:renderItem( translate( 'LBL_Health' ), smwData[ translate( 'SMW_HealthPoint' ) ] ),
-        infobox:renderItem( translate( 'LBL_DistortionHealthPoint' ), smwData[ translate( 'SMW_DistortionHealthPoint' ) ] )
+        infobox:renderItem( translate( 'LBL_DistortionHealthPoint' ), smwData[ translate( 'SMW_DistortionHealthPoint' ) ] ),
+        infobox:renderItem( translate( 'LBL_DistortionDecayRate' ), smwData[ translate( 'SMW_DistortionDecayRate' ) ] ),
+        infobox:renderItem( translate( 'LBL_DistortionDecayDelay' ), smwData[ translate( 'SMW_DistortionDecayDelay' ) ] )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
 

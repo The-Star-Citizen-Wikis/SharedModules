@@ -80,6 +80,20 @@
 			}
 		],
 		[
+			"SMW_DistortionDecayRate",
+			{
+				"de": "Distortion decay rate",
+				"en": "Distortion decay rate"
+			}
+		],
+		[
+			"SMW_DistortionDecayDelay",
+			{
+				"de": "Distortion decay delay",
+				"en": "Distortion decay delay"
+			}
+		],
+		[
 			"SMW_CoolingRate",
 			{
 				"de": "Kühlrate",
@@ -476,6 +490,20 @@
 			{
 				"de": "Distortion health",
 				"en": "Distortion health"
+			}
+		],
+		[
+			"LBL_DistortionDecayRate",
+			{
+				"de": "Distortion decay",
+				"en": "Distortion decay"
+			}
+		],
+		[
+			"LBL_DistortionDecayDelay",
+			{
+				"de": "Distortion decay delay",
+				"en": "Distortion decay delay"
 			}
 		],
 		[

@@ -45,6 +45,14 @@
 			"SMW_DistortionHealthPoint": "API_distortion.maximum",
 			"type": "number"
 		},
+    {
+			"SMW_DistortionDecayRate": "API_distortion.decay_rate",
+			"type": "number"
+		},
+    {
+			"SMW_DistortionDecayDelay": "API_distortion.decay_delay",
+			"type": "number"
+		},
 
     { "%": "Coolers" },
     {
