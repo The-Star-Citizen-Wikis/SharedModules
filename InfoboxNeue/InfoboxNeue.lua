@@ -40,6 +40,25 @@ local function restoreUnderscore( s )
 	return s:gsub( ' ', '%%5F' )
 end
 
+--- Helper function to format string to number with separators
+--- It is usually use to re-format raw number from SMW into more readable format
+local function formatNumber( s )
+	local lang = mw.getContentLanguage()
+	if s == nil then
+		return
+	end
+	
+	if type( s ) ~= 'number' then
+		s = tonumber( s )
+	end
+
+	if type( s ) == 'number' then
+		return lang:formatNum( s )
+	end
+
+	return s
+end
+
 
 --- Put table values into a comma-separated list
 ---
@@ -66,17 +85,16 @@ function methodtable.formatRange( s1, s2, formatNum )
 	formatNum = formatNum or false;
 
 	if formatNum then
-		local lang = mw.getContentLanguage()
 		if s1 then
-			s1 = lang:formatNum( tonumber( s1 ) )
+			s1 = formatNumber( s1 )
 		end
 		if s2 then
-			s2 = lang:formatNum( tonumber( s2 ) )
+			s2 = formatNumber( s2 )
 		end
 	end
 
 	if s1 and s2 and s1 ~= s2 then
-		return table.concat( { s1, ' – ', s2 } )
+		return s1 .. ' – ' .. s2
 	end
 
 	return s1 or s2
