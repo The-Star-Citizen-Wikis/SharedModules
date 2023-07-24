@@ -458,6 +458,13 @@
 			}
 		],
 		[
+			"LBL_TemperatureToIR",
+			{
+				"de": "°C to IR",
+				"en": "°C to IR"
+			}
+		],
+		[
 			"LBL_Health",
 			{
 				"de": "Schadenspunkte",

@@ -100,6 +100,19 @@ function methodtable.formatRange( s1, s2, formatNum )
 	return s1 or s2
 end
 
+--- Append unit to the value if exists
+---
+--- @param string s
+--- @param string unit
+--- @return string or nil
+function methodtable.addUnitIfExists( s, unit )
+	if s == nil then
+		return
+	end
+
+	return s .. ' ' .. unit
+end
+
 
 --- Shortcut to return the HTML of the infobox message component as string
 ---
