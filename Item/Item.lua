@@ -232,7 +232,7 @@ function methodtable.getInfobox( self )
 			itemType = smwData[ translate( 'SMW_Type' ) ]
 		end
 
-		return itemType
+		return string.format( '[[%s]]', itemType )
 	end
 
 	local function getSize()
