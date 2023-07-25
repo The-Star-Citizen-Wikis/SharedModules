@@ -325,6 +325,13 @@
 			}
 		],
 		[
+			"type_item",
+			{
+				"de": "Item",
+				"en": "Item"
+			}
+		],
+		[
 			"type_powerplant",
 			{
 				"de": "Generator",

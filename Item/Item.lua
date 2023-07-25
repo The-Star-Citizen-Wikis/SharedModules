@@ -429,12 +429,22 @@ end
 
 --- Sets the short description for this object
 function methodtable.setShortDescription( self )
-	local shortdesc = runModuleFN(
+	local shortdesc = ''
+	local itemType = translate( 'type_item' )
+
+	local itemTypeKey = 'type_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] )
+	if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
+		itemType = translate( itemTypeKey )
+	end
+
+	shortdesc = itemType
+
+	shortdesc = runModuleFN(
 		self.smwData[ translate( 'SMW_Type' ) ],
 		'getShortDescription',
 		{ self.frameArgs, self.smwData },
 		true
-	)
+	) or shortdesc
 
 	if type( shortdesc ) == 'string' and shortdesc ~= '' then
 		shortdesc = lang:ucfirst( shortdesc )

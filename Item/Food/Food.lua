@@ -119,7 +119,7 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return string|nil
 function Food.getShortDescription( frameArgs, smwData )
-	return smwData[ translate( 'SMW_Type' ) ]
+
 end
 
 
