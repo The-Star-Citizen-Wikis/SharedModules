@@ -16,7 +16,7 @@
 		]
 	},
 	"data": [
-        [
+		[
 			"SMW_Manufacturer",
 			{
 				"de": "Hersteller",
@@ -30,14 +30,14 @@
 				"en": "Type"
 			}
 		],
-        [
+		[
 			"SMW_Size",
 			{
 				"de": "Größe",
 				"en": "Size"
 			}
 		],
-        [
+		[
 			"SMW_ConsumptionCount",
 			{
 				"de": "Consumption count",
@@ -51,28 +51,21 @@
 				"en": "Nutritional Density Rating"
 			}
 		],
-        [
+		[
 			"SMW_HydrationEfficacyIndex",
 			{
 				"de": "Hydration Efficacy Index",
 				"en": "Hydration Efficacy Index"
 			}
 		],
-        [
+		[
 			"SMW_Effect",
 			{
 				"de": "Effekt",
 				"en": "Effect"
 			}
 		],
-        [
-			"LBL_Usage",
-			{
-				"de": "Verwendung",
-				"en": "Usage"
-			}
-		],
-        [
+		[
 			"LBL_ConsumptionCount",
 			{
 				"de": "Uses",
@@ -86,14 +79,14 @@
 				"en": "NDR"
 			}
 		],
-        [
+		[
 			"LBL_HydrationEfficacyIndex",
 			{
 				"de": "HEI",
 				"en": "HEI"
 			}
 		],
-        [
+		[
 			"LBL_Effect",
 			{
 				"de": "Effekt",

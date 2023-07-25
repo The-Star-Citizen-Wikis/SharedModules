@@ -76,7 +76,6 @@ end
 --- @return void
 function Food.addInfoboxData( infobox, smwData )
 	infobox:renderSection( {
-		title = translate( 'LBL_Usage' ),
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Effect' ),
