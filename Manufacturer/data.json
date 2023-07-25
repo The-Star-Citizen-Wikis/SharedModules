@@ -1,585 +1,600 @@
 [
-  {
-    "code": "987",
-    "name": "987"
-  },
-  {
-    "code": "ABIN",
-    "name": "Abernathy Interiors"
-  },
-  {
-    "code": "ACAS",
-    "name": "Ace Astrogation"
-  },
-  {
-    "code": "ACDO",
-    "name": "Aciedo CommRelay"
-  },
-  {
-    "code": "ACOM",
-    "name": "ACOM"
-  },
-  {
-    "code": "AEHA",
-    "name": "Aeroview Hangars"
-  },
-  {
-    "code": "AEGS",
-    "name": "Aegis Dynamics"
-  },
-  {
-    "code": "ALB",
-    "name": "Alejo Brothers"
-  },
-  {
-    "code": "ALST",
-    "name": "Alliance Startech"
-  },
-  {
-    "code": "AMD",
-    "name": "Accelerated Mass Design"
-  },
-  {
-    "code": "AMRS",
-    "name": "Amon \u0026 Reese Co."
-  },
-  {
-    "code": "ANVL",
-    "name": "Anvil Aerospace"
-  },
-  {
-    "code": "APAR",
-    "name": "Apocalypse Arms"
-  },
-  {
-    "code": "ARCC",
-    "name": "ArcCorp"
-  },
-  {
-    "code": "ARGO",
-    "name": "Argo Astronautics"
-  },
-  {
-    "code": "ARMA",
-    "name": "ArmaMod"
-  },
-  {
-    "code": "ASAS",
-    "name": "Ascension Astro"
-  },
-  {
-    "code": "ASAD",
-    "name": "Associated Sciences \u0026 Development"
-  },
-  {
-    "code": "ATK",
-    "name": "A-Tek"
-  },
-  {
-    "code": "AVNG",
-    "name": "adVance NanoGraph"
-  },
-  {
-    "code": "BASL",
-    "name": "Basilisk"
-  },
-  {
-    "code": "BANU",
-    "name": "Banu Souli",
-    "wikipage": "Souli"
-  },
-  {
-    "code": "BEHR",
-    "name": "Behring Applied Technology"
-  },
-  {
-    "code": "BLTR",
-    "name": "Blue Triangle Inc."
-  },
-  {
-    "code": "BREC",
-    "name": "Beijing Reactor and Enrichment Company"
-  },
-  {
-    "code": "BRRA",
-    "name": "Broad \u0026 Rabiee"
-  },
-  {
-    "code": "CBA",
-    "name": "Code Blue Apparel"
-  },
-  {
-    "code": "CBD",
-    "name": "CBD"
-  },
-  {
-    "code": "CCC",
-    "name": "CC's Conversions"
-  },
-  {
-    "code": "CCTI",
-    "name": "Cole, Carlson \u0026 Taylor Inc."
-  },
-  {
-    "code": "CDS",
-    "name": "Clark Defense Systems"
-  },
-  {
-    "code": "CHCO",
-    "name": "Chimera Communications"
-  },
-  {
-    "code": "CLDA",
-    "name": "Caldera"
-  },
-  {
-    "code": "CNOU",
-    "name": "Consolidated Outland"
-  },
-  {
-    "code": "CRLF",
-    "name": "CureLife"
-  },
-  {
-    "code": "CRUS",
-    "name": "Crusader Industries"
-  },
-  {
-    "code": "CTL",
-    "name": "City Lights"
-  },
-  {
-    "code": "DMC",
-    "name": "Denim Manufacturing Company"
-  },
-  {
-    "code": "DNN",
-    "name": "DoNoNo"
-  },
-  {
-    "code": "DOOM",
-    "name": "Doomsday"
-  },
-  {
-    "code": "DRAK",
-    "name": "Drake Interplanetary"
-  },
-  {
-    "code": "DRN",
-    "name": "Derion"
-  },
-  {
-    "code": "DSTC",
-    "name": "Dragon Stellar"
-  },
-  {
-    "code": "DYL",
-    "name": "Dyna Lei"
-  },
-  {
-    "code": "ELD",
-    "name": "Escar Limited"
-  },
-  {
-    "code": "ESPR",
-    "name": "Esperia"
-  },
-  {
-    "code": "EVL",
-    "name": "Evalight"
-  },
-  {
-    "code": "FFSY",
-    "name": "Flashfire Systems"
-  },
-  {
-    "code": "FIO",
-    "name": "Fiore"
-  },
-  {
-    "code": "FRO",
-    "name": "Feroh"
-  },
-  {
-    "code": "FSIN",
-    "name": "Friskers Semiconductor"
-  },
-  {
-    "code": "FSKI",
-    "name": "FireStorm Kinetics"
-  },
-  {
-    "code": "GAMA",
-    "name": "Gatac Manufacture"
-  },
-  {
-    "code": "GATS",
-    "name": "Gallenson Tactical Systems"
-  },
-  {
-    "code": "GMNI",
-    "name": "Gemini"
-  },
-  {
-    "code": "GODI",
-    "name": "Gorgon Defender Industries"
-  },
-  {
-    "code": "GRIN",
-    "name": "Greycat Industrial"
-  },
-  {
-    "code": "GRNP",
-    "name": "Groupe Nouveau Paradigme"
-  },
-  {
-    "code": "GSB",
-    "name": "Grindstone"
-  },
-  {
-    "code": "GYS",
-    "name": "Gyson Inc."
-  },
-  {
-    "code": "HAPR",
-    "name": "Hammer Propulsion"
-  },
-  {
-    "code": "HDGW",
-    "name": "Hedeby Gunworks"
-  },
-  {
-    "code": "HDH",
-    "name": "Habidash"
-  },
-  {
-    "code": "HDTC",
-    "name": "Hardin Tactical"
-  },
-  {
-    "code": "HRST",
-    "name": "Hurston Dynamics"
-  },
-  {
-    "code": "HWK",
-    "name": "Hawksworth's"
-  },
-  {
-    "code": "HYPR",
-    "name": "Hydra Propulsion"
-  },
-  {
-    "code": "IOLO",
-    "name": "Iolo Industries"
-  },
-  {
-    "code": "JOKR",
-    "name": "Joker Engineering"
-  },
-  {
-    "code": "JSPN",
-    "name": "J-Span"
-  },
-  {
-    "code": "JUST",
-    "name": "Juno Starwerk"
-  },
-  {
-    "code": "KSAR",
-    "name": "Kastak Arms"
-  },
-  {
-    "code": "KEGR",
-    "name": "KE Group"
-  },
-  {
-    "code": "KBAR",
-    "name": "KnightBridge Arms"
-  },
-  {
-    "code": "KLWE",
-    "name": "Klaus \u0026 Werner"
-  },
-  {
-    "code": "KODK",
-    "name": "Kosmicheskie Dvigateli Kunayeva"
-  },
-  {
-    "code": "KRIG",
-    "name": "Kruger Intergalactic"
-  },
-  {
-    "code": "KRON",
-    "name": "Kroneg"
-  },
-  {
-    "code": "LBCO",
-    "name": "Lightning Bolt Co."
-  },
-  {
-    "code": "LNA",
-    "name": "Luna"
-  },
-  {
-    "code": "LOCO",
-    "name": "Lortell Computing"
-  },
-  {
-    "code": "LPLT",
-    "name": "Lightning Power Ltd."
-  },
-  {
-    "code": "MXOX",
-    "name": "MaxOx"
-  },
-  {
-    "code": "MITE",
-    "name": "microTech"
-  },
-  {
-    "code": "MRAI",
-    "name": "Mirai"
-  },
-  {
-    "code": "MISC",
-    "name": "Musashi Industrial and Starflight Concern"
-  },
-  {
-    "code": "MYM",
-    "name": "MuyMuy"
-  },
-  {
-    "code": "NAVE",
-    "name": "Nav-E7 Gadgets"
-  },
-  {
-    "code": "NOVP",
-    "name": "Nova Pyrotechnika"
-  },
-  {
-    "code": "NRS",
-    "name": "NorthStar"
-  },
-  {
-    "code": "NVS",
-    "name": "Navy Surplus"
-  },
-  {
-    "code": "NVTC",
-    "name": "NV-TAC"
-  },
-  {
-    "code": "NVY",
-    "name": "UEE Navy",
-    "wikipage": "United Empire of Earth Navy"
-  },
-  {
-    "code": "OCT",
-    "name": "Octagon"
-  },
-  {
-    "code": "OKBV",
-    "name": "OKB Voskhod"
-  },
-  {
-    "code": "OPS",
-    "name": "OpalSky"
-  },
-  {
-    "code": "ORIG",
-    "name": "Origin Jumpworks"
-  },
-  {
-    "code": "ORIG",
-    "name": "Origin Jumpworks GmbH"
-  },
-  {
-    "code": "POIR",
-    "name": "POIR"
-  },
-  {
-    "code": "PRAR",
-    "name": "Preacher Armament"
-  },
-  {
-    "code": "R6P",
-    "name": "R6 Pro"
-  },
-  {
-    "code": "RACO",
-    "name": "RAMP Corporation"
-  },
-  {
-    "code": "REYO",
-    "name": "Revel \u0026 York"
-  },
-  {
-    "code": "RMB",
-    "name": "Rambler"
-  },
-  {
-    "code": "ROO",
-    "name": "Republic of One"
-  },
-  {
-    "code": "RRS",
-    "name": "Roussimoff Rehabilitation Systems"
-  },
-  {
-    "code": "RSI",
-    "name": "Roberts Space Industries"
-  },
-  {
-    "code": "QRT",
-    "name": "Quirinus Tech"
-  },
-  {
-    "code": "SADA",
-    "name": "Saga Datasystems"
-  },
-  {
-    "code": "SASU",
-    "name": "Sakura Sun"
-  },
-  {
-    "code": "SCH",
-    "name": "Schui"
-  },
-  {
-    "code": "SCU",
-    "name": "Stegman's"
-  },
-  {
-    "code": "SECO",
-    "name": "Seal Corporation"
-  },
-  {
-    "code": "SELA",
-    "name": "SELF-LAND"
-  },
-  {
-    "code": "SHIN",
-    "name": "Shubin Interstellar"
-  },
-  {
-    "code": "SPV",
-    "name": "Spar Van Miles"
-  },
-  {
-    "code": "SRVL",
-    "name": "Scavenged"
-  },
-  {
-    "code": "SYFB",
-    "name": "Syang Fabrication"
-  },
-  {
-    "code": "TALN",
-    "name": "Talon Weapon Systems"
-  },
-  {
-    "code": "TARS",
-    "name": "Tarsus"
-  },
-  {
-    "code": "TBD",
-    "name": "To be determined"
-  },
-  {
-    "code": "THP",
-    "name": "Tehachapi"
-  },
-  {
-    "code": "TKSU",
-    "name": "Takuetsu Starships"
-  },
-  {
-    "code": "TMBL",
-    "name": "Tumbril Land Systems"
-  },
-  {
-    "code": "TOAG",
-    "name": "Torral Aggregate"
-  },
-  {
-    "code": "THCN",
-    "name": "Thermyte Concern"
-  },
-  {
-    "code": "TRAS",
-    "name": "Trident Attack Systems"
-  },
-  {
-    "code": "TYDT",
-    "name": "Tyler Design \u0026 Tech"
-  },
-  {
-    "code": "UBA",
-    "name": "Universal Body Armor"
-  },
-  {
-    "code": "UEE",
-    "name": "United Empire of Earth"
-  },
-  {
-    "code": "UTFL",
-    "name": "UltiFlex"
-  },
-  {
-    "code": "UNKN",
-    "name": "Unknown manufacturer"
-  },
-  {
-    "code": "UPS",
-    "name": "Upsiders"
-  },
-  {
-    "code": "VFGI",
-    "name": "VFG Industrial"
-  },
-  {
-    "code": "VGL",
-    "name": "Virgil Ltd"
-  },
-  {
-    "code": "VNCL",
-    "name": "Vanduul Clans",
-    "wikipage": "Vanduul"
-  },
-  {
-    "code": "VOLT",
-    "name": "Verified Offworld Laser Technologies"
-  },
-  {
-    "code": "VPW",
-    "name": "Vaporwear"
-  },
-  {
-    "code": "WCPR",
-    "name": "Wen-Cassel Propulsion"
-  },
-  {
-    "code": "WETK",
-    "name": "Wei-Tek"
-  },
-  {
-    "code": "WLOP",
-    "name": "WillsOp"
-  },
-  {
-    "code": "XFRG",
-    "name": "X-Forge"
-  },
-  {
-    "code": "XIAN",
-    "name": "Xi'an"
-  },
-  {
-    "code": "XNAA",
-    "name": "Aopoa"
-  },
-  {
-    "code": "YORM",
-    "name": "Yorm"
-  }
+	{
+		"code": "987",
+		"name": "987"
+	},
+	{
+		"code": "ABIN",
+		"name": "Abernathy Interiors"
+	},
+	{
+		"code": "ACAS",
+		"name": "Ace Astrogation"
+	},
+	{
+		"code": "ACDO",
+		"name": "Aciedo CommRelay",
+		"shortname": "Aciedo"
+	},
+	{
+		"code": "ACOM",
+		"name": "ACOM"
+	},
+	{
+		"code": "AEHA",
+		"name": "Aeroview Hangars",
+		"shortname": "Aeroview"
+	},
+	{
+		"code": "AEGS",
+		"name": "Aegis Dynamics",
+		"shortname": "Aegis"
+	},
+	{
+		"code": "ALB",
+		"name": "Alejo Brothers"
+	},
+	{
+		"code": "ALST",
+		"name": "Alliance Startech"
+	},
+	{
+		"code": "AMD",
+		"name": "Accelerated Mass Design"
+	},
+	{
+		"code": "AMRS",
+		"name": "Amon \u0026 Reese Co."
+	},
+	{
+		"code": "ANVL",
+		"name": "Anvil Aerospace",
+		"shortname": "Anvil"
+	},
+	{
+		"code": "APAR",
+		"name": "Apocalypse Arms"
+	},
+	{
+		"code": "ARCC",
+		"name": "ArcCorp"
+	},
+	{
+		"code": "ARGO",
+		"name": "Argo Astronautics",
+		"shortname": "Argo"
+	},
+	{
+		"code": "ARMA",
+		"name": "ArmaMod"
+	},
+	{
+		"code": "ASAS",
+		"name": "Ascension Astro"
+	},
+	{
+		"code": "ASAD",
+		"name": "Associated Sciences \u0026 Development"
+	},
+	{
+		"code": "ATK",
+		"name": "A-Tek"
+	},
+	{
+		"code": "AVNG",
+		"name": "adVance NanoGraph"
+	},
+	{
+		"code": "BASL",
+		"name": "Basilisk"
+	},
+	{
+		"code": "BANU",
+		"name": "Banu Souli",
+		"wikipage": "Souli"
+	},
+	{
+		"code": "BEHR",
+		"name": "Behring Applied Technology",
+		"shortname": "Behring"
+	},
+	{
+		"code": "BLTR",
+		"name": "Blue Triangle Inc."
+	},
+	{
+		"code": "BREC",
+		"name": "Beijing Reactor and Enrichment Company"
+	},
+	{
+		"code": "BRRA",
+		"name": "Broad \u0026 Rabiee",
+		"shortname": "B\u0026R"
+	},
+	{
+		"code": "CBA",
+		"name": "Code Blue Apparel"
+	},
+	{
+		"code": "CBD",
+		"name": "CBD"
+	},
+	{
+		"code": "CCC",
+		"name": "CC's Conversions"
+	},
+	{
+		"code": "CCTI",
+		"name": "Cole, Carlson \u0026 Taylor Inc."
+	},
+	{
+		"code": "CDS",
+		"name": "Clark Defense Systems",
+		"shortname": "CDS"
+	},
+	{
+		"code": "CHCO",
+		"name": "Chimera Communications"
+	},
+	{
+		"code": "CLDA",
+		"name": "Caldera"
+	},
+	{
+		"code": "CNOU",
+		"name": "Consolidated Outland"
+	},
+	{
+		"code": "CRLF",
+		"name": "CureLife"
+	},
+	{
+		"code": "CRUS",
+		"name": "Crusader Industries",
+		"shortname": "Crusader"
+	},
+	{
+		"code": "CTL",
+		"name": "City Lights"
+	},
+	{
+		"code": "DMC",
+		"name": "Denim Manufacturing Company"
+	},
+	{
+		"code": "DNN",
+		"name": "DoNoNo"
+	},
+	{
+		"code": "DOOM",
+		"name": "Doomsday"
+	},
+	{
+		"code": "DRAK",
+		"name": "Drake Interplanetary",
+		"shortname": "Drake"
+	},
+	{
+		"code": "DRN",
+		"name": "Derion"
+	},
+	{
+		"code": "DSTC",
+		"name": "Dragon Stellar"
+	},
+	{
+		"code": "DYL",
+		"name": "Dyna Lei"
+	},
+	{
+		"code": "ELD",
+		"name": "Escar Limited"
+	},
+	{
+		"code": "ESPR",
+		"name": "Esperia"
+	},
+	{
+		"code": "EVL",
+		"name": "Evalight"
+	},
+	{
+		"code": "FFSY",
+		"name": "Flashfire Systems"
+	},
+	{
+		"code": "FIO",
+		"name": "Fiore"
+	},
+	{
+		"code": "FRO",
+		"name": "Feroh"
+	},
+	{
+		"code": "FSIN",
+		"name": "Friskers Semiconductor"
+	},
+	{
+		"code": "FSKI",
+		"name": "FireStorm Kinetics"
+	},
+	{
+		"code": "GAMA",
+		"name": "Gatac Manufacture"
+	},
+	{
+		"code": "GATS",
+		"name": "Gallenson Tactical Systems"
+	},
+	{
+		"code": "GMNI",
+		"name": "Gemini"
+	},
+	{
+		"code": "GODI",
+		"name": "Gorgon Defender Industries"
+	},
+	{
+		"code": "GRIN",
+		"name": "Greycat Industrial",
+		"shortname": "Greycat"
+	},
+	{
+		"code": "GRNP",
+		"name": "Groupe Nouveau Paradigme"
+	},
+	{
+		"code": "GSB",
+		"name": "Grindstone"
+	},
+	{
+		"code": "GYS",
+		"name": "Gyson Inc."
+	},
+	{
+		"code": "HAPR",
+		"name": "Hammer Propulsion"
+	},
+	{
+		"code": "HDGW",
+		"name": "Hedeby Gunworks"
+	},
+	{
+		"code": "HDH",
+		"name": "Habidash"
+	},
+	{
+		"code": "HDTC",
+		"name": "Hardin Tactical"
+	},
+	{
+		"code": "HRST",
+		"name": "Hurston Dynamics"
+	},
+	{
+		"code": "HWK",
+		"name": "Hawksworth's"
+	},
+	{
+		"code": "HYPR",
+		"name": "Hydra Propulsion"
+	},
+	{
+		"code": "IOLO",
+		"name": "Iolo Industries"
+	},
+	{
+		"code": "JOKR",
+		"name": "Joker Engineering"
+	},
+	{
+		"code": "JSPN",
+		"name": "J-Span"
+	},
+	{
+		"code": "JUST",
+		"name": "Juno Starwerk"
+	},
+	{
+		"code": "KSAR",
+		"name": "Kastak Arms"
+	},
+	{
+		"code": "KEGR",
+		"name": "KE Group"
+	},
+	{
+		"code": "KBAR",
+		"name": "KnightBridge Arms"
+	},
+	{
+		"code": "KLWE",
+		"name": "Klaus \u0026 Werner",
+		"shortname": "K\u0026W"
+	},
+	{
+		"code": "KODK",
+		"name": "Kosmicheskie Dvigateli Kunayeva"
+	},
+	{
+		"code": "KRIG",
+		"name": "Kruger Intergalactic",
+		"shortname": "Kruger"
+	},
+	{
+		"code": "KRON",
+		"name": "Kroneg"
+	},
+	{
+		"code": "LBCO",
+		"name": "Lightning Bolt Co."
+	},
+	{
+		"code": "LNA",
+		"name": "Luna"
+	},
+	{
+		"code": "LOCO",
+		"name": "Lortell Computing"
+	},
+	{
+		"code": "LPLT",
+		"name": "Lightning Power Ltd."
+	},
+	{
+		"code": "MXOX",
+		"name": "MaxOx"
+	},
+	{
+		"code": "MITE",
+		"name": "microTech"
+	},
+	{
+		"code": "MRAI",
+		"name": "Mirai"
+	},
+	{
+		"code": "MISC",
+		"name": "Musashi Industrial and Starflight Concern",
+		"shortname": "MISC"
+	},
+	{
+		"code": "MYM",
+		"name": "MuyMuy"
+	},
+	{
+		"code": "NAVE",
+		"name": "Nav-E7 Gadgets"
+	},
+	{
+		"code": "NOVP",
+		"name": "Nova Pyrotechnika"
+	},
+	{
+		"code": "NRS",
+		"name": "NorthStar"
+	},
+	{
+		"code": "NVS",
+		"name": "Navy Surplus"
+	},
+	{
+		"code": "NVTC",
+		"name": "NV-TAC"
+	},
+	{
+		"code": "NVY",
+		"name": "United Empire of Earth Navy",
+		"shortname": "UEEN"
+	},
+	{
+		"code": "OCT",
+		"name": "Octagon"
+	},
+	{
+		"code": "OKBV",
+		"name": "OKB Voskhod"
+	},
+	{
+		"code": "OPS",
+		"name": "OpalSky"
+	},
+	{
+		"code": "ORIG",
+		"name": "Origin Jumpworks",
+		"shortname": "Origin"
+	},
+	{
+		"code": "POIR",
+		"name": "POIR"
+	},
+	{
+		"code": "PRAR",
+		"name": "Preacher Armament"
+	},
+	{
+		"code": "R6P",
+		"name": "R6 Pro"
+	},
+	{
+		"code": "RACO",
+		"name": "RAMP Corporation"
+	},
+	{
+		"code": "REYO",
+		"name": "Revel \u0026 York",
+		"shortname": "R\u0026Y"
+	},
+	{
+		"code": "RMB",
+		"name": "Rambler"
+	},
+	{
+		"code": "ROO",
+		"name": "Republic of One"
+	},
+	{
+		"code": "RRS",
+		"name": "Roussimoff Rehabilitation Systems"
+	},
+	{
+		"code": "RSI",
+		"name": "Roberts Space Industries",
+		"shortname": "RSI"
+	},
+	{
+		"code": "QRT",
+		"name": "Quirinus Tech"
+	},
+	{
+		"code": "SADA",
+		"name": "Saga Datasystems"
+	},
+	{
+		"code": "SASU",
+		"name": "Sakura Sun"
+	},
+	{
+		"code": "SCH",
+		"name": "Schui"
+	},
+	{
+		"code": "SCU",
+		"name": "Stegman's"
+	},
+	{
+		"code": "SECO",
+		"name": "Seal Corporation"
+	},
+	{
+		"code": "SELA",
+		"name": "SELF-LAND"
+	},
+	{
+		"code": "SHIN",
+		"name": "Shubin Interstellar"
+	},
+	{
+		"code": "SPV",
+		"name": "Spar Van Miles"
+	},
+	{
+		"code": "SRVL",
+		"name": "Scavenged"
+	},
+	{
+		"code": "SYFB",
+		"name": "Syang Fabrication"
+	},
+	{
+		"code": "TALN",
+		"name": "Talon Weapon Systems"
+	},
+	{
+		"code": "TARS",
+		"name": "Tarsus"
+	},
+	{
+		"code": "TBD",
+		"name": "To be determined"
+	},
+	{
+		"code": "THP",
+		"name": "Tehachapi"
+	},
+	{
+		"code": "TKSU",
+		"name": "Takuetsu Starships"
+	},
+	{
+		"code": "TMBL",
+		"name": "Tumbril Land Systems"
+	},
+	{
+		"code": "TOAG",
+		"name": "Torral Aggregate"
+	},
+	{
+		"code": "THCN",
+		"name": "Thermyte Concern"
+	},
+	{
+		"code": "TRAS",
+		"name": "Trident Attack Systems"
+	},
+	{
+		"code": "TYDT",
+		"name": "Tyler Design \u0026 Tech"
+	},
+	{
+		"code": "UBA",
+		"name": "Universal Body Armor"
+	},
+	{
+		"code": "UEE",
+		"name": "United Empire of Earth",
+		"shortname": "UEE"
+	},
+	{
+		"code": "UTFL",
+		"name": "UltiFlex"
+	},
+	{
+		"code": "UNKN",
+		"name": "Unknown manufacturer"
+	},
+	{
+		"code": "UPS",
+		"name": "Upsiders"
+	},
+	{
+		"code": "VFGI",
+		"name": "VFG Industrial"
+	},
+	{
+		"code": "VGL",
+		"name": "Virgil Ltd"
+	},
+	{
+		"code": "VNCL",
+		"name": "Vanduul Clans",
+		"shortname": "Vanduul"
+	},
+	{
+		"code": "VOLT",
+		"name": "Verified Offworld Laser Technologies",
+		"shortname": "VOLT"
+	},
+	{
+		"code": "VPW",
+		"name": "Vaporwear"
+	},
+	{
+		"code": "WCPR",
+		"name": "Wen-Cassel Propulsion"
+	},
+	{
+		"code": "WETK",
+		"name": "Wei-Tek"
+	},
+	{
+		"code": "WLOP",
+		"name": "WillsOp"
+	},
+	{
+		"code": "XFRG",
+		"name": "X-Forge"
+	},
+	{
+		"code": "XIAN",
+		"name": "Xi'an"
+	},
+	{
+		"code": "XNAA",
+		"name": "Aopoa"
+	},
+	{
+		"code": "YORM",
+		"name": "Yorm"
+	}
 ]

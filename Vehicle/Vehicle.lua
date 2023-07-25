@@ -984,7 +984,12 @@ function methodtable.setShortDescription( self )
 	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, self.smwData[ translate( 'SMW_Manufacturer' ) ] )
+		local mfuname = self.smwData[ translate( 'SMW_Manufacturer' ) ]
+		local man = manufacturer( mfuname )
+		--- Use short name if possible
+		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
+
+		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
 	end
 
 	shortdesc = lang:ucfirst( shortdesc )
