@@ -402,6 +402,20 @@
 			}
 		],
 		[
+			"shortdesc_grade",
+			{
+				"de": "grade $1 $2",
+				"en": "grade $1 $2"
+			}
+		],
+		[
+			"shortdesc_manufactured_by",
+			{
+				"de": "$1 hergestellt von $2",
+				"en": "$1 manufactured by $2"
+			}
+		],
+		[
 			"error_no_data_title",
 			{
 				"de": "ERROR - Semantic MediaWiki (CODE 16008)",

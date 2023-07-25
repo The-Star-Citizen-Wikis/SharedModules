@@ -434,11 +434,40 @@ function methodtable.setShortDescription( self )
 
 	local itemTypeKey = 'type_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] )
 	if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
-		itemType = translate( itemTypeKey )
+		itemType = string.lower( translate( itemTypeKey ) )
 	end
 
 	shortdesc = itemType
 
+	if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
+		shortdesc = string.format( '%s %s',
+			string.lower( self.smwData[ translate( 'SMW_Class' ) ] ),
+			shortdesc
+		)
+	end
+
+	if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
+		shortdesc = translate( 'shortdesc_grade', false, self.smwData[ translate( 'SMW_Grade' ) ], shortdesc )
+	end
+
+	if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
+		shortdesc = string.format( 'S%d %s',
+			self.smwData[ translate( 'SMW_Size' ) ],
+			shortdesc
+		)
+	end
+
+	--- Manufacturer
+	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+		local mfuname = self.smwData[ translate( 'SMW_Manufacturer' ) ]
+		local man = manufacturer( mfuname )
+		--- Use short name if possible
+		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
+
+		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
+	end
+
+	--- Submodule override
 	shortdesc = runModuleFN(
 		self.smwData[ translate( 'SMW_Type' ) ],
 		'getShortDescription',
