@@ -412,6 +412,10 @@ function methodtable.setCategories( self )
 		return
 	end
 
+	--- Only set category if category_type value exists
+	local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+	if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then table.insert( self.categories, typeCategory ) end
+
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
 		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
 		manufacturer = string.gsub( manufacturer, '%]+', '' )

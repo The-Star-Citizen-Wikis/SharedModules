@@ -353,6 +353,48 @@
 			}
 		],
 		[
+			"category_cooler",
+			{
+				"de": "Kühler",
+				"en": "Coolers"
+			}
+		],
+		[
+			"category_drink",
+			{
+				"de": "Getränk",
+				"en": "Drinks"
+			}
+		],
+		[
+			"category_food",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_powerplant",
+			{
+				"de": "Generator",
+				"en": "Power plants"
+			}
+		],
+		[
+			"category_quantumdrive",
+			{
+				"de": "Quantenantrieb",
+				"en": "Quantum drives"
+			}
+		],
+		[
+			"category_shield",
+			{
+				"de": "Schildgenerator",
+				"en": "Shield generators"
+			}
+		],
+		[
 			"error_no_data_title",
 			{
 				"de": "ERROR - Semantic MediaWiki (CODE 16008)",
