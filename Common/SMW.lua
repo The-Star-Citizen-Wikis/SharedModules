@@ -144,6 +144,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 							val = lang:ucfirst( val )
 						elseif datum.format == 'replace-dash' then
 							val = string.gsub( val, '%-', ' ' )
+						-- Remove part of the value
+						elseif datum.format:sub( 1, 6 ) == 'remove' then
+							val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
 						end
 					-- Min/Max
 					elseif datum.type == 'minmax' then
@@ -151,9 +154,6 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 							common.formatNum( val.min ),
 							common.formatNum( val.max ),
 						}
-					-- Remove part of the value
-					elseif type( datum.format ) == 'string' and datum.format:sub( 1, 5 ) == 'remove' then
-						val = tostring( val ):gsub( mw.test.split( datum.format, ':', true )[ 2 ], '' )
 					-- Subobject
 					elseif datum.type == 'subobject' then
 						local api = require( 'Module:Common/Api' )
