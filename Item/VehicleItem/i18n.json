@@ -395,10 +395,10 @@
 			}
 		],
 		[
-			"SMW_ModifierOptimalChargeWindowRate",
+			"SMW_ModifierOptimalChargeWindowSize",
 			{
 				"de": "Modifikator Optimale Ladefensterrate",
-				"en": "Modifier optimal charge window rate"
+				"en": "Modifier optimal charge window size"
 			}
 		],
 		[
@@ -857,13 +857,6 @@
 			}
 		],
 		[
-			"LBL_Modifiers",
-			{
-				"de": "Modifikatoren",
-				"en": "Modifiers"
-			}
-		],
-		[
 			"LBL_ModifierCatastrophicChargeRate",
 			{
 				"de": "Katastrophische Laderate",
@@ -892,10 +885,10 @@
 			}
 		],
 		[
-			"LBL_ModifierOptimalChargeWindowRate",
+			"LBL_ModifierOptimalChargeWindowSize",
 			{
 				"de": "Optimale Ladefensterrate",
-				"en": "Optimal charge window rate"
+				"en": "Optimal charge window"
 			}
 		],
 		[
