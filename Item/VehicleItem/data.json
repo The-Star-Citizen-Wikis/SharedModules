@@ -251,7 +251,7 @@
 			"SMW_Uses": "API_mining_module.uses"
 		},
 		{
-			"SMW_ModuleDuration": "API_mining_module.duration",
+			"SMW_Duration": "API_mining_module.duration",
 			"format": "remove:seconds"
 		},
 		{

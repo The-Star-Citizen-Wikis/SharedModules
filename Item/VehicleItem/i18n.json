@@ -444,10 +444,10 @@
 			}
 		],
 		[
-			"SMW_ModuleDuration",
+			"SMW_Duration",
 			{
 				"de": "Dauer",
-				"en": "Module duration"
+				"en": "Duration"
 			}
 		],
 		[
@@ -846,11 +846,11 @@
 			"LBL_Uses",
 			{
 				"de": "Anwendungen",
-				"en": " Uses"
+				"en": "Uses"
 			}
 		],
 		[
-			"LBL_ModuleDuration",
+			"LBL_Duration",
 			{
 				"de": "Dauer",
 				"en": "Duration"
