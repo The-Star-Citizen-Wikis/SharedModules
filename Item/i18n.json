@@ -418,8 +418,8 @@
 		[
 			"shortdesc_grade",
 			{
-				"de": "grade $1 $2",
-				"en": "grade $1 $2"
+				"de": "$1 grade $2",
+				"en": "$1 grade $2"
 			}
 		],
 		[
