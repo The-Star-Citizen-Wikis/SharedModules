@@ -235,12 +235,11 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_PowerTransfer' ), smwData[ translate( 'SMW_PowerTransfer' ) ] ),
+            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ translate( 'SMW_MiningLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_ExtractionLaserPower' ), smwData[ translate( 'SMW_ExtractionLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
             infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
             infobox:renderItem( translate( 'LBL_ExtractionThroughput' ), smwData[ translate( 'SMW_ExtractionThroughput' ) ] ),
-            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ translate( 'SMW_MiningLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_ExtractionLaserPower' ), smwData[ translate( 'SMW_ExtractionLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_ModuleSlots' ), smwData[ translate( 'SMW_ModuleSlots' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
@@ -258,7 +257,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
         }
-        tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
+        tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Mining Module
     -- FIXME: Need a better way to handle this since SMW_Uses is a generic property across consumables
     elseif smwData[ translate( 'SMW_Uses' ) ] then

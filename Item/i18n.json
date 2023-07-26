@@ -367,6 +367,13 @@
 			}
 		],
 		[
+			"type_weaponmining",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining laser"
+			}
+		],
+		[
 			"category_cooler",
 			{
 				"de": "Kühler",
@@ -413,6 +420,13 @@
 			{
 				"de": "Schildgenerator",
 				"en": "Shield generators"
+			}
+		],
+		[
+			"category_weaponmining",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining lasers"
 			}
 		],
 		[

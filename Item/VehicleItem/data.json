@@ -220,10 +220,6 @@
 			"%": "Mining Laser"
 		},
 		{
-			"SMW_PowerTransfer": "API_mining_laser.power_transfer",
-			"type": "number"
-		},
-		{
 			"SMW_OptimalRange": "API_mining_laser.optimal_range",
 			"type": "number"
 		},
