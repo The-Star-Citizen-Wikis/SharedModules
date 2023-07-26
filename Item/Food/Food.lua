@@ -43,10 +43,10 @@ function Food.addSmwProperties( apiData, frameArgs, smwSetObject )
 	end
 
 	--- We only know whether the item is single use or not
-	if smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] == true then
-		smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] = 1
+	if smwSetObject[ translate( 'SMW_Uses' ) ] == true then
+		smwSetObject[ translate( 'SMW_Uses' ) ] = 1
 	else
-		smwSetObject[ translate( 'SMW_ConsumptionCount' ) ] = nil
+		smwSetObject[ translate( 'SMW_Uses' ) ] = nil
 	end
 
 	if smwSetObject[ translate( 'SMW_Effect' ) ] == 'None' then
@@ -91,8 +91,8 @@ function Food.addInfoboxData( infobox, smwData )
 				data = smwData[ translate( 'SMW_HydrationEfficacyIndex' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_ConsumptionCount' ),
-				data = smwData[ translate( 'SMW_ConsumptionCount' ) ],
+				label = translate( 'LBL_Uses' ),
+				data = smwData[ translate( 'SMW_Uses' ) ],
 			} )
 		},
 		col = 4

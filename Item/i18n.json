@@ -332,6 +332,13 @@
 			}
 		],
 		[
+			"type_miningmodifier",
+			{
+				"de": "Bergbaumodul",
+				"en": "Mining module"
+			}
+		],
+		[
 			"type_powerplant",
 			{
 				"de": "Generator",
@@ -378,6 +385,13 @@
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
+			}
+		],
+		[
+			"category_miningmodifier",
+			{
+				"de": "Bergbaumodul",
+				"en": "Mining modules"
 			}
 		],
 		[

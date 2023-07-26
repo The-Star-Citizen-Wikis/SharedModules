@@ -437,10 +437,10 @@
 			}
 		],
 		[
-			"SMW_ModuleUses",
+			"SMW_Uses",
 			{
 				"de": "Anwendungen",
-				"en": "Module uses"
+				"en": "Uses"
 			}
 		],
 		[
@@ -843,10 +843,10 @@
 			}
 		],
 		[
-			"LBL_ModuleUses",
+			"LBL_Uses",
 			{
 				"de": "Anwendungen",
-				"en": "Module uses"
+				"en": " Uses"
 			}
 		],
 		[

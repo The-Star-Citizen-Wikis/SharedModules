@@ -2,7 +2,7 @@
 	"%smw_data": "Sets which data gets added to SMW",
 	"smw_data": [
 		{
-			"SMW_ConsumptionCount": "API_food.one_shot_consume"
+			"SMW_Uses": "API_food.one_shot_consume"
 		},
 		{
 			"SMW_NutritionalDensityRating": "API_food.nutritional_density_rating",

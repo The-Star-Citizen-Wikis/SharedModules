@@ -260,11 +260,12 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
     -- Mining Module
-    elseif smwData[ translate( 'SMW_ModuleUses' ) ] then
+    -- FIXME: Need a better way to handle this since SMW_Uses is a generic property across consumables
+    elseif smwData[ translate( 'SMW_Uses' ) ] then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_ModuleUses' ), smwData[ translate( 'SMW_ModuleUses' ) ] ),
+            infobox:renderItem( translate( 'LBL_Uses' ), smwData[ translate( 'SMW_Uses' ) ] ),
             infobox:renderItem( translate( 'LBL_ModuleDuration' ), smwData[ translate( 'SMW_ModuleDuration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )

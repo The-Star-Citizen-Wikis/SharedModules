@@ -248,7 +248,7 @@
 			"%": "Mining Modules"
 		},
 		{
-			"SMW_ModuleUses": "API_mining_module.uses"
+			"SMW_Uses": "API_mining_module.uses"
 		},
 		{
 			"SMW_ModuleDuration": "API_mining_module.duration",
