@@ -304,7 +304,8 @@ function methodtable.getInfobox( self )
 	infobox:renderHeader( {
 		title = smwData[ translate( 'SMW_Name' ) ],
 		--- e.g. Aegis Dynamics (AEGS)
-		subtitle = getManufacturer()
+		subtitle = getManufacturer(),
+		badge = getSize()
 	} )
 
 
@@ -314,10 +315,6 @@ function methodtable.getInfobox( self )
 			infobox:renderItem( {
 				label = translate( 'LBL_Type' ),
 				data = getType(),
-			} ),
-			infobox:renderItem( {
-				label = translate( 'LBL_Size' ),
-				data = getSize(),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Class' ),

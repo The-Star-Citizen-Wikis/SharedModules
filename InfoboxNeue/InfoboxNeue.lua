@@ -202,7 +202,7 @@ end
 
 --- Return the HTML of the infobox header component as string
 ---
---- @param data table {title, subtitle)
+--- @param data table {title, subtitle, badge)
 --- @return string html
 function methodtable.renderHeader( self, data )
 	checkType( 'Module:InfoboxNeue.renderHeader', 1, self, 'table' )
@@ -218,16 +218,26 @@ function methodtable.renderHeader( self, data )
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__header' )
 
-	html:tag( 'div' )
+	if data[ 'badge' ] then
+		html:tag( 'div' )
+			:addClass( 'infobox__item infobox__badge' )
+			:wikitext( data[ 'badge' ] )
+	end
+
+	local titleItem = mw.html.create( 'div' ):addClass( 'infobox__item' )
+
+	titleItem:tag( 'div' )
 		:addClass( 'infobox__title' )
 		:wikitext( data[ 'title' ] )
 
 	if data[ 'subtitle' ] then
-		html:tag( 'div' )
+		titleItem:tag( 'div' )
 			-- Subtitle is always data
 			:addClass( 'infobox__subtitle infobox__data' )
 			:wikitext( data[ 'subtitle' ] )
 	end
+
+	html:node( titleItem )
 
 	local item = tostring( html )
 

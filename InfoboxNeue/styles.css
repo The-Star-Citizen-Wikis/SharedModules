@@ -114,6 +114,8 @@
 .infobox__header {
     margin-top: var( --space-lg );
     margin-bottom: var( --space-md );
+    display: flex;
+    gap: var( --space-sm );
 }
 
 .infobox__section,
@@ -133,7 +135,6 @@
     font-size: var( --font-size-h3 );
 }
 
-.infobox__subtitle,
 .infobox__sectionSubtitle {
     margin-top: 2px;
 }
@@ -165,6 +166,16 @@
     display: grid;
     gap: 2px var( --space-xs );
     grid-auto-rows: max-content;
+}
+
+.infobox__badge {
+    place-content: center;
+    text-align: center;
+    border: 1px solid var( --border-color-base );
+    border-radius: var( --border-radius--medium );
+    padding: var( --space-xs ) var( --space-sm );
+    font-weight: var( --font-weight-medium );
+    background-color: var( --color-surface-2--active );
 }
 
 .infobox__desc,

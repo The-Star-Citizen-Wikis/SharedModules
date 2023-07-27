@@ -220,13 +220,6 @@
 			}
 		],
 		[
-			"LBL_Size",
-			{
-				"de": "Größe",
-				"en": "Size"
-			}
-		],
-		[
 			"LBL_Class",
 			{
 				"de": "Klasse",
