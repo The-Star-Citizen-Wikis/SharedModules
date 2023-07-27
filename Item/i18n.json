@@ -339,6 +339,13 @@
 			}
 		],
 		[
+			"type_missilelauncher",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile launcher"
+			}
+		],
+		[
 			"type_powerplant",
 			{
 				"de": "Generator",
@@ -399,6 +406,13 @@
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining modules"
+			}
+		],
+		[
+			"category_missilelauncher",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile launchers"
 			}
 		],
 		[

@@ -304,10 +304,10 @@
 			}
 		],
 		[
-			"SMW_MaxMissiles",
+			"SMW_MissileCount",
 			{
 				"de": "Anzahl Raketen",
-				"en": "Max missiles"
+				"en": "Missile count"
 			}
 		],
 		[
@@ -780,7 +780,7 @@
 			}
 		],
 		[
-			"LBL_MaxMissiles",
+			"LBL_MissileCount",
 			{
 				"de": "Anzahl Raketen",
 				"en": "Missile count"

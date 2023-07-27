@@ -211,7 +211,7 @@
 			"%": "Missile Racks"
 		},
 		{
-			"SMW_MaxMissiles": "API_max_missiles"
+			"SMW_MissileCount": "API_max_missiles"
 		},
 		{
 			"SMW_MissileSize": "API_min_size"
