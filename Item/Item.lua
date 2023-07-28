@@ -411,8 +411,10 @@ function methodtable.setCategories( self )
 	end
 
 	--- Only set category if category_type value exists
-	local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
-	if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then table.insert( self.categories, typeCategory ) end
+	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
+		local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+		if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then table.insert( self.categories, typeCategory ) end
+	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
 		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
@@ -430,9 +432,11 @@ function methodtable.setShortDescription( self )
 	local shortdesc = ''
 	local itemType = translate( 'type_item' )
 
-	local itemTypeKey = 'type_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] )
-	if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
-		itemType = string.lower( translate( itemTypeKey ) )
+	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
+		local itemTypeKey = 'type_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] )
+		if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
+			itemType = string.lower( translate( itemTypeKey ) )
+		end
 	end
 
 	shortdesc = itemType
