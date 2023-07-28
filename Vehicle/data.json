@@ -383,6 +383,11 @@
 			"data": "SMW_ShipMatrixName"
 		},
 		{
+			"label": "CCU Game",
+			"format": "https://ccugame.app/rsi/all-ships/%s",
+			"data": "SMW_ShipMatrixName"
+		},
+		{
 			"label": "Wiki API",
 			"format": "https://api.star-citizen.wiki/api/v2/vehicles/%s",
 			"data": "SMW_UUID"
