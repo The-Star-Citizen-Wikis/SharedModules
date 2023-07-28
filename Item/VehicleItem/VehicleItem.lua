@@ -129,7 +129,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_PowerOutput' ), common.formatNum( smwData[ translate( 'SMW_PowerOutput' ) ] ) )
+            infobox:renderItem( translate( 'LBL_PowerOutput' ), smwData[ translate( 'SMW_PowerOutput' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Quantum Drive
@@ -299,8 +299,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Engineering' )
     section = {
-        infobox:renderItem( translate( 'LBL_PowerDraw' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ], smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '/s' ) ),
-        infobox:renderItem( translate( 'LBL_ThermalEnergyOutput' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumThermalEnergyOutput' ) ], smwData[ translate( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '/s' ) ),
+        infobox:renderItem( translate( 'LBL_PowerDraw' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ], smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '⚡︎/s' ) ),
+        infobox:renderItem( translate( 'LBL_ThermalEnergyOutput' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumThermalEnergyOutput' ) ], smwData[ translate( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '🌡/s' ) ),
         infobox:renderItem( translate( 'LBL_MaximumCoolingRate' ), smwData[ translate( 'SMW_MaximumCoolingRate' ) ] ),
         infobox:renderItem( translate( 'LBL_StartCoolingTemperature' ), smwData[ translate( 'SMW_StartCoolingTemperature' ) ] ),
         infobox:renderItem( translate( 'LBL_Temperature' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumTemperature' ) ], smwData[ translate( 'SMW_MaximumTemperature' ) ], true ), '°C' ) ),
