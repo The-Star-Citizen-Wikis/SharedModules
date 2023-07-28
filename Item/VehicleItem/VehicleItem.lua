@@ -175,7 +175,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
         local function getShieldPoint()
             if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then return end
-            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] ) ) .. ' HP'
+            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] ) ) .. ' 🛡️'
         end
 
         local function getShieldRegen()
@@ -185,7 +185,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             local fullChargeTime = math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] / smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] )
 
             return infobox.showDescIfDiff(
-                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' HP/s',
+                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' 🛡️/s',
                 translate( 'unit_secondtillfull', false, fullChargeTime )
             )
         end
