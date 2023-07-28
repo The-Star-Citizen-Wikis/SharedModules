@@ -169,7 +169,7 @@
 .infobox__badge {
     place-content: center;
     text-align: center;
-    border: 1px solid var( --border-color-base );
+    box-shadow: inset 0 0 0 1px var( --border-color-base );
     border-radius: var( --border-radius--medium );
     padding: var( --space-xs ) var( --space-sm );
     font-weight: var( --font-weight-medium );
