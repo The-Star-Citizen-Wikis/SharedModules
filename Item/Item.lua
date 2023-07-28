@@ -243,8 +243,9 @@ function methodtable.getInfobox( self )
 	local function getClass()
 		if smwData[ translate( 'SMW_Class' ) ] == nil then return end
 
-		local class = smwData[ translate( 'SMW_Class' ) ]
-	
+		local classKey = string.lower( smwData[ translate( 'SMW_Class' ) ] )
+		local class = translate( string.format( 'class_%s', classKey ) )
+
 		if smwData[ translate( 'SMW_Grade' ) ] ~= nil then
 			class = class .. ' (' .. smwData[ translate( 'SMW_Grade' ) ] .. ')'
 		end

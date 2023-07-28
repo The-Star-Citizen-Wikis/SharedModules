@@ -374,6 +374,41 @@
 			}
 		],
 		[
+			"class_civilian",
+			{
+				"de": "👔 Civilian",
+				"en": "👔 Civilian"
+			}
+		],
+		[
+			"class_competition",
+			{
+				"de": "🏁 Competition",
+				"en": "🏁 Competition"
+			}
+		],
+		[
+			"class_military",
+			{
+				"de": "🪖 Military",
+				"en": "🪖 Military"
+			}
+		],
+		[
+			"class_industrial",
+			{
+				"de": "⚒️ Industrial",
+				"en": "⚒️ Industrial"
+			}
+		],
+		[
+			"class_stealth",
+			{
+				"de": "👻 Stealth",
+				"en": "👻 Stealth"
+			}
+		],
+		[
 			"category_cooler",
 			{
 				"de": "Kühler",
