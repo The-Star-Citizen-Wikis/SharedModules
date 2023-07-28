@@ -67,7 +67,8 @@
     width: 0.875rem;
     height: 0.875rem;
     flex-shrink: 0;
-    transition: transform 250ms cubic-bezier( 0.215, 0.61, 0.355, 1);
+    transition: var( --transition-menu );
+    transition-property: transform;
 }
 
 /* Might as well steal from skin */
@@ -260,7 +261,8 @@
     border-radius: var( --border-radius--medium );
     box-shadow: var( --box-shadow-dialog );
     opacity: 0;
-    transition: transform 250ms ease,opacity 250ms ease;
+    transition: var( --transition-menu );
+    transition-property: opacity, transform;
     visibility: hidden;
     transform: translateY( -20px );
 }
