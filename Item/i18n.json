@@ -311,6 +311,13 @@
 			}
 		],
 		[
+			"type_emp",
+			{
+				"de": "EMP-Generator",
+				"en": "EMP generator"
+			}
+		],
+		[
 			"type_food",
 			{
 				"de": "Lebensmittel",
@@ -420,6 +427,13 @@
 			{
 				"de": "Getränk",
 				"en": "Drinks"
+			}
+		],
+		[
+			"category_emp",
+			{
+				"de": "EMP-Generator",
+				"en": "EMP generators"
 			}
 		],
 		[

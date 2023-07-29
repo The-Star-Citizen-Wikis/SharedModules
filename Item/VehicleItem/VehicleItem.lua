@@ -124,6 +124,17 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_CoolingRate' ), smwData[ translate( 'SMW_CoolingRate' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- EMP Generator
+    elseif smwData[ translate( 'SMW_EMPRadius' ) ] then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_EMPRadius' ), smwData[ translate( 'SMW_EMPRadius' ) ] ),
+            infobox:renderItem( translate( 'LBL_EMPChargeTime' ), smwData[ translate( 'SMW_EMPChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_EMPCooldownTime' ), smwData[ translate( 'SMW_EMPCooldownTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_EMPUnleashTime' ), smwData[ translate( 'SMW_EMPUnleashTime' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
     elseif smwData[ translate( 'SMW_PowerOutput' ) ] then
         -- Overview

@@ -111,6 +111,7 @@
 			"name": "Module:Item/VehicleItem",
 			"type": [
 				"Cooler",
+				"EMP",
 				"Gadget",
 				"MiningModifier",
 				"MissileLauncher",

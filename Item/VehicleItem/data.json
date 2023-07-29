@@ -120,6 +120,25 @@
 			"type": "number"
 		},
 		{
+			"%": "EMP Generator"
+		},
+		{
+			"SMW_EMPRadius": "API_emp.emp_radius",
+			"type": "number"
+		},
+		{
+			"SMW_EMPChargeTime": "API_emp.charge_duration",
+			"type": "number"
+		},
+		{
+			"SMW_EMPUnleashTime": "API_emp.unleash_duration",
+			"type": "number"
+		},
+		{
+			"SMW_EMPCooldownTime": "API_emp.cooldown_duration",
+			"type": "number"
+		},
+		{
 			"%": "Power Plant"
 		},
 		{

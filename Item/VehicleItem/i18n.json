@@ -178,6 +178,34 @@
 			}
 		],
 		[
+			"SMW_EMPRadius",
+			{
+				"de": "EMP radius",
+				"en": "EMP radius"
+			}
+		],
+		[
+			"SMW_EMPChargeTime",
+			{
+				"de": "EMP charge time",
+				"en": "EMP charge time"
+			}
+		],
+		[
+			"SMW_EMPUnleashTime",
+			{
+				"de": "EMP unleash time",
+				"en": "EMP unleash time"
+			}
+		],
+		[
+			"SMW_EMPCooldownTime",
+			{
+				"de": "EMP cooldown time",
+				"en": "EMP cooldown time"
+			}
+		],
+		[
 			"SMW_PowerOutput",
 			{
 				"de": "Ausgangsleistung",
@@ -644,6 +672,34 @@
 			{
 				"de": "Kühlrate",
 				"en": "Cooling rate"
+			}
+		],
+		[
+			"LBL_EMPRadius",
+			{
+				"de": "EMP radius",
+				"en": "EMP radius"
+			}
+		],
+		[
+			"LBL_EMPChargeTime",
+			{
+				"de": "Charge",
+				"en": "Charge"
+			}
+		],
+		[
+			"LBL_EMPUnleashTime",
+			{
+				"de": "Unleash",
+				"en": "Unleash"
+			}
+		],
+		[
+			"LBL_EMPCooldownTime",
+			{
+				"de": "Cooldown",
+				"en": "Cooldown"
 			}
 		],
 		[
