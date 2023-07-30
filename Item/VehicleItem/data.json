@@ -127,15 +127,15 @@
 			"type": "number"
 		},
 		{
-			"SMW_EMPChargeTime": "API_emp.charge_duration",
+			"SMW_ChargeTime": "API_emp.charge_duration",
 			"type": "number"
 		},
 		{
-			"SMW_EMPUnleashTime": "API_emp.unleash_duration",
+			"SMW_Duration": "API_emp.unleash_duration",
 			"type": "number"
 		},
 		{
-			"SMW_EMPCooldownTime": "API_emp.cooldown_duration",
+			"SMW_CooldownTime": "API_emp.cooldown_duration",
 			"type": "number"
 		},
 		{
@@ -172,14 +172,37 @@
 					"type": "number"
 				},
 				{
-					"SMW_QuantumCooldownTime": "API_cooldown_time",
+					"SMW_CooldownTime": "API_cooldown_time",
 					"type": "number"
 				},
 				{
-					"SMW_QuantumSpoolUpTime": "API_spool_up_time",
+					"SMW_ChargeTime": "API_spool_up_time",
 					"type": "number"
 				}
 			]
+		},
+		{
+			"%": "Quantum Enforcement Device"
+		},
+		{
+			"SMW_JammerRange": "API_quantum_interdiction_generator.jammer_range",
+			"type": "number"
+		},
+		{
+			"SMW_InterdictionRange": "API_quantum_interdiction_generator.interdiction_range",
+			"type": "number"
+		},
+		{
+			"SMW_ChargeTime": "API_quantum_interdiction_generator.charge_duration",
+			"type": "number"
+		},
+		{
+			"SMW_CooldownTime": "API_quantum_interdiction_generator.cooldown_duration",
+			"type": "number"
+		},
+		{
+			"SMW_Duration": "API_quantum_interdiction_generator.discharge_duration",
+			"type": "number"
 		},
 		{
 			"%": "Shields"

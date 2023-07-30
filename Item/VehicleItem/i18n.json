@@ -171,10 +171,24 @@
 			}
 		],
 		[
-			"SMW_CoolingRate",
+			"SMW_ChargeTime",
 			{
-				"de": "Kühlrate",
-				"en": "Cooling rate"
+				"de": "Charge time",
+				"en": "Charge time"
+			}
+		],
+		[
+			"SMW_CooldownTime",
+			{
+				"de": "Cooldown time",
+				"en": "Cooldown time"
+			}
+		],
+		[
+			"SMW_Duration",
+			{
+				"de": "Dauer",
+				"en": "Duration"
 			}
 		],
 		[
@@ -182,27 +196,6 @@
 			{
 				"de": "EMP radius",
 				"en": "EMP radius"
-			}
-		],
-		[
-			"SMW_EMPChargeTime",
-			{
-				"de": "EMP charge time",
-				"en": "EMP charge time"
-			}
-		],
-		[
-			"SMW_EMPUnleashTime",
-			{
-				"de": "EMP unleash time",
-				"en": "EMP unleash time"
-			}
-		],
-		[
-			"SMW_EMPCooldownTime",
-			{
-				"de": "EMP cooldown time",
-				"en": "EMP cooldown time"
 			}
 		],
 		[
@@ -248,17 +241,17 @@
 			}
 		],
 		[
-			"SMW_QuantumCooldownTime",
+			"SMW_JammerRange",
 			{
-				"de": "Quantum Abkühlzeit",
-				"en": "Quantum cooldown time"
+				"de": "Jammer range",
+				"en": "Jammer range"
 			}
 		],
 		[
-			"SMW_QuantumSpoolUpTime",
+			"SMW_InterdictionRange",
 			{
-				"de": "Quantum Spool-up Zeit",
-				"en": "Quantum spool-up time"
+				"de": "Interdiction range",
+				"en": "Interdiction range"
 			}
 		],
 		[
@@ -462,13 +455,6 @@
 			{
 				"de": "Anwendungen",
 				"en": "Uses"
-			}
-		],
-		[
-			"SMW_Duration",
-			{
-				"de": "Dauer",
-				"en": "Duration"
 			}
 		],
 		[

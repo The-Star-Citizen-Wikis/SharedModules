@@ -29,8 +29,8 @@ local function loadQuantumDriveModes( pageName )
         '[[' .. translate( 'SMW_QuantumTravelType' ) .. '::+]]',
         string.format( '?%s', translate( 'SMW_QuantumTravelType' ) ),
         string.format( '?%s', translate( 'SMW_QuantumTravelSpeed' ) ),
-        string.format( '?%s', translate( 'SMW_QuantumCooldownTime' ) ),
-        string.format( '?%s', translate( 'SMW_QuantumSpoolUpTime' ) ),
+        string.format( '?%s', translate( 'SMW_CooldownTime' ) ),
+        string.format( '?%s', translate( 'SMW_ChargeTime' ) ),
         'mainlabel=-'
     } )
     local modes = {}
@@ -130,9 +130,9 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_EMPRadius' ), smwData[ translate( 'SMW_EMPRadius' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPChargeTime' ), smwData[ translate( 'SMW_EMPChargeTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPCooldownTime' ), smwData[ translate( 'SMW_EMPCooldownTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPUnleashTime' ), smwData[ translate( 'SMW_EMPUnleashTime' ) ] )
+            infobox:renderItem( translate( 'LBL_EMPChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_EMPCooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_EMPUnleashTime' ), smwData[ translate( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
@@ -156,8 +156,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
                     modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumTravelType' ) ] )
                     section = {
                         infobox:renderItem( translate( 'LBL_QuantumTravelSpeed' ), mode[ translate( 'SMW_QuantumTravelSpeed' ) ] ),
-                        infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_QuantumCooldownTime' ) ] ),
-                        infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_QuantumSpoolUpTime' ) ] )
+                        infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_CooldownTime' ) ] ),
+                        infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_ChargeTime' ) ] )
                     }
                     modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 3 }, true )
                     modeCount = modeCount + 1
