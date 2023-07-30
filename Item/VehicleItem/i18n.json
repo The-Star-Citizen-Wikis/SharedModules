@@ -654,6 +654,27 @@
 			}
 		],
 		[
+			"LBL_ChargeTime",
+			{
+				"de": "Charge",
+				"en": "Charge"
+			}
+		],
+		[
+			"LBL_CooldownTime",
+			{
+				"de": "Abkühlzeit",
+				"en": "Cooldown"
+			}
+		],
+		[
+			"LBL_Duration",
+			{
+				"de": "Dauer",
+				"en": "Duration"
+			}
+		],
+		[
 			"LBL_CoolingRate",
 			{
 				"de": "Kühlrate",
@@ -665,27 +686,6 @@
 			{
 				"de": "EMP radius",
 				"en": "EMP radius"
-			}
-		],
-		[
-			"LBL_EMPChargeTime",
-			{
-				"de": "Charge",
-				"en": "Charge"
-			}
-		],
-		[
-			"LBL_EMPUnleashTime",
-			{
-				"de": "Unleash",
-				"en": "Unleash"
-			}
-		],
-		[
-			"LBL_EMPCooldownTime",
-			{
-				"de": "Cooldown",
-				"en": "Cooldown"
 			}
 		],
 		[
@@ -735,13 +735,6 @@
 			{
 				"de": "Antriebsgeschwindigkeit",
 				"en": "Speed"
-			}
-		],
-		[
-			"LBL_QuantumCooldownTime",
-			{
-				"de": "Abkühlzeit",
-				"en": "Cooldown"
 			}
 		],
 		[
@@ -882,13 +875,6 @@
 			{
 				"de": "Anwendungen",
 				"en": "Uses"
-			}
-		],
-		[
-			"LBL_Duration",
-			{
-				"de": "Dauer",
-				"en": "Duration"
 			}
 		],
 		[

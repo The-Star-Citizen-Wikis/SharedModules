@@ -130,9 +130,9 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_EMPRadius' ), smwData[ translate( 'SMW_EMPRadius' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPCooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_EMPUnleashTime' ), smwData[ translate( 'SMW_Duration' ) ] )
+            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
@@ -156,8 +156,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
                     modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumTravelType' ) ] )
                     section = {
                         infobox:renderItem( translate( 'LBL_QuantumTravelSpeed' ), mode[ translate( 'SMW_QuantumTravelSpeed' ) ] ),
-                        infobox:renderItem( translate( 'LBL_QuantumCooldownTime' ), mode[ translate( 'SMW_CooldownTime' ) ] ),
-                        infobox:renderItem( translate( 'LBL_QuantumSpoolUpTime' ), mode[ translate( 'SMW_ChargeTime' ) ] )
+                        infobox:renderItem( translate( 'LBL_CooldownTime' ), mode[ translate( 'SMW_CooldownTime' ) ] ),
+                        infobox:renderItem( translate( 'LBL_ChargeTime' ), mode[ translate( 'SMW_ChargeTime' ) ] )
                     }
                     modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 3 }, true )
                     modeCount = modeCount + 1
