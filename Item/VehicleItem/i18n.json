@@ -192,6 +192,13 @@
 			}
 		],
 		[
+			"SMW_CoolingRate",
+			{
+				"de": "Kühlrate",
+				"en": "Cooling rate"
+			}
+		],
+		[
 			"SMW_EMPRadius",
 			{
 				"de": "EMP radius",
