@@ -738,10 +738,17 @@
 			}
 		],
 		[
-			"LBL_QuantumSpoolUpTime",
+			"LBL_JammerRange",
 			{
-				"de": "Spool-up Zeit",
-				"en": "Spool-up"
+				"de": "Dampen radius",
+				"en": "Dampen radius"
+			}
+		],
+		[
+			"LBL_InterdictionRange",
+			{
+				"de": "Snare radius",
+				"en": "Snare radius"
 			}
 		],
 		[

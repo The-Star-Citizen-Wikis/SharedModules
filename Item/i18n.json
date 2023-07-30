@@ -360,6 +360,13 @@
 			}
 		],
 		[
+			"type_quantuminterdictiongenerator",
+			{
+				"de": "Quantum Enforcement Device",
+				"en": "Quantum Enforcement Device"
+			}
+		],
+		[
 			"type_shield",
 			{
 				"de": "Schildgenerator",
@@ -469,6 +476,13 @@
 			{
 				"de": "Quantenantrieb",
 				"en": "Quantum drives"
+			}
+		],
+		[
+			"category_quantuminterdictiongenerator",
+			{
+				"de": "Quantum Enforcement Device",
+				"en": "Quantum Enforcement Devices"
 			}
 		],
 		[

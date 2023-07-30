@@ -181,6 +181,18 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             --infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ translate( 'SMW_QuantumTravelRange' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getQuantumDriveModesSection()
+    -- Quantum Enforcement Device
+    elseif smwData[ translate( 'SMW_JammerRange' ) ] then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_JammerRange' ), smwData[ translate( 'SMW_JammerRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_InterdictionRange' ), smwData[ translate( 'SMW_InterdictionRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] ),
+            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Shield
     elseif smwData[ translate( 'SMW_ShieldHealthPoint' ) ] then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
