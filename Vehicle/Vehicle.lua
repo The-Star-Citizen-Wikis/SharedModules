@@ -191,6 +191,7 @@ function methodtable.setSemanticProperties( self )
 	local loanerKey = translate( 'SMW_LoanerVehicle' )
 
 	--- Retrieve value(s) from the frame
+	--- FIXME: This should use Common/SMW
 	---
 	--- @param datum table An entry from data.smw_data
 	--- @param argKey string The key to use as an accessor to frameArgs
@@ -288,7 +289,7 @@ function methodtable.setSemanticProperties( self )
 
 				for index, val in ipairs( value ) do
 					-- This should not happen
-					if type( val ) == 'table' then
+					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
 						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
 					end
 
@@ -297,7 +298,17 @@ function methodtable.setSemanticProperties( self )
 						val = common.formatNum( val )
 					-- Multilingual Text, add a suffix
 					elseif datum.type == 'multilingual_text' and config.smw_multilingual_text == true then
-						val = string.format( '%s@%s', val, config.module_lang or mw.getContentLanguage():getCode() )
+						-- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
+						if type( val ) == 'table' then
+							local tmp = {}
+							for _, valText in ipairs( val ) do
+								valText = string.format( '%s@%s', valText, config.module_lang or mw.getContentLanguage():getCode() )
+								table.insert( tmp, valText )
+							end
+							val = tmp
+						else
+							val = string.format( '%s@%s', val, config.module_lang or mw.getContentLanguage():getCode() )
+						end
 					-- Num format
 					elseif datum.type == 'number' then
 						val = common.formatNum( val )

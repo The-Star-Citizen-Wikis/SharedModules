@@ -126,7 +126,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
 				for index, val in ipairs( value ) do
 					-- This should not happen
-					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' then
+					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
 						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
 					end
 
@@ -135,7 +135,17 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 						val = common.formatNum( val )
 					-- Multilingual Text, add a suffix
 					elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
-						val = string.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+						-- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
+						if type( val ) == 'table' then
+							local tmp = {}
+							for _, valText in ipairs( val ) do
+								valText = string.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+								table.insert( tmp, valText )
+							end
+							val = tmp
+						else
+							val = string.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+						end
 					-- String format
 					elseif type( datum.format ) == 'string' then
 						if string.find( datum.format, '%', 1, true  ) then
