@@ -37,8 +37,8 @@
 		},
 		{
 			"SMW_Role": [
-				"ARG_Role",
-				"API_foci"
+				"API_foci",
+				"ARG_Role"
 			],
 			"type": "multilingual_text",
 			"smw_format": "#-"
@@ -61,8 +61,8 @@
 		},
 		{
 			"SMW_PledgePrice": [
-				"ARG_PledgePrice",
-				"API_msrp"
+				"API_msrp",
+				"ARG_PledgePrice"
 			]
 		},
 		{
@@ -76,15 +76,15 @@
 		},
 		{
 			"SMW_MinimumCrew": [
-				"ARG_MinimumCrew",
-				"API_crew.min"
+				"API_crew.min",
+				"ARG_MinimumCrew"
 			],
 			"smw_format": "#-"
 		},
 		{
 			"SMW_MaximumCrew": [
-				"ARG_MaximumCrew",
-				"API_crew.max"
+				"API_crew.max",
+				"ARG_MaximumCrew"
 			],
 			"smw_format": "#-"
 		},
@@ -98,8 +98,8 @@
 		},
 		{
 			"SMW_CargoCapacity": [
-				"ARG_CargoCapacity",
-				"API_cargo_capacity"
+				"API_cargo_capacity",
+				"ARG_CargoCapacity"
 			],
 			"type": "number"
 		},
@@ -170,8 +170,8 @@
 		},
 		{
 			"SMW_Mass": [
-				"ARG_mass",
-				"API_mass"
+				"API_mass",
+				"ARG_mass"
 			],
 			"type": "number"
 		},
