@@ -414,13 +414,17 @@ function methodtable.setCategories( self )
 	--- Lowers all words unless the word is fully capitalized (e.g.: EMP Generators -> EMP generators)
 	local function lowercaseWords( input )
 	    local result = input:gsub( '(%S+)' , function( word )
-    	    if word:match( ' ^[A-Z][A-Z]*$ ' ) then
+    	    if string.upper(word) == word then
         	    return word
         	else
 	            return string.lower( word )
     	    end
 	    end)
 	    return result
+	end
+	
+	local function startsWith(str, start)
+		return str:sub(1, #start) == start
 	end
 
 	--- Only set category if category_type value exists
@@ -430,7 +434,7 @@ function methodtable.setCategories( self )
 			table.insert( self.categories, typeCategory ) 
 			
 			local categoryTypeSuffix = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
-			if langCode == "en" then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
+			if startsWith(langCode, "en") then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
 
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
 				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. categoryTypeSuffix
