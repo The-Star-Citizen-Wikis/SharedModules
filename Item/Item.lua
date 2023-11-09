@@ -14,6 +14,7 @@ local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Item/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
 
+local langCode = lang:getCode()
 local lang
 if config.module_lang then
 	lang = mw.getLanguage( config.module_lang )
@@ -428,13 +429,16 @@ function methodtable.setCategories( self )
 		if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
 			table.insert( self.categories, typeCategory ) 
 			
+			local categoryTypeSuffix = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+			if langCode == "en" then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
+
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
-				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. lowercaseWords( translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) ) )
+				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, sizeCategory )
 			end
-		
+
 			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
-				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. lowercaseWords( translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) ) )
+				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, gradeCategory )
 			end
 		end
