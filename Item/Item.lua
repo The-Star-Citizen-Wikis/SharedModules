@@ -14,13 +14,13 @@ local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Item/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
 
-local langCode = lang:getCode()
 local lang
 if config.module_lang then
 	lang = mw.getLanguage( config.module_lang )
 else
 	lang = mw.getContentLanguage()
 end
+local langCode = lang:getCode()
 
 local moduleCache = {}
 
