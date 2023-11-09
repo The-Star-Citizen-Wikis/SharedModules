@@ -1,0 +1,105 @@
+.template-navplate {
+	margin-top: var( --space-md );
+	clear: both;
+	font-size: 0.875rem;
+	line-height: var( --line-height-sm );
+	border: 1px solid var( --border-color-base );
+	border-radius: var( --border-radius--medium );
+    overflow: hidden;
+}
+
+.template-navplate__header {
+	padding: var( --space-sm ) var( --space-md );
+	background-color: var( --color-surface-2 );
+	display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.template-navplate.mw-collapsed .template-navplate__header {
+	background-color: transparent;
+}
+
+.template-navplate__subtitle {
+	font-size: 0.8125rem;
+}
+
+.template-navplate__subtitle,
+.template-navplate-item__label {
+	color: var( --color-base--subtle );
+	letter-spacing: 0.05em;
+}
+
+.template-navplate__title,
+.template-navplate__groupheader {
+	color: var( --color-base--emphasized );
+	font-weight: var( --font-weight-semibold );
+}
+
+.template-navplate__title {
+	font-size: var( --font-size-h3 );
+}
+
+.template-navplate__content {
+	position: relative;
+	border-top: 1px solid var( --border-color-base );
+}
+
+.template-navplate__groupheader {
+	background-color: var( --color-surface-2 );
+	padding: var( --space-xs ) var( --space-md );
+}
+
+.template-navplate-item {
+	display: grid;
+}
+
+.template-navplate-item__label {
+	display: flex;
+	padding: var( --space-sm ) var( --space-md ) 0 var( --space-md );
+	gap: var( --space-xs );
+}
+
+.template-navplate-item__list {
+	padding: 10px; /* 10px + 2px = space-sm; 10px + 6px = space-md */
+}
+
+.template-navplate-item__list a {
+	display: inline-block;
+	padding: 2px 6px;
+}
+
+.template-navplate__content > div + div {
+	border-top: 1px solid var( --border-color-base );
+}
+
+/* Style collapse button */
+.template-navplate__header.mw-collapsible-toggle {
+	float: none;
+}
+
+.template-navplate__header.mw-collapsible-toggle:hover {
+	background-color: var( --background-color-quiet--hover );
+}
+
+.template-navplate__header.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
+	width: 0.875rem;
+    height: 0.875rem;
+    transition: var( --transition-menu );
+    transition-property: transform;
+}
+
+.template-navplate__header.mw-collapsible-toggle.mw-collapsible-toggle-collapsed .mw-ui-icon-wikimedia-collapse {
+	transform: rotate( 180deg );
+}
+
+@media only screen and ( min-width: 720px ) {
+	.template-navplate-item {
+		grid-template-columns: 180px auto;
+	}
+
+	.template-navplate-item__label {
+		border-right: 1px solid var( --border-color-base );
+		padding-bottom: var( --space-sm );
+	}
+}
