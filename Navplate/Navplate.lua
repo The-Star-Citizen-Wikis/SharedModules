@@ -9,6 +9,8 @@ local p = {}
 local args = {}
 local origArgs = {}
 local root
+local header
+local content
 
 local function union(t1, t2)
     -- Returns the union of the values of two tables, as a sequence.
