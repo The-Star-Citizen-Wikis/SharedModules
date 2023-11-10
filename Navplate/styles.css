@@ -60,6 +60,11 @@
 	gap: var( --space-xs );
 }
 
+.template-navplate-item__label img {
+	opacity: var( --opacity-icon-base );
+    filter: var( --filter-invert );
+}
+
 .template-navplate-item__list {
 	padding: 10px; /* 10px + 2px = space-sm; 10px + 6px = space-md */
 }
