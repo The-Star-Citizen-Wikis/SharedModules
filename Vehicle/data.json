@@ -368,11 +368,6 @@
 			"data": "SMW_ClassName"
 		},
 		{
-			"label": "TIS Ship Map",
-			"format": "https://tradein.space/#/ship_maps/%s",
-			"data": "SMW_ClassName"
-		},
-		{
 			"label": "StarShip 42",
 			"format": "https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s",
 			"data": "SMW_ShipMatrixName"
