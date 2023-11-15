@@ -126,7 +126,8 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
 				for index, val in ipairs( value ) do
 					-- This should not happen
-					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
+					--- FIXME: Somehow this is mutating the original self.apiData, not sure why
+					if type( val ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
 						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
 					end
 

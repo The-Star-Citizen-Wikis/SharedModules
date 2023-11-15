@@ -225,7 +225,7 @@
 		},
 		{
 			"SMW_LoanerVehicle": "API_loaner",
-			"format": "[[%s]]"
+			"type": "table"
 		},
 		{
 			"SMW_GameBuild": "API_version"

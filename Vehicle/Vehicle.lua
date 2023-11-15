@@ -188,153 +188,17 @@ end
 --- @return table SMW Result
 function methodtable.setSemanticProperties( self )
 	local setData = {}
-	local loanerKey = translate( 'SMW_LoanerVehicle' )
 
-	--- Retrieve value(s) from the frame
-	--- FIXME: This should use Common/SMW
-	---
-	--- @param datum table An entry from data.smw_data
-	--- @param argKey string The key to use as an accessor to frameArgs
-	--- @return string|number|table|nil
-	local function getFromArgs( datum, argKey )
-		local value
-		-- Numbered parameters, e.g. URL1, URL2, URL3, etc.
-		if datum.type == 'range' and type( datum.max ) == 'number' then
-			value = {}
-
-			for i = 1, datum.max do
-				local argValue = self.frameArgs[ argKey .. i ]
-				if argValue then table.insert( value, argValue ) end
-			end
-		-- A "simple" arg
-		else
-			value = self.frameArgs[ argKey ]
-		end
-
-		return value
-	end
-
-	-- Iterate through the list of SMW attributes that shall be filled
-	for _, datum in ipairs( data.smw_data ) do
-		-- Retrieve the SMW key and from where the data should be pulled
-		local smwKey, from
-		for key, get_from in pairs( datum ) do
-			if string.sub( key, 1, 3 ) == 'SMW' then
-				smwKey = key
-				from = get_from
-			end
-		end
-
-		smwKey = translate( smwKey )
-
-		if type( from ) ~= 'table' then
-			from = { from }
-		end
-
-		-- Iterate the list of data sources in order, later sources override previous ones
-		-- I.e. if the list is Frame Args, API; The api will override possible values set from the frame
-		for _, key in ipairs( from ) do
-			local parts = mw.text.split( key, '_', true )
-			local value
-
-			-- Re-assemble keys with multiple '_'
-			if #parts > 2 then
-				local tmp = parts[ 1 ]
-				table.remove( parts, 1 )
-				parts = {
-					tmp,
-					table.concat( parts, '_' )
-				}
-			end
-
-			mw.logObject( parts, 'Key Parts' )
-
-			-- safeguard check if we have two parts
-			if #parts == 2 then
-				-- Retrieve data from frameArgs
-				if parts[ 1 ] == 'ARG' then
-					value = getFromArgs( datum, translate( key ) )
-
-					-- Use EN lang as fallback for arg names that are empty
-					if value == nil then
-						local success, translation = pcall( TNT.formatInLanguage, 'en', 'Module:Vehicle/i18n.json', key )
-						if success then
-							value = getFromArgs( datum, translation )
-						end
-					end
-				-- Retrieve data from API
-				elseif parts[ 1 ] == 'API' and self.apiData ~= nil then
-					mw.logObject({
-						key_access = parts[2],
-						value = self.apiData:get( parts[ 2 ] )
-					})
-
-					value = self.apiData:get( parts[ 2 ] )
-
-					if smwKey == loanerKey and type( value ) == 'table' then
-						local tmp = {}
-						for _, loaner in ipairs( value ) do
-							table.insert( tmp, loaner.name )
-						end
-						value = tmp
-					end
-				end
-			end
-
-			-- Transform value based on 'format' key
-			if value ~= nil then
-				if type( value ) ~= 'table' then
-					value = { value }
-				end
-
-				for index, val in ipairs( value ) do
-					-- This should not happen
-					if type( val ) == 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
-						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
-					end
-
-					-- Format number for SMW
-					if datum.type == 'number' then
-						val = common.formatNum( val )
-					-- Multilingual Text, add a suffix
-					elseif datum.type == 'multilingual_text' and config.smw_multilingual_text == true then
-						-- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
-						if type( val ) == 'table' then
-							local tmp = {}
-							for _, valText in ipairs( val ) do
-								valText = string.format( '%s@%s', valText, config.module_lang or mw.getContentLanguage():getCode() )
-								table.insert( tmp, valText )
-							end
-							val = tmp
-						else
-							val = string.format( '%s@%s', val, config.module_lang or mw.getContentLanguage():getCode() )
-						end
-					-- Num format
-					elseif datum.type == 'number' then
-						val = common.formatNum( val )
-					-- String format
-					elseif type( datum.format ) == 'string' then
-						if string.find( datum.format, '%', 1, true  ) then
-							val = string.format( datum.format, val )
-						elseif datum.format == 'ucfirst' then
-							val = lang:ucfirst( val )
-						elseif datum.format == 'replace-dash' then
-							val = string.gsub( val, '%-', ' ' )
-						end
-					end
-
-					table.remove( value, index )
-					table.insert( value, index, val )
-				end
-
-				if type( value ) == 'table' and #value == 1 then
-					value = value[ 1 ]
-				end
-
-				setData[ smwKey ] = value
-			end
-		end
-	end
+	local smwCommon = require( 'Module:Common/SMW' )
+	smwCommon.addSmwProperties(
+		self.apiData,
+		self.frameArgs,
+		setData,
+		translate,
+		config,
+		data,
+		'Vehicle'
+	)
 
 	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().rootText,
@@ -368,6 +232,18 @@ function methodtable.setSemanticProperties( self )
 			--- Commodity
 			local commodity = require( 'Module:Commodity' ):new()
 			commodity:addShopData( self.apiData )
+		end
+
+		-- Loaner
+		--- TODO: Handling of table/object values should be handled in Common/SMW
+		if self.apiData.loaner ~= nil and type( self.apiData.loaner ) == 'table' and #self.apiData.loaner > 0 then
+			local tmp = {}
+			for _, loaner in ipairs( self.apiData.loaner ) do
+				if loaner.name ~= nil then
+					table.insert( tmp, string.format( '[[%s]]', loaner.name ) )
+				end
+			end
+			setData[ translate( 'SMW_LoanerVehicle' ) ] = tmp
 		end
 	end
 
