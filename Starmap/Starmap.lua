@@ -52,7 +52,7 @@ function Starmap.link(location, system)
 end
 
 --- Look for a structure in starmap
--- A structure can be an astronomical anomaly
+-- A structure can be an celestial anomaly
 -- @param structureType The type of structure (system/object)
 -- @param structureName The name/code/designation of the structure in Star Citizen
 function Starmap.findStructure(structureType, structureName)

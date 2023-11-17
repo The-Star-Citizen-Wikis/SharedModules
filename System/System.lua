@@ -186,7 +186,7 @@ function System.main(frame)
     })
 
     infobox:renderSection({
-        title = t('lbl_astronomical_objects'),
+        title = t('lbl_celestial_objects'),
         content = {infobox:renderItem({
             label = t('lbl_planets'),
             data = tostring(planets)
