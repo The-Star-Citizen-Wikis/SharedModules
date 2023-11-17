@@ -38,10 +38,10 @@
 			}
 		],
 		[
-			"lbl_celestial_objects",
+			"lbl_astronomical_objects",
 			{
-				"en": "Celestial objects",
-				"de": "Himmelsobjekte"
+				"en": "Astronomical objects",
+				"de": "Astronomische Objekte"
 			}
 		],
 		[
