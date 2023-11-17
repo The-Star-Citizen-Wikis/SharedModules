@@ -1,0 +1,16 @@
+{
+	"%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+	"module_lang": null,
+	"%placeholder_image": "Placeholder image to use if no image was found",
+	"placeholder_image": "Placeholderv2.png",
+	"%subtype_rename": "Rename star subtypes",
+	"subtype_rename": {
+		"Main Sequence-Dwarf-G": "G-type main sequence",
+		"Main Sequence-Dwarf-F": "F-type main sequence",
+		"Main Sequence-Dwarf-K": "K-type main sequence",
+		"Main Sequence-Dwarf-A": "A-type main sequence",
+		"Main Sequence-Dwarf-B": "B-type main sequence",
+		"Main Sequence-Dwarf-M": "M-type main sequence",
+		"Main Sequence-Dwarf-O": "O-type main sequence"
+	}
+}

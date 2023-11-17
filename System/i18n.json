@@ -1,0 +1,279 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"error_no_data_desc",
+			{
+				"en": "System data was unable to be retrieved.",
+				"de": "Systemdaten konnten nicht abgerufen werden."
+			}
+		],
+		[
+			"error_no_data_title",
+			{
+				"en": "ERROR",
+				"de": "ERROR"
+			}
+		],
+		[
+			"lbl_asteroid_belts",
+			{
+				"en": "Asteroid belts",
+				"de": "Asteroidengürtel"
+			}
+		],
+		[
+			"lbl_astronomical_objects",
+			{
+				"en": "Astronomical objects",
+				"de": "Astronomische Objekte"
+			}
+		],
+		[
+			"lbl_discovered_by",
+			{
+				"en": "Discovered by",
+				"de": "Entdeckt von"
+			}
+		],
+		[
+			"lbl_discovered_in",
+			{
+				"en": "Discovered in",
+				"de": "Entdeckt in"
+			}
+		],
+		[
+			"lbl_historical_name",
+			{
+				"en": "Historical name",
+				"de": "Historischer Name"
+			}
+		],
+		[
+			"lbl_historical_names",
+			{
+				"en": "Historical names",
+				"de": "Historische Namen"
+			}
+		],
+		[
+			"lbl_history",
+			{
+				"en": "History",
+				"de": "Geschichte"
+			}
+		],
+		[
+			"lbl_jump_points",
+			{
+				"en": "Jump points",
+				"de": "Sprungpunkt"
+			}
+		],
+		[
+			"lbl_official_sites",
+			{
+				"en": "Official sites",
+				"de": "Offizielle Seiten"
+			}
+		],
+		[
+			"lbl_other_sites",
+			{
+				"en": "Other sites",
+				"de": "Andere Seiten"
+			}
+		],
+		[
+			"lbl_planets",
+			{
+				"en": "Planets",
+				"de": "Planeten"
+			}
+		],
+		[
+			"lbl_satellites",
+			{
+				"en": "Satellites",
+				"de": "Satelliten"
+			}
+		],
+		[
+			"lbl_size",
+			{
+				"en": "Size",
+				"de": "Größe"
+			}
+		],
+		[
+			"lbl_starmap",
+			{
+				"en": "Starmap",
+				"de": "Starmap"
+			}
+		],
+		[
+			"lbl_starmap_code",
+			{
+				"en": "Starmap code",
+				"de": "Starmap Code"
+			}
+		],
+		[
+			"lbl_starmap_id",
+			{
+				"en": "Starmap ID",
+				"de": "Starmap ID"
+			}
+		],
+		[
+			"lbl_star_type",
+			{
+				"en": "Star type",
+				"de": "Sterntyp"
+			}
+		],
+		[
+			"lbl_star_types",
+			{
+				"en": "Star types",
+				"de": "Sterntypen"
+			}
+		],
+		[
+			"lbl_stations",
+			{
+				"en": "Stations",
+				"de": "Stationen"
+			}
+		],
+		[
+			"lbl_status",
+			{
+				"en": "Status",
+				"de": "Status"
+			}
+		],
+		[
+			"lbl_system_size",
+			{
+				"en": "System size",
+				"de": "Systemgröße"
+			}
+		],
+		[
+			"lbl_system_status",
+			{
+				"en": "System status",
+				"de": "Systemstatus"
+			}
+		],
+		[
+			"lbl_system_type",
+			{
+				"en": "System type",
+				"de": "Systemtyp"
+			}
+		],
+		[
+			"lbl_type",
+			{
+				"en": "Type",
+				"de": "Typ"
+			}
+		],
+		[
+			"shortdesc_plural",
+			{
+				"en": "%s system with %d planets.",
+				"de": "%s System mit %d Planeten."
+			}
+		],
+		[
+			"shortdesc_singular",
+			{
+				"en": "%s system with %d planet.",
+				"de": "%s System mit %d Planet."
+			}
+		],
+		[
+			"val_status_D",
+			{
+				"en": "Draft",
+				"de": "Entwurf"
+			}
+		],
+		[
+			"val_status_M",
+			{
+				"en": "UEE Military Classified",
+				"de": "UEE-Militärgeheimnis"
+			}
+		],
+		[
+			"val_status_N",
+			{
+				"en": "Probe data incomplete",
+				"de": "Sondendaten unvollständig"
+			}
+		],
+		[
+			"val_status_P",
+			{
+				"en": "Published",
+				"de": "Veröffentlicht"
+			}
+		],
+		[
+			"val_status_R",
+			{
+				"en": "Review",
+				"de": "Rezension"
+			}
+		],
+		[
+			"val_status_S",
+			{
+				"en": "Stub",
+				"de": "Stub"
+			}
+		],
+		[
+			"val_status_U",
+			{
+				"en": "Undiscovered",
+				"de": "Unentdeckt"
+			}
+		],
+		[
+			"val_type_binary",
+			{
+				"en": "Binary",
+				"de": "Binärstern"
+			}
+		],
+		[
+			"val_type_single_star",
+			{
+				"en": "Single Star",
+				"de": "Einzelstern"
+			}
+		]
+	]
+}
