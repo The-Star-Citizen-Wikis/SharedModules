@@ -38,7 +38,7 @@ end
 -- @param str string
 -- @param suffix string
 -- @return boolean
-function endsWith(str, suffix)
+local function endsWith(str, suffix)
     return string.sub(str, -string.len(suffix)) == suffix
 end
 
