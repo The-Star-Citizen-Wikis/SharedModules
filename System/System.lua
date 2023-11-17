@@ -34,6 +34,14 @@ local function e(object, ...)
     return value
 end
 
+--- Does string end with x
+-- @param str string
+-- @param suffix string
+-- @return boolean
+function endsWith(str, suffix)
+    return string.sub(str, -string.len(suffix)) == suffix
+end
+
 --- Filter table
 -- @param array table
 -- @param key string
@@ -151,7 +159,9 @@ function System.main(frame)
 
     infobox:renderImage(image)
 
-    name = name .. ' system'
+    if endsWith(name, ' system') == false then
+        name = name .. ' system'
+    end
 
     infobox:renderHeader({
         title = name,
