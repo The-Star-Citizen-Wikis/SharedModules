@@ -13,7 +13,8 @@
 		"JUMPPOINT",
 		"LZ",
 		"BLACKHOLE",
-		"POI"
+		"POI",
+		"MOON"
 	],
 	"%systems": "System star types",
 	"systems": ["SINGLE_STAR", "BINARY"],
