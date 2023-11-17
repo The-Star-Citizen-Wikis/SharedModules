@@ -20,7 +20,6 @@ if config.module_lang then
 else
 	lang = mw.getContentLanguage()
 end
-local langCode = lang:getCode()
 
 local moduleCache = {}
 
@@ -414,27 +413,28 @@ function methodtable.setCategories( self )
 	--- Lowers all words unless the word is fully capitalized (e.g.: EMP Generators -> EMP generators)
 	local function lowercaseWords( input )
 	    local result = input:gsub( '(%S+)' , function( word )
-    	    if string.upper(word) == word then
+    	    if string.upper( word ) == word then
         	    return word
-        	else
-	            return string.lower( word )
     	    end
+
+			return string.lower( word )
 	    end)
 	    return result
 	end
 	
-	local function startsWith(str, start)
-		return str:sub(1, #start) == start
+	local function startsWith( str, start )
+		return str:sub( 1, #start ) == start
 	end
 
 	--- Only set category if category_type value exists
 	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
 		local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+
 		if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
 			table.insert( self.categories, typeCategory ) 
 			
 			local categoryTypeSuffix = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
-			if startsWith(langCode, "en") then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
+			if startsWith( lang:getCode(), 'en' ) then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
 
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
 				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. categoryTypeSuffix

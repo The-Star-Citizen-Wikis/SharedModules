@@ -1,552 +1,552 @@
 {
-    "license": "CC0-1.0",
-    "description": {
-        "en": "Translation table for the Module:Item"
-    },
-    "schema": {
-        "fields": [
-            {
-                "name": "id",
-                "type": "string"
-            },
-            {
-                "name": "message",
-                "type": "localized"
-            }
-        ]
-    },
-    "data": [
-        [
-            "ARG_Image",
-            {
-                "de": "Bild",
-                "en": "Image"
-            },
-            "wiki-file-name",
-            {
-                "en": "Image",
-                "de": "Bild"
-            },
-            false,
-            true,
-            {
-                "en": "The file name of the image of the ship/vehicle",
-                "de": "Der Dateiname des Bildes des Schiffes/Fahrzeugs"
-            },
-            "Defender.jpg"
-        ],
-        [
-            "ARG_Name",
-            {
-                "de": "Name",
-                "en": "Name"
-            },
-            "string",
-            {
-                "de": "Name",
-                "en": "Name"
-            },
-            true,
-            true,
-            {
-                "en": "The name of the item",
-                "de": "Der Name des Items"
-            },
-            "Cirrus"
-        ],
-        [
-            "ARG_SmwQueryName",
-            {
-                "de": "SMWQueryName",
-                "en": "smwqueryname"
-            },
-            "string",
-            {
-                "de": "SMWQueryName",
-                "en": "smwqueryname"
-            },
-            false,
-            true,
-            {
-                "en": "The page name to load data from",
-                "de": "Seitenname aus denen Daten geladen werden"
-            },
-            {
-                "en": "Cirrus",
-                "de": "Cirrus"
-            }
-        ],
-        [
-            "ARG_Manufacturer",
-            {
-                "de": "Hersteller",
-                "en": "manufacturer"
-            },
-            "string",
-            {
-                "de": "Hersteller",
-                "en": "Manufacturer"
-            },
-            false,
-            true,
-            {
-                "en": "The manufacturer code of the manufacturer who made the item",
-                "de": "Der Herstellercode des Herstellers, der das Item hergestellt hat"
-            },
-            "BANU"
-        ],
-        [
-            "ARG_UUID",
-            {
-                "de": "UUID",
-                "en": "uuid"
-            },
-            "string",
-            {
-                "de": "UUID",
-                "en": "UUID"
-            },
-            false,
-            true,
-            {
-                "en": "UUID of the item from the API.",
-                "de": "UUID des Items aus der API."
-            },
-            "aff1d3cf-2e01-48a1-8ce3-47fbdbeceb16"
-        ],
-        [
-            "SMW_Name",
-            {
-                "de": "Name",
-                "en": "Name"
-            }
-        ],
-        [
-            "SMW_Manufacturer",
-            {
-                "de": "Hersteller",
-                "en": "Manufacturer"
-            }
-        ],
-        [
-            "SMW_UUID",
-            {
-                "de": "UUID",
-                "en": "UUID"
-            }
-        ],
-        [
-            "SMW_Description",
-            {
-                "de": "Beschreibung",
-                "en": "Description"
-            }
-        ],
-        [
-            "SMW_Type",
-            {
-                "de": "Typ",
-                "en": "Type"
-            }
-        ],
-        [
-            "SMW_Size",
-            {
-                "de": "Größe",
-                "en": "Size"
-            }
-        ],
-        [
-            "SMW_Occupancy",
-            {
-                "de": "Belegung",
-                "en": "Occupancy"
-            }
-        ],
-        [
-            "SMW_Class",
-            {
-                "de": "Klasse",
-                "en": "Class"
-            }
-        ],
-        [
-            "SMW_Grade",
-            {
-                "de": "Grad",
-                "en": "Grade"
-            }
-        ],
-        [
-            "SMW_EntityHeight",
-            {
-                "de": "Höhe",
-                "en": "Entity height"
-            }
-        ],
-        [
-            "SMW_EntityLength",
-            {
-                "de": "Länge",
-                "en": "Entity length"
-            }
-        ],
-        [
-            "SMW_EntityWidth",
-            {
-                "de": "Breite",
-                "en": "Entity width"
-            }
-        ],
-        [
-            "SMW_Mass",
-            {
-                "de": "Masse",
-                "en": "Mass"
-            }
-        ],
-        [
-            "SMW_GameBuild",
-            {
-                "de": "Spielversion",
-                "en": "Game build"
-            }
-        ],
-        [
-            "LBL_Type",
-            {
-                "de": "Typ",
-                "en": "Type"
-            }
-        ],
-        [
-            "LBL_Class",
-            {
-                "de": "Klasse",
-                "en": "Class"
-            }
-        ],
-        [
-            "LBL_Occupancy",
-            {
-                "de": "Belegung",
-                "en": "Occupancy"
-            }
-        ],
-        [
-            "LBL_Dimensions",
-            {
-                "de": "Dimensionen",
-                "en": "Dimensions"
-            }
-        ],
-        [
-            "LBL_Length",
-            {
-                "de": "Länge",
-                "en": "Length"
-            }
-        ],
-        [
-            "LBL_Width",
-            {
-                "de": "Breite",
-                "en": "Width"
-            }
-        ],
-        [
-            "LBL_Height",
-            {
-                "de": "Höhe",
-                "en": "Height"
-            }
-        ],
-        [
-            "LBL_Mass",
-            {
-                "de": "Masse",
-                "en": "Mass"
-            }
-        ],
-        [
-            "LBL_OfficialSites",
-            {
-                "de": "Offizielle Seiten",
-                "en": "Official sites"
-            }
-        ],
-        [
-            "LBL_CommunitySites",
-            {
-                "de": "Community Seiten",
-                "en": "Community sites"
-            }
-        ],
-        [
-            "LBL_OtherSites",
-            {
-                "de": "Andere Seiten",
-                "en": "Other sites"
-            }
-        ],
-        [
-            "LBL_Galactapedia",
-            {
-                "de": "Galactapedia",
-                "en": "Galactapedia"
-            }
-        ],
-        [
-            "type_cooler",
-            {
-                "de": "Kühler",
-                "en": "Cooler"
-            }
-        ],
-        [
-            "type_drink",
-            {
-                "de": "Getränk",
-                "en": "Drink"
-            }
-        ],
-        [
-            "type_emp",
-            {
-                "de": "EMP-Generator",
-                "en": "EMP generator"
-            }
-        ],
-        [
-            "type_food",
-            {
-                "de": "Lebensmittel",
-                "en": "Food"
-            }
-        ],
-        [
-            "type_item",
-            {
-                "de": "Item",
-                "en": "Item"
-            }
-        ],
-        [
-            "type_miningmodifier",
-            {
-                "de": "Bergbaumodul",
-                "en": "Mining module"
-            }
-        ],
-        [
-            "type_missilelauncher",
-            {
-                "de": "Raketenwerfer",
-                "en": "Missile launcher"
-            }
-        ],
-        [
-            "type_powerplant",
-            {
-                "de": "Generator",
-                "en": "Power plant"
-            }
-        ],
-        [
-            "type_quantumdrive",
-            {
-                "de": "Quantenantrieb",
-                "en": "Quantum drive"
-            }
-        ],
-        [
-            "type_quantuminterdictiongenerator",
-            {
-                "de": "Quantum Enforcement Device",
-                "en": "Quantum enforcement device"
-            }
-        ],
-        [
-            "type_shield",
-            {
-                "de": "Schildgenerator",
-                "en": "Shield generator"
-            }
-        ],
-        [
-            "type_weaponattachment",
-            {
-                "de": "Waffenbefestigung",
-                "en": "Weapon attachment"
-            }
-        ],
-        [
-            "type_weaponmining",
-            {
-                "de": "Bergbaulaser",
-                "en": "Mining laser"
-            }
-        ],
-        [
-            "class_civilian",
-            {
-                "de": "👔 Civilian",
-                "en": "👔 Civilian"
-            }
-        ],
-        [
-            "class_competition",
-            {
-                "de": "🏁 Competition",
-                "en": "🏁 Competition"
-            }
-        ],
-        [
-            "class_military",
-            {
-                "de": "🎖️ Military",
-                "en": "🎖️ Military"
-            }
-        ],
-        [
-            "class_industrial",
-            {
-                "de": "⚒️ Industrial",
-                "en": "⚒️ Industrial"
-            }
-        ],
-        [
-            "class_stealth",
-            {
-                "de": "👻 Stealth",
-                "en": "👻 Stealth"
-            }
-        ],
-        [
-            "category_cooler",
-            {
-                "de": "Kühler",
-                "en": "Coolers"
-            }
-        ],
-        [
-            "category_drink",
-            {
-                "de": "Getränk",
-                "en": "Drinks"
-            }
-        ],
-        [
-            "category_emp",
-            {
-                "de": "EMP-Generator",
-                "en": "EMP generators"
-            }
-        ],
-        [
-            "category_food",
-            {
-                "de": "Lebensmittel",
-                "en": "Food"
-            }
-        ],
-        [
-            "category_miningmodifier",
-            {
-                "de": "Bergbaumodul",
-                "en": "Mining modules"
-            }
-        ],
-        [
-            "category_missilelauncher",
-            {
-                "de": "Raketenwerfer",
-                "en": "Missile launchers"
-            }
-        ],
-        [
-            "category_powerplant",
-            {
-                "de": "Generator",
-                "en": "Power plants"
-            }
-        ],
-        [
-            "category_quantumdrive",
-            {
-                "de": "Quantenantrieb",
-                "en": "Quantum drives"
-            }
-        ],
-        [
-            "category_quantuminterdictiongenerator",
-            {
-                "de": "Quantum Enforcement Device",
-                "en": "Quantum enforcement devices"
-            }
-        ],
-        [
-            "category_shield",
-            {
-                "de": "Schildgenerator",
-                "en": "Shield generators"
-            }
-        ],
-        [
-            "category_weaponmining",
-            {
-                "de": "Bergbaulaser",
-                "en": "Mining lasers"
-            }
-        ],
-        [
-            "shortdesc_grade",
-            {
-                "de": "$1 grade $2",
-                "en": "$1 grade $2"
-            }
-        ],
-        [
-            "shortdesc_manufactured_by",
-            {
-                "de": "$1 hergestellt von $2",
-                "en": "$1 manufactured by $2"
-            }
-        ],
-        [
-            "error_no_data_title",
-            {
-                "de": "ERROR - Semantic MediaWiki (CODE 16008)",
-                "en": "ERROR - Semantic MediaWiki (CODE 16008)"
-            }
-        ],
-        [
-            "error_no_data_text",
-            {
-                "de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
-                "en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
-            }
-        ],
-        [
-            "error_script_error_cat",
-            {
-                "de": "Seiten mit Skriptfehlern",
-                "en": "Pages with script errors"
-            }
-        ],
-        [
-            "error_no_data_text",
-            {
-                "de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
-                "en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
-            }
-        ],
-        [
-            "none",
-            {
-                "de": "Keine",
-                "en": "None"
-            }
-        ]
-    ]
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"ARG_Image",
+			{
+				"de": "Bild",
+				"en": "Image"
+			},
+			"wiki-file-name",
+			{
+				"en": "Image",
+				"de": "Bild"
+			},
+			false,
+			true,
+			{
+				"en": "The file name of the image of the ship/vehicle",
+				"de": "Der Dateiname des Bildes des Schiffes/Fahrzeugs"
+			},
+			"Defender.jpg"
+		],
+		[
+			"ARG_Name",
+			{
+				"de": "Name",
+				"en": "Name"
+			},
+			"string",
+			{
+				"de": "Name",
+				"en": "Name"
+			},
+			true,
+			true,
+			{
+				"en": "The name of the item",
+				"de": "Der Name des Items"
+			},
+			"Cirrus"
+		],
+		[
+			"ARG_SmwQueryName",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			"string",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			false,
+			true,
+			{
+				"en": "The page name to load data from",
+				"de": "Seitenname aus denen Daten geladen werden"
+			},
+			{
+				"en": "Cirrus",
+				"de": "Cirrus"
+			}
+		],
+		[
+			"ARG_Manufacturer",
+			{
+				"de": "Hersteller",
+				"en": "manufacturer"
+			},
+			"string",
+			{
+				"de": "Hersteller",
+				"en": "Manufacturer"
+			},
+			false,
+			true,
+			{
+				"en": "The manufacturer code of the manufacturer who made the item",
+				"de": "Der Herstellercode des Herstellers, der das Item hergestellt hat"
+			},
+			"BANU"
+		],
+		[
+			"ARG_UUID",
+			{
+				"de": "UUID",
+				"en": "uuid"
+			},
+			"string",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			},
+			false,
+			true,
+			{
+				"en": "UUID of the item from the API.",
+				"de": "UUID des Items aus der API."
+			},
+			"aff1d3cf-2e01-48a1-8ce3-47fbdbeceb16"
+		],
+		[
+			"SMW_Name",
+			{
+				"de": "Name",
+				"en": "Name"
+			}
+		],
+		[
+			"SMW_Manufacturer",
+			{
+				"de": "Hersteller",
+				"en": "Manufacturer"
+			}
+		],
+		[
+			"SMW_UUID",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			}
+		],
+		[
+			"SMW_Description",
+			{
+				"de": "Beschreibung",
+				"en": "Description"
+			}
+		],
+		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"SMW_Size",
+			{
+				"de": "Größe",
+				"en": "Size"
+			}
+		],
+		[
+			"SMW_Occupancy",
+			{
+				"de": "Belegung",
+				"en": "Occupancy"
+			}
+		],
+		[
+			"SMW_Class",
+			{
+				"de": "Klasse",
+				"en": "Class"
+			}
+		],
+		[
+			"SMW_Grade",
+			{
+				"de": "Grad",
+				"en": "Grade"
+			}
+		],
+		[
+			"SMW_EntityHeight",
+			{
+				"de": "Höhe",
+				"en": "Entity height"
+			}
+		],
+		[
+			"SMW_EntityLength",
+			{
+				"de": "Länge",
+				"en": "Entity length"
+			}
+		],
+		[
+			"SMW_EntityWidth",
+			{
+				"de": "Breite",
+				"en": "Entity width"
+			}
+		],
+		[
+			"SMW_Mass",
+			{
+				"de": "Masse",
+				"en": "Mass"
+			}
+		],
+		[
+			"SMW_GameBuild",
+			{
+				"de": "Spielversion",
+				"en": "Game build"
+			}
+		],
+		[
+			"LBL_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"LBL_Class",
+			{
+				"de": "Klasse",
+				"en": "Class"
+			}
+		],
+		[
+			"LBL_Occupancy",
+			{
+				"de": "Belegung",
+				"en": "Occupancy"
+			}
+		],
+		[
+			"LBL_Dimensions",
+			{
+				"de": "Dimensionen",
+				"en": "Dimensions"
+			}
+		],
+		[
+			"LBL_Length",
+			{
+				"de": "Länge",
+				"en": "Length"
+			}
+		],
+		[
+			"LBL_Width",
+			{
+				"de": "Breite",
+				"en": "Width"
+			}
+		],
+		[
+			"LBL_Height",
+			{
+				"de": "Höhe",
+				"en": "Height"
+			}
+		],
+		[
+			"LBL_Mass",
+			{
+				"de": "Masse",
+				"en": "Mass"
+			}
+		],
+		[
+			"LBL_OfficialSites",
+			{
+				"de": "Offizielle Seiten",
+				"en": "Official sites"
+			}
+		],
+		[
+			"LBL_CommunitySites",
+			{
+				"de": "Community Seiten",
+				"en": "Community sites"
+			}
+		],
+		[
+			"LBL_OtherSites",
+			{
+				"de": "Andere Seiten",
+				"en": "Other sites"
+			}
+		],
+		[
+			"LBL_Galactapedia",
+			{
+				"de": "Galactapedia",
+				"en": "Galactapedia"
+			}
+		],
+		[
+			"type_cooler",
+			{
+				"de": "Kühler",
+				"en": "Cooler"
+			}
+		],
+		[
+			"type_drink",
+			{
+				"de": "Getränk",
+				"en": "Drink"
+			}
+		],
+		[
+			"type_emp",
+			{
+				"de": "EMP-Generator",
+				"en": "EMP generator"
+			}
+		],
+		[
+			"type_food",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_item",
+			{
+				"de": "Item",
+				"en": "Item"
+			}
+		],
+		[
+			"type_miningmodifier",
+			{
+				"de": "Bergbaumodul",
+				"en": "Mining module"
+			}
+		],
+		[
+			"type_missilelauncher",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile launcher"
+			}
+		],
+		[
+			"type_powerplant",
+			{
+				"de": "Generator",
+				"en": "Power plant"
+			}
+		],
+		[
+			"type_quantumdrive",
+			{
+				"de": "Quantenantrieb",
+				"en": "Quantum drive"
+			}
+		],
+		[
+			"type_quantuminterdictiongenerator",
+			{
+				"de": "Quantum Enforcement Device",
+				"en": "Quantum enforcement device"
+			}
+		],
+		[
+			"type_shield",
+			{
+				"de": "Schildgenerator",
+				"en": "Shield generator"
+			}
+		],
+		[
+			"type_weaponattachment",
+			{
+				"de": "Waffenbefestigung",
+				"en": "Weapon attachment"
+			}
+		],
+		[
+			"type_weaponmining",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining laser"
+			}
+		],
+		[
+			"class_civilian",
+			{
+				"de": "👔 Civilian",
+				"en": "👔 Civilian"
+			}
+		],
+		[
+			"class_competition",
+			{
+				"de": "🏁 Competition",
+				"en": "🏁 Competition"
+			}
+		],
+		[
+			"class_military",
+			{
+				"de": "🎖️ Military",
+				"en": "🎖️ Military"
+			}
+		],
+		[
+			"class_industrial",
+			{
+				"de": "⚒️ Industrial",
+				"en": "⚒️ Industrial"
+			}
+		],
+		[
+			"class_stealth",
+			{
+				"de": "👻 Stealth",
+				"en": "👻 Stealth"
+			}
+		],
+		[
+			"category_cooler",
+			{
+				"de": "Kühler",
+				"en": "Coolers"
+			}
+		],
+		[
+			"category_drink",
+			{
+				"de": "Getränk",
+				"en": "Drinks"
+			}
+		],
+		[
+			"category_emp",
+			{
+				"de": "EMP-Generator",
+				"en": "EMP generators"
+			}
+		],
+		[
+			"category_food",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_miningmodifier",
+			{
+				"de": "Bergbaumodul",
+				"en": "Mining modules"
+			}
+		],
+		[
+			"category_missilelauncher",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile launchers"
+			}
+		],
+		[
+			"category_powerplant",
+			{
+				"de": "Generator",
+				"en": "Power plants"
+			}
+		],
+		[
+			"category_quantumdrive",
+			{
+				"de": "Quantenantrieb",
+				"en": "Quantum drives"
+			}
+		],
+		[
+			"category_quantuminterdictiongenerator",
+			{
+				"de": "Quantum Enforcement Device",
+				"en": "Quantum enforcement devices"
+			}
+		],
+		[
+			"category_shield",
+			{
+				"de": "Schildgenerator",
+				"en": "Shield generators"
+			}
+		],
+		[
+			"category_weaponmining",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining lasers"
+			}
+		],
+		[
+			"shortdesc_grade",
+			{
+				"de": "$1 grade $2",
+				"en": "$1 grade $2"
+			}
+		],
+		[
+			"shortdesc_manufactured_by",
+			{
+				"de": "$1 hergestellt von $2",
+				"en": "$1 manufactured by $2"
+			}
+		],
+		[
+			"error_no_data_title",
+			{
+				"de": "ERROR - Semantic MediaWiki (CODE 16008)",
+				"en": "ERROR - Semantic MediaWiki (CODE 16008)"
+			}
+		],
+		[
+			"error_no_data_text",
+			{
+				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+			}
+		],
+		[
+			"error_script_error_cat",
+			{
+				"de": "Seiten mit Skriptfehlern",
+				"en": "Pages with script errors"
+			}
+		],
+		[
+			"error_no_data_text",
+			{
+				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+			}
+		],
+		[
+			"none",
+			{
+				"de": "Keine",
+				"en": "None"
+			}
+		]
+	]
 }
