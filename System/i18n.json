@@ -17,14 +17,14 @@
 	},
 	"data": [
 		[
-			"error_no_data_desc",
+			"error_invalid_args_desc",
 			{
-				"en": "System data was unable to be retrieved.",
-				"de": "Systemdaten konnten nicht abgerufen werden."
+				"en": "Invalid or missing parameters.",
+				"de": "Ungültige oder fehlende Parameter."
 			}
 		],
 		[
-			"error_no_data_title",
+			"error_title",
 			{
 				"en": "ERROR",
 				"de": "ERROR"
@@ -129,7 +129,7 @@
 			}
 		],
 		[
-			"lbl_poi",
+			"lbl_pois",
 			{
 				"en": "Places of interest",
 				"de": "Sehenswürdigkeiten"
@@ -341,8 +341,8 @@
 		[
 			"val_type_trinary",
 			{
-				"en": "Trinary",
-				"de": "Trinär"
+				"en": "Trinary Star",
+				"de": "Trinärer Stern"
 			}
 		]
 	]
