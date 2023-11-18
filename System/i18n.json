@@ -150,6 +150,34 @@
 			}
 		],
 		[
+			"lbl_sensors",
+			{
+				"en": "Sensors",
+				"de": "Sensoren"
+			}
+		],
+		[
+			"lbl_sensor_danger",
+			{
+				"en": "Danger",
+				"de": "Gefahr"
+			}
+		],
+		[
+			"lbl_sensor_economy",
+			{
+				"en": "Economy",
+				"de": "Wirtschaft"
+			}
+		],
+		[
+			"lbl_sensor_population",
+			{
+				"en": "Population",
+				"de": "Bevölkerung"
+			}
+		],
+		[
 			"lbl_size",
 			{
 				"en": "Size",
@@ -308,6 +336,13 @@
 			{
 				"en": "Single Star",
 				"de": "Einzelstern"
+			}
+		],
+		[
+			"val_type_trinary",
+			{
+				"en": "Trinary",
+				"de": "Trinär"
 			}
 		]
 	]
