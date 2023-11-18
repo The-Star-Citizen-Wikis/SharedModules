@@ -31,6 +31,13 @@
 			}
 		],
 		[
+			"lbl_anomalies",
+			{
+				"en": "Anomalies",
+				"de": "Anomalien"
+			}
+		],
+		[
 			"lbl_asteroid_belts",
 			{
 				"en": "Asteroid belts",
@@ -38,10 +45,24 @@
 			}
 		],
 		[
+			"lbl_asteroid_fields",
+			{
+				"en": "Asteroid fields",
+				"de": "Asteroidenfelder"
+			}
+		],
+		[
 			"lbl_astronomical_objects",
 			{
 				"en": "Astronomical objects",
 				"de": "Astronomische Objekte"
+			}
+		],
+		[
+			"lbl_blackholes",
+			{
+				"en": "Black holes",
+				"de": "Schwarze Löcher"
 			}
 		],
 		[
@@ -105,6 +126,20 @@
 			{
 				"en": "Planets",
 				"de": "Planeten"
+			}
+		],
+		[
+			"lbl_poi",
+			{
+				"en": "Places of interest",
+				"de": "Sehenswürdigkeiten"
+			}
+		],
+		[
+			"lbl_population",
+			{
+				"en": "Population",
+				"de": "Bevölkerung"
 			}
 		],
 		[
@@ -213,49 +248,49 @@
 			}
 		],
 		[
-			"val_status_D",
+			"val_status_d",
 			{
 				"en": "Draft",
 				"de": "Entwurf"
 			}
 		],
 		[
-			"val_status_M",
+			"val_status_m",
 			{
 				"en": "UEE Military Classified",
 				"de": "UEE-Militärgeheimnis"
 			}
 		],
 		[
-			"val_status_N",
+			"val_status_n",
 			{
 				"en": "Probe data incomplete",
 				"de": "Sondendaten unvollständig"
 			}
 		],
 		[
-			"val_status_P",
+			"val_status_p",
 			{
 				"en": "Published",
 				"de": "Veröffentlicht"
 			}
 		],
 		[
-			"val_status_R",
+			"val_status_r",
 			{
 				"en": "Review",
 				"de": "Rezension"
 			}
 		],
 		[
-			"val_status_S",
+			"val_status_s",
 			{
 				"en": "Stub",
 				"de": "Stub"
 			}
 		],
 		[
-			"val_status_U",
+			"val_status_u",
 			{
 				"en": "Undiscovered",
 				"de": "Unentdeckt"
