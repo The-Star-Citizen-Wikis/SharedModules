@@ -619,6 +619,13 @@
             }
         ],
         [
+			"TractorBeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
+			}
+		],
+        [
             "Turret",
             {
                 "de": "Turm",

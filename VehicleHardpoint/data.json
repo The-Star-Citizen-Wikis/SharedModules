@@ -370,6 +370,12 @@
       "type": "UtilityDevices",
       "subtype": "ToolArm"
     },
+    "TractorBeam": {
+      "class": "Weapons",
+      "matches": [],
+      "type": "Weapons",
+      "subtype": "TractorBeam"
+    },
     "Turret": {
       "class": "Weapons",
       "matches": [
