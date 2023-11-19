@@ -1,23 +1,35 @@
 {
     "%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
     "module_lang": null,
-    "%placeholder_image": "Placeholder image to use if no image was found",
-    "placeholder_image": "Placeholderv2.png",
-    "%subtype_rename": "Rename star subtypes",
-    "subtype_rename": {
-        "Main Sequence-Dwarf-G": "G-type main sequence",
-        "Main Sequence-Dwarf-F": "F-type main sequence",
-        "Main Sequence-Dwarf-K": "K-type main sequence",
-        "Main Sequence-Dwarf-A": "A-type main sequence",
-        "Main Sequence-Dwarf-B": "B-type main sequence",
-        "Main Sequence-Dwarf-M": "M-type main sequence",
-        "Main Sequence-Dwarf-O": "O-type main sequence"
+    "%starmap": "URL to Starmap",
+    "starmap": "https://robertsspaceindustries.com/starmap",
+    "%objects": "Object types",
+    "objects": [
+        "STAR",
+        "PLANET",
+        "SATELLITE",
+        "ASTEROID_BELT",
+        "ASTEROID_FIELD",
+        "ANOMALY",
+        "MANMADE",
+        "JUMPPOINT",
+        "LZ",
+        "BLACKHOLE",
+        "POI",
+        "MOON"
+    ],
+    "%systems": "System star types",
+    "systems": [
+        "SINGLE_STAR",
+        "BINARY"
+    ],
+    "%type_plural": "A structure type but plural",
+    "type_plural": {
+        "system": "systems",
+        "object": "objects"
     },
-    "%cornerstone": "URL to Cornerstone for systems",
-    "cornerstone": "https://survey.cstone.space/Systems/%s",
-    "%cornerstone_systems": "Code of systems that are available on Cornerstone",
-    "cornerstone_systems": [
-        "STANTON",
-        "PYRO"
-    ]
+    "%link_overwrites": "Overwrite the page name for structure codes",
+    "link_overwrites": {
+        "STANTON.PLANETS.STANTONIVMICROTECH": "microTech (planet)|microTech"
+    }
 }
