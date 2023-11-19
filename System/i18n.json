@@ -66,6 +66,13 @@
 			}
 		],
 		[
+			"lbl_cornerstone",
+			{
+				"en": "Cornerstone",
+				"de": "Cornerstone"
+			}
+		],
+		[
 			"lbl_discovered_by",
 			{
 				"en": "Discovered by",
@@ -105,6 +112,13 @@
 			{
 				"en": "Jump points",
 				"de": "Sprungpunkt"
+			}
+		],
+		[
+			"lbl_community_sites",
+			{
+				"en": "Community sites",
+				"de": "Community-Sites"
 			}
 		],
 		[

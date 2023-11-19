@@ -1,5 +1,6 @@
 local System = {}
 
+local Array = require( 'Module:Array' )
 local Starmap = require( 'Module:Starmap' )
 local Infobox = require( 'Module:InfoboxNeue' )
 local TNT = require( 'Module:Translate' ):new()
@@ -23,7 +24,7 @@ end
 
 --- Remove parentheses and their content
 function removeParentheses( inputString )
-    return string.gsub( inputString, '%b()', '' )
+    return string.match( string.gsub( inputString, '%b()', '' ), '^%s*(.*%S)' ) or ''
 end
 
 --- Alternative for doing table[key][key], this returns nil instead of an error if it doesn't exist
@@ -81,7 +82,7 @@ end
 local function split( str, sep )
 	local matches = {}
 	for str in string.gmatch( str, '([^' .. sep .. ']+)' ) do
-		table.insert( matches, str )
+		table.insert( matches, string.gsub( str, '%b()', '' ) or '' )
 	end
 	return matches
 end
@@ -107,6 +108,15 @@ local function convertCategories( categories )
 		end
 	end
 	return table.concat( mapped )
+end
+
+--- Bypass for a bug
+local function cuteArray( array )
+	local newArray = {}
+	for _, val in ipairs( array ) do 
+		table.insert( newArray, val )
+	end
+	return newArray
 end
 
 -- @param frame table https://www.mediawiki.org/wiki/Extension:Scribunto/Lua_reference_manual#Frame_object
@@ -151,6 +161,7 @@ function System.main( frame )
 		[ '#historical_names' ] = nil,
 		[ 'starmap_link' ] = nil,
 		[ 'starmap_id' ] = nil,
+		[ 'cornerstone_link' ] = nil,
 		[ 'categories' ] = {},
 	}
 	
@@ -265,10 +276,11 @@ function System.main( frame )
 		mega[ 'historical_names' ] = {} -- Revert back to default
 	end
 	
-	mega[ 'starmap_link' ] = args[ 'starmap']
+	mega[ 'starmap_link' ] = args[ 'starmap' ]
 	if mega[ 'starmap_link' ] == nil and mega[ 'code' ] then mega[ 'starmap_link' ] = Starmap.link( mega[ 'code' ] ) end
 	mega[ 'starmap_id' ] = e( mega, 'system', 'id' )
-	
+	mega[ 'cornerstone_link' ] = args[ 'cornerstone' ]
+	if mega[ 'cornerstone_link' ] == nil and Array.contains( cuteArray( config[ 'cornerstone_systems' ] ), mega[ 'code' ] ) then mega[ 'cornerstone_link' ] = string.format( config[ 'cornerstone' ], mega[ 'name' ] ) end
 	
 	infobox:renderImage( mega[ 'image' ] )
 	infobox:renderHeader( {
@@ -408,6 +420,13 @@ function System.main( frame )
 							link = mega[ 'starmap_link' ]
 						} )
 					} ),
+					infobox:renderItem( {
+						label = t( 'lbl_community_sites' ),
+						data = infobox:renderLinkButton( {
+							label = t( 'lbl_cornerstone' ),
+							link = mega[ 'cornerstone_link' ]
+						} )
+					} ),
 				},
 				class = 'infobox__section--linkButtons',
 			}, true )
@@ -435,6 +454,7 @@ end
 
 function System.test( name )
 	if not name then name = 'Stanton' end -- System and Star
+	System.main( { [ 'getParent' ] = function() return { [ 'args' ] = { [ 'name' ] = name } } end } )
 end
 
 return System
