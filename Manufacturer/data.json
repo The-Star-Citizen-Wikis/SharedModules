@@ -220,7 +220,8 @@
 	},
 	{
 		"code": "GAMA",
-		"name": "Gatac Manufacture"
+		"name": "Gatac Manufacture",
+		"shortname": "Gatac"
 	},
 	{
 		"code": "GATS",
@@ -241,7 +242,8 @@
 	},
 	{
 		"code": "GRNP",
-		"name": "Groupe Nouveau Paradigme"
+		"name": "Groupe Nouveau Paradigme",
+		"shortname": "GNP"
 	},
 	{
 		"code": "GSB",
@@ -488,7 +490,8 @@
 	},
 	{
 		"code": "TALN",
-		"name": "Talon Weapon Systems"
+		"name": "Talon Weapon Systems",
+		"shortname": "Talon"
 	},
 	{
 		"code": "TARS",
