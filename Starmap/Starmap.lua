@@ -101,7 +101,7 @@ function Starmap.pathTo( target )
 			local designation = removeParentheses( parent[ 'designation' ] )
 			table.insert( links, string.format( t( 'orbits_star' ), '[[' .. designation .. ' (star)|' .. designation .. ' star]]' ) )
 		else
-			table.insert( links, '[[' .. removeParentheses( parent[ 'name' ] ) .. ']]' )
+			table.insert( links, '[[' .. removeParentheses( parent[ 'name' ] or parent[ 'designation' ] ) .. ']]' )
 		end
 		
 		if parentType ~= 'system' then
