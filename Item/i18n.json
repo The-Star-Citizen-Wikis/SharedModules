@@ -367,10 +367,24 @@
 			}
 		],
 		[
+			"type_salvagemodifier",
+			{
+				"de": "Bergungsmodifikator",
+				"en": "Salvage head module"
+			}
+		],
+		[
 			"type_shield",
 			{
 				"de": "Schildgenerator",
 				"en": "Shield generator"
+			}
+		],
+		[
+			"type_towingbeam",
+			{
+				"de": "Abschleppbalken",
+				"en": "Towing beam"
 			}
 		],
 		[
@@ -493,10 +507,24 @@
 			}
 		],
 		[
+			"category_salvagemodifier",
+			{
+				"de": "Bergungsmodifikator",
+				"en": "Salvage head modules"
+			}
+		],
+		[
 			"category_shield",
 			{
 				"de": "Schildgenerator",
 				"en": "Shield generators"
+			}
+		],
+		[
+			"category_towingbeam",
+			{
+				"de": "Abschleppbalken",
+				"en": "Towing beams"
 			}
 		],
 		[

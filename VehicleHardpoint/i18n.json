@@ -559,7 +559,7 @@
             "SalvageModifier",
             {
                 "de": "Bergungsmodifikator",
-                "en": "Scraper module"
+                "en": "Salvage head module"
             }
         ],
         [
@@ -618,6 +618,13 @@
                 "en": "Tool arm"
             }
         ],
+        [
+			"TowingBeam",
+			{
+				"de": "Abschleppbalken",
+				"en": "Towing beam"
+			}
+		],
         [
 			"TractorBeam",
 			{

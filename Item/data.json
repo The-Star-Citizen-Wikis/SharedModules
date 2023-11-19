@@ -118,7 +118,9 @@
 				"PowerPlant",
 				"QuantumDrive",
 				"QuantumInterdictionGenerator",
+				"SalvageModifier",
 				"Shield",
+				"TowingBeam",
 				"TractorBeam",
 				"WeaponMining"
 			]
