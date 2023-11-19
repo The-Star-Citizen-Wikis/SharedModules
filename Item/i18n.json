@@ -374,6 +374,13 @@
 			}
 		],
 		[
+			"type_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
+			}
+		],
+		[
 			"type_weaponattachment",
 			{
 				"de": "Waffenbefestigung",
@@ -490,6 +497,13 @@
 			{
 				"de": "Schildgenerator",
 				"en": "Shield generators"
+			}
+		],
+		[
+			"category_tractorbeam",
+			{
+				"de": "Traktorbalken",
+				"en": "Tractor beams"
 			}
 		],
 		[
