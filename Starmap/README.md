@@ -4,6 +4,7 @@ Starmap utility for getting information about a structure (system/object) or the
 
 ## Requirements
 - [Module:Array](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/ThirdParty/runescape.wiki/Array.lua)
+- [Module:Translate](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Translate)
 
 ## Installation
 1. Create `Module:Starmap`
