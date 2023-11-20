@@ -96,12 +96,15 @@ function Starmap.pathTo( target )
 		parent = Starmap.findStructure( parentType, parent[ 'code' ] )
 		
 		if parentType == 'system' then
-			table.insert( links, string.format( t( 'in_system' ), '[[' .. removeParentheses( parent[ 'name' ] ) .. ' system]]' ) )
+			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or removeParentheses( parent[ 'name' ] ) .. ' system'
+			table.insert( links, string.format( t( 'in_system' ), '[[' .. linkContent .. ']]' ) )
 		elseif parent.type == 'STAR' then
 			local designation = removeParentheses( parent[ 'designation' ] )
-			table.insert( links, string.format( t( 'orbits_star' ), '[[' .. designation .. ' (star)|' .. designation .. ' star]]' ) )
+			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or designation .. ' (star)|' .. designation .. ' star'
+			table.insert( links, string.format( t( 'orbits_star' ), '[[' .. linkContent .. ']]' ) )
 		else
-			table.insert( links, '[[' .. removeParentheses( parent[ 'name' ] or parent[ 'designation' ] ) .. ']]' )
+			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or removeParentheses( parent[ 'name' ] or parent[ 'designation' ] )
+			table.insert( links, '[[' .. linkContent .. ']]' )
 		end
 		
 		if parentType ~= 'system' then

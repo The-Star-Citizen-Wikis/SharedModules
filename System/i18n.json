@@ -145,7 +145,7 @@
 		[
 			"lbl_pois",
 			{
-				"en": "Places of interest",
+				"en": "Points of Interest",
 				"de": "Sehenswürdigkeiten"
 			}
 		],
@@ -276,17 +276,45 @@
 			}
 		],
 		[
-			"shortdesc_plural",
+			"shortdesc_1_plural",
 			{
 				"en": "%s system with %d planets.",
 				"de": "%s System mit %d Planeten."
 			}
 		],
 		[
-			"shortdesc_singular",
+			"shortdesc_1_singular",
 			{
 				"en": "%s system with %d planet.",
 				"de": "%s System mit %d Planet."
+			}
+		],
+		[
+			"shortdesc_2",
+			{
+				"en": "%s system.",
+				"de": "%s System."
+			}
+		],
+		[
+			"shortdesc_3_plural",
+			{
+				"en": "System with %d planets.",
+				"de": "System mit %d Planeten."
+			}
+		],
+		[
+			"shortdesc_3_singular",
+			{
+				"en": "System with %d planet.",
+				"de": "System mit %d Planet."
+			}
+		],
+		[
+			"shortdesc_4",
+			{
+				"en": "A star system in Star Citizen.",
+				"de": "Ein Sternensystem in Star Citizen."
 			}
 		],
 		[
