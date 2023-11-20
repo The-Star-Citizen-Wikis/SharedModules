@@ -270,28 +270,6 @@ local function addSubComponents( hardpoint )
             end
         end
     end
-
-    -- Missiles Set on Ports
-    if hardpoint.item.type == 'MissileLauncher' and type( hardpoint.item.ports ) == 'table' then
-        for _, port in pairs( hardpoint.item.ports ) do
-            if type( port.equipped_item ) == 'table' then
-                local item = port.equipped_item
-                table.insert( hardpoint.children, {
-                    name = port.name,
-                    --class_name = port.equipped_item
-                    type = 'Missile',
-                    sub_type = item.sub_type,
-                    min_size = port.sizes.min,
-                    max_size = port.sizes.max,
-                    item = {
-                        name = item.name,
-                        type = item.type,
-                        sub_type = item.sub_type,
-                    }
-                } )
-            end
-        end
-    end
 end
 
 
@@ -578,8 +556,6 @@ function methodtable.setHardPointObjects( self, hardpoints )
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
     end
-
-    return objects
 end
 
 
@@ -859,11 +835,11 @@ function methodtable.makeSubtitle( self, item )
 
         -- We need to use raw value from SMW to show scu in different units (SCU, K µSCU)
         -- So we need to format the number manually
-        if item.scu ~= nil and item.type == translate( 'CargoGrid' ) then
+        if item.type == translate( 'CargoGrid' ) then
             table.insert( subtitle,
                 common.formatNum( item.scu ) .. ' SCU' or 'N/A'
             )
-        elseif item.scu ~= nil and item.type == translate( 'PersonalStorage' ) then
+        elseif item.type == translate( 'PersonalStorage' ) then
             table.insert( subtitle,
                 common.formatNum( item.scu * 1000 ) .. 'K µSCU' or 'N/A'
             )
