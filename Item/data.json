@@ -113,16 +113,17 @@
 				"Cooler",
 				"EMP",
 				"Gadget",
-				"MiningModifier",
-				"MissileLauncher",
+				"MiningModifier.Gun",
+				"MissileLauncher.MissileRack",
 				"PowerPlant",
 				"QuantumDrive",
 				"QuantumInterdictionGenerator",
 				"SalvageModifier",
+				"SalvageModifier.SalvageModifier_TractorBeam",
 				"Shield",
 				"TowingBeam",
 				"TractorBeam",
-				"WeaponMining"
+				"WeaponMining.Gun"
 			]
 		}
 	]

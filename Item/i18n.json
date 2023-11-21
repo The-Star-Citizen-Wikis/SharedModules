@@ -332,14 +332,14 @@
 			}
 		],
 		[
-			"type_miningmodifier",
+			"type_miningmodifier.gun",
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining module"
 			}
 		],
 		[
-			"type_missilelauncher",
+			"type_missilelauncher.missilerack",
 			{
 				"de": "Raketenwerfer",
 				"en": "Missile launcher"
@@ -370,7 +370,14 @@
 			"type_salvagemodifier",
 			{
 				"de": "Bergungsmodifikator",
-				"en": "Salvage head module"
+				"en": "Scraper module"
+			}
+		],
+		[
+			"type_salvagemodifier.salvagemodifier_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
 			}
 		],
 		[
@@ -402,7 +409,7 @@
 			}
 		],
 		[
-			"type_weaponmining",
+			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
 				"en": "Mining laser"
@@ -472,14 +479,14 @@
 			}
 		],
 		[
-			"category_miningmodifier",
+			"category_miningmodifier.gun",
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining modules"
 			}
 		],
 		[
-			"category_missilelauncher",
+			"category_missilelauncher.missilerack",
 			{
 				"de": "Raketenwerfer",
 				"en": "Missile launchers"
@@ -510,7 +517,14 @@
 			"category_salvagemodifier",
 			{
 				"de": "Bergungsmodifikator",
-				"en": "Salvage head modules"
+				"en": "Scraper modules"
+			}
+		],
+		[
+			"category_salvagemodifier.salvagemodifier_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beams"
 			}
 		],
 		[
@@ -535,7 +549,7 @@
 			}
 		],
 		[
-			"category_weaponmining",
+			"category_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
 				"en": "Mining lasers"
