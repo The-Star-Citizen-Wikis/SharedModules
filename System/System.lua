@@ -218,7 +218,7 @@ function System.main( frame )
 	
 	mega[ 'star_types' ] = args[ 'startypes' ]
 	if mega[ 'star_types' ] then
-		mega[ 'star_types' ] = split( mega[ 'star_types' ], ', ' )
+		mega[ 'star_types' ] = split( mega[ 'star_types' ], ',' )
 	elseif mega[ 'system_objects' ] then
 		mega[ 'star_types' ] = {}
 		for _, star in ipairs( filter( mega[ 'system_objects' ], 'type', 'STAR' ) ) do
@@ -232,7 +232,7 @@ function System.main( frame )
 	mega[ '#star_types' ] = table.concat( mega[ 'star_types' ], ', ' )
 	
 	if args[ 'affiliation' ] then
-		mega[ 'affiliation' ] = split( args[ 'affiliation' ], ', ' )
+		mega[ 'affiliation' ] = split( args[ 'affiliation' ], ',' )
 	elseif e( mega, 'system', 'affiliation' ) ~= nil then
 		mega[ 'affiliation' ] = {}
 		for _, empire in ipairs( mega[ 'system' ][ 'affiliation' ] ) do
@@ -280,7 +280,7 @@ function System.main( frame )
 	mega[ 'discovered_by' ] = args[ 'discoveredby' ]
 	mega[ 'historical_names' ] = args[ 'historicalnames' ]
 	if mega[ 'historical_names' ] then
-		mega[ 'historical_names' ] = split( mega[ 'historical_names' ], ', ' )
+		mega[ 'historical_names' ] = split( mega[ 'historical_names' ], ',' )
 		mega[ '#historical_names' ] = table.concat( mega[ 'historical_names' ], ', ' )
 	else
 		mega[ 'historical_names' ] = {} -- Revert back to default
