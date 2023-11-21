@@ -17,6 +17,13 @@
 	},
 	"data": [
 		[
+			"SMW_Damage",
+			{
+				"de": "Schaden",
+				"en": "Damage"
+			}
+		],
+		[
 			"SMW_MinimumPowerDraw",
 			{
 				"de": "Minimum power draw",
@@ -206,129 +213,17 @@
 			}
 		],
 		[
-			"SMW_PowerOutput",
+			"SMW_SignalType",
 			{
-				"de": "Ausgangsleistung",
-				"en": "Power output"
+				"de": "Signaltyp",
+				"en": "Signal type"
 			}
 		],
 		[
-			"SMW_QuantumFuelRequirement",
+			"SMW_LockTime",
 			{
-				"de": "Quantum Kraftstoffbedarf",
-				"en": "Quantum fuel requirement"
-			}
-		],
-		[
-			"SMW_QuantumTravelRange",
-			{
-				"de": "Quantensprungweite",
-				"en": "Quantum travel range"
-			}
-		],
-		[
-			"SMW_QuantumTravelDisconnectRange",
-			{
-				"de": "Quantum travel disconnect range",
-				"en": "Quantum travel disconnect range"
-			}
-		],
-		[
-			"SMW_QuantumTravelType",
-			{
-				"de": "Quantensprungtyp",
-				"en": "Quantum travel type"
-			}
-		],
-		[
-			"SMW_QuantumTravelSpeed",
-			{
-				"de": "Quantumgeschwindigkeit",
-				"en": "Quantum travel speed"
-			}
-		],
-		[
-			"SMW_JammerRange",
-			{
-				"de": "Jammer range",
-				"en": "Jammer range"
-			}
-		],
-		[
-			"SMW_InterdictionRange",
-			{
-				"de": "Interdiction range",
-				"en": "Interdiction range"
-			}
-		],
-		[
-			"SMW_ShieldHealthPoint",
-			{
-				"de": "Schildpunkt",
-				"en": "Shield health point"
-			}
-		],
-		[
-			"SMW_ShieldPointRegeneration",
-			{
-				"de": "Schildpunktregeneration",
-				"en": "Shield point regeneration"
-			}
-		],
-		[
-			"SMW_ShieldDownTime",
-			{
-				"de": "Schild Ausfallzeit",
-				"en": "Shield down time"
-			}
-		],
-		[
-			"SMW_ShieldDamageDelay",
-			{
-				"de": "Schadensverzögerung",
-				"en": "Shield damage delay"
-			}
-		],
-		[
-			"SMW_ShieldPhysicalResistance",
-			{
-				"de": "Physikalische Resistance",
-				"en": "Shield physical resistance"
-			}
-		],
-		[
-			"SMW_ShieldEnergyResistance",
-			{
-				"de": "Energie Resistance",
-				"en": "Shield energy resistance"
-			}
-		],
-		[
-			"SMW_ShieldDistortionResistance",
-			{
-				"de": "Distortion Resistance",
-				"en": "Shield distortion resistance"
-			}
-		],
-		[
-			"SMW_ShieldThermalResistance",
-			{
-				"de": "Termische Resistance",
-				"en": "Shield thermal resistance"
-			}
-		],
-		[
-			"SMW_ShieldBiochemicalResistance",
-			{
-				"de": "Biochemische Resistance",
-				"en": "Shield biochemical resistance"
-			}
-		],
-		[
-			"SMW_ShieldStunResistance",
-			{
-				"de": "Stun Resistance",
-				"en": "Shield stun resistance"
+				"de": "Erfassungszeit",
+				"en": "Lock time"
 			}
 		],
 		[
@@ -465,6 +360,132 @@
 			}
 		],
 		[
+			"SMW_PowerOutput",
+			{
+				"de": "Ausgangsleistung",
+				"en": "Power output"
+			}
+		],
+		[
+			"SMW_QuantumFuelRequirement",
+			{
+				"de": "Quantum Kraftstoffbedarf",
+				"en": "Quantum fuel requirement"
+			}
+		],
+		[
+			"SMW_QuantumTravelRange",
+			{
+				"de": "Quantensprungweite",
+				"en": "Quantum travel range"
+			}
+		],
+		[
+			"SMW_QuantumTravelDisconnectRange",
+			{
+				"de": "Quantum travel disconnect range",
+				"en": "Quantum travel disconnect range"
+			}
+		],
+		[
+			"SMW_QuantumTravelType",
+			{
+				"de": "Quantensprungtyp",
+				"en": "Quantum travel type"
+			}
+		],
+		[
+			"SMW_QuantumTravelSpeed",
+			{
+				"de": "Quantumgeschwindigkeit",
+				"en": "Quantum travel speed"
+			}
+		],
+		[
+			"SMW_JammerRange",
+			{
+				"de": "Jammer range",
+				"en": "Jammer range"
+			}
+		],
+		[
+			"SMW_InterdictionRange",
+			{
+				"de": "Interdiction range",
+				"en": "Interdiction range"
+			}
+		],
+		[
+			"SMW_ShieldHealthPoint",
+			{
+				"de": "Schildpunkt",
+				"en": "Shield health point"
+			}
+		],
+		[
+			"SMW_ShieldPointRegeneration",
+			{
+				"de": "Schildpunktregeneration",
+				"en": "Shield point regeneration"
+			}
+		],
+		[
+			"SMW_ShieldDownTime",
+			{
+				"de": "Schild Ausfallzeit",
+				"en": "Shield down time"
+			}
+		],
+		[
+			"SMW_ShieldDamageDelay",
+			{
+				"de": "Schadensverzögerung",
+				"en": "Shield damage delay"
+			}
+		],
+		[
+			"SMW_ShieldPhysicalResistance",
+			{
+				"de": "Physikalische Resistance",
+				"en": "Shield physical resistance"
+			}
+		],
+		[
+			"SMW_ShieldEnergyResistance",
+			{
+				"de": "Energie Resistance",
+				"en": "Shield energy resistance"
+			}
+		],
+		[
+			"SMW_ShieldDistortionResistance",
+			{
+				"de": "Distortion Resistance",
+				"en": "Shield distortion resistance"
+			}
+		],
+		[
+			"SMW_ShieldThermalResistance",
+			{
+				"de": "Termische Resistance",
+				"en": "Shield thermal resistance"
+			}
+		],
+		[
+			"SMW_ShieldBiochemicalResistance",
+			{
+				"de": "Biochemische Resistance",
+				"en": "Shield biochemical resistance"
+			}
+		],
+		[
+			"SMW_ShieldStunResistance",
+			{
+				"de": "Stun Resistance",
+				"en": "Shield stun resistance"
+			}
+		],
+		[
 			"Competition",
 			{
 				"de": "Wettkampf",
@@ -539,6 +560,13 @@
 			{
 				"de": "Defense",
 				"en": "Defense"
+			}
+		],
+		[
+			"LBL_Damage",
+			{
+				"de": "Schaden",
+				"en": "Damage"
 			}
 		],
 		[
@@ -696,136 +724,17 @@
 			}
 		],
 		[
-			"LBL_PowerOutput",
+			"LBL_SignalType",
 			{
-				"de": "Ausgangsleistung",
-				"en": "Power output"
+				"de": "Signaltyp",
+				"en": "Signal type"
 			}
 		],
 		[
-			"LBL_QuantumFuelRequirement",
+			"LBL_LockTime",
 			{
-				"de": "Kraftstoffverbrauch",
-				"en": "Consumption"
-			}
-		],
-		[
-			"LBL_QuantumTravelRange",
-			{
-				"de": "Sprungreichweite",
-				"en": "Range"
-			}
-		],
-		[
-			"LBL_QuantumTravelDisconnectRange",
-			{
-				"de": "Disconnect range",
-				"en": "Exit distance"
-			}
-		],
-		[
-			"normal_jump",
-			{
-				"de": "Systemsprung",
-				"en": "System travel"
-			}
-		],
-		[
-			"spline_jump",
-			{
-				"de": "Planetensprung",
-				"en": "Planet travel"
-			}
-		],
-		[
-			"LBL_QuantumTravelSpeed",
-			{
-				"de": "Antriebsgeschwindigkeit",
-				"en": "Speed"
-			}
-		],
-		[
-			"LBL_JammerRange",
-			{
-				"de": "Dampen radius",
-				"en": "Dampen radius"
-			}
-		],
-		[
-			"LBL_InterdictionRange",
-			{
-				"de": "Snare radius",
-				"en": "Snare radius"
-			}
-		],
-		[
-			"LBL_ShieldHealthPoint",
-			{
-				"de": "Shield health",
-				"en": "Shield health"
-			}
-		],
-		[
-			"LBL_ShieldPointRegeneration",
-			{
-				"de": "Regen rate",
-				"en": "Regen rate"
-			}
-		],
-		[
-			"LBL_ShieldRegenDelay",
-			{
-				"de": "Regen delay",
-				"en": "Regen delay"
-			}
-		],
-		[
-			"LBL_Resistances",
-			{
-				"de": "Resistenzen",
-				"en": "Resistances"
-			}
-		],
-		[
-			"LBL_ShieldPhysicalResistance",
-			{
-				"de": "",
-				"en": ""
-			}
-		],
-		[
-			"LBL_ShieldEnergyResistance",
-			{
-				"de": "",
-				"en": ""
-			}
-		],
-		[
-			"LBL_ShieldDistortionResistance",
-			{
-				"de": "",
-				"en": ""
-			}
-		],
-		[
-			"LBL_ShieldThermalResistance",
-			{
-				"de": "",
-				"en": ""
-			}
-		],
-		[
-			"LBL_ShieldBiochemicalResistance",
-			{
-				"de": "",
-				"en": ""
-			}
-		],
-		[
-			"LBL_ShieldStunResistance",
-			{
-				"de": "",
-				"en": ""
+				"de": "Erfassungszeit",
+				"en": "Lock time"
 			}
 		],
 		[
@@ -959,6 +868,139 @@
 			{
 				"de": "Größe",
 				"en": "Size"
+			}
+		],
+		[
+			"LBL_PowerOutput",
+			{
+				"de": "Ausgangsleistung",
+				"en": "Power output"
+			}
+		],
+		[
+			"LBL_QuantumFuelRequirement",
+			{
+				"de": "Kraftstoffverbrauch",
+				"en": "Consumption"
+			}
+		],
+		[
+			"LBL_QuantumTravelRange",
+			{
+				"de": "Sprungreichweite",
+				"en": "Range"
+			}
+		],
+		[
+			"LBL_QuantumTravelDisconnectRange",
+			{
+				"de": "Disconnect range",
+				"en": "Exit distance"
+			}
+		],
+		[
+			"normal_jump",
+			{
+				"de": "Systemsprung",
+				"en": "System travel"
+			}
+		],
+		[
+			"spline_jump",
+			{
+				"de": "Planetensprung",
+				"en": "Planet travel"
+			}
+		],
+		[
+			"LBL_QuantumTravelSpeed",
+			{
+				"de": "Antriebsgeschwindigkeit",
+				"en": "Speed"
+			}
+		],
+		[
+			"LBL_JammerRange",
+			{
+				"de": "Dampen radius",
+				"en": "Dampen radius"
+			}
+		],
+		[
+			"LBL_InterdictionRange",
+			{
+				"de": "Snare radius",
+				"en": "Snare radius"
+			}
+		],
+		[
+			"LBL_ShieldHealthPoint",
+			{
+				"de": "Shield health",
+				"en": "Shield health"
+			}
+		],
+		[
+			"LBL_ShieldPointRegeneration",
+			{
+				"de": "Regen rate",
+				"en": "Regen rate"
+			}
+		],
+		[
+			"LBL_ShieldRegenDelay",
+			{
+				"de": "Regen delay",
+				"en": "Regen delay"
+			}
+		],
+		[
+			"LBL_Resistances",
+			{
+				"de": "Resistenzen",
+				"en": "Resistances"
+			}
+		],
+		[
+			"LBL_ShieldPhysicalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldEnergyResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldDistortionResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldThermalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldBiochemicalResistance",
+			{
+				"de": "",
+				"en": ""
+			}
+		],
+		[
+			"LBL_ShieldStunResistance",
+			{
+				"de": "",
+				"en": ""
 			}
 		],
 		[

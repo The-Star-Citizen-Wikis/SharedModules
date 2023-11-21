@@ -135,6 +135,79 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Missile
+    elseif smwData[ translate( 'SMW_Damage' ) ] and smwData[ translate( 'SMW_LockTime' ) ] and smwData[ translate( 'SMW_SignalType' ) ] then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
+            infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ translate( 'SMW_SignalType' ) ] ),
+            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Missile launcher
+    elseif smwData[ translate( 'SMW_MissileCount' ) ] then
+        --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
+        local function getMissileSize()
+            if smwData[ translate( 'SMW_MissileSize' ) ] == nil then return end
+            return 'S' .. smwData[ translate( 'SMW_MissileSize' ) ]
+        end
+
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_MissileCount' ), smwData[ translate( 'SMW_MissileCount' ) ] ),
+            infobox:renderItem( translate( 'LBL_MissileSize' ), getMissileSize() )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Mining Laser
+    elseif smwData[ translate( 'SMW_MiningLaserPower' ) ] then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ translate( 'SMW_MiningLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_ExtractionLaserPower' ), smwData[ translate( 'SMW_ExtractionLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_ExtractionThroughput' ), smwData[ translate( 'SMW_ExtractionThroughput' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModuleSlots' ), smwData[ translate( 'SMW_ModuleSlots' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+
+        tabberData[ 'label2' ] = translate( 'LBL_Modifiers' )
+        section = {
+            infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ), smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ), smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ), smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ), smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
+        }
+        tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Mining Module
+    -- FIXME: Need a better way to handle this since SMW_Uses is a generic property across consumables
+    elseif smwData[ translate( 'SMW_Uses' ) ] then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_Uses' ), smwData[ translate( 'SMW_Uses' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ), smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ), smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ), smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ), smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
     elseif smwData[ translate( 'SMW_PowerOutput' ) ] then
         -- Overview
@@ -244,69 +317,6 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         --        infobox:renderItem( translate( 'LBL_ShieldStunResistance' ), smwData[ translate( 'SMW_ShieldStunResistance' ) ] ),
         --    }
         --} )
-    -- Missile launcher
-    elseif smwData[ translate( 'SMW_MissileCount' ) ] then
-        --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
-        local function getMissileSize()
-            if smwData[ translate( 'SMW_MissileSize' ) ] == nil then return end
-            return 'S' .. smwData[ translate( 'SMW_MissileSize' ) ]
-        end
-
-        -- Overview
-        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
-        section = {
-            infobox:renderItem( translate( 'LBL_MissileCount' ), smwData[ translate( 'SMW_MissileCount' ) ] ),
-            infobox:renderItem( translate( 'LBL_MissileSize' ), getMissileSize() )
-        }
-        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
-    -- Mining Laser
-    elseif smwData[ translate( 'SMW_MiningLaserPower' ) ] then
-        -- Overview
-        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
-        section = {
-            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ translate( 'SMW_MiningLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_ExtractionLaserPower' ), smwData[ translate( 'SMW_ExtractionLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_ExtractionThroughput' ), smwData[ translate( 'SMW_ExtractionThroughput' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModuleSlots' ), smwData[ translate( 'SMW_ModuleSlots' ) ] )
-        }
-        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
-
-        tabberData[ 'label2' ] = translate( 'LBL_Modifiers' )
-        section = {
-            infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ), smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ), smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ), smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ), smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
-        }
-        tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 2 }, true )
-    -- Mining Module
-    -- FIXME: Need a better way to handle this since SMW_Uses is a generic property across consumables
-    elseif smwData[ translate( 'SMW_Uses' ) ] then
-        -- Overview
-        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
-        section = {
-            infobox:renderItem( translate( 'LBL_Uses' ), smwData[ translate( 'SMW_Uses' ) ] ),
-            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ), smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ), smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ), smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ), smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
-        }
-        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     end
 
     -- Get the index of the last tab

@@ -146,6 +146,94 @@
 			"type": "number"
 		},
 		{
+			"%": "Missiles"
+		},
+		{
+			"SMW_Damage": "API_missile.damage_total"
+		},
+		{
+			"SMW_SignalType": "API_missile.signal_type"
+		},
+		{
+			"SMW_LockTime": "API_missile.lock_time"
+		},
+		{
+			"%": "Missile Racks"
+		},
+		{
+			"SMW_MissileCount": "API_max_missiles"
+		},
+		{
+			"SMW_MissileSize": "API_min_size"
+		},
+		{
+			"%": "Mining Laser"
+		},
+		{
+			"SMW_OptimalRange": "API_mining_laser.optimal_range",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumRange": "API_mining_laser.maximum_range",
+			"type": "number"
+		},
+		{
+			"SMW_ExtractionThroughput": "API_mining_laser.extraction_throughput",
+			"type": "number"
+		},
+		{
+			"SMW_MiningLaserPower": "API_mining_laser.mining_laser_power"
+		},
+		{
+			"SMW_ExtractionLaserPower": "API_mining_laser.extraction_laser_power"
+		},
+		{
+			"SMW_ModuleSlots": "API_mining_laser.module_slots"
+		},
+		{
+			"%": "Mining Modules"
+		},
+		{
+			"SMW_Uses": "API_mining_module.uses"
+		},
+		{
+			"SMW_Duration": "API_mining_module.duration",
+			"format": "remove:seconds"
+		},
+		{
+			"%": "Mining Modifiers, defined here so that they are retrieved on ASK"
+		},
+		{
+			"SMW_ModifierCatastrophicChargeRate": ""
+		},
+		{
+			"SMW_ModifierExtractionLaserPower": ""
+		},
+		{
+			"SMW_ModifierLaserInstability": ""
+		},
+		{
+			"SMW_ModifierMiningLaserPower": ""
+		},
+		{
+			"SMW_ModifierOptimalChargeWindowSize": ""
+		},
+		{
+			"SMW_ModifierInertMaterials": ""
+		},
+		{
+			"SMW_ModifierOptimalChargeRate": ""
+		},
+		{
+			"SMW_ModifierResistance": ""
+		},
+		{
+			"SMW_ModifierShatterDamage": ""
+		},
+		{
+			"SMW_ModifierSize": ""
+		},
+		{
 			"%": "Quantum Drives"
 		},
 		{
@@ -248,82 +336,6 @@
 		{
 			"SMW_ShieldStunResistance": "API_shield.resistance.stun",
 			"type": "minmax"
-		},
-		{
-			"%": "Missile Racks"
-		},
-		{
-			"SMW_MissileCount": "API_max_missiles"
-		},
-		{
-			"SMW_MissileSize": "API_min_size"
-		},
-		{
-			"%": "Mining Laser"
-		},
-		{
-			"SMW_OptimalRange": "API_mining_laser.optimal_range",
-			"type": "number"
-		},
-		{
-			"SMW_MaximumRange": "API_mining_laser.maximum_range",
-			"type": "number"
-		},
-		{
-			"SMW_ExtractionThroughput": "API_mining_laser.extraction_throughput",
-			"type": "number"
-		},
-		{
-			"SMW_MiningLaserPower": "API_mining_laser.mining_laser_power"
-		},
-		{
-			"SMW_ExtractionLaserPower": "API_mining_laser.extraction_laser_power"
-		},
-		{
-			"SMW_ModuleSlots": "API_mining_laser.module_slots"
-		},
-		{
-			"%": "Mining Modules"
-		},
-		{
-			"SMW_Uses": "API_mining_module.uses"
-		},
-		{
-			"SMW_Duration": "API_mining_module.duration",
-			"format": "remove:seconds"
-		},
-		{
-			"%": "Mining Modifiers, defined here so that they are retrieved on ASK"
-		},
-		{
-			"SMW_ModifierCatastrophicChargeRate": ""
-		},
-		{
-			"SMW_ModifierExtractionLaserPower": ""
-		},
-		{
-			"SMW_ModifierLaserInstability": ""
-		},
-		{
-			"SMW_ModifierMiningLaserPower": ""
-		},
-		{
-			"SMW_ModifierOptimalChargeWindowSize": ""
-		},
-		{
-			"SMW_ModifierInertMaterials": ""
-		},
-		{
-			"SMW_ModifierOptimalChargeRate": ""
-		},
-		{
-			"SMW_ModifierResistance": ""
-		},
-		{
-			"SMW_ModifierShatterDamage": ""
-		},
-		{
-			"SMW_ModifierSize": ""
 		}
 	]
 }
