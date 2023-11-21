@@ -843,7 +843,7 @@
 			}
 		],
 		[
-			"DriveRead",
+			"DriveReady",
 			{
 				"de": "Fahrbereit",
 				"en": "Drive ready"
