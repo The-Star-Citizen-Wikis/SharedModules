@@ -342,7 +342,7 @@
 			"type_missilelauncher.missilerack",
 			{
 				"de": "Raketenwerfer",
-				"en": "Missile launcher"
+				"en": "Missile rack"
 			}
 		],
 		[
@@ -489,7 +489,7 @@
 			"category_missilelauncher.missilerack",
 			{
 				"de": "Raketenwerfer",
-				"en": "Missile launchers"
+				"en": "Missile racks"
 			}
 		],
 		[
