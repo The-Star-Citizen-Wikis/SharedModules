@@ -17,10 +17,17 @@
 	},
 	"data": [
 		[
-			"SMW_Damage",
+			"SMW_DamageEnergy",
 			{
-				"de": "Schaden",
-				"en": "Damage"
+				"de": "Energieschaden",
+				"en": "Energy damage"
+			}
+		],
+		[
+			"SMW_DamagePhysical",
+			{
+				"de": "Physischer Schaden",
+				"en": "Physical damage"
 			}
 		],
 		[
@@ -563,10 +570,17 @@
 			}
 		],
 		[
-			"LBL_Damage",
+			"LBL_DamageEnergy",
 			{
-				"de": "Schaden",
-				"en": "Damage"
+				"de": "Energie",
+				"en": "Energy"
+			}
+		],
+		[
+			"LBL_DamagePhysical",
+			{
+				"de": "Physischer",
+				"en": "Physical"
 			}
 		],
 		[

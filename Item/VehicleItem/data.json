@@ -2,6 +2,12 @@
 	"%smw_data": "Sets which data gets added to SMW",
 	"smw_data": [
 		{
+			"SMW_DamageEnergy": ""
+		},
+		{
+			"SMW_DamagePhysical": ""
+		},
+		{
 			"%": "Engineering"
 		},
 		{
@@ -147,9 +153,6 @@
 		},
 		{
 			"%": "Missiles"
-		},
-		{
-			"SMW_Damage": "API_missile.damage_total"
 		},
 		{
 			"SMW_SignalType": "API_missile.signal_type"

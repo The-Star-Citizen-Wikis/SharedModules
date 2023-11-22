@@ -82,7 +82,7 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
                 value = data[valueKey]
 
                 -- Handle percentage such as 10% used in modifiers
-                if value:find( '%d+%%' ) then
+                if type( value ) == 'string' and value:find( '%d+%%' ) then
                     value = string.gsub( value, '%%', '' ) / 100
                 end
 
@@ -93,6 +93,7 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
 
     setFromTable( apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier' )
     setFromTable( apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier' )
+    setFromTable( apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage' )
 
     mw.smw.set( setData )
 end
@@ -142,13 +143,14 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Missile
-    elseif smwData[ translate( 'SMW_Damage' ) ] and smwData[ translate( 'SMW_LockTime' ) ] and smwData[ translate( 'SMW_SignalType' ) ] then
+    elseif smwData[ translate( 'SMW_LockTime' ) ] and smwData[ translate( 'SMW_SignalType' ) ] then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
             infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ translate( 'SMW_SignalType' ) ] ),
-            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] )
+            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ translate( 'SMW_DamagePhysical' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Missile launcher
