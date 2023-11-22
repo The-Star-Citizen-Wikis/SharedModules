@@ -63,21 +63,27 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
 
     local setData = {}
 
-    local function setModifiers( modifiers )
-        if modifiers == nil or type( modifiers ) ~= 'table' then
+    --- @param tableData table Array data from API
+    --- @param nameKey string Key of the value being used as name in the SMW property
+    --- @param valueKey string Key of the value being used as value in the SMW property
+    --- @param prefix string Prefix of the SMW property name
+    local function setFromTable( tableData, namekey, valueKey, prefix )
+        if tableData == nil or type( tableData ) ~= 'table' then
             return
         end
 
-        for _, modifier in pairs( modifiers ) do
-            local name = modifier.display_name or ''
-            name = 'SMW_Modifier' .. name:gsub( ' ', '' )
+        for _, data in pairs( tableData ) do
+            local name = data[namekey] or ''
+            name = 'SMW_' .. prefix .. name:gsub('^%l', string.upper):gsub( ' ', '' )
 
             if translate( name ) ~= nil then
                 local value
-                if modifier.name == 'size' then
-                    value = modifier.value
-                else
-                    value = string.gsub( modifier.value, '%%', '' ) / 100
+
+                value = data[valueKey]
+
+                -- Handle percentage such as 10% used in modifiers
+                if value:find( '%d+%%' ) then
+                    value = string.gsub( value, '%%', '' ) / 100
                 end
 
                 setData[ translate( name ) ] = value
@@ -85,8 +91,8 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
         end
     end
 
-    setModifiers( apiData:get( 'mining_laser.modifiers' ) )
-    setModifiers( apiData:get( 'mining_module.modifiers' ) )
+    setFromTable( apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier' )
+    setFromTable( apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier' )
 
     mw.smw.set( setData )
 end
