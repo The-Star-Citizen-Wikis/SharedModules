@@ -313,7 +313,7 @@
     content: none !important;
 }
 
-@media only screen and ( max-width: 720px ) {
+@media only screen and ( max-width: 649px ) {
     .infobox {
         margin-right: auto;
         margin-left: auto;
