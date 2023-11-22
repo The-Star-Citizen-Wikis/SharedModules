@@ -451,6 +451,11 @@ function methodtable.setCategories( self )
 				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, gradeCategory )
 			end
+
+			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
+				local classCategory = self.smwData[ translate( 'SMW_Class' ) ] .. ' ' .. categoryTypeSuffix
+				table.insert( self.categories, classCategory )
+			end
 		end
 	end
 
