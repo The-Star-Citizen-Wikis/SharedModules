@@ -346,6 +346,13 @@
 			}
 		],
 		[
+			"type_missile.torpedo",
+			{
+				"de": "Torpedo",
+				"en": "Torpedo"
+			}
+		],
+		[
 			"type_missilelauncher.missilerack",
 			{
 				"de": "Raketenwerfer",
@@ -497,6 +504,13 @@
 			{
 				"de": "Rakete",
 				"en": "Missiles"
+			}
+		],
+		[
+			"category_missile.torpedo",
+			{
+				"de": "Torpedo",
+				"en": "Torpedoes"
 			}
 		],
 		[

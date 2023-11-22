@@ -115,6 +115,7 @@
 				"Gadget",
 				"MiningModifier.Gun",
 				"Missile.Missile",
+				"Missile.Torpedo",
 				"MissileLauncher.MissileRack",
 				"PowerPlant",
 				"QuantumDrive",
