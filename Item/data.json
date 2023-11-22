@@ -117,7 +117,7 @@
 				"Missile.Missile",
 				"Missile.Torpedo",
 				"MissileLauncher.MissileRack",
-				"PowerPlant",
+				"PowerPlant.Power",
 				"QuantumDrive",
 				"QuantumInterdictionGenerator",
 				"SalvageModifier",

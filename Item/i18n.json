@@ -360,7 +360,7 @@
 			}
 		],
 		[
-			"type_powerplant",
+			"type_powerplant.power",
 			{
 				"de": "Generator",
 				"en": "Power plant"
@@ -521,7 +521,7 @@
 			}
 		],
 		[
-			"category_powerplant",
+			"category_powerplant.power",
 			{
 				"de": "Generator",
 				"en": "Power plants"
