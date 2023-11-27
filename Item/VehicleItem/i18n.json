@@ -17,6 +17,13 @@
 	},
 	"data": [
 		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
 			"SMW_DamageEnergy",
 			{
 				"de": "Energieschaden",
@@ -245,6 +252,13 @@
 			{
 				"de": "Raketengröße",
 				"en": "Missile size"
+			}
+		],
+		[
+			"SMW_MinimumRange",
+			{
+				"de": "Minimalreichweite",
+				"en": "Minimum range"
 			}
 		],
 		[
@@ -490,6 +504,34 @@
 			{
 				"de": "Stun Resistance",
 				"en": "Shield stun resistance"
+			}
+		],
+		[
+			"SMW_MinimumForce",
+			{
+				"de": "Minimale Kraft",
+				"en": "Minimum force"
+			}
+		],
+		[
+			"SMW_MaximumForce",
+			{
+				"de": "Maximale Kraft",
+				"en": "Maximum force"
+			}
+		],
+		[
+			"SMW_MaximumAngle",
+			{
+				"de": "Maximale Winkel",
+				"en": "Maximum angle"
+			}
+		],
+		[
+			"SMW_MaximumVolume",
+			{
+				"de": "Maximale Lautstärke",
+				"en": "Maximum volume"
 			}
 		],
 		[
@@ -766,6 +808,13 @@
 			}
 		],
 		[
+			"LBL_MaximumForce",
+			{
+				"de": "Maximale Kraft",
+				"en": "Max force"
+			}
+		],
+		[
 			"LBL_OptimalRange",
 			{
 				"de": "Effektive Reichweite",
@@ -776,7 +825,7 @@
 			"LBL_MaximumRange",
 			{
 				"de": "Maximalreichweite",
-				"en": "Maximum range"
+				"en": "Max range"
 			}
 		],
 		[
@@ -1015,6 +1064,20 @@
 			{
 				"de": "",
 				"en": ""
+			}
+		],
+		[
+			"LBL_MaximumAngle",
+			{
+				"de": "Maximale Winkel",
+				"en": "Max angle"
+			}
+		],
+		[
+			"LBL_MaximumVolume",
+			{
+				"de": "Maximale Lautstärke",
+				"en": "Max volume"
 			}
 		],
 		[

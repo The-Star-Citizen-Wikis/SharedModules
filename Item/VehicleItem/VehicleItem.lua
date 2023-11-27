@@ -325,6 +325,19 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         --        infobox:renderItem( translate( 'LBL_ShieldStunResistance' ), smwData[ translate( 'SMW_ShieldStunResistance' ) ] ),
         --    }
         --} )
+    -- Tractor beam
+    -- TODO: Maybe we should use SMW_Type for all the stuff above
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'TractorBeam' then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_MaximumForce' ), smwData[ translate( 'SMW_MaximumForce' ) ] ),
+            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumAngle' ), smwData[ translate( 'SMW_MaximumAngle' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumVolume' ), smwData[ translate( 'SMW_MaximumVolume' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     end
 
     -- Get the index of the last tab

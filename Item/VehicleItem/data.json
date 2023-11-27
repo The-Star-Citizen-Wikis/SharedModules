@@ -145,13 +145,6 @@
 			"type": "number"
 		},
 		{
-			"%": "Power Plant"
-		},
-		{
-			"SMW_PowerOutput": "API_power_plant.power_output",
-			"type": "number"
-		},
-		{
 			"%": "Missiles"
 		},
 		{
@@ -235,6 +228,13 @@
 		},
 		{
 			"SMW_ModifierSize": ""
+		},
+		{
+			"%": "Power Plant"
+		},
+		{
+			"SMW_PowerOutput": "API_power_plant.power_output",
+			"type": "number"
 		},
 		{
 			"%": "Quantum Drives"
@@ -339,6 +339,37 @@
 		{
 			"SMW_ShieldStunResistance": "API_shield.resistance.stun",
 			"type": "minmax"
+		},
+		{
+			"%": "Tractor beams"
+		},
+		{
+			"SMW_MinimumForce": "API_tractor_beam.min_force",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumForce": "API_tractor_beam.max_force",
+			"type": "number"
+		},
+		{
+			"SMW_MinimumRange": "API_tractor_beam.min_distance",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumRange": "API_tractor_beam.max_distance",
+			"type": "number"
+		},
+		{
+			"SMW_OptimalRange": "API_tractor_beam.full_strength_distance",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumAngle": "API_tractor_beam.max_angle",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumVolume": "API_tractor_beam.max_volume",
+			"type": "number"
 		}
 	]
 }
