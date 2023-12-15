@@ -99,8 +99,15 @@
 		{
 			"name": "Module:Item/Food",
 			"type": [
-				"Drink",
-				"Food"
+				"Drink.Bottle",
+				"Drink.Can",
+				"Food.Bar",
+				"Food.Box",
+				"Food.Consumable",
+				"Food.Junk",
+				"Food.Plant",
+				"Food.Sachet",
+				"Food.Tin"
 			]
 		},
 		{

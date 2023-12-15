@@ -304,7 +304,14 @@
 			}
 		],
 		[
-			"type_drink",
+			"type_drink.bottle",
+			{
+				"de": "Getränk",
+				"en": "Drink"
+			}
+		],
+		[
+			"type_drink.can",
 			{
 				"de": "Getränk",
 				"en": "Drink"
@@ -318,7 +325,49 @@
 			}
 		],
 		[
-			"type_food",
+			"type_food.bar",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.box",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.consumable",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.junk",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.plant",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.sachet",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.tin",
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
@@ -472,7 +521,14 @@
 			}
 		],
 		[
-			"category_drink",
+			"category_drink.bottle",
+			{
+				"de": "Getränk",
+				"en": "Drinks"
+			}
+		],
+		[
+			"category_drink.can",
 			{
 				"de": "Getränk",
 				"en": "Drinks"
@@ -486,7 +542,49 @@
 			}
 		],
 		[
-			"category_food",
+			"category_food.bar",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.box",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.consumable",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.junk",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.plant",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.sachet",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.tin",
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
