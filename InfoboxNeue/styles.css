@@ -336,10 +336,14 @@
     margin-bottom: 0;
 }
 
-
 .infobox__section--tabber .tabber .infobox__section {
     margin-top: var( --space-sm );
     margin-bottom: 0;
+}
+
+/* Increase top margin for nested tabber section */
+.infobox__section--tabber .infobox__section.infobox__section--tabber {
+    margin-top: var( --space-xl );
 }
 
 /* Match padding in the rest of the infobox */
