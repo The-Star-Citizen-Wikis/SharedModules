@@ -99,8 +99,15 @@
 		{
 			"name": "Module:Item/Food",
 			"type": [
-				"Drink",
-				"Food"
+				"Drink.Bottle",
+				"Drink.Can",
+				"Food.Bar",
+				"Food.Box",
+				"Food.Consumable",
+				"Food.Junk",
+				"Food.Plant",
+				"Food.Sachet",
+				"Food.Tin"
 			]
 		},
 		{
@@ -113,13 +120,19 @@
 				"Cooler",
 				"EMP",
 				"Gadget",
-				"MiningModifier",
-				"MissileLauncher",
-				"PowerPlant",
+				"MiningModifier.Gun",
+				"Missile.Missile",
+				"Missile.Torpedo",
+				"MissileLauncher.MissileRack",
+				"PowerPlant.Power",
 				"QuantumDrive",
 				"QuantumInterdictionGenerator",
+				"SalvageModifier",
+				"SalvageModifier.SalvageModifier_TractorBeam",
 				"Shield",
-				"WeaponMining"
+				"TowingBeam",
+				"TractorBeam",
+				"WeaponMining.Gun"
 			]
 		}
 	]

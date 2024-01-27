@@ -31,6 +31,10 @@
 			"color": "green"
 		},
 		{
+			"name": "DriveReady",
+			"color": "green"
+		},
+		{
 			"name": "ActiveProduction",
 			"color": "yellow"
 		},

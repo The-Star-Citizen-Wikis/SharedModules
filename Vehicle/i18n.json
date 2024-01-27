@@ -843,6 +843,13 @@
 			}
 		],
 		[
+			"DriveReady",
+			{
+				"de": "Fahrbereit",
+				"en": "Drive ready"
+			}
+		],
+		[
 			"ActiveProduction",
 			{
 				"de": "Aktive Produktion",

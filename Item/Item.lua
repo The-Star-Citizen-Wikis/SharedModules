@@ -152,6 +152,12 @@ function methodtable.setSemanticProperties( self )
 		--- Commodity
 		local commodity = require( 'Module:Commodity' ):new()
 		commodity:addShopData( self.apiData )
+
+		--- Merge subtype into type, like how the game handles it
+		if self.apiData.type ~= nil and self.apiData.sub_type ~= nil and self.apiData.sub_type ~= 'UNDEFINED' then
+			--- SMW_Type is already set prior if self.apiData.type exists
+			setData[ translate( 'SMW_Type' ) ] = string.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+		end
 	end
 
 	runModuleFN( setData[ translate( 'SMW_Type' ) ], 'addSmwProperties', { self.apiData, self.frameArgs, setData } )
@@ -444,6 +450,11 @@ function methodtable.setCategories( self )
 			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
 				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, gradeCategory )
+			end
+
+			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
+				local classCategory = self.smwData[ translate( 'SMW_Class' ) ] .. ' ' .. categoryTypeSuffix
+				table.insert( self.categories, classCategory )
 			end
 		end
 	end

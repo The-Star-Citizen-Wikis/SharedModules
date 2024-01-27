@@ -17,6 +17,27 @@
 	},
 	"data": [
 		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"SMW_DamageEnergy",
+			{
+				"de": "Energieschaden",
+				"en": "Energy damage"
+			}
+		],
+		[
+			"SMW_DamagePhysical",
+			{
+				"de": "Physischer Schaden",
+				"en": "Physical damage"
+			}
+		],
+		[
 			"SMW_MinimumPowerDraw",
 			{
 				"de": "Minimum power draw",
@@ -206,6 +227,160 @@
 			}
 		],
 		[
+			"SMW_SignalType",
+			{
+				"de": "Signaltyp",
+				"en": "Signal type"
+			}
+		],
+		[
+			"SMW_LockTime",
+			{
+				"de": "Erfassungszeit",
+				"en": "Lock time"
+			}
+		],
+		[
+			"SMW_MissileCount",
+			{
+				"de": "Anzahl Raketen",
+				"en": "Missile count"
+			}
+		],
+		[
+			"SMW_MissileSize",
+			{
+				"de": "Raketengröße",
+				"en": "Missile size"
+			}
+		],
+		[
+			"SMW_MinimumRange",
+			{
+				"de": "Minimalreichweite",
+				"en": "Minimum range"
+			}
+		],
+		[
+			"SMW_OptimalRange",
+			{
+				"de": "Effektive Reichweite",
+				"en": "Optimal range"
+			}
+		],
+		[
+			"SMW_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Maximum range"
+			}
+		],
+		[
+			"SMW_ExtractionThroughput",
+			{
+				"de": "Entnahmedurchsatz",
+				"en": "Extraction throughput"
+			}
+		],
+		[
+			"SMW_MiningLaserPower",
+			{
+				"de": "Bergbau Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"SMW_ExtractionLaserPower",
+			{
+				"de": "Extraktion Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"SMW_ModuleSlots",
+			{
+				"de": "Anzahl Verbrauchsplätze",
+				"en": "Module slots"
+			}
+		],
+		[
+			"SMW_ModifierCatastrophicChargeRate",
+			{
+				"de": "Modifikator Katastrophische Laderate",
+				"en": "Modifier catastrophic charge rate"
+			}
+		],
+		[
+			"SMW_ModifierExtractionLaserPower",
+			{
+				"de": "Modifikator Extraktion-Laserleistung",
+				"en": "Modifier extraction laser power"
+			}
+		],
+		[
+			"SMW_ModifierLaserInstability",
+			{
+				"de": "Modifikator Laser-Instabilität",
+				"en": "Modifier laser instability"
+			}
+		],
+		[
+			"SMW_ModifierMiningLaserPower",
+			{
+				"de": "Modifikator Bergbau-Laserleistung",
+				"en": "Modifier mining laser power"
+			}
+		],
+		[
+			"SMW_ModifierOptimalChargeWindowSize",
+			{
+				"de": "Modifikator Optimale Ladefensterrate",
+				"en": "Modifier optimal charge window size"
+			}
+		],
+		[
+			"SMW_ModifierInertMaterials",
+			{
+				"de": "Modifikator Inerte Materialien",
+				"en": "Modifier inert materials"
+			}
+		],
+		[
+			"SMW_ModifierOptimalChargeRate",
+			{
+				"de": "Modifikator Optimale Laderate",
+				"en": "Modifier optimal charge rate"
+			}
+		],
+		[
+			"SMW_ModifierResistance",
+			{
+				"de": "Modifikator Resistenz",
+				"en": "Modifier resistance"
+			}
+		],
+		[
+			"SMW_ModifierShatterDamage",
+			{
+				"de": "Modifikator Splitterschaden",
+				"en": "Modifier shatter damage"
+			}
+		],
+		[
+			"SMW_ModifierSize",
+			{
+				"de": "Modifikator Größe",
+				"en": "Modifier size"
+			}
+		],
+		[
+			"SMW_Uses",
+			{
+				"de": "Anwendungen",
+				"en": "Uses"
+			}
+		],
+		[
 			"SMW_PowerOutput",
 			{
 				"de": "Ausgangsleistung",
@@ -332,136 +507,31 @@
 			}
 		],
 		[
-			"SMW_MissileCount",
+			"SMW_MinimumForce",
 			{
-				"de": "Anzahl Raketen",
-				"en": "Missile count"
+				"de": "Minimale Kraft",
+				"en": "Minimum force"
 			}
 		],
 		[
-			"SMW_MissileSize",
+			"SMW_MaximumForce",
 			{
-				"de": "Raketengröße",
-				"en": "Missile size"
+				"de": "Maximale Kraft",
+				"en": "Maximum force"
 			}
 		],
 		[
-			"SMW_OptimalRange",
+			"SMW_MaximumAngle",
 			{
-				"de": "Effektive Reichweite",
-				"en": "Optimal range"
+				"de": "Maximale Winkel",
+				"en": "Maximum angle"
 			}
 		],
 		[
-			"SMW_MaximumRange",
+			"SMW_MaximumVolume",
 			{
-				"de": "Maximalreichweite",
-				"en": "Maximum range"
-			}
-		],
-		[
-			"SMW_ExtractionThroughput",
-			{
-				"de": "Entnahmedurchsatz",
-				"en": "Extraction throughput"
-			}
-		],
-		[
-			"SMW_MiningLaserPower",
-			{
-				"de": "Bergbau Laserleistung",
-				"en": "Mining laser power"
-			}
-		],
-		[
-			"SMW_ExtractionLaserPower",
-			{
-				"de": "Extraktion Laserleistung",
-				"en": "Extraction laser power"
-			}
-		],
-		[
-			"SMW_ModuleSlots",
-			{
-				"de": "Anzahl Verbrauchsplätze",
-				"en": "Module slots"
-			}
-		],
-		[
-			"SMW_ModifierCatastrophicChargeRate",
-			{
-				"de": "Modifikator Katastrophische Laderate",
-				"en": "Modifier catastrophic charge rate"
-			}
-		],
-		[
-			"SMW_ModifierExtractionLaserPower",
-			{
-				"de": "Modifikator Extraktion-Laserleistung",
-				"en": "Modifier extraction laser power"
-			}
-		],
-		[
-			"SMW_ModifierLaserInstability",
-			{
-				"de": "Modifikator Laser-Instabilität",
-				"en": "Modifier laser instability"
-			}
-		],
-		[
-			"SMW_ModifierMiningLaserPower",
-			{
-				"de": "Modifikator Bergbau-Laserleistung",
-				"en": "Modifier mining laser power"
-			}
-		],
-		[
-			"SMW_ModifierOptimalChargeWindowSize",
-			{
-				"de": "Modifikator Optimale Ladefensterrate",
-				"en": "Modifier optimal charge window size"
-			}
-		],
-		[
-			"SMW_ModifierInertMaterials",
-			{
-				"de": "Modifikator Inerte Materialien",
-				"en": "Modifier inert materials"
-			}
-		],
-		[
-			"SMW_ModifierOptimalChargeRate",
-			{
-				"de": "Modifikator Optimale Laderate",
-				"en": "Modifier optimal charge rate"
-			}
-		],
-		[
-			"SMW_ModifierResistance",
-			{
-				"de": "Modifikator Resistenz",
-				"en": "Modifier resistance"
-			}
-		],
-		[
-			"SMW_ModifierShatterDamage",
-			{
-				"de": "Modifikator Splitterschaden",
-				"en": "Modifier shatter damage"
-			}
-		],
-		[
-			"SMW_ModifierSize",
-			{
-				"de": "Modifikator Größe",
-				"en": "Modifier size"
-			}
-		],
-		[
-			"SMW_Uses",
-			{
-				"de": "Anwendungen",
-				"en": "Uses"
+				"de": "Maximale Lautstärke",
+				"en": "Maximum volume"
 			}
 		],
 		[
@@ -539,6 +609,20 @@
 			{
 				"de": "Defense",
 				"en": "Defense"
+			}
+		],
+		[
+			"LBL_DamageEnergy",
+			{
+				"de": "Energie",
+				"en": "Energy"
+			}
+		],
+		[
+			"LBL_DamagePhysical",
+			{
+				"de": "Physischer",
+				"en": "Physical"
 			}
 		],
 		[
@@ -696,6 +780,160 @@
 			}
 		],
 		[
+			"LBL_SignalType",
+			{
+				"de": "Signaltyp",
+				"en": "Tracking signal"
+			}
+		],
+		[
+			"LBL_LockTime",
+			{
+				"de": "Erfassungszeit",
+				"en": "Lock time"
+			}
+		],
+		[
+			"LBL_MissileCount",
+			{
+				"de": "Anzahl Raketen",
+				"en": "Missile count"
+			}
+		],
+		[
+			"LBL_MissileSize",
+			{
+				"de": "Raketengröße",
+				"en": "Missile size"
+			}
+		],
+		[
+			"LBL_MaximumForce",
+			{
+				"de": "Maximale Kraft",
+				"en": "Max force"
+			}
+		],
+		[
+			"LBL_OptimalRange",
+			{
+				"de": "Effektive Reichweite",
+				"en": "Optimal range"
+			}
+		],
+		[
+			"LBL_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Max range"
+			}
+		],
+		[
+			"LBL_ExtractionThroughput",
+			{
+				"de": "Entnahmedurchsatz",
+				"en": "Extraction throughput"
+			}
+		],
+		[
+			"LBL_MiningLaserPower",
+			{
+				"de": "Bergbau Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"LBL_ExtractionLaserPower",
+			{
+				"de": "Extraktion Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"LBL_ModuleSlots",
+			{
+				"de": "Anzahl Verbrauchsplätze",
+				"en": "Module slots"
+			}
+		],
+		[
+			"LBL_Uses",
+			{
+				"de": "Anwendungen",
+				"en": "Uses"
+			}
+		],
+		[
+			"LBL_ModifierCatastrophicChargeRate",
+			{
+				"de": "Katastrophische Laderate",
+				"en": "Catastrophic charge rate"
+			}
+		],
+		[
+			"LBL_ModifierExtractionLaserPower",
+			{
+				"de": "Extraktion-Laserleistung",
+				"en": "Extraction laser power"
+			}
+		],
+		[
+			"LBL_ModifierLaserInstability",
+			{
+				"de": "Laser-Instabilität",
+				"en": "Laser instability"
+			}
+		],
+		[
+			"LBL_ModifierMiningLaserPower",
+			{
+				"de": "Bergbau-Laserleistung",
+				"en": "Mining laser power"
+			}
+		],
+		[
+			"LBL_ModifierOptimalChargeWindowSize",
+			{
+				"de": "Optimale Ladefensterrate",
+				"en": "Optimal charge window"
+			}
+		],
+		[
+			"LBL_ModifierInertMaterials",
+			{
+				"de": "Inerte Materialien",
+				"en": "Inert materials"
+			}
+		],
+		[
+			"LBL_ModifierOptimalChargeRate",
+			{
+				"de": "Optimale Laderate",
+				"en": "Optimal charge rate"
+			}
+		],
+		[
+			"LBL_ModifierResistance",
+			{
+				"de": "Resistenz",
+				"en": "Resistance"
+			}
+		],
+		[
+			"LBL_ModifierShatterDamage",
+			{
+				"de": "Splitterschaden",
+				"en": "Shatter damage"
+			}
+		],
+		[
+			"LBL_ModifierSize",
+			{
+				"de": "Größe",
+				"en": "Size"
+			}
+		],
+		[
 			"LBL_PowerOutput",
 			{
 				"de": "Ausgangsleistung",
@@ -829,136 +1067,17 @@
 			}
 		],
 		[
-			"LBL_MissileCount",
+			"LBL_MaximumAngle",
 			{
-				"de": "Anzahl Raketen",
-				"en": "Missile count"
+				"de": "Maximale Winkel",
+				"en": "Max angle"
 			}
 		],
 		[
-			"LBL_MissileSize",
+			"LBL_MaximumVolume",
 			{
-				"de": "Raketengröße",
-				"en": "Missile size"
-			}
-		],
-		[
-			"LBL_OptimalRange",
-			{
-				"de": "Effektive Reichweite",
-				"en": "Optimal range"
-			}
-		],
-		[
-			"LBL_MaximumRange",
-			{
-				"de": "Maximalreichweite",
-				"en": "Maximum range"
-			}
-		],
-		[
-			"LBL_ExtractionThroughput",
-			{
-				"de": "Entnahmedurchsatz",
-				"en": "Extraction throughput"
-			}
-		],
-		[
-			"LBL_MiningLaserPower",
-			{
-				"de": "Bergbau Laserleistung",
-				"en": "Mining laser power"
-			}
-		],
-		[
-			"LBL_ExtractionLaserPower",
-			{
-				"de": "Extraktion Laserleistung",
-				"en": "Extraction laser power"
-			}
-		],
-		[
-			"LBL_ModuleSlots",
-			{
-				"de": "Anzahl Verbrauchsplätze",
-				"en": "Module slots"
-			}
-		],
-		[
-			"LBL_Uses",
-			{
-				"de": "Anwendungen",
-				"en": "Uses"
-			}
-		],
-		[
-			"LBL_ModifierCatastrophicChargeRate",
-			{
-				"de": "Katastrophische Laderate",
-				"en": "Catastrophic charge rate"
-			}
-		],
-		[
-			"LBL_ModifierExtractionLaserPower",
-			{
-				"de": "Extraktion-Laserleistung",
-				"en": "Extraction laser power"
-			}
-		],
-		[
-			"LBL_ModifierLaserInstability",
-			{
-				"de": "Laser-Instabilität",
-				"en": "Laser instability"
-			}
-		],
-		[
-			"LBL_ModifierMiningLaserPower",
-			{
-				"de": "Bergbau-Laserleistung",
-				"en": "Mining laser power"
-			}
-		],
-		[
-			"LBL_ModifierOptimalChargeWindowSize",
-			{
-				"de": "Optimale Ladefensterrate",
-				"en": "Optimal charge window"
-			}
-		],
-		[
-			"LBL_ModifierInertMaterials",
-			{
-				"de": "Inerte Materialien",
-				"en": "Inert materials"
-			}
-		],
-		[
-			"LBL_ModifierOptimalChargeRate",
-			{
-				"de": "Optimale Laderate",
-				"en": "Optimal charge rate"
-			}
-		],
-		[
-			"LBL_ModifierResistance",
-			{
-				"de": "Resistenz",
-				"en": "Resistance"
-			}
-		],
-		[
-			"LBL_ModifierShatterDamage",
-			{
-				"de": "Splitterschaden",
-				"en": "Shatter damage"
-			}
-		],
-		[
-			"LBL_ModifierSize",
-			{
-				"de": "Größe",
-				"en": "Size"
+				"de": "Maximale Lautstärke",
+				"en": "Max volume"
 			}
 		],
 		[

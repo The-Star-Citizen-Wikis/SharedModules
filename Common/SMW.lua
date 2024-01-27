@@ -185,7 +185,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 						value = value[ 1 ]
 					end
 
-					smwSetObject[ translateFn( smwKey ) ] = value
+					-- i18n should be present for SMW property name, but sometimes it doesn't
+					local smwPropName = translateFn( smwKey ) or smwKey
+					smwSetObject[ smwPropName ] = value
 				end
 			end
 		end

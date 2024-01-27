@@ -304,7 +304,14 @@
 			}
 		],
 		[
-			"type_drink",
+			"type_drink.bottle",
+			{
+				"de": "Getränk",
+				"en": "Drink"
+			}
+		],
+		[
+			"type_drink.can",
 			{
 				"de": "Getränk",
 				"en": "Drink"
@@ -318,7 +325,49 @@
 			}
 		],
 		[
-			"type_food",
+			"type_food.bar",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.box",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.consumable",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.junk",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.plant",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.sachet",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"type_food.tin",
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
@@ -332,21 +381,35 @@
 			}
 		],
 		[
-			"type_miningmodifier",
+			"type_miningmodifier.gun",
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining module"
 			}
 		],
 		[
-			"type_missilelauncher",
+			"type_missile.missile",
 			{
-				"de": "Raketenwerfer",
-				"en": "Missile launcher"
+				"de": "Rakete",
+				"en": "Missile"
 			}
 		],
 		[
-			"type_powerplant",
+			"type_missile.torpedo",
+			{
+				"de": "Torpedo",
+				"en": "Torpedo"
+			}
+		],
+		[
+			"type_missilelauncher.missilerack",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile rack"
+			}
+		],
+		[
+			"type_powerplant.power",
 			{
 				"de": "Generator",
 				"en": "Power plant"
@@ -367,10 +430,38 @@
 			}
 		],
 		[
+			"type_salvagemodifier",
+			{
+				"de": "Bergungsmodifikator",
+				"en": "Scraper module"
+			}
+		],
+		[
+			"type_salvagemodifier.salvagemodifier_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
+			}
+		],
+		[
 			"type_shield",
 			{
 				"de": "Schildgenerator",
 				"en": "Shield generator"
+			}
+		],
+		[
+			"type_towingbeam",
+			{
+				"de": "Abschleppbalken",
+				"en": "Towing beam"
+			}
+		],
+		[
+			"type_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
 			}
 		],
 		[
@@ -381,7 +472,7 @@
 			}
 		],
 		[
-			"type_weaponmining",
+			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
 				"en": "Mining laser"
@@ -430,7 +521,14 @@
 			}
 		],
 		[
-			"category_drink",
+			"category_drink.bottle",
+			{
+				"de": "Getränk",
+				"en": "Drinks"
+			}
+		],
+		[
+			"category_drink.can",
 			{
 				"de": "Getränk",
 				"en": "Drinks"
@@ -444,28 +542,84 @@
 			}
 		],
 		[
-			"category_food",
+			"category_food.bar",
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
 			}
 		],
 		[
-			"category_miningmodifier",
+			"category_food.box",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.consumable",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.junk",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.plant",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.sachet",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_food.tin",
+			{
+				"de": "Lebensmittel",
+				"en": "Food"
+			}
+		],
+		[
+			"category_miningmodifier.gun",
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining modules"
 			}
 		],
 		[
-			"category_missilelauncher",
+			"category_missile.missile",
 			{
-				"de": "Raketenwerfer",
-				"en": "Missile launchers"
+				"de": "Rakete",
+				"en": "Missiles"
 			}
 		],
 		[
-			"category_powerplant",
+			"category_missile.torpedo",
+			{
+				"de": "Torpedo",
+				"en": "Torpedoes"
+			}
+		],
+		[
+			"category_missilelauncher.missilerack",
+			{
+				"de": "Raketenwerfer",
+				"en": "Missile racks"
+			}
+		],
+		[
+			"category_powerplant.power",
 			{
 				"de": "Generator",
 				"en": "Power plants"
@@ -486,6 +640,20 @@
 			}
 		],
 		[
+			"category_salvagemodifier",
+			{
+				"de": "Bergungsmodifikator",
+				"en": "Scraper modules"
+			}
+		],
+		[
+			"category_salvagemodifier.salvagemodifier_tractorbeam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beams"
+			}
+		],
+		[
 			"category_shield",
 			{
 				"de": "Schildgenerator",
@@ -493,7 +661,21 @@
 			}
 		],
 		[
-			"category_weaponmining",
+			"category_towingbeam",
+			{
+				"de": "Abschleppbalken",
+				"en": "Towing beams"
+			}
+		],
+		[
+			"category_tractorbeam",
+			{
+				"de": "Traktorbalken",
+				"en": "Tractor beams"
+			}
+		],
+		[
+			"category_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
 				"en": "Mining lasers"

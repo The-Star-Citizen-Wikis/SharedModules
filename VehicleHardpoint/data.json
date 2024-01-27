@@ -123,7 +123,8 @@
       "class": "Facilities",
       "matches": [
         "hardpoint_cabinet_extinguisher.*",
-        "hardpoint_fire_extinguisher.*"
+        "hardpoint_fire_extinguisher.*",
+        "hardpoint_extinguisher"
       ],
       "type": "FireExtinguisher"
     },
@@ -368,6 +369,18 @@
       "matches": [],
       "type": "UtilityDevices",
       "subtype": "ToolArm"
+    },
+    "TowingBeam": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityDevices",
+      "subtype": "TowingBeam"
+    },
+    "TractorBeam": {
+      "class": "Utility",
+      "matches": [],
+      "type": "UtilityDevices",
+      "subtype": "TractorBeam"
     },
     "Turret": {
       "class": "Weapons",

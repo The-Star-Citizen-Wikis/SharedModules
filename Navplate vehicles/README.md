@@ -3,6 +3,7 @@
 Module:Navplate vehicles implements Template:Navplate vehicles for templates and modules.
 
 ## Requirements
+- [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
 - Module:Common
 - [Module:Hatnote](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Hatnote)
 - [Module:Manufacturer](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Manufacturer)
