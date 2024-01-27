@@ -19,31 +19,35 @@ local function translate( key, addSuffix, ... )
 end
 
 
---- Retrieve the quantum drive modes
+--- Retrieve subobjects
 ---
 --- @param pageName string
+--- @param identifierPropKey string SMW property key used to identify subobjects
+--- @param propertyKeys table table of SMW property keys
 --- @return table
-local function loadQuantumDriveModes( pageName )
-    local subobjects = mw.smw.ask( {
+local function loadSubobjects( pageName, identifierPropKey, propKeys )
+    local askQuery = {
         '[[-Has subobject::' .. pageName .. ']]',
-        '[[' .. translate( 'SMW_QuantumTravelType' ) .. '::+]]',
-        string.format( '?%s', translate( 'SMW_QuantumTravelType' ) ),
-        string.format( '?%s', translate( 'SMW_QuantumTravelSpeed' ) ),
-        string.format( '?%s', translate( 'SMW_CooldownTime' ) ),
-        string.format( '?%s', translate( 'SMW_ChargeTime' ) ),
-        'mainlabel=-'
-    } )
-    local modes = {}
+        '[[' .. translate( identifierPropKey ) .. '::+]]'
+    }
 
-    -- FIXME: System and Planet travel can come in random order
-    -- We need a way to ensure the order that is always system > planet
+    for _, propKey in ipairs( propKeys ) do
+        table.insert( askQuery, string.format( '?%s', translate( propKey ) ) )
+    end
+
+    table.insert( askQuery, 'mainlabel=-' )
+
+    local subobjects = mw.smw.ask( askQuery )
+
+    local subobjectTable = {}
+
     for _, subobject in ipairs( subobjects ) do
-        if subobject[ translate( 'SMW_QuantumTravelType' ) ] then
-            table.insert( modes, subobject )
+        if subobject[ translate( identifierPropKey ) ] then
+            table.insert( subobjectTable, subobject )
         end
     end
 
-    return modes
+    return subobjectTable
 end
 
 
@@ -142,6 +146,55 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Gun
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' then
+        local function getFiringModesSection()
+            local modes = loadSubobjects( 
+                itemPageIdentifier,
+                'SMW_FiringMode',
+                {
+                    'SMW_FiringMode',
+                    'SMW_FiringRate',
+                    'SMW_AmmoPerShot',
+                    'SMW_ProjectilePerShot',
+                    'SMW_DamagePerSecond'
+                }
+            )
+
+            if type( modes ) == 'table' then
+                local modeTabberData = {}
+                local modeCount = 1
+
+                for _, mode in ipairs( modes ) do
+                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_FiringMode' ) ] )
+                    section = {
+                        infobox:renderItem( translate( 'LBL_DamagePerSecond' ), mode[ translate( 'SMW_DamagePerSecond' ) ] ),
+                        infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ translate( 'SMW_FiringRate' ) ] ),
+                        infobox:renderItem( translate( 'LBL_ProjectilePerShot' ), mode[ translate( 'SMW_ProjectilePerShot' ) ] ),
+                        infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ translate( 'SMW_AmmoPerShot' ) ] )
+                    }
+                    modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 2 }, true )
+                    modeCount = modeCount + 1
+                end
+
+                return infobox:renderSection( {
+                    title = translate( 'LBL_Modes' ),
+                    class = 'infobox__section--tabber',
+                    content = tabber( modeTabberData ),
+                    border = false
+                }, true )
+            end
+        end
+
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_Subtype' ), smwData[ translate( 'SMW_Subtype' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
+            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getFiringModesSection()
     -- Missile
     elseif smwData[ translate( 'SMW_LockTime' ) ] and smwData[ translate( 'SMW_SignalType' ) ] then
         -- Overview
@@ -227,7 +280,16 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     -- Quantum Drive
     elseif smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] then
         local function getQuantumDriveModesSection()
-            local modes = loadQuantumDriveModes( itemPageIdentifier )
+            local modes = loadSubobjects( 
+                itemPageIdentifier,
+                'SMW_QuantumTravelType',
+                {
+                    'SMW_QuantumTravelType',
+                    'SMW_QuantumTravelSpeed',
+                    'SMW_CooldownTime',
+                    'SMW_ChargeTime'
+                }
+            )
 
             if type( modes ) == 'table' then
                 local modeTabberData = {}

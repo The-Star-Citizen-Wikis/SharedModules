@@ -24,6 +24,34 @@
 			}
 		],
 		[
+			"SMW_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
+			"SMW_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"SMW_AmmoPerShot",
+			{
+				"de": "Munition pro Schuss",
+				"en": "Ammo per shot"
+			}
+		],
+		[
+			"SMW_Damage",
+			{
+				"de": "Schaden",
+				"en": "Damage"
+			}
+		],
+		[
 			"SMW_DamageEnergy",
 			{
 				"de": "Energieschaden",
@@ -35,6 +63,34 @@
 			{
 				"de": "Physischer Schaden",
 				"en": "Physical damage"
+			}
+		],
+		[
+			"SMW_DamagePerSecond",
+			{
+				"de": "Schaden pro Sekunde",
+				"en": "Damage per second"
+			}
+		],
+		[
+			"SMW_FiringMode",
+			{
+				"de": "Feuermodus",
+				"en": "Firing mode"
+			}
+		],
+		[
+			"SMW_FiringRate",
+			{
+				"de": "Schussrate",
+				"en": "Firing rate"
+			}
+		],
+		[
+			"SMW_ProjectilePerShot",
+			{
+				"de": "Projektil pro Schuss",
+				"en": "Projectile per shot"
 			}
 		],
 		[
@@ -612,6 +668,34 @@
 			}
 		],
 		[
+			"LBL_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
+			"LBL_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_AmmoPerShot",
+			{
+				"de": "Munition pro Schuss",
+				"en": "Ammo use"
+			}
+		],
+		[
+			"LBL_Damage",
+			{
+				"de": "Schaden",
+				"en": "Damage"
+			}
+		],
+		[
 			"LBL_DamageEnergy",
 			{
 				"de": "Energie",
@@ -623,6 +707,27 @@
 			{
 				"de": "Physischer",
 				"en": "Physical"
+			}
+		],
+		[
+			"LBL_DamagePerSecond",
+			{
+				"de": "DPS",
+				"en": "DPS"
+			}
+		],
+		[
+			"LBL_FiringRate",
+			{
+				"de": "Schussrate",
+				"en": "Firing rate"
+			}
+		],
+		[
+			"LBL_ProjectilePerShot",
+			{
+				"de": "Projektil",
+				"en": "Projectile"
 			}
 		],
 		[
@@ -962,20 +1067,6 @@
 			}
 		],
 		[
-			"normal_jump",
-			{
-				"de": "Systemsprung",
-				"en": "System travel"
-			}
-		],
-		[
-			"spline_jump",
-			{
-				"de": "Planetensprung",
-				"en": "Planet travel"
-			}
-		],
-		[
 			"LBL_QuantumTravelSpeed",
 			{
 				"de": "Antriebsgeschwindigkeit",
@@ -1078,6 +1169,41 @@
 			{
 				"de": "Maximale Lautstärke",
 				"en": "Max volume"
+			}
+		],
+		[
+			"charged",
+			{
+				"de": "Charged",
+				"en": "Charged"
+			}
+		],
+		[
+			"rapid",
+			{
+				"de": "Rapid",
+				"en": "Rapid"
+			}
+		],
+		[
+			"single",
+			{
+				"de": "Single",
+				"en": "Single"
+			}
+		],
+		[
+			"normal_jump",
+			{
+				"de": "Systemsprung",
+				"en": "System travel"
+			}
+		],
+		[
+			"spline_jump",
+			{
+				"de": "Planetensprung",
+				"en": "Planet travel"
 			}
 		],
 		[

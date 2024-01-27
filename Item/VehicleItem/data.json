@@ -145,6 +145,49 @@
 			"type": "number"
 		},
 		{
+			"%": "Guns"
+		},
+		{
+			"SMW_Subtype": "API_vehicle_weapon.type"
+		},
+		{
+			"SMW_MaximumRange": "API_vehicle_weapon.range",
+			"type": "number"
+		},
+		{
+			"SMW_Damage": "API_vehicle_weapon.damage_per_shot",
+			"type": "number"
+		},
+		{
+			"SMW_Ammo": "API_vehicle_weapon.capacity",
+			"type": "number"
+		},
+		{
+			"SMW_FiringModes": "API_vehicle_weapon.modes",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_FiringMode": "API_type"
+				},
+				{
+					"SMW_FiringRate": "API_rpm",
+					"type": "number"
+				},
+				{
+					"SMW_AmmoPerShot": "API_ammo_per_shot",
+					"type": "number"
+				},
+				{
+					"SMW_ProjectilePerShot": "API_pellets_per_shot",
+					"type": "number"
+				},
+				{
+					"SMW_DamagePerSecond": "API_damage_per_second",
+					"type": "number"
+				}
+			]
+		},
+		{
 			"%": "Missiles"
 		},
 		{

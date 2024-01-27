@@ -472,6 +472,13 @@
 			}
 		],
 		[
+			"type_weapongun.gun",
+			{
+				"de": "Fahrzeugwaffe",
+				"en": "Gun"
+			}
+		],
+		[
 			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
@@ -672,6 +679,13 @@
 			{
 				"de": "Traktorbalken",
 				"en": "Tractor beams"
+			}
+		],
+		[
+			"category_weapongun.gun",
+			{
+				"de": "Fahrzeugwaffe",
+				"en": "Guns"
 			}
 		],
 		[
