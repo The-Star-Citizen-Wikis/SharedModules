@@ -1,0 +1,32 @@
+{
+	"%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
+	"module_lang": null,
+	"%starmap": "URL to Starmap",
+	"starmap": "https://robertsspaceindustries.com/starmap",
+	"%objects": "Object types",
+	"objects": [
+		"STAR",
+		"PLANET",
+		"SATELLITE",
+		"ASTEROID_BELT",
+		"ASTEROID_FIELD",
+		"ANOMALY",
+		"MANMADE",
+		"JUMPPOINT",
+		"LZ",
+		"BLACKHOLE",
+		"POI",
+		"MOON"
+	],
+	"%systems": "System star types",
+	"systems": ["SINGLE_STAR", "BINARY"],
+	"%type_plural": "A structure type but plural",
+	"type_plural": {
+		"system": "systems",
+		"object": "objects"
+	},
+	"%link_overwrites": "Overwrite the page name for structure codes",
+	"link_overwrites": {
+		"STANTON.PLANETS.STANTONIVMICROTECH": "microTech (planet)|microTech"
+	}
+}

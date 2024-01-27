@@ -1,0 +1,391 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"error_invalid_args_desc",
+			{
+				"en": "Invalid or missing parameters.",
+				"de": "Ungültige oder fehlende Parameter."
+			}
+		],
+		[
+			"error_title",
+			{
+				"en": "ERROR",
+				"de": "ERROR"
+			}
+		],
+		[
+			"lbl_anomalies",
+			{
+				"en": "Anomalies",
+				"de": "Anomalien"
+			}
+		],
+		[
+			"lbl_asteroid_belts",
+			{
+				"en": "Asteroid belts",
+				"de": "Asteroidengürtel"
+			}
+		],
+		[
+			"lbl_asteroid_fields",
+			{
+				"en": "Asteroid fields",
+				"de": "Asteroidenfelder"
+			}
+		],
+		[
+			"lbl_astronomical_objects",
+			{
+				"en": "Astronomical objects",
+				"de": "Astronomische Objekte"
+			}
+		],
+		[
+			"lbl_blackholes",
+			{
+				"en": "Black holes",
+				"de": "Schwarze Löcher"
+			}
+		],
+		[
+			"lbl_cornerstone",
+			{
+				"en": "Cornerstone",
+				"de": "Cornerstone"
+			}
+		],
+		[
+			"lbl_discovered_by",
+			{
+				"en": "Discovered by",
+				"de": "Entdeckt von"
+			}
+		],
+		[
+			"lbl_discovered_in",
+			{
+				"en": "Discovered in",
+				"de": "Entdeckt in"
+			}
+		],
+		[
+			"lbl_historical_name",
+			{
+				"en": "Historical name",
+				"de": "Historischer Name"
+			}
+		],
+		[
+			"lbl_historical_names",
+			{
+				"en": "Historical names",
+				"de": "Historische Namen"
+			}
+		],
+		[
+			"lbl_history",
+			{
+				"en": "History",
+				"de": "Geschichte"
+			}
+		],
+		[
+			"lbl_jump_points",
+			{
+				"en": "Jump points",
+				"de": "Sprungpunkt"
+			}
+		],
+		[
+			"lbl_community_sites",
+			{
+				"en": "Community sites",
+				"de": "Community-Sites"
+			}
+		],
+		[
+			"lbl_official_sites",
+			{
+				"en": "Official sites",
+				"de": "Offizielle Seiten"
+			}
+		],
+		[
+			"lbl_other_sites",
+			{
+				"en": "Other sites",
+				"de": "Andere Seiten"
+			}
+		],
+		[
+			"lbl_planets",
+			{
+				"en": "Planets",
+				"de": "Planeten"
+			}
+		],
+		[
+			"lbl_pois",
+			{
+				"en": "Points of Interest",
+				"de": "Sehenswürdigkeiten"
+			}
+		],
+		[
+			"lbl_population",
+			{
+				"en": "Population",
+				"de": "Bevölkerung"
+			}
+		],
+		[
+			"lbl_satellites",
+			{
+				"en": "Satellites",
+				"de": "Satelliten"
+			}
+		],
+		[
+			"lbl_sensors",
+			{
+				"en": "Sensors",
+				"de": "Sensoren"
+			}
+		],
+		[
+			"lbl_sensor_danger",
+			{
+				"en": "Danger",
+				"de": "Gefahr"
+			}
+		],
+		[
+			"lbl_sensor_economy",
+			{
+				"en": "Economy",
+				"de": "Wirtschaft"
+			}
+		],
+		[
+			"lbl_sensor_population",
+			{
+				"en": "Population",
+				"de": "Bevölkerung"
+			}
+		],
+		[
+			"lbl_size",
+			{
+				"en": "Size",
+				"de": "Größe"
+			}
+		],
+		[
+			"lbl_starmap",
+			{
+				"en": "Starmap",
+				"de": "Starmap"
+			}
+		],
+		[
+			"lbl_starmap_code",
+			{
+				"en": "Starmap code",
+				"de": "Starmap Code"
+			}
+		],
+		[
+			"lbl_starmap_id",
+			{
+				"en": "Starmap ID",
+				"de": "Starmap ID"
+			}
+		],
+		[
+			"lbl_star_type",
+			{
+				"en": "Star type",
+				"de": "Sterntyp"
+			}
+		],
+		[
+			"lbl_star_types",
+			{
+				"en": "Star types",
+				"de": "Sterntypen"
+			}
+		],
+		[
+			"lbl_stations",
+			{
+				"en": "Stations",
+				"de": "Stationen"
+			}
+		],
+		[
+			"lbl_status",
+			{
+				"en": "Status",
+				"de": "Status"
+			}
+		],
+		[
+			"lbl_system_size",
+			{
+				"en": "System size",
+				"de": "Systemgröße"
+			}
+		],
+		[
+			"lbl_system_status",
+			{
+				"en": "System status",
+				"de": "Systemstatus"
+			}
+		],
+		[
+			"lbl_system_type",
+			{
+				"en": "System type",
+				"de": "Systemtyp"
+			}
+		],
+		[
+			"lbl_type",
+			{
+				"en": "Type",
+				"de": "Typ"
+			}
+		],
+		[
+			"shortdesc_1_plural",
+			{
+				"en": "%s system with %d planets.",
+				"de": "%s System mit %d Planeten."
+			}
+		],
+		[
+			"shortdesc_1_singular",
+			{
+				"en": "%s system with %d planet.",
+				"de": "%s System mit %d Planet."
+			}
+		],
+		[
+			"shortdesc_2",
+			{
+				"en": "%s system.",
+				"de": "%s System."
+			}
+		],
+		[
+			"shortdesc_3_plural",
+			{
+				"en": "System with %d planets.",
+				"de": "System mit %d Planeten."
+			}
+		],
+		[
+			"shortdesc_3_singular",
+			{
+				"en": "System with %d planet.",
+				"de": "System mit %d Planet."
+			}
+		],
+		[
+			"shortdesc_4",
+			{
+				"en": "A star system in Star Citizen.",
+				"de": "Ein Sternensystem in Star Citizen."
+			}
+		],
+		[
+			"val_status_d",
+			{
+				"en": "Draft",
+				"de": "Entwurf"
+			}
+		],
+		[
+			"val_status_m",
+			{
+				"en": "UEE Military Classified",
+				"de": "UEE-Militärgeheimnis"
+			}
+		],
+		[
+			"val_status_n",
+			{
+				"en": "Probe data incomplete",
+				"de": "Sondendaten unvollständig"
+			}
+		],
+		[
+			"val_status_p",
+			{
+				"en": "Published",
+				"de": "Veröffentlicht"
+			}
+		],
+		[
+			"val_status_r",
+			{
+				"en": "Review",
+				"de": "Rezension"
+			}
+		],
+		[
+			"val_status_s",
+			{
+				"en": "Stub",
+				"de": "Stub"
+			}
+		],
+		[
+			"val_status_u",
+			{
+				"en": "Undiscovered",
+				"de": "Unentdeckt"
+			}
+		],
+		[
+			"val_type_binary",
+			{
+				"en": "Binary",
+				"de": "Binärstern"
+			}
+		],
+		[
+			"val_type_single_star",
+			{
+				"en": "Single Star",
+				"de": "Einzelstern"
+			}
+		],
+		[
+			"val_type_trinary",
+			{
+				"en": "Trinary Star",
+				"de": "Trinärer Stern"
+			}
+		]
+	]
+}
