@@ -362,8 +362,9 @@ function methodtable.getInfobox( self )
 		col = 3
 	} )
 
-	--- Footer
-	infobox:renderFooter( {
+	--- Metadata section
+	infobox:renderSection( {
+		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
 				label = translate( 'SMW_UUID' ),
@@ -376,8 +377,12 @@ function methodtable.getInfobox( self )
 				data = smwData[ translate( 'SMW_GameBuild' ) ],
 				row = true,
 				spacebetween = true
-			} ),
-		},
+			} )
+		}
+	} )
+
+	--- Footer
+	infobox:renderFooter( {
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
 			label = translate( 'LBL_OtherSites' ),

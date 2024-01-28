@@ -402,7 +402,8 @@ function System.main( frame )
 		},
 		col = 2
 	} )
-	infobox:renderFooter( {
+	infobox:renderSection( {
+		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
 				label = t( 'lbl_starmap_id' ),
@@ -416,7 +417,9 @@ function System.main( frame )
 				row = true,
 				spacebetween = true
 			} ),
-		},
+		}
+	} )
+	infobox:renderFooter( {
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
 			label = t( 'lbl_other_sites' ),

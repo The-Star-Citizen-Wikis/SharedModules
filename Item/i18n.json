@@ -150,6 +150,13 @@
 			}
 		],
 		[
+			"SMW_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
 			"SMW_Size",
 			{
 				"de": "Größe",

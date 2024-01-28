@@ -121,7 +121,6 @@
 .infobox__sectionHeader,
 .infobox__sectionContent {
     margin-top: var( --space-md );
-    margin-bottom: var( --space-md );
 }
 
 .infobox__title,
@@ -209,11 +208,6 @@
     gap: var( --space-xxs );
 }
 
-.infobox__footer > .infobox__section .infobox__label,
-.infobox__footer > .infobox__section .infobox__data {
-    font-size: 0.8125rem;
-}
-
 .infobox__button {
     position: relative;
     border-bottom-left-radius: var( --border-radius--medium );
@@ -295,6 +289,10 @@
     background-color: var( --background-color-quiet--active );
 }
 
+.infobox__section--linkButtons > .infobox__sectionContent {
+    margin-bottom: var( --space-md );
+}
+
 .infobox__section--linkButtons .infobox__data {
     margin-top: var( --space-xxs );
     margin-left: -8px; /* negative space-xs */
@@ -318,6 +316,27 @@
         margin-right: auto;
         margin-left: auto;
     }
+}
+
+/* TODO: Remove when footer is removed */
+.infobox__section--hasBackground + .infobox__section--hasBackground,
+.infobox__section--hasBackground + .infobox__footer {
+    margin-top: 0;
+}
+
+.infobox__section--hasBackground .infobox__sectionContent {
+    margin: 0;
+}
+
+.infobox__section--metadata .infobox__sectionContent {
+    padding: var( --space-md );
+    background: var( --color-surface-2--active );
+    gap: var( --space-xxs );
+}
+
+.infobox__section--metadata .infobox__label,
+.infobox__section--metadata .infobox__data {
+    font-size: 0.8125rem;
 }
 
 /* Tabber styles */
