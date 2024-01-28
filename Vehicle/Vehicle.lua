@@ -706,8 +706,9 @@ function methodtable.getInfobox( self )
 	} )
 
 
-	--- Footer
-	infobox:renderFooter( {
+	--- Metadata section
+	infobox:renderSection( {
+		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
 				label = translate( 'SMW_UUID' ),
@@ -726,7 +727,19 @@ function methodtable.getInfobox( self )
 				data = smwData[ translate( 'SMW_GameBuild' ) ],
 				row = true,
 				spacebetween = true
-			} ),
+			} )
+		},
+	} )
+
+
+	--- Footer
+	infobox:renderFooter( {
+		content = {
+			--- Universal Item Finder
+			infobox:renderItem( {
+				--- Template:Find item UIF
+				data = self.currentFrame:expandTemplate{ title = 'Find item UIF' },
+			} )
 		},
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
