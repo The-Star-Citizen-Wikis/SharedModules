@@ -486,6 +486,13 @@
 			}
 		],
 		[
+			"type_weaponmining.gun",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining laser"
+			}
+		],
+		[
 			"type_weapongun.gun",
 			{
 				"de": "Fahrzeugwaffe",
@@ -493,10 +500,10 @@
 			}
 		],
 		[
-			"type_weaponmining.gun",
+			"type_weapongun.rocket",
 			{
-				"de": "Bergbaulaser",
-				"en": "Mining laser"
+				"de": "Raketenkapsel",
+				"en": "Rocket pod"
 			}
 		],
 		[
@@ -703,6 +710,13 @@
 			}
 		],
 		[
+			"category_weaponmining.gun",
+			{
+				"de": "Bergbaulaser",
+				"en": "Mining lasers"
+			}
+		],
+		[
 			"category_weapongun.gun",
 			{
 				"de": "Fahrzeugwaffe",
@@ -710,10 +724,10 @@
 			}
 		],
 		[
-			"category_weaponmining.gun",
+			"category_weapongun.rocket",
 			{
-				"de": "Bergbaulaser",
-				"en": "Mining lasers"
+				"de": "Raketenkapsel",
+				"en": "Rocket pods"
 			}
 		],
 		[

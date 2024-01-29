@@ -133,8 +133,9 @@
 				"Shield",
 				"TowingBeam",
 				"TractorBeam",
-				"WeaponMining.Gun",
-				"WeaponGun.Gun"
+				"WeaponGun.Gun",
+				"WeaponGun.Rocket",
+				"WeaponMining.Gun"
 			]
 		}
 	]
