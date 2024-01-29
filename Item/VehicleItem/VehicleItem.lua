@@ -39,6 +39,8 @@ local function loadSubobjects( pageName, identifierPropKey, propKeys )
 
     local subobjects = mw.smw.ask( askQuery )
 
+    if subobjects == nil then return {} end
+
     local subobjectTable = {}
 
     for _, subobject in ipairs( subobjects ) do
