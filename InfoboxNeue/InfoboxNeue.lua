@@ -144,6 +144,10 @@ function methodtable.renderImage( self, filename )
 
 	if type( filename ) ~= 'string' and self.config.displayPlaceholder == true then
 		filename = self.config.placeholderImage
+		-- Add tracking category for infoboxes using placeholder image
+		table.insert( self.categories,
+			string.format( '[[Category:%s]]', translate( 'category_infobox_using_placeholder_image' ) )
+		)
 	end
 
 	if type( filename ) ~= 'string' then
@@ -507,7 +511,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 
 	return tostring( html ) .. mw.getCurrentFrame():extensionTag{
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
-	}
+	} .. table.concat( self.categories )
 end
 
 
@@ -548,6 +552,7 @@ function InfoboxNeue.new( self, config )
 	end
 
     local instance = {
+		categories = {},
 		config = baseConfig,
 		entries = {}
 	}

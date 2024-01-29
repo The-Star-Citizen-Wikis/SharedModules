@@ -651,6 +651,13 @@
       },
       false,
       true
-    ]
+    ],
+    [
+			"category_infobox_using_placeholder_image",
+			{
+				"de": "Infoboxes using placeholder image",
+				"en": "Infoboxes using placeholder image"
+			}
+		]
   ]
 }
