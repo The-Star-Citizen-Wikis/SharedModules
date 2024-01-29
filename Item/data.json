@@ -117,6 +117,7 @@
 		{
 			"name": "Module:Item/VehicleItem",
 			"type": [
+				"Bomb",
 				"Cooler",
 				"EMP",
 				"Gadget",

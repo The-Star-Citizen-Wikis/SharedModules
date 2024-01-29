@@ -304,6 +304,13 @@
 			}
 		],
 		[
+			"type_bomb",
+			{
+				"de": "Bombe",
+				"en": "Bomb"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -525,6 +532,13 @@
 			{
 				"de": "👻 Stealth",
 				"en": "👻 Stealth"
+			}
+		],
+		[
+			"category_bomb",
+			{
+				"de": "Bombe",
+				"en": "Bombs"
 			}
 		],
 		[
