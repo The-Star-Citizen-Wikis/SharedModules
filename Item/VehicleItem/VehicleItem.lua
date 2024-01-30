@@ -149,7 +149,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Gun / Rocket Pod
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' or 'WeaponGun.Rocket' then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' or smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Rocket' then
         local function getFiringModesSection()
             local modes = loadSubobjects( 
                 itemPageIdentifier,
