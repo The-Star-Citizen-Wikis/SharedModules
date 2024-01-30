@@ -138,6 +138,7 @@
 				"Turret.BallTurret",
 				"Turret.CanardTurret",
 				"Turret.GunTurret",
+				"Turret.NoseMounted",
 				"WeaponGun.Gun",
 				"WeaponGun.Rocket",
 				"WeaponMining.Gun"

@@ -209,7 +209,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Missile launcher / Weapon mount
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.GunTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.BallTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.CanardTurret' then
+    -- FIXME: Maybe refactor the type check to a local function?
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.GunTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.BallTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.CanardTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.NoseMounted' then
         --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
         local function getPortSize()
             if smwData[ translate( 'SMW_PortSize' ) ] == nil then return end

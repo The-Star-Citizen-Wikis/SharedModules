@@ -521,6 +521,13 @@
 			}
 		],
 		[
+			"type_turret.nosemounted",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mount"
+			}
+		],
+		[
 			"type_weaponattachment",
 			{
 				"de": "Waffenbefestigung",
@@ -788,6 +795,13 @@
 		],
 		[
 			"category_turret.gunturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_turret.nosemounted",
 			{
 				"de": "Waffenturm",
 				"en": "Weapon mounts"
