@@ -339,6 +339,13 @@
 			}
 		],
 		[
+			"type_externalfueltank",
+			{
+				"de": "Treibstoffbehälter",
+				"en": "Fuel pod"
+			}
+		],
+		[
 			"type_food.bar",
 			{
 				"de": "Lebensmittel",
@@ -609,6 +616,13 @@
 			{
 				"de": "EMP-Generator",
 				"en": "EMP generators"
+			}
+		],
+		[
+			"category_externalfueltank",
+			{
+				"de": "Treibstoffbehälter",
+				"en": "Fuel pods"
 			}
 		],
 		[
