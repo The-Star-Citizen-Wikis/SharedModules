@@ -444,6 +444,13 @@
 			}
 		],
 		[
+			"type_salvagehead",
+			{
+				"de": "Bergungskopf",
+				"en": "Salvage head"
+			}
+		],
+		[
 			"type_salvagemodifier",
 			{
 				"de": "Bergungsmodifikator",
@@ -672,6 +679,13 @@
 			{
 				"de": "Quantum Enforcement Device",
 				"en": "Quantum enforcement devices"
+			}
+		],
+		[
+			"category_salvagehead",
+			{
+				"de": "Bergungskopf",
+				"en": "Salvage heads"
 			}
 		],
 		[
