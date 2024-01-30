@@ -134,6 +134,9 @@
 				"Shield",
 				"TowingBeam",
 				"TractorBeam",
+				"Turret.BallTurret",
+				"Turret.CanardTurret",
+				"Turret.GunTurret",
 				"WeaponGun.Gun",
 				"WeaponGun.Rocket",
 				"WeaponMining.Gun"

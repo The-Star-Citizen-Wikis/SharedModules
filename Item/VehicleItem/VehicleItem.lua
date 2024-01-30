@@ -208,19 +208,19 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
-    -- Missile launcher
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' then
+    -- Missile launcher / Weapon mount
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.GunTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.BallTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.CanardTurret' then
         --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
-        local function getMissileSize()
-            if smwData[ translate( 'SMW_MissileSize' ) ] == nil then return end
-            return 'S' .. smwData[ translate( 'SMW_MissileSize' ) ]
+        local function getMountedSize()
+            if smwData[ translate( 'SMW_MountedSize' ) ] == nil then return end
+            return 'S' .. smwData[ translate( 'SMW_MountedSize' ) ]
         end
 
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_MissileCount' ), smwData[ translate( 'SMW_MissileCount' ) ] ),
-            infobox:renderItem( translate( 'LBL_MissileSize' ), getMissileSize() )
+            infobox:renderItem( translate( 'LBL_MountedCount' ), smwData[ translate( 'SMW_MountedCount' ) ] ),
+            infobox:renderItem( translate( 'LBL_MountedSize' ), getMountedSize() )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Mining Laser

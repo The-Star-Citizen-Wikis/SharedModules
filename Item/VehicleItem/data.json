@@ -200,10 +200,10 @@
 			"%": "Missile Racks"
 		},
 		{
-			"SMW_MissileCount": "API_max_missiles"
+			"SMW_MountedCount": "API_max_missiles"
 		},
 		{
-			"SMW_MissileSize": "API_min_size"
+			"SMW_MountedSize": "API_min_size"
 		},
 		{
 			"%": "Mining Laser"
@@ -428,6 +428,12 @@
 		{
 			"SMW_MaximumVolume": "API_tractor_beam.max_volume",
 			"type": "number"
+		},
+		{
+			"%": "Weapon mount"
+		},
+		{
+			"SMW_MountedCount": "API_max_mounts"
 		}
 	]
 }

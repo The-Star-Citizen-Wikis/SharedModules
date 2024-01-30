@@ -486,6 +486,27 @@
 			}
 		],
 		[
+			"type_turret.ballturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mount"
+			}
+		],
+		[
+			"type_turret.canardturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mount"
+			}
+		],
+		[
+			"type_turret.gunturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mount"
+			}
+		],
+		[
 			"type_weaponattachment",
 			{
 				"de": "Waffenbefestigung",
@@ -721,6 +742,27 @@
 			{
 				"de": "Traktorbalken",
 				"en": "Tractor beams"
+			}
+		],
+		[
+			"category_turret.ballturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_turret.canardturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_turret.gunturret",
+			{
+				"de": "Waffenturm",
+				"en": "Weapon mounts"
 			}
 		],
 		[

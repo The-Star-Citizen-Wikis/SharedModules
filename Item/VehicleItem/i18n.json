@@ -297,17 +297,17 @@
 			}
 		],
 		[
-			"SMW_MissileCount",
+			"SMW_MountedCount",
 			{
-				"de": "Anzahl Raketen",
-				"en": "Missile count"
+				"de": "Montiert Raketen",
+				"en": "Mounted count"
 			}
 		],
 		[
-			"SMW_MissileSize",
+			"SMW_MountedSize",
 			{
-				"de": "Raketengröße",
-				"en": "Missile size"
+				"de": "Montierte Größe",
+				"en": "Mounted size"
 			}
 		],
 		[
@@ -920,17 +920,17 @@
 			}
 		],
 		[
-			"LBL_MissileCount",
+			"LBL_MountedCount",
 			{
-				"de": "Anzahl Raketen",
-				"en": "Missile count"
+				"de": "Montierte Raketen",
+				"en": "Mounted count"
 			}
 		],
 		[
-			"LBL_MissileSize",
+			"LBL_MountedSize",
 			{
-				"de": "Raketengröße",
-				"en": "Missile size"
+				"de": "Montierte Größe",
+				"en": "Mounted size"
 			}
 		],
 		[
