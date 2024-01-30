@@ -130,7 +130,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     local section
 
     -- Cooler
-    if smwData[ translate( 'SMW_CoolingRate' ) ] then
+    if smwData[ translate( 'SMW_Type' ) ] == 'Cooler' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -138,7 +138,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- EMP Generator
-    elseif smwData[ translate( 'SMW_EMPRadius' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'EMP' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -198,7 +198,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getFiringModesSection()
     -- Missile
-    elseif smwData[ translate( 'SMW_LockTime' ) ] and smwData[ translate( 'SMW_SignalType' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'Missile.Missile' or smwData[ translate( 'SMW_Type' ) ] == 'Missile.Torpedo' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -209,7 +209,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Missile launcher
-    elseif smwData[ translate( 'SMW_MissileCount' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' then
         --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
         local function getMissileSize()
             if smwData[ translate( 'SMW_MissileSize' ) ] == nil then return end
@@ -224,7 +224,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Mining Laser
-    elseif smwData[ translate( 'SMW_MiningLaserPower' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponMining.Gun' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -252,8 +252,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Mining Module
-    -- FIXME: Need a better way to handle this since SMW_Uses is a generic property across consumables
-    elseif smwData[ translate( 'SMW_Uses' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'MiningModifier.Gun' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -272,7 +271,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Power Plant
-    elseif smwData[ translate( 'SMW_PowerOutput' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'PowerPlant.Power' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -280,7 +279,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Quantum Drive
-    elseif smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'QuantumDrive' then
         local function getQuantumDriveModesSection()
             local modes = loadSubobjects( 
                 itemPageIdentifier,
@@ -327,7 +326,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getQuantumDriveModesSection()
     -- Quantum Enforcement Device
-    elseif smwData[ translate( 'SMW_JammerRange' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'QuantumInterdictionGenerator' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -339,7 +338,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Shield
-    elseif smwData[ translate( 'SMW_ShieldHealthPoint' ) ] then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'Shield' then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
         local function getShieldPoint()
             if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then return end
