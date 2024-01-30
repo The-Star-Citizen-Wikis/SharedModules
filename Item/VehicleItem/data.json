@@ -200,10 +200,10 @@
 			"%": "Missile Racks"
 		},
 		{
-			"SMW_MountedCount": "API_max_missiles"
+			"SMW_PortCount": "API_max_missiles"
 		},
 		{
-			"SMW_MountedSize": "API_min_size"
+			"SMW_PortSize": "API_min_size"
 		},
 		{
 			"%": "Mining Laser"
@@ -433,7 +433,7 @@
 			"%": "Weapon mount"
 		},
 		{
-			"SMW_MountedCount": "API_max_mounts"
+			"SMW_PortCount": "API_max_mounts"
 		}
 	]
 }

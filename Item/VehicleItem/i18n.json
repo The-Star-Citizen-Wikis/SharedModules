@@ -297,17 +297,17 @@
 			}
 		],
 		[
-			"SMW_MountedCount",
+			"SMW_PortCount",
 			{
-				"de": "Montiert Raketen",
-				"en": "Mounted count"
+				"de": "Anschluss Raketen",
+				"en": "Port count"
 			}
 		],
 		[
-			"SMW_MountedSize",
+			"SMW_PortSize",
 			{
-				"de": "Montierte Größe",
-				"en": "Mounted size"
+				"de": "Anschluss Größe",
+				"en": "Port size"
 			}
 		],
 		[
@@ -920,17 +920,17 @@
 			}
 		],
 		[
-			"LBL_MountedCount",
+			"LBL_PortCount",
 			{
-				"de": "Montierte Raketen",
-				"en": "Mounted count"
+				"de": "Anschluss Raketen",
+				"en": "Port count"
 			}
 		],
 		[
-			"LBL_MountedSize",
+			"LBL_PortSize",
 			{
-				"de": "Montierte Größe",
-				"en": "Mounted size"
+				"de": "Anschluss Größe",
+				"en": "Port size"
 			}
 		],
 		[
