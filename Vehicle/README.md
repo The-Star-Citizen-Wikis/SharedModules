@@ -23,7 +23,6 @@ On other pages, it can be used to display the infobox of other vehicles.
 - [Module:Tabber](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Tabber)
 - [Module:Translate](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Translate)
 - [Module:VehicleHardpoint](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/VehicleHardpoint)
-- Template:Find item UIF
 
 ## Installation
 1. Create `Module:Vehicle/data.json` with the content found in `data.json` on your wiki 
