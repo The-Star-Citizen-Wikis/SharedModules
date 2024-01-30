@@ -388,6 +388,13 @@
 			}
 		],
 		[
+			"type_inventorycontainer.cargo",
+			{
+				"de": "Gefäß",
+				"en": "Container"
+			}
+		],
+		[
 			"type_item",
 			{
 				"de": "Item",
@@ -651,6 +658,13 @@
 			{
 				"de": "Lebensmittel",
 				"en": "Food"
+			}
+		],
+		[
+			"category_inventorycontainer.cargo",
+			{
+				"de": "Gefäß",
+				"en": "Containers"
 			}
 		],
 		[
