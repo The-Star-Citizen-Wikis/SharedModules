@@ -166,6 +166,12 @@
     grid-auto-rows: max-content;
 }
 
+.infobox__item--hasIcon {
+    display: flex;
+    align-items: center;
+    column-gap: var( --space-sm );
+}
+
 .infobox__badge {
     place-content: center;
     text-align: center;
@@ -195,10 +201,66 @@
     font-weight: var( --font-weight-medium );
 }
 
+.infobox__icon img {
+    filter: var( --filter-invert );
+    opacity: var( --opacity-icon-base );
+}
+
+.infobox__itemButton {
+    position: relative;
+    padding: var( --space-sm ) var( --space-md );
+    line-height: var( --line-height-sm );
+    gap: 0;
+}
+
+.infobox__itemButton:hover {
+    background-color: var( --background-color-quiet--hover );
+}
+
+.infobox__itemButton:hover .infobox__itemButtonArrow  {
+    transform: rotate( 90deg ) translateY( -4px );
+}
+
+.infobox__itemButton:active {
+    background-color: var( --background-color-quiet--active );
+}
+
+.infobox__itemButton  .infobox__text {
+    flex-grow: 1;
+}
+
+.infobox__itemButton  .infobox__data {
+    color: var( --color-base--emphasized );
+}
+
+.infobox__itemButtonLink a {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+}
+
+.infobox__itemButton .infobox__icon {
+    margin-right: var( --space-sm );
+}
+
+.infobox__itemButton .infobox__icon img {
+    width: 1.25rem;
+    height: 1.25rem;
+}
+
+.infobox__itemButtonArrow {
+    width: 1rem;
+    height: 1rem;
+    transition: var( --transition-hover );
+    transform: rotate( 90deg );
+}
+
 .infobox__footer {
     margin-top: var( --space-lg );
     border-top: 1px solid var( --border-color-base );
     background-color: var( --color-surface-2--active );
+    border-bottom-left-radius: var( --border-radius--medium );
+    border-bottom-right-radius: var( --border-radius--medium );
 }
 
 .infobox__footer > .infobox__section {
@@ -316,6 +378,11 @@
         margin-right: auto;
         margin-left: auto;
     }
+}
+
+.infobox__section--actions .infobox__sectionContent {
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* TODO: Remove when footer is removed */

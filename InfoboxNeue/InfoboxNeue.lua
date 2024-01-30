@@ -417,7 +417,7 @@ end
 
 --- Return the HTML of the infobox item component as string
 ---
---- @param data table {label, data, desc, row, spacebetween, colspan)
+--- @param data table {label, data, desc, icon, row, spacebetween, colspan)
 --- @param content string|number optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
@@ -446,6 +446,29 @@ function methodtable.renderItem( self, data, content )
 	if data[ 'spacebetween' ] == true then html:addClass( 'infobox__grid--space-between' ) end
 	if data[ 'colspan' ] then html:addClass( 'infobox__grid--col-span-' .. data[ 'colspan' ] ) end
 
+	local textWrapper = html
+
+	if data[ 'link' ] then
+		html:addClass( 'infobox__itemButton' )
+		html:tag( 'div' )
+			:addClass( 'infobox__itemButtonLink' )
+			:wikitext( string.format( '[%s]', data[ 'link' ] ) )
+	elseif data[ 'page' ] then
+		html:addClass( 'infobox__itemButton' )
+		html:tag( 'div' )
+			:addClass( 'infobox__itemButtonLink' )
+			:wikitext( string.format( '[[%s]]', data[ 'link' ] ) )
+	end
+
+	if data[ 'icon' ] then
+		html:addClass( 'infobox__item--hasIcon' )
+		html:tag( 'div' )
+			:addClass( 'infobox__icon' )
+			:wikitext( string.format( '[[File:%s|16px|link=]]', data[ 'icon' ] ) )
+		-- Create wrapper for text to align with icon
+		textWrapper = html:tag( 'div' ):addClass( 'infobox__text' )
+	end
+
 	local dataOrder = { 'label', 'data', 'desc' }
 
 	for _, key in ipairs( dataOrder ) do
@@ -454,10 +477,15 @@ function methodtable.renderItem( self, data, content )
 				data[ key ] = table.concat( data[ key ], ', ' )
 			end
 
-			html:tag( 'div' )
+			textWrapper:tag( 'div' )
 				:addClass( 'infobox__' .. key )
 				:wikitext( data[ key ] )
 		end
+	end
+
+	-- Add arrow indicator as affordnance
+	if data[ 'link' ] or data[ 'page' ] then
+		html:tag( 'div' ):addClass( 'infobox__itemButtonArrow citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
 	end
 
 	return tostring( html )

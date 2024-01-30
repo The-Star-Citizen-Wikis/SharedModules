@@ -731,16 +731,25 @@ function methodtable.getInfobox( self )
 		},
 	} )
 
+	--- Actions section
+	if smwData[ translate( 'SMW_UUID' ) ] then
+		infobox:renderSection( {
+			class = 'infobox__section--actions infobox__section--hasBackground',
+			content = {
+				infobox:renderItem( {
+					icon = 'WikimediaUI-Search.svg',
+					data = translate( 'actions_find_item_title' ),
+					desc = translate( 'actions_find_item_text' ),
+					-- FIXME: Make this configurable?
+					link = 'https://finder.cstone.space/search/' .. smwData[ translate( 'SMW_UUID' ) ]
+				} )
+			}
+		} )
+	end
+
 
 	--- Footer
 	infobox:renderFooter( {
-		content = {
-			--- Universal Item Finder
-			infobox:renderItem( {
-				--- Template:Find item UIF
-				data = self.currentFrame:expandTemplate{ title = 'Find item UIF' },
-			} )
-		},
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
 			label = translate( 'LBL_OtherSites' ),
