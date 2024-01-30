@@ -337,6 +337,16 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Scraper Module
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'SalvageModifier' or smwData[ translate( 'SMW_Type' ) ] == 'SalvageModifier.SalvageModifier_TractorBeam' then
+        -- Modifier
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_ModifierSalvageSpeed' ), infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierSalvageSpeed' ) ], 'x' ) ),
+            infobox:renderItem( translate( 'LBL_ModifierRadius' ), infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierRadius' ) ], 'x' ) ),
+            infobox:renderItem( translate( 'LBL_ModifierExtractionEfficiency' ), infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierExtractionEfficiency' ) ], 'x' ) )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 3 }, true )
     -- Shield
     elseif smwData[ translate( 'SMW_Type' ) ] == 'Shield' then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back

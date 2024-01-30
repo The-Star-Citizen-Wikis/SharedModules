@@ -493,6 +493,27 @@
 			}
 		],
 		[
+			"SMW_ModifierSalvageSpeed",
+			{
+				"de": "Modifier salvage speed",
+				"en": "Modifier salvage speed"
+			}
+		],
+		[
+			"SMW_ModifierRadius",
+			{
+				"de": "Modifier radius",
+				"en": "Modifier radius"
+			}
+		],
+		[
+			"SMW_ModifierExtractionEfficiency",
+			{
+				"de": "Modifier extraction efficiency",
+				"en": "Modifier extraction efficiency"
+			}
+		],
+		[
 			"SMW_ShieldHealthPoint",
 			{
 				"de": "Schildpunkt",
@@ -1085,6 +1106,27 @@
 			{
 				"de": "Snare radius",
 				"en": "Snare radius"
+			}
+		],
+		[
+			"LBL_ModifierSalvageSpeed",
+			{
+				"de": "Speed",
+				"en": "Speed"
+			}
+		],
+		[
+			"LBL_ModifierRadius",
+			{
+				"de": "Radius",
+				"en": "Radius"
+			}
+		],
+		[
+			"LBL_ModifierExtractionEfficiency",
+			{
+				"de": "Eefficiency",
+				"en": "Efficiency"
 			}
 		],
 		[

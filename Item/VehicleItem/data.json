@@ -339,6 +339,21 @@
 			"type": "number"
 		},
 		{
+			"%": "Scraper Modules"
+		},
+		{
+			"SMW_ModifierSalvageSpeed": "API_salvage_modifier.salvage_speed_multiplier",
+			"type": "number"
+		},
+		{
+			"SMW_ModifierRadius": "API_salvage_modifier.radius_multiplier",
+			"type": "number"
+		},
+		{
+			"SMW_ModifierExtractionEfficiency": "API_salvage_modifier.extraction_efficiency",
+			"type": "number"
+		},
+		{
 			"%": "Shields"
 		},
 		{
