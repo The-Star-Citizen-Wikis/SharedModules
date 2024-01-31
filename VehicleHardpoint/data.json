@@ -135,6 +135,14 @@
       ],
       "type": "FuelIntake"
     },
+    "FuelNozzle": {
+      "class": "Utility",
+      "matches": [
+        "hardpoint_refuel_arm"
+      ],
+      "type": "UtilityDevices",
+      "subtype": "FuelNozzle"
+    },
     "FuelPort": {
       "class": "Propulsion",
       "matches": [],
@@ -485,6 +493,7 @@
     "DriveUnit": "",
     "FillerStation": "",
     "FireExtinguisher": "",
+    "FuelNozzle": "",
     "FuelPort": "",
     "FuelRefinery": "",
     "GravLev": "",
