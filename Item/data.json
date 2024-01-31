@@ -119,6 +119,7 @@
 			"type": [
 				"Bomb",
 				"Cooler",
+				"DockingCollar",
 				"EMP",
 				"ExternalFuelTank",
 				"Gadget",

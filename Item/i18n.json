@@ -318,6 +318,13 @@
 			}
 		],
 		[
+			"type_dockingcollar",
+			{
+				"de": "Kraftstoffdüse",
+				"en": "Fuel nozzle"
+			}
+		],
+		[
 			"type_drink.bottle",
 			{
 				"de": "Getränk",
@@ -602,6 +609,13 @@
 			{
 				"de": "Kühler",
 				"en": "Coolers"
+			}
+		],
+		[
+			"category_dockingcollar",
+			{
+				"de": "Kraftstoffdüse",
+				"en": "Fuel nozzles"
 			}
 		],
 		[
