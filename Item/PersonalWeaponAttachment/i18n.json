@@ -17,6 +17,13 @@
 	},
 	"data": [
 		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
 			"SMW_Slot",
 			{
 				"de": "Slot",
@@ -24,17 +31,31 @@
 			}
 		],
 		[
-			"SMW_OpticMagnification",
+			"SMW_OpticsMagnification",
 			{
 				"de": "Vergrößerungsfaktor",
-				"en": "Optic magnification"
+				"en": "Optics magnification"
 			}
 		],
 		[
-			"SMW_OpticType",
+			"SMW_OpticsType",
 			{
 				"de": "Optik Type",
-				"en": "Optic type"
+				"en": "Optics type"
+			}
+		],
+		[
+			"LBL_OpticsMagnification",
+			{
+				"de": "Vergrößerung",
+				"en": "Magnification"
+			}
+		],
+		[
+			"LBL_OpticsType",
+			{
+				"de": "Typ",
+				"en": "Type"
 			}
 		]
 	]

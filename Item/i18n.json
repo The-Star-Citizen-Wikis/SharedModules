@@ -542,6 +542,13 @@
 			}
 		],
 		[
+			"type_weaponattachment.ironsight",
+			{
+				"de": "Zielfernrohr",
+				"en": "Optics attachment"
+			}
+		],
+		[
 			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
@@ -819,6 +826,13 @@
 			{
 				"de": "Waffenturm",
 				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_weaponattachment.ironsight",
+			{
+				"de": "Zielfernrohr",
+				"en": "Optics attachments"
 			}
 		],
 		[

@@ -54,7 +54,22 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
 function PersonalWeaponAttachment.addInfoboxData( infobox, smwData )
-
+    -- Optics attachments
+    if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
+        infobox:renderSection( {
+            content = {
+                infobox:renderItem( {
+                    label = translate( 'LBL_OpticsMagnification' ),
+                    data = smwData[ translate( 'SMW_OpticsMagnification' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_OpticsType' ),
+                    data = smwData[ translate( 'SMW_OpticsType' ) ],
+                } )
+            },
+            col = 2
+        } )
+    end
 end
 
 

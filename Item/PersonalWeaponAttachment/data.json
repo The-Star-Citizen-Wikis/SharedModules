@@ -5,10 +5,10 @@
 			"SMW_Slot": "API_position"
 		},
 		{
-			"SMW_OpticMagnification": "API_iron_sight.magnification"
+			"SMW_OpticsMagnification": "API_iron_sight.magnification"
 		},
 		{
-			"SMW_OpticType": "API_iron_sight.optic_type"
+			"SMW_OpticsType": "API_iron_sight.optic_type"
 		}
 	]
 }

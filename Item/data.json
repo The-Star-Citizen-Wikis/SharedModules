@@ -112,7 +112,9 @@
 		},
 		{
 			"name": "Module:Item/PersonalWeaponAttachment",
-			"type": [ "WeaponAttachment" ]
+			"type": [
+				"WeaponAttachment.IronSight"
+			]
 		},
 		{
 			"name": "Module:Item/VehicleItem",
