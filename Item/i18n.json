@@ -542,6 +542,13 @@
 			}
 		],
 		[
+			"type_weaponattachment.bottomattachment",
+			{
+				"de": "Underbarrel attachment",
+				"en": "Underbarrel attachment"
+			}
+		],
+		[
 			"type_weaponattachment.ironsight",
 			{
 				"de": "Zielfernrohr",
@@ -826,6 +833,13 @@
 			{
 				"de": "Waffenturm",
 				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_weaponattachment.bottomattachment",
+			{
+				"de": "Underbarrel attachments",
+				"en": "Underbarrel attachments"
 			}
 		],
 		[
