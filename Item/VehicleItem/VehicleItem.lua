@@ -401,7 +401,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
         --} )
     -- Tractor beam
     -- TODO: Maybe we should use SMW_Type for all the stuff above
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'TractorBeam' then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'TractorBeam' or smwData[ translate( 'SMW_Type' ) ] == 'TowingBeam' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
