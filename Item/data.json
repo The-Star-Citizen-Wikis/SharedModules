@@ -124,7 +124,8 @@
 			"type": [
 				"WeaponAttachment.BottomAttachment",
 				"WeaponAttachment.IronSight",
-				"WeaponAttachment.Magazine"
+				"WeaponAttachment.Magazine",
+				"WeaponAttachment.Utility"
 			]
 		},
 		{

@@ -563,6 +563,13 @@
 			}
 		],
 		[
+			"type_weaponattachment.utility",
+			{
+				"de": "Multi-Tool attachment",
+				"en": "Multi-Tool attachment"
+			}
+		],
+		[
 			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
@@ -616,6 +623,41 @@
 			{
 				"de": "👻 Stealth",
 				"en": "👻 Stealth"
+			}
+		],
+		[
+			"class_cutter",
+			{
+				"de": "Cutter",
+				"en": "Cutter"
+			}
+		],
+		[
+			"class_medical",
+			{
+				"de": "Medical",
+				"en": "Medical"
+			}
+		],
+		[
+			"class_mining",
+			{
+				"de": "Mining",
+				"en": "Mining"
+			}
+		],
+		[
+			"class_salvage and repair",
+			{
+				"de": "Salvage & repair",
+				"en": "Salvage & repair"
+			}
+		],
+		[
+			"class_tractor beam",
+			{
+				"de": "Traktorstrahl",
+				"en": "Tractor beam"
 			}
 		],
 		[
@@ -861,6 +903,13 @@
 			{
 				"de": "Magazin",
 				"en": "Magazines"
+			}
+		],
+		[
+			"category_weaponattachment.utility",
+			{
+				"de": "Multi-Tool attachments",
+				"en": "Multi-Tool attachments"
 			}
 		],
 		[
