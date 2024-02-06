@@ -1,0 +1,193 @@
+{
+    "%content": "Content of the navplate",
+    "content": [
+        {
+            "label": "Spacecraft",
+            "conditions": "Category:Ships"
+        },
+        {
+            "label": "Ground vehicles",
+            "conditions": "Category:Ground vehicles"
+        },
+        {
+            "label": "Bombs",
+            "conditions": "Category:Bombs"
+        },
+        {
+            "label": "Coolers",
+            "conditions": "Category:Coolers"
+        },
+        {
+            "label": "Computers",
+            "conditions": "Category:Computers"
+        },
+        {
+            "label": "EMP generators",
+            "conditions": "Category:EMP generators"
+        },
+        {
+            "label": "Fuel nozzles",
+            "conditions": "Category:Fuel nozzles"
+        },
+        {
+            "label": "Fuel pods",
+            "conditions": "Category:Fuel pods"
+        },
+        {
+            "label": "Guns",
+            "conditions": "Category:Guns"
+        },
+        {
+            "label": "Mining lasers",
+            "conditions": "Category:Mining lasers"
+        },
+        {
+            "label": "Mining modules",
+            "conditions": "Category:Mining modules"
+        },
+        {
+            "label": "Missiles",
+            "conditions": "Category:Missiles"
+        },
+        {
+            "label": "Missile racks",
+            "conditions": "Category:Missile racks"
+        },
+        {
+            "label": "Power plants",
+            "conditions": "Category:Power plants"
+        },
+        {
+            "label": "Rocket pods",
+            "conditions": "Category:Rocket pods"
+        },
+        {
+            "label": "Quantum drives",
+            "conditions": "Category:Quantum drives"
+        },
+        {
+            "label": "Quantum Enforcement Devices",
+            "conditions": "Category:Quantum Enforcement Devices"
+        },
+        {
+            "label": "Radars",
+            "conditions": "Category:Radars"
+        },
+        {
+            "label": "Salvage heads",
+            "conditions": "Category:Salvage heads"
+        },
+        {
+            "label": "Scraper modules",
+            "conditions": "Category:Scraper modules"
+        },
+        {
+            "label": "Shield generators",
+            "conditions": "Category:Shield generators"
+        },
+        {
+            "label": "Torpedoes",
+            "conditions": "Category:Torpedoes"
+        },
+        {
+            "label": "Towing beams",
+            "conditions": "Category:Towing beams"
+        },
+        {
+            "label": "Tractor beams",
+            "conditions": "Category:Tractor beams"
+        },
+        {
+            "label": "Weapon mounts",
+            "conditions": "Category:Weapon mounts"
+        },
+        {
+            "label": "Arms armor",
+            "conditions": "Category:Arms armor"
+        },
+        {
+            "label": "Backpacks",
+            "conditions": "Category:Backpacks"
+        },
+        {
+            "label": "Cryptokeys",
+            "conditions": "Category:Cryptokeys"
+        },
+        {
+            "label": "Eyewear",
+            "conditions": "Category:Eyewear"
+        },
+        {
+            "label": "Footwear",
+            "conditions": "Category:Footwear"
+        },
+        {
+            "label": "Gloves",
+            "conditions": "Category:Gloves"
+        },
+        {
+            "label": "Hats",
+            "conditions": "Category:Hats"
+        },
+        {
+            "label": "Helmets",
+            "conditions": "Category:Helmets"
+        },
+        {
+            "label": "Jackets",
+            "conditions": "Category:Jackets"
+        },
+        {
+            "label": "Legs armor",
+            "conditions": "Category:Legs armor"
+        },
+        {
+            "label": "Optics attachments",
+            "conditions": "Category:Optics attachments"
+        },
+        {
+            "label": "Pants",
+            "conditions": "Category:Pants"
+        },
+        {
+            "label": "Personal utility items",
+            "conditions": "Category:Personal utility items"
+        },
+        {
+            "label": "Personal weapons",
+            "conditions": "Category:Personal weapons"
+        },
+        {
+            "label": "Shirts",
+            "conditions": "Category:Shirts"
+        },
+        {
+            "label": "Torso armor",
+            "conditions": "Category:Torso armor"
+        },
+        {
+            "label": "T-shirts",
+            "conditions": "Category:T-shirts"
+        },
+        {
+            "label": "Underbarrel attachments",
+            "conditions": "Category:Underbarrel attachments"
+        },
+        {
+            "label": "Undersuits",
+            "conditions": "Category:Undersuits"
+        },
+        {
+            "label": "Weapon attachments",
+            "conditions": "Category:Weapon attachments"
+        },
+        {
+            "label": "Drinks",
+            "conditions": "Category:Drinks"
+        },
+        {
+            "label": "Food",
+            "conditions": "Category:Food"
+        }
+    ]
+}
