@@ -44,17 +44,26 @@
 			"SMW_Grade": "API_grade"
 		},
 		{
-			"SMW_EntityLength": "API_dimension.true_dimension.length",
+			"SMW_EntityLength": [
+				"API_dimension.true_dimension.length",
+				"API_dimension.length"
+			],
 			"type": "number",
 			"smw_format": "#p2-cm"
 		},
 		{
-			"SMW_EntityWidth": "API_dimension.true_dimension.width",
+			"SMW_EntityWidth": [
+				"API_dimension.true_dimension.width",
+				"API_dimension.width"
+			],
 			"type": "number",
 			"smw_format": "#p2-cm"
 		},
 		{
-			"SMW_EntityHeight": "API_dimension.true_dimension.height",
+			"SMW_EntityHeight": [
+				"API_dimension.true_dimension.height",
+				"API_dimension.height"
+			],
 			"type": "number",
 			"smw_format": "#p2-cm"
 		},
