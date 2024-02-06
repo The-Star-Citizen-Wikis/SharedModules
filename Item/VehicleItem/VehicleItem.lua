@@ -19,40 +19,6 @@ local function translate( key, addSuffix, ... )
 end
 
 
---- Retrieve subobjects
----
---- @param pageName string
---- @param identifierPropKey string SMW property key used to identify subobjects
---- @param propertyKeys table table of SMW property keys
---- @return table
-local function loadSubobjects( pageName, identifierPropKey, propKeys )
-    local askQuery = {
-        '[[-Has subobject::' .. pageName .. ']]',
-        '[[' .. translate( identifierPropKey ) .. '::+]]'
-    }
-
-    for _, propKey in ipairs( propKeys ) do
-        table.insert( askQuery, string.format( '?%s', translate( propKey ) ) )
-    end
-
-    table.insert( askQuery, 'mainlabel=-' )
-
-    local subobjects = mw.smw.ask( askQuery )
-
-    if subobjects == nil then return {} end
-
-    local subobjectTable = {}
-
-    for _, subobject in ipairs( subobjects ) do
-        if subobject[ translate( identifierPropKey ) ] then
-            table.insert( subobjectTable, subobject )
-        end
-    end
-
-    return subobjectTable
-end
-
-
 --- Adds the properties valid for this item to the SMW Set object
 ---
 --- @param smwSetObject table
@@ -151,7 +117,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     -- Gun / Rocket Pod
     elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' or smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Rocket' then
         local function getFiringModesSection()
-            local modes = loadSubobjects( 
+            local modes = smwCommon.loadSubobjects( 
                 itemPageIdentifier,
                 'SMW_FiringMode',
                 {
@@ -160,7 +126,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
                     'SMW_AmmoPerShot',
                     'SMW_ProjectilePerShot',
                     'SMW_DamagePerSecond'
-                }
+                },
+                translate
             )
 
             if type( modes ) == 'table' then
@@ -282,7 +249,7 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
     -- Quantum Drive
     elseif smwData[ translate( 'SMW_Type' ) ] == 'QuantumDrive' then
         local function getQuantumDriveModesSection()
-            local modes = loadSubobjects( 
+            local modes = smwCommon.loadSubobjects( 
                 itemPageIdentifier,
                 'SMW_QuantumTravelType',
                 {
@@ -290,7 +257,8 @@ function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
                     'SMW_QuantumTravelSpeed',
                     'SMW_CooldownTime',
                     'SMW_ChargeTime'
-                }
+                },
+                translate
             )
 
             if type( modes ) == 'table' then

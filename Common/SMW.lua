@@ -240,4 +240,44 @@ function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig,
 end
 
 
+--- Retrieve subobjects
+---
+--- @param pageName string
+--- @param identifierPropKey string SMW property key used to identify subobjects
+--- @param propertyKeys table table of SMW property keys
+--- @param translateFn function The translate function used to translate argument names
+--- @return table
+function commonSMW.loadSubobjects( pageName, identifierPropKey, propKeys, translateFn )
+	checkType( 'Module:Common/SMW.loadSubobjects', 1, pageName, 'string' )
+	checkType( 'Module:Common/SMW.loadSubobjects', 2, identifierPropKey, 'string' )
+	checkType( 'Module:Common/SMW.loadSubobjects', 3, propKeys, 'table' )
+	checkType( 'Module:Common/SMW.loadSubobjects', 4, translateFn, 'function' )
+
+    local askQuery = {
+        '[[-Has subobject::' .. pageName .. ']]',
+        '[[' .. translateFn( identifierPropKey ) .. '::+]]'
+    }
+
+    for _, propKey in ipairs( propKeys ) do
+        table.insert( askQuery, string.format( '?%s', translateFn( propKey ) ) )
+    end
+
+    table.insert( askQuery, 'mainlabel=-' )
+
+    local subobjects = mw.smw.ask( askQuery )
+
+    if subobjects == nil then return {} end
+
+    local subobjectTable = {}
+
+    for _, subobject in ipairs( subobjects ) do
+        if subobject[ translateFn( identifierPropKey ) ] then
+            table.insert( subobjectTable, subobject )
+        end
+    end
+
+    return subobjectTable
+end
+
+
 return commonSMW
