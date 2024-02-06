@@ -114,7 +114,8 @@
 			"name": "Module:Item/PersonalWeaponAttachment",
 			"type": [
 				"WeaponAttachment.BottomAttachment",
-				"WeaponAttachment.IronSight"
+				"WeaponAttachment.IronSight",
+				"WeaponAttachment.Magazine"
 			]
 		},
 		{

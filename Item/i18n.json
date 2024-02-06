@@ -556,6 +556,13 @@
 			}
 		],
 		[
+			"type_weaponattachment.magazine",
+			{
+				"de": "Magazin",
+				"en": "Magazine"
+			}
+		],
+		[
 			"type_weaponmining.gun",
 			{
 				"de": "Bergbaulaser",
@@ -847,6 +854,13 @@
 			{
 				"de": "Zielfernrohr",
 				"en": "Optics attachments"
+			}
+		],
+		[
+			"category_weaponattachment.magazine",
+			{
+				"de": "Magazin",
+				"en": "Magazines"
 			}
 		],
 		[

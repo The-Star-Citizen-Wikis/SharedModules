@@ -24,6 +24,20 @@
 			}
 		],
 		[
+			"SMW_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
+			"SMW_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
 			"SMW_Slot",
 			{
 				"de": "Slot",
@@ -42,6 +56,20 @@
 			{
 				"de": "Optik Type",
 				"en": "Optics type"
+			}
+		],
+		[
+			"LBL_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
+			"LBL_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
 			}
 		],
 		[

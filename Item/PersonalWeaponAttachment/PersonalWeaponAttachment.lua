@@ -69,6 +69,20 @@ function PersonalWeaponAttachment.addInfoboxData( infobox, smwData )
             },
             col = 2
         } )
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Magazine' then
+        infobox:renderSection( {
+            content = {
+                infobox:renderItem( {
+                    label = translate( 'LBL_Subtype' ),
+                    data = smwData[ translate( 'SMW_Subtype' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_Ammo' ),
+                    data = smwData[ translate( 'SMW_Ammo' ) ],
+                } )
+            },
+            col = 2
+        } )
     end
 end
 
