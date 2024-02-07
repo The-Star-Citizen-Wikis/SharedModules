@@ -24,10 +24,10 @@
 			}
 		],
 		[
-			"SMW_Subtype",
+			"SMW_Class",
 			{
-				"de": "Subtyp",
-				"en": "Subtype"
+				"de": "Klasse",
+				"en": "Class"
 			}
 		],
 		[
@@ -56,13 +56,6 @@
 			{
 				"de": "Optik Type",
 				"en": "Optics type"
-			}
-		],
-		[
-			"LBL_Subtype",
-			{
-				"de": "Subtyp",
-				"en": "Subtype"
 			}
 		],
 		[

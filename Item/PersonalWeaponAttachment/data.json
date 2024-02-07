@@ -11,7 +11,7 @@
 			"SMW_OpticsType": "API_iron_sight.optic_type"
 		},
 		{
-			"SMW_Subtype": "API_personal_weapon_magazine.type"
+			"SMW_Class": "API_personal_weapon_magazine.type"
 		},
 		{
 			"SMW_Ammo": "API_personal_weapon_magazine.max_ammo_count"

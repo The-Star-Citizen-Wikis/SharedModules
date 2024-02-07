@@ -73,10 +73,6 @@ function PersonalWeaponAttachment.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_Subtype' ),
-                    data = smwData[ translate( 'SMW_Subtype' ) ],
-                } ),
-                infobox:renderItem( {
                     label = translate( 'LBL_Ammo' ),
                     data = smwData[ translate( 'SMW_Ammo' ) ],
                 } )

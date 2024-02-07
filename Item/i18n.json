@@ -780,6 +780,34 @@
 			}
 		],
 		[
+			"class_battery",
+			{
+				"de": "Battery",
+				"en": "Battery"
+			}
+		],
+		[
+			"class_magazine",
+			{
+				"de": "Magazine",
+				"en": "Magazine"
+			}
+		],
+		[
+			"class_medgel refill",
+			{
+				"de": "MedGel refill",
+				"en": "MedGel refill"
+			}
+		],
+		[
+			"class_rmc canister (small)",
+			{
+				"de": "RMC canister",
+				"en": "RMC canister"
+			}
+		],
+		[
 			"category_bomb",
 			{
 				"de": "Bombe",
