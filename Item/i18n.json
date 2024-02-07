@@ -661,6 +661,125 @@
 			}
 		],
 		[
+			"class_ballistic scattergun",
+			{
+				"de": "Ballistic scattergun",
+				"en": "Ballistic scattergun"
+			}
+		],
+		[
+			"class_ballistic cannon",
+			{
+				"de": "Ballistic cannon",
+				"en": "Ballistic cannon"
+			}
+		],
+		[
+			"class_ballistic repeater",
+			{
+				"de": "Ballistic repeater",
+				"en": "Ballistic repeater"
+			}
+		],
+		[
+			"class_ballistic gatling",
+			{
+				"de": "Ballistic gatling",
+				"en": "Ballistic gatling"
+			}
+		],
+		[
+			"class_distortion scattergun",
+			{
+				"de": "Distortion scattergun",
+				"en": "Distortion scattergun"
+			}
+		],
+		[
+			"class_distortion cannon",
+			{
+				"de": "Distortion cannon",
+				"en": "Distortion cannon"
+			}
+		],
+		[
+			"class_distortion repeater",
+			{
+				"de": "Distortion repeater",
+				"en": "Distortion repeater"
+			}
+		],
+		[
+			"class_laser scattergun",
+			{
+				"de": "Laser scattergun",
+				"en": "Laser scattergun"
+			}
+		],
+		[
+			"class_laser cannon",
+			{
+				"de": "Laser cannon",
+				"en": "Laser cannon"
+			}
+		],
+		[
+			"class_laser repeater",
+			{
+				"de": "Laser repeater",
+				"en": "Laser repeater"
+			}
+		],
+		[
+			"class_laser beam",
+			{
+				"de": "Laser beam",
+				"en": "Laser beam"
+			}
+		],
+		[
+			"class_mass driver cannon",
+			{
+				"de": "Mass driver cannon",
+				"en": "Mass driver cannon"
+			}
+		],
+		[
+			"class_neutron cannon",
+			{
+				"de": "Neutron cannon",
+				"en": "Neutron cannon"
+			}
+		],
+		[
+			"class_neutron repeater",
+			{
+				"de": "Neutron repeater",
+				"en": "Neutron repeater"
+			}
+		],
+		[
+			"class_plasma scattergun",
+			{
+				"de": "Plasma scattergun",
+				"en": "Plasma scattergun"
+			}
+		],
+		[
+			"class_plasma cannon",
+			{
+				"de": "Plasma cannon",
+				"en": "Plasma cannon"
+			}
+		],
+		[
+			"class_tachyon cannon",
+			{
+				"de": "Tachyon cannon",
+				"en": "Tachyon cannon"
+			}
+		],
+		[
 			"category_bomb",
 			{
 				"de": "Bombe",

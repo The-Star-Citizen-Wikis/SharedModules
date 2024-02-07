@@ -148,7 +148,7 @@
 			"%": "Guns"
 		},
 		{
-			"SMW_Subtype": "API_vehicle_weapon.type"
+			"SMW_Class": "API_vehicle_weapon.type"
 		},
 		{
 			"SMW_MaximumRange": "API_vehicle_weapon.range",

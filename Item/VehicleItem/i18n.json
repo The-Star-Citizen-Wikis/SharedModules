@@ -24,10 +24,10 @@
 			}
 		],
 		[
-			"SMW_Subtype",
+			"SMW_Class",
 			{
-				"de": "Subtyp",
-				"en": "Subtype"
+				"de": "Klasse",
+				"en": "Class"
 			}
 		],
 		[
@@ -686,13 +686,6 @@
 			{
 				"de": "Defense",
 				"en": "Defense"
-			}
-		],
-		[
-			"LBL_Subtype",
-			{
-				"de": "Subtyp",
-				"en": "Subtype"
 			}
 		],
 		[
