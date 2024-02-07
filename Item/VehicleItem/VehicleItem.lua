@@ -1,12 +1,15 @@
 require( 'strict' )
 
-local VehicleItem = {}
+local p = {}
+
+local MODULE_NAME = 'VehicleItem'
 
 local TNT = require( 'Module:Translate' ):new()
-local common = require( 'Module:Common' )
 local smwCommon = require( 'Module:Common/SMW' )
-local data = mw.loadJsonData( 'Module:Item/VehicleItem/data.json' )
+local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME ..'/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
+
+local common = require( 'Module:Common' )
 
 
 --- Wrapper function for Module:Translate.translate
@@ -15,14 +18,14 @@ local config = mw.loadJsonData( 'Module:Item/config.json' )
 --- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-    return TNT:translate( 'Module:Item/VehicleItem/i18n.json', config, key, addSuffix, {...} )
+    return TNT:translate( 'Module:Item/' .. MODULE_NAME .. '/i18n.json', config, key, addSuffix, {...} )
 end
 
 
 --- Adds the properties valid for this item to the SMW Set object
 ---
 --- @param smwSetObject table
-function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
+function p.addSmwProperties( apiData, frameArgs, smwSetObject )
     smwCommon.addSmwProperties(
         apiData,
         frameArgs,
@@ -30,7 +33,7 @@ function VehicleItem.addSmwProperties( apiData, frameArgs, smwSetObject )
         translate,
         config,
         data,
-        'Item/VehicleItem'
+        'Item/' .. MODULE_NAME
     )
 
     local setData = {}
@@ -75,7 +78,7 @@ end
 ---
 --- @param smwAskObject table
 --- @return void
-function VehicleItem.addSmwAskProperties( smwAskObject )
+function p.addSmwAskProperties( smwAskObject )
     smwCommon.addSmwAskProperties(
         smwAskObject,
         translate,
@@ -90,7 +93,7 @@ end
 --- @param infobox table The Module:InfoboxNeue instance
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
-function VehicleItem.addInfoboxData( infobox, smwData, itemPageIdentifier )
+function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     local tabber = require( 'Module:Tabber' ).renderTabber
     local tabberData = {}
     local section
@@ -469,7 +472,7 @@ end
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
-function VehicleItem.addCategories( categories, frameArgs, smwData )
+function p.addCategories( categories, frameArgs, smwData )
 
 end
 
@@ -479,9 +482,9 @@ end
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
-function VehicleItem.getShortDescription( shortdesc, frameArgs, smwData )
+function p.getShortDescription( shortdesc, frameArgs, smwData )
 	
 end
 
 
-return VehicleItem
+return p

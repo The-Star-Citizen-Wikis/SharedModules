@@ -1,10 +1,12 @@
 require( 'strict' )
 
-local Food = {}
+local p = {}
+
+local MODULE_NAME = 'Food'
 
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
-local data = mw.loadJsonData( 'Module:Item/Food/data.json' )
+local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
 
 
@@ -14,14 +16,14 @@ local config = mw.loadJsonData( 'Module:Item/config.json' )
 --- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-	return TNT:translate( 'Module:Item/Food/i18n.json', config, key, addSuffix, {...} )
+	return TNT:translate( 'Module:Item/' .. MODULE_NAME .. '/i18n.json', config, key, addSuffix, {...} )
 end
 
 
 --- Adds the properties valid for this item to the SMW Set object
 ---
 --- @param smwSetObject table
-function Food.addSmwProperties( apiData, frameArgs, smwSetObject )
+function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 	smwCommon.addSmwProperties(
 		apiData,
 		frameArgs,
@@ -29,7 +31,7 @@ function Food.addSmwProperties( apiData, frameArgs, smwSetObject )
 		translate,
 		config,
 		data,
-		'Item/Food'
+		'Item/' .. MODULE_NAME
 	)
 
 	--- Not sure if size matters, not like there is a S12 Double Dog
@@ -59,7 +61,7 @@ end
 ---
 --- @param smwAskObject table
 --- @return void
-function Food.addSmwAskProperties( smwAskObject )
+function p.addSmwAskProperties( smwAskObject )
 	smwCommon.addSmwAskProperties(
 		smwAskObject,
 		translate,
@@ -74,7 +76,7 @@ end
 --- @param infobox table The Module:InfoboxNeue instance
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
-function Food.addInfoboxData( infobox, smwData )
+function p.addInfoboxData( infobox, smwData )
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
@@ -107,7 +109,7 @@ end
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
 --- @return void
-function Food.addCategories( categories, frameArgs, smwData )
+function p.addCategories( categories, frameArgs, smwData )
 
 end
 
@@ -117,9 +119,9 @@ end
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
 --- @return string|nil
-function Food.getShortDescription( frameArgs, smwData )
+function p.getShortDescription( frameArgs, smwData )
 
 end
 
 
-return Food
+return p
