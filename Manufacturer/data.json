@@ -369,6 +369,10 @@
 		"name": "Nav-E7 Gadgets"
 	},
 	{
+		"code": "NONE",
+		"name": "Unknown"
+	},
+	{
 		"code": "NOVP",
 		"name": "Nova Pyrotechnica"
 	},
