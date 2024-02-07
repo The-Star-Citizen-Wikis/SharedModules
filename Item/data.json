@@ -120,6 +120,10 @@
 			]
 		},
 		{
+			"name": "Module:Item/FPSConsumable",
+			"type": []
+		},
+		{
 			"name": "Module:Item/PersonalWeaponAttachment",
 			"type": [
 				"WeaponAttachment.BottomAttachment",
