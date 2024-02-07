@@ -416,6 +416,13 @@
 			}
 		],
 		[
+			"type_fps_consumable.medpack",
+			{
+				"de": "Medical consumable",
+				"en": "Medical consumable"
+			}
+		],
+		[
 			"type_fps_consumable.oxygencap",
 			{
 				"de": "Medical consumable",
@@ -935,6 +942,13 @@
 		],
 		[
 			"category_fps_consumable.medical",
+			{
+				"de": "Medical consumables",
+				"en": "Medical consumables"
+			}
+		],
+		[
+			"category_fps_consumable.medpack",
 			{
 				"de": "Medical consumables",
 				"en": "Medical consumables"
