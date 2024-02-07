@@ -437,22 +437,6 @@ function methodtable.setCategories( self )
 		return
 	end
 
-	--- Lowers all words unless the word is fully capitalized (e.g.: EMP Generators -> EMP generators)
-	local function lowercaseWords( input )
-	    local result = input:gsub( '(%S+)' , function( word )
-    	    if string.upper( word ) == word then
-        	    return word
-    	    end
-
-			return string.lower( word )
-	    end)
-	    return result
-	end
-	
-	local function startsWith( str, start )
-		return str:sub( 1, #start ) == start
-	end
-
 	local function addSubcategory( s1, s2 )
 		table.insert( self.categories, string.format( '%s (%s)', s1, s2 ) )
 	end
@@ -463,25 +447,16 @@ function methodtable.setCategories( self )
 
 		if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
 			table.insert( self.categories, typeCategory ) 
-			
-			local categoryTypeSuffix = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
-			if startsWith( lang:getCode(), 'en' ) then categoryTypeSuffix = lowercaseWords( categoryTypeSuffix ) end
 
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
-				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. categoryTypeSuffix
-				table.insert( self.categories, sizeCategory )
 				addSubcategory( typeCategory, translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] )
 			end
 
 			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
-				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. categoryTypeSuffix
-				table.insert( self.categories, gradeCategory )
 				addSubcategory( typeCategory, translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] )
 			end
 
 			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
-				local classCategory = self.smwData[ translate( 'SMW_Class' ) ] .. ' ' .. categoryTypeSuffix
-				table.insert( self.categories, classCategory )
 				addSubcategory( typeCategory, self.smwData[ translate( 'SMW_Class' ) ] )
 			end
 		end
