@@ -453,6 +453,10 @@ function methodtable.setCategories( self )
 		return str:sub( 1, #start ) == start
 	end
 
+	local function addSubcategory( s1, s2 )
+		table.insert( self.categories, string.format( '%s (%s)', s1, s2 ) )
+	end
+
 	--- Only set category if category_type value exists
 	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
 		local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
@@ -466,16 +470,19 @@ function methodtable.setCategories( self )
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
 				local sizeCategory = translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, sizeCategory )
+				addSubcategory( typeCategory, translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] )
 			end
 
 			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
 				local gradeCategory = translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, gradeCategory )
+				addSubcategory( typeCategory, translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] )
 			end
 
 			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
 				local classCategory = self.smwData[ translate( 'SMW_Class' ) ] .. ' ' .. categoryTypeSuffix
 				table.insert( self.categories, classCategory )
+				addSubcategory( typeCategory, self.smwData[ translate( 'SMW_Class' ) ] )
 			end
 		end
 	end
