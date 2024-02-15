@@ -619,6 +619,13 @@
 			}
 		],
 		[
+			"type_weaponpersonal.knife",
+			{
+				"de": "Messer",
+				"en": "Knife"
+			}
+		],
+		[
 			"class_civilian",
 			{
 				"de": "👔 Civilian",
@@ -833,6 +840,13 @@
 			{
 				"de": "RMC canister",
 				"en": "RMC canister"
+			}
+		],
+		[
+			"class_melee",
+			{
+				"de": "Melee",
+				"en": "Melee"
 			}
 		],
 		[
@@ -1134,6 +1148,13 @@
 			{
 				"de": "Raketenkapsel",
 				"en": "Rocket pods"
+			}
+		],
+		[
+			"category_weaponpersonal.knife",
+			{
+				"de": "Messer",
+				"en": "Knives"
 			}
 		],
 		[
