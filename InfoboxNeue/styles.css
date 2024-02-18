@@ -144,7 +144,7 @@
 /* Use padding to prevent margin collapse when there is no footer */
 .infobox__content > .infobox__section:last-child {
     margin-bottom: 0;
-    padding-bottom: var( --space-xs );
+    padding-bottom: var( --space-md );
 }
 
 .infobox__sectionTitle {
