@@ -364,7 +364,7 @@
 		},
 		{
 			"label": "SPViewer",
-			"format": "https://www.spviewer.eu/pages/ship-performances.html?ship=%s",
+			"format": "https://www.spviewer.eu/performance?ship=%s",
 			"data": "SMW_ClassName"
 		},
 		{
