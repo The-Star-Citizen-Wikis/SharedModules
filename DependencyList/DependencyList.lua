@@ -132,6 +132,9 @@ local function getDynamicRequireList( query )
         query = table.concat( query )
     else
         local _; _, query = query:match( '(["\'])(.-)%1' )
+        if query == nil then
+			return {}, isDynamic
+        end
         local replacements;
         query, replacements = query:gsub( '%%%a', '%%' )
 		if replacements == 0 then
