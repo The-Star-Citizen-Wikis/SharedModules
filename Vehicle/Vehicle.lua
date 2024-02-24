@@ -25,7 +25,7 @@ end
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
---- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
+--- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
 	return TNT:translate( 'Module:Vehicle/i18n.json', config, key, addSuffix, {...} ) or key
@@ -61,7 +61,7 @@ local function makeSmwQueryObject( page )
 	for _, queryPart in pairs( data.smw_data ) do
 		local smwKey
 		for key, _ in pairs( queryPart ) do
-			if string.sub( key, 1, 3 ) == 'SMW' then
+			if mw.ustring.sub( key, 1, 3 ) == 'SMW' then
 				smwKey = key
 				break
 			end
@@ -75,7 +75,7 @@ local function makeSmwQueryObject( page )
 
 		-- safeguard
 		if smwKey ~= nil then
-			table.insert( query, string.format( formatString, translate( smwKey ) ) )
+			table.insert( query, mw.ustring.format( formatString, translate( smwKey ) ) )
 
 			if queryPart.type == 'multilingual_text' then
 				table.insert( query, langSuffix )
@@ -94,8 +94,8 @@ local function makeTimeReadable( t )
 	if t == nil then return end
 
 	-- Fix for german number format
-	if string.find( t, ',', 1, true ) then
-		t = string.gsub( t, ',', '.' )
+	if mw.ustring.find( t, ',', 1, true ) then
+		t = mw.ustring.gsub( t, ',', '.' )
 	end
 
 	if type( t ) == 'string' then
@@ -126,7 +126,7 @@ local function makeTimeReadable( t )
 	end
 
 	for pattern, replace in pairs( regex ) do
-		t = string.gsub( t, pattern, replace )
+		t = mw.ustring.gsub( t, pattern, replace )
 	end
 
 	return t
@@ -138,8 +138,8 @@ end
 local function formatModifier( x )
 	if x == nil then return end
 	-- Fix for german number format
-	if string.find( x, ',', 1, true ) then
-		x = string.gsub( x, ',', '.' )
+	if mw.ustring.find( x, ',', 1, true ) then
+		x = mw.ustring.gsub( x, ',', '.' )
 	end
 
 	if type( x ) == 'string' then x = tonumber( x, 10 ) end
@@ -161,7 +161,7 @@ end
 
 --- Request Api Data
 --- Using current subpage name without vehicle type suffix
---- @return table or nil
+--- @return table|nil
 function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 
@@ -210,7 +210,7 @@ function methodtable.setSemanticProperties( self )
 		if man ~= nil then man = man.name end
 
 		setData[ translate( 'SMW_Manufacturer' ) ] = man or setData[ translate( 'SMW_Manufacturer' ) ]
-		setData[ translate( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
+		setData[ translate( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
 	end
 
     -- Set properties with API data
@@ -240,7 +240,7 @@ function methodtable.setSemanticProperties( self )
 			local tmp = {}
 			for _, loaner in ipairs( self.apiData.loaner ) do
 				if loaner.name ~= nil then
-					table.insert( tmp, string.format( '[[%s]]', loaner.name ) )
+					table.insert( tmp, mw.ustring.format( '[[%s]]', loaner.name ) )
 				end
 			end
 			setData[ translate( 'SMW_LoanerVehicle' ) ] = tmp
@@ -270,7 +270,7 @@ function methodtable.getSmwData( self )
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-		return hatnote( string.format(
+		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
 				translate( 'error_no_data_text' ),
 				translate( 'error_script_error_cat' )
@@ -310,7 +310,7 @@ function methodtable.getInfobox( self )
 		local classMap = config.productionstate_map
 
 		for _, map in pairs( classMap ) do
-			if string.match( state, translate( map.name ) ) ~= nil then
+			if mw.ustring.match( state, translate( map.name ) ) ~= nil then
 				return 'infobox__indicator--' .. map.color
 			end
 		end
@@ -348,7 +348,7 @@ function methodtable.getInfobox( self )
 	local function getSeries()
 		local series = smwData[ translate( 'SMW_Series' ) ]
 		if series == nil then return end
-		return string.format(
+		return mw.ustring.format(
 			'[[:Category:%s|%s]]',
 			translate( 'category_series', false, series ),
 			series
@@ -576,18 +576,18 @@ function methodtable.getInfobox( self )
 
 			if query ~= nil then
 				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-					query = string.lower( query )
+					query = mw.ustring.lower( query )
 				elseif site.data == 'SMW_ShipMatrixName' then
 					query = mw.uri.encode( query, 'PATH' )
 				end
 
 				if site.label == 'FleetYards' then
-					query = string.lower( string.gsub( query, '%%20', '-' ) )
+					query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
 				end
 
 				table.insert( links, infobox:renderLinkButton( {
 					label = site.label,
-					link = string.format( site.format, query )
+					link = mw.ustring.format( site.format, query )
 				} ) )
 			end
 		end
@@ -817,8 +817,8 @@ function methodtable.setCategories( self )
 	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
-		manufacturer = string.gsub( manufacturer, '%]+', '' )
+		local manufacturer = mw.ustring.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
 
 		table.insert(
 			self.categories,
@@ -866,18 +866,18 @@ function methodtable.setShortDescription( self )
 			vehicleRole = table.concat( vehicleRole, ' ' )
 		end
 
-		vehicleRole = string.lower( vehicleRole )
+		vehicleRole = mw.ustring.lower( vehicleRole )
 		
 		for _, noun in pairs( config.role_suffixes ) do
-			local match = string.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
+			local match = mw.ustring.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
 			--- Remove suffix from role
 			if match then
-				vehicleRole = mw.text.trim( string.gsub( vehicleRole, noun, '' ) )
+				vehicleRole = mw.text.trim( mw.ustring.gsub( vehicleRole, noun, '' ) )
 				vehicleType = noun
 			end
 		end
 
-		shortdesc = string.format( '%s %s', vehicleRole, vehicleType )
+		shortdesc = mw.ustring.format( '%s %s', vehicleRole, vehicleType )
 	else
 		shortdesc = vehicleType
 	end
@@ -889,7 +889,7 @@ function methodtable.setShortDescription( self )
 			vehicleSize = translate( 'shortdesc_single_seat' )
 		end
 
-		shortdesc = string.format( '%s %s', vehicleSize, shortdesc )
+		shortdesc = mw.ustring.format( '%s %s', vehicleSize, shortdesc )
 	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then

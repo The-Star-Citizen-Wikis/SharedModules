@@ -86,8 +86,8 @@ local function formatPageName( str )
     local name = mw.text.trim( str )
         :gsub( '^([\'\"])(.-)%1$', function( _, x ) return x end ) -- Only remove quotes at start and end of string if both are the same type
         :gsub( '_', ' ' )
-        :gsub( '^.', string.upper )
-        :gsub( ':.', string.upper )
+        :gsub( '^.', mw.ustring.upper )
+        :gsub( ':.', mw.ustring.upper )
 
     return name
 end
@@ -109,7 +109,7 @@ local function formatModuleName( str, allowBuiltins )
 
     local module = formatPageName( str )
 
-    if not string.find( module, '^[Mm]odule?:' ) then
+    if not mw.ustring.find( module, '^[Mm]odule?:' ) then
         module = NS_MODULE_NAME .. ':' .. module
     end
 
@@ -118,9 +118,9 @@ end
 
 
 local function dualGmatch( str, pat1, pat2 )
-    local f1 = string.gmatch( str, pat1 )
+    local f1 = mw.ustring.gmatch( str, pat1 )
     if pat2 then
-        local f2 = string.gmatch( str, pat2 )
+        local f2 = mw.ustring.gmatch( str, pat2 )
         return function()
             return f1() or f2()
         end
@@ -130,7 +130,7 @@ local function dualGmatch( str, pat1, pat2 )
 end
 
 local function isDynamicPath( str )
-    return string.find( str, '%.%.' ) or string.find( str, '%%%a' )
+    return mw.ustring.find( str, '%.%.' ) or mw.ustring.find( str, '%%%a' )
 end
 
 
@@ -203,13 +203,13 @@ local function getRequireList( moduleName, searchForUsedTemplates )
     getList( 'pcall%s*%(%s*mw%.loadJsonData%s*,([^%),]+)', nil, loadJsonDataList, dynamicLoadJsonDataList )
 
     if searchForUsedTemplates then
-        for preprocess in string.gmatch( content, ':preprocess%s*(%b())' ) do
+        for preprocess in mw.ustring.gmatch( content, ':preprocess%s*(%b())' ) do
             local function recursiveGMatch( str, pat )
                 local list = {}
                 local i = 0
 
                 repeat
-                    for match in string.gmatch( list[ i ] or str, pat ) do
+                    for match in mw.ustring.gmatch( list[ i ] or str, pat ) do
                         table.insert( list, match )
                     end
                     i =  i + 1
@@ -223,7 +223,7 @@ local function getRequireList( moduleName, searchForUsedTemplates )
             end
 
             for template in recursiveGMatch( preprocess, '{(%b{})}' ) do
-                local name = string.match( template, '{(.-)[|{}]' )
+                local name = mw.ustring.match( template, '{(.-)[|{}]' )
                 if name ~= '' then
                     if name:find( ':' ) then
                         local ns = name:match( '^(.-):' )
@@ -275,10 +275,10 @@ local function getInvokeCallList( templateName )
 
     assert( content ~= nil, translate( 'message_not_exists', templateName ) )
 
-    for moduleName, funcName in string.gmatch( content, '{{[{|safeubt:}]-#[Ii]nvoke:([^|]+)|([^}|]+)[^}]*}}' ) do
+    for moduleName, funcName in mw.ustring.gmatch( content, '{{[{|safeubt:}]-#[Ii]nvoke:([^|]+)|([^}|]+)[^}]*}}' ) do
         moduleName = formatModuleName( moduleName )
         funcName = mw.text.trim( funcName )
-        if string.find( funcName, '^{{{' ) then
+        if mw.ustring.find( funcName, '^{{{' ) then
         	funcName = funcName ..  '}}}'
         end
         table.insert( invokeList, { moduleName = moduleName, funcName = funcName } )
@@ -306,8 +306,8 @@ end
 
 
 local function collapseList( list, id, listType )
-    local text = string.format( '%d %s', #list, listType )
-    local button = string.format( '<span id="%s">%s</span>:&nbsp;', id, text )
+    local text = mw.ustring.format( '%d %s', #list, listType )
+    local button = mw.ustring.format( '<span id="%s">%s</span>:&nbsp;', id, text )
     local content = mHatlist.andList( list, false )
 
     return { button .. tostring( content ) }
@@ -333,7 +333,7 @@ local function formatDynamicQueryLink( query )
 
     query = query:gsub( '^\\/', '' )
 
-    query = string.format(
+    query = mw.ustring.format(
         'intitle:/%s%s/i -intitle:/%s\\/""/i -intitle:doc prefix:"%s"',
         query,
         query:find( '"$' ) and '' or '""',
@@ -341,7 +341,7 @@ local function formatDynamicQueryLink( query )
         prefix
     )
 
-    return string.format( '<span class="plainlinks">[%s %s]</span>', tostring( mw.uri.fullUrl( 'Special:Search', { search = query } ) ), linkText )
+    return mw.ustring.format( '<span class="plainlinks">[%s %s]</span>', tostring( mw.uri.fullUrl( 'Special:Search', { search = query } ) ), linkText )
 end
 
 
@@ -377,7 +377,7 @@ end
 ---@return string
 local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
     local function lcfirst( str )
-		return string.gsub( str, '^[Mm]odule?:.', string.lower )
+		return mw.ustring.gsub( str, '^[Mm]odule?:.', mw.ustring.lower )
 	end
 
     local templateData = arr.map( whatLinksHere, function( x ) return { templateName = x, invokeList = getInvokeCallList( x ) } end )
@@ -410,7 +410,7 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
         table.insert( res, mHatnote._hatnote( msg, { icon='WikimediaUI-Code.svg' } ) )
     else
 	    for _, item in ipairs( invokedByList ) do
-	    	local msg = string.format(
+	    	local msg = mw.ustring.format(
 	    		"'''%s's''' %s.",
 	    		moduleName,
 	    		item
@@ -516,7 +516,7 @@ local function formatImportList( currentPageName, moduleList, id, message, categ
     end )
 
     if #moduleList > 0 and category then
-        table.insert( res, string.format( '[[Category:%s]]', category ) )
+        table.insert( res, mw.ustring.format( '[[Category:%s]]', category ) )
     end
 
     return table.concat( res )
@@ -565,7 +565,7 @@ function p._main( currentPageName, addCategories, isUsed )
     end
 
     currentPageName = param.default_to( currentPageName, title.fullText )
-    currentPageName = string.gsub( currentPageName, '/[Dd]o[ck]u?$', '' )
+    currentPageName = mw.ustring.gsub( currentPageName, '/[Dd]o[ck]u?$', '' )
     currentPageName = formatPageName( currentPageName )
     addCategories = yn( param.default_to( addCategories, title.subpageText~='doc' ) )
     moduleIsUsed = yn( param.default_to( isUsed, false ) )
@@ -592,8 +592,8 @@ function p._main( currentPageName, addCategories, isUsed )
         local parts = mw.text.split( from, '|', true )
 
         if #parts == 2 then
-            local name = string.gsub( parts[ 1 ], '%[%[:', '' )
-            name = string.gsub( name, '/[Dd]o[ck]u?', '' )
+            local name = mw.ustring.gsub( parts[ 1 ], '%[%[:', '' )
+            name = mw.ustring.gsub( name, '/[Dd]o[ck]u?', '' )
 
             return name
         end
@@ -657,7 +657,7 @@ function p._main( currentPageName, addCategories, isUsed )
     end )
 
     local usedTemplateList = arr.map( lists.usedTemplateList, function( templateName )
-        if string.find( templateName, ':' ) then -- Real templates are prefixed by a namespace, magic words are not
+        if mw.ustring.find( templateName, ':' ) then -- Real templates are prefixed by a namespace, magic words are not
             return '[['..templateName..']]'
         else
             return "'''&#123;&#123;"..templateName.."&#125;&#125;'''" -- Magic words don't have a page so make them bold instead

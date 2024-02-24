@@ -111,7 +111,7 @@ function methodtable.make( self )
 
 	local args = {
 		subtitle = 'Products of',
-		title = string.format( '[[%s]]', manufacturer )
+		title = mw.ustring.format( '[[%s]]', manufacturer )
 	}
 
 	local conditions = 'Category:' .. manufacturer

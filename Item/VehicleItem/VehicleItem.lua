@@ -49,7 +49,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 
         for _, data in pairs( tableData ) do
             local name = data[nameKey] or ''
-            name = 'SMW_' .. prefix .. name:gsub('^%l', string.upper):gsub( ' ', '' )
+            name = 'SMW_' .. prefix .. name:gsub('^%l', mw.ustring.upper):gsub( ' ', '' )
 
             if translate( name ) ~= nil then
                 local value
@@ -58,7 +58,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 
                 -- Handle percentage such as 10% used in modifiers
                 if type( value ) == 'string' and value:find( '%d+%%' ) then
-                    value = string.gsub( value, '%%', '' ) / 100
+                    value = mw.ustring.gsub( value, '%%', '' ) / 100
                 end
 
                 setData[ translate( name ) ] = value

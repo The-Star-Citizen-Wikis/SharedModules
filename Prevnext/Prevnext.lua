@@ -41,7 +41,7 @@ function methodtable.make( self )
 		local icon = mw.html.create( 'div' )
 
 		icon:addClass( 'template-prevnext__icon' )
-				:wikitext( string.format( '[[File:WikimediaUI-%s-ltr.svg|14px|link=]]', arrow ) )
+				:wikitext( mw.ustring.format( '[[File:WikimediaUI-%s-ltr.svg|14px|link=]]', arrow ) )
 			:done()
 
 		if dir == 'prev' then
@@ -68,7 +68,7 @@ function methodtable.make( self )
 
 		inner:tag( 'div' )
 				:addClass( 'template-prevnext__linkoverlay' )
-					:wikitext( string.format( '[[%s]]', self.frameArgs[ dir ] ) )
+					:wikitext( mw.ustring.format( '[[%s]]', self.frameArgs[ dir ] ) )
 				:allDone()
 
 		return inner

@@ -144,7 +144,7 @@ function methodtable.setSemanticProperties( self )
 		if man ~= nil then man = man.name end
 
 		setData[ translate( 'SMW_Manufacturer' ) ] = man or setData[ translate( 'SMW_Manufacturer' ) ]
-		setData[ translate( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
+		setData[ translate( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
 	end
 
 	-- Set properties with API data
@@ -156,7 +156,7 @@ function methodtable.setSemanticProperties( self )
 		--- Merge subtype into type, like how the game handles it
 		if self.apiData.type ~= nil and self.apiData.sub_type ~= nil and self.apiData.sub_type ~= 'UNDEFINED' then
 			--- SMW_Type is already set prior if self.apiData.type exists
-			setData[ translate( 'SMW_Type' ) ] = string.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+			setData[ translate( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
 		end
 	end
 
@@ -184,7 +184,7 @@ function methodtable.getSmwData( self )
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-		return hatnote( string.format(
+		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
 				translate( 'error_no_data_text' ),
 				translate( 'error_script_error_cat' )
@@ -232,13 +232,13 @@ function methodtable.getInfobox( self )
 	local function getType()
 		if smwData[ translate( 'SMW_Type' ) ] == nil then return end
 
-		local itemType = translate( string.format( 'type_%s', string.lower( smwData[ translate( 'SMW_Type' ) ] ) ) )
+		local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( smwData[ translate( 'SMW_Type' ) ] ) ) )
 
-		if string.find( itemType, 'type_' ) then
+		if mw.ustring.find( itemType, 'type_' ) then
 			itemType = smwData[ translate( 'SMW_Type' ) ]
 		end
 
-		return string.format( '[[%s]]', itemType )
+		return mw.ustring.format( '[[%s]]', itemType )
 	end
 
 	local function getSize()
@@ -249,8 +249,8 @@ function methodtable.getInfobox( self )
 	local function getClass()
 		if smwData[ translate( 'SMW_Class' ) ] == nil then return end
 
-		local classKey = string.lower( smwData[ translate( 'SMW_Class' ) ] )
-		local class = translate( string.format( 'class_%s', classKey ) )
+		local classKey = mw.ustring.lower( smwData[ translate( 'SMW_Class' ) ] )
+		local class = translate( mw.ustring.format( 'class_%s', classKey ) )
 
 		if smwData[ translate( 'SMW_Grade' ) ] ~= nil then
 			class = class .. ' (' .. smwData[ translate( 'SMW_Grade' ) ] .. ')'
@@ -285,18 +285,18 @@ function methodtable.getInfobox( self )
 
 			if query ~= nil then
 				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-					query = string.lower( query )
+					query = mw.ustring.lower( query )
 				elseif site.data == 'SMW_ShipMatrixName' then
 					query = mw.uri.encode( query, 'PATH' )
 				end
 
 				if site.label == 'FleetYards' then
-					query = string.lower( string.gsub( query, '%%20', '-' ) )
+					query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
 				end
 
 				table.insert( links, infobox:renderLinkButton( {
 					label = site.label,
-					link = string.format( site.format, query )
+					link = mw.ustring.format( site.format, query )
 				} ) )
 			end
 		end
@@ -438,14 +438,14 @@ function methodtable.setCategories( self )
 	end
 
 	local function addSubcategory( s1, s2 )
-		table.insert( self.categories, string.format( '%s (%s)', s1, s2 ) )
+		table.insert( self.categories, mw.ustring.format( '%s (%s)', s1, s2 ) )
 	end
 
 	--- Only set category if category_type value exists
 	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
-		local typeCategory = translate( 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+		local typeCategory = translate( 'category_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
 
-		if typeCategory ~= nil and typeCategory ~= 'category_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
+		if typeCategory ~= nil and typeCategory ~= 'category_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
 			table.insert( self.categories, typeCategory ) 
 
 			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
@@ -463,8 +463,8 @@ function methodtable.setCategories( self )
 	end
 
 	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = string.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
-		manufacturer = string.gsub( manufacturer, '%]+', '' )
+		local manufacturer = mw.ustring.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
 
 		table.insert( self.categories, manufacturer )
 	end
@@ -479,16 +479,16 @@ function methodtable.setShortDescription( self )
 	local itemType = translate( 'type_item' )
 
 	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
-		local itemTypeKey = 'type_' .. string.lower( self.smwData[ translate( 'SMW_Type' ) ] )
+		local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] )
 		if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
-			itemType = string.lower( translate( itemTypeKey ) )
+			itemType = mw.ustring.lower( translate( itemTypeKey ) )
 		end
 	end
 
 	shortdesc = itemType
 
 	if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
-		shortdesc = string.format( '%s %s',
+		shortdesc = mw.ustring.format( '%s %s',
 			string.lower( self.smwData[ translate( 'SMW_Class' ) ] ),
 			shortdesc
 		)
@@ -499,7 +499,7 @@ function methodtable.setShortDescription( self )
 	end
 
 	if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
-		shortdesc = string.format( 'S%d %s',
+		shortdesc = mw.ustring.format( 'S%d %s',
 			self.smwData[ translate( 'SMW_Size' ) ],
 			shortdesc
 		)
@@ -572,8 +572,8 @@ function methodtable.getCategories( self )
 	local mapped = {}
 
 	for _, category in pairs( self.categories ) do
-		if string.sub( category, 1, 2 ) ~= '[[' then
-			category = string.format( '[[Category:%s]]', category )
+		if mw.ustring.sub( category, 1, 2 ) ~= '[[' then
+			category = mw.ustring.format( '[[Category:%s]]', category )
 		end
 
 		table.insert( mapped, category )

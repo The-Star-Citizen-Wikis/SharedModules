@@ -162,7 +162,7 @@ function methodtable.renderImage( self, filename )
 
 	local html = mw.html.create( 'div' )
 		:addClass( 'infobox__image' )
-		:wikitext( string.format( '[[File:%s|400px]]', filename ) )
+		:wikitext( mw.ustring.format( '[[File:%s|400px]]', filename ) )
 
 	local item = tostring( html )
 
@@ -318,7 +318,7 @@ function methodtable.renderLinkButton( self, data )
 		for i, url in ipairs( data[ 'link' ] ) do
 			table.insert( htmls,
 				self:renderLinkButton( {
-					label = string.format( '%s %d', data[ 'label' ], i ),
+					label = mw.ustring.format( '%s %d', data[ 'label' ], i ),
 					link = url
 				} )
 			)
@@ -330,9 +330,9 @@ function methodtable.renderLinkButton( self, data )
 	local html = mw.html.create( 'div' ):addClass( 'infobox__linkButton' )
 
 	if data[ 'link' ] then
-		html:wikitext( string.format( '[%s %s]', restoreUnderscore( data[ 'link' ] ), data[ 'label' ] ) )
+		html:wikitext( mw.ustring.format( '[%s %s]', restoreUnderscore( data[ 'link' ] ), data[ 'label' ] ) )
 	elseif data[ 'page' ] then
-		html:wikitext( string.format( '[[%s|%s]]', data[ 'page' ], data[ 'label' ] ) )
+		html:wikitext( mw.ustring.format( '[[%s|%s]]', data[ 'page' ], data[ 'label' ] ) )
 	end
 
 	return tostring( html )
@@ -377,7 +377,7 @@ function methodtable.renderFooter( self, data )
 		local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
 
 		if buttonData[ 'icon' ] ~= nil then
-			label:wikitext( string.format( '[[File:%s|16px|link=]]%s', buttonData[ 'icon' ], buttonData[ 'label' ] ) )
+			label:wikitext( mw.ustring.format( '[[File:%s|16px|link=]]%s', buttonData[ 'icon' ], buttonData[ 'label' ] ) )
 		else
 			label:wikitext( buttonData[ 'label' ] )
 		end
@@ -452,19 +452,19 @@ function methodtable.renderItem( self, data, content )
 		html:addClass( 'infobox__itemButton' )
 		html:tag( 'div' )
 			:addClass( 'infobox__itemButtonLink' )
-			:wikitext( string.format( '[%s]', data[ 'link' ] ) )
+			:wikitext( mw.ustring.format( '[%s]', data[ 'link' ] ) )
 	elseif data[ 'page' ] then
 		html:addClass( 'infobox__itemButton' )
 		html:tag( 'div' )
 			:addClass( 'infobox__itemButtonLink' )
-			:wikitext( string.format( '[[%s]]', data[ 'link' ] ) )
+			:wikitext( mw.ustring.format( '[[%s]]', data[ 'link' ] ) )
 	end
 
 	if data[ 'icon' ] then
 		html:addClass( 'infobox__item--hasIcon' )
 		html:tag( 'div' )
 			:addClass( 'infobox__icon' )
-			:wikitext( string.format( '[[File:%s|16px|link=]]', data[ 'icon' ] ) )
+			:wikitext( mw.ustring.format( '[[File:%s|16px|link=]]', data[ 'icon' ] ) )
 		-- Create wrapper for text to align with icon
 		textWrapper = html:tag( 'div' ):addClass( 'infobox__text' )
 	end
@@ -519,7 +519,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__data' )
-				:wikitext( string.format( '%s:', translate( 'LBL_quick_facts' ) ) )
+				:wikitext( mw.ustring.format( '%s:', translate( 'LBL_quick_facts' ) ) )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__desc' )
@@ -556,7 +556,7 @@ end
 --- @return string html
 function InfoboxNeue.showDescIfDiff( s1, s2 )
     if s1 == nil or s2 == nil or s1 == s2 then return s1 end
-    return string.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
+    return mw.ustring.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
 end
 
 

@@ -23,12 +23,12 @@ end
 
 --- Remove parentheses and their content
 local function removeParentheses( inputString )
-    return string.gsub( inputString, '%b()', '' )
+    return mw.ustring.gsub( inputString, '%b()', '' )
 end
 
 -- @param str String
 local function trim( str )
-    return string.match( str, '([^:%(%s]+)' )
+    return mw.ustring.match( str, '([^:%(%s]+)' )
 end
 
 --- If but inline
@@ -72,10 +72,10 @@ function Starmap.findStructure( structureType, structureName )
 	local structures = data[ config[ 'type_plural' ][ structureType ] ]
 	if structures == nil then return nil end -- Invalid type
 	
-	structureName = string.lower( structureName )
+	structureName = mw.ustring.lower( structureName )
 	
 	for _, structure in ipairs( structures ) do
-		if string.lower( structure[ 'name' ] or '' ) == structureName or string.lower( structure[ 'designation' ] or '' ) == structureName or string.lower( structure[ 'code' ] or '' ) == structureName then
+		if mw.ustring.lower( structure[ 'name' ] or '' ) == structureName or mw.ustring.lower( structure[ 'designation' ] or '' ) == structureName or mw.ustring.lower( structure[ 'code' ] or '' ) == structureName then
 			return structure
 		end
 	end
@@ -97,11 +97,11 @@ function Starmap.pathTo( target )
 		
 		if parentType == 'system' then
 			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or removeParentheses( parent[ 'name' ] ) .. ' system'
-			table.insert( links, string.format( t( 'in_system' ), '[[' .. linkContent .. ']]' ) )
+			table.insert( links, mw.ustring.format( t( 'in_system' ), '[[' .. linkContent .. ']]' ) )
 		elseif parent.type == 'STAR' then
 			local designation = removeParentheses( parent[ 'designation' ] )
 			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or designation .. ' (star)|' .. designation .. ' star'
-			table.insert( links, string.format( t( 'orbits_star' ), '[[' .. linkContent .. ']]' ) )
+			table.insert( links, mw.ustring.format( t( 'orbits_star' ), '[[' .. linkContent .. ']]' ) )
 		else
 			local linkContent = config[ 'link_overwrites' ][ parent[ 'code' ] ] or removeParentheses( parent[ 'name' ] or parent[ 'designation' ] )
 			table.insert( links, '[[' .. linkContent .. ']]' )
@@ -114,7 +114,7 @@ function Starmap.pathTo( target )
 	
 	processStructure( target )
 	
-	return string.gsub( table.concat( links, ', ' ), '^%l', string.upper )
+	return mw.ustring.gsub( table.concat( links, ', ' ), '^%l', mw.ustring.upper )
 end
 
 --- Get the objects of a system
@@ -123,7 +123,7 @@ function Starmap.systemObjects( systemName )
 	local system = Starmap.findStructure( 'system', systemName )
 	if system == nil then return nil end -- System doesn't exist
 	
-	systemName = string.lower( systemName )
+	systemName = mw.ustring.lower( systemName )
 	
 	local objects = data[ 'objects' ]
 	local systemObjects = {}

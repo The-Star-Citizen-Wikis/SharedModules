@@ -61,7 +61,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 		-- Retrieve the SMW key and from where the data should be pulled
 		local smwKey, from
 		for key, get_from in pairs( datum ) do
-			if string.sub( key, 1, 3 ) == 'SMW' then
+			if mw.ustring.sub( key, 1, 3 ) == 'SMW' then
 				smwKey = key
 				from = get_from or {}
 			end
@@ -128,7 +128,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					-- This should not happen
 					--- FIXME: Somehow this is mutating the original self.apiData, not sure why
 					if type( val ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
-						val = string.format( '!ERROR! Key %s is a table value; please fix', key )
+						val = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
 					end
 
 					-- Format number for SMW
@@ -140,21 +140,21 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 						if type( val ) == 'table' then
 							local tmp = {}
 							for _, valText in ipairs( val ) do
-								valText = string.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+								valText = mw.ustring.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
 								table.insert( tmp, valText )
 							end
 							val = tmp
 						else
-							val = string.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+							val = mw.ustring.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
 						end
 					-- String format
 					elseif type( datum.format ) == 'string' then
-						if string.find( datum.format, '%', 1, true  ) then
-							val = string.format( datum.format, val )
+						if mw.ustring.find( datum.format, '%', 1, true  ) then
+							val = mw.ustring.format( datum.format, val )
 						elseif datum.format == 'ucfirst' then
 							val = lang:ucfirst( val )
 						elseif datum.format == 'replace-dash' then
-							val = string.gsub( val, '%-', ' ' )
+							val = mw.ustring.gsub( val, '%-', ' ' )
 						-- Remove part of the value
 						elseif datum.format:sub( 1, 6 ) == 'remove' then
 							val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
@@ -216,7 +216,7 @@ function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig,
 	for _, queryPart in ipairs( moduleData.smw_data ) do
 		local smwKey
 		for key, _ in pairs( queryPart ) do
-			if string.sub( key, 1, 3 ) == 'SMW' then
+			if mw.ustring.sub( key, 1, 3 ) == 'SMW' then
 				smwKey = key
 				break
 			end
@@ -230,7 +230,7 @@ function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig,
 
 		-- safeguard
 		if smwKey ~= nil and translateFn( smwKey ) ~= nil then
-			table.insert( smwAskObject, string.format( formatString, translateFn( smwKey ) ) )
+			table.insert( smwAskObject, mw.ustring.format( formatString, translateFn( smwKey ) ) )
 
 			if queryPart.type == 'multilingual_text' then
 				table.insert( smwAskObject, langSuffix )
@@ -259,7 +259,7 @@ function commonSMW.loadSubobjects( pageName, identifierPropKey, propKeys, transl
     }
 
     for _, propKey in ipairs( propKeys ) do
-        table.insert( askQuery, string.format( '?%s', translateFn( propKey ) ) )
+        table.insert( askQuery, mw.ustring.format( '?%s', translateFn( propKey ) ) )
     end
 
     table.insert( askQuery, 'mainlabel=-' )

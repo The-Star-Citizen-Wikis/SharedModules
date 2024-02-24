@@ -8,7 +8,7 @@ local function getNewlineLocations( content )
     local pos = 0
 
     repeat
-        pos = string.find( content, '\n', pos + 1, true )
+        pos = mw.ustring.find( content, '\n', pos + 1, true )
         table.insert( locs, pos )
     until not pos
 
@@ -38,7 +38,7 @@ local function getFunctionLocations( content )
     local start = 0
     repeat
         local name
-        name, start = string.match( content, '%sfunction%s+([^%s%(]+)%s*%(()', start + 1 )
+        name, start = mw.ustring.match( content, '%sfunction%s+([^%s%(]+)%s*%(()', start + 1 )
         if start then
             table.insert( locs, { name=name, line = findLineNumber( start, newLineLocs ) } )
         end
@@ -47,7 +47,7 @@ local function getFunctionLocations( content )
     start = 0
     repeat
         local name
-        name, start = string.match( content, '%s([^%s=])%s*=%s*function%s*%(()', start + 1 )
+        name, start = mw.ustring.match( content, '%s([^%s=])%s*=%s*function%s*%(()', start + 1 )
         if start then
             table.insert( locs, { name=name, line = findLineNumber( start, newLineLocs ) } )
         end
@@ -58,13 +58,13 @@ end
 
 function p.main()
     local title = mw.title.getCurrentTitle()
-    local moduleName = string.gsub( title.text, '/[Dd]oc$', '' )
+    local moduleName = mw.ustring.gsub( title.text, '/[Dd]oc$', '' )
 
     if not title:inNamespaces( 828 ) then
         return ''
     end
 
-    local fullModuleName = string.gsub( title.fullText, '/[Dd]oc$', '' )
+    local fullModuleName = mw.ustring.gsub( title.fullText, '/[Dd]oc$', '' )
     local content = mw.title.new( fullModuleName ):getContent()
 
     if not content then
@@ -73,7 +73,7 @@ function p.main()
 
     local function substMutilineComment( match )
         local lineCount = #getNewlineLocations( match )
-        return string.rep( '\n', lineCount ) or ''
+        return mw.ustring.rep( '\n', lineCount ) or ''
     end
 
     content = content:gsub( '(%-%-%[(=-)%[.-%]%2%])', substMutilineComment ):gsub( '%-%-[^\n]*', '' ) -- Strip comments
@@ -87,7 +87,7 @@ function p.main()
 
     local res = {}
     for _, func in ipairs( functionLocs ) do
-        table.insert( res, string.format( 'L %d &mdash; [%s#L-%d %s]', func.line, title:fullUrl():gsub( '/[Dd]oc$', '' ), func.line,  func.name ) )
+        table.insert( res, mw.ustring.format( 'L %d &mdash; [%s#L-%d %s]', func.line, title:fullUrl():gsub( '/[Dd]oc$', '' ), func.line,  func.name ) )
     end
 
     local tbl = mw.html.create( 'table' ):addClass( 'wikitable mw-collapsible mw-collapsed' )

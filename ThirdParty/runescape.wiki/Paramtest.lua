@@ -42,7 +42,7 @@ local p = {}
 --
 
 function p.is_empty(arg)
-	return not string.find(arg or '', '%S')
+	return not mw.ustring.find(arg or '', '%S')
 end
 
 --
@@ -61,7 +61,7 @@ end
 --
 
 function p.default_to(arg, default)
-	if string.find(arg or '', '%S') then
+	if mw.ustring.find(arg or '', '%S') then
 		return arg
 	else
 		return default
@@ -87,7 +87,7 @@ end
 --
 
 function p.has_content(arg)
-	return string.find(arg or '', '%S')
+	return mw.ustring.find(arg or '', '%S')
 end
 
 --

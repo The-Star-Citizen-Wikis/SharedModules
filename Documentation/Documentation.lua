@@ -107,7 +107,7 @@ function p.doc( frame )
 		--- TODO: Make this into a for loop when there are more wikis
 		for _, code in pairs{ 'de', 'en' } do
 			if lang:getCode() ~= code then
-	    		table.insert( ret3, string.format( '[[%s:%s]]', code, title.fullText ) )
+	    		table.insert( ret3, mw.ustring.format( '[[%s:%s]]', code, title.fullText ) )
 			end
 		end
     end
@@ -173,7 +173,7 @@ function p.doc( frame )
 		    )
 		end
 
-		table.insert( ret3, string.format( '[[Category:%s]]', translate( 'category_module' ) ) )
+		table.insert( ret3, mw.ustring.format( '[[Category:%s]]', translate( 'category_module' ) ) )
     end
 
     --- Dependency list
