@@ -432,7 +432,8 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
 
     for _, template in ipairs( templateData ) do
         for _, invoke in ipairs( template.invokeList ) do
-            table.insert( invokedByList, translate( 'message_function_invoked_by', invoke.funcName, template.templateName ) )
+            --- NOTE: Somehow only templates aren't linked properly, not sure why
+            table.insert( invokedByList, translate( 'message_function_invoked_by', invoke.funcName, '[[' .. template.templateName .. ']]' ) )
         end
     end
 
