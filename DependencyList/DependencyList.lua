@@ -642,8 +642,9 @@ function p._main( currentPageName, addCategories, isUsed )
     addCategories = yn( param.default_to( addCategories, title.subpageText~='doc' ) )
     moduleIsUsed = yn( param.default_to( isUsed, false ) )
 
-    if title.text:lower():find( 'sandbox' ) then
-    	moduleIsUsed = true -- Don't show sandbox modules as unused
+    -- Don't show sandbox and testcases modules as unused
+    if title.text:lower():find( 'sandbox' ) or title.text:lower():find( 'testcases' ) then
+    	moduleIsUsed = true
     end
 
     if currentPageName:find( '^' .. templateNSName .. ':' ) then
