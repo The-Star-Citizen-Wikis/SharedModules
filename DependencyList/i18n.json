@@ -45,6 +45,13 @@
       }
     ],
     [
+      "message_module_functions_invoked_by",
+      {
+        "de": "'''$1''''s functions wird aufgerufen von $2",
+        "en": "'''$1''''s functions are invoked by $2"
+      }
+    ],
+    [
       "message_function_invoked_by",
       {
         "de": "Function '''$1''' wird aufgerufen von $2",

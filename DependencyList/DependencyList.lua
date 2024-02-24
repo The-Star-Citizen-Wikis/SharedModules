@@ -1,3 +1,7 @@
+--- Based on Module:DependencyList from RuneScape Wiki
+--- Modified to use SMW instead of DPL
+--- @see https://runescape.wiki/w/Module:DependencyList
+
 require("strict");
 
 local p = {}
@@ -14,8 +18,8 @@ local moduleIsUsed = false
 local COLLAPSE_LIST_LENGTH_THRESHOLD = 1
 local dynamicRequireListQueryCache = {}
 
-local moduleNSName =  mw.site.namespaces[ 828 ].name
-local templateNSName = mw.site.namespaces[ 10 ].name
+local NS_MODULE_NAME =  mw.site.namespaces[ 828 ].name
+local NS_TEMPLATE_NAME = mw.site.namespaces[ 10 ].name
 
 
 --- FIXME: This should go to somewhere else, like Module:Common
@@ -35,6 +39,10 @@ end
 
 
 local builtins = {
+    ["libraryUtil"] = {
+        link = "mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#libraryUtil",
+        categories = {},
+    },
 	[ "strict" ] = {
 		link = "mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#strict",
 		categories = { translate( 'category_strict_mode_modules' ) },
@@ -86,23 +94,23 @@ end
 
 
 ---@param str string
+---@param allowBuiltins? boolean
 ---@return string
 local function formatModuleName( str, allowBuiltins )
 	if allowBuiltins then
 		local name = mw.text.trim( str )
 			-- Only remove quotes at start and end of string if both are the same type
-			:gsub( [[^(['"])(.-)%1$]], function( _, x ) return x end );
+            :gsub([[^(['"])(.-)%1$]], '%2')
 
-		local builtin = builtins[ name ];
-		if builtin then
-			return builtin.link .. "|" .. name, builtin;
-		end
+        if builtins[name] then
+            return name
+        end
 	end
 
     local module = formatPageName( str )
 
     if not string.find( module, '^[Mm]odule?:' ) then
-        module = moduleNSName .. ':' .. module
+        module = NS_MODULE_NAME .. ':' .. module
     end
 
     return module
@@ -111,143 +119,88 @@ end
 
 local function dualGmatch( str, pat1, pat2 )
     local f1 = string.gmatch( str, pat1 )
-    local f2 = string.gmatch( str, pat2 )
-    return function()
-        return f1() or f2()
+    if pat2 then
+        local f2 = string.gmatch( str, pat2 )
+        return function()
+            return f1() or f2()
+        end
+    else
+        return f1
     end
+end
+
+local function isDynamicPath( str )
+    return string.find( str, '%.%.' ) or string.find( str, '%%%a' )
 end
 
 
 --- Used in case a construct like 'require( "Module:wowee/" .. isTheBest )' is found.
 --- Will return a list of pages which satisfy this pattern where 'isTheBest' can take any value.
 ---@param query string
----@return string[]     Sequence of strings
+---@return string[]
 local function getDynamicRequireList( query )
-	local isDynamic = true;
-
     if query:find( '%.%.' ) then
         query = mw.text.split( query, '..', true )
         query = arr.map( query, function( x ) return mw.text.trim( x ) end )
         query = arr.map( query, function( x ) return ( x:match('^[\'\"](.-)[\'\"]$') or '%') end )
         query = table.concat( query )
     else
-        local _; _, query = query:match( '(["\'])(.-)%1' )
-        if query == nil then
-			return {}, isDynamic
-        end
-        local replacements;
-        query, replacements = query:gsub( '%%%a', '%%' )
-		if replacements == 0 then
-			isDynamic = false;
-		end
+        local _, _query = query:match( '(["\'])(.-)%1' )
+        query = _query:gsub( '%%%a', '%%' )
     end
-
-    query = query:gsub( '^[Mm]odule?:', '' )
+    query = query:gsub( '^[Mm]odule:', '' )
 
     if dynamicRequireListQueryCache[ query ] then
-        return dynamicRequireListQueryCache[ query ], isDynamic;
+        return dynamicRequireListQueryCache[ query ];
     end
 
-    return {}, isDynamic;
+    return {};
 end
 
 
 --- Returns a list of modules loaded and required by module 'moduleName'.
 ---@param moduleName string
 ---@param searchForUsedTemplates boolean|nil
----@return string[], string[], string[], string[]
+---@return table<string, string[]>
 local function getRequireList( moduleName, searchForUsedTemplates )
     local content = mw.title.new( moduleName ):getContent()
     local requireList = arr{}
     local loadDataList = arr{}
+    local loadJsonDataList = arr{}
     local usedTemplateList = arr{}
     local dynamicRequirelist = arr{}
     local dynamicLoadDataList = arr{}
+    local dynamicLoadJsonDataList = arr{}
     local extraCategories = arr{}
 
     assert( content ~= nil, translate( 'message_not_exists', moduleName ) )
 
     content = content:gsub( '%-%-%[(=-)%[.-%]%1%]', '' ):gsub( '%-%-[^\n]*', '' ) -- Strip comments
 
-    for match in dualGmatch( content, 'require%s*(%b())', 'require%s*((["\'])%s*[Mm]odule?:.-%2)' ) do
-        match = mw.text.trim( match )
-        match = extractModuleName( match, content )
+    local function getList( pat1, pat2, list, dynList )
+        for match in dualGmatch( content, pat1, pat2 ) do
+            match = mw.text.trim( match )
+            local name = extractModuleName( match, content )
 
-        if match:find( '%.%.' ) or match:find( '%%%a' ) then
-            for _, x in ipairs( getDynamicRequireList( match ) ) do
-                table.insert( dynamicRequirelist, x )
-            end
-        elseif match ~= '' then
-        	local builtin;
-            match, builtin = formatModuleName( match, true )
-            table.insert( requireList, match )
+            if isDynamicPath( name ) then
+                dynList:insert( getDynamicRequireList( name ), true )
+            elseif name ~= '' then
+                name = formatModuleName( name, true )
+                table.insert( list, name )
 
-			if builtin then
-				local builtinCategories = builtin.categories;
-				if type( builtinCategories ) == 'table' then
-					for _, x in ipairs( builtinCategories ) do
-						table.insert( extraCategories, x );
-					end
-				end
-			end
-        end
-    end
-
-    for match in dualGmatch( content, 'mw%.loadData%s*(%b())', 'mw%.loadData%s*((["\'])%s*[Mm]odule?:.-%2)' ) do
-        match = mw.text.trim( match )
-        match = extractModuleName( match, content )
-
-        if match:find( '%.%.' ) or match:find( '%%%a' ) then
-            for _, x in ipairs( getDynamicRequireList( match ) ) do
-                table.insert( dynamicLoadDataList, x )
-            end
-        elseif match ~= '' then
-            match = formatModuleName( match, true )
-            table.insert( loadDataList, match )
-        end
-    end
-
-    for match in dualGmatch( content, 'mw%.loadJsonData%s*(%b())', 'mw%.loadJsonData%s*((["\'])%s*[Mm]odule?:.-%2)' ) do
-        match = mw.text.trim( match )
-        match = extractModuleName( match, content )
-
-        if match:find( '%.%.' ) or match:find( '%%%a' ) then
-            for _, x in ipairs( getDynamicRequireList( match ) ) do
-                table.insert( dynamicLoadDataList, x )
-            end
-        elseif match ~= '' then
-            match = formatModuleName( match, true )
-            table.insert( loadDataList, match )
-        end
-    end
-
-    for func, match in string.gmatch( content, 'pcall%s*%(([^,]+),([^%),]+)' ) do
-        func = mw.text.trim( func )
-        match = mw.text.trim( match )
-
-		local dynList, isDynamic;
-        if func == 'require' then
-			dynList, isDynamic = getDynamicRequireList( match );
-
-			if ( isDynamic == false and #dynList == 1 ) then
-				table.insert( requireList, dynList[ 1 ] );
-			else
-                for _, x in ipairs( dynList ) do
-                    table.insert( dynamicRequirelist, x )
-			    end
-            end
-        elseif func == 'mw.loadData' then
-			dynList, isDynamic = getDynamicRequireList( match );
-
-			if ( isDynamic == false and #dynList == 1 ) then
-				table.insert( loadDataList, dynList[ 1 ] );
-			else
-                for _, x in ipairs( dynList ) do
-                    table.insert( dynamicLoadDataList, x )
-			    end
+                if builtins[name] then
+                    extraCategories = extraCategories:insert( builtins[name].categories, true )
+                end
             end
         end
     end
+
+    getList( 'require%s*(%b())', 'require%s*((["\'])%s*[Mm]odule:.-%2)', requireList, dynamicRequirelist )
+    getList( 'mw%.loadData%s*(%b())', 'mw%.loadData%s*((["\'])%s*[Mm]odule:.-%2)', loadDataList, dynamicLoadDataList )
+    getList( 'mw%.loadJsonData%s*(%b())', 'mw%.loadJsonData%s*((["\'])%s*[Mm]odule:.-%2)', loadJsonDataList, dynamicLoadJsonDataList )
+    getList( 'pcall%s*%(%s*require%s*,([^%),]+)', nil, requireList, dynamicRequirelist )
+    getList( 'pcall%s*%(%s*mw%.loadData%s*,([^%),]+)', nil, loadDataList, dynamicLoadDataList )
+    getList( 'pcall%s*%(%s*mw%.loadJsonData%s*,([^%),]+)', nil, loadJsonDataList, dynamicLoadJsonDataList )
 
     if searchForUsedTemplates then
         for preprocess in string.gmatch( content, ':preprocess%s*(%b())' ) do
@@ -291,10 +244,11 @@ local function getRequireList( moduleName, searchForUsedTemplates )
         end
     end
 
-    requireList = requireList .. dynamicRequirelist:reject( loadDataList )
+    requireList = requireList .. dynamicRequirelist
     requireList = requireList:unique()
-    loadDataList = loadDataList .. dynamicLoadDataList:reject( requireList )
+    loadDataList = loadDataList .. dynamicLoadDataList
     loadDataList = loadDataList:unique()
+    loadJsonDataList = loadJsonDataList .. dynamicLoadJsonDataList
     usedTemplateList = usedTemplateList:unique()
     extraCategories = extraCategories:unique()
     table.sort( requireList )
@@ -302,7 +256,13 @@ local function getRequireList( moduleName, searchForUsedTemplates )
     table.sort( usedTemplateList )
     table.sort( extraCategories )
 
-    return requireList, loadDataList, usedTemplateList, extraCategories
+    return {
+        requireList = requireList,
+        loadDataList = loadDataList,
+        loadJsonDataList = loadJsonDataList,
+        usedTemplateList = usedTemplateList,
+        extraCategories = extraCategories
+    }
 end
 
 
@@ -330,10 +290,9 @@ local function getInvokeCallList( templateName )
     return invokeList
 end
 
----@param pageName string
 ---@param addCategories boolean
 ---@return string
-local function messageBoxUnused( pageName, addCategories )
+local function messageBoxUnused( addCategories )
 	local mbox = require( 'Module:Mbox' )._mbox
 
 	local category = addCategories and '[[Category:' .. translate( 'category_unused_module' ) .. ']]' or ''
@@ -348,10 +307,10 @@ end
 
 local function collapseList( list, id, listType )
     local text = string.format( '%d %s', #list, listType )
-    local button = '<span>' .. text .. ':</span>&nbsp;'
+    local button = string.format( '<span id="%s">%s</span>:&nbsp;', id, text )
     local content = mHatlist.andList( list, false )
 
-    return { tostring( button ) .. tostring( content ) }
+    return { button .. tostring( content ) }
 end
 
 
@@ -437,13 +396,13 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
         end
     end
 
-    table.sort( invokedByList)
+    table.sort( invokedByList )
 
     local res = {}
 
     if #invokedByList > COLLAPSE_LIST_LENGTH_THRESHOLD then
     	local msg = translate(
-        'message_function_invoked_by',
+        'message_module_functions_invoked_by',
             moduleName,
     		collapseList( invokedByList, 'invokedBy', translate( 'list_type_templates' ) )[ 1 ]
     	)
@@ -475,14 +434,12 @@ end
 ---@return string
 local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
     local childModuleData = arr.map( whatLinksHere, function ( title )
-        local requireList, loadDataList = getRequireList( title )
-        return { name = title, requireList = requireList, loadDataList = loadDataList }
+        local lists = getRequireList( title )
+        return { name = title, requireList = lists.requireList, loadDataList = lists.loadDataList .. lists.loadJsonDataList }
     end )
 
     local requiredByList = arr.map( childModuleData, function ( item )
-        if arr.any( item.requireList, function( x )
-            return x:lower():gsub( '^module?:', 'module' ) == moduleName:lower():gsub( '^module?:', 'module' )
-        end ) then
+        if arr.any( item.requireList, function( x ) return x:lower() == moduleName:lower() end ) then
             if item.name:find( '%%' ) then
                 return formatDynamicQueryLink( item.name )
             else
@@ -492,9 +449,7 @@ local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
     end )
 
     local loadedByList = arr.map( childModuleData, function ( item )
-        if arr.any( item.loadDataList, function( x )
-            return x:lower():gsub( '^module?:', 'module' ) == moduleName:lower():gsub( '^module?:', 'module' )
-        end ) then
+        if arr.any( item.loadDataList, function( x ) return x:lower() == moduleName:lower() end ) then
             if item.name:find( '%%' ) then
                 return formatDynamicQueryLink( item.name )
             else
@@ -546,54 +501,26 @@ local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
     return table.concat( res )
 end
 
-
-local function formatRequireList( currentPageName, addCategories, requireList )
-    local res = {}
-
-    if #requireList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        requireList = collapseList( requireList, 'require', translate( 'list_type_modules' ) )
+local function formatImportList( currentPageName, moduleList, id, message, category )
+    if #moduleList > COLLAPSE_LIST_LENGTH_THRESHOLD then
+        moduleList = collapseList( moduleList, id, translate( 'list_type_modules' ) )
     end
 
-    for _, requiredModuleName in ipairs( requireList ) do
-    	local msg = translate(
-    		'message_requires',
+    local res = arr.map( moduleList, function( moduleName )
+        local msg = translate(
+    		message,
     		currentPageName,
-    		requiredModuleName
+    		moduleName
     	)
-        table.insert( res, mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
-    end
+        return mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } )
+    end )
 
-    if #requireList > 0 then
-        table.insert( res, (addCategories and '[[Category:' .. translate( 'category_modules_required_by_modules' ) .. ']]' or '') )
+    if #moduleList > 0 and category then
+        table.insert( res, string.format( '[[Category:%s]]', category ) )
     end
 
     return table.concat( res )
 end
-
-
-local function formatLoadDataList( currentPageName, addCategories, loadDataList )
-    local res = {}
-
-    if #loadDataList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        loadDataList = collapseList( loadDataList, 'loadData', translate( 'list_type_modules' ) )
-    end
-
-    for _, loadedModuleName in ipairs( loadDataList ) do
-    	local msg = translate(
-    		'message_loads_data_from',
-    		currentPageName,
-    		loadedModuleName
-    	)
-        table.insert( res, mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
-    end
-
-    if #loadDataList > 0 then
-        table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_modules_using_data' ) .. ']]' or '' ) )
-    end
-
-    return table.concat( res )
-end
-
 
 local function formatUsedTemplatesList( currentPageName, addCategories, usedTemplateList )
     local res = {}
@@ -633,7 +560,7 @@ function p._main( currentPageName, addCategories, isUsed )
 
     -- Leave early if not in module or template namespace
     if param.is_empty( currentPageName ) and
-        ( not arr.contains( { moduleNSName, templateNSName }, title.nsText ) ) then
+        ( not arr.contains( { NS_MODULE_NAME, NS_TEMPLATE_NAME }, title.nsText ) ) then
         return ''
     end
 
@@ -648,7 +575,7 @@ function p._main( currentPageName, addCategories, isUsed )
     	moduleIsUsed = true
     end
 
-    if currentPageName:find( '^' .. templateNSName .. ':' ) then
+    if currentPageName:find( '^' .. NS_TEMPLATE_NAME .. ':' ) then
         local ok, invokeList = pcall( getInvokeCallList, currentPageName )
 		if ok then
         	return formatInvokeCallList( currentPageName, addCategories, invokeList )
@@ -698,16 +625,22 @@ function p._main( currentPageName, addCategories, isUsed )
         return cleanFrom( link[ 'from' ] )
     end ) ) ):unique():reject( { currentPageName } )
 
-    local requireList, loadDataList, usedTemplateList, extraCategories;
-    do
-        local ok;
-        ok, requireList, loadDataList, usedTemplateList, extraCategories = pcall( getRequireList, currentPageName, true );
-        if not ok then
-            return userError( requireList );
-        end
+    local ok, lists = pcall( getRequireList, currentPageName, true )
+    if not ok then
+        return userError( lists )
     end
 
-    requireList = arr.map( requireList, function ( moduleName )
+    local requireList = arr.map( lists.requireList, function ( moduleName )
+        if moduleName:find( '%%' ) then
+            return formatDynamicQueryLink( moduleName )
+        elseif builtins[moduleName] then
+            return '[[' .. builtins[moduleName].link .. '|' .. moduleName .. ']]'
+        else
+            return '[[' .. moduleName .. ']]'
+        end
+    end )
+
+    local loadDataList = arr.map( lists.loadDataList, function ( moduleName )
         if moduleName:find( '%%' ) then
             return formatDynamicQueryLink( moduleName )
         else
@@ -715,7 +648,7 @@ function p._main( currentPageName, addCategories, isUsed )
         end
     end )
 
-    loadDataList = arr.map( loadDataList, function ( moduleName )
+    local loadJsonDataList = arr.map( lists.loadJsonDataList, function ( moduleName )
         if moduleName:find( '%%' ) then
             return formatDynamicQueryLink( moduleName )
         else
@@ -723,7 +656,7 @@ function p._main( currentPageName, addCategories, isUsed )
         end
     end )
 
-    usedTemplateList = arr.map( usedTemplateList, function( templateName )
+    local usedTemplateList = arr.map( lists.usedTemplateList, function( templateName )
         if string.find( templateName, ':' ) then -- Real templates are prefixed by a namespace, magic words are not
             return '[['..templateName..']]'
         else
@@ -734,13 +667,14 @@ function p._main( currentPageName, addCategories, isUsed )
     local res = {}
 
     table.insert( res, formatInvokedByList( currentPageName, addCategories, whatTemplatesLinkHere ) )
-    table.insert( res, formatRequireList( currentPageName, addCategories, requireList ) )
-    table.insert( res, formatLoadDataList( currentPageName, addCategories, loadDataList ) )
+    table.insert( res, formatImportList( currentPageName, requireList, 'require', 'message_requires', addCategories and translate( 'category_modules_required_by_modules' ) ) )
+    table.insert( res, formatImportList( currentPageName, loadDataList, 'loadData', 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
+    table.insert( res, formatImportList( currentPageName, loadJsonDataList, 'loadJsonData', 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
     table.insert( res, formatUsedTemplatesList( currentPageName, addCategories, usedTemplateList ) )
     table.insert( res, formatRequiredByList( currentPageName, addCategories, whatModulesLinkHere ) )
 
 	if addCategories then
-		extraCategories = arr.map( extraCategories, function( categoryName )
+		local extraCategories = arr.map( lists.extraCategories, function( categoryName )
 			return "[[Category:" .. categoryName .. "]]";
 		end )
 
@@ -748,7 +682,7 @@ function p._main( currentPageName, addCategories, isUsed )
 	end
 
     if not moduleIsUsed then
-        table.insert( res, 1, messageBoxUnused( currentPageName:gsub( 'Module:', '' ), addCategories ) )
+        table.insert( res, 1, messageBoxUnused( addCategories ) )
     end
 
     return table.concat( res )
