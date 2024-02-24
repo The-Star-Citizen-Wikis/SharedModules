@@ -1,36 +1,37 @@
 .documentation {
-    display: flex;
-    box-sizing: border-box;
-    flex-direction: column;
-    margin: 1.6rem 0;
-    padding-top: 1.6rem;
+    margin-top: var( --space-md );
+    padding-top: var( --space-md );
     border-top: 1px solid;
     border-color: var( --border-color-base );
-    border-radius: var( --border-radius--medium );
     font-size: 0.875rem;
 }
 
 .documentation-header {
-    margin-top: 0;
-    margin-bottom: 0.8rem;
-    color: var( --color-base--emphasized );
-    font-size: 1.25rem;
-    font-weight: 600;
-    line-height: 1.2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
-.documentation-subheader {
-    margin: -0.6rem 0 1.6rem 0;
-    color: var( --color-base--subtle );
-    font-size: 0.825rem;
+.documentation-title {
+    color: var( --color-base--emphasized );
+    font-size: var( --font-size-h3 );
+    font-weight: var( --font-weight-semibold );
+    line-height: var( --line-height-xs );
 }
 
 .documentation-links {
-    margin: 0.3rem 0;
-    float: right;
-    font-family: monospace;
-    font-size: 0.875rem;
-    font-weight: 400;
+    font-family: var( --font-family-monospace );
+}
+
+.documentation-subheader {
+    color: var( --color-base--subtle );
+    font-size: 0.8125rem;
+    line-height: var( --line-height-sm );
+}
+
+.documentation-content {
+    margin-top: var( --space-xl );
 }
 
 .documentation-modulestats {
@@ -39,47 +40,6 @@
     justify-content: space-between;
 }
 
-.documentation-modulestats .wikitable{
+.documentation-modulestats .wikitable {
     margin: 0;
-}
-
-/**
- * Tooltip styles used by DependencyList,
- * shouldn't be here but it is only used here anyways
- */
-.hatnote-container {
-    position: relative;
-}
-
-.tooltip-trigger {
-    padding: 0.2rem 0.5rem;
-    margin-right: 2px;
-    background: var( --color-primary );
-    border-radius: 100px;
-    color: #fff;
-}
-
-.tooltip-trigger:hover {
-    background: var( --color-primary--hover );
-}
-
-.tooltip-content {
-    position: absolute;
-    z-index: 1;
-    right: 0;
-    padding: 15px;
-    background-color: var( --color-surface-1 );
-    border-radius: var( --border-radius--medium );
-    box-shadow: 0 14px 28px rgba( 0, 0, 0, 0.06 ), 0 10px 10px rgba( 0, 0, 0, 0.06 );
-    visibility: hidden;
-}
-
-.tooltip-content > ol {
-    margin-top: 0;
-    margin-left: 1.2rem;
-}
-
-.tooltip-content:hover,
-.tooltip-trigger:hover + .tooltip-content {
-    visibility: visible;
 }
