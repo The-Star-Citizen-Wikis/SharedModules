@@ -35,6 +35,9 @@
 }
 
 .documentation-modulestats {
+    padding: var( --space-xxs );
+    background: var( --color-surface-2 );
+    border-radius: var( --border-radius--medium );
     display: flex;
     align-items: center;
     justify-content: space-between;
