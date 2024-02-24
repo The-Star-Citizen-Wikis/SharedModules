@@ -15,7 +15,7 @@ local checkTypeMulti = libraryUtil.checkTypeMulti
 --- @param moduleConfig table Table from config.json
 --- @param moduleData table Table from data.json
 --- @param moduleName string The module name used to retrieve fallback attribute names
---- @return void
+--- @return nil
 function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translateFn, moduleConfig, moduleData, moduleName )
 	checkTypeMulti( 'Module:Common/SMW.addSmwProperties', 1, apiData, { 'table', 'nil' } )
     checkType( 'Module:Common/SMW.addSmwProperties', 2, frameArgs, 'table' )
@@ -201,7 +201,7 @@ end
 --- @param translateFn function The translate function used to translate argument names
 --- @param moduleConfig table The module config from config.json
 --- @param moduleData table The module data from data.json
---- @return void
+--- @return nil
 function commonSMW.addSmwAskProperties( smwAskObject, translateFn, moduleConfig, moduleData )
 	checkType( 'Module:Common/SMW.addSmwAskProperties', 1, smwAskObject, 'table' )
 	checkType( 'Module:Common/SMW.addSmwAskProperties', 2, translateFn, 'function' )
@@ -244,7 +244,7 @@ end
 ---
 --- @param pageName string
 --- @param identifierPropKey string SMW property key used to identify subobjects
---- @param propertyKeys table table of SMW property keys
+--- @param propKeys table table of SMW property keys
 --- @param translateFn function The translate function used to translate argument names
 --- @return table
 function commonSMW.loadSubobjects( pageName, identifierPropKey, propKeys, translateFn )

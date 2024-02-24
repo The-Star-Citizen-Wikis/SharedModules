@@ -15,7 +15,7 @@ local common = require( 'Module:Common' )
 --- Wrapper function for Module:Translate.translate
 ---
 --- @param key string The translation key
---- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
+--- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
     return TNT:translate( 'Module:Item/' .. MODULE_NAME .. '/i18n.json', config, key, addSuffix, {...} )
@@ -42,13 +42,13 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
     --- @param nameKey string Key of the value being used as name in the SMW property
     --- @param valueKey string Key of the value being used as value in the SMW property
     --- @param prefix string Prefix of the SMW property name
-    local function setFromTable( tableData, namekey, valueKey, prefix )
+    local function setFromTable( tableData, nameKey, valueKey, prefix )
         if tableData == nil or type( tableData ) ~= 'table' then
             return
         end
 
         for _, data in pairs( tableData ) do
-            local name = data[namekey] or ''
+            local name = data[nameKey] or ''
             name = 'SMW_' .. prefix .. name:gsub('^%l', string.upper):gsub( ' ', '' )
 
             if translate( name ) ~= nil then
@@ -77,7 +77,7 @@ end
 --- Adds all SMW parameters set by this Module to the ASK object
 ---
 --- @param smwAskObject table
---- @return void
+--- @return nil
 function p.addSmwAskProperties( smwAskObject )
     smwCommon.addSmwAskProperties(
         smwAskObject,
@@ -92,7 +92,7 @@ end
 ---
 --- @param infobox table The Module:InfoboxNeue instance
 --- @param smwData table Data from Semantic MediaWiki
---- @return void
+--- @return nil
 function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     local tabber = require( 'Module:Tabber' ).renderTabber
     local tabberData = {}
@@ -471,7 +471,7 @@ end
 --- @param categories table The categories table
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
---- @return void
+--- @return nil
 function p.addCategories( categories, frameArgs, smwData )
 
 end
@@ -481,7 +481,7 @@ end
 --- @param shortdesc string Short description
 --- @param frameArgs table Frame arguments from Module:Arguments
 --- @param smwData table Data from Semantic MediaWiki
---- @return void
+--- @return nil
 function p.getShortDescription( shortdesc, frameArgs, smwData )
 	
 end

@@ -2,7 +2,7 @@ local common = {}
 
 --- Checks if Api Request was successful and if the Response is valid
 --- @param response table
---- @param errorOnData boolean
+--- @param errorOnStatus boolean
 --- @param errorOnData boolean
 --- @return boolean
 function common.checkResponseStructure( response, errorOnStatus, errorOnData )

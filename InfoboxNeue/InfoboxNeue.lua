@@ -74,9 +74,9 @@ end
 
 --- Show range if value1 and value2 are different
 ---
---- @param string s1
---- @param string s2
---- @return string or nil
+--- @param s1 string|nil
+--- @param s2 string|nil
+--- @return string|nil
 function methodtable.formatRange( s1, s2, formatNum )
 	if s1 == nil and s2 == nil then
 		return
@@ -102,9 +102,9 @@ end
 
 --- Append unit to the value if exists
 ---
---- @param string s
---- @param string unit
---- @return string or nil
+--- @param s string
+--- @param unit string
+--- @return string|nil
 function methodtable.addUnitIfExists( s, unit )
 	if s == nil then
 		return

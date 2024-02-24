@@ -151,7 +151,7 @@ end
 
 --- Returns a list of modules loaded and required by module 'moduleName'.
 ---@param moduleName string
----@param searchForUsedTemplates boolean
+---@param searchForUsedTemplates boolean|nil
 ---@return string[], string[], string[], string[]
 local function getRequireList( moduleName, searchForUsedTemplates )
     local content = mw.title.new( moduleName ):getContent()

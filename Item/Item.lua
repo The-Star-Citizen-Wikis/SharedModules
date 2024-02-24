@@ -27,7 +27,7 @@ local moduleCache = {}
 --- Wrapper function for Module:Translate.translate
 ---
 --- @param key string The translation key
---- @param addSuffix boolean Adds a language suffix if config.smw_multilingual_text is true
+--- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
 	return TNT:translate( 'Module:Item/i18n.json', config, key, addSuffix, {...} ) or key
@@ -94,7 +94,7 @@ end
 
 --- Request Api Data
 --- Using current subpage name without item type suffix
---- @return table or nil
+--- @return table|nil
 function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 

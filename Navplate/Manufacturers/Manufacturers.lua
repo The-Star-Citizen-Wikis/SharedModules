@@ -22,8 +22,8 @@ local template = mw.loadJsonData( 'Module:Navplate/Manufacturers/data.json' );
 local mfu = require( 'Module:Manufacturer' )._manufacturer
 
 --- Queries the SMW Store
---- @param string conditions for SMW query
---- @return table
+--- @param conditions string For SMW query
+--- @return table|nil
 function methodtable.getSmwData( self, conditions )
 	-- Cache multiple calls
     if self.smwData ~= nil then
