@@ -24,9 +24,7 @@ function p.mbox( frame )
 	local text = args[ 2 ] or args[ 'text' ]
 	if not title or not text then
 		return makeWikitextError(
-			'no text specified',
-			'Template:Mbox#Errors',
-			args.category
+			'no title or text specified'
 		)
 	end
 	return p._mbox( title, text, {
