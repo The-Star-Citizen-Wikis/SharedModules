@@ -718,7 +718,7 @@ end
 --- Queries the SMW store for all available hardpoint subobjects for a given page
 ---
 --- @param page string - The page to query
---- @return table hardpoints
+--- @return table|nil hardpoints
 function methodtable.querySmwStore( self, page )
     -- Cache multiple calls
     if self.smwData ~= nil then
@@ -1387,7 +1387,8 @@ end
 --- @param rules table A rules object from data.fixes
 --- @param hardpoint table The hardpoint to evaluate
 --- @param returnInvalid boolean|nil If invalid rules should be returned beneath the result
---- @return boolean (, table)
+--- @return boolean
+--- @return table?
 function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
     returnInvalid = returnInvalid or false
     local stepVal = {}
