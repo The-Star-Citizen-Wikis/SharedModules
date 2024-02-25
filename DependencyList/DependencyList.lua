@@ -300,7 +300,12 @@ local function messageBoxUnused( addCategories )
 	) .. category
 end
 
-
+--- Returns the wikitext for the message template (mbox/hatnote)
+---@param msgKey string message key in /i18n.json
+---@param pageName string page name used for the message
+---@param list table
+---@param listType string type of the page list used for the message
+---@return string
 local function getDependencyListWikitext( msgKey, pageName, list, listType )
     local listLabel = mw.ustring.format( '%d %s', #list, listType )
     local listContent = mHatlist.andList( list, false )
@@ -358,7 +363,7 @@ local function formatDynamicQueryLink( query )
     return mw.ustring.format( '<span class="plainlinks">[%s %s]</span>', tostring( mw.uri.fullUrl( 'Special:Search', { search = query } ) ), linkText )
 end
 
-
+--- Helper function to return the wikitext of the templates and categories
 ---@param currentPageName string
 ---@param pageList table|nil
 ---@param pageType string
@@ -379,6 +384,7 @@ local function formatDependencyList( currentPageName, pageList, pageType, messag
 
     return table.concat( res )
 end
+
 
 ---@param templateName string
 ---@param addCategories boolean
@@ -630,12 +636,10 @@ function p._main( currentPageName, addCategories, isUsed )
     local res = {}
 
     table.insert( res, formatInvokedByList( currentPageName, addCategories, whatTemplatesLinkHere ) )
-
     table.insert( res, formatDependencyList( currentPageName, requireList, translate( 'list_type_modules' ), 'message_requires', addCategories and translate( 'category_modules_required_by_modules' ) ) )
     table.insert( res, formatDependencyList( currentPageName, loadDataList, translate( 'list_type_modules' ), 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
     table.insert( res, formatDependencyList( currentPageName, loadJsonDataList, translate( 'list_type_modules' ), 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
     table.insert( res, formatDependencyList( currentPageName, usedTemplateList, translate( 'list_type_templates' ), 'message_transcludes', nil ) )
-
     table.insert( res, formatRequiredByList( currentPageName, addCategories, whatModulesLinkHere ) )
 
 	if addCategories then
