@@ -1,7 +1,7 @@
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 local mArguments -- lazily initialise [[Module:Arguments]]
-local mError -- lazily initialise [[Module:Error]]
+local mError     -- lazily initialise [[Module:Error]]
 
 local p = {}
 
@@ -12,17 +12,18 @@ local p = {}
 -- @return string - Formatted error message in wikitext
 local function makeWikitextError( msg )
 	mError = require( 'Module:Error' )
-	return mError.error{
+	return mError.error {
 		message = 'Error: ' .. msg .. '.'
 	}
 end
 
 function p.mbox( frame )
-	local args = getArgs( frame )
-	local title = args[1] or args[ 'title' ]
-	local text = args[2] or args[ 'text' ]
-	if not s then
-		return p.makeWikitextError(
+	mArguments = require( 'Module:Arguments' )
+	local args = mArguments.getArgs( frame )
+	local title = args[ 1 ] or args[ 'title' ]
+	local text = args[ 2 ] or args[ 'text' ]
+	if not title or not text then
+		return makeWikitextError(
 			'no text specified',
 			'Template:Mbox#Errors',
 			args.category
@@ -59,7 +60,7 @@ function p._mbox( title, text, options )
 			:wikitext( '[[File:' .. options.icon .. '|14px|link=]]' )
 			:done()
 			:tag( 'div' )
-				:wikitext( title )
+			:wikitext( title )
 	else
 		mboxTitle:wikitext( title )
 	end
@@ -68,9 +69,9 @@ function p._mbox( title, text, options )
 		:addClass( 'mbox-text' )
 		:wikitext( text )
 
-	return mw.getCurrentFrame():extensionTag{
+	return mw.getCurrentFrame():extensionTag {
 		name = 'templatestyles', args = { src = 'Module:Mbox/styles.css' }
-	} .. tostring(mbox)
+	} .. tostring( mbox )
 end
 
 return p
