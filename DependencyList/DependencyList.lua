@@ -16,7 +16,7 @@ local mbox = require( 'Module:Mbox' )._mbox
 local TNT = require( 'Module:Translate' ):new()
 
 local moduleIsUsed = false
-local COLLAPSE_LIST_LENGTH_THRESHOLD = 1
+local COLLAPSE_LIST_LENGTH_THRESHOLD = 5
 local dynamicRequireListQueryCache = {}
 
 local NS_MODULE_NAME =  mw.site.namespaces[ 828 ].name
@@ -310,25 +310,19 @@ local function getDependencyListWikitext( msgKey, pageName, list, listType )
     local listLabel = mw.ustring.format( '%d %s', #list, listType )
     local listContent = mHatlist.andList( list, false )
 
-    --- Return one mbox
+    --- Return mbox
     if #list > COLLAPSE_LIST_LENGTH_THRESHOLD then
         return mbox(
             translate( msgKey, pageName, listLabel ),
             listContent,
             { icon = 'WikimediaUI-Code.svg' }
         )
-    --- Return multiple hatnotes
+    --- Return hatnote
     else
-        local res = {}
-        for _, item in ipairs( list ) do
-        	table.insert( res,
-                hatnote(
-                    translate( msgKey, pageName, item ),
-                    { icon='WikimediaUI-Code.svg' }
-                )
-            )
-	    end
-        return table.concat( res )
+        return hatnote(
+            translate( msgKey, pageName, listContent ),
+            { icon='WikimediaUI-Code.svg' }
+        )
     end
 end
 
