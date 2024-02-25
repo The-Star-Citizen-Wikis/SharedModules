@@ -252,9 +252,6 @@ local function getRequireList( moduleName, searchForUsedTemplates )
     loadJsonDataList = loadJsonDataList .. dynamicLoadJsonDataList
     usedTemplateList = usedTemplateList:unique()
     extraCategories = extraCategories:unique()
-    table.sort( requireList )
-    table.sort( loadDataList )
-    table.sort( usedTemplateList )
     table.sort( extraCategories )
 
     return {
@@ -304,7 +301,7 @@ local function messageBoxUnused( addCategories )
 end
 
 
-local function messageBoxCollapseList( msgKey, pageName, list, listType )
+local function getDependencyListWikitext( msgKey, pageName, list, listType )
     local listLabel = mw.ustring.format( '%d %s', #list, listType )
     local listContent = mHatlist.andList( list, false )
 
@@ -362,6 +359,27 @@ local function formatDynamicQueryLink( query )
 end
 
 
+---@param currentPageName string
+---@param pageList table|nil
+---@param pageType string
+---@param message string
+---@param category string|false|nil
+---@return string
+local function formatDependencyList( currentPageName, pageList, pageType, message, category )
+    local res = {}
+
+    if type( pageList ) == 'table' and #pageList > 0 then
+        table.sort( pageList )
+        table.insert( res, getDependencyListWikitext( message, currentPageName, pageList, pageType ) )
+
+        if category then
+            table.insert( res, mw.ustring.format( '[[Category:%s]]', category ) )
+        end
+    end
+
+    return table.concat( res )
+end
+
 ---@param templateName string
 ---@param addCategories boolean
 ---@param invokeList table<string, string>[]    @This is the list returned by getInvokeCallList()
@@ -413,18 +431,17 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
         end
     end
 
-    table.sort( invokedByList )
-
-    local res = {}
-
-    table.insert( res, messageBoxCollapseList( 'message_module_functions_invoked_by', moduleName, invokedByList, translate( 'list_type_templates' ) ) )
-
-    if #templateData > 0 then
+    if #invokedByList > 0 then
         moduleIsUsed = true
-        table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_template_invoked_modules' ) .. ']]' or '' ) )
     end
 
-    return table.concat( res )
+    return formatDependencyList(
+        moduleName,
+        invokedByList,
+        translate( 'list_type_templates' ),
+        'message_module_functions_invoked_by',
+        addCategories and translate( 'category_template_invoked_modules' )
+    )
 end
 
 
@@ -458,39 +475,32 @@ local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
         end
     end )
 
-    local res = {}
-
     if #requiredByList > 0 or #loadedByList > 0 then
-        moduleIsUsed  = true
+        moduleIsUsed = true
     end
 
-    if #requiredByList > 0 then
-        table.insert( res, messageBoxCollapseList( 'message_required_by', moduleName, requiredByList, translate( 'list_type_modules' ) ) )
-        table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_modules_required_by_modules' ) .. ']]' or '' ) )
-    end
-
-    if #loadedByList > 0 then
-        table.insert( res, messageBoxCollapseList( 'message_loaded_by', moduleName, loadedByList, translate( 'list_type_modules' ) ) )
-        table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_module_data' ) .. ']]' or '' ) )
-    end
-
-    return table.concat( res )
-end
-
-local function formatImportList( currentPageName, moduleList, id, message, category )
     local res = {}
-    table.insert( res, messageBoxCollapseList( message, currentPageName, moduleList, translate( 'list_type_modules' ) ) )
 
-    if #moduleList > 0 and category then
-        table.insert( res, mw.ustring.format( '[[Category:%s]]', category ) )
-    end
+    table.insert( res,
+        formatDependencyList(
+            moduleName,
+            requiredByList,
+            translate( 'list_type_modules' ),
+            'message_required_by',
+            addCategories and translate( 'category_modules_required_by_modules' )
+        )
+    )
 
-    return table.concat( res )
-end
+    table.insert( res,
+        formatDependencyList(
+            moduleName,
+            loadedByList,
+            translate( 'list_type_modules' ),
+            'message_loaded_by',
+            addCategories and translate( 'category_module_data' )
+        )
+    )
 
-local function formatUsedTemplatesList( currentPageName, addCategories, usedTemplateList )
-    local res = {}
-    table.insert( res, messageBoxCollapseList( 'message_transcludes', currentPageName, usedTemplateList, translate( 'list_type_templates' ) ) )
     return table.concat( res )
 end
 
@@ -620,10 +630,12 @@ function p._main( currentPageName, addCategories, isUsed )
     local res = {}
 
     table.insert( res, formatInvokedByList( currentPageName, addCategories, whatTemplatesLinkHere ) )
-    table.insert( res, formatImportList( currentPageName, requireList, 'require', 'message_requires', addCategories and translate( 'category_modules_required_by_modules' ) ) )
-    table.insert( res, formatImportList( currentPageName, loadDataList, 'loadData', 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
-    table.insert( res, formatImportList( currentPageName, loadJsonDataList, 'loadJsonData', 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
-    table.insert( res, formatUsedTemplatesList( currentPageName, addCategories, usedTemplateList ) )
+
+    table.insert( res, formatDependencyList( currentPageName, requireList, translate( 'list_type_modules' ), 'message_requires', addCategories and translate( 'category_modules_required_by_modules' ) ) )
+    table.insert( res, formatDependencyList( currentPageName, loadDataList, translate( 'list_type_modules' ), 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
+    table.insert( res, formatDependencyList( currentPageName, loadJsonDataList, translate( 'list_type_modules' ), 'message_loads_data_from', addCategories and translate( 'category_modules_using_data' ) ) )
+    table.insert( res, formatDependencyList( currentPageName, usedTemplateList, translate( 'list_type_templates' ), 'message_transcludes', nil ) )
+
     table.insert( res, formatRequiredByList( currentPageName, addCategories, whatModulesLinkHere ) )
 
 	if addCategories then
