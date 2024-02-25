@@ -10,8 +10,9 @@ local arr = require( 'Module:Array' )
 local yn = require( 'Module:Yesno' )
 local param = require( 'Module:Paramtest' )
 local userError = require("Module:User error")
-local mHatnote = require('Module:Hatnote')
+local hatnote = require('Module:Hatnote')._hatnote
 local mHatlist = require('Module:Hatnote list')
+local mbox = require( 'Module:Mbox' )._mbox
 local TNT = require( 'Module:Translate' ):new()
 
 local moduleIsUsed = false
@@ -293,8 +294,6 @@ end
 ---@param addCategories boolean
 ---@return string
 local function messageBoxUnused( addCategories )
-	local mbox = require( 'Module:Mbox' )._mbox
-
 	local category = addCategories and '[[Category:' .. translate( 'category_unused_module' ) .. ']]' or ''
 
 	return mbox(
@@ -305,12 +304,30 @@ local function messageBoxUnused( addCategories )
 end
 
 
-local function collapseList( list, id, listType )
-    local text = mw.ustring.format( '%d %s', #list, listType )
-    local button = mw.ustring.format( '<span id="%s">%s</span>:&nbsp;', id, text )
-    local content = mHatlist.andList( list, false )
+local function messageBoxCollapseList( msgKey, pageName, list, listType )
+    local listLabel = mw.ustring.format( '%d %s', #list, listType )
+    local listContent = mHatlist.andList( list, false )
 
-    return { button .. tostring( content ) }
+    --- Return one mbox
+    if #list > COLLAPSE_LIST_LENGTH_THRESHOLD then
+        return mbox(
+            translate( msgKey, pageName, listLabel ),
+            listContent,
+            { icon = 'WikimediaUI-Code.svg' }
+        )
+    --- Return multiple hatnotes
+    else
+        local res = {}
+        for _, item in ipairs( list ) do
+        	table.insert( res,
+                hatnote(
+                    translate( msgKey, pageName, item ),
+                    { icon='WikimediaUI-Code.svg' }
+                )
+            )
+	    end
+        return table.concat( res )
+    end
 end
 
 
@@ -360,7 +377,7 @@ local function formatInvokeCallList( templateName, addCategories, invokeList )
     		item.funcName,
     		item.moduleName
     	)
-        table.insert( res, mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
+        table.insert( res, hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
     end
 
     if #invokeList > 0 then
@@ -400,24 +417,7 @@ local function formatInvokedByList( moduleName, addCategories, whatLinksHere )
 
     local res = {}
 
-    if #invokedByList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-    	local msg = translate(
-        'message_module_functions_invoked_by',
-            moduleName,
-    		collapseList( invokedByList, 'invokedBy', translate( 'list_type_templates' ) )[ 1 ]
-    	)
-
-        table.insert( res, mHatnote._hatnote( msg, { icon='WikimediaUI-Code.svg' } ) )
-    else
-	    for _, item in ipairs( invokedByList ) do
-	    	local msg = mw.ustring.format(
-	    		"'''%s's''' %s.",
-	    		moduleName,
-	    		item
-	    	)
-        	table.insert( res, mHatnote._hatnote( msg, { icon='WikimediaUI-Code.svg' } ) )
-	    end
-    end
+    table.insert( res, messageBoxCollapseList( 'message_module_functions_invoked_by', moduleName, invokedByList, translate( 'list_type_templates' ) ) )
 
     if #templateData > 0 then
         moduleIsUsed = true
@@ -458,43 +458,19 @@ local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
         end
     end )
 
+    local res = {}
+
     if #requiredByList > 0 or #loadedByList > 0 then
         moduleIsUsed  = true
     end
 
-    if #requiredByList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        requiredByList = collapseList( requiredByList, 'requiredBy', translate( 'list_type_modules' ) )
-    end
-
-    if #loadedByList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        loadedByList = collapseList( loadedByList, 'loadedBy', translate( 'list_type_modules' ) )
-    end
-
-    local res = {}
-
-    for _, requiredByModuleName in ipairs( requiredByList ) do
-    	local msg = translate(
-    		'message_required_by',
-    		moduleName,
-    		requiredByModuleName
-    	)
-        table.insert( res, mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
-    end
-
     if #requiredByList > 0 then
+        table.insert( res, messageBoxCollapseList( 'message_required_by', moduleName, requiredByList, translate( 'list_type_modules' ) ) )
         table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_modules_required_by_modules' ) .. ']]' or '' ) )
     end
 
-    for _, loadedByModuleName in ipairs( loadedByList ) do
-    	local msg = translate(
-    		'message_loaded_by',
-    		moduleName,
-            loadedByModuleName
-    	)
-        table.insert( res, mHatnote._hatnote( msg, { icon='WikimediaUI-Code.svg' } ) )
-    end
-
     if #loadedByList > 0 then
+        table.insert( res, messageBoxCollapseList( 'message_loaded_by', moduleName, loadedByList, translate( 'list_type_modules' ) ) )
         table.insert( res, ( addCategories and '[[Category:' .. translate( 'category_module_data' ) .. ']]' or '' ) )
     end
 
@@ -502,18 +478,8 @@ local function formatRequiredByList( moduleName, addCategories, whatLinksHere )
 end
 
 local function formatImportList( currentPageName, moduleList, id, message, category )
-    if #moduleList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        moduleList = collapseList( moduleList, id, translate( 'list_type_modules' ) )
-    end
-
-    local res = arr.map( moduleList, function( moduleName )
-        local msg = translate(
-    		message,
-    		currentPageName,
-    		moduleName
-    	)
-        return mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } )
-    end )
+    local res = {}
+    table.insert( res, messageBoxCollapseList( message, currentPageName, moduleList, translate( 'list_type_modules' ) ) )
 
     if #moduleList > 0 and category then
         table.insert( res, mw.ustring.format( '[[Category:%s]]', category ) )
@@ -524,20 +490,7 @@ end
 
 local function formatUsedTemplatesList( currentPageName, addCategories, usedTemplateList )
     local res = {}
-
-    if #usedTemplateList > COLLAPSE_LIST_LENGTH_THRESHOLD then
-        usedTemplateList = collapseList( usedTemplateList, 'usedTemplates', translate( 'list_type_templates' ) )
-    end
-
-    for _, templateName in ipairs( usedTemplateList ) do
-    	local msg = translate(
-    		'message_transcludes',
-    		currentPageName,
-    		templateName
-    	)
-        table.insert( res, mHatnote._hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
-    end
-
+    table.insert( res, messageBoxCollapseList( 'message_transcludes', currentPageName, usedTemplateList, translate( 'list_type_templates' ) ) )
     return table.concat( res )
 end
 
