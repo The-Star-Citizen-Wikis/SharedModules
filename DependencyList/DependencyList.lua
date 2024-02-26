@@ -251,6 +251,7 @@ local function getRequireList( moduleName, searchForUsedTemplates )
     loadDataList = loadDataList .. dynamicLoadDataList
     loadDataList = loadDataList:unique()
     loadJsonDataList = loadJsonDataList .. dynamicLoadJsonDataList
+    loadJsonDataList = loadJsonDataList:unique()
     usedTemplateList = usedTemplateList:unique()
     extraCategories = extraCategories:unique()
     table.sort( extraCategories )
