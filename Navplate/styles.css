@@ -37,7 +37,7 @@
 }
 
 .template-navplate__title {
-	font-size: var( --font-size-h3 );
+	font-size: var( --font-size-x-large );
 }
 
 .template-navplate__content {

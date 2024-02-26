@@ -15,7 +15,7 @@
 
 .documentation-title {
     color: var( --color-base--emphasized );
-    font-size: var( --font-size-h3 );
+    font-size: var( --font-size-x-large );
     font-weight: var( --font-weight-semibold );
     line-height: var( --line-height-xs );
 }
