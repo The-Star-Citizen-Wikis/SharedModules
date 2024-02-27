@@ -28,10 +28,11 @@
 }
 
 .mbox-icon img {
-    width: 14px;
+    width: var( --font-size-small );
     height: auto;
     margin-right: var( --space-xs );
-    opacity: 0.5;
+    opacity: var( --opacity-icon-base );
+    filter: var( --filter-invert );
 }
 
 .mbox-text {
@@ -59,9 +60,4 @@
 .mbox:hover .mbox-text {
     opacity: 1;
     visibility: visible;
-}
-
-/* Dark mode */
-html.skin-citizen-dark .mbox-icon img {
-    filter: invert( 1 );
 }

@@ -12,13 +12,9 @@
 }
 
 .hatnote-icon img {
-    width: 14px;
+    width: var( --font-size-small );
     height: auto;
     margin-right: var( --space-xs );
     opacity: var( --opacity-icon-base );
-}
-
-/* Dark theme */
-html.skin-citizen-dark .hatnote-icon img {
-    filter: invert( 1 );
+    filter: var( --filter-invert );
 }

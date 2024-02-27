@@ -5,6 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: var( --space-xs );
+    line-height: var( --line-height-sm );
 }
 
 /* TemplateStyles style tag can get in-between */
@@ -19,19 +20,15 @@
     align-items: center;
     color: var( --color-base--subtle );
     font-size: var( --font-size-small );
-    letter-spacing: 0.75px;
-    gap: var(--space-xs );
-    line-height: 1.25;
+    letter-spacing: 0.05em;
+    gap: var( --space-xs );
 }
 
 .template-components__label img {
     height: 1rem;
     width: auto;
     opacity: var( --opacity-icon-base );
-}
-
-html.skin-citizen-dark .template-components__label img {
-	filter: invert( 1 );
+    filter: var( --filter-invert );
 }
 
 .template-components__group {
@@ -103,8 +100,6 @@ html.skin-citizen-dark .template-components__label img {
     border-radius: var( --border-radius--medium );
     display: grid;
     grid-template-columns: 3rem auto;
-    /* This isn't pretty */
-    line-height: 1.35;
     flex-grow: 1;
 }
 
@@ -121,8 +116,7 @@ html.skin-citizen-dark .template-components__label img {
     border-bottom-left-radius: var( --border-radius--medium );
     justify-items: center;
     background-color: var( --color-surface-0 );
-    font-weight: 500;
-    line-height: 1.25;
+    font-weight: var( --font-weight-medium );
     text-align: center;
 }
 
@@ -140,7 +134,7 @@ html.skin-citizen-dark .template-components__label img {
 
 .template-component__title {
     color: var( --color-base--emphasized );
-    font-weight: 500;
+    font-weight: var( --font-size-medium );
     font-size: var( --font-size-small );
 }
 
