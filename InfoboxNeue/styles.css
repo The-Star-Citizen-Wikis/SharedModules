@@ -4,7 +4,7 @@
     max-width: 400px;
     border-radius: var( --border-radius--medium );
     background-color: var( --color-surface-2 );
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
     line-height: var( --line-height-sm );
 }
 
@@ -64,8 +64,8 @@
 
 /* Might as well steal from skin */
 .infobox__snippet.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
-    width: 0.875rem;
-    height: 0.875rem;
+    width: var( --font-size-small );
+    height: var( --font-size-small );
     flex-shrink: 0;
     transition: var( --transition-menu );
     transition-property: transform;
@@ -80,7 +80,7 @@
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
 }
 
 .infobox__indicator {
@@ -185,7 +185,7 @@
 .infobox__desc,
 .infobox__label {
     color: var( --color-base--subtle );
-    font-size: 0.8125rem;
+    font-size: var( --font-size-x-small );
 }
 
 .infobox__label {
@@ -194,7 +194,7 @@
 
 .infobox__grid--row .infobox__label,
 .infobox__grid--row .infobox__desc {
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
 }
 
 .infobox__data {
@@ -403,7 +403,7 @@
 
 .infobox__section--metadata .infobox__label,
 .infobox__section--metadata .infobox__data {
-    font-size: 0.8125rem;
+    font-size: var( --font-size-x-small );
 }
 
 /* Tabber styles */

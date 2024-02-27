@@ -1,7 +1,7 @@
 .template-navplate {
 	margin-top: var( --space-md );
 	clear: both;
-	font-size: 0.875rem;
+	font-size: var( --font-size-small );
 	line-height: var( --line-height-sm );
 	border: 1px solid var( --border-color-base );
 	border-radius: var( --border-radius--medium );
@@ -21,7 +21,7 @@
 }
 
 .template-navplate__subtitle {
-	font-size: 0.8125rem;
+	font-size: var( --font-size-x-small );
 }
 
 .template-navplate__subtitle,
@@ -88,8 +88,8 @@
 }
 
 .template-navplate__header.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
-	width: 0.875rem;
-    height: 0.875rem;
+	width: var( --font-size-small );
+    height: var( --font-size-small );
     transition: var( --transition-menu );
     transition-property: transform;
 }

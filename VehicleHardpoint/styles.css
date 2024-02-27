@@ -18,7 +18,7 @@
     display: flex;
     align-items: center;
     color: var( --color-base--subtle );
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
     letter-spacing: 0.75px;
     gap: var(--space-xs );
     line-height: 1.25;
@@ -128,7 +128,7 @@ html.skin-citizen-dark .template-components__label img {
 
 .template-component__count {
     color: var( --color-base--subtle );
-    font-size: 0.8125rem;
+    font-size: var( --font-size-x-small );
 }
 
 .template-component__item {
@@ -141,7 +141,7 @@ html.skin-citizen-dark .template-components__label img {
 .template-component__title {
     color: var( --color-base--emphasized );
     font-weight: 500;
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
 }
 
 /* New links on component title is usually a false alert */
@@ -151,7 +151,7 @@ html.skin-citizen-dark .template-components__label img {
 
 .template-component__subtitle {
     color: var( --color-base--subtle );
-    font-size: 0.8125rem;
+    font-size: var( --font-size-x-small );
 }
 
 .template-component__subtitle a {

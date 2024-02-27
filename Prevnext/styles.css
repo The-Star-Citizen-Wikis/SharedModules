@@ -3,7 +3,7 @@
     padding: var( --space-xxs );
     background-color: var( --color-surface-2 );
     border-radius: var( --border-radius--medium );
-    font-size: 0.875rem;
+    font-size: var( --font-size-small );
     line-height: 1.375;
     display: grid;
     align-items: center;
@@ -85,7 +85,7 @@
 
 .template-prevnext__desc {
     color: var( --color-base--subtle );
-    font-size: 0.8125rem;
+    font-size: var( --font-size-x-small );
 }
 
 .template-prevnext__linkoverlay {
