@@ -611,6 +611,13 @@ function InfoboxNeue.fromArgs( frame )
 		instance:renderImage( args[ 'image' ] )
 	end
 
+    if args[ 'indicator' ] then
+		instance:renderIndicator( {
+			data = args[ 'indicator' ],
+			desc = args[ 'indicatorDesc' ],
+		} )
+	end
+
 	if args[ 'title' ] then
 		instance:renderHeader( {
 			title = args[ 'title' ],
