@@ -418,7 +418,7 @@ end
 --- Return the HTML of the infobox item component as string
 ---
 --- @param data table {label, data, desc, icon, row, spacebetween, colspan)
---- @param content string|nil optional
+--- @param content string|number optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
 	checkType( 'Module:InfoboxNeue.renderItem', 1, self, 'table' )
@@ -551,9 +551,9 @@ end
 
 --- Format text to show comparison as desc text if two strings are different
 ---
---- @param s1 string|nil base
---- @param s2 string|nil comparsion
---- @return string|nil
+--- @param s1 string base
+--- @param s2 string comparsion
+--- @return string html
 function InfoboxNeue.showDescIfDiff( s1, s2 )
     if s1 == nil or s2 == nil or s1 == s2 then return s1 end
     return mw.ustring.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
@@ -611,10 +611,11 @@ function InfoboxNeue.fromArgs( frame )
 		instance:renderImage( args[ 'image' ] )
 	end
 
-    if args[ 'indicator' ] then
+	if args[ 'indicator' ] then
 		instance:renderIndicator( {
 			data = args[ 'indicator' ],
 			desc = args[ 'indicatorDesc' ],
+			class = args[ 'indicatorClass' ]
 		} )
 	end
 
