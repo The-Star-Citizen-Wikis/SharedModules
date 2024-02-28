@@ -553,7 +553,7 @@ end
 ---
 --- @param s1 string|nil base
 --- @param s2 string|nil comparsion
---- @return string html
+--- @return string|nil html
 function InfoboxNeue.showDescIfDiff( s1, s2 )
     if s1 == nil or s2 == nil or s1 == s2 then return s1 end
     return mw.ustring.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
