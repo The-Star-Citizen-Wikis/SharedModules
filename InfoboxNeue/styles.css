@@ -406,6 +406,10 @@
     font-size: var( --font-size-x-small );
 }
 
+.infobox__section--metadata .infobox__data {
+    word-break: break-word;
+}
+
 /* Tabber styles */
 .infobox__section--tabber > .infobox__sectionHeader {
     margin-bottom: var( --space-xxs );
