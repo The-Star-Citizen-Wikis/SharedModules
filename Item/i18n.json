@@ -31,7 +31,7 @@
 			true,
 			{
 				"en": "The file name of the image of the ship/vehicle",
-				"de": "Der Dateiname des Bildes des Schiffes/Fahrzeugs"
+				"de": "Dateiname des Bildes des Schiffes/Fahrzeugs"
 			},
 			"Defender.jpg"
 		],
@@ -50,7 +50,7 @@
 			true,
 			{
 				"en": "The name of the item",
-				"de": "Der Name des Items"
+				"de": "Name des Items"
 			},
 			"Cirrus"
 		],
@@ -91,7 +91,7 @@
 			true,
 			{
 				"en": "The manufacturer code of the manufacturer who made the item",
-				"de": "Der Herstellercode des Herstellers, der das Item hergestellt hat"
+				"de": "Herstellercode des Item Herstellers"
 			},
 			"BANU"
 		],
@@ -166,7 +166,7 @@
 		[
 			"SMW_Occupancy",
 			{
-				"de": "Belegung",
+				"de": "Volumen",
 				"en": "Occupancy"
 			}
 		],
@@ -236,7 +236,7 @@
 		[
 			"LBL_Occupancy",
 			{
-				"de": "Belegung",
+				"de": "Volumen",
 				"en": "Occupancy"
 			}
 		],
@@ -404,35 +404,35 @@
 		[
 			"type_fps_consumable",
 			{
-				"de": "Consumable",
+				"de": "Verbrauchsgut",
 				"en": "Consumable"
 			}
 		],
 		[
 			"type_fps_consumable.medical",
 			{
-				"de": "Medical consumable",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumable"
 			}
 		],
 		[
 			"type_fps_consumable.medpack",
 			{
-				"de": "Medical consumable",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumable"
 			}
 		],
 		[
 			"type_fps_consumable.oxygencap",
 			{
-				"de": "Medical consumable",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumable"
 			}
 		],
 		[
 			"type_inventorycontainer.cargo",
 			{
-				"de": "Gefäß",
+				"de": "Container",
 				"en": "Container"
 			}
 		],
@@ -523,7 +523,7 @@
 		[
 			"type_towingbeam",
 			{
-				"de": "Abschleppbalken",
+				"de": "Abschleppstrahl",
 				"en": "Towing beam"
 			}
 		],
@@ -572,7 +572,7 @@
 		[
 			"type_weaponattachment.bottomattachment",
 			{
-				"de": "Underbarrel attachment",
+				"de": "Unterlaufbefestigung",
 				"en": "Underbarrel attachment"
 			}
 		],
@@ -593,7 +593,7 @@
 		[
 			"type_weaponattachment.utility",
 			{
-				"de": "Multi-Tool attachment",
+				"de": "Multi-Tool-Aufsatz",
 				"en": "Multi-Tool attachment"
 			}
 		],
@@ -628,28 +628,28 @@
 		[
 			"class_civilian",
 			{
-				"de": "👔 Civilian",
+				"de": "👔 Zivil",
 				"en": "👔 Civilian"
 			}
 		],
 		[
 			"class_competition",
 			{
-				"de": "🏁 Competition",
+				"de": "🏁 Wettkampf",
 				"en": "🏁 Competition"
 			}
 		],
 		[
 			"class_military",
 			{
-				"de": "🎖️ Military",
+				"de": "🎖️ Militär",
 				"en": "🎖️ Military"
 			}
 		],
 		[
 			"class_industrial",
 			{
-				"de": "⚒️ Industrial",
+				"de": "⚒️ Industrie",
 				"en": "⚒️ Industrial"
 			}
 		],
@@ -670,21 +670,21 @@
 		[
 			"class_medical",
 			{
-				"de": "Medical",
+				"de": "Medizin",
 				"en": "Medical"
 			}
 		],
 		[
 			"class_mining",
 			{
-				"de": "Mining",
+				"de": "Bergbau",
 				"en": "Mining"
 			}
 		],
 		[
 			"class_salvage and repair",
 			{
-				"de": "Salvage & repair",
+				"de": "Bergung & Reparatur",
 				"en": "Salvage & repair"
 			}
 		],
@@ -698,154 +698,154 @@
 		[
 			"class_ballistic scattergun",
 			{
-				"de": "Ballistic scattergun",
+				"de": "Ballistische Scattergun",
 				"en": "Ballistic scattergun"
 			}
 		],
 		[
 			"class_ballistic cannon",
 			{
-				"de": "Ballistic cannon",
+				"de": "Ballistische Kanone",
 				"en": "Ballistic cannon"
 			}
 		],
 		[
 			"class_ballistic repeater",
 			{
-				"de": "Ballistic repeater",
+				"de": "Ballistischer Repetierer",
 				"en": "Ballistic repeater"
 			}
 		],
 		[
 			"class_ballistic gatling",
 			{
-				"de": "Ballistic gatling",
+				"de": "Ballistische Gatling",
 				"en": "Ballistic gatling"
 			}
 		],
 		[
 			"class_distortion scattergun",
 			{
-				"de": "Distortion scattergun",
+				"de": "Verzerrung Scattergun",
 				"en": "Distortion scattergun"
 			}
 		],
 		[
 			"class_distortion cannon",
 			{
-				"de": "Distortion cannon",
+				"de": "Verzerrungskanone",
 				"en": "Distortion cannon"
 			}
 		],
 		[
 			"class_distortion repeater",
 			{
-				"de": "Distortion repeater",
+				"de": "Verzerrungsrepetierer",
 				"en": "Distortion repeater"
 			}
 		],
 		[
 			"class_laser scattergun",
 			{
-				"de": "Laser scattergun",
+				"de": "Laser Scattergun",
 				"en": "Laser scattergun"
 			}
 		],
 		[
 			"class_laser cannon",
 			{
-				"de": "Laser cannon",
+				"de": "Laserkanone",
 				"en": "Laser cannon"
 			}
 		],
 		[
 			"class_laser repeater",
 			{
-				"de": "Laser repeater",
+				"de": "Laser Repetierer",
 				"en": "Laser repeater"
 			}
 		],
 		[
 			"class_laser beam",
 			{
-				"de": "Laser beam",
+				"de": "Laserstrahl",
 				"en": "Laser beam"
 			}
 		],
 		[
 			"class_mass driver cannon",
 			{
-				"de": "Mass driver cannon",
+				"de": "Massentreiberkanone",
 				"en": "Mass driver cannon"
 			}
 		],
 		[
 			"class_neutron cannon",
 			{
-				"de": "Neutron cannon",
+				"de": "Neutronenkanone",
 				"en": "Neutron cannon"
 			}
 		],
 		[
 			"class_neutron repeater",
 			{
-				"de": "Neutron repeater",
+				"de": "Neutronen Repetierer",
 				"en": "Neutron repeater"
 			}
 		],
 		[
 			"class_plasma scattergun",
 			{
-				"de": "Plasma scattergun",
+				"de": "Plasma Scattergun",
 				"en": "Plasma scattergun"
 			}
 		],
 		[
 			"class_plasma cannon",
 			{
-				"de": "Plasma cannon",
+				"de": "Plasmakanone",
 				"en": "Plasma cannon"
 			}
 		],
 		[
 			"class_tachyon cannon",
 			{
-				"de": "Tachyon cannon",
+				"de": "Tachyonenkanone",
 				"en": "Tachyon cannon"
 			}
 		],
 		[
 			"class_battery",
 			{
-				"de": "Battery",
+				"de": "Batterie",
 				"en": "Battery"
 			}
 		],
 		[
 			"class_magazine",
 			{
-				"de": "Magazine",
+				"de": "Magazin",
 				"en": "Magazine"
 			}
 		],
 		[
 			"class_medgel refill",
 			{
-				"de": "MedGel refill",
+				"de": "MedGel Refill",
 				"en": "MedGel refill"
 			}
 		],
 		[
 			"class_rmc canister (small)",
 			{
-				"de": "RMC canister",
+				"de": "RMC Kanister",
 				"en": "RMC canister"
 			}
 		],
 		[
 			"class_melee",
 			{
-				"de": "Melee",
+				"de": "Nahkampf",
 				"en": "Melee"
 			}
 		],
@@ -950,35 +950,35 @@
 		[
 			"category_fps_consumable",
 			{
-				"de": "Consumable",
+				"de": "Verbrauchsgut",
 				"en": "Consumable"
 			}
 		],
 		[
 			"category_fps_consumable.medical",
 			{
-				"de": "Medical consumables",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumables"
 			}
 		],
 		[
 			"category_fps_consumable.medpack",
 			{
-				"de": "Medical consumables",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumables"
 			}
 		],
 		[
 			"category_fps_consumable.oxygencap",
 			{
-				"de": "Medical consumables",
+				"de": "Medizinisches Verbrauchsgut",
 				"en": "Medical consumables"
 			}
 		],
 		[
 			"category_inventorycontainer.cargo",
 			{
-				"de": "Gefäß",
+				"de": "Container",
 				"en": "Containers"
 			}
 		],
@@ -1062,14 +1062,14 @@
 		[
 			"category_towingbeam",
 			{
-				"de": "Abschleppbalken",
+				"de": "Abschleppstrahl",
 				"en": "Towing beams"
 			}
 		],
 		[
 			"category_tractorbeam",
 			{
-				"de": "Traktorbalken",
+				"de": "Traktorstrahl",
 				"en": "Tractor beams"
 			}
 		],
@@ -1104,7 +1104,7 @@
 		[
 			"category_weaponattachment.bottomattachment",
 			{
-				"de": "Underbarrel attachments",
+				"de": "Unterlaufbefestigung",
 				"en": "Underbarrel attachments"
 			}
 		],
@@ -1125,7 +1125,7 @@
 		[
 			"category_weaponattachment.utility",
 			{
-				"de": "Multi-Tool attachments",
+				"de": "Multi-Tool-Aufsatz",
 				"en": "Multi-Tool attachments"
 			}
 		],
@@ -1160,7 +1160,7 @@
 		[
 			"shortdesc_grade",
 			{
-				"de": "$1 grade $2",
+				"de": "$1 Grad $2",
 				"en": "$1 grade $2"
 			}
 		],
@@ -1174,7 +1174,7 @@
 		[
 			"actions_find_item_title",
 			{
-				"de": "Finde einen Gegenstand im Spiel",
+				"de": "Finde das Item im Spiel",
 				"en": "Find item in game"
 			}
 		],

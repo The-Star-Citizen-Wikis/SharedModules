@@ -89,84 +89,84 @@
 		[
 			"SMW_ProjectilePerShot",
 			{
-				"de": "Projektil pro Schuss",
+				"de": "Projektile pro Schuss",
 				"en": "Projectile per shot"
 			}
 		],
 		[
 			"SMW_MinimumPowerDraw",
 			{
-				"de": "Minimum power draw",
+				"de": "Minimale Energieaufnahme",
 				"en": "Minimum power draw"
 			}
 		],
 		[
 			"SMW_MaximumPowerDraw",
 			{
-				"de": "Maximum power draw",
+				"de": "Maximale Energieaufnahme",
 				"en": "Maximum power draw"
 			}
 		],
 		[
 			"SMW_MinimumThermalEnergyOutput",
 			{
-				"de": "Minimum thermal energy output",
+				"de": "Minimale thermische Energieleistung",
 				"en": "Minimum thermal energy output"
 			}
 		],
 		[
 			"SMW_MaximumThermalEnergyOutput",
 			{
-				"de": "Maximum thermal energy output",
+				"de": "Maximale thermische Energieleistung",
 				"en": "Maximum thermal energy output"
 			}
 		],
 		[
 			"SMW_MaximumCoolingRate",
 			{
-				"de": "Maximum cooling rate",
+				"de": "Maximale Kühlleistung",
 				"en": "Maximum cooling rate"
 			}
 		],
 		[
 			"SMW_StartCoolingTemperature",
 			{
-				"de": "Start cooling temperature",
+				"de": "Start Kühltemperatur",
 				"en": "Start cooling temperature"
 			}
 		],
 		[
 			"SMW_MinimumTemperature",
 			{
-				"de": "Minimum temperature",
+				"de": "Minimale Temperature",
 				"en": "Minimum temperature"
 			}
 		],
 		[
 			"SMW_MaximumTemperature",
 			{
-				"de": "Maximum temperature",
+				"de": "Maximale Temperatur",
 				"en": "Maximum temperature"
 			}
 		],
 		[
 			"SMW_MinimumMisfireTemperature",
 			{
-				"de": "Minimum misfire temperature",
+				"de": "Minimale Fehlzündtemperatur",
 				"en": "Minimum misfire temperature"
 			}
 		],
 		[
 			"SMW_MaximumMisfireTemperature",
 			{
-				"de": "Maximum misfire temperature",
+				"de": "Maximale Fehlzündtemperatur",
 				"en": "Maximum misfire temperature"
 			}
 		],
 		[
 			"SMW_OverheatTemperature",
 			{
-				"de": "Overheat temperature",
+				"de": "Überhitzungstemperatur",
 				"en": "Overheat temperature"
 			}
 		],
@@ -187,14 +187,14 @@
 		[
 			"SMW_PowerToEM",
 			{
-				"de": "Power to EM",
+				"de": "Energie bis EM",
 				"en": "Power to EM"
 			}
 		],
 		[
 			"SMW_EMDecayRate",
 			{
-				"de": "EM decay rate",
+				"de": "EM Abfallrate",
 				"en": "EM decay rate"
 			}
 		],
@@ -208,14 +208,14 @@
 		[
 			"SMW_IRTemperatureThreshold",
 			{
-				"de": "IR temperature threshold",
+				"de": "IR-Temperaturschwelle",
 				"en": "IR temperature threshold"
 			}
 		],
 		[
 			"SMW_TemperatureToIR",
 			{
-				"de": "Temperature to IR",
+				"de": "Temperatur bis IR",
 				"en": "Temperature to IR"
 			}
 		],
@@ -229,35 +229,35 @@
 		[
 			"SMW_DistortionHealthPoint",
 			{
-				"de": "Distortion health",
+				"de": "Verzerrung Gesundheit",
 				"en": "Distortion health"
 			}
 		],
 		[
 			"SMW_DistortionDecayRate",
 			{
-				"de": "Distortion decay rate",
+				"de": "Verzerrung Abfallrate",
 				"en": "Distortion decay rate"
 			}
 		],
 		[
 			"SMW_DistortionDecayDelay",
 			{
-				"de": "Distortion decay delay",
+				"de": "Verzerrung Abfallverzögerung",
 				"en": "Distortion decay delay"
 			}
 		],
 		[
 			"SMW_ChargeTime",
 			{
-				"de": "Charge time",
+				"de": "Aufladezeit",
 				"en": "Charge time"
 			}
 		],
 		[
 			"SMW_CooldownTime",
 			{
-				"de": "Cooldown time",
+				"de": "Abkühlzeit",
 				"en": "Cooldown time"
 			}
 		],
@@ -278,7 +278,7 @@
 		[
 			"SMW_EMPRadius",
 			{
-				"de": "EMP radius",
+				"de": "EMP Radius",
 				"en": "EMP radius"
 			}
 		],
@@ -299,14 +299,14 @@
 		[
 			"SMW_PortCount",
 			{
-				"de": "Anschluss Raketen",
+				"de": "Anzahl Anschlüsse",
 				"en": "Port count"
 			}
 		],
 		[
 			"SMW_PortSize",
 			{
-				"de": "Anschluss Größe",
+				"de": "Anschlussgröße",
 				"en": "Port size"
 			}
 		],
@@ -460,7 +460,7 @@
 		[
 			"SMW_QuantumTravelDisconnectRange",
 			{
-				"de": "Quantum travel disconnect range",
+				"de": "Quantensprung Unterbrechungsreichweite",
 				"en": "Quantum travel disconnect range"
 			}
 		],
@@ -481,42 +481,42 @@
 		[
 			"SMW_JammerRange",
 			{
-				"de": "Jammer range",
+				"de": "Störreichweite",
 				"en": "Jammer range"
 			}
 		],
 		[
 			"SMW_InterdictionRange",
 			{
-				"de": "Interdiction range",
+				"de": "Abriegelungsreichweite",
 				"en": "Interdiction range"
 			}
 		],
 		[
 			"SMW_ModifierSalvageSpeed",
 			{
-				"de": "Modifier salvage speed",
+				"de": "Modifikator Bergungsgeschwindigkeit",
 				"en": "Modifier salvage speed"
 			}
 		],
 		[
 			"SMW_ModifierRadius",
 			{
-				"de": "Modifier radius",
+				"de": "Modifikator Radius",
 				"en": "Modifier radius"
 			}
 		],
 		[
 			"SMW_ModifierExtractionEfficiency",
 			{
-				"de": "Modifier extraction efficiency",
+				"de": "Modifikator Extraktionseffizienz",
 				"en": "Modifier extraction efficiency"
 			}
 		],
 		[
 			"SMW_ShieldHealthPoint",
 			{
-				"de": "Schildpunkt",
+				"de": "Schildpunkte",
 				"en": "Shield health point"
 			}
 		],
@@ -544,42 +544,42 @@
 		[
 			"SMW_ShieldPhysicalResistance",
 			{
-				"de": "Physikalische Resistance",
+				"de": "Physikalischer Widerstand",
 				"en": "Shield physical resistance"
 			}
 		],
 		[
 			"SMW_ShieldEnergyResistance",
 			{
-				"de": "Energie Resistance",
+				"de": "Energie Widerstand",
 				"en": "Shield energy resistance"
 			}
 		],
 		[
 			"SMW_ShieldDistortionResistance",
 			{
-				"de": "Distortion Resistance",
+				"de": "Verzerrung Widerstand",
 				"en": "Shield distortion resistance"
 			}
 		],
 		[
 			"SMW_ShieldThermalResistance",
 			{
-				"de": "Termische Resistance",
+				"de": "THermie Widerstand",
 				"en": "Shield thermal resistance"
 			}
 		],
 		[
 			"SMW_ShieldBiochemicalResistance",
 			{
-				"de": "Biochemische Resistance",
+				"de": "Biochemie Widerstand",
 				"en": "Shield biochemical resistance"
 			}
 		],
 		[
 			"SMW_ShieldStunResistance",
 			{
-				"de": "Stun Resistance",
+				"de": "Stun Widerstand",
 				"en": "Shield stun resistance"
 			}
 		],
@@ -600,14 +600,14 @@
 		[
 			"SMW_MaximumAngle",
 			{
-				"de": "Maximale Winkel",
+				"de": "Maximaler Winkel",
 				"en": "Maximum angle"
 			}
 		],
 		[
 			"SMW_MaximumVolume",
 			{
-				"de": "Maximale Lautstärke",
+				"de": "Maximales Volumen",
 				"en": "Maximum volume"
 			}
 		],
@@ -656,7 +656,7 @@
 		[
 			"LBL_Overview",
 			{
-				"de": "Overview",
+				"de": "Übersicht",
 				"en": "Overview"
 			}
 		],
@@ -684,7 +684,7 @@
 		[
 			"LBL_Defense",
 			{
-				"de": "Defense",
+				"de": "Verteidigung",
 				"en": "Defense"
 			}
 		],
@@ -719,7 +719,7 @@
 		[
 			"LBL_DamagePhysical",
 			{
-				"de": "Physischer",
+				"de": "Physisch",
 				"en": "Physical"
 			}
 		],
@@ -747,56 +747,56 @@
 		[
 			"LBL_PowerDraw",
 			{
-				"de": "Power draw",
+				"de": "Leistungsaufnahme",
 				"en": "Power draw"
 			}
 		],
 		[
 			"LBL_ThermalEnergyOutput",
 			{
-				"de": "Heat output",
+				"de": "Wärmeabgabe",
 				"en": "Heat output"
 			}
 		],
 		[
 			"LBL_MaximumCoolingRate",
 			{
-				"de": "Cooling rate",
+				"de": "Kühlrate",
 				"en": "Cooling rate"
 			}
 		],
 		[
 			"LBL_StartCoolingTemperature",
 			{
-				"de": "Cooling temperature",
+				"de": "Kühltemperatur",
 				"en": "Cooling temperature"
 			}
 		],
 		[
 			"LBL_Temperature",
 			{
-				"de": "Temperature",
+				"de": "Temperatur",
 				"en": "Temperature"
 			}
 		],
 		[
 			"LBL_MisfireTemperature",
 			{
-				"de": "Misfire temperature",
+				"de": "Fehlzündungstemperatur",
 				"en": "Misfire temperature"
 			}
 		],
 		[
 			"LBL_OverheatTemperature",
 			{
-				"de": "Overheat temperature",
+				"de": "Überhitzungstemperatur",
 				"en": "Overheat temperature"
 			}
 		],
 		[
 			"LBL_Modes",
 			{
-				"de": "Modes",
+				"de": "Modi",
 				"en": "Modes"
 			}
 		],
@@ -810,14 +810,14 @@
 		[
 			"LBL_PowerToEM",
 			{
-				"de": "PWR per EM",
+				"de": "PWR pro EM",
 				"en": "PWR per EM"
 			}
 		],
 		[
 			"LBL_EMDecayRate",
 			{
-				"de": "EM decay",
+				"de": "EM Abfall",
 				"en": "EM decay"
 			}
 		],
@@ -831,7 +831,7 @@
 		[
 			"LBL_TemperatureToIR",
 			{
-				"de": "°C per IR",
+				"de": "°C pro IR",
 				"en": "°C per IR"
 			}
 		],
@@ -845,28 +845,28 @@
 		[
 			"LBL_DistortionHealthPoint",
 			{
-				"de": "Distortion health",
+				"de": "Verzerrung Gesundheit",
 				"en": "Distortion health"
 			}
 		],
 		[
 			"LBL_DistortionDecayRate",
 			{
-				"de": "Distortion decay",
+				"de": "Verzerrungsabfall",
 				"en": "Distortion decay"
 			}
 		],
 		[
 			"LBL_DistortionDecayDelay",
 			{
-				"de": "Distortion decay delay",
+				"de": "Verzerrung Abfallverzögerung",
 				"en": "Distortion decay delay"
 			}
 		],
 		[
 			"LBL_ChargeTime",
 			{
-				"de": "Charge",
+				"de": "Aufladezeit",
 				"en": "Charge"
 			}
 		],
@@ -894,7 +894,7 @@
 		[
 			"LBL_EMPRadius",
 			{
-				"de": "EMP radius",
+				"de": "EMP Radius",
 				"en": "EMP radius"
 			}
 		],
@@ -915,14 +915,14 @@
 		[
 			"LBL_PortCount",
 			{
-				"de": "Anschluss Raketen",
+				"de": "Anzahl Anschlüsse",
 				"en": "Port count"
 			}
 		],
 		[
 			"LBL_PortSize",
 			{
-				"de": "Anschluss Größe",
+				"de": "Anschlussgröße",
 				"en": "Port size"
 			}
 		],
@@ -1076,35 +1076,35 @@
 		[
 			"LBL_QuantumTravelDisconnectRange",
 			{
-				"de": "Disconnect range",
+				"de": "Endentfernung",
 				"en": "Exit distance"
 			}
 		],
 		[
 			"LBL_QuantumTravelSpeed",
 			{
-				"de": "Antriebsgeschwindigkeit",
+				"de": "Geschwindigkeit",
 				"en": "Speed"
 			}
 		],
 		[
 			"LBL_JammerRange",
 			{
-				"de": "Dampen radius",
+				"de": "Abdämpfradius",
 				"en": "Dampen radius"
 			}
 		],
 		[
 			"LBL_InterdictionRange",
 			{
-				"de": "Snare radius",
+				"de": "Einfangradius",
 				"en": "Snare radius"
 			}
 		],
 		[
 			"LBL_ModifierSalvageSpeed",
 			{
-				"de": "Speed",
+				"de": "Geschwindigkeit",
 				"en": "Speed"
 			}
 		],
@@ -1118,28 +1118,28 @@
 		[
 			"LBL_ModifierExtractionEfficiency",
 			{
-				"de": "Eefficiency",
+				"de": "Effizienz",
 				"en": "Efficiency"
 			}
 		],
 		[
 			"LBL_ShieldHealthPoint",
 			{
-				"de": "Shield health",
+				"de": "Schildpunkte",
 				"en": "Shield health"
 			}
 		],
 		[
 			"LBL_ShieldPointRegeneration",
 			{
-				"de": "Regen rate",
+				"de": "Regenerationsrate",
 				"en": "Regen rate"
 			}
 		],
 		[
 			"LBL_ShieldRegenDelay",
 			{
-				"de": "Regen delay",
+				"de": "Regenerationsverzögerung",
 				"en": "Regen delay"
 			}
 		],
@@ -1195,35 +1195,35 @@
 		[
 			"LBL_MaximumAngle",
 			{
-				"de": "Maximale Winkel",
+				"de": "Maximaler Winkel",
 				"en": "Max angle"
 			}
 		],
 		[
 			"LBL_MaximumVolume",
 			{
-				"de": "Maximale Lautstärke",
+				"de": "Maximales Volumen",
 				"en": "Max volume"
 			}
 		],
 		[
 			"charged",
 			{
-				"de": "Charged",
+				"de": "Geladen",
 				"en": "Charged"
 			}
 		],
 		[
 			"rapid",
 			{
-				"de": "Rapid",
+				"de": "Schnell",
 				"en": "Rapid"
 			}
 		],
 		[
 			"single",
 			{
-				"de": "Single",
+				"de": "Einzeln",
 				"en": "Single"
 			}
 		],
@@ -1244,14 +1244,14 @@
 		[
 			"unit_secondtillfull",
 			{
-				"de": "$1 s till full",
+				"de": "$1 s bis voll",
 				"en": "$1 s till full"
 			}
 		],
 		[
 			"unit_whendown",
 			{
-				"de": "$1 when down",
+				"de": "$1 wenn ausgefallen",
 				"en": "$1 when down"
 			}
 		]

@@ -63,7 +63,7 @@
 			true,
 			{
 				"en": "The file name of the image of the ship/vehicle",
-				"de": "Der Dateiname des Bildes des Schiffes/Fahrzeugs"
+				"de": "Dateiname des Bildes des Schiffes/Fahrzeugs"
 			},
 			"Defender.jpg"
 		],
@@ -82,7 +82,7 @@
 			true,
 			{
 				"en": "The name of the ship/vehicle",
-				"de": "Der Name des Raumschiffes / Fahrzeugs"
+				"de": "Name des Raumschiffes / Fahrzeugs"
 			},
 			"Defender"
 		],
@@ -143,7 +143,7 @@
 			false,
 			{
 				"en": "The production state of the ship/vehicle from RSI website",
-				"de": "Der Produktionsstatus des Schiffes/Fahrzeugs von der RSI-Website"
+				"de": "Produktionsstatus des Schiffes/Fahrzeugs von der RSI-Website"
 			},
 			{
 				"en": "In production",
@@ -228,7 +228,7 @@
 			true,
 			{
 				"en": "The size of the ship/vehicle (Vehicle/Snub/Small/Medium/Large/Capital)",
-				"de": "Die Größe des Schiffes/Fahrzeugs (Fahrzeug/Knubbel/Klein/Mittel/Groß/Kapital)"
+				"de": "Größe des Schiffes/Fahrzeugs (Fahrzeug/Snub/Klein/Mittel/Groß/Kapital)"
 			},
 			{
 				"en": "Small",
@@ -271,7 +271,7 @@
 			false,
 			false,
 			{
-				"en": "The pledge cost in USD of the ship/vehicle on RSI website",
+				"en": "Die Pledgekosten in USD für das Schiff/Fahrzeug auf der RSI-Website",
 				"de": "The availability of the ship/vehicle as a pledge"
 			},
 			"185"
@@ -329,7 +329,7 @@
 			false,
 			{
 				"en": "The original warbond pledge cost in USD of the vehicle when it first announced",
-				"de": "Der ursprüngliche warbond Preis des Fahrzeugs in USD bei seiner ersten Ankündigung"
+				"de": "Der ursprüngliche Warbond Preis des Fahrzeugs in USD bei seiner ersten Ankündigung"
 			},
 			"90"
 		],
