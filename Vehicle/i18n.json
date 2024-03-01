@@ -1650,7 +1650,7 @@
 		[
 			"LBL_Electromagnetic",
 			{
-				"de": "Elektromagnetisch",
+				"de": "EM",
 				"en": "Electromagnetic"
 			}
 		],
@@ -1930,7 +1930,7 @@
 		[
 			"actions_find_item_title",
 			{
-				"de": "Finde einen Gegenstand im Spiel",
+				"de": "Finde dieses Item im Spiel",
 				"en": "Find item in game"
 			}
 		],
