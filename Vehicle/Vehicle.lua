@@ -233,18 +233,6 @@ function methodtable.setSemanticProperties( self )
 			local commodity = require( 'Module:Commodity' ):new()
 			commodity:addShopData( self.apiData )
 		end
-
-		-- Loaner
-		--- TODO: Handling of table/object values should be handled in Common/SMW
-		if self.apiData.loaner ~= nil and type( self.apiData.loaner ) == 'table' and #self.apiData.loaner > 0 then
-			local tmp = {}
-			for _, loaner in ipairs( self.apiData.loaner ) do
-				if loaner.name ~= nil then
-					table.insert( tmp, mw.ustring.format( '[[%s]]', loaner.name ) )
-				end
-			end
-			setData[ translate( 'SMW_LoanerVehicle' ) ] = tmp
-		end
 	end
 
 	mw.logObject( setData, 'SET' )

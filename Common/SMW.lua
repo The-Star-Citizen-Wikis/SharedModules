@@ -5,7 +5,6 @@ local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 local checkTypeMulti = libraryUtil.checkTypeMulti
 
-
 --- Adds SMW properties to a table either from the API or Frame arguments
 ---
 --- @param apiData table Data from the Wiki API
@@ -55,6 +54,63 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
 		return value
 	end
+
+    local function format( datum, value )
+        local val = mw.clone( value )
+
+        -- This should not happen
+        --- FIXME: Somehow this is mutating the original self.apiData, not sure why
+        if type( val ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
+            val = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
+        end
+
+        -- Format number for SMW
+        if datum.type == 'number' then
+            val = common.formatNum( val )
+            -- Multilingual Text, add a suffix
+        elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
+            -- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
+            if type( val ) == 'table' then
+                local tmp = {}
+                for _, valText in ipairs( val ) do
+                    valText = mw.ustring.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+                    table.insert( tmp, valText )
+                end
+                val = tmp
+            else
+                val = mw.ustring.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+            end
+            -- String format
+        elseif type( datum.format ) == 'string' then
+            if mw.ustring.find( datum.format, '%', 1, true  ) then
+                val = mw.ustring.format( datum.format, val )
+            elseif datum.format == 'ucfirst' then
+                val = lang:ucfirst( val )
+            elseif datum.format == 'replace-dash' then
+                val = mw.ustring.gsub( val, '%-', ' ' )
+                -- Remove part of the value
+            elseif datum.format:sub( 1, 6 ) == 'remove' then
+                val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
+            end
+            -- Min/Max
+        elseif datum.type == 'minmax' then
+            val = {
+                common.formatNum( val.min ),
+                common.formatNum( val.max ),
+            }
+            -- Subobject
+        elseif datum.type == 'subobject' then
+            local api = require( 'Module:Common/Api' )
+            for _, data in ipairs( value ) do
+                local subobject = {}
+                data = api.makeAccessSafe( data )
+                commonSMW.addSmwProperties( data, {}, subobject, translateFn, moduleConfig, datum, moduleName )
+                mw.smw.subobject( subobject )
+            end
+        end
+
+        return val
+    end
 
 	-- Iterate through the list of SMW attributes that shall be filled
 	for _, datum in ipairs( moduleData.smw_data ) do
@@ -124,61 +180,25 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					value = { value }
 				end
 
-				for index, val in ipairs( value ) do
-					-- This should not happen
-					--- FIXME: Somehow this is mutating the original self.apiData, not sure why
-					if type( val ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
-						val = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
-					end
+                if datum.type == 'table' then
+                    local api = require( 'Module:Common/Api' )
+                    local output = {}
 
-					-- Format number for SMW
-					if datum.type == 'number' then
-						val = common.formatNum( val )
-					-- Multilingual Text, add a suffix
-					elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
-						-- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
-						if type( val ) == 'table' then
-							local tmp = {}
-							for _, valText in ipairs( val ) do
-								valText = mw.ustring.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
-								table.insert( tmp, valText )
-							end
-							val = tmp
-						else
-							val = mw.ustring.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
-						end
-					-- String format
-					elseif type( datum.format ) == 'string' then
-						if mw.ustring.find( datum.format, '%', 1, true  ) then
-							val = mw.ustring.format( datum.format, val )
-						elseif datum.format == 'ucfirst' then
-							val = lang:ucfirst( val )
-						elseif datum.format == 'replace-dash' then
-							val = mw.ustring.gsub( val, '%-', ' ' )
-						-- Remove part of the value
-						elseif datum.format:sub( 1, 6 ) == 'remove' then
-							val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
-						end
-					-- Min/Max
-					elseif datum.type == 'minmax' then
-						val = {
-							common.formatNum( val.min ),
-							common.formatNum( val.max ),
-						}
-					-- Subobject
-					elseif datum.type == 'subobject' then
-						local api = require( 'Module:Common/Api' )
-						for _, data in ipairs( value ) do
-							local subobject = {}
-							data = api.makeAccessSafe( data )
-							commonSMW.addSmwProperties( data, {}, subobject, translateFn, moduleConfig, datum, moduleName )
-							mw.smw.subobject( subobject )
-						end
-					end
+                    for _, data in ipairs( value ) do
+                        if type( datum.data_key ) == 'string' then
+                            table.insert( output, format( datum, api.makeAccessSafe( data ):get( datum.data_key ) ) )
+                        elseif type( data ) ~= 'table' then -- Format each value if its a normal array
+                            table.insert( output, format( datum, data ) )
+                        end
+                    end
 
-					table.remove( value, index )
-					table.insert( value, index, val )
-				end
+                    value = output
+                else
+                    for index, val in ipairs( value ) do
+                        table.remove( value, index )
+                        table.insert( value, index, format( datum, val ) )
+                    end
+                end
 
 				if datum.type ~= 'subobject' and type( smwKey ) == 'string' then
 					if type( value ) == 'table' and #value == 1 then
