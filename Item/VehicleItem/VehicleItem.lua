@@ -66,8 +66,10 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         end
     end
 
+    -- TODO: Modifiers and Damages are generic enough that maybe we should search for it by default on Module:Item?
     setFromTable( apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier' )
     setFromTable( apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier' )
+    setFromTable( apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage' )
     setFromTable( apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage' )
 
     mw.smw.set( setData )
@@ -98,8 +100,20 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     local tabberData = {}
     local section
 
+    -- Bomb
+    if smwData[ translate( 'SMW_Type' ) ] == 'Bomb' then
+        -- Overview
+        tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+        section = {
+            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ translate( 'SMW_DamagePhysical' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] ),
+            infobox:renderItem( translate( 'LBL_ExplosionRadius' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumExplosionRadius' ) ], smwData[ translate( 'SMW_MaximumExplosionRadius' ) ], true ), 'm' ) ),
+            infobox:renderItem( translate( 'LBL_ArmTime' ), smwData[ translate( 'SMW_ArmTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_IgniteTime' ), smwData[ translate( 'SMW_IgniteTime' ) ] )
+        }
+        tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Cooler
-    if smwData[ translate( 'SMW_Type' ) ] == 'Cooler' then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'Cooler' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
@@ -171,10 +185,10 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ translate( 'SMW_SignalType' ) ] ),
-            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] ),
             infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ translate( 'SMW_DamagePhysical' ) ] ),
-            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] )
+            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] ),
+            infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ translate( 'SMW_SignalType' ) ] ),
+            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Missile launcher / Weapon mount

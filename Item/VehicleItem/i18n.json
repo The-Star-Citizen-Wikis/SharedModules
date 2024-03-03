@@ -248,6 +248,34 @@
 			}
 		],
 		[
+			"SMW_ArmTime",
+			{
+				"de": "Arm time",
+				"en": "Arm time"
+			}
+		],
+		[
+			"SMW_IgniteTime",
+			{
+				"de": "Ignite time",
+				"en": "Ignite time"
+			}
+		],
+		[
+			"SMW_MinimumExplosionRadius",
+			{
+				"de": "Minimum explosion radius",
+				"en": "Minimum explosion radius"
+			}
+		],
+		[
+			"SMW_MaximumExplosionRadius",
+			{
+				"de": "Maximum explosion radius",
+				"en": "Maximum explosion radius"
+			}
+		],
+		[
 			"SMW_ChargeTime",
 			{
 				"de": "Aufladezeit",
@@ -882,6 +910,27 @@
 			{
 				"de": "Dauer",
 				"en": "Duration"
+			}
+		],
+		[
+			"LBL_ArmTime",
+			{
+				"de": "Arm time",
+				"en": "Arm time"
+			}
+		],
+		[
+			"LBL_IgniteTime",
+			{
+				"de": "Ignite time",
+				"en": "Ignite time"
+			}
+		],
+		[
+			"LBL_ExplosionRadius",
+			{
+				"de": "Explosion radius",
+				"en": "Explosion radius"
 			}
 		],
 		[

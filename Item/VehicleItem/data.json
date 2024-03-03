@@ -119,6 +119,27 @@
 			"type": "number"
 		},
 		{
+			"%": "Bombs"
+		},
+		{
+			"SMW_ArmTime": "API_bomb.arm_time",
+			"type": "number"
+		},
+		{
+			"SMW_IgniteTime": "API_bomb.ignite_time",
+			"type": "number"
+		},
+		{
+			"SMW_MinimumExplosionRadius": "API_bomb.explosion_radius_min",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_MaximumExplosionRadius": "API_bomb.explosion_radius_max",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
 			"%": "Coolers"
 		},
 		{
