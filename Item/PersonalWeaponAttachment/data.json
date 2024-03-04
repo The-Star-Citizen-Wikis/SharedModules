@@ -11,6 +11,15 @@
 			"SMW_OpticsType": "API_iron_sight.optic_type"
 		},
 		{
+			"SMW_ZeroingRange": "API_iron_sight.max_range"
+		},
+		{
+			"SMW_ZeroingRangeIncrement": "API_iron_sight.range_increment"
+		},
+		{
+			"SMW_AutoZeroingTime": "API_iron_sight.auto_zeroing_time"
+		},
+		{
 			"SMW_Class": "API_personal_weapon_magazine.type"
 		},
 		{

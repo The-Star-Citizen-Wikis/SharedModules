@@ -67,6 +67,18 @@ function p.addInfoboxData( infobox, smwData )
                 infobox:renderItem( {
                     label = translate( 'LBL_OpticsType' ),
                     data = smwData[ translate( 'SMW_OpticsType' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_ZeroingRange' ),
+                    data = smwData[ translate( 'SMW_ZeroingRange' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_ZeroingRangeIncrement' ),
+                    data = smwData[ translate( 'SMW_ZeroingRangeIncrement' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_AutoZeroingTime' ),
+                    data = smwData[ translate( 'SMW_AutoZeroingTime' ) ],
                 } )
             },
             col = 2

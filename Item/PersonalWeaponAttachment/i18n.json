@@ -59,6 +59,27 @@
 			}
 		],
 		[
+			"SMW_ZeroingRange",
+			{
+				"de": "Zeroing range",
+				"en": "Zeroing range"
+			}
+		],
+		[
+			"SMW_ZeroingRangeIncrement",
+			{
+				"de": "Zeroing range increment",
+				"en": "Zeroing range increment"
+			}
+		],
+		[
+			"SMW_AutoZeroingTime",
+			{
+				"de": "Auto zeroing time",
+				"en": "Auto zeroing time"
+			}
+		],
+		[
 			"LBL_Ammo",
 			{
 				"de": "Munition",
@@ -77,6 +98,27 @@
 			{
 				"de": "Typ",
 				"en": "Type"
+			}
+		],
+		[
+			"LBL_ZeroingRange",
+			{
+				"de": "Zeroing range",
+				"en": "Zeroing range"
+			}
+		],
+		[
+			"LBL_ZeroingRangeIncrement",
+			{
+				"de": "Zeroing range increment",
+				"en": "Zeroing range increment"
+			}
+		],
+		[
+			"LBL_AutoZeroingTime",
+			{
+				"de": "Auto zeroing time",
+				"en": "Auto zeroing time"
 			}
 		]
 	]
