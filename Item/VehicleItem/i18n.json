@@ -311,6 +311,27 @@
 			}
 		],
 		[
+			"SMW_FuelFillRate",
+			{
+				"de": "Fuel fill rate",
+				"en": "Fuel fill rate"
+			}
+		],
+		[
+			"SMW_FuelDrainRate",
+			{
+				"de": "Fuel drain rate",
+				"en": "Fuel drain rate"
+			}
+		],
+		[
+			"SMW_FuelCapacity",
+			{
+				"de": "Fuel capacity",
+				"en": "Fuel capacity"
+			}
+		],
+		[
 			"SMW_SignalType",
 			{
 				"de": "Signaltyp",
@@ -945,6 +966,27 @@
 			{
 				"de": "EMP Radius",
 				"en": "EMP radius"
+			}
+		],
+		[
+			"LBL_FuelFillRate",
+			{
+				"de": "Fill rate",
+				"en": "Fill rate"
+			}
+		],
+		[
+			"LBL_FuelDrainRate",
+			{
+				"de": "Drain rate",
+				"en": "Drain rate"
+			}
+		],
+		[
+			"LBL_FuelCapacity",
+			{
+				"de": "Capacity",
+				"en": "Capacity"
 			}
 		],
 		[

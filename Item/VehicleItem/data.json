@@ -166,6 +166,21 @@
 			"type": "number"
 		},
 		{
+			"%": "Fuel tanks"
+		},
+		{
+			"SMW_FuelFillRate": "API_fuel_tank.fill_rate",
+			"type": "number"
+		},
+		{
+			"SMW_FuelDrainRate": "API_fuel_tank.drain_rate",
+			"type": "number"
+		},
+		{
+			"SMW_FuelCapacity": "API_fuel_tank.capacity",
+			"type": "number"
+		},
+		{
 			"%": "Guns"
 		},
 		{

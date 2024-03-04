@@ -131,6 +131,16 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
+    -- Fuel Pod
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'ExternalFuelTank' then
+    -- Overview
+    tabberData[ 'label1' ] = translate( 'LBL_Overview' )
+    section = {
+        infobox:renderItem( translate( 'LBL_FuelCapacity' ), smwData[ translate( 'SMW_FuelCapacity' ) ] ),
+        infobox:renderItem( translate( 'LBL_FuelFillRate' ), smwData[ translate( 'SMW_FuelFillRate' ) ] ),
+        infobox:renderItem( translate( 'LBL_FuelDrainRate' ), smwData[ translate( 'SMW_FuelDrainRate' ) ] )
+    }
+    tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     -- Gun / Rocket Pod
     elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' or smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Rocket' then
         local function getFiringModesSection()
