@@ -81,6 +81,29 @@
 		{
 			"SMW_UUID": "API_uuid",
 			"smw_format": "#-"
+		},
+		{
+			"SMW_Ports": "API_ports",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_PortName": "API_name"
+				},
+				{
+					"SMW_PortMinSize": "API_sizes.min",
+					"type": "number"
+				},
+				{
+					"SMW_PortMaxSize": "API_sizes.max",
+					"type": "number"
+				},
+				{
+					"SMW_EquippedItemUUID": "API_equipped_item.uuid"
+				},
+				{
+					"SMW_EquippedItemName": "API_equipped_item.name"
+				}
+			]
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",

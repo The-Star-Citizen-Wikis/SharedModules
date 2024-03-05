@@ -220,6 +220,41 @@
 			}
 		],
 		[
+			"SMW_PortName",
+			{
+				"de": "Port name",
+				"en": "Port name"
+			}
+		],
+		[
+			"SMW_PortMinSize",
+			{
+				"de": "Port min size",
+				"en": "Port min size"
+			}
+		],
+		[
+			"SMW_PortMaxSize",
+			{
+				"de": "Port max size",
+				"en": "Port max size"
+			}
+		],
+		[
+			"SMW_EquippedItemUUID",
+			{
+				"de": "Equipped item UUID",
+				"en": "Equipped item UUID"
+			}
+		],
+		[
+			"SMW_EquippedItemName",
+			{
+				"de": "Equipped item name",
+				"en": "Equipped item name"
+			}
+		],
+		[
 			"LBL_Type",
 			{
 				"de": "Typ",
