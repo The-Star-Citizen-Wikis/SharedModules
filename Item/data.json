@@ -83,18 +83,18 @@
 			"smw_format": "#-"
 		},
 		{
-			"SMW_Ports": "API_ports",
+			"SMW_ItemPorts": "API_ports",
 			"type": "subobject",
 			"smw_data": [
 				{
-					"SMW_PortName": "API_name"
+					"SMW_ItemPortName": "API_name"
 				},
 				{
-					"SMW_PortMinSize": "API_sizes.min",
+					"SMW_ItemPortMinSize": "API_sizes.min",
 					"type": "number"
 				},
 				{
-					"SMW_PortMaxSize": "API_sizes.max",
+					"SMW_ItemPortMaxSize": "API_sizes.max",
 					"type": "number"
 				},
 				{

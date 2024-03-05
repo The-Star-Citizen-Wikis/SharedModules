@@ -220,24 +220,24 @@
 			}
 		],
 		[
-			"SMW_PortName",
+			"SMW_ItemPortName",
 			{
-				"de": "Port name",
-				"en": "Port name"
+				"de": "Item port name",
+				"en": "Item port name"
 			}
 		],
 		[
-			"SMW_PortMinSize",
+			"SMW_ItemPortMinSize",
 			{
-				"de": "Port min size",
-				"en": "Port min size"
+				"de": "Item port min size",
+				"en": "Item port min size"
 			}
 		],
 		[
-			"SMW_PortMaxSize",
+			"SMW_ItemPortMaxSize",
 			{
-				"de": "Port max size",
-				"en": "Port max size"
+				"de": "Item port max size",
+				"en": "Item port max size"
 			}
 		],
 		[
