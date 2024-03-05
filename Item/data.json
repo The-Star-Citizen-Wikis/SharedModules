@@ -90,11 +90,11 @@
 					"SMW_ItemPortName": "API_name"
 				},
 				{
-					"SMW_ItemPortMinSize": "API_sizes.min",
+					"SMW_ItemPortMinimumSize": "API_sizes.min",
 					"type": "number"
 				},
 				{
-					"SMW_ItemPortMaxSize": "API_sizes.max",
+					"SMW_ItemPortMaximumSize": "API_sizes.max",
 					"type": "number"
 				},
 				{

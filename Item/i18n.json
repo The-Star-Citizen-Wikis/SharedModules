@@ -227,17 +227,17 @@
 			}
 		],
 		[
-			"SMW_ItemPortMinSize",
+			"SMW_ItemPortMinimumSize",
 			{
-				"de": "Item port min size",
-				"en": "Item port min size"
+				"de": "Item port minimum size",
+				"en": "Item port minimum size"
 			}
 		],
 		[
-			"SMW_ItemPortMaxSize",
+			"SMW_ItemPortMaximumSize",
 			{
-				"de": "Item port max size",
-				"en": "Item port max size"
+				"de": "Item port maximum size",
+				"en": "Item port maximum size"
 			}
 		],
 		[
