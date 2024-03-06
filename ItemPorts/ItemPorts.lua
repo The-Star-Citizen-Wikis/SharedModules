@@ -62,7 +62,8 @@ function methodtable.out( self )
 	local smwData = self:getSmwData( self.page )
 	
 	if smwData == nil then
-		return 'Error SMW data not found'
+        local msg = mw.ustring.format( "No item ports found on '''%s'''.", self.page )
+		return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
 	end
 
     local containerHtml = mw.html.create( 'div' ):addClass( 'template-itemPorts' )
