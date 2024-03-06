@@ -140,4 +140,15 @@ function ItemPorts.outputTable( frame )
 end
 
 
+--- For debugging use
+---
+--- @param page string page name on the wiki
+--- @return string
+function ItemPorts.test( page )
+    local instance = ItemPorts:new( page )
+    local out = instance:out()
+
+    return out
+end
+
 return ItemPorts
