@@ -8,6 +8,21 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local MODULE_NAME = 'Module:ItemPorts'
+local config = mw.loadJsonData( MODULE_NAME .. '/config.json' )
+
+local TNT = require( 'Module:Translate' ):new()
+
+
+--- Wrapper function for Module:Translate.translate
+---
+--- @param key string The translation key
+--- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
+--- @return string If the key was not found in the .tab page, the key is returned
+local function translate( key, addSuffix, ... )
+	return TNT:translate( MODULE_NAME .. '/i18n.json', config, key, addSuffix, {...} ) or key
+end
+
 
 --- Creates the object that is used to query the SMW store
 ---
@@ -17,17 +32,17 @@ local function makeSmwQueryObject( page )
     return {
         mw.ustring.format(
             '[[-Has subobject::' .. page .. ']][[%s::+]]',
-            'Item port name'
+            translate( 'SMW_ItemPortName' )
         ),
-        mw.ustring.format( '?%s#-=name', 'Item port name' ),
-        mw.ustring.format( '?%s#-=min_size', 'Item port minimum size' ),
-        mw.ustring.format( '?%s#-=max_size', 'Item port maximum size' ),
-        mw.ustring.format( '?%s#-=equipped_name', 'Equipped item name' ),
-        --mw.ustring.format( '?%s#-=equipped_uuid', 'Equipped item UUID' ),
+        mw.ustring.format( '?%s#-=name', translate( 'SMW_ItemPortName' ) ),
+        mw.ustring.format( '?%s#-=min_size', translate( 'SMW_ItemPortMinimumSize' ) ),
+        mw.ustring.format( '?%s#-=max_size', translate( 'SMW_ItemPortMaximumSize' ) ),
+        mw.ustring.format( '?%s#-=equipped_name', translate( 'SMW_EquippedItemName' ) ),
+        mw.ustring.format( '?%s#-=equipped_uuid', translate( 'SMW_EquippedItemUUID' ) ),
         mw.ustring.format(
             'sort=%s,%s',
-            'Item port name',
-            'Item port maximum size'
+            translate( 'SMW_ItemPortName' ),
+            translate( 'SMW_ItemPortMaximumSize' )
         ),
         'order=asc,desc',
         'limit=1000'
@@ -62,7 +77,7 @@ function methodtable.out( self )
 	local smwData = self:getSmwData( self.page )
 	
 	if smwData == nil then
-        local msg = mw.ustring.format( "No item ports found on '''%s'''.", self.page )
+        local msg = mw.ustring.format( translate( 'error_no_itemports_found' ), self.page )
 		return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
 	end
 
@@ -70,6 +85,7 @@ function methodtable.out( self )
 
 	for _, port in ipairs( smwData ) do
 		local size_text, title
+        local subtitle = translate( 'itemPort_' .. port.name )
 
 		if port.min_size == port.max_size then
 			size_text = mw.ustring.format( 'S%d', port.min_size )
@@ -80,7 +96,7 @@ function methodtable.out( self )
 		if port.equipped_name ~= nil then
             if port.equipped_name == '<= PLACEHOLDER =>' then
                 -- TODO: Display more specific name by getting the type of the item
-                title = 'Placeholder item'
+                title = translate( 'item_placeholder' )
             else
 			    title = mw.ustring.format( '[[%s]]', port.equipped_name )
             end
@@ -99,7 +115,7 @@ function methodtable.out( self )
             :addClassIf( port.equipped_name, 'template-itemPort-item--hasItem' )
 			:tag( 'div' )
                 :addClass( 'template-itemPort-subtitle' )
-                :wikitext( port.name )
+                :wikitext( subtitle )
                 :done()
 			:tag( 'div' )
                 :addClass( 'template-itemPort-title' )
@@ -109,7 +125,7 @@ function methodtable.out( self )
 	end
 	
 	return tostring( containerHtml ) .. mw.getCurrentFrame():extensionTag{
-        name = 'templatestyles', args = { src = 'Module:ItemPorts/styles.css' }
+        name = 'templatestyles', args = { src = MODULE_NAME .. '/styles.css' }
     }
 end
 

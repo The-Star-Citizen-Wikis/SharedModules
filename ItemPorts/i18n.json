@@ -1,0 +1,104 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:ItemPorts"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_ItemPortName",
+			{
+				"de": "Item port name",
+				"en": "Item port name"
+			}
+		],
+		[
+			"SMW_ItemPortMinimumSize",
+			{
+				"de": "Item port minimum size",
+				"en": "Item port minimum size"
+			}
+		],
+		[
+			"SMW_ItemPortMaximumSize",
+			{
+				"de": "Item port maximum size",
+				"en": "Item port maximum size"
+			}
+		],
+		[
+			"SMW_EquippedItemName",
+			{
+				"de": "Equipped item name",
+				"en": "Equipped item name"
+			}
+		],
+		[
+			"SMW_EquippedItemUUID",
+			{
+				"de": "Equipped item UUID",
+				"en": "Equipped item UUID"
+			}
+		],
+		[
+			"item_placeholder",
+			{
+				"de": "Placeholder item",
+				"en": "Placeholder item"
+			}
+		],
+		[
+			"itemPort_magazine_attach",
+			{
+				"de": "Weapon magazine",
+				"en": "Weapon magazine"
+			}
+		],
+		[
+			"itemPort_BAR1",
+			{
+				"de": "Barrel attachment 1",
+				"en": "Barrel attachment 1"
+			}
+		],
+		[
+			"itemPort_MEC",
+			{
+				"de": "Firing mechanism attachment",
+				"en": "Firing mechanism attachment"
+			}
+		],
+		[
+			"itemPort_POW",
+			{
+				"de": "Power array attachment",
+				"en": "Power array attachment"
+			}
+		],
+		[
+			"itemPort_VEN",
+			{
+				"de": "Ventilation attachment",
+				"en": "Ventilation attachment"
+			}
+		],
+		[
+			"error_no_itemports_found",
+			{
+				"de": "No item ports found on '''%s'''.",
+				"en": "No item ports found on '''%s'''."
+			}
+		]
+	]
+}
