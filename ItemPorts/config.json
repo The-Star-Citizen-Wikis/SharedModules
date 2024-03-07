@@ -1,4 +1,8 @@
 {
 	"%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
-	"smw_multilingual_text": false
+	"smw_multilingual_text": false,
+	"%blocklist_itemport_name": "List of item port name to not include in the template",
+	"blocklist_itemport_name": [
+		"item_grab"
+	]
 }

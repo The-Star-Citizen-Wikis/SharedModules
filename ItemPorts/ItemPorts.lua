@@ -83,6 +83,10 @@ function methodtable.out( self )
 
     local containerHtml = mw.html.create( 'div' ):addClass( 'template-itemPorts' )
 
+    -- FIXME: This does nothing since I don't know how to achieve this in Lua
+    -- When port.name equals to one of the value in blockedPortNames, skip the iteration.
+    local blockedPortNames = config.blocklist_itemport_name
+
 	for _, port in ipairs( smwData ) do
 		local size_text, title
         local subtitle = translate( 'itemPort_' .. port.name )
