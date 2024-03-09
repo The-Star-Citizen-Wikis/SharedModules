@@ -144,7 +144,9 @@
 		},
 		{
 			"name": "Module:Item/FPSConsumable",
-			"type": []
+			"type": [
+				"FPS_Consumable.Hacking"
+			]
 		},
 		{
 			"name": "Module:Item/PersonalWeaponAttachment",

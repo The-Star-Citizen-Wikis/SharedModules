@@ -444,6 +444,13 @@
 			}
 		],
 		[
+			"type_fps_consumable.hacking",
+			{
+				"de": "Cryptokey",
+				"en": "Cryptokey"
+			}
+		],
+		[
 			"type_fps_consumable.medical",
 			{
 				"de": "Medizinisches Verbrauchsgut",
@@ -987,6 +994,13 @@
 			{
 				"de": "Verbrauchsgut",
 				"en": "Consumable"
+			}
+		],
+		[
+			"category_fps_consumable.hacking",
+			{
+				"de": "Cryptokey",
+				"en": "Cryptokeys"
 			}
 		],
 		[

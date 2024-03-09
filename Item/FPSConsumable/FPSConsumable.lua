@@ -56,7 +56,22 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
-
+    -- Cryptokeys
+    if smwData[ translate( 'SMW_Type' ) ] == 'FPS_Consumable.Hacking' then
+        infobox:renderSection( {
+            content = {
+                infobox:renderItem( {
+                    label = translate( 'LBL_ModifierDuration' ),
+                    data = smwData[ translate( 'SMW_ModifierDuration' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_ErrorChance' ),
+                    data = smwData[ translate( 'SMW_ErrorChance' ) ],
+                } )
+            },
+            col = 2
+        } )
+    end
 end
 
 
