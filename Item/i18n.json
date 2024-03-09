@@ -612,6 +612,13 @@
 			}
 		],
 		[
+			"type_weaponattachment.barrel",
+			{
+				"de": "Barrel attachment",
+				"en": "Barrel attachment"
+			}
+		],
+		[
 			"type_weaponattachment.bottomattachment",
 			{
 				"de": "Unterlaufbefestigung",
@@ -1148,6 +1155,13 @@
 			{
 				"de": "Waffenturm",
 				"en": "Weapon mounts"
+			}
+		],
+		[
+			"category_weaponattachment.barrel",
+			{
+				"de": "Barrel attachment",
+				"en": "Barrel attachments"
 			}
 		],
 		[

@@ -2,7 +2,7 @@ require( 'strict' )
 
 local p = {}
 
-local MODULE_NAME = 'PersonalWeaponAttachment'
+local MODULE_NAME = 'WeaponAttachment'
 
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )

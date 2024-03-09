@@ -1,0 +1,125 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item/WeaponAttachment"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized" 
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"SMW_Class",
+			{
+				"de": "Klasse",
+				"en": "Class"
+			}
+		],
+		[
+			"SMW_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"SMW_Slot",
+			{
+				"de": "Slot",
+				"en": "Slot"
+			}
+		],
+		[
+			"SMW_OpticsMagnification",
+			{
+				"de": "Vergrößerungsfaktor",
+				"en": "Optics magnification"
+			}
+		],
+		[
+			"SMW_OpticsType",
+			{
+				"de": "Optiktyp",
+				"en": "Optics type"
+			}
+		],
+		[
+			"SMW_ZeroingRange",
+			{
+				"de": "Zeroing range",
+				"en": "Zeroing range"
+			}
+		],
+		[
+			"SMW_ZeroingRangeIncrement",
+			{
+				"de": "Zeroing range increment",
+				"en": "Zeroing range increment"
+			}
+		],
+		[
+			"SMW_AutoZeroingTime",
+			{
+				"de": "Auto zeroing time",
+				"en": "Auto zeroing time"
+			}
+		],
+		[
+			"LBL_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_OpticsMagnification",
+			{
+				"de": "Vergrößerung",
+				"en": "Magnification"
+			}
+		],
+		[
+			"LBL_OpticsType",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"LBL_ZeroingRange",
+			{
+				"de": "Zeroing range",
+				"en": "Zeroing range"
+			}
+		],
+		[
+			"LBL_ZeroingRangeIncrement",
+			{
+				"de": "Zeroing range increment",
+				"en": "Zeroing range increment"
+			}
+		],
+		[
+			"LBL_AutoZeroingTime",
+			{
+				"de": "Auto zeroing time",
+				"en": "Auto zeroing time"
+			}
+		]
+	]
+}

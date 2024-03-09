@@ -149,15 +149,6 @@
 			]
 		},
 		{
-			"name": "Module:Item/PersonalWeaponAttachment",
-			"type": [
-				"WeaponAttachment.BottomAttachment",
-				"WeaponAttachment.IronSight",
-				"WeaponAttachment.Magazine",
-				"WeaponAttachment.Utility"
-			]
-		},
-		{
 			"name": "Module:Item/VehicleItem",
 			"type": [
 				"Bomb",
@@ -186,6 +177,16 @@
 				"WeaponGun.Gun",
 				"WeaponGun.Rocket",
 				"WeaponMining.Gun"
+			]
+		},
+		{
+			"name": "Module:Item/WeaponAttachment",
+			"type": [
+				"WeaponAttachment.Barrel",
+				"WeaponAttachment.BottomAttachment",
+				"WeaponAttachment.IronSight",
+				"WeaponAttachment.Magazine",
+				"WeaponAttachment.Utility"
 			]
 		}
 	]
