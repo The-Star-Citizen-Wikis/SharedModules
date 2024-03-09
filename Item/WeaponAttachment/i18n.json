@@ -45,6 +45,27 @@
 			}
 		],
 		[
+			"SMW_BarrelAttachmentType",
+			{
+				"de": "Barrel attachment type",
+				"en": "Barrel attachment type"
+			}
+		],
+		[
+			"SMW_ModifierSoundRadius",
+			{
+				"de": "Modifier sound radius",
+				"en": "Modifier sound radius"
+			}
+		],
+		[
+			"SMW_ModifierFireRecoilStrength",
+			{
+				"de": "Modifier fire recoil strength",
+				"en": "Modifier fire recoil strength"
+			}
+		],
+		[
 			"SMW_OpticsMagnification",
 			{
 				"de": "Vergrößerungsfaktor",
@@ -84,6 +105,27 @@
 			{
 				"de": "Munition",
 				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_BarrelAttachmentType",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"LBL_ModifierSoundRadius",
+			{
+				"de": "Noise",
+				"en": "Noise"
+			}
+		],
+		[
+			"LBL_ModifierFireRecoilStrength",
+			{
+				"de": "Recoil",
+				"en": "Recoil"
 			}
 		],
 		[

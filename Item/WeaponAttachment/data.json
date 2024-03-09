@@ -5,6 +5,15 @@
 			"SMW_Slot": "API_position"
 		},
 		{
+			"SMW_BarrelAttachmentType": "API_barrel_attach.type"
+		},
+		{
+			"SMW_ModifierSoundRadius": "API_weapon_modifier.sound_radius_multiplier"
+		},
+		{
+			"SMW_ModifierFireRecoilStrength": "API_weapon_modifier.recoil.fire_recoil_strength_multiplier"
+		},
+		{
 			"SMW_OpticsMagnification": "API_iron_sight.magnification"
 		},
 		{

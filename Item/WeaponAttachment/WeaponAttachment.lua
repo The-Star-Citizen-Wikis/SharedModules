@@ -56,8 +56,28 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
+    -- Barrel attachments
+    if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
+        infobox:renderSection( {
+            content = {
+                infobox:renderItem( {
+                    label = translate( 'LBL_BarrelAttachmentType' ),
+                    -- TODO: Localize barrel attachment type
+                    data = smwData[ translate( 'SMW_BarrelAttachmentType' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_ModifierFireRecoilStrength' ),
+                    data = smwData[ translate( 'SMW_ModifierFireRecoilStrength' ) ],
+                } ),
+                infobox:renderItem( {
+                    label = translate( 'LBL_ModifierSoundRadius' ),
+                    data = smwData[ translate( 'SMW_ModifierSoundRadius' ) ],
+                } )
+            },
+            col = 2
+        } )
     -- Optics attachments
-    if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
+    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
@@ -66,6 +86,7 @@ function p.addInfoboxData( infobox, smwData )
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_OpticsType' ),
+                    -- TODO: Localize optics attachment type
                     data = smwData[ translate( 'SMW_OpticsType' ) ],
                 } ),
                 infobox:renderItem( {
@@ -105,7 +126,23 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addCategories( categories, frameArgs, smwData )
+    -- FIXME: We should have a way to use the parent module i18n.json, would save a lot of duplicated entries.
 
+    -- Barrel attachments
+    --if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
+    --    -- e.g. Category:Barrel attachments (Energy stabliizer)
+    --    table.insert( categories, string.format( '%s (%s)',
+    --        translate( 'category_weaponattachment.barrel' ),
+    --        translate( 'class_barrelattachmenttype' )
+    --    ) )
+    -- Optics attachments
+    --elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
+    --    -- e.g. Category:Optics attachments (Telescopic)
+    --    table.insert( categories, string.format( '%s (%s)',
+    --        translate( 'category_weaponattachment.ironsight' ),
+    --        translate( 'class_opticstype' )
+    --    ) )
+    --end
 end
 
 --- Return the short description for this object
