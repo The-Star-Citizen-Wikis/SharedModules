@@ -55,15 +55,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 		return value
 	end
 
-    local function format( datum, value )
-        local val = mw.clone( value )
-
-        -- This should not happen
-        --- FIXME: Somehow this is mutating the original self.apiData, not sure why
-        if type( val ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
-            val = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
-        end
-
+    local function format( datum, val )
         -- Format number for SMW
         if datum.type == 'number' then
             val = common.formatNum( val )
@@ -98,15 +90,6 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
                 common.formatNum( val.min ),
                 common.formatNum( val.max ),
             }
-            -- Subobject
-        elseif datum.type == 'subobject' then
-            local api = require( 'Module:Common/Api' )
-            for _, data in ipairs( value ) do
-                local subobject = {}
-                data = api.makeAccessSafe( data )
-                commonSMW.addSmwProperties( data, {}, subobject, translateFn, moduleConfig, datum, moduleName )
-                mw.smw.subobject( subobject )
-            end
         end
 
         return val
@@ -193,10 +176,28 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
                     end
 
                     value = output
+                elseif datum.type == 'subobject' then
+                    local api = require( 'Module:Common/Api' )
+
+                    for _, data in ipairs( value ) do
+                        local subobject = {}
+                        data = api.makeAccessSafe( data )
+                        commonSMW.addSmwProperties( data, {}, subobject, translateFn, moduleConfig, datum, moduleName )
+
+                        mw.smw.subobject( subobject )
+                    end
                 else
                     for index, val in ipairs( value ) do
+                        local newValue = mw.clone( val )
+
+                        if type( newValue ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
+                            newValue = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
+                        else
+                            newValue = format( datum, newValue )
+                        end
+
                         table.remove( value, index )
-                        table.insert( value, index, format( datum, val ) )
+                        table.insert( value, index, newValue )
                     end
                 end
 
