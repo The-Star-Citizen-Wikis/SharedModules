@@ -110,8 +110,8 @@
             "conditions": "Category:Backpacks"
         },
         {
-            "label": "Cryptokeys",
-            "conditions": "Category:Cryptokeys"
+            "label": "Barrel attachments",
+            "conditions": "Category:Barrel attachments"
         },
         {
             "label": "Eyewear",
@@ -140,6 +140,10 @@
         {
             "label": "Legs armor",
             "conditions": "Category:Legs armor"
+        },
+        {
+            "label": "Multi-Tool attachment",
+            "conditions": "Category:Multi-Tool attachments"
         },
         {
             "label": "Optics attachments",
@@ -178,8 +182,8 @@
             "conditions": "Category:Undersuits"
         },
         {
-            "label": "Weapon attachments",
-            "conditions": "Category:Weapon attachments"
+            "label": "Cryptokeys",
+            "conditions": "Category:Cryptokeys"
         },
         {
             "label": "Drinks",
@@ -188,6 +192,10 @@
         {
             "label": "Food",
             "conditions": "Category:Food"
+        },
+        {
+            "label": "Medical consumable",
+            "conditions": "Category:Medical consumables"
         }
     ]
 }
