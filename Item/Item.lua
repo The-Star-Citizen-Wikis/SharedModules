@@ -647,6 +647,8 @@ function Item.main( frame )
 	instance:saveApiData()
 
 	local debugOutput = ''
+	local interwikiLinks = ''
+
 	if instance.frameArgs[ 'debug' ] ~= nil then
 		debugOutput = instance:makeDebugOutput()
 	end
@@ -656,9 +658,10 @@ function Item.main( frame )
 	if instance.smwData ~= nil then
 		instance:setCategories()
 		instance:setShortDescription()
+		interwikiLinks = common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
 	end
 
-	return infobox .. debugOutput .. instance:getCategories()
+	return infobox .. debugOutput .. instance:getCategories() .. interwikiLinks
 end
 
 
