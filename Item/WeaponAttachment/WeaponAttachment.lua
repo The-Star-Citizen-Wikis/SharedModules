@@ -126,7 +126,7 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addCategories( categories, frameArgs, smwData )
-    -- FIXME: We should have a way to use the parent module i18n.json, would save a lot of duplicated entries.
+    -- FIXME: Is there a way to make addSubcategory avaliable here?
 
     -- Barrel attachments
     --if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
