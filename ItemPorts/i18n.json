@@ -59,13 +59,6 @@
 			}
 		],
 		[
-			"itemPort_magazine_attach",
-			{
-				"de": "Weapon magazine",
-				"en": "Weapon magazine"
-			}
-		],
-		[
 			"itemPort_BAR1",
 			{
 				"de": "Barrel attachment 1",
@@ -94,10 +87,3622 @@
 			}
 		],
 		[
+			"itemPort_Ammo",
+			{
+				"en": "Ammo",
+				"de": "Munition"
+			}
+		],
+		[
+			"itemPort_Armor_Arms",
+			{
+				"en": "Armor (Arms)",
+				"de": "Rüstung (Arme)"
+			}
+		],
+		[
+			"itemPort_Armor_Helmet",
+			{
+				"en": "Armor (Helmet)",
+				"de": "Rüstung (Helm)"
+			}
+		],
+		[
+			"itemPort_Armor_Legs",
+			{
+				"en": "Armor (Legs)",
+				"de": "Rüstung (Beine)"
+			}
+		],
+		[
+			"itemPort_Armor_Torso",
+			{
+				"en": "Armor (Torso)",
+				"de": "Rüstung (Torso)"
+			}
+		],
+		[
+			"itemPort_Armor_Undersuit",
+			{
+				"en": "Undersuit",
+				"de": "Unteranzug"
+			}
+		],
+		[
+			"itemPort_BONE_ItemPort_Consumable_1",
+			{
+				"en": "Sub-Item Slot 1",
+				"de": "Sub-Item Slot 1"
+			}
+		],
+		[
+			"itemPort_BONE_ItemPort_Consumable_2",
+			{
+				"en": "Sub-Item Slot 2",
+				"de": "Sub-Item Slot 2"
+			}
+		],
+		[
+			"itemPort_BONE_ItemPort_Consumable_3",
+			{
+				"en": "Sub-Item Slot 3",
+				"de": "Sub-Item Slot 3"
+			}
+		],
+		[
+			"itemPort_BarrelSlot",
+			{
+				"en": "Barrel attachment",
+				"de": "Laufaufsatz"
+			}
+		],
+		[
+			"itemPort_CanisterSlot",
+			{
+				"en": "Multi-Tool Attachment Canister",
+				"de": "Multi-Tool-Aufsatz-Kanister"
+			}
+		],
+		[
+			"itemPort_Clothing_Feet",
+			{
+				"en": "Footwear",
+				"de": "Schuhwerk"
+			}
+		],
+		[
+			"itemPort_Clothing_Hands",
+			{
+				"en": "Gloves",
+				"de": "Handschuhe"
+			}
+		],
+		[
+			"itemPort_Clothing_Legs",
+			{
+				"en": "Legwear",
+				"de": "Beinbekleitund"
+			}
+		],
+		[
+			"itemPort_Clothing_Torso_0",
+			{
+				"en": "Shirt",
+				"de": "Hemd"
+			}
+		],
+		[
+			"itemPort_Clothing_Torso_1",
+			{
+				"en": "Jacket",
+				"de": "Jacke"
+			}
+		],
+		[
+			"itemPort_Eye_Accessories_ItemPort",
+			{
+				"en": "Eyewear",
+				"de": "Brillen"
+			}
+		],
+		[
+			"itemPort_GunMount",
+			{
+				"en": "Gun - Mount",
+				"de": "Waffe - Befestigung"
+			}
+		],
+		[
+			"itemPort_Hardpoint_Missiles_Top",
+			{
+				"en": "Missile rack",
+				"de": "Raketenträger"
+			}
+		],
+		[
+			"itemPort_Hardpoint_Weapon_Wing_S1_Left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_Hardpoint_Weapon_Wing_S1_Right",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_Hardpoint_Weapon_Wing_Tip_S3_Left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_Hat_ItemPort",
+			{
+				"en": "Hat",
+				"de": "Hut"
+			}
+		],
+		[
+			"itemPort_ModuleSlot",
+			{
+				"en": "Multi-Tool Attachment",
+				"de": "Multi-Tool-Aufsatz"
+			}
+		],
+		[
+			"itemPort_NameNozzle",
+			{
+				"en": "Nozzle",
+				"de": "Düse"
+			}
+		],
+		[
+			"itemPort_OpticsSlot",
+			{
+				"en": "Optics Attachment",
+				"de": "Optik-Aufsatz"
+			}
+		],
+		[
+			"itemPort_Ordinance",
+			{
+				"en": "Ordnance",
+				"de": "Wehrmaterial"
+			}
+		],
+		[
+			"itemPort_Ordnance",
+			{
+				"en": "Ordnance",
+				"de": "Wehrmaterial"
+			}
+		],
+		[
+			"itemPort_Paint",
+			{
+				"en": "Liveries",
+				"de": "Farbe"
+			}
+		],
+		[
+			"itemPort_Slot",
+			{
+				"en": "Weapon",
+				"de": "Waffe"
+			}
+		],
+		[
+			"itemPort_Sub_Item_Slot",
+			{
+				"en": "Sub-Item Slot",
+				"de": "Sub-Item Slot"
+			}
+		],
+		[
+			"itemPort_Torpedo",
+			{
+				"en": "Torpedo rack",
+				"de": "Torpedohalterung"
+			}
+		],
+		[
+			"itemPort_UnderbarrelSlot",
+			{
+				"en": "Underbarrel Attachment",
+				"de": "Unterlaufbefestigung"
+			}
+		],
+		[
+			"itemPort_ammo_box_01",
+			{
+				"en": "Ammo Box",
+				"de": "Munitionskiste"
+			}
+		],
+		[
+			"itemPort_ammo_box_02",
+			{
+				"en": "Ammo Box",
+				"de": "Munitionskiste"
+			}
+		],
+		[
+			"itemPort_backpack",
+			{
+				"en": "Backpack",
+				"de": "Rucksack"
+			}
+		],
+		[
+			"itemPort_barrel_attachment",
+			{
+				"en": "Weapon attachment (Barrel)",
+				"de": "Waffenaufsatz (Lauf)"
+			}
+		],
+		[
+			"itemPort_bottom_attachment",
+			{
+				"en": "Weapon attachment (Bottom)",
+				"de": "Waffenaufsatz (Unterseite)"
+			}
+		],
+		[
+			"itemPort_category_armor",
+			{
+				"en": "Armor",
+				"de": "Rüstung"
+			}
+		],
+		[
+			"itemPort_category_avionics",
+			{
+				"en": "Avionics",
+				"de": "Avionik"
+			}
+		],
+		[
+			"itemPort_category_clothing",
+			{
+				"en": "Clothing",
+				"de": "Kleidung"
+			}
+		],
+		[
+			"itemPort_category_defences",
+			{
+				"en": "Defenses",
+				"de": "Verteidigungen"
+			}
+		],
+		[
+			"itemPort_category_misc",
+			{
+				"en": "Misc.",
+				"de": "Verschiedenes"
+			}
+		],
+		[
+			"itemPort_category_propulsion",
+			{
+				"en": "Propulsion",
+				"de": "Antrieb"
+			}
+		],
+		[
+			"itemPort_category_systems",
+			{
+				"en": "Systems",
+				"de": "Systeme"
+			}
+		],
+		[
+			"itemPort_category_technology",
+			{
+				"en": "Technology",
+				"de": "Technologie"
+			}
+		],
+		[
+			"itemPort_category_undersuit",
+			{
+				"en": "Undersuits",
+				"de": "Unteranzüge"
+			}
+		],
+		[
+			"itemPort_category_utility",
+			{
+				"en": "Utility",
+				"de": "Hilfsmittel"
+			}
+		],
+		[
+			"itemPort_category_weaponry",
+			{
+				"en": "Vhcl. Wpns.",
+				"de": "Fahrzeugwaffen"
+			}
+		],
+		[
+			"itemPort_category_weapons",
+			{
+				"en": "Prsnl. Wpns.",
+				"de": "Persönliche Waffen"
+			}
+		],
+		[
+			"itemPort_flair",
+			{
+				"en": "Flair",
+				"de": "Flair"
+			}
+		],
+		[
+			"itemPort_flashlight",
+			{
+				"en": "Flashlight",
+				"de": "Taschenlampe"
+			}
+		],
+		[
+			"itemPort_gadget_attach_1",
+			{
+				"en": "Utility item",
+				"de": "Gebrauchsgegenstand"
+			}
+		],
+		[
+			"itemPort_gadget_attach_2",
+			{
+				"en": "Utility item",
+				"de": "Gebrauchsgegenstand"
+			}
+		],
+		[
+			"itemPort_grenade_attach_1",
+			{
+				"en": "Grenade",
+				"de": "Granate"
+			}
+		],
+		[
+			"itemPort_grenade_attach_2",
+			{
+				"en": "Grenade",
+				"de": "Granate"
+			}
+		],
+		[
+			"itemPort_grenade_attach_3",
+			{
+				"en": "Grenade",
+				"de": "Granate"
+			}
+		],
+		[
+			"itemPort_grenade_attach_4",
+			{
+				"en": "Grenade",
+				"de": "Granate"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Body_Weapon",
+			{
+				"en": "Weapon - Left",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Pylon_01",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Pylon_02",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Pylon_03",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_S3_Pylon",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Wing_S03",
+			{
+				"en": "Weapon - Left Inner Wing",
+				"de": "Waffe - Linker innerer Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Wing_Weapon",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_Left_Wingtip_S01",
+			{
+				"en": "Weapon - Left Wingtip",
+				"de": "Waffe - Linke Flügelspitze"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Body_Weapon",
+			{
+				"en": "Weapon - Right",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Pylon_01",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Pylon_02",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Pylon_03",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_S3_Pylon",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Wing_S3",
+			{
+				"en": "Weapon - Right Inner Wing",
+				"de": "Waffer - Rechter innerer Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Wing_Weapon",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_Right_Wingtip_S1",
+			{
+				"en": "Weapon - Right Wingtip",
+				"de": "Waffe - Rechte Flügelspitze"
+			}
+		],
+		[
+			"itemPort_hardpoint_Spinal_S4",
+			{
+				"en": "Weapon - Top",
+				"de": "Waffe - Oben"
+			}
+		],
+		[
+			"itemPort_hardpoint_Weapon_Nose_Left",
+			{
+				"en": "Weapon - Left",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_Weapon_Nose_Right",
+			{
+				"en": "Weapon - Right",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_Weapon_Wing_Top_Left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_Weapon_Wing_Top_Right",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_blade_wing_left",
+			{
+				"en": "Ramming Blade",
+				"de": "Rammklinge"
+			}
+		],
+		[
+			"itemPort_hardpoint_blade_wing_right",
+			{
+				"en": "Ramming Blade - Right",
+				"de": "Rammklinge - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_class1_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_class1_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_class2_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_1_left",
+			{
+				"en": "Weapon - Left",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_1_left_whisker",
+			{
+				"en": "Weapon - Left Whisker",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_1_right",
+			{
+				"en": "Weapon - Right",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_1_right_whisker",
+			{
+				"en": "Weapon - Right Whisker",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_2",
+			{
+				"en": "Weapon",
+				"de": "Waffe"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_2_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_2_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_3",
+			{
+				"en": "Missile rack",
+				"de": "Raketenträger"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_3_left_bay_door",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_3_left_bay_door_outer",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_3_right_bay_door",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_3_right_bay_door_outer",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_4_center",
+			{
+				"en": "Weapon - Center",
+				"de": "Waffe - Mitte"
+			}
+		],
+		[
+			"itemPort_hardpoint_class_4_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler",
+			{
+				"en": "Cooler",
+				"de": "Kühler"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_01",
+			{
+				"en": "Cooler - Left",
+				"de": "Kühler - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_02",
+			{
+				"en": "Cooler - Right",
+				"de": "Kühler - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_03",
+			{
+				"en": "Cooler - Center",
+				"de": "Kühler - Mitte"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_bottom",
+			{
+				"en": "Cooler - Bottom",
+				"de": "Kühler - Unten"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_left",
+			{
+				"en": "Cooler - Left",
+				"de": "Kühler - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_left_lower",
+			{
+				"en": "Cooler - Left Lower",
+				"de": "Kühler - Linksunten"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_left_upper",
+			{
+				"en": "Cooler - Left Upper",
+				"de": "Kühler - Linksoben"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_main",
+			{
+				"en": "Cooler - Main",
+				"de": "Kühler - Main"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_right",
+			{
+				"en": "Cooler - Right",
+				"de": "Kühler - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_right_lower",
+			{
+				"en": "Cooler - Right Lower",
+				"de": "Kühler - Rechtsunten"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_right_upper",
+			{
+				"en": "Cooler - Right Upper",
+				"de": "Kühler - Rechtsoben"
+			}
+		],
+		[
+			"itemPort_hardpoint_cooler_top",
+			{
+				"en": "Cooler - Top",
+				"de": "Kühler - Oben"
+			}
+		],
+		[
+			"itemPort_hardpoint_front_turret",
+			{
+				"en": "Weapon - Front",
+				"de": "Waffe - Front"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_center",
+			{
+				"en": "Weapon - Center",
+				"de": "Waffe - Mitte"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_laser_bottom_left",
+			{
+				"en": "Weapon - Left Bottom",
+				"de": "Waffe - Links Unten"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_laser_bottom_right",
+			{
+				"en": "Weapon - Right Bottom",
+				"de": "Waffe - Rechts Unten"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_laser_top_left",
+			{
+				"en": "Weapon - Left Nacelle",
+				"de": "Waffe - Linke Nacelle"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_laser_top_right",
+			{
+				"en": "Weapon - Right Nacelle",
+				"de": "Waffe - Rechte Nacelle"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_left",
+			{
+				"en": "Weapon - Left",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_nose_left",
+			{
+				"en": "Weapon - Nose Left",
+				"de": "Waffe - Nase Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_nose_right",
+			{
+				"en": "Weapon - Nose Right",
+				"de": "Waffe - Nase Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_right",
+			{
+				"en": "Weapon - Right",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_wing_left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_gun_wing_right",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_left_wing_gun_mount",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_mining_laser",
+			{
+				"en": "Mining Laser",
+				"de": "Bergbaulaser"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_left",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_left_wing",
+			{
+				"en": "Missile rack - Left Wing",
+				"de": "Raketenträger - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_left",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_right",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_left",
+			{
+				"en": "Missile rack - Left Wing",
+				"de": "Raketenträger - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_left_01",
+			{
+				"en": "Missile rack - Left Wing 01",
+				"de": "Raketenträger - Linker Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_left_02",
+			{
+				"en": "Missile rack - Left Wing 02",
+				"de": "Raketenträger - Linker Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_right",
+			{
+				"en": "Missile rack - Right Wing",
+				"de": "Raketenträger - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_right_01",
+			{
+				"en": "Missile rack - Right Wing 01",
+				"de": "Raketenträger - Rechter Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_rack_wing_right_02",
+			{
+				"en": "Missile rack - Right Wing 02",
+				"de": "Raketenträger - Rechter Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_right",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_missile_right_wing",
+			{
+				"en": "Missile rack - Right Wing",
+				"de": "Raketenträger - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_missilerack_left_wing_inner",
+			{
+				"en": "Missile rack - Left Wing 02",
+				"de": "Raketenträger - Linker Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_missilerack_left_wing_outer",
+			{
+				"en": "Missile rack - Left Wing 01",
+				"de": "Raketenträger - Linker Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_missilerack_right_wing_inner",
+			{
+				"en": "Missile rack - Right Wing 02",
+				"de": "Raketenträger - Rechter Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_missilerack_right_wing_outer",
+			{
+				"en": "Missile rack - Right Wing 01",
+				"de": "Raketenträger - Rechter Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_nose_gun",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_paint",
+			{
+				"en": "Livery",
+				"de": "Ausstattung"
+			}
+		],
+		[
+			"itemPort_hardpoint_power_plant",
+			{
+				"en": "Power plant",
+				"de": "Generator"
+			}
+		],
+		[
+			"itemPort_hardpoint_power_plant_02",
+			{
+				"en": "Power plant",
+				"de": "Generator"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant",
+			{
+				"en": "Power plant",
+				"de": "Generator"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_01",
+			{
+				"en": "Power plant - 01",
+				"de": "Generator - 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_02",
+			{
+				"en": "Power plant - 02",
+				"de": "Generator - 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_03",
+			{
+				"en": "Power plant - 03",
+				"de": "Generator - 03"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_left",
+			{
+				"en": "Power plant - Left",
+				"de": "Generator - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_middle",
+			{
+				"en": "Power plant - 01",
+				"de": "Generator - 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_rear",
+			{
+				"en": "Power plant - 02",
+				"de": "Generator - 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_rearleft",
+			{
+				"en": "Power plant - Left",
+				"de": "Generator - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_rearright",
+			{
+				"en": "Power plant - Right",
+				"de": "Generator - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_powerplant_right",
+			{
+				"en": "Power plant - Right",
+				"de": "Generator - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_pylon_left",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_pylon_right",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_quantum_Drive",
+			{
+				"en": "Quantum drive",
+				"de": "Quantenantrieb"
+			}
+		],
+		[
+			"itemPort_hardpoint_rear_left_turret",
+			{
+				"en": "Turret - Rear Left",
+				"de": "Turm - Rear Left"
+			}
+		],
+		[
+			"itemPort_hardpoint_rear_right_turret",
+			{
+				"en": "Turret - Rear Right",
+				"de": "Turm - Rear Right"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_bottom",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_front_left",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_front_right",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_rear_left",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_rear_right",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_remote_turret_top",
+			{
+				"en": "Remote turret",
+				"de": "Ferngesteuerter Geschützturm"
+			}
+		],
+		[
+			"itemPort_hardpoint_right_wing_gun_mount",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_rocket_rack_wing_left",
+			{
+				"en": "Rocket pod - Left Wing",
+				"de": "Raketenkapsel - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_rocket_rack_wing_right",
+			{
+				"en": "Rocket pod - Right Wing",
+				"de": "Raketenkapsel - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator",
+			{
+				"en": "Shield generator",
+				"de": "Schildgenerator"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_001",
+			{
+				"en": "Shield generator 01",
+				"de": "Schildgenerator 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_002",
+			{
+				"en": "Shield generator 02",
+				"de": "Schildgenerator 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_01",
+			{
+				"en": "Shield generator",
+				"de": "Schildgenerator"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_02",
+			{
+				"en": "Shield generator 02",
+				"de": "Schildgenerator 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_03",
+			{
+				"en": "Shield generator 03",
+				"de": "Schildgenerator 03"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_A",
+			{
+				"en": "Shield generator 01",
+				"de": "Schildgenerator 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_B",
+			{
+				"en": "Shield generator 02",
+				"de": "Schildgenerator 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_C",
+			{
+				"en": "Shield generator 03",
+				"de": "Schildgenerator 03"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_D",
+			{
+				"en": "Shield generator 04",
+				"de": "Schildgenerator 04"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_left",
+			{
+				"en": "Shield generator - Left",
+				"de": "Schildgenerator - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_shield_generator_right",
+			{
+				"en": "Shield generator - Right",
+				"de": "Schildgenerator - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_shieldgenerator_left",
+			{
+				"en": "Shield generator - Left",
+				"de": "Schildgenerator - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_shieldgenerator_right",
+			{
+				"en": "Shield generator - Right",
+				"de": "Schildgenerator - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_sidecannon_left",
+			{
+				"en": "Weapon - Nose Left",
+				"de": "Waffe - Nase Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_sidecannon_right",
+			{
+				"en": "Weapon - Nose Right",
+				"de": "Waffe - Nase Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_size_4",
+			{
+				"en": "Utility - Right Wing",
+				"de": "Hilfsmittel - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_back_left",
+			{
+				"en": "Torpedo rack - Back Left",
+				"de": "Torpedoträger - Back Left"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_back_right",
+			{
+				"en": "Torpedo rack - Back Right",
+				"de": "Torpedoträger - Back Right"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_front_left",
+			{
+				"en": "Torpedo rack - Front Left 01",
+				"de": "Torpedoträger - Front Left 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_front_left_02",
+			{
+				"en": "Torpedo rack - Front Left 02",
+				"de": "Torpedoträger - Front Left 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_front_right",
+			{
+				"en": "Torpedo rack - Front Right 01",
+				"de": "Torpedoträger - Front Right 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_torpedo_front_right_02",
+			{
+				"en": "Torpedo rack - Front Right 02",
+				"de": "Torpedoträger - Front Right 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_turret",
+			{
+				"en": "Turret",
+				"de": "Turm"
+			}
+		],
+		[
+			"itemPort_hardpoint_turret_left",
+			{
+				"en": "Turret weapon - Left",
+				"de": "Turmwaffe - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_turret_right",
+			{
+				"en": "Turret weapon - Right",
+				"de": "Turmwaffe - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_01",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_02",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_class1_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_class1_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_class2_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_class3_left",
+			{
+				"en": "Rocket pod - Left Wing",
+				"de": "Raketenkapsel - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_class3_right",
+			{
+				"en": "Rocket pod - Right Wing",
+				"de": "Raketenkapsel - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_centermount",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_class1_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_class1_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_nose_fixed_001",
+			{
+				"en": "Weapon - Nose Right 01",
+				"de": "Waffe - Nase Rechts 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_nose_fixed_002",
+			{
+				"en": "Weapon - Nose Left 01",
+				"de": "Waffe - Nase Links 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_nose_fixed_003",
+			{
+				"en": "Weapon - Nose Right 02",
+				"de": "Waffe - Nase Rechts 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_nose_fixed_004",
+			{
+				"en": "Weapon - Nose Left 02",
+				"de": "Waffe - Nase Links 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_gun_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_left_nose",
+			{
+				"en": "Weapon - Nose Left",
+				"de": "Waffe - Nase Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_mining",
+			{
+				"en": "Weapon - Mining Laser",
+				"de": "Waffe - Mining Laser"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_inner",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_rea",
+			{
+				"en": "Missile rack - Left Rear",
+				"de": "Raketenträger - Links Hinten"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_rear",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_wing",
+			{
+				"en": "Missile rack - Left Wing",
+				"de": "Raketenträger - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_wing_inner",
+			{
+				"en": "Missile rack - Left Wing 01",
+				"de": "Raketenträger - Linker Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_left_wing_outer",
+			{
+				"en": "Missile rack - Left Wing 02",
+				"de": "Raketenträger - Linker Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_inner",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_rea",
+			{
+				"en": "Missile rack - Right Rear",
+				"de": "Raketenträger - Rechts Hinten"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_rear",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_wing",
+			{
+				"en": "Missile rack - Right Wing",
+				"de": "Raketenträger - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_wing_inner",
+			{
+				"en": "Missile rack - Right Wing 01",
+				"de": "Raketenträger - Rechter Flügel 01"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_missilerack_right_wing_outer",
+			{
+				"en": "Missile rack - Right Wing 02",
+				"de": "Raketenträger - Rechter Flügel 02"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_right",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_right_nose",
+			{
+				"en": "Weapon - Nose Right",
+				"de": "Waffe - Nase Rechts"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_s02_left_wing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_s02_nose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_s02_right_wing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_weapon_top",
+			{
+				"en": "Weapon - Top",
+				"de": "Waffe - Oben"
+			}
+		],
+		[
+			"itemPort_hardpoint_wing_top_left",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_hardpoint_wing_top_right",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_jetpack_attach",
+			{
+				"en": "EVA Pack",
+				"de": "EVA Pack"
+			}
+		],
+		[
+			"itemPort_magazine_attach",
+			{
+				"en": "Weapon Magazine",
+				"de": "Waffenmagazin"
+			}
+		],
+		[
+			"itemPort_magazine_attach_1",
+			{
+				"en": "Spare weapon magazine 1",
+				"de": "Ersatzmagazin 1"
+			}
+		],
+		[
+			"itemPort_magazine_attach_2",
+			{
+				"en": "Spare weapon magazine 2",
+				"de": "Ersatzmagazin 2"
+			}
+		],
+		[
+			"itemPort_magazine_attach_3",
+			{
+				"en": "Spare weapon magazine 3",
+				"de": "Ersatzmagazin 3"
+			}
+		],
+		[
+			"itemPort_magazine_attach_4",
+			{
+				"en": "Spare weapon magazine 4",
+				"de": "Ersatzmagazin 4"
+			}
+		],
+		[
+			"itemPort_magazine_attach_5",
+			{
+				"en": "Spare weapon magazine 5",
+				"de": "Ersatzmagazin 5"
+			}
+		],
+		[
+			"itemPort_magazine_attach_6",
+			{
+				"en": "Spare weapon magazine 6",
+				"de": "Ersatzmagazin 6"
+			}
+		],
+		[
+			"itemPort_magazine_attach_7",
+			{
+				"en": "Spare weapon magazine 7",
+				"de": "Ersatzmagazin 7"
+			}
+		],
+		[
+			"itemPort_magazine_attach_8",
+			{
+				"en": "Spare weapon magazine 8",
+				"de": "Ersatzmagazin 8"
+			}
+		],
+		[
+			"itemPort_medPen_attach_1",
+			{
+				"en": "Consumable",
+				"de": "Verbrauchsgut"
+			}
+		],
+		[
+			"itemPort_medPen_attach_2",
+			{
+				"en": "Consumable",
+				"de": "Verbrauchsgut"
+			}
+		],
+		[
+			"itemPort_missile_01_attach",
+			{
+				"en": "Missile attach point 01",
+				"de": "Raketenbefestigung 01"
+			}
+		],
+		[
+			"itemPort_missile_02_attach",
+			{
+				"en": "Missile attach point 02",
+				"de": "Raketenbefestigung 02"
+			}
+		],
+		[
+			"itemPort_missile_03_attach",
+			{
+				"en": "Missile attach point 03",
+				"de": "Raketenbefestigung 03"
+			}
+		],
+		[
+			"itemPort_missile_04_attach",
+			{
+				"en": "Missile attach point 04",
+				"de": "Raketenbefestigung 04"
+			}
+		],
+		[
+			"itemPort_missile_05_attach",
+			{
+				"en": "Missile attach point 05",
+				"de": "Raketenbefestigung 05"
+			}
+		],
+		[
+			"itemPort_missile_06_attach",
+			{
+				"en": "Missile attach point 06",
+				"de": "Raketenbefestigung 06"
+			}
+		],
+		[
+			"itemPort_missile_07_attach",
+			{
+				"en": "Missile attach point 07",
+				"de": "Raketenbefestigung 07"
+			}
+		],
+		[
+			"itemPort_missile_08_attach",
+			{
+				"en": "Missile attach point 08",
+				"de": "Raketenbefestigung 08"
+			}
+		],
+		[
+			"itemPort_missile_09_attach",
+			{
+				"en": "Missile attach point 09",
+				"de": "Raketenbefestigung 09"
+			}
+		],
+		[
+			"itemPort_missile_10_attach",
+			{
+				"en": "Missile attach point 10",
+				"de": "Raketenbefestigung 10"
+			}
+		],
+		[
+			"itemPort_missile_attach_01",
+			{
+				"en": "Missile attach point 01",
+				"de": "Raketenbefestigung 01"
+			}
+		],
+		[
+			"itemPort_missile_attach_02",
+			{
+				"en": "Missile attach point 02",
+				"de": "Raketenbefestigung 02"
+			}
+		],
+		[
+			"itemPort_missile_attach_03",
+			{
+				"en": "Missile attach point 03",
+				"de": "Raketenbefestigung 03"
+			}
+		],
+		[
+			"itemPort_missile_attach_04",
+			{
+				"en": "Missile attach point 04",
+				"de": "Raketenbefestigung 04"
+			}
+		],
+		[
+			"itemPort_missile_attach_05",
+			{
+				"en": "Missile attach point 05",
+				"de": "Raketenbefestigung 05"
+			}
+		],
+		[
+			"itemPort_missile_attach_06",
+			{
+				"en": "Missile attach point 06",
+				"de": "Raketenbefestigung 06"
+			}
+		],
+		[
+			"itemPort_missile_attach_07",
+			{
+				"en": "Missile attach point 07",
+				"de": "Raketenbefestigung 07"
+			}
+		],
+		[
+			"itemPort_missile_attach_08",
+			{
+				"en": "Missile attach point 08",
+				"de": "Raketenbefestigung 08"
+			}
+		],
+		[
+			"itemPort_mobiglas_attach",
+			{
+				"en": "mobiGlas",
+				"de": "mobiGlas"
+			}
+		],
+		[
+			"itemPort_oxyPen_attach_1",
+			{
+				"en": "Consumable",
+				"de": "Verbrauchsgut"
+			}
+		],
+		[
+			"itemPort_oxyPen_attach_2",
+			{
+				"en": "Consumable",
+				"de": "Verbrauchsgut"
+			}
+		],
+		[
+			"itemPort_port_Flair01",
+			{
+				"en": "Flair Item Dashboard",
+				"de": "Flair-Gegenstand Dashboard"
+			}
+		],
+		[
+			"itemPort_port_Flair02",
+			{
+				"en": "Flair Item Hanging",
+				"de": "Flair-Gegenstand Hängend"
+			}
+		],
+		[
+			"itemPort_port_NameAviBlade01",
+			{
+				"en": "Avionics blade 1",
+				"de": "Avionik-Klinge 1"
+			}
+		],
+		[
+			"itemPort_port_NameAviBlade02",
+			{
+				"en": "Avionics blade 2",
+				"de": "Avionik-Klinge 2"
+			}
+		],
+		[
+			"itemPort_port_NameAviBlade03",
+			{
+				"en": "Avionics blade 3",
+				"de": "Avionik-Klinge 3"
+			}
+		],
+		[
+			"itemPort_port_NameAviBlade04",
+			{
+				"en": "Avionics blade 4",
+				"de": "Avionik-Klinge 4"
+			}
+		],
+		[
+			"itemPort_port_NameAvionics",
+			{
+				"en": "Avionics rack",
+				"de": "Avionik Rack"
+			}
+		],
+		[
+			"itemPort_port_NameAvionics01",
+			{
+				"en": "Avionics rack 1",
+				"de": "Avionuk Rack 1"
+			}
+		],
+		[
+			"itemPort_port_NameAvionics02",
+			{
+				"en": "Avionics rack 2",
+				"de": "Avionuk Rack 2"
+			}
+		],
+		[
+			"itemPort_port_NameAvionics03",
+			{
+				"en": "Avionics rack 3",
+				"de": "Avionuk Rack 3"
+			}
+		],
+		[
+			"itemPort_port_NameBombSystem",
+			{
+				"en": "Bomb system",
+				"de": "Bombensystem"
+			}
+		],
+		[
+			"itemPort_port_NameConfigurableSlot",
+			{
+				"en": "Configurable slot",
+				"de": "Konfigurierbarer Slot"
+			}
+		],
+		[
+			"itemPort_port_NameCooler01",
+			{
+				"en": "Cooler 1",
+				"de": "Kühler 1"
+			}
+		],
+		[
+			"itemPort_port_NameCooler02",
+			{
+				"en": "Cooler 2",
+				"de": "Kühler 2"
+			}
+		],
+		[
+			"itemPort_port_NameCooler03",
+			{
+				"en": "Cooler 3",
+				"de": "Kühler 3"
+			}
+		],
+		[
+			"itemPort_port_NameCooler04",
+			{
+				"en": "Cooler 4",
+				"de": "Kühler 4"
+			}
+		],
+		[
+			"itemPort_port_NameCooler05",
+			{
+				"en": "Cooler 5",
+				"de": "Kühler 5"
+			}
+		],
+		[
+			"itemPort_port_NameCooler06",
+			{
+				"en": "Cooler 6",
+				"de": "Kühler 6"
+			}
+		],
+		[
+			"itemPort_port_NameCooler07",
+			{
+				"en": "Cooler 7",
+				"de": "Kühler 7"
+			}
+		],
+		[
+			"itemPort_port_NameCooler08",
+			{
+				"en": "Cooler 8",
+				"de": "Kühler 8"
+			}
+		],
+		[
+			"itemPort_port_NameCooler09",
+			{
+				"en": "Cooler 9",
+				"de": "Kühler 9"
+			}
+		],
+		[
+			"itemPort_port_NameCooler10",
+			{
+				"en": "Cooler 10",
+				"de": "Kühler 10"
+			}
+		],
+		[
+			"itemPort_port_NameCooler11",
+			{
+				"en": "Cooler 11",
+				"de": "Kühler 11"
+			}
+		],
+		[
+			"itemPort_port_NameCooler12",
+			{
+				"en": "Cooler 12",
+				"de": "Kühler 12"
+			}
+		],
+		[
+			"itemPort_port_NameCountermeasure",
+			{
+				"en": "Countermeasure launcher",
+				"de": "Gegenmaßnahmen"
+			}
+		],
+		[
+			"itemPort_port_NameCountermeasure01",
+			{
+				"en": "Countermeasure launcher 1",
+				"de": "Gegenmaßnahmen 1"
+			}
+		],
+		[
+			"itemPort_port_NameCountermeasure02",
+			{
+				"en": "Countermeasure launcher 2",
+				"de": "Gegenmaßnahmen 2"
+			}
+		],
+		[
+			"itemPort_port_NameCountermeasure03",
+			{
+				"en": "Countermeasure launcher 3",
+				"de": "Gegenmaßnahmen 3"
+			}
+		],
+		[
+			"itemPort_port_NameCountermeasure04",
+			{
+				"en": "Countermeasure launcher 4",
+				"de": "Gegenmaßnahmen 4"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake",
+			{
+				"en": "Fuel intake",
+				"de": "Treibstoffeinlass"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake01",
+			{
+				"en": "Fuel intake 1",
+				"de": "Treibstoffeinlass 1"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake02",
+			{
+				"en": "Fuel intake 2",
+				"de": "Treibstoffeinlass 2"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake03",
+			{
+				"en": "Fuel intake 3",
+				"de": "Treibstoffeinlass 3"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake04",
+			{
+				"en": "Fuel intake 4",
+				"de": "Treibstoffeinlass 4"
+			}
+		],
+		[
+			"itemPort_port_NameFuelIntake05",
+			{
+				"en": "Fuel intake 5",
+				"de": "Treibstoffeinlass 5"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod01",
+			{
+				"en": "Fuel pod P1",
+				"de": "Kraftstoffpod P1"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod02",
+			{
+				"en": "Fuel pod P2",
+				"de": "Kraftstoffpod P2"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod03",
+			{
+				"en": "Fuel pod P3",
+				"de": "Kraftstoffpod P3"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod04",
+			{
+				"en": "Fuel pod S3",
+				"de": "Kraftstoffpod S3"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod05",
+			{
+				"en": "Fuel pod S2",
+				"de": "Kraftstoffpod S2"
+			}
+		],
+		[
+			"itemPort_port_NameFuelPod06",
+			{
+				"en": "Fuel pod S1",
+				"de": "Kraftstoffpod S1"
+			}
+		],
+		[
+			"itemPort_port_NameFuelRefin01",
+			{
+				"en": "Fuel refinery 1",
+				"de": "Krafftstoffraffinerie 1"
+			}
+		],
+		[
+			"itemPort_port_NameFuelRefin02",
+			{
+				"en": "Fuel refinery 2",
+				"de": "Krafftstoffraffinerie 2"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank",
+			{
+				"en": "Fuel tank",
+				"de": "Kraftstofftank"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank01",
+			{
+				"en": "Fuel tank 1",
+				"de": "Kraftstofftank 1"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank02",
+			{
+				"en": "Fuel tank 2",
+				"de": "Kraftstofftank 2"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank03",
+			{
+				"en": "Fuel tank 3",
+				"de": "Kraftstofftank 3"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank04",
+			{
+				"en": "Fuel tank 4",
+				"de": "Kraftstofftank 4"
+			}
+		],
+		[
+			"itemPort_port_NameFuelTank05",
+			{
+				"en": "Fuel tank 5",
+				"de": "Kraftstofftank 5"
+			}
+		],
+		[
+			"itemPort_port_NameGimbalMountSlot",
+			{
+				"en": "Gimbal Mount Weapon slot",
+				"de": "Gimbal-Mount-Waffensteckplatz"
+			}
+		],
+		[
+			"itemPort_port_NameJDrive",
+			{
+				"en": "Jump Drive",
+				"de": "Sprungantrieb"
+			}
+		],
+		[
+			"itemPort_port_NameLifesupp",
+			{
+				"en": "Life Support",
+				"de": "Lebenserhaltungssystem"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack",
+			{
+				"en": "Missile rack",
+				"de": "Raketenträger"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack01",
+			{
+				"en": "Missile rack 1",
+				"de": "Raketenträger 1"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack02",
+			{
+				"en": "Missile rack 2",
+				"de": "Raketenträger 2"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack03",
+			{
+				"en": "Missile rack 3",
+				"de": "Raketenträger 3"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack04",
+			{
+				"en": "Missile rack 4",
+				"de": "Raketenträger 4"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack05",
+			{
+				"en": "Missile rack 5",
+				"de": "Raketenträger 5"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack06",
+			{
+				"en": "Missile rack 6",
+				"de": "Raketenträger 6"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack07",
+			{
+				"en": "Missile rack 7",
+				"de": "Raketenträger 7"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack08",
+			{
+				"en": "Missile rack 8",
+				"de": "Raketenträger 8"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack09",
+			{
+				"en": "Missile rack 9",
+				"de": "Raketenträger 9"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack10",
+			{
+				"en": "Missile rack 10",
+				"de": "Raketenträger 10"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack11",
+			{
+				"en": "Missile rack 11",
+				"de": "Raketenträger 11"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRack12",
+			{
+				"en": "Missile rack 12",
+				"de": "Raketenträger 12"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackLeft",
+			{
+				"en": "Missile rack - Left",
+				"de": "Raketenträger - Links"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackLeftWing",
+			{
+				"en": "Missile rack - Left Wing",
+				"de": "Raketenträger - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackRight",
+			{
+				"en": "Missile rack - Right",
+				"de": "Raketenträger - Rechts"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackRightWing",
+			{
+				"en": "Missile rack - Right Wing",
+				"de": "Raketenträger - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot",
+			{
+				"en": "Missile slot",
+				"de": "Raketenaufhängung"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot01",
+			{
+				"en": "Missile slot 1",
+				"de": "Raketenaufhängung 1"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot02",
+			{
+				"en": "Missile slot 2",
+				"de": "Raketenaufhängung 2"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot03",
+			{
+				"en": "Missile slot 3",
+				"de": "Raketenaufhängung 3"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot04",
+			{
+				"en": "Missile slot 4",
+				"de": "Raketenaufhängung 4"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot05",
+			{
+				"en": "Missile slot 5",
+				"de": "Raketenaufhängung 5"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot06",
+			{
+				"en": "Missile slot 6",
+				"de": "Raketenaufhängung 6"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot07",
+			{
+				"en": "Missile slot 7",
+				"de": "Raketenaufhängung 7"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot08",
+			{
+				"en": "Missile slot 8",
+				"de": "Raketenaufhängung 8"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot09",
+			{
+				"en": "Missile slot 9",
+				"de": "Raketenaufhängung 9"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot10",
+			{
+				"en": "Missile slot 10",
+				"de": "Raketenaufhängung 10"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot11",
+			{
+				"en": "Missile slot 11",
+				"de": "Raketenaufhängung 11"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot12",
+			{
+				"en": "Missile slot 12",
+				"de": "Raketenaufhängung 12"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot13",
+			{
+				"en": "Missile slot 13",
+				"de": "Raketenaufhängung 13"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot14",
+			{
+				"en": "Missile slot 14",
+				"de": "Raketenaufhängung 14"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot15",
+			{
+				"en": "Missile slot 15",
+				"de": "Raketenaufhängung 15"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot16",
+			{
+				"en": "Missile slot 16",
+				"de": "Raketenaufhängung 16"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot17",
+			{
+				"en": "Missile slot 17",
+				"de": "Raketenaufhängung 17"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot18",
+			{
+				"en": "Missile slot 18",
+				"de": "Raketenaufhängung 18"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot19",
+			{
+				"en": "Missile slot 19",
+				"de": "Raketenaufhängung 19"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot20",
+			{
+				"en": "Missile slot 20",
+				"de": "Raketenaufhängung 20"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot21",
+			{
+				"en": "Missile slot 21",
+				"de": "Raketenaufhängung 21"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot22",
+			{
+				"en": "Missile slot 22",
+				"de": "Raketenaufhängung 22"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot23",
+			{
+				"en": "Missile slot 23",
+				"de": "Raketenaufhängung 23"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot24",
+			{
+				"en": "Missile slot 24",
+				"de": "Raketenaufhängung 24"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot25",
+			{
+				"en": "Missile slot 25",
+				"de": "Raketenaufhängung 25"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot26",
+			{
+				"en": "Missile slot 26",
+				"de": "Raketenaufhängung 26"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot27",
+			{
+				"en": "Missile slot 27",
+				"de": "Raketenaufhängung 27"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot28",
+			{
+				"en": "Missile slot 28",
+				"de": "Raketenaufhängung 28"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot29",
+			{
+				"en": "Missile slot 29",
+				"de": "Raketenaufhängung 29"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot30",
+			{
+				"en": "Missile slot 30",
+				"de": "Raketenaufhängung 30"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot31",
+			{
+				"en": "Missile slot 31",
+				"de": "Raketenaufhängung 31"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot32",
+			{
+				"en": "Missile slot 32",
+				"de": "Raketenaufhängung 32"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot33",
+			{
+				"en": "Missile slot 33",
+				"de": "Raketenaufhängung 33"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot34",
+			{
+				"en": "Missile slot 34",
+				"de": "Raketenaufhängung 34"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot35",
+			{
+				"en": "Missile slot 35",
+				"de": "Raketenaufhängung 35"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot36",
+			{
+				"en": "Missile slot 36",
+				"de": "Raketenaufhängung 36"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot37",
+			{
+				"en": "Missile slot 37",
+				"de": "Raketenaufhängung 37"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot38",
+			{
+				"en": "Missile slot 38",
+				"de": "Raketenaufhängung 38"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot39",
+			{
+				"en": "Missile slot 39",
+				"de": "Raketenaufhängung 39"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot40",
+			{
+				"en": "Missile slot 40",
+				"de": "Raketenaufhängung 40"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot41",
+			{
+				"en": "Missile slot 41",
+				"de": "Raketenaufhängung 41"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot42",
+			{
+				"en": "Missile slot 42",
+				"de": "Raketenaufhängung 42"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot43",
+			{
+				"en": "Missile slot 43",
+				"de": "Raketenaufhängung 43"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot44",
+			{
+				"en": "Missile slot 44",
+				"de": "Raketenaufhängung 44"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot45",
+			{
+				"en": "Missile slot 45",
+				"de": "Raketenaufhängung 45"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot46",
+			{
+				"en": "Missile slot 46",
+				"de": "Raketenaufhängung 46"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot47",
+			{
+				"en": "Missile slot 47",
+				"de": "Raketenaufhängung 47"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot48",
+			{
+				"en": "Missile slot 48",
+				"de": "Raketenaufhängung 48"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot49",
+			{
+				"en": "Missile slot 49",
+				"de": "Raketenaufhängung 49"
+			}
+		],
+		[
+			"itemPort_port_NameMissileRackSlot50",
+			{
+				"en": "Missile slot 50",
+				"de": "Raketenaufhängung 50"
+			}
+		],
+		[
+			"itemPort_port_NameNoseMount",
+			{
+				"en": "Nose Mount",
+				"de": "Nose Mount"
+			}
+		],
+		[
+			"itemPort_port_NamePaint",
+			{
+				"en": "Livery",
+				"de": "Farbe"
+			}
+		],
+		[
+			"itemPort_port_NamePaintDash",
+			{
+				"en": "Interior Trim",
+				"de": "Innenverkleidung"
+			}
+		],
+		[
+			"itemPort_port_NamePaintSeat",
+			{
+				"en": "Seat Material",
+				"de": "Sitzmaterial"
+			}
+		],
+		[
+			"itemPort_port_NamePaintSeatTrim",
+			{
+				"en": "Seat Trim",
+				"de": "Sitzverkleidung"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant",
+			{
+				"en": "Power plant",
+				"de": "Generator"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant01",
+			{
+				"en": "Power plant 1",
+				"de": "Generator 1"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant02",
+			{
+				"en": "Power plant 2",
+				"de": "Generator 2"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant03",
+			{
+				"en": "Power plant 3",
+				"de": "Generator 3"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant04",
+			{
+				"en": "Power plant 4",
+				"de": "Generator 4"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant05",
+			{
+				"en": "Power plant 5",
+				"de": "Generator 5"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant06",
+			{
+				"en": "Power plant 6",
+				"de": "Generator 6"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant07",
+			{
+				"en": "Power plant 7",
+				"de": "Generator 7"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant08",
+			{
+				"en": "Power plant 8",
+				"de": "Generator 8"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant09",
+			{
+				"en": "Power plant 9",
+				"de": "Generator 9"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant10",
+			{
+				"en": "Power plant 10",
+				"de": "Generator 10"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant11",
+			{
+				"en": "Power plant 11",
+				"de": "Generator 11"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant12",
+			{
+				"en": "Power plant 12",
+				"de": "Generator 12"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant13",
+			{
+				"en": "Power plant 13",
+				"de": "Generator 13"
+			}
+		],
+		[
+			"itemPort_port_NamePowerplant14",
+			{
+				"en": "Power plant 14",
+				"de": "Generator 14"
+			}
+		],
+		[
+			"itemPort_port_NameQDrive",
+			{
+				"en": "Quantum drive",
+				"de": "Quantenantrieb"
+			}
+		],
+		[
+			"itemPort_port_NameQDrive01",
+			{
+				"en": "Quantum drive",
+				"de": "Quantenantrieb"
+			}
+		],
+		[
+			"itemPort_port_NameQDrive02",
+			{
+				"en": "Quantum drive",
+				"de": "Quantenantrieb"
+			}
+		],
+		[
+			"itemPort_port_NameQFuelTank",
+			{
+				"en": "Quantum Fuel tank",
+				"de": "Quantentreibstofftank"
+			}
+		],
+		[
+			"itemPort_port_NameRadar",
+			{
+				"en": "Radar",
+				"de": "Radar"
+			}
+		],
+		[
+			"itemPort_port_NameRadar01",
+			{
+				"en": "Radar 1",
+				"de": "Radar 1"
+			}
+		],
+		[
+			"itemPort_port_NameRadar02",
+			{
+				"en": "Radar 2",
+				"de": "Radar 2"
+			}
+		],
+		[
+			"itemPort_port_NameRadar03",
+			{
+				"en": "Radar 3",
+				"de": "Radar 3"
+			}
+		],
+		[
+			"itemPort_port_NameSeatCaptain",
+			{
+				"en": "Captain's Seat",
+				"de": "Kapitänssitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatCoPilot",
+			{
+				"en": "Co-Pilot Seat",
+				"de": "Co-Piloten-Sitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatComms",
+			{
+				"en": "Communications Officer Seat",
+				"de": "Kommunikationsoffizier-Sitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatCrew",
+			{
+				"en": "Crew Seat",
+				"de": "Crew-Sitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatDriver",
+			{
+				"en": "Driver Seat",
+				"de": "Fahrersitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatEngConsole",
+			{
+				"en": "Engineering Console",
+				"de": "Technik-Konsole"
+			}
+		],
+		[
+			"itemPort_port_NameSeatJump",
+			{
+				"en": "Jump Seat",
+				"de": "Jump Seat"
+			}
+		],
+		[
+			"itemPort_port_NameSeatPassenger",
+			{
+				"en": "Passenger Seat",
+				"de": "Beifahrersitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatPilot",
+			{
+				"en": "Pilot Seat",
+				"de": "Pilotensitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatRemTurret",
+			{
+				"en": "Remote turret Seat",
+				"de": "Ferngesteuerter Turmsitz"
+			}
+		],
+		[
+			"itemPort_port_NameSeatWeapons",
+			{
+				"en": "Weapons Officer Seat",
+				"de": "Waffenoffizierssitz"
+			}
+		],
+		[
+			"itemPort_port_NameShieldGen",
+			{
+				"en": "Shield generator",
+				"de": "Schildgenerator"
+			}
+		],
+		[
+			"itemPort_port_NameShieldGen01",
+			{
+				"en": "Shield generator 1",
+				"de": "Schildgenerator 1"
+			}
+		],
+		[
+			"itemPort_port_NameShieldGen02",
+			{
+				"en": "Shield generator 2",
+				"de": "Schildgenerator 2"
+			}
+		],
+		[
+			"itemPort_port_NameShieldGen03",
+			{
+				"en": "Shield generator 3",
+				"de": "Schildgenerator 3"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot01",
+			{
+				"en": "Torpedo slot 1",
+				"de": "Torpedoslot 1"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot02",
+			{
+				"en": "Torpedo slot 2",
+				"de": "Torpedoslot 2"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot03",
+			{
+				"en": "Torpedo slot 3",
+				"de": "Torpedoslot 3"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot04",
+			{
+				"en": "Torpedo slot 4",
+				"de": "Torpedoslot 4"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot05",
+			{
+				"en": "Torpedo slot 5",
+				"de": "Torpedoslot 5"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot06",
+			{
+				"en": "Torpedo slot 6",
+				"de": "Torpedoslot 6"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot07",
+			{
+				"en": "Torpedo slot 7",
+				"de": "Torpedoslot 7"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot08",
+			{
+				"en": "Torpedo slot 8",
+				"de": "Torpedoslot 8"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot09",
+			{
+				"en": "Torpedo slot 9",
+				"de": "Torpedoslot 9"
+			}
+		],
+		[
+			"itemPort_port_NameTorpedoRackSlot10",
+			{
+				"en": "Torpedo slot 10",
+				"de": "Torpedoslot 10"
+			}
+		],
+		[
+			"itemPort_port_NameTurret01",
+			{
+				"en": "Turret 1",
+				"de": "Turm 1"
+			}
+		],
+		[
+			"itemPort_port_NameTurret02",
+			{
+				"en": "Turret 2",
+				"de": "Turm 2"
+			}
+		],
+		[
+			"itemPort_port_NameTurret03",
+			{
+				"en": "Turret 3",
+				"de": "Turm 3"
+			}
+		],
+		[
+			"itemPort_port_NameTurret04",
+			{
+				"en": "Turret 4",
+				"de": "Turm 4"
+			}
+		],
+		[
+			"itemPort_port_NameTurret05",
+			{
+				"en": "Turret 5",
+				"de": "Turm 5"
+			}
+		],
+		[
+			"itemPort_port_NameTurret06",
+			{
+				"en": "Turret 6",
+				"de": "Turm 6"
+			}
+		],
+		[
+			"itemPort_port_NameTurret07",
+			{
+				"en": "Turret 7",
+				"de": "Turm 7"
+			}
+		],
+		[
+			"itemPort_port_NameTurret08",
+			{
+				"en": "Turret 8",
+				"de": "Turm 8"
+			}
+		],
+		[
+			"itemPort_port_NameTurret09",
+			{
+				"en": "Turret 9",
+				"de": "Turm 9"
+			}
+		],
+		[
+			"itemPort_port_NameTurret10",
+			{
+				"en": "Turret 10",
+				"de": "Turm 10"
+			}
+		],
+		[
+			"itemPort_port_NameTurret11",
+			{
+				"en": "Turret 11",
+				"de": "Turm 11"
+			}
+		],
+		[
+			"itemPort_port_NameTurret12",
+			{
+				"en": "Turret 12",
+				"de": "Turm 12"
+			}
+		],
+		[
+			"itemPort_port_NameTurret13",
+			{
+				"en": "Turret 13",
+				"de": "Turm 13"
+			}
+		],
+		[
+			"itemPort_port_NameTurret14",
+			{
+				"en": "Turret 14",
+				"de": "Turm 14"
+			}
+		],
+		[
+			"itemPort_port_NameTurret15",
+			{
+				"en": "Turret 15",
+				"de": "Turm 15"
+			}
+		],
+		[
+			"itemPort_port_NameTurret16",
+			{
+				"en": "Turret 16",
+				"de": "Turm 16"
+			}
+		],
+		[
+			"itemPort_port_NameTurret17",
+			{
+				"en": "Turret 17",
+				"de": "Turm 17"
+			}
+		],
+		[
+			"itemPort_port_NameTurret18",
+			{
+				"en": "Turret 18",
+				"de": "Turm 18"
+			}
+		],
+		[
+			"itemPort_port_NameTurret19",
+			{
+				"en": "Turret 19",
+				"de": "Turm 19"
+			}
+		],
+		[
+			"itemPort_port_NameTurret20",
+			{
+				"en": "Turret 20",
+				"de": "Turm 20"
+			}
+		],
+		[
+			"itemPort_port_NameTurretAIModule",
+			{
+				"en": "Turret AI Module",
+				"de": "Turm-KI-Modul"
+			}
+		],
+		[
+			"itemPort_port_NameTurretGunSlot",
+			{
+				"en": "Turret Weapon slot",
+				"de": "Turmwaffenslot"
+			}
+		],
+		[
+			"itemPort_port_NameTurretGunSlot01",
+			{
+				"en": "Turret Weapon slot 1",
+				"de": "Turmwaffenslot 1"
+			}
+		],
+		[
+			"itemPort_port_NameTurretGunSlot02",
+			{
+				"en": "Turret Weapon slot 2",
+				"de": "Turmwaffenslot 2"
+			}
+		],
+		[
+			"itemPort_port_NameTurretGunSlot03",
+			{
+				"en": "Turret Weapon slot 3",
+				"de": "Turmwaffenslot 3"
+			}
+		],
+		[
+			"itemPort_port_NameTurretGunSlot04",
+			{
+				"en": "Turret Weapon slot 4",
+				"de": "Turmwaffenslot 4"
+			}
+		],
+		[
+			"itemPort_port_NameTurretSeat",
+			{
+				"en": "Turret Seat",
+				"de": "Turmsitz"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponBottom",
+			{
+				"en": "Weapon - Bottom",
+				"de": "Waffe - Unten"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponBottomLeft",
+			{
+				"en": "Weapon - Bottom Left",
+				"de": "Waffe - Unten Links"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponBottomRight",
+			{
+				"en": "Weapon - Bottom Right",
+				"de": "Waffe - Unten Rechts"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponDorsal",
+			{
+				"en": "Weapon - Dorsal",
+				"de": "Waffe - Dorsal"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponEMP",
+			{
+				"en": "EMP Module",
+				"de": "EMP-Modul"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponInnerLeftWing",
+			{
+				"en": "Weapon - Inner Left Wing",
+				"de": "Waffe - Inner Left Wing"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponInnerRightWing",
+			{
+				"en": "Weapon - Inner Right Wing",
+				"de": "Waffe - Inner Right Wing"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponLeft",
+			{
+				"en": "Weapon - Left",
+				"de": "Waffe - Links"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponLeftWing",
+			{
+				"en": "Weapon - Left Wing",
+				"de": "Waffe - Linker Flügel"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponNose",
+			{
+				"en": "Weapon - Nose",
+				"de": "Waffe - Nase"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponRight",
+			{
+				"en": "Weapon - Right",
+				"de": "Waffe - Rechts"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponRightWing",
+			{
+				"en": "Weapon - Right Wing",
+				"de": "Waffe - Rechter Flügel"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot",
+			{
+				"en": "Weapon slot ",
+				"de": "Waffenslot"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot01",
+			{
+				"en": "Weapon slot 1",
+				"de": "Waffenslot 1"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot02",
+			{
+				"en": "Weapon slot 2",
+				"de": "Waffenslot 2"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot03",
+			{
+				"en": "Weapon slot 3",
+				"de": "Waffenslot 3"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot04",
+			{
+				"en": "Weapon slot 4",
+				"de": "Waffenslot 4"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot05",
+			{
+				"en": "Weapon slot 5",
+				"de": "Waffenslot 5"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot06",
+			{
+				"en": "Weapon slot 6",
+				"de": "Waffenslot 6"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot07",
+			{
+				"en": "Weapon slot 7",
+				"de": "Waffenslot 7"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot08",
+			{
+				"en": "Weapon slot 8",
+				"de": "Waffenslot 8"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot09",
+			{
+				"en": "Weapon slot 9",
+				"de": "Waffenslot 9"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponSlot10",
+			{
+				"en": "Weapon slot 10",
+				"de": "Waffenslot 1"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponTop",
+			{
+				"en": "Weapon - Top",
+				"de": "Waffe - Oben"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponTopLeft",
+			{
+				"en": "Weapon - Top Left",
+				"de": "Waffe - Oben Links"
+			}
+		],
+		[
+			"itemPort_port_NameWeaponTopRight",
+			{
+				"en": "Weapon - Top Left",
+				"de": "Waffe - Oben Rechts"
+			}
+		],
+		[
+			"itemPort_port_SalvageArmL",
+			{
+				"en": "Salvage Arm Left",
+				"de": "Bergungsarm Links"
+			}
+		],
+		[
+			"itemPort_port_SalvageArmR",
+			{
+				"en": "Salvage Arm Right",
+				"de": "Bergungsarm Rechts"
+			}
+		],
+		[
+			"itemPort_port_SalvageHead",
+			{
+				"en": "Salvage Head",
+				"de": "Bergungskopf"
+			}
+		],
+		[
+			"itemPort_shield_attachment",
+			{
+				"en": "Weapon attachment (Shield)",
+				"de": "Waffenaufsatz (Schild)"
+			}
+		],
+		[
+			"itemPort_sight_attachment",
+			{
+				"en": "Weapon attachment (Sight)",
+				"de": "Waffenaufsatz (Visier)"
+			}
+		],
+		[
+			"itemPort_turret_left",
+			{
+				"en": "Turret gun - Left",
+				"de": "Turmgeschütz - Links"
+			}
+		],
+		[
+			"itemPort_turret_right",
+			{
+				"en": "Turret gun - Right",
+				"de": "Turmgeschütz - Rechts"
+			}
+		],
+		[
+			"itemPort_utility_attach_1",
+			{
+				"en": "Utility item",
+				"de": "Gebrauchsgegenstand"
+			}
+		],
+		[
+			"itemPort_utility_attach_2",
+			{
+				"en": "Utility item",
+				"de": "Gebrauchsgegenstand"
+			}
+		],
+		[
+			"itemPort_weapon_attach_gadget_2h",
+			{
+				"en": "Gadget",
+				"de": "Gadget"
+			}
+		],
+		[
+			"itemPort_weapon_attach_shield",
+			{
+				"en": "Gadget",
+				"de": "Gadget"
+			}
+		],
+		[
+			"itemPort_wep_sidearm",
+			{
+				"en": "Weapon (Sidearm)",
+				"de": "Waffe (Seitenwaffe)"
+			}
+		],
+		[
+			"itemPort_wep_sidearm_leg",
+			{
+				"en": "Weapon (Sidearm)",
+				"de": "Waffe (Seitenwaffe)"
+			}
+		],
+		[
+			"itemPort_wep_stocked_2",
+			{
+				"en": "Weapon (Secondary)",
+				"de": "Waffe (Sekundär)"
+			}
+		],
+		[
+			"itemPort_wep_stocked_3",
+			{
+				"en": "Weapon (Primary)",
+				"de": "Waffe (Primär)"
+			}
+		],
+		[
 			"error_no_itemports_found",
 			{
 				"de": "No item ports found on '''%s'''.",
-				"en": "No item ports found on '''%s'''."
+				"en": "Keine Ports an Item '''%s''' gefunden."
 			}
 		]
 	]
