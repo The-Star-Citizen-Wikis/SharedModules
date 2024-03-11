@@ -202,7 +202,7 @@ function System.main( frame )
 	mega[ 'type' ] = args[ 'type' ] or mega[ 'system' ][ 'type' ]
 	if mega[ 'type' ] ~= nil then
 		mega[ '#type' ] = t( 'val_type_' .. mw.ustring.lower( mega[ 'type' ] ) )
-		table.insert( mega[ 'categories' ], mega[ '#type' ] .. ' Systems' )
+		table.insert( mega[ 'categories' ], mega[ '#type' ] .. ' systems' )
 	end
 	
 	mega[ 'size' ] = args[ 'size' ] or mega[ 'system' ][ 'aggregated_size' ]
@@ -239,7 +239,7 @@ function System.main( frame )
 			table.insert( mega[ 'affiliation' ], t( 'val_affiliation_' .. mw.ustring.lower( empire[ 'code' ] ) ) )
 		end
 	end
-	if mega[ 'affiliation' ][ 1 ] then table.insert( mega[ 'categories' ], mega[ 'affiliation' ][ 1 ] .. ' Systems' ) end
+	if mega[ 'affiliation' ][ 1 ] then table.insert( mega[ 'categories' ], mega[ 'affiliation' ][ 1 ] .. ' systems' ) end
 	mega[ '#affiliation' ] = {}
 	for _, name in ipairs( mega[ 'affiliation' ] ) do
 		table.insert( mega[ '#affiliation' ], mw.ustring.format( '[[%s]]', name ) )
