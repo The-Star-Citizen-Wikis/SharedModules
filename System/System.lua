@@ -236,7 +236,7 @@ function System.main( frame )
 	elseif e( mega, 'system', 'affiliation' ) ~= nil then
 		mega[ 'affiliation' ] = {}
 		for _, empire in ipairs( mega[ 'system' ][ 'affiliation' ] ) do
-			table.insert( mega[ 'affiliation' ], empire[ 'name' ] )
+			table.insert( mega[ 'affiliation' ], t( 'val_affiliation_' .. mw.ustring.lower( empire[ 'code' ] ) ) )
 		end
 	end
 	if mega[ 'affiliation' ][ 1 ] then table.insert( mega[ 'categories' ], mega[ 'affiliation' ][ 1 ] .. ' Systems' ) end

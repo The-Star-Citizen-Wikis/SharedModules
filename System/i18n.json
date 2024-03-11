@@ -386,6 +386,48 @@
 				"en": "Trinary Star",
 				"de": "Trinärer Stern"
 			}
+		],
+		[
+			"val_affiliation_banu",
+			{
+				"en": "Banu Protectorate",
+				"de": "Banu Protectorate"
+			}
+		],
+		[
+			"val_affiliation_dev",
+			{
+				"en": "Developing",
+				"de": "Developing"
+			}
+		],
+		[
+			"val_affiliation_uee",
+			{
+				"en": "United Empire of Earth",
+				"de": "United Empire of Earth"
+			}
+		],
+		[
+			"val_affiliation_unc",
+			{
+				"en": "Unclaimed",
+				"de": "Unclaimed"
+			}
+		],
+		[
+			"val_affiliation_vncl",
+			{
+				"en": "Vanduul",
+				"de": "Vanduul"
+			}
+		],
+		[
+			"val_affiliation_xian",
+			{
+				"en": "Xi'an Empire",
+				"de": "Xi'an Empire"
+			}
 		]
 	]
 }
