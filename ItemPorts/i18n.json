@@ -3708,8 +3708,8 @@
 		[
 			"error_no_itemports_found",
 			{
-				"de": "No item ports found on '''%s'''.",
-				"en": "Keine Ports an Item '''%s''' gefunden."
+				"en": "No item ports found on '''%s'''.",
+				"de": "Keine Ports an Item '''%s''' gefunden."
 			}
 		]
 	]
