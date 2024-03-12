@@ -40,12 +40,6 @@ local function makeSmwQueryObject( page )
         mw.ustring.format( '?%s#-=max_size', translate( 'SMW_ItemPortMaximumSize' ) ),
         mw.ustring.format( '?%s#-=equipped_name', translate( 'SMW_EquippedItemName' ) ),
         mw.ustring.format( '?%s#-=equipped_uuid', translate( 'SMW_EquippedItemUUID' ) ),
-        mw.ustring.format(
-            'sort=%s,%s',
-            translate( 'SMW_ItemPortName' ),
-            translate( 'SMW_ItemPortMaximumSize' )
-        ),
-        'order=asc,desc',
         'limit=1000'
     }
 end
