@@ -1,0 +1,160 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:ItemTags"
+	},
+    "schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+    "data": [
+        [
+            "color_01",
+            {
+                "de": "Base",
+                "en": "Base"
+            }
+        ],
+        [
+            "color_02",
+            {
+                "de": "Red",
+                "en": "Red"
+            }
+        ],
+        [
+            "color_03",
+            {
+                "de": "Orange",
+                "en": "Orange"
+            }
+        ],
+        [
+            "color_04",
+            {
+                "de": "Yellow",
+                "en": "Yellow"
+            }
+        ],
+        [
+            "color_05",
+            {
+                "de": "Green",
+                "en": "Green"
+            }
+        ],
+        [
+            "color_06",
+            {
+                "de": "Seagreen",
+                "en": "Seagreen"
+            }
+        ],
+        [
+            "color_07",
+            {
+                "de": "Blue",
+                "en": "Blue"
+            }
+        ],
+        [
+            "color_08",
+            {
+                "de": "Purple",
+                "en": "Purple"
+            }
+        ],
+        [
+            "color_09",
+            {
+                "de": "Violet",
+                "en": "Violet"
+            }
+        ],
+        [
+            "color_10",
+            {
+                "de": "White",
+                "en": "White"
+            }
+        ],
+        [
+            "color_11",
+            {
+                "de": "Grey",
+                "en": "Grey"
+            }
+        ],
+        [
+            "color_12",
+            {
+                "de": "Black",
+                "en": "Black"
+            }
+        ],
+        [
+            "color_13",
+            {
+                "de": "Dark Red",
+                "en": "Dark Red"
+            }
+        ],
+        [
+            "color_14",
+            {
+                "de": "Sienna",
+                "en": "Sienna"
+            }
+        ],
+        [
+            "color_15",
+            {
+                "de": "Tan",
+                "en": "Tan"
+            }
+        ],
+        [
+            "color_16",
+            {
+                "de": "Dark Green",
+                "en": "Dark Green"
+            }
+        ],
+        [
+            "color_17",
+            {
+                "de": "Aqua",
+                "en": "Aqua"
+            }
+        ],
+        [
+            "color_18",
+            {
+                "de": "Twilight",
+                "en": "Twilight"
+            }
+        ],
+        [
+            "color_19",
+            {
+                "de": "Imperial",
+                "en": "Imperial"
+            }
+        ],
+        [
+            "color_20",
+            {
+                "de": "Olive",
+                "en": "Olive"
+            }
+        ]
+    ]
+}
