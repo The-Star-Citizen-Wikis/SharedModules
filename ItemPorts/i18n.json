@@ -24,6 +24,13 @@
 			}
 		],
 		[
+			"SMW_ItemPortDisplayName",
+			{
+				"de": "Item port display name",
+				"en": "Item port display name"
+			}
+		],
+		[
 			"SMW_ItemPortMinimumSize",
 			{
 				"de": "Item port minimum size",

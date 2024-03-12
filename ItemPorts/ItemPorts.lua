@@ -35,6 +35,7 @@ local function makeSmwQueryObject( page )
             translate( 'SMW_ItemPortName' )
         ),
         mw.ustring.format( '?%s#-=name', translate( 'SMW_ItemPortName' ) ),
+        mw.ustring.format( '?%s#-=display_name', translate( 'SMW_ItemPortDisplayName' ) ),
         mw.ustring.format( '?%s#-=min_size', translate( 'SMW_ItemPortMinimumSize' ) ),
         mw.ustring.format( '?%s#-=max_size', translate( 'SMW_ItemPortMaximumSize' ) ),
         mw.ustring.format( '?%s#-=equipped_name', translate( 'SMW_EquippedItemName' ) ),
@@ -85,11 +86,17 @@ function methodtable.out( self )
 
     -- FIXME: This does nothing since I don't know how to achieve this in Lua
     -- When port.name equals to one of the value in blockedPortNames, skip the iteration.
-    local blockedPortNames = config.blocklist_itemport_name
+    -- local blockedPortNames = config.blocklist_itemport_name
 
 	for _, port in ipairs( smwData ) do
-		local size_text, title
-        local subtitle = translate( 'itemPort_' .. port.name )
+		local size_text, title, subtitle
+
+        -- Use display_name if it is different, so that we use the same key as the game localization
+        if port.display_name and port.display_name ~= port.name and translate( 'itemPort_' .. port.display_name ) ~= 'itemPort_' .. port.display_name then
+            subtitle = translate( 'itemPort_' .. port.display_name )
+        else
+            subtitle = translate( 'itemPort_' .. port.name )
+        end
 
 		if port.min_size == port.max_size then
 			size_text = mw.ustring.format( 'S%d', port.min_size )

@@ -90,6 +90,9 @@
 					"SMW_ItemPortName": "API_name"
 				},
 				{
+					"SMW_ItemPortDisplayName": "API_display_name"
+				},
+				{
 					"SMW_ItemPortMinimumSize": "API_sizes.min",
 					"type": "number"
 				},
