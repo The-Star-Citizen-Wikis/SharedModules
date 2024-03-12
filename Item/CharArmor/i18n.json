@@ -1,0 +1,41 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item/CharArmor"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized" 
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"SMW_Inventory",
+			{
+				"de": "SCU",
+				"en": "Inventory"
+			}
+		],
+		[
+			"LBL_Inventory",
+			{
+				"de": "Inventory",
+				"en": "Inventory"
+			}
+		]
+	]
+}

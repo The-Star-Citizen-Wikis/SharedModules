@@ -353,6 +353,13 @@
 			}
 		],
 		[
+			"type_char_armor_backpack",
+			{
+				"de": "Backpack",
+				"en": "Backpack"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -910,6 +917,13 @@
 			{
 				"de": "Bombe",
 				"en": "Bombs"
+			}
+		],
+		[
+			"category_char_armor_backpack",
+			{
+				"de": "Backpack",
+				"en": "Backpack"
 			}
 		],
 		[

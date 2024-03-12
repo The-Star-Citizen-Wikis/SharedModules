@@ -132,6 +132,12 @@
 	"%extension_modules": "List of modules that can extend item data",
 	"extension_modules": [
 		{
+			"name": "Module:Item/CharArmor",
+			"type": [
+				"Char_Armor_Backpack"
+			]
+		},
+		{
 			"name": "Module:Item/Food",
 			"type": [
 				"Drink.Bottle",
