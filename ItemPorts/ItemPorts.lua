@@ -29,18 +29,19 @@ end
 --- @param page string the item page containing data
 --- @return table
 local function makeSmwQueryObject( page )
+    local itemPortName = translate( 'SMW_ItemPortName' )
     return {
         mw.ustring.format(
             '[[-Has subobject::' .. page .. ']][[%s::+]]',
-            translate( 'SMW_ItemPortName' )
+            itemPortName
         ),
-        mw.ustring.format( '?%s#-=name', translate( 'SMW_ItemPortName' ) ),
+        mw.ustring.format( '?%s#-=name', itemPortName ),
         mw.ustring.format( '?%s#-=display_name', translate( 'SMW_ItemPortDisplayName' ) ),
         mw.ustring.format( '?%s#-=min_size', translate( 'SMW_ItemPortMinimumSize' ) ),
         mw.ustring.format( '?%s#-=max_size', translate( 'SMW_ItemPortMaximumSize' ) ),
         mw.ustring.format( '?%s#-=equipped_name', translate( 'SMW_EquippedItemName' ) ),
         mw.ustring.format( '?%s#-=equipped_uuid', translate( 'SMW_EquippedItemUUID' ) ),
-        mw.ustring.format( 'sort=%s', translate( 'SMW_ItemPortName' ) ),
+        mw.ustring.format( 'sort=%s', itemPortName ),
         'order=asc',
         'limit=1000'
     }
@@ -50,6 +51,7 @@ end
 --- Queries the SMW Store
 --- @return table|nil
 function methodtable.getSmwData( self, page )
+    --mw.logObject( self.smwData, 'cachedSmwData' )
 	-- Cache multiple calls
     if self.smwData ~= nil then
         return self.smwData
