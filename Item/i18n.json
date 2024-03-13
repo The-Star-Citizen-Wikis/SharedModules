@@ -136,6 +136,13 @@
 			}
 		],
 		[
+			"SMW_Tags",
+			{
+				"de": "Tags",
+				"en": "Tags"
+			}
+		],
+		[
 			"SMW_Description",
 			{
 				"de": "Beschreibung",
@@ -357,6 +364,13 @@
 			{
 				"de": "Galactapedia",
 				"en": "Galactapedia"
+			}
+		],
+		[
+			"LBL_Tags",
+			{
+				"de": "Tags",
+				"en": "Tags"
 			}
 		],
 		[

@@ -87,6 +87,10 @@
 			"smw_format": "#-"
 		},
 		{
+			"SMW_Tags": "API_tags",
+			"type": "table"
+		},
+		{
 			"SMW_ItemPorts": "API_ports",
 			"type": "subobject",
 			"smw_data": [
