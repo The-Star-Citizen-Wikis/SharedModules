@@ -360,6 +360,13 @@
 			}
 		],
 		[
+			"type_char_armor_backpack.personal",
+			{
+				"de": "Backpack",
+				"en": "Backpack"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -921,6 +928,13 @@
 		],
 		[
 			"category_char_armor_backpack",
+			{
+				"de": "Backpack",
+				"en": "Backpacks"
+			}
+		],
+		[
+			"category_char_armor_backpack.personal",
 			{
 				"de": "Backpack",
 				"en": "Backpacks"

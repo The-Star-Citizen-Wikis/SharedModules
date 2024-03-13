@@ -134,7 +134,8 @@
 		{
 			"name": "Module:Item/CharArmor",
 			"type": [
-				"Char_Armor_Backpack"
+				"Char_Armor_Backpack",
+				"Char_Armor_Backpack.Personal"
 			]
 		},
 		{
