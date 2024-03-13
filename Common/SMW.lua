@@ -301,4 +301,42 @@ function commonSMW.loadSubobjects( pageName, identifierPropKey, propKeys, transl
 end
 
 
+--- @param setData table Array data to be set
+--- @param tableData table|nil Array data from API
+--- @param nameKey string Key of the value being used as name in the SMW property
+--- @param valueKey string Key of the value being used as value in the SMW property
+--- @param prefix string Prefix of the SMW property name
+--- @param translateFn function The translate function used to translate argument names
+function commonSMW.setFromTable( setData, tableData, nameKey, valueKey, prefix, translateFn )
+	checkType( 'Module:Common/SMW.setFromTable', 1, setData, 'table' )
+	checkTypeMulti( 'Module:Common/SMW.setFromTable', 2, tableData, { 'table', 'nil' } )
+	checkType( 'Module:Common/SMW.setFromTable', 3, nameKey, 'string' )
+	checkType( 'Module:Common/SMW.setFromTable', 4, valueKey, 'string' )
+	checkType( 'Module:Common/SMW.setFromTable', 5, prefix, 'string' )
+	checkType( 'Module:Common/SMW.setFromTable', 6, translateFn, 'function' )
+
+	if tableData == nil or type( tableData ) ~= 'table' then
+		return
+	end
+
+	for _, data in pairs( tableData ) do
+		local name = data[nameKey] or ''
+		name = 'SMW_' .. prefix .. name:gsub('^%l', mw.ustring.upper):gsub( ' ', '' )
+
+		if translateFn( name ) ~= nil then
+			local value
+
+			value = data[valueKey]
+
+			-- Handle percentage such as 10% used in modifiers
+			if type( value ) == 'string' and value:find( '%d+%%' ) then
+				value = mw.ustring.gsub( value, '%%', '' ) / 100
+			end
+
+			setData[ translateFn( name ) ] = value
+		end
+	end
+end
+
+
 return commonSMW

@@ -38,39 +38,11 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 
     local setData = {}
 
-    --- @param tableData table Array data from API
-    --- @param nameKey string Key of the value being used as name in the SMW property
-    --- @param valueKey string Key of the value being used as value in the SMW property
-    --- @param prefix string Prefix of the SMW property name
-    local function setFromTable( tableData, nameKey, valueKey, prefix )
-        if tableData == nil or type( tableData ) ~= 'table' then
-            return
-        end
-
-        for _, data in pairs( tableData ) do
-            local name = data[nameKey] or ''
-            name = 'SMW_' .. prefix .. name:gsub('^%l', mw.ustring.upper):gsub( ' ', '' )
-
-            if translate( name ) ~= nil then
-                local value
-
-                value = data[valueKey]
-
-                -- Handle percentage such as 10% used in modifiers
-                if type( value ) == 'string' and value:find( '%d+%%' ) then
-                    value = mw.ustring.gsub( value, '%%', '' ) / 100
-                end
-
-                setData[ translate( name ) ] = value
-            end
-        end
-    end
-
     -- TODO: Modifiers and Damages are generic enough that maybe we should search for it by default on Module:Item?
-    setFromTable( apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier' )
-    setFromTable( apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier' )
-    setFromTable( apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage' )
-    setFromTable( apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage' )
+    smwCommon.setFromTable( setData, apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier', translate )
+    smwCommon.setFromTable( setData, apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier', translate )
+    smwCommon.setFromTable( setData, apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage', translate )
+    smwCommon.setFromTable( setData, apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage', translate )
 
     mw.smw.set( setData )
 end
