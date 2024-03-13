@@ -384,18 +384,6 @@ function methodtable.getInfobox( self )
 		}
 		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 4 }, true )
 
-		--- TODO: Move this back up to the first tab when we fix universe cost
-		section = {}
-
-		--- Show message on where the game price data are
-		if smwData[ 'UUID' ] ~= nil then
-			tabberData[ 'label3' ] = translate( 'LBL_Universe' )
-			tabberData[ 'content3' ] = infobox:renderMessage( {
-				title = translate( 'msg_ingame_prices_title' ),
-				desc = translate( 'msg_ingame_prices_content' )
-			}, true )
-		end
-
 		return tabber( tabberData )
 	end
 
