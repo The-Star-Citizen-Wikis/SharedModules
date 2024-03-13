@@ -22,20 +22,6 @@
 				"de": "Typ",
 				"en": "Type"
 			}
-		],
-		[
-			"SMW_Inventory",
-			{
-				"de": "SCU",
-				"en": "Inventory"
-			}
-		],
-		[
-			"LBL_Inventory",
-			{
-				"de": "Inventory",
-				"en": "Inventory"
-			}
 		]
 	]
 }

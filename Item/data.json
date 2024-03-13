@@ -38,6 +38,10 @@
 			"type": "number"
 		},
 		{
+			"SMW_Inventory": "API_inventory.scu",
+			"type": "number"
+		},
+		{
 			"SMW_Class": "API_class"
 		},
 		{

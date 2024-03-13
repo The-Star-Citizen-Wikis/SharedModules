@@ -330,6 +330,10 @@ function methodtable.getInfobox( self )
 			infobox:renderItem( {
 				label = translate( 'LBL_Occupancy' ),
 				data = smwData[ translate( 'SMW_Occupancy' ) ],
+			} ),
+			infobox:renderItem( {
+				label = translate( 'LBL_Inventory' ),
+				data = smwData[ translate( 'SMW_Inventory' ) ],
 			} )
 		},
 		col = 2

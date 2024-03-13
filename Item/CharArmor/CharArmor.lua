@@ -56,18 +56,7 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
-    -- Backpacks
-    if smwData[ translate( 'SMW_Type' ) ] == 'Char_Armor_Backpack' then
-        infobox:renderSection( {
-            content = {
-                infobox:renderItem( {
-                    label = translate( 'LBL_Inventory' ),
-                    data = smwData[ translate( 'SMW_Inventory' ) ],
-                } )
-            },
-            col = 2
-        } )
-    end
+
 end
 
 
