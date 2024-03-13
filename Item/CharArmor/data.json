@@ -1,4 +1,39 @@
 {
 	"%smw_data": "Sets which data gets added to SMW",
-	"smw_data": []
+	"smw_data": [
+		{
+			"SMW_ResistanceMinimumTemperature": "API_clothing.temp_resistance_min",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ResistanceMaximumTemperature": "API_clothing.temp_resistance_max",
+			"type": "number",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenPhysical": "",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenEnergy": "",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenDistortion": "",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenThermal": "",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenBiochemical": "",
+			"smw_format": "#-n"
+		},
+		{
+			"SMW_ModifierDamageTakenStun": "",
+			"smw_format": "#-n"
+		}
+	]
 }

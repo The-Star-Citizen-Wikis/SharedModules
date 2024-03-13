@@ -33,6 +33,12 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         data,
         'Item/' .. MODULE_NAME
     )
+
+    local setData = {}
+
+    smwCommon.setFromTable( setData, apiData:get( 'clothing.resistances' ), 'type', 'multiplier', 'ModifierDamageTaken', translate )
+
+    mw.smw.set( setData )
 end
 
 
@@ -56,7 +62,53 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
+    --- Format resistance (e.g. 0.9) to human readable format (e.g. 10%)
+    ---
+    --- @param key string SMW property name of the resistance data
+    --- @return string|nil
+    local function getResistance( key )
+        local translatedKey = translate( key )
+        if smwData[translatedKey] == nil or type( smwData[translatedKey] ) ~= 'number' then
+            return
+        end
 
+        return ( 1 - smwData[translatedKey] ) * 100 .. ' %'
+    end
+
+    infobox:renderSection( {
+        title = translate( 'LBL_Resistances' ),
+        content = {
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenPhysical' ),
+                data = getResistance( 'SMW_ModifierDamageTakenPhysical' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenEnergy' ),
+                data = getResistance( 'SMW_ModifierDamageTakenEnergy' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenDistortion' ),
+                data = getResistance( 'SMW_ModifierDamageTakenDistortion' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenThermal' ),
+                data = getResistance( 'SMW_ModifierDamageTakenThermal' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenBiochemical' ),
+                data = getResistance( 'SMW_ModifierDamageTakenBiochemical' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ModifierDamageTakenStun' ),
+                data = getResistance( 'SMW_ModifierDamageTakenStun' )
+            } ),
+            infobox:renderItem( {
+                label = translate( 'LBL_ResistanceTemperature' ),
+                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ translate( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
+            } )
+        },
+        col = 3
+    } )
 end
 
 

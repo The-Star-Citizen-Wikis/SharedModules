@@ -22,6 +22,118 @@
 				"de": "Typ",
 				"en": "Type"
 			}
+		],
+		[
+			"SMW_ResistanceMinimumTemperature",
+			{
+				"de": "Minimum temperature resistance",
+				"en": "Minimum temperature resistance"
+			}
+		],
+		[
+			"SMW_ResistanceMaximumTemperature",
+			{
+				"de": "Maximum temperature resistance",
+				"en": "Maximum temperature resistance"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenPhysical",
+			{
+				"de": "Modifier physical damage taken",
+				"en": "Modifier physical damage taken"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenEnergy",
+			{
+				"de": "Modifier energy damage taken",
+				"en": "Modifier energy damage taken"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenDistortion",
+			{
+				"de": "Modifier distortion damage taken",
+				"en": "Modifier distortion damage taken"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenThermal",
+			{
+				"de": "Modifier thermal damage taken",
+				"en": "Modifier thermal damage taken"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenBiochemical",
+			{
+				"de": "Modifier biochemical damage taken",
+				"en": "Modifier biochemical damage taken"
+			}
+		],
+		[
+			"SMW_ModifierDamageTakenStun",
+			{
+				"de": "Modifier stun damage taken",
+				"en": "Modifier stun damage taken"
+			}
+		],
+		[
+			"LBL_Resistances",
+			{
+				"de": "Resistances",
+				"en": "Resistances"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenPhysical",
+			{
+				"de": "Physisch",
+				"en": "Physical"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenEnergy",
+			{
+				"de": "Energie",
+				"en": "Energy"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenDistortion",
+			{
+				"de": "Distortion",
+				"en": "Distortion"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenThermal",
+			{
+				"de": "Thermisch",
+				"en": "Thermal"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenBiochemical",
+			{
+				"de": "Biochemisch",
+				"en": "Biochemical"
+			}
+		],
+		[
+			"LBL_ModifierDamageTakenStun",
+			{
+				"de": "Betäubung",
+				"en": "Stun"
+			}
+		],
+		[
+			"LBL_ResistanceTemperature",
+			{
+				"de": "Temperatur",
+				"en": "Temperature"
+			}
 		]
 	]
 }

@@ -395,6 +395,13 @@
 			}
 		],
 		[
+			"type_char_armor_undersuit",
+			{
+				"de": "Unteranzug",
+				"en": "Undersuit"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -966,6 +973,13 @@
 			{
 				"de": "Backpack",
 				"en": "Backpacks"
+			}
+		],
+		[
+			"category_char_armor_undersuit",
+			{
+				"de": "Unteranzug",
+				"en": "Undersuits"
 			}
 		],
 		[
