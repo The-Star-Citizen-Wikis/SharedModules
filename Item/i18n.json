@@ -409,6 +409,13 @@
 			}
 		],
 		[
+			"type_char_armor_undersuit.heavy",
+			{
+				"de": "Unteranzug",
+				"en": "Undersuit"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -984,6 +991,13 @@
 		],
 		[
 			"category_char_armor_undersuit",
+			{
+				"de": "Unteranzug",
+				"en": "Undersuits"
+			}
+		],
+		[
+			"category_char_armor_undersuit.heavy",
 			{
 				"de": "Unteranzug",
 				"en": "Undersuits"

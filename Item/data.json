@@ -147,7 +147,8 @@
 			"type": [
 				"Char_Armor_Backpack",
 				"Char_Armor_Backpack.Personal",
-				"Char_Armor_Undersuit"
+				"Char_Armor_Undersuit",
+				"Char_Armor_Undersuit.Heavy"
 			]
 		},
 		{

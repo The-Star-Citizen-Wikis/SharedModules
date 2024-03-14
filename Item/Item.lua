@@ -153,10 +153,12 @@ function methodtable.setSemanticProperties( self )
 		local commodity = require( 'Module:Commodity' ):new()
 		commodity:addShopData( self.apiData )
 
-		-- Merge subtype into type, like how the game handles it
-		if self.apiData.type ~= nil and self.apiData.sub_type ~= nil and self.apiData.sub_type ~= 'UNDEFINED' then
-			-- SMW_Type is already set prior if self.apiData.type exists
-			setData[ translate( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+		if self.apiData.type ~= nil and self.apiData.sub_type ~= nil then
+			-- Merge subtype into type, like how the game handles it
+			if self.apiData.sub_type ~= 'UNDEFINED' then
+				-- SMW_Type is already set prior if self.apiData.type exists
+				setData[ translate( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+			end
 
 			local descData = self.apiData.description_data
 			if descData ~= nil then
