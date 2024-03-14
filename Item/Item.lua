@@ -164,7 +164,7 @@ function methodtable.setSemanticProperties( self )
 			if descData ~= nil then
 				for _, descObj in ipairs( descData ) do
 					-- Check if there are item type localization
-					if descObj.name == 'Item Type' then
+					if descObj.name == 'Item Type' or descObj.name == 'Type' then
 						local descType = descObj.type
 						-- FIXME: This only works for English, need some way to get only the English text for comparison since descType is always in English
 						local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( setData[ translate( 'SMW_Type' ) ] ) ) )
