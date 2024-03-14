@@ -45,13 +45,6 @@
 			}
 		],
 		[
-			"SMW_BarrelAttachmentType",
-			{
-				"de": "Barrel attachment type",
-				"en": "Barrel attachment type"
-			}
-		],
-		[
 			"SMW_ModifierSoundRadius",
 			{
 				"de": "Modifier sound radius",
@@ -70,13 +63,6 @@
 			{
 				"de": "Vergrößerungsfaktor",
 				"en": "Optics magnification"
-			}
-		],
-		[
-			"SMW_OpticsType",
-			{
-				"de": "Optiktyp",
-				"en": "Optics type"
 			}
 		],
 		[
@@ -108,13 +94,6 @@
 			}
 		],
 		[
-			"LBL_BarrelAttachmentType",
-			{
-				"de": "Typ",
-				"en": "Type"
-			}
-		],
-		[
 			"LBL_ModifierSoundRadius",
 			{
 				"de": "Noise",
@@ -133,13 +112,6 @@
 			{
 				"de": "Vergrößerung",
 				"en": "Magnification"
-			}
-		],
-		[
-			"LBL_OpticsType",
-			{
-				"de": "Typ",
-				"en": "Type"
 			}
 		],
 		[

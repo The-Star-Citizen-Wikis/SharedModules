@@ -17,9 +17,6 @@
 			"SMW_OpticsMagnification": "API_iron_sight.magnification"
 		},
 		{
-			"SMW_OpticsType": "API_iron_sight.optic_type"
-		},
-		{
 			"SMW_ZeroingRange": "API_iron_sight.max_range"
 		},
 		{

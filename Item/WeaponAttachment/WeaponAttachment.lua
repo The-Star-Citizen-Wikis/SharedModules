@@ -61,11 +61,6 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_BarrelAttachmentType' ),
-                    -- TODO: Localize barrel attachment type
-                    data = smwData[ translate( 'SMW_BarrelAttachmentType' ) ],
-                } ),
-                infobox:renderItem( {
                     label = translate( 'LBL_ModifierFireRecoilStrength' ),
                     data = smwData[ translate( 'SMW_ModifierFireRecoilStrength' ) ],
                 } ),
@@ -83,11 +78,6 @@ function p.addInfoboxData( infobox, smwData )
                 infobox:renderItem( {
                     label = translate( 'LBL_OpticsMagnification' ),
                     data = smwData[ translate( 'SMW_OpticsMagnification' ) ],
-                } ),
-                infobox:renderItem( {
-                    label = translate( 'LBL_OpticsType' ),
-                    -- TODO: Localize optics attachment type
-                    data = smwData[ translate( 'SMW_OpticsType' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ZeroingRange' ),
