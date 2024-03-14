@@ -76,7 +76,19 @@ function p.addInfoboxData( infobox, smwData )
     end
 
     infobox:renderSection( {
-        title = translate( 'LBL_Resistances' ),
+        title = translate( 'LBL_Clothing' ),
+        content = {
+            infobox:renderItem( {
+                label = translate( 'LBL_ResistanceTemperature' ),
+                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ translate( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
+            } )
+        },
+        col = 2
+    } )
+
+    -- TODO: Maybe we should somehow generalize the armor section since it applies to other items too
+    infobox:renderSection( {
+        title = translate( 'LBL_Armor' ),
         content = {
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenPhysical' ),
@@ -101,13 +113,9 @@ function p.addInfoboxData( infobox, smwData )
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenStun' ),
                 data = getResistance( 'SMW_ModifierDamageTakenStun' )
-            } ),
-            infobox:renderItem( {
-                label = translate( 'LBL_ResistanceTemperature' ),
-                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ translate( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
             } )
         },
-        col = 3
+        col = 6
     } )
 end
 

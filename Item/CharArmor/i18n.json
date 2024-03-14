@@ -80,52 +80,59 @@
 			}
 		],
 		[
-			"LBL_Resistances",
+			"LBL_Armor",
 			{
-				"de": "Resistances",
-				"en": "Resistances"
+				"de": "Armor",
+				"en": "Armor"
+			}
+		],
+		[
+			"LBL_Clothing",
+			{
+				"de": "Clothing",
+				"en": "Clothing"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenPhysical",
 			{
-				"de": "Physisch",
-				"en": "Physical"
+				"de": "🗡️",
+				"en": "🗡️"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenEnergy",
 			{
-				"de": "Energie",
-				"en": "Energy"
+				"de": "⚡",
+				"en": "⚡"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenDistortion",
 			{
-				"de": "Distortion",
-				"en": "Distortion"
+				"de": "〰️",
+				"en": "〰️"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenThermal",
 			{
-				"de": "Thermisch",
-				"en": "Thermal"
+				"de": "🔥",
+				"en": "🔥"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenBiochemical",
 			{
-				"de": "Biochemisch",
-				"en": "Biochemical"
+				"de": "☣️",
+				"en": "☣️"
 			}
 		],
 		[
 			"LBL_ModifierDamageTakenStun",
 			{
-				"de": "Betäubung",
-				"en": "Stun"
+				"de": "💫",
+				"en": "💫"
 			}
 		],
 		[
