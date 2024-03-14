@@ -283,6 +283,13 @@
 			}
 		],
 		[
+			"LBL_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
 			"LBL_Class",
 			{
 				"de": "Klasse",

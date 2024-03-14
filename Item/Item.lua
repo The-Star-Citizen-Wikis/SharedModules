@@ -324,6 +324,10 @@ function methodtable.getInfobox( self )
 				data = getType(),
 			} ),
 			infobox:renderItem( {
+				label = translate( 'LBL_Subtype' ),
+				data = smwData[ translate( 'SMW_Subtype' ) ],
+			} ),
+			infobox:renderItem( {
 				label = translate( 'LBL_Class' ),
 				data = getClass(),
 			} ),
@@ -458,6 +462,10 @@ function methodtable.setCategories( self )
 
 			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
 				addSubcategory( typeCategory, translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] )
+			end
+
+			if self.smwData[ translate( 'SMW_Subtype' ) ] ~= nil then
+				addSubcategory( typeCategory, self.smwData[ translate( 'SMW_Subtype' ) ] )
 			end
 
 			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
