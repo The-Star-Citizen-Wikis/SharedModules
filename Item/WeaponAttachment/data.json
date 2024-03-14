@@ -29,9 +29,6 @@
 			"SMW_AutoZeroingTime": "API_iron_sight.auto_zeroing_time"
 		},
 		{
-			"SMW_Class": "API_personal_weapon_magazine.type"
-		},
-		{
 			"SMW_Ammo": "API_personal_weapon_magazine.max_ammo_count"
 		}
 	]

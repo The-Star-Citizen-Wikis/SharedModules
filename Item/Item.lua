@@ -153,10 +153,28 @@ function methodtable.setSemanticProperties( self )
 		local commodity = require( 'Module:Commodity' ):new()
 		commodity:addShopData( self.apiData )
 
-		--- Merge subtype into type, like how the game handles it
+		-- Merge subtype into type, like how the game handles it
 		if self.apiData.type ~= nil and self.apiData.sub_type ~= nil and self.apiData.sub_type ~= 'UNDEFINED' then
-			--- SMW_Type is already set prior if self.apiData.type exists
+			-- SMW_Type is already set prior if self.apiData.type exists
 			setData[ translate( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+
+			local descData = self.apiData.description_data
+			if descData ~= nil then
+				for _, descObj in ipairs( descData ) do
+					-- Check if there are item type localization
+					if descObj.name == 'Item Type' then
+						local descType = descObj.type
+						-- FIXME: This only works for English, need some way to get only the English text for comparison since descType is always in English
+						local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( setData[ translate( 'SMW_Type' ) ] ) ) )
+
+						-- If the type in item description is different than what we compose out of type and subtype data, record it in subtype
+						-- TODO: We should make a common function to sanitize strings for comaprison (e.g. lowercase, remove all the space)
+						if mw.ustring.lower( descType ) ~= mw.ustring.lower( itemType ) then
+							setData[ translate( 'SMW_Subtype' ) ] = descType
+						end
+					end
+				end
+			end
 		end
 	end
 

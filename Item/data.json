@@ -30,6 +30,9 @@
 			"SMW_Type": "API_type"
 		},
 		{
+			"SMW_Subtype": ""
+		},
+		{
 			"SMW_Size": "API_size",
 			"type": "number"
 		},
