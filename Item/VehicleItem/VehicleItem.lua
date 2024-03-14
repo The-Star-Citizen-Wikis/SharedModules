@@ -393,7 +393,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Engineering' )
     section = {
-        infobox:renderItem( translate( 'LBL_PowerDraw' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ], smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '⚡/s' ) ),
+        infobox:renderItem( translate( 'LBL_PowerDraw' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ], smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '🔌/s' ) ),
         infobox:renderItem( translate( 'LBL_ThermalEnergyOutput' ), infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_MinimumThermalEnergyOutput' ) ], smwData[ translate( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '🌡️/s' ) ),
         infobox:renderItem( translate( 'LBL_MaximumCoolingRate' ), smwData[ translate( 'SMW_MaximumCoolingRate' ) ] ),
         infobox:renderItem( translate( 'LBL_StartCoolingTemperature' ), smwData[ translate( 'SMW_StartCoolingTemperature' ) ] ),
