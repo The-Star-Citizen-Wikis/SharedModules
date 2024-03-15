@@ -158,8 +158,20 @@
 		{
 			"name": "Module:Item/CharArmor",
 			"type": [
+				"Char_Armor_Arms.Heavy",
+				"Char_Armor_Arms.Light",
+				"Char_Armor_Arms.Medium",
 				"Char_Armor_Backpack",
 				"Char_Armor_Backpack.Personal",
+				"Char_Armor_Helmet.Heavy",
+				"Char_Armor_Helmet.Light",
+				"Char_Armor_Helmet.Medium",
+				"Char_Armor_Legs.Heavy",
+				"Char_Armor_Legs.Light",
+				"Char_Armor_Legs.Medium",
+				"Char_Armor_Torso.Heavy",
+				"Char_Armor_Torso.Light",
+				"Char_Armor_Torso.Medium",
 				"Char_Armor_Undersuit",
 				"Char_Armor_Undersuit.Heavy"
 			]

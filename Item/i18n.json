@@ -402,6 +402,27 @@
 			}
 		],
 		[
+			"type_char_armor_arms.heavy",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
+			"type_char_armor_arms.light",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
+			"type_char_armor_arms.medium",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
 			"type_char_armor_backpack",
 			{
 				"de": "Backpack",
@@ -413,6 +434,69 @@
 			{
 				"de": "Backpack",
 				"en": "Backpack"
+			}
+		],
+		[
+			"type_char_armor_helmet.heavy",
+			{
+				"de": "Helmet",
+				"en": "Helmet"
+			}
+		],
+		[
+			"type_char_armor_helmet.light",
+			{
+				"de": "Helmet",
+				"en": "Helmet"
+			}
+		],
+		[
+			"type_char_armor_helmet.medium",
+			{
+				"de": "Helmet",
+				"en": "Helmet"
+			}
+		],
+		[
+			"type_char_armor_legs.heavy",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"type_char_armor_legs.light",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"type_char_armor_legs.medium",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"type_char_armor_torso.heavy",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
+			}
+		],
+		[
+			"type_char_armor_torso.light",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
+			}
+		],
+		[
+			"type_char_armor_torso.medium",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
 			}
 		],
 		[
@@ -990,6 +1074,27 @@
 			}
 		],
 		[
+			"category_char_armor_arms.heavy",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
+			"category_char_armor_arms.light",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
+			"category_char_armor_arms.medium",
+			{
+				"de": "Arms armor",
+				"en": "Arms armor"
+			}
+		],
+		[
 			"category_char_armor_backpack",
 			{
 				"de": "Backpack",
@@ -1001,6 +1106,69 @@
 			{
 				"de": "Backpack",
 				"en": "Backpacks"
+			}
+		],
+		[
+			"category_char_armor_helmet.heavy",
+			{
+				"de": "Helmet",
+				"en": "Helmets"
+			}
+		],
+		[
+			"category_char_armor_helmet.light",
+			{
+				"de": "Helmet",
+				"en": "Helmets"
+			}
+		],
+		[
+			"category_char_armor_helmet.medium",
+			{
+				"de": "Helmet",
+				"en": "Helmets"
+			}
+		],
+		[
+			"category_char_armor_legs.heavy",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"category_char_armor_legs.light",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"category_char_armor_legs.medium",
+			{
+				"de": "Legs armor",
+				"en": "Legs armor"
+			}
+		],
+		[
+			"category_char_armor_torso.heavy",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
+			}
+		],
+		[
+			"category_char_armor_torso.light",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
+			}
+		],
+		[
+			"category_char_armor_torso.medium",
+			{
+				"de": "Torso armor",
+				"en": "Torso armor"
 			}
 		],
 		[
