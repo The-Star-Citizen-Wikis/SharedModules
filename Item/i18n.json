@@ -1319,6 +1319,13 @@
 			}
 		],
 		[
+			"category_pages_missing_uuid",
+			{
+				"de": "Pages missing UUID",
+				"en": "Pages missing UUID"
+			}
+		],
+		[
 			"shortdesc_grade",
 			{
 				"de": "$1 Grad $2",

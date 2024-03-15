@@ -501,6 +501,10 @@ function methodtable.setCategories( self )
 		table.insert( self.categories, manufacturer )
 	end
 
+	if self.smwData[ translate( 'SMW_UUID' ) ] == nil then
+		table.insert( self.categories, translate( 'category_pages_missing_uuid' ) )
+	end
+
 	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
 end
 
