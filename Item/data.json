@@ -52,24 +52,24 @@
 		},
 		{
 			"SMW_EntityLength": [
-				"API_dimension.true_dimension.length",
-				"API_dimension.length"
+				"API_dimension.length",
+				"API_dimension.true_dimension.length"
 			],
 			"type": "number",
 			"smw_format": "#p2-cm"
 		},
 		{
 			"SMW_EntityWidth": [
-				"API_dimension.true_dimension.width",
-				"API_dimension.width"
+				"API_dimension.width",
+				"API_dimension.true_dimension.width"
 			],
 			"type": "number",
 			"smw_format": "#p2-cm"
 		},
 		{
 			"SMW_EntityHeight": [
-				"API_dimension.true_dimension.height",
-				"API_dimension.height"
+				"API_dimension.height",
+				"API_dimension.true_dimension.height"
 			],
 			"type": "number",
 			"smw_format": "#p2-cm"
