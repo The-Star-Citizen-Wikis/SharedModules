@@ -276,6 +276,20 @@
 			}
 		],
 		[
+			"SMW_ItemVariantName",
+			{
+				"de": "Item variant name",
+				"en": "Item variant name"
+			}
+		],
+		[
+			"SMW_ItemVariantUUID",
+			{
+				"de": "Item variant UUID",
+				"en": "Item variant UUID"
+			}
+		],
+		[
 			"LBL_Type",
 			{
 				"de": "Typ",

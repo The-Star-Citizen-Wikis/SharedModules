@@ -1,6 +1,7 @@
 {
 	"%includes": "Additional item information that should be returned",
 	"includes": [
+		"variants",
 		"shops.items"
 	],
 	"%smw_data": "Sets which data gets added to SMW",
@@ -116,6 +117,18 @@
 				},
 				{
 					"SMW_EquippedItemName": "API_equipped_item.name"
+				}
+			]
+		},
+		{
+			"SMW_ItemVariants": "API_variants",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_ItemVariantName": "API_name"
+				},
+				{
+					"SMW_ItemVariantUUID": "API_uuid"
 				}
 			]
 		}
