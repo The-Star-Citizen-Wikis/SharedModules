@@ -45,6 +45,13 @@
 			}
 		],
 		[
+			"SMW_ModifierDamage",
+			{
+				"de": "Modifier damage",
+				"en": "Modifier damage"
+			}
+		],
+		[
 			"SMW_ModifierSoundRadius",
 			{
 				"de": "Modifier sound radius",
@@ -91,6 +98,13 @@
 			{
 				"de": "Munition",
 				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_ModifierDamage",
+			{
+				"de": "Damage",
+				"en": "Damage"
 			}
 		],
 		[

@@ -33,6 +33,16 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         data,
         'Item/' .. MODULE_NAME
     )
+
+    -- If the modifie equals to 1, then it does nothing and the data is not useful
+    -- TODO: Should we upstream this to Item?
+    local modifiers = { 'SMW_ModifierDamage', 'SMW_ModifierFireRecoilStrength', 'SMW_ModifierSoundRadius' }
+    for _, modifier in ipairs( modifiers ) do
+        local smwProp = smwSetObject[ translate( modifier ) ]
+        if smwProp and smwProp == 1 then
+            smwSetObject[ translate( modifier ) ] = nil
+        end
+    end
 end
 
 
@@ -61,6 +71,10 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
+                    label = translate( 'LBL_ModifierDamage' ),
+                    data = smwData[ translate( 'SMW_ModifierDamage' ) ],
+                } ),
+                infobox:renderItem( {
                     label = translate( 'LBL_ModifierFireRecoilStrength' ),
                     data = smwData[ translate( 'SMW_ModifierFireRecoilStrength' ) ],
                 } ),
@@ -69,7 +83,7 @@ function p.addInfoboxData( infobox, smwData )
                     data = smwData[ translate( 'SMW_ModifierSoundRadius' ) ],
                 } )
             },
-            col = 2
+            col = 3
         } )
     -- Optics attachments
     elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then

@@ -5,7 +5,7 @@
 			"SMW_Slot": "API_position"
 		},
 		{
-			"SMW_BarrelAttachmentType": "API_barrel_attach.type"
+			"SMW_ModifierDamage": "API_weapon_modifier.damage_multiplier"
 		},
 		{
 			"SMW_ModifierSoundRadius": "API_weapon_modifier.sound_radius_multiplier"
