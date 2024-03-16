@@ -232,7 +232,7 @@ function methodtable.getInfobox( self )
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
 		return infobox:renderInfobox( infobox:renderMessage( {
-			title = translate( 'error_no_data_title' ),
+			title = translate( 'error_no_infobox_data_title' ),
 			desc = translate( 'error_no_data_text' ),
 		} ) )
 	end
@@ -458,7 +458,7 @@ function methodtable.getDescription( self )
 	--- SMW Data load error
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_data_title' ),
+			translate( 'error_no_description_title' ),
 			translate( 'error_no_data_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)

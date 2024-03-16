@@ -1529,10 +1529,17 @@
 			}
 		],
 		[
-			"error_no_data_title",
+			"error_no_infobox_data_title",
 			{
-				"de": "ERROR - Semantic MediaWiki (CODE 16008)",
-				"en": "ERROR - Semantic MediaWiki (CODE 16008)"
+				"de": "No infobox data found",
+				"en": "No infobox data found"
+			}
+		],
+		[
+			"error_no_description_title",
+			{
+				"de": "No description found.",
+				"en": "No description found."
 			}
 		],
 		[
