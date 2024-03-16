@@ -1,0 +1,34 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:ItemPorts"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_ItemBaseVariantName",
+			{
+				"de": "Item base variant name",
+				"en": "Item base variant name"
+			}
+		],
+		[
+			"error_no_variants_found",
+			{
+				"en": "No variants found on '''%s'''.",
+				"de": "Keine Varianten an Item '''%s''' gefunden."
+			}
+		]
+	]
+}
