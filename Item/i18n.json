@@ -276,17 +276,17 @@
 			}
 		],
 		[
-			"SMW_ItemVariantName",
+			"SMW_ItemBaseVariantName",
 			{
-				"de": "Item variant name",
-				"en": "Item variant name"
+				"de": "Item base variant name",
+				"en": "Item base variant name"
 			}
 		],
 		[
-			"SMW_ItemVariantUUID",
+			"SMW_ItemBaseVariantUUID",
 			{
-				"de": "Item variant UUID",
-				"en": "Item variant UUID"
+				"de": "Item base variant UUID",
+				"en": "Item base variant UUID"
 			}
 		],
 		[

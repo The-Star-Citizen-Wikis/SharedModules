@@ -121,14 +121,14 @@
 			]
 		},
 		{
-			"SMW_ItemVariants": "API_variants",
+			"SMW_ItemBaseVariant": "API_base_variants",
 			"type": "subobject",
 			"smw_data": [
 				{
-					"SMW_ItemVariantName": "API_name"
+					"SMW_ItemBaseVariantName": "API_name"
 				},
 				{
-					"SMW_ItemVariantUUID": "API_uuid"
+					"SMW_ItemBaseVariantUUID": "API_uuid"
 				}
 			]
 		}
