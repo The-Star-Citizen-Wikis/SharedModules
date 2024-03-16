@@ -207,7 +207,7 @@ function methodtable.getSmwData( self )
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
 				translate( 'error_no_data_text' ),
-				translate( 'error_script_error_cat' )
+				translate( 'error_category_script_error' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -451,6 +451,23 @@ function methodtable.getInfobox( self )
 end
 
 
+--- Creates the description
+function methodtable.getDescription( self )
+	local smwData = self:getSmwData()
+
+	--- SMW Data load error
+	if type( smwData ) ~= 'table' then
+		return require( 'Module:Mbox' )._mbox(
+			translate( 'error_no_data_title' ),
+			translate( 'error_no_data_text' ),
+			{ icon = 'WikimediaUI-Error.svg' }
+		)
+	end
+
+	return '<blockquote>' .. smwData[ translate( 'SMW_Description' ) ] .. '</blockquote>'
+end
+
+
 --- Set the frame and load args
 --- @param frame table
 function methodtable.setFrame( self, frame )
@@ -502,7 +519,7 @@ function methodtable.setCategories( self )
 	end
 
 	if self.smwData[ translate( 'SMW_UUID' ) ] == nil then
-		table.insert( self.categories, translate( 'category_pages_missing_uuid' ) )
+		table.insert( self.categories, translate( 'error_category_item_missing_uuid' ) )
 	end
 
 	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
@@ -670,6 +687,17 @@ function Item.infobox( frame )
 	end
 
 	return tostring( instance:getInfobox() ) .. debugOutput
+end
+
+
+--- Generates a description based on passed frame args and SMW data
+---
+--- @param frame table Invocation frame
+--- @return string
+function Item.description( frame )
+	local instance = Item:new()
+	instance:setFrame( frame )
+	return tostring( instance:getDescription() )
 end
 
 

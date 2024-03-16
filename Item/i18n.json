@@ -1501,13 +1501,6 @@
 			}
 		],
 		[
-			"category_pages_missing_uuid",
-			{
-				"de": "Pages missing UUID",
-				"en": "Pages missing UUID"
-			}
-		],
-		[
 			"shortdesc_grade",
 			{
 				"de": "$1 Grad $2",
@@ -1550,17 +1543,17 @@
 			}
 		],
 		[
-			"error_script_error_cat",
+			"error_category_page_script_error",
 			{
 				"de": "Seiten mit Skriptfehlern",
 				"en": "Pages with script errors"
 			}
 		],
 		[
-			"error_no_data_text",
+			"error_category_item_missing_uuid",
 			{
-				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
-				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+				"de": "Items missing UUID",
+				"en": "Items missing UUID"
 			}
 		],
 		[
