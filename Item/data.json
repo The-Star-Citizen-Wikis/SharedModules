@@ -121,10 +121,10 @@
 			]
 		},
 		{
-			"SMW_ItemBaseVariantName": "API_base_variants.name"
+			"SMW_ItemBaseVariantName": "API_base_variant.name"
 		},
 		{
-			"SMW_ItemBaseVariantUUID": "API_base_variants.uuid"
+			"SMW_ItemBaseVariantUUID": "API_base_variant.uuid"
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",
