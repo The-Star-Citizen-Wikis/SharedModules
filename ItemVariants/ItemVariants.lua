@@ -71,7 +71,17 @@ local function makeSmwQueryObject( self, page )
     }
 
     if type( itemBaseVariant ) ~= 'table' or #itemBaseVariant ~= 1 then
-        return ''
+    	if itemBaseVariant ~= nil then
+    		return ''
+    	-- This is a base variant page
+    	else
+        	itemBaseVariant = mw.smw.ask {
+		        mw.ustring.format( '[[%s]]', page ),
+		        '?#-=name',
+		        '?Page Image#-=image',
+		        limit = 1
+		    }
+        end
     end
 
     mw.logObject( itemBaseVariant, 'itemBaseVariant' )
