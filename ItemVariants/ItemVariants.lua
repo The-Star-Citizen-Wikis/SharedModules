@@ -81,6 +81,11 @@ local function makeSmwQueryObject( self, page )
 		        '?Page Image#-=image',
 		        limit = 1
 		    }
+
+            -- This should not happen but it did
+            if itemBaseVariant == nil then
+                return ''
+            end
         end
     end
 
