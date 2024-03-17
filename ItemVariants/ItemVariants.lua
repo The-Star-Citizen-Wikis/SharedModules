@@ -148,6 +148,7 @@ function methodtable.out( self )
     end
 
     local containerHtml = mw.html.create( 'div' ):addClass( 'template-itemVariants' )
+    local placeholderImage = 'File:' .. config.placeholder_image
 
     for i, variant in ipairs( smwData ) do
         local displayName = removeWordsFromString( variant.name, self.itemBaseVariant.name )
@@ -173,7 +174,7 @@ function methodtable.out( self )
             :wikitext( mw.ustring.format( '[[%s]]', variant.name ) )
         variantHtml:tag( 'div' )
             :addClass( 'template-itemVariant-image' )
-            :wikitext( mw.ustring.format( '[[%s|128px|link=]]', variant.image or config.placeholder_image ) )
+            :wikitext( mw.ustring.format( '[[%s|128px|link=]]', variant.image or placeholderImage ) )
         variantHtml:tag( 'div' )
             :addClass( 'template-itemVariant-title' )
             :wikitext( displayName )
