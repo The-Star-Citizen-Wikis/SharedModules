@@ -1564,6 +1564,13 @@
 			}
 		],
 		[
+			"error_category_item_missing_manufacturer",
+			{
+				"de": "Items missing manufacturer",
+				"en": "Items missing manufacturer"
+			}
+		],
+		[
 			"none",
 			{
 				"de": "Keine",

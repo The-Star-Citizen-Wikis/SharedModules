@@ -516,6 +516,8 @@ function methodtable.setCategories( self )
 		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
 
 		table.insert( self.categories, manufacturer )
+	else
+		table.insert( self.categories, translate( 'error_category_item_missing_manufacturer' ) )
 	end
 
 	if self.smwData[ translate( 'SMW_UUID' ) ] == nil then
