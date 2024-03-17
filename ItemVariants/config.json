@@ -1,4 +1,6 @@
 {
 	"%smw_multilingual_text": "If the used SMW attributes are multi-lingual set the flag to 'true'.",
-	"smw_multilingual_text": false
+	"smw_multilingual_text": false,
+	"%placeholder_image": "Placeholder image to use if no image was found",
+	"placeholder_image": "Placeholderv2.png"
 }
