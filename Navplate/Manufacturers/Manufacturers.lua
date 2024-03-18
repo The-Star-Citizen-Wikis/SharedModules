@@ -37,7 +37,7 @@ function methodtable.getSmwData( self, conditions )
 			cond = cond .. '[[' .. condition .. ']]'
 		end
 	else
-		cond = conditions
+		cond = '[[' .. conditions .. ']]'
 	end
 
 	local askData = {
