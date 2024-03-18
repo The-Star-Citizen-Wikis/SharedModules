@@ -142,7 +142,10 @@ end
 function methodtable.renderImage( self, filename )
 	checkType( 'Module:InfoboxNeue.renderImage', 1, self, 'table' )
 
+	local hasPlaceholderImage = false
+
 	if type( filename ) ~= 'string' and self.config.displayPlaceholder == true then
+		hasPlaceholderImage = true
 		filename = self.config.placeholderImage
 		-- Add tracking category for infoboxes using placeholder image
 		table.insert( self.categories,
@@ -164,7 +167,7 @@ function methodtable.renderImage( self, filename )
 		:addClass( 'infobox__image' )
 		:wikitext( mw.ustring.format( '[[File:%s|400px]]', filename ) )
 
-	if self.config.displayPlaceholder == true then
+	if hasPlaceholderImage == true then
 		local icon = mw.html.create( 'span' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-upload' )
 		-- TODO: Point the Upload link to a specific file name
 		html:tag( 'div' ):addClass( 'infobox__image-upload' )
