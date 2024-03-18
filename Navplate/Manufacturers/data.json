@@ -103,11 +103,11 @@
         },
         {
             "label": "Arms armor",
-            "conditions": [ "Category:Arms armor", "Is item base variant::true" ]
+            "conditions": "Category:Arms armor"
         },
         {
             "label": "Backpacks",
-            "conditions": [ "Category:Backpacks", "Is item base variant::true" ]
+            "conditions": "Category:Backpacks"
         },
         {
             "label": "Barrel attachments",
@@ -131,7 +131,7 @@
         },
         {
             "label": "Helmets",
-            "conditions": [ "Category:Helmets", "Is item base variant::true" ]
+            "conditions": "Category:Helmets"
         },
         {
             "label": "Jackets",
@@ -139,7 +139,7 @@
         },
         {
             "label": "Legs armor",
-            "conditions": [ "Category:Legs armor", "Is item base variant::true" ]
+            "conditions": "Category:Legs armor"
         },
         {
             "label": "Multi-Tool attachment",
@@ -167,7 +167,7 @@
         },
         {
             "label": "Torso armor",
-            "conditions": [ "Category:Torso armor", "Is item base variant::true" ]
+            "conditions": "Category:Torso armor"
         },
         {
             "label": "T-shirts",
@@ -179,7 +179,7 @@
         },
         {
             "label": "Undersuits",
-            "conditions": [ "Category:Undersuits", "Is item base variant::true" ]
+            "conditions": "Category:Undersuits"
         },
         {
             "label": "Cryptokeys",
