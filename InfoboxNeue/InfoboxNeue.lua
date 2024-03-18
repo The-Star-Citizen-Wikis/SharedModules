@@ -164,6 +164,12 @@ function methodtable.renderImage( self, filename )
 		:addClass( 'infobox__image' )
 		:wikitext( mw.ustring.format( '[[File:%s|400px]]', filename ) )
 
+	if self.config.displayPlaceholder == true then
+		-- TODO: Point the Upload link to a specific file name
+		html:tag( 'div' ):addClass( 'infobox__image-upload' )
+			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', translate( 'LBL_upload_image' ) ) )
+	end
+
 	local item = tostring( html )
 
 	table.insert( self.entries, item )

@@ -52,6 +52,13 @@
       }
     ],
     [
+      "LBL_upload_image",
+      {
+        "de": "Bild hochladen",
+        "en": "Upload image"
+      }
+    ],
+    [
       "ARG_Title",
       {
         "de": "title",
