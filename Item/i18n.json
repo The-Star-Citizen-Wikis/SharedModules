@@ -276,16 +276,23 @@
 			}
 		],
 		[
+			"SMW_IsItemBaseVariant",
+			{
+				"de": "Ist Basisversion",
+				"en": "Is item base variant"
+			}
+		],
+		[
 			"SMW_ItemBaseVariantName",
 			{
-				"de": "Item base variant name",
+				"de": "Basisversion name",
 				"en": "Item base variant name"
 			}
 		],
 		[
 			"SMW_ItemBaseVariantUUID",
 			{
-				"de": "Item base variant UUID",
+				"de": "Basisversion UUID",
 				"en": "Item base variant UUID"
 			}
 		],
