@@ -22,7 +22,7 @@ local template = mw.loadJsonData( 'Module:Navplate/Manufacturers/data.json' );
 local mfu = require( 'Module:Manufacturer' )._manufacturer
 
 --- Queries the SMW Store
---- @param conditions string For SMW query
+--- @param conditions table|string For SMW query
 --- @return table|nil
 function methodtable.getSmwData( self, conditions )
 	-- Cache multiple calls
@@ -30,9 +30,19 @@ function methodtable.getSmwData( self, conditions )
         return self.smwData
     end
 
+	local cond = ''
+
+	if type( conditions ) == 'table' then
+		for _, condition in ipairs( conditions ) do
+			cond = cond .. '[[' .. condition .. ']]'
+		end
+	else
+		cond = conditions
+	end
+
 	local askData = {
 		'[[:+]]',
-		'[[' .. conditions .. ']]',
+		cond,
 		'?#-=page',
 		'?Category#'
 	}
