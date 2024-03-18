@@ -193,8 +193,8 @@ end
 --- Queries the SMW Store
 --- @return table
 function methodtable.getSmwData( self )
-	-- Cache multiple calls
-    if self.smwData ~= nil and self.smwData[ translate( 'SMW_Name' ) ] ~= nil then
+	-- Use cached data if possible, SMW queries are expensive
+	if self.smwData ~= nil and self.smwData[ translate( 'SMW_Name' ) ] ~= nil then
         return self.smwData
     end
 
@@ -455,11 +455,20 @@ end
 function methodtable.getDescription( self )
 	local smwData = self:getSmwData()
 
-	--- SMW Data load error
+	--- Error: No SMW Data
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
 			translate( 'error_no_description_title' ),
 			translate( 'error_no_data_text' ),
+			{ icon = 'WikimediaUI-Error.svg' }
+		)
+	end
+
+	--- Error: No description SMW property
+	if smwData[ translate( 'SMW_Description' ) ] == nil then
+		return require( 'Module:Mbox' )._mbox(
+			translate( 'error_no_description_title' ),
+			translate( 'error_no_description_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end

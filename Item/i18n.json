@@ -1550,6 +1550,13 @@
 			}
 		],
 		[
+			"error_no_description_text",
+			{
+				"de": "No description found for this item in game data.",
+				"en": "No description found for this item in game data."
+			}
+		],
+		[
 			"error_category_page_script_error",
 			{
 				"de": "Seiten mit Skriptfehlern",
