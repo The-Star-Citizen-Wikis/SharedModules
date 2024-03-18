@@ -401,6 +401,12 @@ function methodtable.getInfobox( self )
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
+				label = translate( 'SMW_ClassName' ),
+				data = smwData[ translate( 'SMW_ClassName' ) ],
+				row = true,
+				spacebetween = true
+			} ),
+			infobox:renderItem( {
 				label = translate( 'SMW_GameBuild' ),
 				data = smwData[ translate( 'SMW_GameBuild' ) ],
 				row = true,

@@ -129,6 +129,13 @@
 			}
 		],
 		[
+			"SMW_ClassName",
+			{
+				"de": "Klassenname",
+				"en": "Class name"
+			}
+		],
+		[
 			"SMW_UUID",
 			{
 				"de": "UUID",

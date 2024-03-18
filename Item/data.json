@@ -87,6 +87,10 @@
 			"SMW_GameBuild": "API_version"
 		},
 		{
+			"SMW_ClassName": "API_class_name",
+			"smw_format": "#-"
+		},
+		{
 			"SMW_UUID": "API_uuid",
 			"smw_format": "#-"
 		},
