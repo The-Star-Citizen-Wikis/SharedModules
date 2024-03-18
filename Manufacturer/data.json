@@ -564,7 +564,8 @@
 	},
 	{
 		"code": "VGL",
-		"name": "Virgil Ltd"
+		"name": "Virgil Ltd",
+		"shortname": "Virgil"
 	},
 	{
 		"code": "VNCL",
