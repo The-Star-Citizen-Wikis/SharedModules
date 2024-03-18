@@ -35,7 +35,7 @@
 }
 
 .infobox__image-upload > a {
-    display: block;
+    display: flex;
     margin: var( --space-md );
     padding: var( --space-xs ) var( --space-sm );
     border-radius: var( --border-radius--small );
@@ -43,6 +43,13 @@
     color: var( --color-base--emphasized );
     font-weight: var( --font-weight-medium );
     text-decoration: none;
+    align-items: center;
+    gap: var( --space-xs );
+}
+
+.infobox__image-upload > a .citizen-ui-icon {
+    width: 1rem;
+    height: 1rem;
 }
 
 .infobox__image-upload > a:hover {

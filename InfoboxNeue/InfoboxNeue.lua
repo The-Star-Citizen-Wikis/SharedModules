@@ -165,9 +165,10 @@ function methodtable.renderImage( self, filename )
 		:wikitext( mw.ustring.format( '[[File:%s|400px]]', filename ) )
 
 	if self.config.displayPlaceholder == true then
+		local icon = mw.html.create( 'span' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-upload' )
 		-- TODO: Point the Upload link to a specific file name
 		html:tag( 'div' ):addClass( 'infobox__image-upload' )
-			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', translate( 'LBL_upload_image' ) ) )
+			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', tostring( icon ) .. translate( 'LBL_upload_image' ) ) )
 	end
 
 	local item = tostring( html )
