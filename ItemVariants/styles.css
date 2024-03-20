@@ -13,7 +13,8 @@
 }
 
 .template-itemVariant.template-itemVariant--selected {
-	background: var( --color-surface-2--active );
+	order: -1;
+	background: var( --color-surface-2 );
 }
 
 .template-itemVariant:not(.template-itemVariant--selected):hover {
