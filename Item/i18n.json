@@ -451,6 +451,13 @@
 			}
 		],
 		[
+			"type_char_armor_helmet",
+			{
+				"de": "Helmet",
+				"en": "Helmet"
+			}
+		],
+		[
 			"type_char_armor_helmet.heavy",
 			{
 				"de": "Helmet",
@@ -1120,6 +1127,13 @@
 			{
 				"de": "Backpack",
 				"en": "Backpacks"
+			}
+		],
+		[
+			"category_char_armor_helmet",
+			{
+				"de": "Helmet",
+				"en": "Helmets"
 			}
 		],
 		[
