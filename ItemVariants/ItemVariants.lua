@@ -22,37 +22,65 @@ local function translate( key, addSuffix, ... )
     return TNT:translate( MODULE_NAME .. '/i18n.json', config, key, addSuffix, { ... } ) or key
 end
 
-
---- Remove all occurances of words from string
+--- Escape magic characters in Lua for use in regex
+--- TODO: This should be move upstream to Module:Common
 ---
---- @param inputString string the string to be removed from
---- @param wordsToRemove string the string containing the words to remove
+--- @param str string string to escape
 --- @return string
-local function removeWordsFromString( inputString, wordsToRemove )
-    -- Split the input string into individual words
-    local words = {}
-    for word in inputString:gmatch( '%S+' ) do
-        table.insert( words, word )
+local function escapeMagicCharacters( str )
+    local magicCharacters = { "%", "^", "$", "(", ")", ".", "[", "]", "*", "+", "-", "?" }
+    for _, magicChar in ipairs( magicCharacters ) do
+        str = str:gsub( "%" .. magicChar, "%%" .. magicChar )
+    end
+    return str
+end
+
+--- Find common words between two strings
+--- TODO: This should be move upstream to Module:Common
+---
+--- @param str1 string
+--- @param str2 string
+--- @return table
+local function findCommonWords( str1, str2 )
+    local words1 = {}
+    local words2 = {}
+    local commonWords = {}
+
+    -- Split the first string into words and store in a table
+    for word in str1:gmatch( '%S+' ) do
+        words1[ word ] = true
     end
 
-    -- Create a set of words to remove
-    local wordsSet = {}
-    for word in wordsToRemove:gmatch( '%S+' ) do
-        wordsSet[ word ] = true
+    -- Split the second string into words and store in a table
+    for word in str2:gmatch( '%S+' ) do
+        words2[ word ] = true
     end
 
-    -- Filter out words that need to be removed
-    local cleanedWords = {}
-    for _, word in ipairs( words ) do
-        if not wordsSet[ word ] then
-            table.insert( cleanedWords, word )
+    -- Find common words
+    for word in pairs( words1 ) do
+        if words2[ word ] then
+            table.insert( commonWords, word )
         end
     end
 
-    -- Join the cleaned words back into a string
-    local cleanedString = table.concat( cleanedWords, ' ' )
+    return commonWords
+end
 
-    return cleanedString
+
+--- Remove all occurances of words from string
+---
+--- @param str string the string to be removed from
+--- @param wordsToRemove table the table of strings containing the words to remove
+--- @return string
+local function removeWords( str, wordsToRemove )
+    if type( wordsToRemove ) ~= 'table' or next( wordsToRemove ) < 1 then
+        return str
+    end
+
+    for _, word in ipairs( wordsToRemove ) do
+        str = string.gsub( str, escapeMagicCharacters( word ), '' )
+    end
+    return mw.text.trim( str )
 end
 
 
@@ -71,16 +99,16 @@ local function makeSmwQueryObject( self, page )
     }
 
     if type( itemBaseVariant ) ~= 'table' or #itemBaseVariant ~= 1 then
-    	if itemBaseVariant ~= nil then
-    		return ''
-    	-- This is a base variant page
-    	else
-        	itemBaseVariant = mw.smw.ask {
-		        mw.ustring.format( '[[%s]]', page ),
-		        '?#-=name',
-		        '?Page Image#-=image',
-		        limit = 1
-		    }
+        if itemBaseVariant ~= nil then
+            return ''
+            -- This is a base variant page
+        else
+            itemBaseVariant = mw.smw.ask {
+                mw.ustring.format( '[[%s]]', page ),
+                '?#-=name',
+                '?Page Image#-=image',
+                limit = 1
+            }
 
             -- This should not happen but it did
             if itemBaseVariant == nil then
@@ -144,14 +172,22 @@ function methodtable.out( self )
 
     if smwData == nil then
         local msg = mw.ustring.format( translate( 'error_no_variants_found' ), self.page )
-		return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
+        return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
     end
 
     local containerHtml = mw.html.create( 'div' ):addClass( 'template-itemVariants' )
     local placeholderImage = 'File:' .. config.placeholder_image
 
+    local baseVariantWords = {}
+
+    if smwData[ 1 ] and smwData[ 1 ].name and smwData[ 2 ] and smwData[ 2 ].name then
+        baseVariantWords = findCommonWords( smwData[ 1 ].name, smwData[ 2 ].name )
+        mw.logObject( baseVariantWords, 'baseVariantWords' )
+    end
+
     for i, variant in ipairs( smwData ) do
-        local displayName = removeWordsFromString( variant.name, self.itemBaseVariant.name )
+        local displayName = removeWords( variant.name, baseVariantWords )
+
         -- Sometimes base variant does have a variant name
         if displayName == '' then
             if i == 1 then
