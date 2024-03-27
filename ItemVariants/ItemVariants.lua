@@ -209,7 +209,7 @@ function methodtable.out( self )
 
         local variantHtml = mw.html.create( 'div' ):addClass( 'template-itemVariant' )
 
-        if variant.name == mw.title.getCurrentTitle() then
+        if variant.name == mw.title.getCurrentTitle().fullText then
             variantHtml:addClass( 'template-itemVariant--selected' )
         end
 
