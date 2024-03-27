@@ -73,7 +73,7 @@ end
 --- @param wordsToRemove table the table of strings containing the words to remove
 --- @return string
 local function removeWords( str, wordsToRemove )
-    if type( wordsToRemove ) ~= 'table' or next( wordsToRemove ) < 1 then
+    if type( wordsToRemove ) ~= 'table' or next( wordsToRemove ) == nil then
         return str
     end
 
@@ -153,7 +153,11 @@ function methodtable.getSmwData( self, page )
     local smwData = mw.smw.ask( makeSmwQueryObject( self, page ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-        return nil
+        if self.itemBaseVariant == nil then
+            return nil
+        else
+            smwData = {}
+        end
     end
 
     -- Insert base variant back to the table
@@ -186,7 +190,11 @@ function methodtable.out( self )
     end
 
     for i, variant in ipairs( smwData ) do
-        local displayName = removeWords( variant.name, baseVariantWords )
+        local displayName = ''
+
+        if next( baseVariantWords ) ~= nil then
+            displayName = removeWords( variant.name, baseVariantWords )
+        end
 
         -- Sometimes base variant does have a variant name
         if displayName == '' then
@@ -201,7 +209,7 @@ function methodtable.out( self )
 
         local variantHtml = mw.html.create( 'div' ):addClass( 'template-itemVariant' )
 
-        if variant.name == self.page then
+        if variant.name == mw.title.getCurrentTitle() then
             variantHtml:addClass( 'template-itemVariant--selected' )
         end
 
