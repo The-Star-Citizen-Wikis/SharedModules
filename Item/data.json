@@ -175,7 +175,13 @@
 				"Char_Armor_Torso.Light",
 				"Char_Armor_Torso.Medium",
 				"Char_Armor_Undersuit",
-				"Char_Armor_Undersuit.Heavy"
+				"Char_Armor_Undersuit.Heavy",
+				"Char_Clothing_Feet",
+				"Char_Clothing_Hands",
+				"Char_Clothing_Hat",
+				"Char_Clothing_Legs",
+				"Char_Clothing_Torso_0",
+				"Char_Clothing_Torso_1"
 			]
 		},
 		{

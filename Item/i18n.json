@@ -416,6 +416,13 @@
 			}
 		],
 		[
+			"type_char_accessory_eyes",
+			{
+				"de": "Eyewear",
+				"en": "Eyewear"
+			}
+		],
+		[
 			"type_char_armor_arms.heavy",
 			{
 				"de": "Arms armor",
@@ -532,6 +539,48 @@
 			{
 				"de": "Unteranzug",
 				"en": "Undersuit"
+			}
+		],
+		[
+			"type_char_clothing_feet",
+			{
+				"de": "Footwear",
+				"en": "Footwear"
+			}
+		],
+		[
+			"type_char_clothing_hands",
+			{
+				"de": "Gloves",
+				"en": "Gloves"
+			}
+		],
+		[
+			"type_char_clothing_hats",
+			{
+				"de": "Hat",
+				"en": "Hat"
+			}
+		],
+		[
+			"type_char_clothing_legs",
+			{
+				"de": "Legwear",
+				"en": "Legwear"
+			}
+		],
+		[
+			"type_char_clothing_torso_0",
+			{
+				"de": "Shirt",
+				"en": "Shirt"
+			}
+		],
+		[
+			"type_char_clothing_torso_1",
+			{
+				"de": "Jacket",
+				"en": "Jacket"
 			}
 		],
 		[
@@ -1095,6 +1144,13 @@
 			}
 		],
 		[
+			"category_char_accessory_eyes",
+			{
+				"de": "Eyewear",
+				"en": "Eyewear"
+			}
+		],
+		[
 			"category_char_armor_arms.heavy",
 			{
 				"de": "Arms armor",
@@ -1211,6 +1267,48 @@
 			{
 				"de": "Unteranzug",
 				"en": "Undersuits"
+			}
+		],
+		[
+			"category_char_clothing_feet",
+			{
+				"de": "Footwear",
+				"en": "Footwear"
+			}
+		],
+		[
+			"category_char_clothing_hands",
+			{
+				"de": "Gloves",
+				"en": "Gloves"
+			}
+		],
+		[
+			"category_char_clothing_hats",
+			{
+				"de": "Hats",
+				"en": "Hats"
+			}
+		],
+		[
+			"category_char_clothing_legs",
+			{
+				"de": "Legwear",
+				"en": "Legwear"
+			}
+		],
+		[
+			"category_char_clothing_torso_0",
+			{
+				"de": "Shirts",
+				"en": "Shirts"
+			}
+		],
+		[
+			"category_char_clothing_torso_1",
+			{
+				"de": "Jackets",
+				"en": "Jackets"
 			}
 		],
 		[
