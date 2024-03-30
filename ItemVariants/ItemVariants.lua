@@ -89,51 +89,29 @@ end
 --- @param page string the item page containing data
 --- @return table|string
 local function makeSmwQueryObject( self, page )
-    local itemBaseVariantName = translate( 'SMW_ItemBaseVariantName' )
+    local smwItemBaseVariantName = translate( 'SMW_ItemBaseVariantName' )
+    local smwName = translate( 'SMW_Name' )
 
-    local itemBaseVariant = mw.smw.ask {
-        mw.ustring.format( '[[-%s::%s]]', itemBaseVariantName, page ),
-        '?#-=name',
-        '?Page Image#-=image',
-        limit = 1
-    }
-
-    if type( itemBaseVariant ) ~= 'table' or #itemBaseVariant ~= 1 then
-        if itemBaseVariant ~= nil then
-            return ''
-            -- This is a base variant page
-        else
-            itemBaseVariant = mw.smw.ask {
-                mw.ustring.format( '[[%s]]', page ),
-                '?#-=name',
-                '?Page Image#-=image',
-                limit = 1
-            }
-
-            -- This should not happen but it did
-            if itemBaseVariant == nil then
-                return ''
-            end
-        end
-    end
-
-    mw.logObject( itemBaseVariant, 'itemBaseVariant' )
-
-    itemBaseVariant = itemBaseVariant[ 1 ]
-    self.itemBaseVariant = itemBaseVariant
-
+    -- 1. On variant page, select variants of base item
+    -- 2. On variant page, select base item
+    -- 3. On base item page, select variants of base item
+    -- 4. On base item page, select base item
     local query = {
         '[[:+]]',
         mw.ustring.format(
-            '<q>[[%s::%s]] || [[%s::%s]] || [[-%s::%s]]</q>',
-            itemBaseVariant.name,
+            '[[%s::<q>[[-%s::%s]]</q>]] || [[-%s::%s]] || [[%s::%s]] || [[%s::%s]]',
+            smwItemBaseVariantName,
+            smwItemBaseVariantName,
             page,
-            itemBaseVariantName,
-            itemBaseVariant.name,
-            itemBaseVariantName,
-            itemBaseVariant.name
+            smwItemBaseVariantName,
+            page,
+            smwItemBaseVariantName,
+            page,
+            smwName,
+            page
         ),
-        '?#-=name',
+        '?#-=page',
+        '?' .. smwName .. '#-=name',
         '?Page Image#-=image'
     }
 
@@ -153,15 +131,8 @@ function methodtable.getSmwData( self, page )
     local smwData = mw.smw.ask( makeSmwQueryObject( self, page ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-        if self.itemBaseVariant == nil then
-            return nil
-        else
-            smwData = {}
-        end
+        return nil
     end
-
-    -- Insert base variant back to the table
-    table.insert( smwData, 1, self.itemBaseVariant )
 
     mw.logObject( smwData, 'getSmwData' )
     self.smwData = smwData
@@ -215,7 +186,7 @@ function methodtable.out( self )
 
         variantHtml:tag( 'div' )
             :addClass( 'template-itemVariant-fakelink' )
-            :wikitext( mw.ustring.format( '[[%s]]', variant.name ) )
+            :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
         variantHtml:tag( 'div' )
             :addClass( 'template-itemVariant-image' )
             :wikitext( mw.ustring.format( '[[%s|200px|link=]]', variant.image or placeholderImage ) )
