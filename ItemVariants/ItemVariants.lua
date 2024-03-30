@@ -88,7 +88,7 @@ end
 ---
 --- @param page string the item page containing data
 --- @return table|string
-local function makeSmwQueryObject( self, page )
+local function makeSmwQueryObject( page )
     local smwItemBaseVariantName = translate( 'SMW_ItemBaseVariantName' )
     local smwName = translate( 'SMW_Name' )
 
@@ -128,7 +128,7 @@ function methodtable.getSmwData( self, page )
         return self.smwData
     end
 
-    local smwData = mw.smw.ask( makeSmwQueryObject( self, page ) )
+    local smwData = mw.smw.ask( makeSmwQueryObject( page ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
         return nil
