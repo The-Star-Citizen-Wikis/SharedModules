@@ -913,6 +913,34 @@
 			}
 		],
 		[
+			"type_weaponpersonal.large",
+			{
+				"de": "Shouldered weapon",
+				"en": "Shouldered weapon"
+			}
+		],
+		[
+			"type_weaponpersonal.medium",
+			{
+				"de": "Stocked weapon",
+				"en": "Stocked weapon"
+			}
+		],
+		[
+			"type_weaponpersonal.small",
+			{
+				"de": "Sidearm weapon",
+				"en": "Sidearm weapon"
+			}
+		],
+		[
+			"class_ballistic",
+			{
+				"de": "🗡️ Ballistic",
+				"en": "🗡️ Ballistic"
+			}
+		],
+		[
 			"class_civilian",
 			{
 				"de": "👔 Zivil",
@@ -1624,6 +1652,27 @@
 			{
 				"de": "Messer",
 				"en": "Knives"
+			}
+		],
+		[
+			"category_weaponpersonal.large",
+			{
+				"de": "Shouldered weapons",
+				"en": "Shouldered weapons"
+			}
+		],
+		[
+			"category_weaponpersonal.medium",
+			{
+				"de": "Stocked weapons",
+				"en": "Stocked weapons"
+			}
+		],
+		[
+			"category_weaponpersonal.small",
+			{
+				"de": "Sidearm weapons",
+				"en": "Sidearm weapons"
 			}
 		],
 		[
