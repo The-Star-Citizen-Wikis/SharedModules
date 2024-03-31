@@ -549,10 +549,16 @@ function methodtable.setShortDescription( self )
 	local itemType = translate( 'type_item' )
 
 	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
-		local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] )
-		if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
-			itemType = mw.ustring.lower( translate( itemTypeKey ) )
+		if self.smwData[ translate( 'SMW_Subtype' ) ] ~= nil then
+			-- TODO: Localize subtype
+			itemType = self.smwData[ translate( 'SMW_Subtype' ) ]
+		else
+			local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] )
+			if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
+				itemType = translate( itemTypeKey )
+			end
 		end
+		itemType = mw.ustring.lower( itemType )
 	end
 
 	shortdesc = itemType
