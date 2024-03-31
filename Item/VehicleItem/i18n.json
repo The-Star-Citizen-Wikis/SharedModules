@@ -579,56 +579,56 @@
 		[
 			"SMW_ShieldDownTime",
 			{
-				"de": "Schild Ausfallzeit",
+				"de": "Schildausfallzeit",
 				"en": "Shield down time"
 			}
 		],
 		[
 			"SMW_ShieldDamageDelay",
 			{
-				"de": "Schadensverzögerung",
+				"de": "Schild Schadensverzögerung",
 				"en": "Shield damage delay"
 			}
 		],
 		[
 			"SMW_ShieldPhysicalResistance",
 			{
-				"de": "Physikalischer Widerstand",
+				"de": "Schild physikalischer Widerstand",
 				"en": "Shield physical resistance"
 			}
 		],
 		[
 			"SMW_ShieldEnergyResistance",
 			{
-				"de": "Energie Widerstand",
+				"de": "Schild Energie Widerstand",
 				"en": "Shield energy resistance"
 			}
 		],
 		[
 			"SMW_ShieldDistortionResistance",
 			{
-				"de": "Verzerrung Widerstand",
+				"de": "Schild Verzerrung Widerstand",
 				"en": "Shield distortion resistance"
 			}
 		],
 		[
 			"SMW_ShieldThermalResistance",
 			{
-				"de": "THermie Widerstand",
+				"de": "Schild thermischer Widerstand",
 				"en": "Shield thermal resistance"
 			}
 		],
 		[
 			"SMW_ShieldBiochemicalResistance",
 			{
-				"de": "Biochemie Widerstand",
+				"de": "Schild biochemischer Widerstand",
 				"en": "Shield biochemical resistance"
 			}
 		],
 		[
 			"SMW_ShieldStunResistance",
 			{
-				"de": "Stun Widerstand",
+				"de": "Schild Beträubung Widerstand",
 				"en": "Shield stun resistance"
 			}
 		],
@@ -936,21 +936,21 @@
 		[
 			"LBL_ArmTime",
 			{
-				"de": "Arm time",
+				"de": "Aktivierungszeit",
 				"en": "Arm time"
 			}
 		],
 		[
 			"LBL_IgniteTime",
 			{
-				"de": "Ignite time",
+				"de": "Zündungszeit",
 				"en": "Ignite time"
 			}
 		],
 		[
 			"LBL_ExplosionRadius",
 			{
-				"de": "Explosion radius",
+				"de": "Explosionsradius",
 				"en": "Explosion radius"
 			}
 		],
@@ -971,21 +971,21 @@
 		[
 			"LBL_FuelFillRate",
 			{
-				"de": "Fill rate",
+				"de": "Füllrate",
 				"en": "Fill rate"
 			}
 		],
 		[
 			"LBL_FuelDrainRate",
 			{
-				"de": "Drain rate",
+				"de": "Abflussrate",
 				"en": "Drain rate"
 			}
 		],
 		[
 			"LBL_FuelCapacity",
 			{
-				"de": "Capacity",
+				"de": "Kapazität",
 				"en": "Capacity"
 			}
 		],

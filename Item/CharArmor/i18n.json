@@ -26,70 +26,70 @@
 		[
 			"SMW_ResistanceMinimumTemperature",
 			{
-				"de": "Minimum temperature resistance",
+				"de": "Minimaler Temperaturwiderstand",
 				"en": "Minimum temperature resistance"
 			}
 		],
 		[
 			"SMW_ResistanceMaximumTemperature",
 			{
-				"de": "Maximum temperature resistance",
+				"de": "Maximaler Temperaturwiderstand",
 				"en": "Maximum temperature resistance"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenPhysical",
 			{
-				"de": "Modifier physical damage taken",
+				"de": "Modifikator erlittener physischer Schaden",
 				"en": "Modifier physical damage taken"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenEnergy",
 			{
-				"de": "Modifier energy damage taken",
+				"de": "Modifikator erlittener Energieschaden",
 				"en": "Modifier energy damage taken"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenDistortion",
 			{
-				"de": "Modifier distortion damage taken",
+				"de": "Modifikator erlittener Verzerrungsschaden",
 				"en": "Modifier distortion damage taken"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenThermal",
 			{
-				"de": "Modifier thermal damage taken",
+				"de": "Modifikator erlittener thermischer Schaden",
 				"en": "Modifier thermal damage taken"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenBiochemical",
 			{
-				"de": "Modifier biochemical damage taken",
+				"de": "Modifikator erlittener biochemischer Schaden",
 				"en": "Modifier biochemical damage taken"
 			}
 		],
 		[
 			"SMW_ModifierDamageTakenStun",
 			{
-				"de": "Modifier stun damage taken",
+				"de": "Modifikator erlittener Betäubungsschaden",
 				"en": "Modifier stun damage taken"
 			}
 		],
 		[
 			"LBL_Armor",
 			{
-				"de": "Armor",
+				"de": "Rüstung",
 				"en": "Armor"
 			}
 		],
 		[
 			"LBL_Clothing",
 			{
-				"de": "Clothing",
+				"de": "Kleidung",
 				"en": "Clothing"
 			}
 		],

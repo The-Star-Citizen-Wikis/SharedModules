@@ -26,28 +26,28 @@
 		[
 			"SMW_ModifierDuration",
 			{
-				"de": "Modifier duration",
+				"de": "Modifikator Dauer",
 				"en": "Modifier duration"
 			}
 		],
 		[
 			"SMW_ErrorChance",
 			{
-				"de": "Error chance",
+				"de": "Fehlerchance",
 				"en": "Error chance"
 			}
 		],
 		[
 			"LBL_ModifierDuration",
 			{
-				"de": "Duration",
+				"de": "Dauer",
 				"en": "Duration"
 			}
 		],
 		[
 			"LBL_ErrorChance",
 			{
-				"de": "Error",
+				"de": "Fehler",
 				"en": "Error"
 			}
 		]

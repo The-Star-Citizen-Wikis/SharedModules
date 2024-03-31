@@ -453,14 +453,14 @@
         [
             "Part",
             {
-                "de": "Part",
+                "de": "Teil",
                 "en": "Part"
             }
         ],
         [
             "Parts",
             {
-                "de": "Parts",
+                "de": "Teile",
                 "en": "Parts"
             }
         ],
@@ -894,14 +894,14 @@
         [
             "SMW_HardpointMinimumSize",
             {
-                "de": "Minimalgröße",
+                "de": "Hardpoint Minimalgröße",
                 "en": "Hardpoint minimum size"
             }
         ],
         [
             "SMW_HardpointMaximumSize",
             {
-                "de": "Maximalgröße",
+                "de": "Hardpoint Maximalgröße",
                 "en": "Hardpoint maximum size"
             }
         ],
@@ -957,14 +957,14 @@
         [
             "SMW_Inventory",
             {
-                "de": "SCU",
+                "de": "Inventar",
                 "en": "Inventory"
             }
         ],
         [
             "SMW_ParentHardpointUuid",
             {
-                "de": "Parent UUID",
+                "de": "Parent Hardpoint UUID",
                 "en": "Parent hardpoint UUID"
             }
         ],
@@ -1048,7 +1048,7 @@
         [
             "msg_invalid_hardpoints_object",
             {
-                "de": "Hardpoints need to be a table",
+                "de": "Hardpointdaten müssen eine LUA Tabelle sein",
                 "en": "Hardpoints need to be a table"
             }
         ],
@@ -1069,7 +1069,7 @@
         [
             "msg_no_data",
             {
-                "de": "Keine Hardpoints für die Seite [[$1]] gefunden.",
+                "de": "Keine SMW-Daten auf der Seite [[$1]] gefunden.",
                 "en": "SMW data not found on [[$1]]."
             }
         ],
@@ -1103,7 +1103,7 @@
             }
         ],
         [
-            "RSIWeapon ",
+            "RSIWeapon",
             {
                 "de": "Bewaffnung",
                 "en": "Weapons"

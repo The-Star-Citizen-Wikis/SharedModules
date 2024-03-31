@@ -187,7 +187,7 @@
 		[
 			"SMW_Inventory",
 			{
-				"de": "SCU",
+				"de": "Inventar",
 				"en": "Inventory"
 			}
 		],
@@ -243,42 +243,42 @@
 		[
 			"SMW_ItemPortName",
 			{
-				"de": "Item port name",
+				"de": "Itemport Name",
 				"en": "Item port name"
 			}
 		],
 		[
 			"SMW_ItemPortDisplayName",
 			{
-				"de": "Item port display name",
+				"de": "Itemport angezeigter Name",
 				"en": "Item port display name"
 			}
 		],
 		[
 			"SMW_ItemPortMinimumSize",
 			{
-				"de": "Item port minimum size",
+				"de": "Itemport Minimalgröße",
 				"en": "Item port minimum size"
 			}
 		],
 		[
 			"SMW_ItemPortMaximumSize",
 			{
-				"de": "Item port maximum size",
+				"de": "Itemport Maximalgröße",
 				"en": "Item port maximum size"
 			}
 		],
 		[
 			"SMW_EquippedItemUUID",
 			{
-				"de": "Equipped item UUID",
+				"de": "Ausgerüstetes Item UUID",
 				"en": "Equipped item UUID"
 			}
 		],
 		[
 			"SMW_EquippedItemName",
 			{
-				"de": "Equipped item name",
+				"de": "Ausgerüstetes Item Name",
 				"en": "Equipped item name"
 			}
 		],
@@ -292,7 +292,7 @@
 		[
 			"SMW_ItemBaseVariantName",
 			{
-				"de": "Basisversion name",
+				"de": "Basisversion Name",
 				"en": "Item base variant name"
 			}
 		],
@@ -418,112 +418,112 @@
 		[
 			"type_char_accessory_eyes",
 			{
-				"de": "Eyewear",
+				"de": "Brillen",
 				"en": "Eyewear"
 			}
 		],
 		[
 			"type_char_armor_arms.heavy",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"type_char_armor_arms.light",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"type_char_armor_arms.medium",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"type_char_armor_backpack",
 			{
-				"de": "Backpack",
+				"de": "Rucksack",
 				"en": "Backpack"
 			}
 		],
 		[
 			"type_char_armor_backpack.personal",
 			{
-				"de": "Backpack",
+				"de": "Rucksack",
 				"en": "Backpack"
 			}
 		],
 		[
 			"type_char_armor_helmet",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmet"
 			}
 		],
 		[
 			"type_char_armor_helmet.heavy",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmet"
 			}
 		],
 		[
 			"type_char_armor_helmet.light",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmet"
 			}
 		],
 		[
 			"type_char_armor_helmet.medium",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmet"
 			}
 		],
 		[
 			"type_char_armor_legs.heavy",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"type_char_armor_legs.light",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"type_char_armor_legs.medium",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"type_char_armor_torso.heavy",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
 		[
 			"type_char_armor_torso.light",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
 		[
 			"type_char_armor_torso.medium",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
@@ -544,28 +544,28 @@
 		[
 			"type_char_clothing_feet",
 			{
-				"de": "Footwear",
+				"de": "Schuhe",
 				"en": "Footwear"
 			}
 		],
 		[
 			"type_char_clothing_hands",
 			{
-				"de": "Gloves",
+				"de": "Handschuhe",
 				"en": "Gloves"
 			}
 		],
 		[
 			"type_char_clothing_hats",
 			{
-				"de": "Hat",
+				"de": "Hut",
 				"en": "Hat"
 			}
 		],
 		[
 			"type_char_clothing_legs",
 			{
-				"de": "Legwear",
+				"de": "Hose",
 				"en": "Legwear"
 			}
 		],
@@ -579,7 +579,7 @@
 		[
 			"type_char_clothing_torso_1",
 			{
-				"de": "Jacket",
+				"de": "Jacke",
 				"en": "Jacket"
 			}
 		],
@@ -852,7 +852,7 @@
 		[
 			"type_weaponattachment.barrel",
 			{
-				"de": "Barrel attachment",
+				"de": "Laufbefestigung",
 				"en": "Barrel attachment"
 			}
 		],
@@ -915,28 +915,28 @@
 		[
 			"type_weaponpersonal.large",
 			{
-				"de": "Shouldered weapon",
+				"de": "Geschulterte Waffe",
 				"en": "Shouldered weapon"
 			}
 		],
 		[
 			"type_weaponpersonal.medium",
 			{
-				"de": "Stocked weapon",
+				"de": "Gewehr",
 				"en": "Stocked weapon"
 			}
 		],
 		[
 			"type_weaponpersonal.small",
 			{
-				"de": "Sidearm weapon",
+				"de": "Seitenwaffe",
 				"en": "Sidearm weapon"
 			}
 		],
 		[
 			"class_ballistic",
 			{
-				"de": "🗡️ Ballistic",
+				"de": "🗡️ Ballistisch",
 				"en": "🗡️ Ballistic"
 			}
 		],
@@ -1174,112 +1174,112 @@
 		[
 			"category_char_accessory_eyes",
 			{
-				"de": "Eyewear",
+				"de": "Brillen",
 				"en": "Eyewear"
 			}
 		],
 		[
 			"category_char_armor_arms.heavy",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"category_char_armor_arms.light",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"category_char_armor_arms.medium",
 			{
-				"de": "Arms armor",
+				"de": "Armpanzerung",
 				"en": "Arms armor"
 			}
 		],
 		[
 			"category_char_armor_backpack",
 			{
-				"de": "Backpack",
+				"de": "Rucksack",
 				"en": "Backpacks"
 			}
 		],
 		[
 			"category_char_armor_backpack.personal",
 			{
-				"de": "Backpack",
+				"de": "Rucksack",
 				"en": "Backpacks"
 			}
 		],
 		[
 			"category_char_armor_helmet",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmets"
 			}
 		],
 		[
 			"category_char_armor_helmet.heavy",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmets"
 			}
 		],
 		[
 			"category_char_armor_helmet.light",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmets"
 			}
 		],
 		[
 			"category_char_armor_helmet.medium",
 			{
-				"de": "Helmet",
+				"de": "Helm",
 				"en": "Helmets"
 			}
 		],
 		[
 			"category_char_armor_legs.heavy",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"category_char_armor_legs.light",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"category_char_armor_legs.medium",
 			{
-				"de": "Legs armor",
+				"de": "Beinpanzerung",
 				"en": "Legs armor"
 			}
 		],
 		[
 			"category_char_armor_torso.heavy",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
 		[
 			"category_char_armor_torso.light",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
 		[
 			"category_char_armor_torso.medium",
 			{
-				"de": "Torso armor",
+				"de": "Oberkörperpanzerung",
 				"en": "Torso armor"
 			}
 		],
@@ -1300,42 +1300,42 @@
 		[
 			"category_char_clothing_feet",
 			{
-				"de": "Footwear",
+				"de": "Schuh",
 				"en": "Footwear"
 			}
 		],
 		[
 			"category_char_clothing_hands",
 			{
-				"de": "Gloves",
+				"de": "Handschuh",
 				"en": "Gloves"
 			}
 		],
 		[
 			"category_char_clothing_hats",
 			{
-				"de": "Hats",
+				"de": "Hut",
 				"en": "Hats"
 			}
 		],
 		[
 			"category_char_clothing_legs",
 			{
-				"de": "Legwear",
+				"de": "Hose",
 				"en": "Legwear"
 			}
 		],
 		[
 			"category_char_clothing_torso_0",
 			{
-				"de": "Shirts",
+				"de": "T-Shirt",
 				"en": "Shirts"
 			}
 		],
 		[
 			"category_char_clothing_torso_1",
 			{
-				"de": "Jackets",
+				"de": "Jacke",
 				"en": "Jackets"
 			}
 		],
@@ -1594,7 +1594,7 @@
 		[
 			"category_weaponattachment.barrel",
 			{
-				"de": "Barrel attachment",
+				"de": "Laufbefestigung",
 				"en": "Barrel attachments"
 			}
 		],
@@ -1657,21 +1657,21 @@
 		[
 			"category_weaponpersonal.large",
 			{
-				"de": "Shouldered weapons",
+				"de": "Geschulterte Waffe",
 				"en": "Shouldered weapons"
 			}
 		],
 		[
 			"category_weaponpersonal.medium",
 			{
-				"de": "Stocked weapons",
+				"de": "Gewehr",
 				"en": "Stocked weapons"
 			}
 		],
 		[
 			"category_weaponpersonal.small",
 			{
-				"de": "Sidearm weapons",
+				"de": "Seitenwaffe",
 				"en": "Sidearm weapons"
 			}
 		],
@@ -1706,14 +1706,14 @@
 		[
 			"error_no_infobox_data_title",
 			{
-				"de": "No infobox data found",
+				"de": "Keine Infoboxdaten gefunden",
 				"en": "No infobox data found"
 			}
 		],
 		[
 			"error_no_description_title",
 			{
-				"de": "No description found.",
+				"de": "Keine Beschreibung gefunden.",
 				"en": "No description found."
 			}
 		],
@@ -1727,7 +1727,7 @@
 		[
 			"error_no_description_text",
 			{
-				"de": "No description found for this item in game data.",
+				"de": "Keine Beschreibung für diesen Gegenstand in den Spieldaten gefunden.",
 				"en": "No description found for this item in game data."
 			}
 		],
@@ -1741,14 +1741,14 @@
 		[
 			"error_category_item_missing_uuid",
 			{
-				"de": "Items missing UUID",
+				"de": "Item mit fehlender UUID",
 				"en": "Items missing UUID"
 			}
 		],
 		[
 			"error_category_item_missing_manufacturer",
 			{
-				"de": "Items missing manufacturer",
+				"de": "Item mit fehlendem Hersteller",
 				"en": "Items missing manufacturer"
 			}
 		],

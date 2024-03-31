@@ -19,14 +19,14 @@
         [
             "color_01",
             {
-                "de": "Base",
+                "de": "Basis",
                 "en": "Base"
             }
         ],
         [
             "color_02",
             {
-                "de": "Red",
+                "de": "Rot",
                 "en": "Red"
             }
         ],
@@ -40,70 +40,70 @@
         [
             "color_04",
             {
-                "de": "Yellow",
+                "de": "Gelb",
                 "en": "Yellow"
             }
         ],
         [
             "color_05",
             {
-                "de": "Green",
+                "de": "Grün",
                 "en": "Green"
             }
         ],
         [
             "color_06",
             {
-                "de": "Seagreen",
+                "de": "Meeresgrün",
                 "en": "Seagreen"
             }
         ],
         [
             "color_07",
             {
-                "de": "Blue",
+                "de": "Blau",
                 "en": "Blue"
             }
         ],
         [
             "color_08",
             {
-                "de": "Purple",
+                "de": "Lila",
                 "en": "Purple"
             }
         ],
         [
             "color_09",
             {
-                "de": "Violet",
+                "de": "Violett",
                 "en": "Violet"
             }
         ],
         [
             "color_10",
             {
-                "de": "White",
+                "de": "Weiß",
                 "en": "White"
             }
         ],
         [
             "color_11",
             {
-                "de": "Grey",
+                "de": "Grau",
                 "en": "Grey"
             }
         ],
         [
             "color_12",
             {
-                "de": "Black",
+                "de": "Schwarz",
                 "en": "Black"
             }
         ],
         [
             "color_13",
             {
-                "de": "Dark Red",
+                "de": "Dunkelrot",
                 "en": "Dark Red"
             }
         ],
@@ -124,7 +124,7 @@
         [
             "color_16",
             {
-                "de": "Dark Green",
+                "de": "Dunkelgrün",
                 "en": "Dark Green"
             }
         ],
