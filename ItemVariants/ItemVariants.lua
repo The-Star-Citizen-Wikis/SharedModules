@@ -110,9 +110,12 @@ local function makeSmwQueryObject( page )
             smwName,
             page
         ),
+        '[[Category:+]]', -- Filter out subobjects, i.e. select pages having a category. Warning, order matters? Dont put this above the variant query
         '?#-=page',
         '?' .. smwName .. '#-=name',
-        '?Page Image#-=image'
+        '?Page Image#-=image',
+        'sort=',
+        'order=asc',
     }
 
     return query
