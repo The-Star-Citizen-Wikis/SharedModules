@@ -92,7 +92,7 @@ function p.doc( frame )
 	    		translate(
 					'message_shared_across',
 					title.fullText,
-					mw.uri.encode( title.rootText, 'PATH' )
+					mw.uri.encode( title.text, 'PATH' )
 				),
 				translate(
 					'message_shared_across_subtext',

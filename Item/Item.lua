@@ -99,7 +99,7 @@ function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 
 	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
-        mw.title.getCurrentTitle().rootText,
+        mw.title.getCurrentTitle().text,
 		config.name_suffixes
     )
 
@@ -135,7 +135,7 @@ function methodtable.setSemanticProperties( self )
 	)
 
 	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
-		mw.title.getCurrentTitle().rootText,
+		mw.title.getCurrentTitle().text,
 		config.name_suffixes
 	)
 
@@ -745,7 +745,7 @@ function Item.main( frame )
 	if instance.smwData ~= nil then
 		instance:setCategories()
 		instance:setShortDescription()
-		interwikiLinks = common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
+		interwikiLinks = common.generateInterWikiLinks( mw.title.getCurrentTitle().text )
 	end
 
 	return infobox .. debugOutput .. instance:getCategories() .. interwikiLinks

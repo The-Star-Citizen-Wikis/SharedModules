@@ -518,7 +518,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 	end
 
 	local function renderSnippet()
-		if snippetText == nil then snippetText = mw.title.getCurrentTitle().rootText end
+		if snippetText == nil then snippetText = mw.title.getCurrentTitle().text end
 
 		local html = mw.html.create( 'div' )
 

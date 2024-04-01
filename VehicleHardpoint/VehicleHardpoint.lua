@@ -1352,7 +1352,7 @@ end
 --- Parser call for generating the table
 function VehicleHardpoint.outputTable( frame )
     local args = require( 'Module:Arguments' ).getArgs( frame )
-    local page = args[ 1 ] or args[ 'Name' ] or mw.title.getCurrentTitle().rootText
+    local page = args[ 1 ] or args[ 'Name' ] or mw.title.getCurrentTitle().text
 
     local instance = VehicleHardpoint:new( page )
     local out = instance:out()

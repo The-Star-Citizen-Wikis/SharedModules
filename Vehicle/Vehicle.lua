@@ -166,7 +166,7 @@ function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 
 	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
-        mw.title.getCurrentTitle().rootText,
+        mw.title.getCurrentTitle().text,
 		config.name_suffixes
     )
 
@@ -201,7 +201,7 @@ function methodtable.setSemanticProperties( self )
 	)
 
 	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
-		mw.title.getCurrentTitle().rootText,
+		mw.title.getCurrentTitle().text,
 		config.name_suffixes
 	)
 
@@ -996,7 +996,7 @@ function Vehicle.main( frame )
 		instance:setCategories()
 		instance:setShortDescription()
 		-- FIXME: Is there a cleaner way?
-		infobox = infobox .. common.generateInterWikiLinks( mw.title.getCurrentTitle().rootText )
+		infobox = infobox .. common.generateInterWikiLinks( mw.title.getCurrentTitle().text )
 	end
 
 	return infobox .. debugOutput .. table.concat( instance.categories )
