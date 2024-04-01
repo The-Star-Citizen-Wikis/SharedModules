@@ -19,77 +19,77 @@
 		[
 			"SMW_ItemPortName",
 			{
-				"de": "Item port name",
+				"de": "Itemport Name",
 				"en": "Item port name"
 			}
 		],
 		[
 			"SMW_ItemPortDisplayName",
 			{
-				"de": "Item port display name",
+				"de": "Itemport angezeigter Name",
 				"en": "Item port display name"
 			}
 		],
 		[
 			"SMW_ItemPortMinimumSize",
 			{
-				"de": "Item port minimum size",
+				"de": "Itemport Minimalgröße",
 				"en": "Item port minimum size"
 			}
 		],
 		[
 			"SMW_ItemPortMaximumSize",
 			{
-				"de": "Item port maximum size",
+				"de": "Itemport Maximalgröße",
 				"en": "Item port maximum size"
 			}
 		],
 		[
 			"SMW_EquippedItemName",
 			{
-				"de": "Equipped item name",
+				"de": "Ausgerüstetes Item Name",
 				"en": "Equipped item name"
 			}
 		],
 		[
 			"SMW_EquippedItemUUID",
 			{
-				"de": "Equipped item UUID",
+				"de": "Ausgerüstetes Item UUID",
 				"en": "Equipped item UUID"
 			}
 		],
 		[
 			"item_placeholder",
 			{
-				"de": "Placeholder item",
+				"de": "Platzhalter Item",
 				"en": "Placeholder item"
 			}
 		],
 		[
 			"itemPort_BAR1",
 			{
-				"de": "Barrel attachment 1",
+				"de": "Laufaufsatz 1",
 				"en": "Barrel attachment 1"
 			}
 		],
 		[
 			"itemPort_MEC",
 			{
-				"de": "Firing mechanism attachment",
+				"de": "Feuermechanismus",
 				"en": "Firing mechanism attachment"
 			}
 		],
 		[
 			"itemPort_POW",
 			{
-				"de": "Power array attachment",
+				"de": "Stromversorgungssystem",
 				"en": "Power array attachment"
 			}
 		],
 		[
 			"itemPort_VEN",
 			{
-				"de": "Ventilation attachment",
+				"de": "Lüftung",
 				"en": "Ventilation attachment"
 			}
 		],
@@ -3710,6 +3710,13 @@
 			{
 				"en": "No item ports found on '''%s'''.",
 				"de": "Keine Ports an Item '''%s''' gefunden."
+			}
+		],
+		[
+			"msg_no_item_equipped",
+			{
+				"en": "No item equipped",
+				"de": "Kein Item ausgerüstet"
 			}
 		]
 	]

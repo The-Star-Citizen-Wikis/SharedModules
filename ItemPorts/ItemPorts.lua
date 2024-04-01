@@ -110,7 +110,7 @@ function methodtable.out( self )
 			    title = mw.ustring.format( '[[%s]]', port.equipped_name )
             end
 		else
-			title = 'No item equipped'
+			title = translate( 'msg_no_item_equipped' )
 		end
 		
 		local portHtml = mw.html.create( 'div' ):addClass( 'template-itemPort' )
@@ -156,7 +156,7 @@ end
 --- Parser call for generating the table
 function ItemPorts.outputTable( frame )
     local args = require( 'Module:Arguments' ).getArgs( frame )
-    local page = args[ 1 ] or mw.title.getCurrentTitle().rootText
+    local page = args[ 1 ] or mw.title.getCurrentTitle().text
 
     local instance = ItemPorts:new( page )
     local out = instance:out()
