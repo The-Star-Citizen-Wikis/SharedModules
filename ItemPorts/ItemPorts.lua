@@ -29,12 +29,10 @@ end
 --- @param page string the item page containing data
 --- @return table
 local function makeSmwQueryObject( page )
+    local ignores = config.blocklist_itemport_name or {}
+
     local itemPortName = translate( 'SMW_ItemPortName' )
-    return {
-        mw.ustring.format(
-            '[[-Has subobject::' .. page .. ']][[%s::+]]',
-            itemPortName
-        ),
+    local query = {
         mw.ustring.format( '?%s#-=name', itemPortName ),
         mw.ustring.format( '?%s#-=display_name', translate( 'SMW_ItemPortDisplayName' ) ),
         mw.ustring.format( '?%s#-=min_size', translate( 'SMW_ItemPortMinimumSize' ) ),
@@ -45,6 +43,20 @@ local function makeSmwQueryObject( page )
         'order=asc',
         'limit=1000'
     }
+
+    table.insert( query, 1, mw.ustring.format(
+        '[[-Has subobject::' .. page .. ']][[%s::+]]',
+        itemPortName
+    ) )
+
+    for _, portName in ipairs(ignores) do
+        table.insert( query, 2, mw.ustring.format(
+            '[[%s::!' .. portName .. ']]',
+            itemPortName
+        ))
+    end
+
+    return query
 end
 
 
@@ -81,10 +93,6 @@ function methodtable.out( self )
 	end
 
     local containerHtml = mw.html.create( 'div' ):addClass( 'template-itemPorts' )
-
-    -- FIXME: This does nothing since I don't know how to achieve this in Lua
-    -- When port.name equals to one of the value in blockedPortNames, skip the iteration.
-    -- local blockedPortNames = config.blocklist_itemport_name
 
 	for _, port in ipairs( smwData ) do
 		local size_text, title, subtitle
