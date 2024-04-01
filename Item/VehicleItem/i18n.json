@@ -138,7 +138,7 @@
 		[
 			"SMW_MinimumTemperature",
 			{
-				"de": "Minimale Temperature",
+				"de": "Minimale Temperatur",
 				"en": "Minimum temperature"
 			}
 		],
@@ -187,7 +187,7 @@
 		[
 			"SMW_PowerToEM",
 			{
-				"de": "Energie bis EM",
+				"de": "Energie zu EM",
 				"en": "Power to EM"
 			}
 		],
@@ -215,7 +215,7 @@
 		[
 			"SMW_TemperatureToIR",
 			{
-				"de": "Temperatur bis IR",
+				"de": "Temperatur zu IR",
 				"en": "Temperature to IR"
 			}
 		],
@@ -250,28 +250,28 @@
 		[
 			"SMW_ArmTime",
 			{
-				"de": "Arm time",
+				"de": "Aktivierungszeit",
 				"en": "Arm time"
 			}
 		],
 		[
 			"SMW_IgniteTime",
 			{
-				"de": "Ignite time",
+				"de": "Zündungszeit",
 				"en": "Ignite time"
 			}
 		],
 		[
 			"SMW_MinimumExplosionRadius",
 			{
-				"de": "Minimum explosion radius",
+				"de": "Minimaler Explosionsradius",
 				"en": "Minimum explosion radius"
 			}
 		],
 		[
 			"SMW_MaximumExplosionRadius",
 			{
-				"de": "Maximum explosion radius",
+				"de": "Maximaler Explosionsradius",
 				"en": "Maximum explosion radius"
 			}
 		],
@@ -313,21 +313,21 @@
 		[
 			"SMW_FuelFillRate",
 			{
-				"de": "Fuel fill rate",
+				"de": "Treibstofffüllrate",
 				"en": "Fuel fill rate"
 			}
 		],
 		[
 			"SMW_FuelDrainRate",
 			{
-				"de": "Fuel drain rate",
+				"de": "Treibstoffabflussrate",
 				"en": "Fuel drain rate"
 			}
 		],
 		[
 			"SMW_FuelCapacity",
 			{
-				"de": "Fuel capacity",
+				"de": "Treibstoffkapazität",
 				"en": "Fuel capacity"
 			}
 		],
@@ -404,7 +404,7 @@
 		[
 			"SMW_ModuleSlots",
 			{
-				"de": "Anzahl Verbrauchsplätze",
+				"de": "Modulplätze",
 				"en": "Module slots"
 			}
 		],

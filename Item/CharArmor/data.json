@@ -13,26 +13,32 @@
 		},
 		{
 			"SMW_ModifierDamageTakenPhysical": "",
+			"type": "number",
 			"smw_format": "#-n"
 		},
 		{
 			"SMW_ModifierDamageTakenEnergy": "",
+			"type": "number",
 			"smw_format": "#-n"
 		},
 		{
 			"SMW_ModifierDamageTakenDistortion": "",
+			"type": "number",
 			"smw_format": "#-n"
 		},
 		{
 			"SMW_ModifierDamageTakenThermal": "",
+			"type": "number",
 			"smw_format": "#-n"
 		},
 		{
 			"SMW_ModifierDamageTakenBiochemical": "",
+			"type": "number",
 			"smw_format": "#-n"
 		},
 		{
 			"SMW_ModifierDamageTakenStun": "",
+			"type": "number",
 			"smw_format": "#-n"
 		}
 	]

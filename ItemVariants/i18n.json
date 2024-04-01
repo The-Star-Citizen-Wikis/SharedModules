@@ -34,7 +34,7 @@
 			"error_no_variants_found",
 			{
 				"en": "No variants found on '''%s'''.",
-				"de": "Keine Varianten an Item '''%s''' gefunden."
+				"de": "Keine Varianten für Item '''%s''' gefunden."
 			}
 		]
 	]
