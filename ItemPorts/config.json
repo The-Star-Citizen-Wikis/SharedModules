@@ -3,6 +3,13 @@
 	"smw_multilingual_text": false,
 	"%blocklist_itemport_name": "List of item port name to not include in the template",
 	"blocklist_itemport_name": [
-		"item_grab"
+		"item_grab",
+		"Material_Variant",
+		"holo_display",
+		"radar",
+		"long_range_radar",
+		"ping",
+		"scanner",
+		"visor_display"
 	]
 }
