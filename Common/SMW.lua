@@ -10,8 +10,9 @@ local checkTypeMulti = libraryUtil.checkTypeMulti
 --- @param datum table An entry from data.json
 --- @param val any The value to be formatted
 --- @param moduleConfig table Optional, only used for multilingual text (phasing out)
+--- @param lang table Content language, uses page language if not set
 --- @return any The formatted value
-function commonSMW.format( datum, val, moduleConfig )
+function commonSMW.format( datum, val, moduleConfig, lang )
     datum = datum or {}
     moduleConfig = moduleConfig or { smw_multilingual_text = false }
 
@@ -36,6 +37,7 @@ function commonSMW.format( datum, val, moduleConfig )
         if mw.ustring.find( datum.format, '%', 1, true  ) then
             val = mw.ustring.format( datum.format, val )
         elseif datum.format == 'ucfirst' then
+            lang = lang or mw.getContentLanguage()
             val = lang:ucfirst( val )
         elseif datum.format == 'replace-dash' then
             val = mw.ustring.gsub( val, '%-', ' ' )
@@ -178,9 +180,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
                     for _, data in ipairs( value ) do
                         if type( datum.data_key ) == 'string' then
-                            table.insert( output, commonSMW.format( datum, api.makeAccessSafe( data ):get( datum.data_key ) ) )
+                            table.insert( output, commonSMW.format( datum, api.makeAccessSafe( data ):get( datum.data_key ), moduleConfig, lang ) )
                         elseif type( data ) ~= 'table' then -- Format each value if its a normal array
-                            table.insert( output, commonSMW.format( datum, data ) )
+                            table.insert( output, commonSMW.format( datum, data, moduleConfig, lang ) )
                         end
                     end
 
@@ -202,7 +204,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
                         if type( newValue ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
                             newValue = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
                         else
-                            newValue = commonSMW.format( datum, newValue )
+                            newValue = commonSMW.format( datum, newValue, moduleConfig, lang )
                         end
 
                         table.remove( value, index )
