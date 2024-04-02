@@ -24,6 +24,8 @@ end
 ---
 --- @param smwSetObject table
 function p.addSmwProperties( apiData, frameArgs, smwSetObject )
+    local common = require( 'Module:Common' )
+
     smwCommon.addSmwProperties(
         apiData,
         frameArgs,
@@ -37,6 +39,11 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
     local setData = {}
 
     smwCommon.setFromTable( setData, apiData:get( 'clothing.resistances' ), 'type', 'multiplier', 'ModifierDamageTaken', translate )
+
+    -- Todo make format FN of Module:Common/SMW "public"
+    for key, value in pairs( setData ) do
+        setData[ key ] = common.formatNum( value )
+    end
 
     mw.smw.set( setData )
 end
