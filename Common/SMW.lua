@@ -5,6 +5,55 @@ local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 local checkTypeMulti = libraryUtil.checkTypeMulti
 
+--- Formats a value to be used by smw.set
+---
+--- @param datum table An entry from data.json
+--- @param val any The value to be formatted
+--- @param moduleConfig table Optional, only used for multilingual text (phasing out)
+--- @return any The formatted value
+function commonSMW.format( datum, val, moduleConfig )
+    datum = datum or {}
+    moduleConfig = moduleConfig or { smw_multilingual_text = false }
+
+    -- Format number for SMW
+    if datum.type == 'number' then
+        val = common.formatNum( val )
+        -- Multilingual Text, add a suffix
+    elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
+        -- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
+        if type( val ) == 'table' then
+            local tmp = {}
+            for _, valText in ipairs( val ) do
+                valText = mw.ustring.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+                table.insert( tmp, valText )
+            end
+            val = tmp
+        else
+            val = mw.ustring.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
+        end
+        -- String format
+    elseif type( datum.format ) == 'string' then
+        if mw.ustring.find( datum.format, '%', 1, true  ) then
+            val = mw.ustring.format( datum.format, val )
+        elseif datum.format == 'ucfirst' then
+            val = lang:ucfirst( val )
+        elseif datum.format == 'replace-dash' then
+            val = mw.ustring.gsub( val, '%-', ' ' )
+            -- Remove part of the value
+        elseif datum.format:sub( 1, 6 ) == 'remove' then
+            val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
+        end
+        -- Min/Max
+    elseif datum.type == 'minmax' then
+        val = {
+            common.formatNum( val.min ),
+            common.formatNum( val.max ),
+        }
+    end
+
+    return val
+end
+
 --- Adds SMW properties to a table either from the API or Frame arguments
 ---
 --- @param apiData table Data from the Wiki API
@@ -54,46 +103,6 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
 		return value
 	end
-
-    local function format( datum, val )
-        -- Format number for SMW
-        if datum.type == 'number' then
-            val = common.formatNum( val )
-            -- Multilingual Text, add a suffix
-        elseif datum.type == 'multilingual_text' and moduleConfig.smw_multilingual_text == true then
-            -- FIXME: This is a temp fix to handle tables in val (d280346 in API), need some clean up
-            if type( val ) == 'table' then
-                local tmp = {}
-                for _, valText in ipairs( val ) do
-                    valText = mw.ustring.format( '%s@%s', valText, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
-                    table.insert( tmp, valText )
-                end
-                val = tmp
-            else
-                val = mw.ustring.format( '%s@%s', val, moduleConfig.module_lang or mw.getContentLanguage():getCode() )
-            end
-            -- String format
-        elseif type( datum.format ) == 'string' then
-            if mw.ustring.find( datum.format, '%', 1, true  ) then
-                val = mw.ustring.format( datum.format, val )
-            elseif datum.format == 'ucfirst' then
-                val = lang:ucfirst( val )
-            elseif datum.format == 'replace-dash' then
-                val = mw.ustring.gsub( val, '%-', ' ' )
-                -- Remove part of the value
-            elseif datum.format:sub( 1, 6 ) == 'remove' then
-                val = tostring( val ):gsub( mw.text.split( datum.format, ':', true )[ 2 ], '' )
-            end
-            -- Min/Max
-        elseif datum.type == 'minmax' then
-            val = {
-                common.formatNum( val.min ),
-                common.formatNum( val.max ),
-            }
-        end
-
-        return val
-    end
 
 	-- Iterate through the list of SMW attributes that shall be filled
 	for _, datum in ipairs( moduleData.smw_data ) do
@@ -169,9 +178,9 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 
                     for _, data in ipairs( value ) do
                         if type( datum.data_key ) == 'string' then
-                            table.insert( output, format( datum, api.makeAccessSafe( data ):get( datum.data_key ) ) )
+                            table.insert( output, commonSMW.format( datum, api.makeAccessSafe( data ):get( datum.data_key ) ) )
                         elseif type( data ) ~= 'table' then -- Format each value if its a normal array
-                            table.insert( output, format( datum, data ) )
+                            table.insert( output, commonSMW.format( datum, data ) )
                         end
                     end
 
@@ -193,7 +202,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
                         if type( newValue ) == 'table' and datum.type ~= 'table' and datum.type ~= 'minmax' and datum.type ~= 'subobject' and datum.type ~= 'multilingual_text' then
                             newValue = mw.ustring.format( '!ERROR! Key %s is a table value; please fix', key )
                         else
-                            newValue = format( datum, newValue )
+                            newValue = commonSMW.format( datum, newValue )
                         end
 
                         table.remove( value, index )
@@ -307,7 +316,8 @@ end
 --- @param valueKey string Key of the value being used as value in the SMW property
 --- @param prefix string Prefix of the SMW property name
 --- @param translateFn function The translate function used to translate argument names
-function commonSMW.setFromTable( setData, tableData, nameKey, valueKey, prefix, translateFn )
+--- @param formatConfig table An optional format definition in the style of data.json, used for formatting
+function commonSMW.setFromTable( setData, tableData, nameKey, valueKey, prefix, translateFn, formatConfig )
 	checkType( 'Module:Common/SMW.setFromTable', 1, setData, 'table' )
 	checkTypeMulti( 'Module:Common/SMW.setFromTable', 2, tableData, { 'table', 'nil' } )
 	checkType( 'Module:Common/SMW.setFromTable', 3, nameKey, 'string' )
@@ -333,7 +343,7 @@ function commonSMW.setFromTable( setData, tableData, nameKey, valueKey, prefix, 
 				value = mw.ustring.gsub( value, '%%', '' ) / 100
 			end
 
-			setData[ translateFn( name ) ] = value
+			setData[ translateFn( name ) ] = commonSMW.format( formatConfig, value )
 		end
 	end
 end

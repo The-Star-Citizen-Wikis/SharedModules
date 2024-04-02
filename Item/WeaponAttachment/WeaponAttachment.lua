@@ -34,13 +34,18 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         'Item/' .. MODULE_NAME
     )
 
-    -- If the modifie equals to 1, then it does nothing and the data is not useful
+    -- If the modifier equals to 1, then it does nothing and the data is not useful
     -- TODO: Should we upstream this to Item?
     local modifiers = { 'SMW_ModifierDamage', 'SMW_ModifierFireRecoilStrength', 'SMW_ModifierSoundRadius' }
     for _, modifier in ipairs( modifiers ) do
         local smwProp = smwSetObject[ translate( modifier ) ]
-        if smwProp and smwProp == 1 then
-            smwSetObject[ translate( modifier ) ] = nil
+
+        if smwProp then
+            if smwProp == 1 then
+                smwSetObject[ translate( modifier ) ] = nil
+            else
+                smwSetObject[ translate( modifier ) ] = smwCommon.format( { type = "number" }, smwProp )
+            end
         end
     end
 end

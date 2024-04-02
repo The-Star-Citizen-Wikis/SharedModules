@@ -38,11 +38,15 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 
     local setData = {}
 
+    local formatConfig = {
+        type = "number"
+    }
+
     -- TODO: Modifiers and Damages are generic enough that maybe we should search for it by default on Module:Item?
-    smwCommon.setFromTable( setData, apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier', translate )
-    smwCommon.setFromTable( setData, apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier', translate )
-    smwCommon.setFromTable( setData, apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage', translate )
-    smwCommon.setFromTable( setData, apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage', translate )
+    smwCommon.setFromTable( setData, apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier', translate, formatConfig )
+    smwCommon.setFromTable( setData, apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier', translate, formatConfig )
+    smwCommon.setFromTable( setData, apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage', translate, formatConfig )
+    smwCommon.setFromTable( setData, apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage', translate, formatConfig )
 
     mw.smw.set( setData )
 end
@@ -405,7 +409,11 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     -- Emission
     local function getMaxIR()
-        if smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] == nil or smwData[ translate( 'SMW_TemperatureToIR' ) ] == nil and smwData[ translate( 'SMW_MinimumIR' ) ] == nil then return end
+        if
+            ( type( smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] ) ~= 'number' or type( smwData[ translate( 'SMW_TemperatureToIR' ) ] ~= 'number' ) )
+            and type( smwData[ translate( 'SMW_MinimumIR' ) ] ) ~= 'number'
+        then return end
+
         return smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] * smwData[ translate( 'SMW_TemperatureToIR' ) ] + smwData[ translate( 'SMW_MinimumIR' ) ]
     end
 
