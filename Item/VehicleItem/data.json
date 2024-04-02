@@ -227,7 +227,8 @@
 			"SMW_SignalType": "API_missile.signal_type"
 		},
 		{
-			"SMW_LockTime": "API_missile.lock_time"
+			"SMW_LockTime": "API_missile.lock_time",
+			"type": "number"
 		},
 		{
 			"%": "Missile Racks"
