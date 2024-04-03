@@ -40,6 +40,7 @@ function methodtable.getSmwData( self, category )
 	local smwManufacturer = translate( 'SMW_Manufacturer' )
 
     local askData = {
+		'[[:+]]',
         '?#-=page',
         '?' .. smwManufacturer ..'#-=manufacturer',
         sort = smwManufacturer,
@@ -55,7 +56,6 @@ function methodtable.getSmwData( self, category )
     	query = '[[Category:' .. category .. '|+depth=0]]'
     end
 
-	query = query .. [[:+]]
 	table.insert( askData, 1, query )
 
     local data = mw.smw.ask( askData )
