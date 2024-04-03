@@ -1,0 +1,34 @@
+{
+	"%smw_data": "Sets which data gets added to SMW",
+	"smw_data": [
+		{
+			"SMW_Ammo": "API_personal_weapon.magazine_size",
+			"type": "number"
+		},
+		{
+			"SMW_FiringModes": "API_personal_weapon.modes",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_FiringMode": "API_type"
+				},
+				{
+					"SMW_FiringRate": "API_rpm",
+					"type": "number"
+				},
+				{
+					"SMW_AmmoPerShot": "API_ammo_per_shot",
+					"type": "number"
+				},
+				{
+					"SMW_ProjectilePerShot": "API_pellets_per_shot",
+					"type": "number"
+				},
+				{
+					"SMW_DamagePerSecond": "API_damage_per_second",
+					"type": "number"
+				}
+			]
+		}
+	]
+}

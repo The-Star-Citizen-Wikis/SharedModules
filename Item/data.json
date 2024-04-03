@@ -244,6 +244,14 @@
 				"WeaponAttachment.Magazine",
 				"WeaponAttachment.Utility"
 			]
+		},
+		{
+			"name": "Module:Item/WeaponPersonal",
+			"type": [
+				"WeaponPersonal.Large",
+				"WeaponPersonal.Medium",
+				"WeaponPersonal.Small"
+			]
 		}
 	]
 }

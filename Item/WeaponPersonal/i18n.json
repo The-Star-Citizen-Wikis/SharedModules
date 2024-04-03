@@ -1,0 +1,139 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item/WeaponPersonal"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized" 
+			}
+		]
+	},
+	"data": [
+		[
+			"SMW_Type",
+			{
+				"de": "Typ",
+				"en": "Type"
+			}
+		],
+		[
+			"SMW_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"SMW_FiringMode",
+			{
+				"de": "Feuermodus",
+				"en": "Firing mode"
+			}
+		],
+		[
+			"SMW_FiringRate",
+			{
+				"de": "Schussrate",
+				"en": "Firing rate"
+			}
+		],
+		[
+			"SMW_AmmoPerShot",
+			{
+				"de": "Munition pro Schuss",
+				"en": "Ammo per shot"
+			}
+		],
+		[
+			"SMW_ProjectilePerShot",
+			{
+				"de": "Projektile pro Schuss",
+				"en": "Projectile per shot"
+			}
+		],
+		[
+			"SMW_DamagePerSecond",
+			{
+				"de": "Schaden pro Sekunde",
+				"en": "Damage per second"
+			}
+		],
+		[
+			"LBL_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_Modes",
+			{
+				"de": "Modi",
+				"en": "Modes"
+			}
+		],
+		[
+			"LBL_FiringRate",
+			{
+				"de": "Schussrate",
+				"en": "Firing rate"
+			}
+		],
+		[
+			"LBL_AmmoPerShot",
+			{
+				"de": "Munition pro Schuss",
+				"en": "Ammo use"
+			}
+		],
+		[
+			"LBL_ProjectilePerShot",
+			{
+				"de": "Projektil",
+				"en": "Projectile"
+			}
+		],
+		[
+			"LBL_DamagePerSecond",
+			{
+				"de": "DPS",
+				"en": "DPS"
+			}
+		],
+		[
+			"firingmode_burst",
+			{
+				"de": "Burst",
+				"en": "Burst"
+			}
+		],
+		[
+			"firingmode_charged",
+			{
+				"de": "Geladen",
+				"en": "Charged"
+			}
+		],
+		[
+			"firingmode_rapid",
+			{
+				"de": "Schnell",
+				"en": "Rapid"
+			}
+		],
+		[
+			"firingmode_single",
+			{
+				"de": "Einzeln",
+				"en": "Single"
+			}
+		]
+	]
+}
