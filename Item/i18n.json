@@ -941,6 +941,27 @@
 			}
 		],
 		[
+			"class_energy (laser)",
+			{
+				"de": "⚡ Laser",
+				"en": "⚡ Laser"
+			}
+		],
+		[
+			"class_energy (plasma)",
+			{
+				"de": "⚡ Plasma",
+				"en": "⚡ Plasma"
+			}
+		],
+		[
+			"class_electron",
+			{
+				"de": "⚡〰️💫 Electron",
+				"en": "⚡〰️💫 Electron"
+			}
+		],
+		[
 			"class_civilian",
 			{
 				"de": "👔 Zivil",
