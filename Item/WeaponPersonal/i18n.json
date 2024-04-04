@@ -31,6 +31,55 @@
 			}
 		],
 		[
+			"SMW_DamageType",
+			{
+				"de": "Schaden Typ",
+				"en": "Damage type"
+			}
+		],
+		[
+			"SMW_DamagePhysical",
+			{
+				"de": "Physischer Schaden",
+				"en": "Physical damage"
+			}
+		],
+		[
+			"SMW_DamageEnergy",
+			{
+				"de": "Energieschaden",
+				"en": "Energy damage"
+			}
+		],
+		[
+			"SMW_DamageDistortion",
+			{
+				"de": "Distortion damage",
+				"en": "Distortion damage"
+			}
+		],
+		[
+			"SMW_DamageThermal",
+			{
+				"de": "Thermal damage",
+				"en": "Thermal damage"
+			}
+		],
+		[
+			"SMW_DamageBiochemical",
+			{
+				"de": "Biochemical damage",
+				"en": "Biochemical damage"
+			}
+		],
+		[
+			"SMW_DamageStun",
+			{
+				"de": "Stun damage",
+				"en": "Stun damage"
+			}
+		],
+		[
 			"SMW_AmmoSpeed",
 			{
 				"de": "Muzzle velocity",
@@ -90,7 +139,7 @@
 			"LBL_Damage",
 			{
 				"de": "Schaden",
-				"en": "Damage"
+				"en": "Alpha damage"
 			}
 		],
 		[
@@ -122,31 +171,73 @@
 			}
 		],
 		[
+			"LBL_Damages",
+			{
+				"de": "Schaden",
+				"en": "Damage"
+			}
+		],
+		[
+			"damagetype_impact",
+			{
+				"de": "Impact",
+				"en": "Impact"
+			}
+		],
+		[
+			"damagetype_detonation",
+			{
+				"de": "Detonation",
+				"en": "Detonation"
+			}
+		],
+		[
+			"LBL_DamagePhysical",
+			{
+				"de": "💪",
+				"en": "💪"
+			}
+		],
+		[
+			"LBL_DamageEnergy",
+			{
+				"de": "⚡",
+				"en": "⚡"
+			}
+		],
+		[
+			"LBL_DamageDistortion",
+			{
+				"de": "〰️",
+				"en": "〰️"
+			}
+		],
+		[
+			"LBL_DamageThermal",
+			{
+				"de": "🔥",
+				"en": "🔥"
+			}
+		],
+		[
+			"LBL_DamageBiochemical",
+			{
+				"de": "☣️",
+				"en": "☣️"
+			}
+		],
+		[
+			"LBL_DamageStun",
+			{
+				"de": "💫",
+				"en": "💫"
+			}
+		],
+		[
 			"LBL_Modes",
 			{
 				"de": "Modi",
 				"en": "Modes"
-			}
-		],
-		[
-			"LBL_FiringRate",
-			{
-				"de": "Schussrate",
-				"en": "Firing rate"
-			}
-		],
-		[
-			"LBL_AmmoPerShot",
-			{
-				"de": "Munition pro Schuss",
-				"en": "Ammo use"
-			}
-		],
-		[
-			"LBL_ProjectilePerShot",
-			{
-				"de": "Projektil",
-				"en": "Projectile"
 			}
 		],
 		[
@@ -175,6 +266,27 @@
 			{
 				"de": "Einzeln",
 				"en": "Single"
+			}
+		],
+		[
+			"LBL_FiringRate",
+			{
+				"de": "Schussrate",
+				"en": "Firing rate"
+			}
+		],
+		[
+			"LBL_AmmoPerShot",
+			{
+				"de": "Munition pro Schuss",
+				"en": "Ammo use"
+			}
+		],
+		[
+			"LBL_ProjectilePerShot",
+			{
+				"de": "Projektil",
+				"en": "Projectile"
 			}
 		]
 	]

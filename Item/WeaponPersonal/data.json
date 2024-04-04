@@ -22,6 +22,33 @@
 			"type": "number"
 		},
 		{
+			"SMW_Damages": "API_personal_weapon.damages",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_DamageType": ""
+				},
+				{
+					"SMW_DamagePhysical": ""
+				},
+				{
+					"SMW_DamageEnergy": ""
+				},
+				{
+					"SMW_DamageDistortion": ""
+				},
+				{
+					"SMW_DamageThermal": ""
+				},
+				{
+					"SMW_DamageBiochemical": ""
+				},
+				{
+					"SMW_DamageStun": ""
+				}
+			]
+		},
+		{
 			"SMW_FiringModes": "API_personal_weapon.modes",
 			"type": "subobject",
 			"smw_data": [
