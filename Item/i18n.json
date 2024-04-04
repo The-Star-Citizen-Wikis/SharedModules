@@ -936,29 +936,29 @@
 		[
 			"class_ballistic",
 			{
-				"de": "🗡️ Ballistisch",
-				"en": "🗡️ Ballistic"
+				"de": "Ballistisch",
+				"en": "Ballistic"
 			}
 		],
 		[
 			"class_energy (laser)",
 			{
-				"de": "⚡ Laser",
-				"en": "⚡ Laser"
+				"de": "Energy (Laser)",
+				"en": "Energy (Laser)"
 			}
 		],
 		[
 			"class_energy (plasma)",
 			{
-				"de": "⚡ Plasma",
-				"en": "⚡ Plasma"
+				"de": "Energy (Plasma)",
+				"en": "Energy (Plasma)"
 			}
 		],
 		[
 			"class_electron",
 			{
-				"de": "⚡〰️💫 Electron",
-				"en": "⚡〰️💫 Electron"
+				"de": "Electron",
+				"en": "Electron"
 			}
 		],
 		[
