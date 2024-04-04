@@ -427,7 +427,7 @@ end
 
 --- Return the HTML of the infobox item component as string
 ---
---- @param data table {label, data, desc, icon, row, spacebetween, colspan)
+--- @param data table {label, data, desc, tooltip, icon, row, spacebetween, colspan)
 --- @param content string|number|nil optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
@@ -452,6 +452,7 @@ function methodtable.renderItem( self, data, content )
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
+	if data[ 'tooltip' ] then html:attr( 'title', data[ 'tooltip' ] ) end
 	if data[ 'row' ] == true then html:addClass( 'infobox__grid--row' ) end
 	if data[ 'spacebetween' ] == true then html:addClass( 'infobox__grid--space-between' ) end
 	if data[ 'colspan' ] then html:addClass( 'infobox__grid--col-span-' .. data[ 'colspan' ] ) end

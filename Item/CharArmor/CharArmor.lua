@@ -96,26 +96,32 @@ function p.addInfoboxData( infobox, smwData )
         content = {
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenPhysical' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenPhysical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenPhysical' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenEnergy' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenEnergy' ),
                 data = getResistance( 'SMW_ModifierDamageTakenEnergy' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenDistortion' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenDistortion' ),
                 data = getResistance( 'SMW_ModifierDamageTakenDistortion' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenThermal' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenThermal' ),
                 data = getResistance( 'SMW_ModifierDamageTakenThermal' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenBiochemical' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenBiochemical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenBiochemical' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenStun' ),
+                tooltip = translate( 'SMW_ModifierDamageTakenStun' ),
                 data = getResistance( 'SMW_ModifierDamageTakenStun' )
             } )
         },
