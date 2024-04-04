@@ -33,6 +33,32 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         data,
         'Item/' .. MODULE_NAME
     )
+
+    local setData = {}
+
+    -- Get the lowest damage falloff min distance value as effective range
+    -- FIXME: Maybe we should create a utility function to do nil checks like this
+    if apiData.personal_weapon and apiData.personal_weapon.ammunition and apiData.personal_weapon.ammunition.damage_falloffs and apiData.personal_weapon.ammunition.damage_falloffs.min_distance then
+        local effectiveRange
+        local minDistances = apiData.personal_weapon.ammunition.damage_falloffs.min_distance
+        local i = 1
+        for _, minDistance in pairs( minDistances ) do
+            if minDistance ~= 0 then
+                if i == 1 then
+                    effectiveRange = minDistance
+                elseif minDistance < minDistances[ i - 1 ] then
+                    effectiveRange = minDistance
+                end
+            end
+            i = i + 1
+        end
+
+        if effectiveRange then
+            setData[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange
+        end
+    end
+
+    mw.smw.set( setData )
 end
 
 
@@ -102,6 +128,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         content = {
             infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
             infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] ),
+            infobox:renderItem( translate( 'LBL_EffectiveRange' ), smwData[ translate( 'SMW_EffectiveRange' ) ] ),
             infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
             infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
         },

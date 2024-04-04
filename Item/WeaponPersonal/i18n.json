@@ -38,6 +38,13 @@
 			}
 		],
 		[
+			"SMW_EffectiveRange",
+			{
+				"de": "Effective range",
+				"en": "Effective range"
+			}
+		],
+		[
 			"SMW_MaximumRange",
 			{
 				"de": "Maximalreichweite",
@@ -98,6 +105,13 @@
 			{
 				"de": "Muzzle velocity",
 				"en": "Muzzle velocity"
+			}
+		],
+		[
+			"LBL_EffectiveRange",
+			{
+				"de": "Effective range",
+				"en": "Effective range"
 			}
 		],
 		[
