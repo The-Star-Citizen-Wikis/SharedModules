@@ -39,10 +39,6 @@
 				{
 					"SMW_ProjectilePerShot": "API_pellets_per_shot",
 					"type": "number"
-				},
-				{
-					"SMW_DamagePerSecond": "API_damage_per_second",
-					"type": "number"
 				}
 			]
 		}

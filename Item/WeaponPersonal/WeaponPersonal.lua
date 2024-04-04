@@ -92,8 +92,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 'SMW_FiringMode',
                 'SMW_FiringRate',
                 'SMW_AmmoPerShot',
-                'SMW_ProjectilePerShot',
-                'SMW_DamagePerSecond'
+                'SMW_ProjectilePerShot'
             },
             translate
         )
@@ -106,12 +105,11 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             for _, mode in ipairs( modes ) do
                 modeTabberData[ 'label' .. modeCount ] = translate( 'firingmode_' .. mode[ translate( 'SMW_FiringMode' ) ] )
                 section = {
-                    infobox:renderItem( translate( 'LBL_DamagePerSecond' ), mode[ translate( 'SMW_DamagePerSecond' ) ] ),
                     infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ translate( 'SMW_FiringRate' ) ] ),
                     infobox:renderItem( translate( 'LBL_ProjectilePerShot' ), mode[ translate( 'SMW_ProjectilePerShot' ) ] ),
                     infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ translate( 'SMW_AmmoPerShot' ) ] )
                 }
-                modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 2 }, true )
+                modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 3 }, true )
                 modeCount = modeCount + 1
             end
 

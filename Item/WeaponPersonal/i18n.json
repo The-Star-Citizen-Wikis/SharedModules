@@ -87,13 +87,6 @@
 			}
 		],
 		[
-			"SMW_DamagePerSecond",
-			{
-				"de": "Schaden pro Sekunde",
-				"en": "Damage per second"
-			}
-		],
-		[
 			"LBL_Damage",
 			{
 				"de": "Schaden",
@@ -154,13 +147,6 @@
 			{
 				"de": "Projektil",
 				"en": "Projectile"
-			}
-		],
-		[
-			"LBL_DamagePerSecond",
-			{
-				"de": "DPS",
-				"en": "DPS"
 			}
 		],
 		[
