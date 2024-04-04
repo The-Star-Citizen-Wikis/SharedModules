@@ -24,10 +24,10 @@
 			}
 		],
 		[
-			"SMW_Ammo",
+			"SMW_Damage",
 			{
-				"de": "Munition",
-				"en": "Ammo"
+				"de": "Schaden",
+				"en": "Damage"
 			}
 		],
 		[
@@ -35,6 +35,20 @@
 			{
 				"de": "Muzzle velocity",
 				"en": "Muzzle velocity"
+			}
+		],
+		[
+			"SMW_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Maximum range"
+			}
+		],
+		[
+			"SMW_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
 			}
 		],
 		[
@@ -73,10 +87,10 @@
 			}
 		],
 		[
-			"LBL_Ammo",
+			"LBL_Damage",
 			{
-				"de": "Munition",
-				"en": "Ammo"
+				"de": "Schaden",
+				"en": "Damage"
 			}
 		],
 		[
@@ -84,6 +98,20 @@
 			{
 				"de": "Muzzle velocity",
 				"en": "Muzzle velocity"
+			}
+		],
+		[
+			"LBL_MaximumRange",
+			{
+				"de": "Maximalreichweite",
+				"en": "Max range"
+			}
+		],
+		[
+			"LBL_Ammo",
+			{
+				"de": "Munition",
+				"en": "Ammo"
 			}
 		],
 		[

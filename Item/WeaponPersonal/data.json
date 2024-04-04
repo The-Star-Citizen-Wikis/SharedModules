@@ -2,11 +2,19 @@
 	"%smw_data": "Sets which data gets added to SMW",
 	"smw_data": [
 		{
-			"SMW_Ammo": "API_personal_weapon.magazine_size",
+			"SMW_Damage": "API_personal_weapon.damage_per_shot",
 			"type": "number"
 		},
 		{
 			"SMW_AmmoSpeed": "API_personal_weapon.ammunition.speed",
+			"type": "number"
+		},
+		{
+			"SMW_MaximumRange": "API_personal_weapon.ammunition.range",
+			"type": "number"
+		},
+		{
+			"SMW_Ammo": "API_personal_weapon.magazine_size",
 			"type": "number"
 		},
 		{

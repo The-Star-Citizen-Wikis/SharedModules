@@ -161,10 +161,10 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
             infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
-            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] ),
-            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] )
+            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) .. getFiringModesSection()
     -- Missile
