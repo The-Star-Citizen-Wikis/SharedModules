@@ -100,7 +100,8 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     infobox:renderSection( {
         content = {
-            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
+            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] ),
+            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] )
         },
         col = 2
     } )

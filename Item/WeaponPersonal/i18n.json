@@ -31,6 +31,13 @@
 			}
 		],
 		[
+			"SMW_AmmoSpeed",
+			{
+				"de": "Muzzle velocity",
+				"en": "Muzzle velocity"
+			}
+		],
+		[
 			"SMW_FiringMode",
 			{
 				"de": "Feuermodus",
@@ -70,6 +77,13 @@
 			{
 				"de": "Munition",
 				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_AmmoSpeed",
+			{
+				"de": "Muzzle velocity",
+				"en": "Muzzle velocity"
 			}
 		],
 		[

@@ -38,6 +38,13 @@
 			}
 		],
 		[
+			"SMW_AmmoSpeed",
+			{
+				"de": "Muzzle velocity",
+				"en": "Muzzle velocity"
+			}
+		],
+		[
 			"SMW_AmmoPerShot",
 			{
 				"de": "Munition pro Schuss",
@@ -742,6 +749,13 @@
 			{
 				"de": "Munition",
 				"en": "Ammo"
+			}
+		],
+		[
+			"LBL_AmmoSpeed",
+			{
+				"de": "Muzzle velocity",
+				"en": "Muzzle velocity"
 			}
 		],
 		[

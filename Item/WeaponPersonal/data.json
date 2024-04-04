@@ -6,6 +6,10 @@
 			"type": "number"
 		},
 		{
+			"SMW_AmmoSpeed": "API_personal_weapon.ammunition.speed",
+			"type": "number"
+		},
+		{
 			"SMW_FiringModes": "API_personal_weapon.modes",
 			"type": "subobject",
 			"smw_data": [

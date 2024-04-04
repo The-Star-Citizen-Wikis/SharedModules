@@ -196,6 +196,10 @@
 			"type": "number"
 		},
 		{
+			"SMW_AmmoSpeed": "API_vehicle_weapon.ammunition.speed",
+			"type": "number"
+		},
+		{
 			"SMW_FiringModes": "API_vehicle_weapon.modes",
 			"type": "subobject",
 			"smw_data": [
