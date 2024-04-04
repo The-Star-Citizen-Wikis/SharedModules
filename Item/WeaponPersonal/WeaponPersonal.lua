@@ -44,7 +44,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         local i = 1
         for _, minDistance in pairs( minDistances ) do
             if minDistance ~= 0 then
-                if i == 1 then
+                if not effectiveRange then
                     effectiveRange = minDistance
                 elseif minDistances[ i - 1 ] and minDistance < minDistances[ i - 1 ] then
                     effectiveRange = minDistance
