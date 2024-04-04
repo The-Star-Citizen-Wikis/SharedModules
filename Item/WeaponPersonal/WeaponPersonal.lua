@@ -116,8 +116,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             infobox:renderSection( {
                 title = translate( 'LBL_Modes' ),
                 class = 'infobox__section--tabber',
-                content = tabber( modeTabberData ),
-                border = false
+                content = tabber( modeTabberData )
             } )
         end
     end
