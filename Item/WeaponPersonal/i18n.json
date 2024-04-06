@@ -33,7 +33,7 @@
 		[
 			"SMW_DamageType",
 			{
-				"de": "Schaden Typ",
+				"de": "Schadenstyp",
 				"en": "Damage type"
 			}
 		],
@@ -54,42 +54,42 @@
 		[
 			"SMW_DamageDistortion",
 			{
-				"de": "Distortion damage",
+				"de": "Verzerrungsschaden",
 				"en": "Distortion damage"
 			}
 		],
 		[
 			"SMW_DamageThermal",
 			{
-				"de": "Thermal damage",
+				"de": "Thermalschaden",
 				"en": "Thermal damage"
 			}
 		],
 		[
 			"SMW_DamageBiochemical",
 			{
-				"de": "Biochemical damage",
+				"de": "Biochemieschaden",
 				"en": "Biochemical damage"
 			}
 		],
 		[
 			"SMW_DamageStun",
 			{
-				"de": "Stun damage",
+				"de": "Betäubungsschaden",
 				"en": "Stun damage"
 			}
 		],
 		[
 			"SMW_AmmoSpeed",
 			{
-				"de": "Muzzle velocity",
+				"de": "Mündungsgeschwindigkeit",
 				"en": "Muzzle velocity"
 			}
 		],
 		[
 			"SMW_EffectiveRange",
 			{
-				"de": "Effective range",
+				"de": "Effektive Reichweite",
 				"en": "Effective range"
 			}
 		],
@@ -138,21 +138,21 @@
 		[
 			"LBL_Damage",
 			{
-				"de": "Schaden",
+				"de": "Alpha-Schaden",
 				"en": "Alpha damage"
 			}
 		],
 		[
 			"LBL_AmmoSpeed",
 			{
-				"de": "Muzzle velocity",
+				"de": "Mündungsgeschwindigkeit",
 				"en": "Muzzle velocity"
 			}
 		],
 		[
 			"LBL_EffectiveRange",
 			{
-				"de": "Effective range",
+				"de": "Effektive Reichweite",
 				"en": "Effective range"
 			}
 		],

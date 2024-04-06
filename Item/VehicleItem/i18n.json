@@ -40,7 +40,7 @@
 		[
 			"SMW_AmmoSpeed",
 			{
-				"de": "Muzzle velocity",
+				"de": "Mündungsgeschwindigkeit",
 				"en": "Muzzle velocity"
 			}
 		],
@@ -754,7 +754,7 @@
 		[
 			"LBL_AmmoSpeed",
 			{
-				"de": "Muzzle velocity",
+				"de": "Mündungsgeschwindigkeit",
 				"en": "Muzzle velocity"
 			}
 		],
