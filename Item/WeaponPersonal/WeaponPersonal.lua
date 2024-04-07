@@ -53,11 +53,11 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
             mw.smw.subobject( subobject )
         end
 
-        -- Get the lowest damage falloff min distance value as effective range
+        -- Get the lowest damage falloff min distance value OR maximum range (because there are no falloff) as effective range
         -- FIXME: Maybe we should create a utility function to do nil checks on each level of the table until the end
         -- TODO: This should probably apply to vehicle weapon too
         if apiData.personal_weapon.ammunition and apiData.personal_weapon.ammunition.damage_falloffs and apiData.personal_weapon.ammunition.damage_falloffs.min_distance then
-            local effectiveRange
+            local effectiveRange = apiData.personal_weapon.ammunition.range
             local minDistances = apiData.personal_weapon.ammunition.damage_falloffs.min_distance
             local i = 1
             for _, minDistance in pairs( minDistances ) do
@@ -71,9 +71,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
                 i = i + 1
             end
 
-            if effectiveRange then
-                setData[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange
-            end
+            setData[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange
         end
     end
 
