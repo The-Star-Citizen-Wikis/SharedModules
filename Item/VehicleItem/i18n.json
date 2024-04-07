@@ -59,10 +59,10 @@
 			}
 		],
 		[
-			"SMW_DamageEnergy",
+			"SMW_DamageType",
 			{
-				"de": "Energieschaden",
-				"en": "Energy damage"
+				"de": "Schadenstyp",
+				"en": "Damage type"
 			}
 		],
 		[
@@ -70,6 +70,41 @@
 			{
 				"de": "Physischer Schaden",
 				"en": "Physical damage"
+			}
+		],
+		[
+			"SMW_DamageEnergy",
+			{
+				"de": "Energieschaden",
+				"en": "Energy damage"
+			}
+		],
+		[
+			"SMW_DamageDistortion",
+			{
+				"de": "Verzerrungsschaden",
+				"en": "Distortion damage"
+			}
+		],
+		[
+			"SMW_DamageThermal",
+			{
+				"de": "Thermalschaden",
+				"en": "Thermal damage"
+			}
+		],
+		[
+			"SMW_DamageBiochemical",
+			{
+				"de": "Biochemieschaden",
+				"en": "Biochemical damage"
+			}
+		],
+		[
+			"SMW_DamageStun",
+			{
+				"de": "Betäubungsschaden",
+				"en": "Stun damage"
 			}
 		],
 		[
@@ -769,7 +804,7 @@
 			"LBL_Damage",
 			{
 				"de": "Schaden",
-				"en": "Damage"
+				"en": "Alpha damage"
 			}
 		],
 		[
@@ -861,6 +896,69 @@
 			{
 				"de": "Modi",
 				"en": "Modes"
+			}
+		],
+		[
+			"LBL_Damages",
+			{
+				"de": "Schaden",
+				"en": "Damage"
+			}
+		],
+		[
+			"damagetype_impact",
+			{
+				"de": "Impact",
+				"en": "Impact"
+			}
+		],
+		[
+			"damagetype_detonation",
+			{
+				"de": "Detonation",
+				"en": "Detonation"
+			}
+		],
+		[
+			"LBL_DamagePhysical",
+			{
+				"de": "💪",
+				"en": "💪"
+			}
+		],
+		[
+			"LBL_DamageEnergy",
+			{
+				"de": "⚡",
+				"en": "⚡"
+			}
+		],
+		[
+			"LBL_DamageDistortion",
+			{
+				"de": "〰️",
+				"en": "〰️"
+			}
+		],
+		[
+			"LBL_DamageThermal",
+			{
+				"de": "🔥",
+				"en": "🔥"
+			}
+		],
+		[
+			"LBL_DamageBiochemical",
+			{
+				"de": "☣️",
+				"en": "☣️"
+			}
+		],
+		[
+			"LBL_DamageStun",
+			{
+				"de": "💫",
+				"en": "💫"
 			}
 		],
 		[
