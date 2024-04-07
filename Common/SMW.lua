@@ -51,6 +51,13 @@ function commonSMW.format( datum, val, moduleConfig, lang )
             common.formatNum( val.min ),
             common.formatNum( val.max ),
         }
+        -- 'Special' boolean case to explicitly set false
+    elseif datum.type == 'boolean' then
+        if val == true then
+            val = 1
+        else
+            val = 0
+        end
     end
 
     return val

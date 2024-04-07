@@ -125,7 +125,8 @@
 			]
 		},
 		{
-			"SMW_IsItemBaseVariant": "API_is_base_variant"
+			"SMW_IsItemBaseVariant": "API_is_base_variant",
+			"type": "boolean"
 		},
 		{
 			"SMW_ItemBaseVariantName": "API_base_variant.name"
