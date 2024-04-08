@@ -162,6 +162,18 @@
             "conditions": "Category:Personal weapons"
         },
         {
+            "label": "Sidearm weapons",
+            "conditions": "Category:Sidearm weapons"
+        },
+        {
+            "label": "Shouldered weapons",
+            "conditions": "Category:Shouldered weapons"
+        },
+        {
+            "label": "Stocked weapons",
+            "conditions": "Category:Stocked weapons"
+        },
+        {
             "label": "Shirts",
             "conditions": "Category:Shirts"
         },
