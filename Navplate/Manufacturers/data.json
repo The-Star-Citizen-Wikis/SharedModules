@@ -122,6 +122,10 @@
             "conditions": "Category:Footwear"
         },
         {
+            "label": "Gadgets",
+            "conditions": "Category:Gadgets"
+        },
+        {
             "label": "Gloves",
             "conditions": "Category:Gloves"
         },
