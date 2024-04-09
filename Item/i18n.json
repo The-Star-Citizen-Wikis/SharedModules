@@ -913,6 +913,13 @@
 			}
 		],
 		[
+			"type_weaponpersonal.grenade",
+			{
+				"de": "Grenade",
+				"en": "Grenade"
+			}
+		],
+		[
 			"type_weaponpersonal.knife",
 			{
 				"de": "Messer",
@@ -1685,8 +1692,15 @@
 		[
 			"category_weaponpersonal.gadget",
 			{
-				"de": "Gadgets",
+				"de": "Gadget",
 				"en": "Gadgets"
+			}
+		],
+		[
+			"category_weaponpersonal.grenade",
+			{
+				"de": "Grenade",
+				"en": "Grenades"
 			}
 		],
 		[
