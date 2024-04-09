@@ -249,6 +249,7 @@
 		{
 			"name": "Module:Item/WeaponPersonal",
 			"type": [
+				"WeaponPersonal.Gadget",
 				"WeaponPersonal.Large",
 				"WeaponPersonal.Medium",
 				"WeaponPersonal.Small"

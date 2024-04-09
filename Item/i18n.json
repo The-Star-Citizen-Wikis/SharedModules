@@ -906,6 +906,13 @@
 			}
 		],
 		[
+			"type_weaponpersonal.gadget",
+			{
+				"de": "Gadget",
+				"en": "Gadget"
+			}
+		],
+		[
 			"type_weaponpersonal.knife",
 			{
 				"de": "Messer",
@@ -1001,6 +1008,13 @@
 			{
 				"de": "Cutter",
 				"en": "Cutter"
+			}
+		],
+		[
+			"class_gadget",
+			{
+				"de": "Gadget",
+				"en": "Gadget"
 			}
 		],
 		[
@@ -1666,6 +1680,13 @@
 			{
 				"de": "Raketenkapsel",
 				"en": "Rocket pods"
+			}
+		],
+		[
+			"category_weaponpersonal.gadget",
+			{
+				"de": "Gadgets",
+				"en": "Gadgets"
 			}
 		],
 		[
