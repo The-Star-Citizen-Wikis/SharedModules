@@ -78,7 +78,7 @@ local function removeWords( str, wordsToRemove )
     end
 
     for _, word in ipairs( wordsToRemove ) do
-        str = string.gsub( str, escapeMagicCharacters( word ), '' )
+        str = string.gsub( str, '%f[%a]' .. escapeMagicCharacters( word ) .. '%f[%A]', '' )
     end
     return mw.text.trim( str )
 end
