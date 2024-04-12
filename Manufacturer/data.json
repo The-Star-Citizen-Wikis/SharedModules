@@ -219,6 +219,10 @@
 		"name": "FireStorm Kinetics"
 	},
 	{
+		"code": "FTA",
+		"name": "Fortified Armor"
+	},
+	{
 		"code": "GAMA",
 		"name": "Gatac Manufacture",
 		"shortname": "Gatac"
