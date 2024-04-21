@@ -457,7 +457,7 @@ function methodtable.getInfobox( self )
 end
 
 
---- Creates the description
+--- Creates the wikitext for the Item description template
 function methodtable.getDescription( self )
 	local smwData = self:getSmwData()
 
@@ -480,6 +480,55 @@ function methodtable.getDescription( self )
 	end
 
 	return '<blockquote>' .. smwData[ translate( 'SMW_Description' ) ] .. '</blockquote>'
+end
+
+--- Creates the wikitext for the Item availability template
+function methodtable.getAvailability( self )
+	local smwData = self:getSmwData()
+
+	--- Error: No SMW Data
+	if type( smwData ) ~= 'table' then
+		return require( 'Module:Mbox' )._mbox(
+			translate( 'error_no_availability_title' ),
+			translate( 'error_no_data_text' ),
+			{ icon = 'WikimediaUI-Error.svg' }
+		)
+	end
+
+	local output = {}
+
+	local uuid = smwData[ translate( 'SMW_UUID' ) ]
+	if uuid then 
+		-- Create find item button
+		local icon = mw.html.create( 'div' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-search' )
+		local label = mw.html.create( 'div' )
+		label
+			:addClass( 't-finditemuif__label' )
+			:tag( 'div' )
+				:addClass( 't-finditemuif__title' )
+				:wikitext( translate( 'actions_find_item_title' ) )
+				:done()
+			:tag( 'div' )
+				:addClass( 't-finditemuif__subtitle' )
+				:wikitext( translate( 'actions_find_item_text' ) )
+				:allDone()
+		local chervon = mw.html.create( 'div' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
+		local container = mw.html.create( 'div' )
+		container
+			:addClass( 't-finditemuif' )
+			:wikitext( string.format(
+				'[https://finder.cstone.space/search/%s %s%s%s]',
+				uuid,
+				tostring( icon ),
+				tostring( label ),
+				tostring( chervon )
+			) )
+		table.insert( output, tostring( container ) .. mw.getCurrentFrame():extensionTag{
+			name = 'templatestyles', args = { src = 'Template:Item availability/styles.css' }
+		} )
+	end
+
+	return table.concat( output )
 end
 
 
@@ -713,7 +762,7 @@ function Item.infobox( frame )
 end
 
 
---- Generates a description based on passed frame args and SMW data
+--- Implements the item description template
 ---
 --- @param frame table Invocation frame
 --- @return string
@@ -721,6 +770,17 @@ function Item.description( frame )
 	local instance = Item:new()
 	instance:setFrame( frame )
 	return tostring( instance:getDescription() )
+end
+
+
+--- Implements the item availability template
+---
+--- @param frame table Invocation frame
+--- @return string
+function Item.availability( frame )
+	local instance = Item:new()
+	instance:setFrame( frame )
+	return tostring( instance:getAvailability() )
 end
 
 

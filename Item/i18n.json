@@ -976,6 +976,13 @@
 			}
 		],
 		[
+			"class_foam dart",
+			{
+				"de": "Foam dart",
+				"en": "Foam dart"
+			}
+		],
+		[
 			"class_civilian",
 			{
 				"de": "👔 Zivil",
@@ -1764,6 +1771,13 @@
 			{
 				"de": "Keine Infoboxdaten gefunden",
 				"en": "No infobox data found"
+			}
+		],
+		[
+			"error_no_availability_title",
+			{
+				"de": "No availability data found.",
+				"en": "No availability data found."
 			}
 		],
 		[
