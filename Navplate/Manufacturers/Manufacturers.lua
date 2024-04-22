@@ -42,7 +42,6 @@ function methodtable.getSmwData( self, conditions )
 
 	local askData = {
 		'[[:+]]',
-		'[[Is item base variant::!false]]',
 		cond,
 		'?#-=page',
 		'?Category#'
