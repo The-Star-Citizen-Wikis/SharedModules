@@ -154,6 +154,10 @@
             "conditions": "Category:Optics attachments"
         },
         {
+            "label": "Outerwear",
+            "conditions": "Category:Outerwear"
+        },
+        {
             "label": "Pants",
             "conditions": "Category:Pants"
         },
