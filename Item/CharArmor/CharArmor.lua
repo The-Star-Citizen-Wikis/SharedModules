@@ -42,6 +42,10 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
 
     smwCommon.setFromTable( setData, apiData:get( 'clothing.resistances' ), 'type', 'multiplier', 'ModifierDamageTaken', translate, formatConfig )
 
+    if apiData.clothing and apiData.clothing.clothing_type then
+        setData[ translate( 'SMW_Subtype') ] = apiData.clothing.clothing_type
+    end
+
     mw.smw.set( setData )
 end
 

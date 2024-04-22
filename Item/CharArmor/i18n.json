@@ -24,6 +24,13 @@
 			}
 		],
 		[
+			"SMW_Subtype",
+			{
+				"de": "Subtyp",
+				"en": "Subtype"
+			}
+		],
+		[
 			"SMW_ResistanceMinimumTemperature",
 			{
 				"de": "Minimaler Temperaturwiderstand",
