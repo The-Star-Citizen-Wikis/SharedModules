@@ -77,9 +77,13 @@ local function removeWords( str, wordsToRemove )
         return str
     end
 
-    for _, word in ipairs( wordsToRemove ) do
-        str = string.gsub( str, '%f[%a]' .. escapeMagicCharacters( word ) .. '%f[%A]', '' )
+    -- HACK: Add some space so that the frontier pattern works
+    str = ' ' .. str .. ' '
+
+    for i, word in ipairs( wordsToRemove ) do
+        str = string.gsub( str, '%f[%S]' .. escapeMagicCharacters( word ) .. '%f[%s]', '' )
     end
+
     return mw.text.trim( str )
 end
 
