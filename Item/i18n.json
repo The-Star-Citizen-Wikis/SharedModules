@@ -556,7 +556,7 @@
 			}
 		],
 		[
-			"type_char_clothing_hats",
+			"type_char_clothing_hat",
 			{
 				"de": "Hut",
 				"en": "Hat"
@@ -1361,7 +1361,7 @@
 			}
 		],
 		[
-			"category_char_clothing_hats",
+			"category_char_clothing_hat",
 			{
 				"de": "Hut",
 				"en": "Hats"
