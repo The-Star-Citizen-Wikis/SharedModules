@@ -34,8 +34,6 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         'Item/' .. MODULE_NAME
     )
 
-    local setData = {}
-
     if apiData.personal_weapon then
         -- Save damages as subobjects, we did not do it through data.json because we need to build the key
         -- for the damage SMW properties such as SMW_DamageEnergy
@@ -72,11 +70,9 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
             end
 
             -- Use maximum range as effective range if there are no falloff
-            setData[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange or apiData.personal_weapon.ammunition.range
+            smwSetObject[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange or apiData.personal_weapon.ammunition.range
         end
     end
-
-    mw.smw.set( setData )
 end
 
 --- Adds all SMW parameters set by this Module to the ASK object

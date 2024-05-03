@@ -36,19 +36,17 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         'Item/' .. MODULE_NAME
     )
 
-    local setData = {}
-
     local formatConfig = {
         type = 'number'
     }
 
     -- TODO: Modifiers and Damages are generic enough that maybe we should search for it by default on Module:Item?
-    smwCommon.setFromTable( setData, apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier',
+    smwCommon.setFromTable( smwSetObject, apiData:get( 'mining_laser.modifiers' ), 'display_name', 'value', 'Modifier',
         translate, formatConfig )
-    smwCommon.setFromTable( setData, apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier',
+    smwCommon.setFromTable( smwSetObject, apiData:get( 'mining_module.modifiers' ), 'display_name', 'value', 'Modifier',
         translate, formatConfig )
-    smwCommon.setFromTable( setData, apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage', translate, formatConfig )
-    smwCommon.setFromTable( setData, apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage', translate,
+    smwCommon.setFromTable( smwSetObject, apiData:get( 'bomb.damages' ), 'name', 'damage', 'Damage', translate, formatConfig )
+    smwCommon.setFromTable( smwSetObject, apiData:get( 'missile.damages' ), 'name', 'damage', 'Damage', translate,
         formatConfig )
 
     -- TODO: Implement this for bombs and missiles
@@ -85,8 +83,6 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
             end
         end
     end
-
-    mw.smw.set( setData )
 end
 
 --- Adds all SMW parameters set by this Module to the ASK object
