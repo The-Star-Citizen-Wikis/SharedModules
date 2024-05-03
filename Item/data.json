@@ -180,9 +180,18 @@
 				"Char_Clothing_Feet",
 				"Char_Clothing_Hands",
 				"Char_Clothing_Hat",
+				"Char_Clothing_Hat.Heavy",
+				"Char_Clothing_Hat.Light",
+				"Char_Clothing_Hat.Medium",
 				"Char_Clothing_Legs",
+				"Char_Clothing_Legs.Heavy",
+				"Char_Clothing_Legs.Light",
+				"Char_Clothing_Legs.Medium",
 				"Char_Clothing_Torso_0",
-				"Char_Clothing_Torso_1"
+				"Char_Clothing_Torso_1",
+				"Char_Clothing_Torso_1.Heavy",
+				"Char_Clothing_Torso_1.Light",
+				"Char_Clothing_Torso_1.Medium"
 			]
 		},
 		{

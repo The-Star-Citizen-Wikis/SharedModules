@@ -46,6 +46,13 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
         setData[ translate( 'SMW_Subtype') ] = apiData.clothing.clothing_type
     end
 
+    if apiData.sub_type then
+        -- This is an armor
+        if apiData.sub_type == 'Light' or apiData.sub_type == 'Medium' or apiData.sub_type == 'Heavy' then
+            setData[ translate( 'SMW_Subtype') ] = translate( string.format( 'type_%s_armor', string.lower( apiData.sub_type ) ) )
+        end
+    end
+
     mw.smw.set( setData )
 end
 

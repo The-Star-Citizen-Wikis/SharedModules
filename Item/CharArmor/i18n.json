@@ -148,6 +148,27 @@
 				"de": "Temperatur",
 				"en": "Temperature"
 			}
+		],
+		[
+			"type_heavy_armor",
+			{
+				"de": "Heavy armor",
+				"en": "Heavy armor"
+			}
+		],
+		[
+			"type_light_armor",
+			{
+				"de": "Light armor",
+				"en": "Light armor"
+			}
+		],
+		[
+			"type_medium_armor",
+			{
+				"de": "Medium armor",
+				"en": "Medium armor"
+			}
 		]
 	]
 }

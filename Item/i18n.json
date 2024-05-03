@@ -563,7 +563,49 @@
 			}
 		],
 		[
+			"type_char_clothing_hat.light",
+			{
+				"de": "Hut",
+				"en": "Hat"
+			}
+		],
+		[
+			"type_char_clothing_hat.medium",
+			{
+				"de": "Hut",
+				"en": "Hat"
+			}
+		],
+		[
+			"type_char_clothing_hat.heavy",
+			{
+				"de": "Hut",
+				"en": "Hat"
+			}
+		],
+		[
 			"type_char_clothing_legs",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"type_char_clothing_legs.light",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"type_char_clothing_legs.medium",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"type_char_clothing_legs.heavy",
 			{
 				"de": "Hose",
 				"en": "Legwear"
@@ -578,6 +620,27 @@
 		],
 		[
 			"type_char_clothing_torso_1",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"type_char_clothing_torso_1.light",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"type_char_clothing_torso_1.medium",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"type_char_clothing_torso_1.heavy",
 			{
 				"de": "Jacke",
 				"en": "Outerwear"
@@ -1368,7 +1431,49 @@
 			}
 		],
 		[
+			"category_char_clothing_hat.light",
+			{
+				"de": "Hut",
+				"en": "Hats"
+			}
+		],
+		[
+			"category_char_clothing_hat.medium",
+			{
+				"de": "Hut",
+				"en": "Hats"
+			}
+		],
+		[
+			"category_char_clothing_hat.heavy",
+			{
+				"de": "Hut",
+				"en": "Hats"
+			}
+		],
+		[
 			"category_char_clothing_legs",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"category_char_clothing_legs.light",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"category_char_clothing_legs.medium",
+			{
+				"de": "Hose",
+				"en": "Legwear"
+			}
+		],
+		[
+			"category_char_clothing_legs.heavy",
 			{
 				"de": "Hose",
 				"en": "Legwear"
@@ -1383,6 +1488,27 @@
 		],
 		[
 			"category_char_clothing_torso_1",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"category_char_clothing_torso_1.light",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"category_char_clothing_torso_1.medium",
+			{
+				"de": "Jacke",
+				"en": "Outerwear"
+			}
+		],
+		[
+			"category_char_clothing_torso_1.heavy",
 			{
 				"de": "Jacke",
 				"en": "Outerwear"
