@@ -28,9 +28,9 @@ end
 --- @param str string string to escape
 --- @return string
 local function escapeMagicCharacters( str )
-    local magicCharacters = { "%", "^", "$", "(", ")", ".", "[", "]", "*", "+", "-", "?" }
+    local magicCharacters = { '%', '^', '$', '(', ')', '.', '[', ']', '*', '+', '-', '?' }
     for _, magicChar in ipairs( magicCharacters ) do
-        str = str:gsub( "%" .. magicChar, "%%" .. magicChar )
+        str = str:gsub( '%' .. magicChar, '%%' .. magicChar )
     end
     return str
 end
@@ -168,39 +168,41 @@ function methodtable.out( self )
     end
 
     for i, variant in ipairs( smwData ) do
-        local displayName = ''
+        if variant.name then
+            local displayName = ''
 
-        if next( baseVariantWords ) ~= nil then
-            displayName = removeWords( variant.name, baseVariantWords )
-        end
-
-        -- Sometimes base variant does have a variant name
-        if displayName == '' then
-            if i == 1 then
-                displayName = '(Base)'
-            else
-                displayName = variant.name
+            if next( baseVariantWords ) ~= nil then
+                displayName = removeWords( variant.name, baseVariantWords )
             end
+
+            -- Sometimes base variant does have a variant name
+            if displayName == '' then
+                if i == 1 and smwData[ 2 ] then
+                    displayName = '(Base)'
+                else
+                    displayName = variant.name
+                end
+            end
+
+            mw.log( displayName, variant.name )
+
+            local variantHtml = mw.html.create( 'div' ):addClass( 'template-itemVariant' )
+
+            if variant.name == mw.title.getCurrentTitle().fullText then
+                variantHtml:addClass( 'template-itemVariant--selected' )
+            end
+
+            variantHtml:tag( 'div' )
+                :addClass( 'template-itemVariant-fakelink' )
+                :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
+            variantHtml:tag( 'div' )
+                :addClass( 'template-itemVariant-image' )
+                :wikitext( mw.ustring.format( '[[%s|200px|link=]]', variant.image or placeholderImage ) )
+            variantHtml:tag( 'div' )
+                :addClass( 'template-itemVariant-title' )
+                :wikitext( displayName )
+            containerHtml:node( variantHtml )
         end
-
-        mw.log( displayName, variant.name )
-
-        local variantHtml = mw.html.create( 'div' ):addClass( 'template-itemVariant' )
-
-        if variant.name == mw.title.getCurrentTitle().fullText then
-            variantHtml:addClass( 'template-itemVariant--selected' )
-        end
-
-        variantHtml:tag( 'div' )
-            :addClass( 'template-itemVariant-fakelink' )
-            :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
-        variantHtml:tag( 'div' )
-            :addClass( 'template-itemVariant-image' )
-            :wikitext( mw.ustring.format( '[[%s|200px|link=]]', variant.image or placeholderImage ) )
-        variantHtml:tag( 'div' )
-            :addClass( 'template-itemVariant-title' )
-            :wikitext( displayName )
-        containerHtml:node( variantHtml )
     end
 
     return tostring( containerHtml ) .. mw.getCurrentFrame():extensionTag {
