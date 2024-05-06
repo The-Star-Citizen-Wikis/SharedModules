@@ -680,6 +680,13 @@
 			}
 		],
 		[
+			"type_container.cargo",
+			{
+				"de": "Cargo pod",
+				"en": "Cargo pod"
+			}
+		],
+		[
 			"type_cooler",
 			{
 				"de": "Kühler",
@@ -1573,6 +1580,13 @@
 			{
 				"de": "Jacke",
 				"en": "Outerwear"
+			}
+		],
+		[
+			"category_container.cargo",
+			{
+				"de": "Cargo pods",
+				"en": "Cargo pods"
 			}
 		],
 		[

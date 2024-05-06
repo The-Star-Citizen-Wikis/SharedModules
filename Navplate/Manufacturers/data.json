@@ -14,6 +14,10 @@
             "conditions": "Category:Bombs"
         },
         {
+            "label": "Cargo pods",
+            "conditions": "Category:Cargo pods"
+        },
+        {
             "label": "Coolers",
             "conditions": "Category:Coolers"
         },
@@ -112,6 +116,10 @@
         {
             "label": "Barrel attachments",
             "conditions": "Category:Barrel attachments"
+        },
+        {
+            "label": "Containers",
+            "conditions": "Category:Containers"
         },
         {
             "label": "Eyewear",
