@@ -633,7 +633,7 @@ function methodtable.setShortDescription( self )
 	end
 
 	--- Manufacturer
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
+	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil and self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= 'Unknown manufacturer' then
 		local mfuname = self.smwData[ translate( 'SMW_Manufacturer' ) ]
 		local man = manufacturer( mfuname )
 		--- Use short name if possible
