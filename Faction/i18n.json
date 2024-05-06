@@ -1,0 +1,202 @@
+{
+	"license": "CC0-1.0",
+	"description": {
+		"en": "Translation table for the Module:Item"
+	},
+	"schema": {
+		"fields": [
+			{
+				"name": "id",
+				"type": "string"
+			},
+			{
+				"name": "message",
+				"type": "localized"
+			}
+		]
+	},
+	"data": [
+		[
+			"ARG_Image",
+			{
+				"de": "Bild",
+				"en": "Image"
+			},
+			"wiki-file-name",
+			{
+				"en": "Image",
+				"de": "Bild"
+			},
+			false,
+			true,
+			{
+				"en": "The file name of the image of the ship/vehicle",
+				"de": "Dateiname des Bildes des Schiffes/Fahrzeugs"
+			},
+			"Defender.jpg"
+		],
+		[
+			"ARG_Name",
+			{
+				"de": "Name",
+				"en": "name"
+			},
+			"string",
+			{
+				"de": "Name",
+				"en": "Name"
+			},
+			true,
+			true,
+			{
+				"en": "The name of the faction",
+				"de": "Name des Faction"
+			},
+			"XenoThreat"
+		],
+		[
+			"ARG_SmwQueryName",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			"string",
+			{
+				"de": "SMWQueryName",
+				"en": "smwqueryname"
+			},
+			false,
+			true,
+			{
+				"en": "The page name to load data from",
+				"de": "Seitenname aus denen Daten geladen werden"
+			},
+			{
+				"en": "XenoThreat",
+				"de": "XenoThreat"
+			}
+		],
+		[
+			"ARG_UUID",
+			{
+				"de": "UUID",
+				"en": "uuid"
+			},
+			"string",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			},
+			false,
+			true,
+			{
+				"en": "UUID of the item from the API.",
+				"de": "UUID des Items aus der API."
+			},
+			"aff1d3cf-2e01-48a1-8ce3-47fbdbeceb16"
+		],
+		[
+			"ARG_GalactapediaUrl",
+			{
+				"de": "Glactapedia URL",
+				"en": "galactapediaurl"
+			},
+			"url",
+			{
+				"de": "Glactapedia URL",
+				"en": "Galactapedia URL"
+			},
+			false,
+			true,
+			{
+				"en": "The URL of the faction on Galactapedia",
+				"de": "Die URL des faction im Galactapedia"
+			},
+			"https://robertsspaceindustries.com/galactapedia/article/0Gxpleqwqo-nine-tails"
+		],
+		[
+			"SMW_Name",
+			{
+				"de": "Name",
+				"en": "Name"
+			}
+		],
+		[
+			"SMW_Default_Reaction",
+			{
+				"de": "Default reaction",
+				"en": "Default reaction"
+			}
+		],
+		[
+			"SMW_ClassName",
+			{
+				"de": "Klassenname",
+				"en": "Class name"
+			}
+		],
+		[
+			"SMW_UUID",
+			{
+				"de": "UUID",
+				"en": "UUID"
+			}
+		],
+		[
+			"SMW_GalactapediaUrl",
+			{
+				"de": "Galactapedia URL",
+				"en": "Galactapedia URL"
+			}
+		],
+		[
+			"LBL_OfficialSites",
+			{
+				"de": "Offizielle Seiten",
+				"en": "Official sites"
+			}
+		],
+		[
+			"LBL_CommunitySites",
+			{
+				"de": "Community Seiten",
+				"en": "Community sites"
+			}
+		],
+		[
+			"LBL_OtherSites",
+			{
+				"de": "Andere Seiten",
+				"en": "Other sites"
+			}
+		],
+		[
+			"LBL_Galactapedia",
+			{
+				"de": "Galactapedia",
+				"en": "Galactapedia"
+			}
+		],
+		[
+			"error_no_infobox_data_title",
+			{
+				"de": "Keine Infoboxdaten gefunden",
+				"en": "No infobox data found"
+			}
+		],
+		[
+			"error_no_data_text",
+			{
+				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
+			}
+		],
+		[
+			"none",
+			{
+				"de": "Keine",
+				"en": "None"
+			}
+		]
+	]
+}

@@ -1,0 +1,47 @@
+{
+	"%includes": "Additional item information that should be returned",
+	"includes": [],
+	"%smw_data": "Sets which data gets added to SMW",
+	"smw_data": [
+		{
+			"SMW_Name": [
+				"API_name",
+				"ARG_Name"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_Default_Reaction": [
+				"API_default_reaction"
+			],
+			"smw_format": "#-"
+		},
+		{
+			"SMW_GalactapediaUrl": "ARG_GalactapediaUrl",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_ClassName": "API_class_name",
+			"smw_format": "#-"
+		},
+		{
+			"SMW_UUID": "API_uuid",
+			"smw_format": "#-"
+		}
+	],
+	"%community_sites": "List of format strings which link to community sites",
+	"community_sites": [
+		{
+			"label": "Wiki API",
+			"format": "https://api.star-citizen.wiki/api/v2/factions/%s",
+			"data": "SMW_UUID"
+		}
+	],
+	"%official_sites": "List of attributes that link to official sites",
+	"official_sites": [
+		{
+			"label": "LBL_Galactapedia",
+			"attribute": "SMW_GalactapediaUrl"
+		}
+	]
+}
