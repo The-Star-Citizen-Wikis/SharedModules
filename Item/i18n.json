@@ -794,6 +794,13 @@
 			}
 		],
 		[
+			"type_misc.harvestable",
+			{
+				"de": "Harvestable item",
+				"en": "Harvestable item"
+			}
+		],
+		[
 			"type_missile.missile",
 			{
 				"de": "Rakete",
@@ -1652,6 +1659,13 @@
 			{
 				"de": "Bergbaumodul",
 				"en": "Mining modules"
+			}
+		],
+		[
+			"category_misc.harvestable",
+			{
+				"de": "Harvestable items",
+				"en": "Harvestable items"
 			}
 		],
 		[

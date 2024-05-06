@@ -228,6 +228,8 @@ function methodtable.getInfobox( self )
 	} )
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
+	mw.logObject( smwData, 'infoboxSmwData' )
+
 	--- SMW Data load error
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
@@ -819,8 +821,10 @@ function Item.test( page )
 	local instance = Item:new()
 	instance.frameArgs = {}
 	instance.frameArgs[ translate( 'ARG_Name' ) ] = page
+	instance.frameArgs[ translate( 'ARG_SmwQueryName' ) ] = page
 
 	instance:saveApiData()
+	instance:getInfobox()
 end
 
 
