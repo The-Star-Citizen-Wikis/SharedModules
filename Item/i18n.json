@@ -253,6 +253,13 @@
 			}
 		],
 		[
+			"SMW_GalactapediaUrl",
+			{
+				"de": "Galactapedia URL",
+				"en": "Galactapedia URL"
+			}
+		],
+		[
 			"SMW_GameBuild",
 			{
 				"de": "Spielversion",
