@@ -143,6 +143,34 @@
 			}
 		],
 		[
+			"SMW_RelationUUID",
+			{
+				"de": "Relation UUID",
+				"en": "Relation UUID"
+			}
+		],
+		[
+			"SMW_RelationName",
+			{
+				"de": "Relation name",
+				"en": "Relation name"
+			}
+		],
+		[
+			"SMW_RelationClassName",
+			{
+				"de": "Relation class name",
+				"en": "Relation class name"
+			}
+		],
+		[
+			"SMW_Relation",
+			{
+				"de": "Relation",
+				"en": "Relation"
+			}
+		],
+		[
 			"SMW_GalactapediaUrl",
 			{
 				"de": "Galactapedia URL",

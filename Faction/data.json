@@ -27,6 +27,24 @@
 		{
 			"SMW_UUID": "API_uuid",
 			"smw_format": "#-"
+		},
+		{
+			"SMW_Relations": "API_relations",
+			"type": "subobject",
+			"smw_data": [
+				{
+					"SMW_RelationUUID": "API_uuid"
+				},
+				{
+					"SMW_RelationName": "API_name"
+				},
+				{
+					"SMW_RelationClassName": "API_class_name"
+				},
+				{
+					"SMW_Relation": "API_relation"
+				}
+			]
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",
