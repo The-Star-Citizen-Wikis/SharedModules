@@ -1,0 +1,11 @@
+{
+	"SMW_ClassName": "Class name",
+	"SMW_Default_Reaction": "Default reaction",
+	"SMW_GalactapediaUrl": "Galactapedia URL",
+	"SMW_Name": "Name",
+	"SMW_Relation": "Relation",
+	"SMW_RelationClassName": "Relation class name",
+	"SMW_RelationName": "Relation name",
+	"SMW_RelationUUID": "Relation UUID",
+	"SMW_UUID": "UUID"
+}
