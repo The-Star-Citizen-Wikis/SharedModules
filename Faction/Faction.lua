@@ -7,6 +7,7 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local hatnote = require( 'Module:Hatnote' )._hatnote
@@ -20,6 +21,14 @@ else
 	lang = mw.getContentLanguage()
 end
 
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 --- Wrapper function for Module:Translate.translate
 ---
@@ -96,7 +105,7 @@ function methodtable.setSemanticProperties( self )
 		'Faction'
 	)
 
-	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
+	setData[ t( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().text,
 		config.name_suffixes
 	)
@@ -113,7 +122,7 @@ end
 --- @return table
 function methodtable.getSmwData( self )
 	-- Use cached data if possible, SMW queries are expensive
-	if self.smwData ~= nil and self.smwData[ translate( 'SMW_Name' ) ] ~= nil then
+	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
         return self.smwData
     end
 
@@ -202,8 +211,8 @@ function methodtable.getInfobox( self )
 	infobox:renderImage( image )
 
 	infobox:renderHeader( {
-		title = smwData[ translate( 'SMW_Name' ) ],
-		subtitle = smwData[ translate( 'SMW_Default_Reaction' ) ]
+		title = smwData[ t( 'SMW_Name' ) ],
+		subtitle = smwData[ t( 'SMW_Default_Reaction' ) ]
 	} )
 
 	--- Metadata section
@@ -211,14 +220,14 @@ function methodtable.getInfobox( self )
 		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
-				label = translate( 'SMW_UUID' ),
-				data = smwData[ translate( 'SMW_UUID' ) ],
+				label = t( 'SMW_UUID' ),
+				data = smwData[ t( 'SMW_UUID' ) ],
 				row = true,
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
-				label = translate( 'SMW_ClassName' ),
-				data = smwData[ translate( 'SMW_ClassName' ) ],
+				label = t( 'SMW_ClassName' ),
+				data = smwData[ t( 'SMW_ClassName' ) ],
 				row = true,
 				spacebetween = true
 			} )
@@ -247,7 +256,7 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
+	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
 end
 
 

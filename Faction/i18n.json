@@ -115,69 +115,6 @@
 			"https://robertsspaceindustries.com/galactapedia/article/0Gxpleqwqo-nine-tails"
 		],
 		[
-			"SMW_Name",
-			{
-				"de": "Name",
-				"en": "Name"
-			}
-		],
-		[
-			"SMW_Default_Reaction",
-			{
-				"de": "Default reaction",
-				"en": "Default reaction"
-			}
-		],
-		[
-			"SMW_ClassName",
-			{
-				"de": "Klassenname",
-				"en": "Class name"
-			}
-		],
-		[
-			"SMW_UUID",
-			{
-				"de": "UUID",
-				"en": "UUID"
-			}
-		],
-		[
-			"SMW_RelationUUID",
-			{
-				"de": "Relation UUID",
-				"en": "Relation UUID"
-			}
-		],
-		[
-			"SMW_RelationName",
-			{
-				"de": "Relation name",
-				"en": "Relation name"
-			}
-		],
-		[
-			"SMW_RelationClassName",
-			{
-				"de": "Relation class name",
-				"en": "Relation class name"
-			}
-		],
-		[
-			"SMW_Relation",
-			{
-				"de": "Relation",
-				"en": "Relation"
-			}
-		],
-		[
-			"SMW_GalactapediaUrl",
-			{
-				"de": "Galactapedia URL",
-				"en": "Galactapedia URL"
-			}
-		],
-		[
 			"LBL_OfficialSites",
 			{
 				"de": "Offizielle Seiten",
