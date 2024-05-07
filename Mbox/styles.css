@@ -28,6 +28,7 @@
 }
 
 .mbox-icon img {
+    display: block;
     width: var( --font-size-small );
     height: auto;
     margin-right: var( --space-xs );
