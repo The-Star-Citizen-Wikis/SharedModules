@@ -17,48 +17,6 @@
 	},
 	"data": [
 		[
-			"LBL_Damage",
-			{
-				"de": "Alpha-Schaden",
-				"en": "Alpha damage"
-			}
-		],
-		[
-			"LBL_AmmoSpeed",
-			{
-				"de": "Mündungsgeschwindigkeit",
-				"en": "Muzzle velocity"
-			}
-		],
-		[
-			"LBL_EffectiveRange",
-			{
-				"de": "Effektive Reichweite",
-				"en": "Effective range"
-			}
-		],
-		[
-			"LBL_MaximumRange",
-			{
-				"de": "Maximalreichweite",
-				"en": "Max range"
-			}
-		],
-		[
-			"LBL_Ammo",
-			{
-				"de": "Munition",
-				"en": "Ammo"
-			}
-		],
-		[
-			"LBL_Damages",
-			{
-				"de": "Schaden",
-				"en": "Damage"
-			}
-		],
-		[
 			"damagetype_impact",
 			{
 				"de": "Impact",
@@ -70,55 +28,6 @@
 			{
 				"de": "Detonation",
 				"en": "Detonation"
-			}
-		],
-		[
-			"LBL_DamagePhysical",
-			{
-				"de": "💪",
-				"en": "💪"
-			}
-		],
-		[
-			"LBL_DamageEnergy",
-			{
-				"de": "⚡",
-				"en": "⚡"
-			}
-		],
-		[
-			"LBL_DamageDistortion",
-			{
-				"de": "〰️",
-				"en": "〰️"
-			}
-		],
-		[
-			"LBL_DamageThermal",
-			{
-				"de": "🔥",
-				"en": "🔥"
-			}
-		],
-		[
-			"LBL_DamageBiochemical",
-			{
-				"de": "☣️",
-				"en": "☣️"
-			}
-		],
-		[
-			"LBL_DamageStun",
-			{
-				"de": "💫",
-				"en": "💫"
-			}
-		],
-		[
-			"LBL_Modes",
-			{
-				"de": "Modi",
-				"en": "Modes"
 			}
 		],
 		[
@@ -149,26 +58,5 @@
 				"en": "Single"
 			}
 		],
-		[
-			"LBL_FiringRate",
-			{
-				"de": "Schussrate",
-				"en": "Firing rate"
-			}
-		],
-		[
-			"LBL_AmmoPerShot",
-			{
-				"de": "Munition pro Schuss",
-				"en": "Ammo use"
-			}
-		],
-		[
-			"LBL_ProjectilePerShot",
-			{
-				"de": "Projektil",
-				"en": "Projectile"
-			}
-		]
 	]
 }

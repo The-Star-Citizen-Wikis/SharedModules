@@ -393,35 +393,35 @@
 	"%official_sites": "List of attributes that link to official sites",
 	"official_sites": [
 		{
-			"label": "LBL_Galactapedia",
+			"label": "label_Galactapedia",
 			"attribute": "SMW_GalactapediaUrl"
 		},
 		{
-			"label": "LBL_PledgeStore",
+			"label": "label_PledgeStore",
 			"attribute": "SMW_PledgeStoreUrl"
 		},
 		{
-			"label": "LBL_Presentation",
+			"label": "label_Presentation",
 			"attribute": "SMW_PresentationUrl"
 		},
 		{
-			"label": "LBL_Portfolio",
+			"label": "label_Portfolio",
 			"attribute": "SMW_PortfolioUrl"
 		},
 		{
-			"label": "LBL_WhitleysGuide",
+			"label": "label_WhitleysGuide",
 			"attribute": "SMW_WhitleysGuideUrl"
 		},
 		{
-			"label": "LBL_Brochure",
+			"label": "label_Brochure",
 			"attribute": "SMW_BrochureUrl"
 		},
 		{
-			"label": "LBL_Trailer",
+			"label": "label_Trailer",
 			"attribute": "SMW_TrailerUrl"
 		},
 		{
-			"label": "LBL_QA",
+			"label": "label_QA",
 			"attribute": "SMW_QAndAUrl"
 		}
 	]

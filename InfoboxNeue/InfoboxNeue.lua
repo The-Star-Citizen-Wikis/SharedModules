@@ -171,7 +171,7 @@ function methodtable.renderImage( self, filename )
 		local icon = mw.html.create( 'span' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-upload' )
 		-- TODO: Point the Upload link to a specific file name
 		html:tag( 'div' ):addClass( 'infobox__image-upload' )
-			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', tostring( icon ) .. translate( 'LBL_upload_image' ) ) )
+			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', tostring( icon ) .. t( 'label_upload_image' ) ) )
 	end
 
 	local item = tostring( html )
@@ -530,7 +530,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__data' )
-				:wikitext( mw.ustring.format( '%s:', translate( 'LBL_quick_facts' ) ) )
+				:wikitext( mw.ustring.format( '%s:', t( 'label_quick_facts' ) ) )
 				:done()
 			:tag( 'div' )
 				:addClass( 'infobox__desc' )

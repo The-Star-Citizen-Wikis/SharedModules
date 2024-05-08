@@ -358,36 +358,36 @@ function methodtable.getInfobox( self )
 		local tabberData = {}
 		local section
 
-		tabberData[ 'label1' ] = translate( 'LBL_Pledge' )
+		tabberData[ 'label1' ] = t( 'label_Pledge' )
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Standalone' ),
+				label = t( 'label_Standalone' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ], smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Warbond' ),
+				label = t( 'label_Warbond' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ], smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Availability' ),
+				label = t( 'label_Availability' ),
 				data = smwData[ t( 'SMW_PledgeAvailability' ) ],
 			} ),
 		}
 		tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
-		tabberData[ 'label2' ] = translate( 'LBL_Insurance' )
+		tabberData[ 'label2' ] = t( 'label_Insurance' )
 
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Claim' ),
+				label = t( 'label_Claim' ),
 				data = makeTimeReadable( smwData[ translate('SMW_InsuranceClaimTime' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Expedite' ),
+				label = t( 'label_Expedite' ),
 				data = makeTimeReadable( smwData[ translate('SMW_InsuranceExpediteTime' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_ExpediteFee' ),
+				label = t( 'label_ExpediteFee' ),
 				data = smwData[ translate('SMW_InsuranceExpediteCost' ) ],
 				colspan = 2
 			} ),
@@ -403,131 +403,131 @@ function methodtable.getInfobox( self )
 		local tabberData = {}
 		local section
 
-		tabberData[ 'label1' ] = translate( 'LBL_Dimensions' )
+		tabberData[ 'label1' ] = t( 'label_Dimensions' )
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Length' ),
+				label = t( 'label_Length' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityLength' ) ], smwData[ t( 'SMW_RetractedLength' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Width' ),
+				label = t( 'label_Width' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityWidth' ) ], smwData[ t( 'SMW_RetractedWidth' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Height' ),
+				label = t( 'label_Height' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityHeight' ) ], smwData[ t( 'SMW_RetractedHeight' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Mass' ),
+				label = t( 'label_Mass' ),
 				data = smwData[ t( 'SMW_Mass' ) ],
 			} ),
 		}
 
 		tabberData[ 'content1' ] = infobox:renderSection( { content =section, col = 3 }, true )
 
-		tabberData[ 'label2' ] = translate( 'LBL_Speed' )
+		tabberData[ 'label2' ] = t( 'label_Speed' )
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_ScmSpeed' ),
+				label = t( 'label_ScmSpeed' ),
 				data = smwData[ t( 'SMW_ScmSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_0ToScm' ),
+				label = t( 'label_0ToScm' ),
 				data = smwData[ t( 'SMW_ZeroToScmSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_ScmTo0' ),
+				label = t( 'label_ScmTo0' ),
 				data = smwData[ t( 'SMW_ScmSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_MaxSpeed' ),
+				label = t( 'label_MaxSpeed' ),
 				data = smwData[ t( 'SMW_MaximumSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_0ToMax' ),
+				label = t( 'label_0ToMax' ),
 				data = smwData[ t( 'SMW_ZeroToMaximumSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_MaxTo0' ),
+				label = t( 'label_MaxTo0' ),
 				data = smwData[ t( 'SMW_MaximumSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_ReverseSpeed' ),
+				label = t( 'label_ReverseSpeed' ),
 				data = smwData[ t( 'SMW_ReverseSpeed' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_RollRate' ),
+				label = t( 'label_RollRate' ),
 				data = smwData[ t( 'SMW_RollRate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_PitchRate' ),
+				label = t( 'label_PitchRate' ),
 				data = smwData[ t( 'SMW_PitchRate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_YawRate' ),
+				label = t( 'label_YawRate' ),
 				data = smwData[ t( 'SMW_YawRate' ) ]
 			} ),
 		}
 		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
 
-		tabberData[ 'label3' ] = translate( 'LBL_Fuel' )
+		tabberData[ 'label3' ] = t( 'label_Fuel' )
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_HydrogenCapacity' ),
+				label = t( 'label_HydrogenCapacity' ),
 				data = smwData[ t( 'SMW_HydrogenFuelCapacity' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_HydrogenIntake' ),
+				label = t( 'label_HydrogenIntake' ),
 				data = smwData[ t( 'SMW_HydrogenFuelIntakeRate' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_QuantumCapacity' ),
+				label = t( 'label_QuantumCapacity' ),
 				data = smwData[ t( 'SMW_QuantumFuelCapacity' ) ],
 			} ),
 		}
 		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
-		tabberData[ 'label4' ] = translate( 'LBL_Hull' )
+		tabberData[ 'label4' ] = t( 'label_Hull' )
 
 		section = {
 			infobox:renderItem( {
-				label = translate( 'LBL_CrossSection' ),
+				label = t( 'label_CrossSection' ),
 				data = formatModifier( smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Electromagnetic' ),
+				label = t( 'label_Electromagnetic' ),
 				data = formatModifier( smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Infrared' ),
+				label = t( 'label_Infrared' ),
 				data = formatModifier( smwData[ t( 'SMW_InfraredSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Physical' ),
+				label = t( 'label_Physical' ),
 				data = formatModifier( smwData[ t( 'SMW_PhysicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Energy' ),
+				label = t( 'label_Energy' ),
 				data = formatModifier( smwData[ t( 'SMW_EnergyDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Distortion' ),
+				label = t( 'label_Distortion' ),
 				data = formatModifier( smwData[ t( 'SMW_DistortionDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Thermal' ),
+				label = t( 'label_Thermal' ),
 				data = formatModifier( smwData[ t( 'SMW_ThermalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Biochemical' ),
+				label = t( 'label_Biochemical' ),
 				data = formatModifier( smwData[ t( 'SMW_BiochemicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Stun' ),
+				label = t( 'label_Stun' ),
 				data = formatModifier( smwData[ t( 'SMW_StunDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Health' ),
+				label = t( 'label_Health' ),
 				data = smwData[ t( 'SMW_HealthPoint' ) ],
 			} ),
 		}
@@ -601,19 +601,19 @@ function methodtable.getInfobox( self )
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Role' ),
+				label = t( 'label_Role' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_Role' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Size' ),
+				label = t( 'label_Size' ),
 				data = getSize(),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Series' ),
+				label = t( 'label_Series' ),
 				data = getSeries(),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Loaner' ),
+				label = t( 'label_Loaner' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
 			} ),
 		},
@@ -623,19 +623,19 @@ function methodtable.getInfobox( self )
 
 	--- Capacity
 	infobox:renderSection( {
-		title = translate( 'LBL_Capacity' ),
+		title = t( 'label_Capacity' ),
 		col = 3,
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Crew' ),
+				label = t( 'label_Crew' ),
 				data = infobox.formatRange( smwData[ t( 'SMW_MinimumCrew' ) ], smwData[ t( 'SMW_MaximumCrew' ) ], true ),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Cargo' ),
+				label = t( 'label_Cargo' ),
 				data = smwData[ t( 'SMW_CargoCapacity' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Stowage' ),
+				label = t( 'label_Stowage' ),
 				data = smwData[ t( 'SMW_VehicleInventory' ) ],
 			} ),
 		},
@@ -644,7 +644,7 @@ function methodtable.getInfobox( self )
 
 	--- Cost
 	infobox:renderSection( {
-		title = translate( 'LBL_Cost' ),
+		title = t( 'label_Cost' ),
 		class = 'infobox__section--tabber',
 		content = getCostSection(),
 	} )
@@ -652,7 +652,7 @@ function methodtable.getInfobox( self )
 
 	--- Specifications
 	infobox:renderSection( {
-		title = translate( 'LBL_Specifications' ),
+		title = t( 'label_Specifications' ),
 	 	class = 'infobox__section--tabber',
 		content = getSpecificationsSection(),
 	} )
@@ -660,15 +660,15 @@ function methodtable.getInfobox( self )
 
 	--- Lore section
 	infobox:renderSection( {
-		title = translate( 'LBL_Lore' ),
+		title = t( 'label_Lore' ),
 		col = 2,
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Released' ),
+				label = t( 'label_Released' ),
 				data = smwData[ t( 'SMW_LoreReleaseDate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Retired' ),
+				label = t( 'label_Retired' ),
 				data = smwData[ t( 'SMW_LoreRetirementDate' ) ]
 			} ),
 		},
@@ -677,15 +677,15 @@ function methodtable.getInfobox( self )
 
 	--- Development section
 	infobox:renderSection( {
-		title = translate( 'LBL_Development' ),
+		title = t( 'label_Development' ),
 		col = 2,
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Announced' ),
+				label = t( 'label_Announced' ),
 				data = smwData[ t( 'SMW_ConceptAnnouncementDate' ) ]
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_ConceptSale' ),
+				label = t( 'label_ConceptSale' ),
 				data = smwData[ t( 'SMW_ConceptSaleDate' ) ]
 			} ),
 		},
@@ -738,16 +738,16 @@ function methodtable.getInfobox( self )
 	infobox:renderFooter( {
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
-			label = translate( 'LBL_OtherSites' ),
+			label = t( 'label_OtherSites' ),
 			type = 'popup',
 			content = infobox:renderSection( {
 				content = {
 					infobox:renderItem( {
-						label = translate( 'LBL_OfficialSites' ),
+						label = t( 'label_OfficialSites' ),
 						data = table.concat( getOfficialSites(), '' )
 					} ),
 					infobox:renderItem( {
-						label = translate( 'LBL_CommunitySites' ),
+						label = t( 'label_CommunitySites' ),
 						data = table.concat( getCommunitySites(), '' )
 					} ),
 				},

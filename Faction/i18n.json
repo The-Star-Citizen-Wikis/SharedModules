@@ -115,34 +115,6 @@
 			"https://robertsspaceindustries.com/galactapedia/article/0Gxpleqwqo-nine-tails"
 		],
 		[
-			"LBL_OfficialSites",
-			{
-				"de": "Offizielle Seiten",
-				"en": "Official sites"
-			}
-		],
-		[
-			"LBL_CommunitySites",
-			{
-				"de": "Community Seiten",
-				"en": "Community sites"
-			}
-		],
-		[
-			"LBL_OtherSites",
-			{
-				"de": "Andere Seiten",
-				"en": "Other sites"
-			}
-		],
-		[
-			"LBL_Galactapedia",
-			{
-				"de": "Galactapedia",
-				"en": "Galactapedia"
-			}
-		],
-		[
 			"error_no_infobox_data_title",
 			{
 				"de": "Keine Infoboxdaten gefunden",

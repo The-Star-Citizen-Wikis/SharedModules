@@ -90,20 +90,20 @@ function p.addInfoboxData( infobox, smwData )
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Effect' ),
+				label = t( 'label_Effect' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_Effect' ) ] ),
 				colspan = 2
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_NutritionalDensityRating' ),
+				label = t( 'label_NutritionalDensityRating' ),
 				data = smwData[ t( 'SMW_NutritionalDensityRating' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_HydrationEfficacyIndex' ),
+				label = t( 'label_HydrationEfficacyIndex' ),
 				data = smwData[ t( 'SMW_HydrationEfficacyIndex' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Uses' ),
+				label = t( 'label_Uses' ),
 				data = smwData[ t( 'SMW_Uses' ) ],
 			} )
 		},

@@ -16,19 +16,5 @@
 		]
 	},
 	"data": [
-		[
-			"LBL_ModifierDuration",
-			{
-				"de": "Dauer",
-				"en": "Duration"
-			}
-		],
-		[
-			"LBL_ErrorChance",
-			{
-				"de": "Fehler",
-				"en": "Error"
-			}
-		]
 	]
 }

@@ -97,10 +97,10 @@ function p.addInfoboxData( infobox, smwData )
     end
 
     infobox:renderSection( {
-        title = translate( 'LBL_Clothing' ),
+        title = t( 'label_Clothing' ),
         content = {
             infobox:renderItem( {
-                label = translate( 'LBL_ResistanceTemperature' ),
+                label = t( 'label_ResistanceTemperature' ),
                 data = infobox.addUnitIfExists( infobox.formatRange( smwData[ t( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ t( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
             } )
         },
@@ -109,35 +109,35 @@ function p.addInfoboxData( infobox, smwData )
 
     -- TODO: Maybe we should somehow generalize the armor section since it applies to other items too
     infobox:renderSection( {
-        title = translate( 'LBL_Armor' ),
+        title = t( 'label_Armor' ),
         content = {
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenPhysical' ),
+                label = t( 'label_ModifierDamageTakenPhysical' ),
                 tooltip = t( 'SMW_ModifierDamageTakenPhysical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenPhysical' )
             } ),
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenEnergy' ),
+                label = t( 'label_ModifierDamageTakenEnergy' ),
                 tooltip = t( 'SMW_ModifierDamageTakenEnergy' ),
                 data = getResistance( 'SMW_ModifierDamageTakenEnergy' )
             } ),
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenDistortion' ),
+                label = t( 'label_ModifierDamageTakenDistortion' ),
                 tooltip = t( 'SMW_ModifierDamageTakenDistortion' ),
                 data = getResistance( 'SMW_ModifierDamageTakenDistortion' )
             } ),
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenThermal' ),
+                label = t( 'label_ModifierDamageTakenThermal' ),
                 tooltip = t( 'SMW_ModifierDamageTakenThermal' ),
                 data = getResistance( 'SMW_ModifierDamageTakenThermal' )
             } ),
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenBiochemical' ),
+                label = t( 'label_ModifierDamageTakenBiochemical' ),
                 tooltip = t( 'SMW_ModifierDamageTakenBiochemical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenBiochemical' )
             } ),
             infobox:renderItem( {
-                label = translate( 'LBL_ModifierDamageTakenStun' ),
+                label = t( 'label_ModifierDamageTakenStun' ),
                 tooltip = t( 'SMW_ModifierDamageTakenStun' ),
                 data = getResistance( 'SMW_ModifierDamageTakenStun' )
             } )

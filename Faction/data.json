@@ -58,7 +58,7 @@
 	"%official_sites": "List of attributes that link to official sites",
 	"official_sites": [
 		{
-			"label": "LBL_Galactapedia",
+			"label": "label_Galactapedia",
 			"attribute": "SMW_GalactapediaUrl"
 		}
 	]

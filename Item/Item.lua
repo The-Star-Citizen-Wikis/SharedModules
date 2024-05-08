@@ -352,23 +352,23 @@ function methodtable.getInfobox( self )
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Type' ),
+				label = t( 'label_Type' ),
 				data = getType(),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Subtype' ),
+				label = t( 'label_Subtype' ),
 				data = smwData[ t( 'SMW_Subtype' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Class' ),
+				label = t( 'label_Class' ),
 				data = getClass(),
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Occupancy' ),
+				label = t( 'label_Occupancy' ),
 				data = smwData[ t( 'SMW_Occupancy' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Inventory' ),
+				label = t( 'label_Inventory' ),
 				data = smwData[ t( 'SMW_Inventory' ) ],
 			} )
 		},
@@ -380,22 +380,22 @@ function methodtable.getInfobox( self )
 
 	--- Dimensions
 	infobox:renderSection( {
-		title = translate( 'LBL_Dimensions' ),
+		title = t( 'label_Dimensions' ),
 		content = {
 			infobox:renderItem( {
-				label = translate( 'LBL_Length' ),
+				label = t( 'label_Length' ),
 				data = smwData[ t( 'SMW_EntityLength' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Width' ),
+				label = t( 'label_Width' ),
 				data = smwData[ t( 'SMW_EntityWidth' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Height' ),
+				label = t( 'label_Height' ),
 				data = smwData[ t( 'SMW_EntityHeight' ) ],
 			} ),
 			infobox:renderItem( {
-				label = translate( 'LBL_Mass' ),
+				label = t( 'label_Mass' ),
 				data = smwData[ t( 'SMW_Mass' ) ],
 			} )
 		},
@@ -447,16 +447,16 @@ function methodtable.getInfobox( self )
 	infobox:renderFooter( {
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
-			label = translate( 'LBL_OtherSites' ),
+			label = t( 'label_OtherSites' ),
 			type = 'popup',
 			content = infobox:renderSection( {
 				content = {
 					infobox:renderItem( {
-						label = translate( 'LBL_OfficialSites' ),
+						label = t( 'label_OfficialSites' ),
 						data = table.concat( getOfficialSites(), '' )
 					} ),
 					infobox:renderItem( {
-						label = translate( 'LBL_CommunitySites' ),
+						label = t( 'label_CommunitySites' ),
 						data = table.concat( getCommunitySites(), '' )
 					} ),
 				},

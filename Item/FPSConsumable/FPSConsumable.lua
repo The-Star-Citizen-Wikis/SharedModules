@@ -71,11 +71,11 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_ModifierDuration' ),
+                    label = t( 'label_ModifierDuration' ),
                     data = smwData[ t( 'SMW_ModifierDuration' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_ErrorChance' ),
+                    label = t( 'label_ErrorChance' ),
                     data = smwData[ t( 'SMW_ErrorChance' ) ],
                 } )
             },

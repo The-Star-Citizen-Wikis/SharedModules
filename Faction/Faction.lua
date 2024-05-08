@@ -238,16 +238,16 @@ function methodtable.getInfobox( self )
 	infobox:renderFooter( {
 		button = {
 			icon = 'WikimediaUI-Globe.svg',
-			label = translate( 'LBL_OtherSites' ),
+			label = t( 'label_OtherSites' ),
 			type = 'popup',
 			content = infobox:renderSection( {
 				content = {
 					infobox:renderItem( {
-						label = translate( 'LBL_OfficialSites' ),
+						label = t( 'label_OfficialSites' ),
 						data = table.concat( getOfficialSites(), '' )
 					} ),
 					infobox:renderItem( {
-						label = translate( 'LBL_CommunitySites' ),
+						label = t( 'label_CommunitySites' ),
 						data = table.concat( getCommunitySites(), '' )
 					} ),
 				},

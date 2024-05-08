@@ -86,15 +86,15 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_ModifierDamage' ),
+                    label = t( 'label_ModifierDamage' ),
                     data = smwData[ t( 'SMW_ModifierDamage' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_ModifierFireRecoilStrength' ),
+                    label = t( 'label_ModifierFireRecoilStrength' ),
                     data = smwData[ t( 'SMW_ModifierFireRecoilStrength' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_ModifierSoundRadius' ),
+                    label = t( 'label_ModifierSoundRadius' ),
                     data = smwData[ t( 'SMW_ModifierSoundRadius' ) ],
                 } )
             },
@@ -105,19 +105,19 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_OpticsMagnification' ),
+                    label = t( 'label_OpticsMagnification' ),
                     data = smwData[ t( 'SMW_OpticsMagnification' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_ZeroingRange' ),
+                    label = t( 'label_ZeroingRange' ),
                     data = smwData[ t( 'SMW_ZeroingRange' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_ZeroingRangeIncrement' ),
+                    label = t( 'label_ZeroingRangeIncrement' ),
                     data = smwData[ t( 'SMW_ZeroingRangeIncrement' ) ],
                 } ),
                 infobox:renderItem( {
-                    label = translate( 'LBL_AutoZeroingTime' ),
+                    label = t( 'label_AutoZeroingTime' ),
                     data = smwData[ t( 'SMW_AutoZeroingTime' ) ],
                 } )
             },
@@ -127,7 +127,7 @@ function p.addInfoboxData( infobox, smwData )
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
-                    label = translate( 'LBL_Ammo' ),
+                    label = t( 'label_Ammo' ),
                     data = smwData[ t( 'SMW_Ammo' ) ],
                 } )
             },

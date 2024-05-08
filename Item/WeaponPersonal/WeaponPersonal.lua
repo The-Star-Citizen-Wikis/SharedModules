@@ -138,7 +138,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 for _, damageType in ipairs( damageTypes ) do
                     table.insert( section,
                         infobox:renderItem( {
-                            label = translate( 'LBL_Damage' .. damageType ),
+                            label = t( 'label_Damage' .. damageType ),
                             tooltip = t( 'SMW_Damage' .. damageType ),
                             data = mode[ t( 'SMW_Damage' .. damageType ) ]
                         } )
@@ -151,7 +151,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             end
 
             infobox:renderSection( {
-                title = translate( 'LBL_Damages' ),
+                title = t( 'label_Damages' ),
                 class = 'infobox__section--tabber',
                 content = tabber( tabberData )
             } )
@@ -180,17 +180,17 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 tabberData[ 'label' .. tabCount ] = translate( 'firingmode_' ..
                 mode[ t( 'SMW_FiringMode' ) ] )
                 section = {
-                    infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ t( 'SMW_FiringRate' ) ] ),
-                    infobox:renderItem( translate( 'LBL_ProjectilePerShot' ),
+                    infobox:renderItem( t( 'label_FiringRate' ), mode[ t( 'SMW_FiringRate' ) ] ),
+                    infobox:renderItem( t( 'label_ProjectilePerShot' ),
                         mode[ t( 'SMW_ProjectilePerShot' ) ] ),
-                    infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ t( 'SMW_AmmoPerShot' ) ] )
+                    infobox:renderItem( t( 'label_AmmoPerShot' ), mode[ t( 'SMW_AmmoPerShot' ) ] )
                 }
                 tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
                 tabCount = tabCount + 1
             end
 
             infobox:renderSection( {
-                title = translate( 'LBL_Modes' ),
+                title = t( 'label_Modes' ),
                 class = 'infobox__section--tabber',
                 content = tabber( tabberData )
             } )
@@ -199,11 +199,11 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     infobox:renderSection( {
         content = {
-            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ t( 'SMW_Damage' ) ] ),
-            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ t( 'SMW_AmmoSpeed' ) ] ),
-            infobox:renderItem( translate( 'LBL_EffectiveRange' ), smwData[ t( 'SMW_EffectiveRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ t( 'SMW_Ammo' ) ] )
+            infobox:renderItem( t( 'label_Damage' ), smwData[ t( 'SMW_Damage' ) ] ),
+            infobox:renderItem( t( 'label_AmmoSpeed' ), smwData[ t( 'SMW_AmmoSpeed' ) ] ),
+            infobox:renderItem( t( 'label_EffectiveRange' ), smwData[ t( 'SMW_EffectiveRange' ) ] ),
+            infobox:renderItem( t( 'label_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( t( 'label_Ammo' ), smwData[ t( 'SMW_Ammo' ) ] )
         },
         col = 2
     } )

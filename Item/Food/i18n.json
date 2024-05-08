@@ -16,33 +16,5 @@
 		]
 	},
 	"data": [
-		[
-			"LBL_Uses",
-			{
-				"de": "Anwendungen",
-				"en": "Uses"
-			}
-		],
-		[
-			"LBL_NutritionalDensityRating",
-			{
-				"de": "NDR",
-				"en": "NDR"
-			}
-		],
-		[
-			"LBL_HydrationEfficacyIndex",
-			{
-				"de": "HEI",
-				"en": "HEI"
-			}
-		],
-		[
-			"LBL_Effect",
-			{
-				"de": "Effekt",
-				"en": "Effect"
-			}
-		]
 	]
 }

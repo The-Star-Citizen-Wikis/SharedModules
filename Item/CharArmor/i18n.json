@@ -17,69 +17,6 @@
 	},
 	"data": [
 		[
-			"LBL_Armor",
-			{
-				"de": "Rüstung",
-				"en": "Armor"
-			}
-		],
-		[
-			"LBL_Clothing",
-			{
-				"de": "Kleidung",
-				"en": "Clothing"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenPhysical",
-			{
-				"de": "💪",
-				"en": "💪"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenEnergy",
-			{
-				"de": "⚡",
-				"en": "⚡"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenDistortion",
-			{
-				"de": "〰️",
-				"en": "〰️"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenThermal",
-			{
-				"de": "🔥",
-				"en": "🔥"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenBiochemical",
-			{
-				"de": "☣️",
-				"en": "☣️"
-			}
-		],
-		[
-			"LBL_ModifierDamageTakenStun",
-			{
-				"de": "💫",
-				"en": "💫"
-			}
-		],
-		[
-			"LBL_ResistanceTemperature",
-			{
-				"de": "Temperatur",
-				"en": "Temperature"
-			}
-		],
-		[
 			"type_heavy_armor",
 			{
 				"de": "Heavy armor",
