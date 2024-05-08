@@ -6,7 +6,7 @@ local methodtable = {}
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 local checkTypeMulti = libraryUtil.checkTypeMulti
-
+local i18n = require( 'Module:i18n' ):new()
 
 metatable.__index = methodtable
 
@@ -15,7 +15,15 @@ metatable.__tostring = function( self )
 end
 
 
---- FIXME: This should go to somewhere else, like Module:Common
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
+
+
 --- Calls TNT with the given key
 ---
 --- @param key string The translation key
