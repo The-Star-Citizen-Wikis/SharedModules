@@ -4,10 +4,20 @@ local p = {}
 
 local MODULE_NAME = 'FPSConsumable'
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -57,16 +67,16 @@ end
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
     -- Cryptokeys
-    if smwData[ translate( 'SMW_Type' ) ] == 'FPS_Consumable.Hacking' then
+    if smwData[ t( 'SMW_Type' ) ] == 'FPS_Consumable.Hacking' then
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
                     label = translate( 'LBL_ModifierDuration' ),
-                    data = smwData[ translate( 'SMW_ModifierDuration' ) ],
+                    data = smwData[ t( 'SMW_ModifierDuration' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ErrorChance' ),
-                    data = smwData[ translate( 'SMW_ErrorChance' ) ],
+                    data = smwData[ t( 'SMW_ErrorChance' ) ],
                 } )
             },
             col = 2

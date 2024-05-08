@@ -7,6 +7,7 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local manufacturer = require( 'Module:Manufacturer' )._manufacturer
@@ -22,6 +23,15 @@ else
 end
 
 local moduleCache = {}
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -134,17 +144,17 @@ function methodtable.setSemanticProperties( self )
 		'Item'
 	)
 
-	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
+	setData[ t( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().text,
 		config.name_suffixes
 	)
 
-	if type( setData[ translate( 'SMW_Manufacturer' ) ] ) == 'string' then
-		local man = manufacturer( setData[ translate( 'SMW_Manufacturer' ) ] )
+	if type( setData[ t( 'SMW_Manufacturer' ) ] ) == 'string' then
+		local man = manufacturer( setData[ t( 'SMW_Manufacturer' ) ] )
 		if man ~= nil then man = man.name end
 
-		setData[ translate( 'SMW_Manufacturer' ) ] = man or setData[ translate( 'SMW_Manufacturer' ) ]
-		setData[ translate( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
+		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
+		setData[ t( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
 	end
 
 	-- Set properties with API data
@@ -157,7 +167,7 @@ function methodtable.setSemanticProperties( self )
 			-- Merge subtype into type, like how the game handles it
 			if self.apiData.sub_type ~= 'UNDEFINED' then
 				-- SMW_Type is already set prior if self.apiData.type exists
-				setData[ translate( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ translate( 'SMW_Type' ) ], self.apiData.sub_type )
+				setData[ t( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ t( 'SMW_Type' ) ], self.apiData.sub_type )
 			end
 
 			local descData = self.apiData.description_data
@@ -167,12 +177,12 @@ function methodtable.setSemanticProperties( self )
 					if descObj.name == 'Item Type' or descObj.name == 'Type' then
 						local descType = descObj.type
 						-- FIXME: This only works for English, need some way to get only the English text for comparison since descType is always in English
-						local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( setData[ translate( 'SMW_Type' ) ] ) ) )
+						local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( setData[ t( 'SMW_Type' ) ] ) ) )
 
 						-- If the type in item description is different than what we compose out of type and subtype data, record it in subtype
 						-- TODO: We should make a common function to sanitize strings for comaprison (e.g. lowercase, remove all the space)
 						if mw.ustring.lower( descType ) ~= mw.ustring.lower( itemType ) then
-							setData[ translate( 'SMW_Subtype' ) ] = descType
+							setData[ t( 'SMW_Subtype' ) ] = descType
 						end
 					end
 				end
@@ -180,7 +190,7 @@ function methodtable.setSemanticProperties( self )
 		end
 	end
 
-	runModuleFN( setData[ translate( 'SMW_Type' ) ], 'addSmwProperties', { self.apiData, self.frameArgs, setData } )
+	runModuleFN( setData[ t( 'SMW_Type' ) ], 'addSmwProperties', { self.apiData, self.frameArgs, setData } )
 
 	mw.logObject( setData, 'SET' )
 
@@ -194,7 +204,7 @@ end
 --- @return table
 function methodtable.getSmwData( self )
 	-- Use cached data if possible, SMW queries are expensive
-	if self.smwData ~= nil and self.smwData[ translate( 'SMW_Name' ) ] ~= nil then
+	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
         return self.smwData
     end
 
@@ -240,42 +250,42 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getManufacturer()
-		if smwData[ translate( 'SMW_Manufacturer' ) ] == nil then return end
+		if smwData[ t( 'SMW_Manufacturer' ) ] == nil then return end
 
-		local mfu = manufacturer( smwData[ translate( 'SMW_Manufacturer' ) ] )
-		if mfu == nil then return '[[' .. smwData[ translate( 'SMW_Manufacturer' ) ] .. ']]' end
+		local mfu = manufacturer( smwData[ t( 'SMW_Manufacturer' ) ] )
+		if mfu == nil then return '[[' .. smwData[ t( 'SMW_Manufacturer' ) ] .. ']]' end
 
 		return infobox.showDescIfDiff(
-			table.concat( { '[[', smwData[ translate( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
+			table.concat( { '[[', smwData[ t( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
 			mfu.code
 		)
 	end
 
 	local function getType()
-		if smwData[ translate( 'SMW_Type' ) ] == nil then return end
+		if smwData[ t( 'SMW_Type' ) ] == nil then return end
 
-		local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( smwData[ translate( 'SMW_Type' ) ] ) ) )
+		local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( smwData[ t( 'SMW_Type' ) ] ) ) )
 
 		if mw.ustring.find( itemType, 'type_' ) then
-			itemType = smwData[ translate( 'SMW_Type' ) ]
+			itemType = smwData[ t( 'SMW_Type' ) ]
 		end
 
 		return mw.ustring.format( '[[%s]]', itemType )
 	end
 
 	local function getSize()
-		if smwData[ translate( 'SMW_Size' ) ] == nil then return end
-		return 'S' .. smwData[ translate( 'SMW_Size' ) ]
+		if smwData[ t( 'SMW_Size' ) ] == nil then return end
+		return 'S' .. smwData[ t( 'SMW_Size' ) ]
 	end
 
 	local function getClass()
-		if smwData[ translate( 'SMW_Class' ) ] == nil then return end
+		if smwData[ t( 'SMW_Class' ) ] == nil then return end
 
-		local classKey = mw.ustring.lower( smwData[ translate( 'SMW_Class' ) ] )
+		local classKey = mw.ustring.lower( smwData[ t( 'SMW_Class' ) ] )
 		local class = translate( mw.ustring.format( 'class_%s', classKey ) )
 
-		if smwData[ translate( 'SMW_Grade' ) ] ~= nil then
-			class = class .. ' (' .. smwData[ translate( 'SMW_Grade' ) ] .. ')'
+		if smwData[ t( 'SMW_Grade' ) ] ~= nil then
+			class = class .. ' (' .. smwData[ t( 'SMW_Grade' ) ] .. ')'
 		end
 
 		return class
@@ -331,7 +341,7 @@ function methodtable.getInfobox( self )
 	infobox:renderImage( image )
 
 	infobox:renderHeader( {
-		title = smwData[ translate( 'SMW_Name' ) ],
+		title = smwData[ t( 'SMW_Name' ) ],
 		--- e.g. Aegis Dynamics (AEGS)
 		subtitle = getManufacturer(),
 		badge = getSize()
@@ -347,7 +357,7 @@ function methodtable.getInfobox( self )
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Subtype' ),
-				data = smwData[ translate( 'SMW_Subtype' ) ],
+				data = smwData[ t( 'SMW_Subtype' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Class' ),
@@ -355,18 +365,18 @@ function methodtable.getInfobox( self )
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Occupancy' ),
-				data = smwData[ translate( 'SMW_Occupancy' ) ],
+				data = smwData[ t( 'SMW_Occupancy' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Inventory' ),
-				data = smwData[ translate( 'SMW_Inventory' ) ],
+				data = smwData[ t( 'SMW_Inventory' ) ],
 			} )
 		},
 		col = 2
 	} )
 
 	local pageIdentifier = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or mw.title.getCurrentTitle().fullText
-	runModuleFN( smwData[ translate( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData, pageIdentifier } )
+	runModuleFN( smwData[ t( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData, pageIdentifier } )
 
 	--- Dimensions
 	infobox:renderSection( {
@@ -374,19 +384,19 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Length' ),
-				data = smwData[ translate( 'SMW_EntityLength' ) ],
+				data = smwData[ t( 'SMW_EntityLength' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Width' ),
-				data = smwData[ translate( 'SMW_EntityWidth' ) ],
+				data = smwData[ t( 'SMW_EntityWidth' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Height' ),
-				data = smwData[ translate( 'SMW_EntityHeight' ) ],
+				data = smwData[ t( 'SMW_EntityHeight' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Mass' ),
-				data = smwData[ translate( 'SMW_Mass' ) ],
+				data = smwData[ t( 'SMW_Mass' ) ],
 			} )
 		},
 		col = 3
@@ -397,20 +407,20 @@ function methodtable.getInfobox( self )
 		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
-				label = translate( 'SMW_UUID' ),
-				data = smwData[ translate( 'SMW_UUID' ) ],
+				label = t( 'SMW_UUID' ),
+				data = smwData[ t( 'SMW_UUID' ) ],
 				row = true,
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
-				label = translate( 'SMW_ClassName' ),
-				data = smwData[ translate( 'SMW_ClassName' ) ],
+				label = t( 'SMW_ClassName' ),
+				data = smwData[ t( 'SMW_ClassName' ) ],
 				row = true,
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
-				label = translate( 'SMW_GameBuild' ),
-				data = smwData[ translate( 'SMW_GameBuild' ) ],
+				label = t( 'SMW_GameBuild' ),
+				data = smwData[ t( 'SMW_GameBuild' ) ],
 				row = true,
 				spacebetween = true
 			} )
@@ -418,7 +428,7 @@ function methodtable.getInfobox( self )
 	} )
 
 	--- Actions section
-	if smwData[ translate( 'SMW_UUID' ) ] then
+	if smwData[ t( 'SMW_UUID' ) ] then
 		infobox:renderSection( {
 			class = 'infobox__section--actions infobox__section--hasBackground',
 			content = {
@@ -427,7 +437,7 @@ function methodtable.getInfobox( self )
 					data = translate( 'actions_find_item_title' ),
 					desc = translate( 'actions_find_item_text' ),
 					-- FIXME: Make this configurable?
-					link = 'https://finder.cstone.space/search/' .. smwData[ translate( 'SMW_UUID' ) ]
+					link = 'https://finder.cstone.space/search/' .. smwData[ t( 'SMW_UUID' ) ]
 				} )
 			}
 		} )
@@ -455,7 +465,7 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
+	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
 end
 
 
@@ -473,7 +483,7 @@ function methodtable.getDescription( self )
 	end
 
 	--- Error: No description SMW property
-	if smwData[ translate( 'SMW_Description' ) ] == nil then
+	if smwData[ t( 'SMW_Description' ) ] == nil then
 		return require( 'Module:Mbox' )._mbox(
 			translate( 'error_no_description_title' ),
 			translate( 'error_no_description_text' ),
@@ -481,7 +491,7 @@ function methodtable.getDescription( self )
 		)
 	end
 
-	return '<blockquote>' .. smwData[ translate( 'SMW_Description' ) ] .. '</blockquote>'
+	return '<blockquote>' .. smwData[ t( 'SMW_Description' ) ] .. '</blockquote>'
 end
 
 --- Creates the wikitext for the Item availability template
@@ -499,7 +509,7 @@ function methodtable.getAvailability( self )
 
 	local output = {}
 
-	local uuid = smwData[ translate( 'SMW_UUID' ) ]
+	local uuid = smwData[ t( 'SMW_UUID' ) ]
 	if uuid then 
 		-- Create find item button
 		local icon = mw.html.create( 'div' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-search' )
@@ -553,32 +563,32 @@ function methodtable.setCategories( self )
 	end
 
 	--- Only set category if category_type value exists
-	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
-		local typeCategory = translate( 'category_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] ) )
+	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
+		local typeCategory = translate( 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) )
 
-		if typeCategory ~= nil and typeCategory ~= 'category_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] ) then
+		if typeCategory ~= nil and typeCategory ~= 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) then
 			table.insert( self.categories, typeCategory ) 
 
-			if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
-				addSubcategory( typeCategory, translate( 'SMW_Size' ) .. ' ' .. self.smwData[ translate( 'SMW_Size' ) ] )
+			if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
+				addSubcategory( typeCategory, t( 'SMW_Size' ) .. ' ' .. self.smwData[ t( 'SMW_Size' ) ] )
 			end
 
-			if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
-				addSubcategory( typeCategory, translate( 'SMW_Grade' ) .. ' ' .. self.smwData[ translate( 'SMW_Grade' ) ] )
+			if self.smwData[ t( 'SMW_Grade' ) ] ~= nil then
+				addSubcategory( typeCategory, t( 'SMW_Grade' ) .. ' ' .. self.smwData[ t( 'SMW_Grade' ) ] )
 			end
 
-			if self.smwData[ translate( 'SMW_Subtype' ) ] ~= nil then
-				addSubcategory( typeCategory, self.smwData[ translate( 'SMW_Subtype' ) ] )
+			if self.smwData[ t( 'SMW_Subtype' ) ] ~= nil then
+				addSubcategory( typeCategory, self.smwData[ t( 'SMW_Subtype' ) ] )
 			end
 
-			if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
-				addSubcategory( typeCategory, self.smwData[ translate( 'SMW_Class' ) ] )
+			if self.smwData[ t( 'SMW_Class' ) ] ~= nil then
+				addSubcategory( typeCategory, self.smwData[ t( 'SMW_Class' ) ] )
 			end
 		end
 	end
 
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = mw.ustring.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
+		local manufacturer = mw.ustring.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
 		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
 
 		table.insert( self.categories, manufacturer )
@@ -586,11 +596,11 @@ function methodtable.setCategories( self )
 		table.insert( self.categories, translate( 'error_category_item_missing_manufacturer' ) )
 	end
 
-	if self.smwData[ translate( 'SMW_UUID' ) ] == nil then
+	if self.smwData[ t( 'SMW_UUID' ) ] == nil then
 		table.insert( self.categories, translate( 'error_category_item_missing_uuid' ) )
 	end
 
-	runModuleFN( self.smwData[ translate( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
+	runModuleFN( self.smwData[ t( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
 end
 
 
@@ -599,12 +609,12 @@ function methodtable.setShortDescription( self )
 	local shortdesc = ''
 	local itemType = translate( 'type_item' )
 
-	if self.smwData[ translate( 'SMW_Type' ) ] ~= nil then
-		if self.smwData[ translate( 'SMW_Subtype' ) ] ~= nil then
+	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
+		if self.smwData[ t( 'SMW_Subtype' ) ] ~= nil then
 			-- TODO: Localize subtype
-			itemType = self.smwData[ translate( 'SMW_Subtype' ) ]
+			itemType = self.smwData[ t( 'SMW_Subtype' ) ]
 		else
-			local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ translate( 'SMW_Type' ) ] )
+			local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
 			if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
 				itemType = translate( itemTypeKey )
 			end
@@ -614,27 +624,27 @@ function methodtable.setShortDescription( self )
 
 	shortdesc = itemType
 
-	if self.smwData[ translate( 'SMW_Class' ) ] ~= nil then
+	if self.smwData[ t( 'SMW_Class' ) ] ~= nil then
 		shortdesc = mw.ustring.format( '%s %s',
-			string.lower( self.smwData[ translate( 'SMW_Class' ) ] ),
+			string.lower( self.smwData[ t( 'SMW_Class' ) ] ),
 			shortdesc
 		)
 	end
 
-	if self.smwData[ translate( 'SMW_Grade' ) ] ~= nil then
-		shortdesc = translate( 'shortdesc_grade', false, self.smwData[ translate( 'SMW_Grade' ) ], shortdesc )
+	if self.smwData[ t( 'SMW_Grade' ) ] ~= nil then
+		shortdesc = translate( 'shortdesc_grade', false, self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
 	end
 
-	if self.smwData[ translate( 'SMW_Size' ) ] ~= nil then
+	if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
 		shortdesc = mw.ustring.format( 'S%d %s',
-			self.smwData[ translate( 'SMW_Size' ) ],
+			self.smwData[ t( 'SMW_Size' ) ],
 			shortdesc
 		)
 	end
 
 	--- Manufacturer
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil and self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= 'Unknown manufacturer' then
-		local mfuname = self.smwData[ translate( 'SMW_Manufacturer' ) ]
+	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil and self.smwData[ t( 'SMW_Manufacturer' ) ] ~= 'Unknown manufacturer' then
+		local mfuname = self.smwData[ t( 'SMW_Manufacturer' ) ]
 		local man = manufacturer( mfuname )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
@@ -644,7 +654,7 @@ function methodtable.setShortDescription( self )
 
 	--- Submodule override
 	shortdesc = runModuleFN(
-		self.smwData[ translate( 'SMW_Type' ) ],
+		self.smwData[ t( 'SMW_Type' ) ],
 		'getShortDescription',
 		{ self.frameArgs, self.smwData },
 		true

@@ -7,6 +7,7 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local manufacturer = require( 'Module:Manufacturer' )._manufacturer
@@ -19,6 +20,15 @@ if config.module_lang then
 	lang = mw.getLanguage( config.module_lang )
 else
 	lang = mw.getContentLanguage()
+end
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
 end
 
 
@@ -37,9 +47,9 @@ end
 --- @param smwData table
 --- @return boolean
 local function isGroundVehicle( smwData )
-	local size = smwData[ translate( 'SMW_ShipMatrixSize' ) ]
+	local size = smwData[ t( 'SMW_ShipMatrixSize' ) ]
 
-	return ( size ~= nil and size == translate( 'Vehicle' ) ) or smwData[ translate( 'SMW_ReverseSpeed' ) ] ~= nil
+	return ( size ~= nil and size == translate( 'Vehicle' ) ) or smwData[ t( 'SMW_ReverseSpeed' ) ] ~= nil
 end
 
 
@@ -200,17 +210,17 @@ function methodtable.setSemanticProperties( self )
 		'Vehicle'
 	)
 
-	setData[ translate( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
+	setData[ t( 'SMW_Name' ) ] = self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
 		mw.title.getCurrentTitle().text,
 		config.name_suffixes
 	)
 
-	if type( setData[ translate( 'SMW_Manufacturer' ) ] ) == 'string' then
-		local man = manufacturer( setData[ translate( 'SMW_Manufacturer' ) ] )
+	if type( setData[ t( 'SMW_Manufacturer' ) ] ) == 'string' then
+		local man = manufacturer( setData[ t( 'SMW_Manufacturer' ) ] )
 		if man ~= nil then man = man.name end
 
-		setData[ translate( 'SMW_Manufacturer' ) ] = man or setData[ translate( 'SMW_Manufacturer' ) ]
-		setData[ translate( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ translate( 'SMW_Manufacturer' ) ] )
+		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
+		setData[ t( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
 	end
 
     -- Set properties with API data
@@ -247,7 +257,7 @@ end
 --- @return table
 function methodtable.getSmwData( self )
 	-- Cache multiple calls
-    if self.smwData ~= nil and self.smwData[ translate( 'SMW_Name' ) ] ~= nil then
+    if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
         return self.smwData
     end
 
@@ -292,7 +302,7 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getIndicatorClass()
-		local state = smwData[ translate( 'SMW_ProductionState' ) ]
+		local state = smwData[ t( 'SMW_ProductionState' ) ]
 		if state == nil then return end
 
 		local classMap = config.productionstate_map
@@ -305,22 +315,22 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getManufacturer()
-		if smwData[ translate( 'SMW_Manufacturer' ) ] == nil then return end
+		if smwData[ t( 'SMW_Manufacturer' ) ] == nil then return end
 
-		local mfu = manufacturer( smwData[ translate( 'SMW_Manufacturer' ) ] )
-		if mfu == nil then return smwData[ translate( 'SMW_Manufacturer' ) ] end
+		local mfu = manufacturer( smwData[ t( 'SMW_Manufacturer' ) ] )
+		if mfu == nil then return smwData[ t( 'SMW_Manufacturer' ) ] end
 
 		return infobox.showDescIfDiff(
-			table.concat( { '[[', smwData[ translate( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
+			table.concat( { '[[', smwData[ t( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
 			mfu.code
 		)
 	end
 
 	local function getSize()
-		if smwData[ translate( 'SMW_Size' ) ] == nil then return smwData[ translate( 'SMW_ShipMatrixSize' ) ] end
+		if smwData[ t( 'SMW_Size' ) ] == nil then return smwData[ t( 'SMW_ShipMatrixSize' ) ] end
 
 		local codes = { 'XXS', 'XS', 'S', 'M', 'L', 'XL' }
-		local size = smwData[ translate( 'SMW_Size' ) ]
+		local size = smwData[ t( 'SMW_Size' ) ]
 
 		-- For uninitialized SMW properties
 		if type( size ) == 'string' then
@@ -328,13 +338,13 @@ function methodtable.getInfobox( self )
 		end
 
 		return infobox.showDescIfDiff(
-			smwData[ translate( 'SMW_ShipMatrixSize' ) ],
+			smwData[ t( 'SMW_ShipMatrixSize' ) ],
 			table.concat( { 'S', size, '/', codes[ size ] } )
 		)
 	end
 
 	local function getSeries()
-		local series = smwData[ translate( 'SMW_Series' ) ]
+		local series = smwData[ t( 'SMW_Series' ) ]
 		if series == nil then return end
 		return mw.ustring.format(
 			'[[:Category:%s|%s]]',
@@ -352,15 +362,15 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Standalone' ),
-				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_PledgePrice' ) ], smwData[ translate( 'SMW_OriginalPledgePrice' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ], smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Warbond' ),
-				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_WarbondPledgePrice' ) ], smwData[ translate( 'SMW_OriginalWarbondPledgePrice' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ], smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Availability' ),
-				data = smwData[ translate( 'SMW_PledgeAvailability' ) ],
+				data = smwData[ t( 'SMW_PledgeAvailability' ) ],
 			} ),
 		}
 		tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
@@ -397,19 +407,19 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Length' ),
-				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityLength' ) ], smwData[ translate( 'SMW_RetractedLength' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityLength' ) ], smwData[ t( 'SMW_RetractedLength' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Width' ),
-				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityWidth' ) ], smwData[ translate( 'SMW_RetractedWidth' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityWidth' ) ], smwData[ t( 'SMW_RetractedWidth' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Height' ),
-				data = infobox.showDescIfDiff( smwData[ translate( 'SMW_EntityHeight' ) ], smwData[ translate( 'SMW_RetractedHeight' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityHeight' ) ], smwData[ t( 'SMW_RetractedHeight' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Mass' ),
-				data = smwData[ translate( 'SMW_Mass' ) ],
+				data = smwData[ t( 'SMW_Mass' ) ],
 			} ),
 		}
 
@@ -419,43 +429,43 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = translate( 'LBL_ScmSpeed' ),
-				data = smwData[ translate( 'SMW_ScmSpeed' ) ]
+				data = smwData[ t( 'SMW_ScmSpeed' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_0ToScm' ),
-				data = smwData[ translate( 'SMW_ZeroToScmSpeedTime' ) ]
+				data = smwData[ t( 'SMW_ZeroToScmSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_ScmTo0' ),
-				data = smwData[ translate( 'SMW_ScmSpeedToZeroTime' ) ]
+				data = smwData[ t( 'SMW_ScmSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_MaxSpeed' ),
-				data = smwData[ translate( 'SMW_MaximumSpeed' ) ]
+				data = smwData[ t( 'SMW_MaximumSpeed' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_0ToMax' ),
-				data = smwData[ translate( 'SMW_ZeroToMaximumSpeedTime' ) ]
+				data = smwData[ t( 'SMW_ZeroToMaximumSpeedTime' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_MaxTo0' ),
-				data = smwData[ translate( 'SMW_MaximumSpeedToZeroTime' ) ]
+				data = smwData[ t( 'SMW_MaximumSpeedToZeroTime' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_ReverseSpeed' ),
-				data = smwData[ translate( 'SMW_ReverseSpeed' ) ]
+				data = smwData[ t( 'SMW_ReverseSpeed' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_RollRate' ),
-				data = smwData[ translate( 'SMW_RollRate' ) ]
+				data = smwData[ t( 'SMW_RollRate' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_PitchRate' ),
-				data = smwData[ translate( 'SMW_PitchRate' ) ]
+				data = smwData[ t( 'SMW_PitchRate' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_YawRate' ),
-				data = smwData[ translate( 'SMW_YawRate' ) ]
+				data = smwData[ t( 'SMW_YawRate' ) ]
 			} ),
 		}
 		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
@@ -464,15 +474,15 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = translate( 'LBL_HydrogenCapacity' ),
-				data = smwData[ translate( 'SMW_HydrogenFuelCapacity' ) ],
+				data = smwData[ t( 'SMW_HydrogenFuelCapacity' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_HydrogenIntake' ),
-				data = smwData[ translate( 'SMW_HydrogenFuelIntakeRate' ) ],
+				data = smwData[ t( 'SMW_HydrogenFuelIntakeRate' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_QuantumCapacity' ),
-				data = smwData[ translate( 'SMW_QuantumFuelCapacity' ) ],
+				data = smwData[ t( 'SMW_QuantumFuelCapacity' ) ],
 			} ),
 		}
 		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 2 }, true )
@@ -482,43 +492,43 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = translate( 'LBL_CrossSection' ),
-				data = formatModifier( smwData[ translate( 'SMW_CrossSectionSignatureModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Electromagnetic' ),
-				data = formatModifier( smwData[ translate( 'SMW_ElectromagneticSignatureModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Infrared' ),
-				data = formatModifier( smwData[ translate( 'SMW_InfraredSignatureModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_InfraredSignatureModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Physical' ),
-				data = formatModifier( smwData[ translate( 'SMW_PhysicalDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_PhysicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Energy' ),
-				data = formatModifier( smwData[ translate( 'SMW_EnergyDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_EnergyDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Distortion' ),
-				data = formatModifier( smwData[ translate( 'SMW_DistortionDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_DistortionDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Thermal' ),
-				data = formatModifier( smwData[ translate( 'SMW_ThermalDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_ThermalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Biochemical' ),
-				data = formatModifier( smwData[ translate( 'SMW_BiochemicalDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_BiochemicalDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Stun' ),
-				data = formatModifier( smwData[ translate( 'SMW_StunDamageModifier' ) ] ),
+				data = formatModifier( smwData[ t( 'SMW_StunDamageModifier' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Health' ),
-				data = smwData[ translate( 'SMW_HealthPoint' ) ],
+				data = smwData[ t( 'SMW_HealthPoint' ) ],
 			} ),
 		}
 		tabberData[ 'content4' ] = infobox:renderSection( { content = section, col = 3 }, true )
@@ -576,12 +586,12 @@ function methodtable.getInfobox( self )
 	infobox:renderImage( image )
 
 	infobox:renderIndicator( {
-		data = smwData[ translate( 'SMW_ProductionState' ) ],
-		desc = smwData[ translate( 'SMW_ProductionStateDesc' ) ],
+		data = smwData[ t( 'SMW_ProductionState' ) ],
+		desc = smwData[ t( 'SMW_ProductionStateDesc' ) ],
 		class = getIndicatorClass()
 	} )
 	infobox:renderHeader( {
-		title = smwData[ translate( 'SMW_Name' ) ],
+		title = smwData[ t( 'SMW_Name' ) ],
 		--- e.g. Aegis Dynamics (AEGS)
 		subtitle = getManufacturer()
 	} )
@@ -592,7 +602,7 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Role' ),
-				data = infobox.tableToCommaList( smwData[ translate( 'SMW_Role' ) ] ),
+				data = infobox.tableToCommaList( smwData[ t( 'SMW_Role' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Size' ),
@@ -604,7 +614,7 @@ function methodtable.getInfobox( self )
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Loaner' ),
-				data = infobox.tableToCommaList( smwData[ translate( 'SMW_LoanerVehicle' ) ] ),
+				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
 			} ),
 		},
 		col = 2
@@ -618,15 +628,15 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Crew' ),
-				data = infobox.formatRange( smwData[ translate( 'SMW_MinimumCrew' ) ], smwData[ translate( 'SMW_MaximumCrew' ) ], true ),
+				data = infobox.formatRange( smwData[ t( 'SMW_MinimumCrew' ) ], smwData[ t( 'SMW_MaximumCrew' ) ], true ),
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Cargo' ),
-				data = smwData[ translate( 'SMW_CargoCapacity' ) ],
+				data = smwData[ t( 'SMW_CargoCapacity' ) ],
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Stowage' ),
-				data = smwData[ translate( 'SMW_VehicleInventory' ) ],
+				data = smwData[ t( 'SMW_VehicleInventory' ) ],
 			} ),
 		},
 	} )
@@ -655,11 +665,11 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Released' ),
-				data = smwData[ translate( 'SMW_LoreReleaseDate' ) ]
+				data = smwData[ t( 'SMW_LoreReleaseDate' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_Retired' ),
-				data = smwData[ translate( 'SMW_LoreRetirementDate' ) ]
+				data = smwData[ t( 'SMW_LoreRetirementDate' ) ]
 			} ),
 		},
 	} )
@@ -672,11 +682,11 @@ function methodtable.getInfobox( self )
 		content = {
 			infobox:renderItem( {
 				label = translate( 'LBL_Announced' ),
-				data = smwData[ translate( 'SMW_ConceptAnnouncementDate' ) ]
+				data = smwData[ t( 'SMW_ConceptAnnouncementDate' ) ]
 			} ),
 			infobox:renderItem( {
 				label = translate( 'LBL_ConceptSale' ),
-				data = smwData[ translate( 'SMW_ConceptSaleDate' ) ]
+				data = smwData[ t( 'SMW_ConceptSaleDate' ) ]
 			} ),
 		},
 	} )
@@ -687,20 +697,20 @@ function methodtable.getInfobox( self )
 		class = 'infobox__section--metadata infobox__section--hasBackground',
 		content = {
 			infobox:renderItem( {
-				label = translate( 'SMW_UUID' ),
-				data = smwData[ translate( 'SMW_UUID' ) ],
+				label = t( 'SMW_UUID' ),
+				data = smwData[ t( 'SMW_UUID' ) ],
 				row = true,
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
-				label = translate( 'SMW_ClassName' ),
-				data = smwData[ translate( 'SMW_ClassName' ) ],
+				label = t( 'SMW_ClassName' ),
+				data = smwData[ t( 'SMW_ClassName' ) ],
 				row = true,
 				spacebetween = true
 			} ),
 			infobox:renderItem( {
-				label = translate( 'SMW_GameBuild' ),
-				data = smwData[ translate( 'SMW_GameBuild' ) ],
+				label = t( 'SMW_GameBuild' ),
+				data = smwData[ t( 'SMW_GameBuild' ) ],
 				row = true,
 				spacebetween = true
 			} )
@@ -708,7 +718,7 @@ function methodtable.getInfobox( self )
 	} )
 
 	--- Actions section
-	if smwData[ translate( 'SMW_UUID' ) ] then
+	if smwData[ t( 'SMW_UUID' ) ] then
 		infobox:renderSection( {
 			class = 'infobox__section--actions infobox__section--hasBackground',
 			content = {
@@ -717,7 +727,7 @@ function methodtable.getInfobox( self )
 					data = translate( 'actions_find_item_title' ),
 					desc = translate( 'actions_find_item_text' ),
 					-- FIXME: Make this configurable?
-					link = 'https://finder.cstone.space/search/' .. smwData[ translate( 'SMW_UUID' ) ]
+					link = 'https://finder.cstone.space/search/' .. smwData[ t( 'SMW_UUID' ) ]
 				} )
 			}
 		} )
@@ -746,7 +756,7 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ translate( 'SMW_Name' ) ] )
+	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
 end
 
 
@@ -764,7 +774,7 @@ function methodtable.setCategories( self )
 		return
 	end
 
-	local size = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
+	local size = self.smwData[ t( 'SMW_ShipMatrixSize' ) ]
 	local size_cat, pledge_cat
 	local isGroundVehicle = isGroundVehicle( self.smwData )
 
@@ -792,8 +802,8 @@ function methodtable.setCategories( self )
 		)
 	end
 
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = mw.ustring.gsub( self.smwData[ translate( 'SMW_Manufacturer' ) ], '%[+', '' )
+	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
+		local manufacturer = mw.ustring.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
 		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
 
 		table.insert(
@@ -802,21 +812,21 @@ function methodtable.setCategories( self )
 		)
 	end
 
-	if self.smwData[ translate( 'SMW_ProductionState' ) ] ~= nil then
+	if self.smwData[ t( 'SMW_ProductionState' ) ] ~= nil then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', self.smwData[ translate( 'SMW_ProductionState' ) ] )
+			string.format( '[[Category:%s]]', self.smwData[ t( 'SMW_ProductionState' ) ] )
 		)
 	end
 
-	if self.smwData[ translate( 'SMW_Series' ) ] ~= nil then
+	if self.smwData[ t( 'SMW_Series' ) ] ~= nil then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_series', false, self.smwData[ translate( 'SMW_Series' ) ] ) )
+			string.format( '[[Category:%s]]', translate( 'category_series', false, self.smwData[ t( 'SMW_Series' ) ] ) )
 		)
 	end
 
-	if pledge_cat and self.smwData[ translate( 'SMW_PledgePrice' ) ] ~= nil then
+	if pledge_cat and self.smwData[ t( 'SMW_PledgePrice' ) ] ~= nil then
 		table.insert(
 			self.categories,
 			string.format( '[[Category:%s]]', translate( pledge_cat ) )
@@ -836,8 +846,8 @@ function methodtable.setShortDescription( self )
 		vehicleType = translate( 'shortdesc_ship' )
 	end
 
-	if self.smwData[ translate( 'SMW_Role' ) ] ~= nil then
-		local vehicleRole = self.smwData[ translate( 'SMW_Role' ) ]
+	if self.smwData[ t( 'SMW_Role' ) ] ~= nil then
+		local vehicleRole = self.smwData[ t( 'SMW_Role' ) ]
 		if type( vehicleRole ) == 'table' then
 			vehicleRole = table.concat( vehicleRole, ' ' )
 		end
@@ -858,18 +868,18 @@ function methodtable.setShortDescription( self )
 		shortdesc = vehicleType
 	end
 
-	if not isGroundVehicle and self.smwData[ translate( 'SMW_ShipMatrixSize' ) ] ~= nil then
-		local vehicleSize = self.smwData[ translate( 'SMW_ShipMatrixSize' ) ]
+	if not isGroundVehicle and self.smwData[ t( 'SMW_ShipMatrixSize' ) ] ~= nil then
+		local vehicleSize = self.smwData[ t( 'SMW_ShipMatrixSize' ) ]
 		--- Special handling for single-seat ship
-		if self.smwData[ translate( 'SMW_MaximumCrew' ) ] ~= nil and self.smwData[ translate( 'SMW_MaximumCrew' ) ] == 1 then
+		if self.smwData[ t( 'SMW_MaximumCrew' ) ] ~= nil and self.smwData[ t( 'SMW_MaximumCrew' ) ] == 1 then
 			vehicleSize = translate( 'shortdesc_single_seat' )
 		end
 
 		shortdesc = mw.ustring.format( '%s %s', vehicleSize, shortdesc )
 	end
 
-	if self.smwData[ translate( 'SMW_Manufacturer' ) ] ~= nil then
-		local mfuname = self.smwData[ translate( 'SMW_Manufacturer' ) ]
+	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
+		local mfuname = self.smwData[ t( 'SMW_Manufacturer' ) ]
 		local man = manufacturer( mfuname )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end

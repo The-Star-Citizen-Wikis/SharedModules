@@ -4,12 +4,22 @@ local p = {}
 
 local MODULE_NAME = 'VehicleItem'
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
 
 local common = require( 'Module:Common' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -58,14 +68,14 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
             local ucfirst = require( 'Module:String2' ).ucfirst
             local damages = apiData.vehicle_weapon.damages
 
-            local typeKey = translate( 'SMW_DamageType' )
+            local typeKey = t( 'SMW_DamageType' )
 
             local subobjects = {}
             for _, damage in ipairs( damages ) do
                 -- FIXME: Wikipedia modules like Module:String2 does not have a proper Lua entry point
                 -- Perhaps we should look into it some day
                 local ucfirstArgs = { args = { damage.name } }
-                local dmgKey = translate( 'SMW_Damage' .. ucfirst( ucfirstArgs ) )
+                local dmgKey = t( 'SMW_Damage' .. ucfirst( ucfirstArgs ) )
 
                 -- If damage type is the same, add the damage value of the under the same table
                 if subobjects[ #subobjects ] and subobjects[ #subobjects ][ typeKey ] and subobjects[ #subobjects ][ typeKey ] == damage.type then
@@ -138,13 +148,13 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             for _, damage in ipairs( subobjects ) do
                 section = {}
                 damagesTabberData[ 'label' .. damagesTabCount ] = translate( 'damagetype_' ..
-                    damage[ translate( 'SMW_DamageType' ) ] )
+                    damage[ t( 'SMW_DamageType' ) ] )
                 for _, damageType in ipairs( damageTypes ) do
                     table.insert( section,
                         infobox:renderItem( {
                             label = translate( 'LBL_Damage' .. damageType ),
-                            tooltip = translate( 'SMW_Damage' .. damageType ),
-                            data = damage[ translate( 'SMW_Damage' .. damageType ) ]
+                            tooltip = t( 'SMW_Damage' .. damageType ),
+                            data = damage[ t( 'SMW_Damage' .. damageType ) ]
                         } )
                     )
                 end
@@ -163,51 +173,51 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     end
 
     -- Bomb
-    if smwData[ translate( 'SMW_Type' ) ] == 'Bomb' then
+    if smwData[ t( 'SMW_Type' ) ] == 'Bomb' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ translate( 'SMW_DamagePhysical' ) ] ),
-            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ t( 'SMW_DamagePhysical' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ t( 'SMW_DamageEnergy' ) ] ),
             infobox:renderItem( translate( 'LBL_ExplosionRadius' ),
                 infobox.addUnitIfExists(
-                    infobox.formatRange( smwData[ translate( 'SMW_MinimumExplosionRadius' ) ],
-                        smwData[ translate( 'SMW_MaximumExplosionRadius' ) ], true ), 'm' ) ),
-            infobox:renderItem( translate( 'LBL_ArmTime' ), smwData[ translate( 'SMW_ArmTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_IgniteTime' ), smwData[ translate( 'SMW_IgniteTime' ) ] )
+                    infobox.formatRange( smwData[ t( 'SMW_MinimumExplosionRadius' ) ],
+                        smwData[ t( 'SMW_MaximumExplosionRadius' ) ], true ), 'm' ) ),
+            infobox:renderItem( translate( 'LBL_ArmTime' ), smwData[ t( 'SMW_ArmTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_IgniteTime' ), smwData[ t( 'SMW_IgniteTime' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Cooler
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'Cooler' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'Cooler' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_CoolingRate' ), smwData[ translate( 'SMW_CoolingRate' ) ] )
+            infobox:renderItem( translate( 'LBL_CoolingRate' ), smwData[ t( 'SMW_CoolingRate' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- EMP Generator
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'EMP' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'EMP' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_EMPRadius' ), smwData[ translate( 'SMW_EMPRadius' ) ] ),
-            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] )
+            infobox:renderItem( translate( 'LBL_EMPRadius' ), smwData[ t( 'SMW_EMPRadius' ) ] ),
+            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ t( 'SMW_ChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ t( 'SMW_CooldownTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ t( 'SMW_Duration' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Fuel Pod
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'ExternalFuelTank' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'ExternalFuelTank' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_FuelCapacity' ), smwData[ translate( 'SMW_FuelCapacity' ) ] ),
-            infobox:renderItem( translate( 'LBL_FuelFillRate' ), smwData[ translate( 'SMW_FuelFillRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_FuelDrainRate' ), smwData[ translate( 'SMW_FuelDrainRate' ) ] )
+            infobox:renderItem( translate( 'LBL_FuelCapacity' ), smwData[ t( 'SMW_FuelCapacity' ) ] ),
+            infobox:renderItem( translate( 'LBL_FuelFillRate' ), smwData[ t( 'SMW_FuelFillRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_FuelDrainRate' ), smwData[ t( 'SMW_FuelDrainRate' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Gun / Rocket Pod
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Gun' or smwData[ translate( 'SMW_Type' ) ] == 'WeaponGun.Rocket' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponGun.Gun' or smwData[ t( 'SMW_Type' ) ] == 'WeaponGun.Rocket' then
         local function getFiringModesSection()
             local modes = smwCommon.loadSubobjects(
                 itemPageIdentifier,
@@ -227,14 +237,14 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 local modeCount = 1
 
                 for _, mode in ipairs( modes ) do
-                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_FiringMode' ) ] )
+                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ t( 'SMW_FiringMode' ) ] )
                     section = {
                         infobox:renderItem( translate( 'LBL_DamagePerSecond' ),
-                            mode[ translate( 'SMW_DamagePerSecond' ) ] ),
-                        infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ translate( 'SMW_FiringRate' ) ] ),
+                            mode[ t( 'SMW_DamagePerSecond' ) ] ),
+                        infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ t( 'SMW_FiringRate' ) ] ),
                         infobox:renderItem( translate( 'LBL_ProjectilePerShot' ),
-                            mode[ translate( 'SMW_ProjectilePerShot' ) ] ),
-                        infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ translate( 'SMW_AmmoPerShot' ) ] )
+                            mode[ t( 'SMW_ProjectilePerShot' ) ] ),
+                        infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ t( 'SMW_AmmoPerShot' ) ] )
                     }
                     modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 2 },
                         true )
@@ -253,111 +263,111 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
-            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
+            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ t( 'SMW_Damage' ) ] ),
+            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ t( 'SMW_AmmoSpeed' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ t( 'SMW_Ammo' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) ..
             getDamagesSection() .. getFiringModesSection()
         -- Missile
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'Missile.Missile' or smwData[ translate( 'SMW_Type' ) ] == 'Missile.Torpedo' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'Missile.Missile' or smwData[ t( 'SMW_Type' ) ] == 'Missile.Torpedo' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ translate( 'SMW_DamagePhysical' ) ] ),
-            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ translate( 'SMW_DamageEnergy' ) ] ),
-            infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ translate( 'SMW_SignalType' ) ] ),
-            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ translate( 'SMW_LockTime' ) ] )
+            infobox:renderItem( translate( 'LBL_DamagePhysical' ), smwData[ t( 'SMW_DamagePhysical' ) ] ),
+            infobox:renderItem( translate( 'LBL_DamageEnergy' ), smwData[ t( 'SMW_DamageEnergy' ) ] ),
+            infobox:renderItem( translate( 'LBL_SignalType' ), smwData[ t( 'SMW_SignalType' ) ] ),
+            infobox:renderItem( translate( 'LBL_LockTime' ), smwData[ t( 'SMW_LockTime' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Missile launcher / Weapon mount
         -- FIXME: Maybe refactor the type check to a local function?
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.GunTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.BallTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.CanardTurret' or smwData[ translate( 'SMW_Type' ) ] == 'Turret.NoseMounted' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'MissileLauncher.MissileRack' or smwData[ t( 'SMW_Type' ) ] == 'Turret.GunTurret' or smwData[ t( 'SMW_Type' ) ] == 'Turret.BallTurret' or smwData[ t( 'SMW_Type' ) ] == 'Turret.CanardTurret' or smwData[ t( 'SMW_Type' ) ] == 'Turret.NoseMounted' then
         --- NOTE: Should we just set the size SMW property to type:quantity, then prefix the S as a unit?
         local function getPortSize()
-            if smwData[ translate( 'SMW_PortSize' ) ] == nil then return end
-            return 'S' .. smwData[ translate( 'SMW_PortSize' ) ]
+            if smwData[ t( 'SMW_PortSize' ) ] == nil then return end
+            return 'S' .. smwData[ t( 'SMW_PortSize' ) ]
         end
 
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_PortCount' ), smwData[ translate( 'SMW_PortCount' ) ] ),
+            infobox:renderItem( translate( 'LBL_PortCount' ), smwData[ t( 'SMW_PortCount' ) ] ),
             infobox:renderItem( translate( 'LBL_PortSize' ), getPortSize() )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Mining Laser
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponMining.Gun' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponMining.Gun' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ translate( 'SMW_MiningLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_MiningLaserPower' ), smwData[ t( 'SMW_MiningLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_ExtractionLaserPower' ),
-                smwData[ translate( 'SMW_ExtractionLaserPower' ) ] ),
-            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
+                smwData[ t( 'SMW_ExtractionLaserPower' ) ] ),
+            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ t( 'SMW_OptimalRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
             infobox:renderItem( translate( 'LBL_ExtractionThroughput' ),
-                smwData[ translate( 'SMW_ExtractionThroughput' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModuleSlots' ), smwData[ translate( 'SMW_ModuleSlots' ) ] )
+                smwData[ t( 'SMW_ExtractionThroughput' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModuleSlots' ), smwData[ t( 'SMW_ModuleSlots' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
         tabberData[ 'label2' ] = translate( 'LBL_Modifiers' )
         section = {
             infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ),
-                smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
+                smwData[ t( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ), smwData[ t( 'SMW_ModifierExtractionLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ),
-                smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
+                smwData[ t( 'SMW_ModifierLaserInstability' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ), smwData[ t( 'SMW_ModifierMiningLaserPower' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ), smwData[ t( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ),
-                smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
+                smwData[ t( 'SMW_ModifierInertMaterials' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ),
-                smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
-            --infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
+                smwData[ t( 'SMW_ModifierOptimalChargeRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ t( 'SMW_ModifierResistance' ) ] ),
+            --infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ), smwData[ t( 'SMW_ModifierShatterDamage' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ t( 'SMW_ModifierSize' ) ] )
         }
         tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Mining Module
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'MiningModifier.Gun' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'MiningModifier.Gun' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_Uses' ), smwData[ translate( 'SMW_Uses' ) ] ),
-            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] ),
+            infobox:renderItem( translate( 'LBL_Uses' ), smwData[ t( 'SMW_Uses' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ t( 'SMW_Duration' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierCatastrophicChargeRate' ),
-                smwData[ translate( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
+                smwData[ t( 'SMW_ModifierCatastrophicChargeRate' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierExtractionLaserPower' ),
-                smwData[ translate( 'SMW_ModifierExtractionLaserPower' ) ] ),
+                smwData[ t( 'SMW_ModifierExtractionLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierLaserInstability' ),
-                smwData[ translate( 'SMW_ModifierLaserInstability' ) ] ),
+                smwData[ t( 'SMW_ModifierLaserInstability' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierMiningLaserPower' ),
-                smwData[ translate( 'SMW_ModifierMiningLaserPower' ) ] ),
+                smwData[ t( 'SMW_ModifierMiningLaserPower' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierOptimalChargeWindowSize' ),
-                smwData[ translate( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
+                smwData[ t( 'SMW_ModifierOptimalChargeWindowSize' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierInertMaterials' ),
-                smwData[ translate( 'SMW_ModifierInertMaterials' ) ] ),
+                smwData[ t( 'SMW_ModifierInertMaterials' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierOptimalChargeRate' ),
-                smwData[ translate( 'SMW_ModifierOptimalChargeRate' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ translate( 'SMW_ModifierResistance' ) ] ),
+                smwData[ t( 'SMW_ModifierOptimalChargeRate' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierResistance' ), smwData[ t( 'SMW_ModifierResistance' ) ] ),
             infobox:renderItem( translate( 'LBL_ModifierShatterDamage' ),
-                smwData[ translate( 'SMW_ModifierShatterDamage' ) ] ),
-            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ translate( 'SMW_ModifierSize' ) ] )
+                smwData[ t( 'SMW_ModifierShatterDamage' ) ] ),
+            infobox:renderItem( translate( 'LBL_ModifierSize' ), smwData[ t( 'SMW_ModifierSize' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Power Plant
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'PowerPlant.Power' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'PowerPlant.Power' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_PowerOutput' ), smwData[ translate( 'SMW_PowerOutput' ) ] )
+            infobox:renderItem( translate( 'LBL_PowerOutput' ), smwData[ t( 'SMW_PowerOutput' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Quantum Drive
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'QuantumDrive' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'QuantumDrive' then
         local function getQuantumDriveModesSection()
             local modes = smwCommon.loadSubobjects(
                 itemPageIdentifier,
@@ -376,12 +386,12 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 local modeCount = 1
 
                 for _, mode in ipairs( modes ) do
-                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ translate( 'SMW_QuantumTravelType' ) ] )
+                    modeTabberData[ 'label' .. modeCount ] = translate( mode[ t( 'SMW_QuantumTravelType' ) ] )
                     section = {
                         infobox:renderItem( translate( 'LBL_QuantumTravelSpeed' ),
-                            mode[ translate( 'SMW_QuantumTravelSpeed' ) ] ),
-                        infobox:renderItem( translate( 'LBL_CooldownTime' ), mode[ translate( 'SMW_CooldownTime' ) ] ),
-                        infobox:renderItem( translate( 'LBL_ChargeTime' ), mode[ translate( 'SMW_ChargeTime' ) ] )
+                            mode[ t( 'SMW_QuantumTravelSpeed' ) ] ),
+                        infobox:renderItem( translate( 'LBL_CooldownTime' ), mode[ t( 'SMW_CooldownTime' ) ] ),
+                        infobox:renderItem( translate( 'LBL_ChargeTime' ), mode[ t( 'SMW_ChargeTime' ) ] )
                     }
                     modeTabberData[ 'content' .. modeCount ] = infobox:renderSection( { content = section, col = 3 },
                         true )
@@ -401,68 +411,68 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_QuantumFuelRequirement' ),
-                smwData[ translate( 'SMW_QuantumFuelRequirement' ) ] ),
+                smwData[ t( 'SMW_QuantumFuelRequirement' ) ] ),
             infobox:renderItem( translate( 'LBL_QuantumTravelDisconnectRange' ),
-                smwData[ translate( 'SMW_QuantumTravelDisconnectRange' ) ] )
+                smwData[ t( 'SMW_QuantumTravelDisconnectRange' ) ] )
             -- Does range matter currently? The range seems to be limited by the QF fuel tank of the vehicle anyways
-            --infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ translate( 'SMW_QuantumTravelRange' ) ] )
+            --infobox:renderItem( translate( 'LBL_QuantumTravelRange' ), smwData[ t( 'SMW_QuantumTravelRange' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true ) ..
             getQuantumDriveModesSection()
         -- Quantum Enforcement Device
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'QuantumInterdictionGenerator' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'QuantumInterdictionGenerator' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_JammerRange' ), smwData[ translate( 'SMW_JammerRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_InterdictionRange' ), smwData[ translate( 'SMW_InterdictionRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ translate( 'SMW_Duration' ) ] ),
-            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ translate( 'SMW_ChargeTime' ) ] ),
-            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ translate( 'SMW_CooldownTime' ) ] )
+            infobox:renderItem( translate( 'LBL_JammerRange' ), smwData[ t( 'SMW_JammerRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_InterdictionRange' ), smwData[ t( 'SMW_InterdictionRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Duration' ), smwData[ t( 'SMW_Duration' ) ] ),
+            infobox:renderItem( translate( 'LBL_ChargeTime' ), smwData[ t( 'SMW_ChargeTime' ) ] ),
+            infobox:renderItem( translate( 'LBL_CooldownTime' ), smwData[ t( 'SMW_CooldownTime' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
         -- Scraper Module
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'SalvageModifier' or smwData[ translate( 'SMW_Type' ) ] == 'SalvageModifier.SalvageModifier_TractorBeam' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'SalvageModifier' or smwData[ t( 'SMW_Type' ) ] == 'SalvageModifier.SalvageModifier_TractorBeam' then
         -- Modifier
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
             infobox:renderItem( translate( 'LBL_ModifierSalvageSpeed' ),
-                infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierSalvageSpeed' ) ], 'x' ) ),
+                infobox.addUnitIfExists( smwData[ t( 'SMW_ModifierSalvageSpeed' ) ], 'x' ) ),
             infobox:renderItem( translate( 'LBL_ModifierRadius' ),
-                infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierRadius' ) ], 'x' ) ),
+                infobox.addUnitIfExists( smwData[ t( 'SMW_ModifierRadius' ) ], 'x' ) ),
             infobox:renderItem( translate( 'LBL_ModifierExtractionEfficiency' ),
-                infobox.addUnitIfExists( smwData[ translate( 'SMW_ModifierExtractionEfficiency' ) ], 'x' ) )
+                infobox.addUnitIfExists( smwData[ t( 'SMW_ModifierExtractionEfficiency' ) ], 'x' ) )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 3 }, true )
         -- Shield
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'Shield' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'Shield' then
         -- We need raw number from SMW to calculate shield regen, so we add the unit back
         local function getShieldPoint()
-            if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then return end
-            return common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] ) ) .. ' 🛡️'
+            if smwData[ t( 'SMW_ShieldHealthPoint' ) ] == nil then return end
+            return common.formatNum( math.ceil( smwData[ t( 'SMW_ShieldHealthPoint' ) ] ) ) .. ' 🛡️'
         end
 
         local function getShieldRegen()
-            if smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] == nil then return end
-            if smwData[ translate( 'SMW_ShieldHealthPoint' ) ] == nil then
+            if smwData[ t( 'SMW_ShieldPointRegeneration' ) ] == nil then return end
+            if smwData[ t( 'SMW_ShieldHealthPoint' ) ] == nil then
                 return smwData
-                    [ translate( 'SMW_ShieldPointRegeneration' ) ]
+                    [ t( 'SMW_ShieldPointRegeneration' ) ]
             end
 
-            local fullChargeTime = math.ceil( smwData[ translate( 'SMW_ShieldHealthPoint' ) ] /
-                smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] )
+            local fullChargeTime = math.ceil( smwData[ t( 'SMW_ShieldHealthPoint' ) ] /
+                smwData[ t( 'SMW_ShieldPointRegeneration' ) ] )
 
             return infobox.showDescIfDiff(
-                common.formatNum( math.ceil( smwData[ translate( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' 🛡️/s',
+                common.formatNum( math.ceil( smwData[ t( 'SMW_ShieldPointRegeneration' ) ] ) ) .. ' 🛡️/s',
                 translate( 'unit_secondtillfull', false, fullChargeTime )
             )
         end
 
         local function getShieldRegenDelay()
-            if smwData[ translate( 'SMW_ShieldDownTime' ) ] == nil or smwData[ translate( 'SMW_ShieldDamageDelay' ) ] == nil then return end
+            if smwData[ t( 'SMW_ShieldDownTime' ) ] == nil or smwData[ t( 'SMW_ShieldDamageDelay' ) ] == nil then return end
             return infobox.showDescIfDiff(
-                smwData[ translate( 'SMW_ShieldDamageDelay' ) ],
-                translate( 'unit_whendown', false, smwData[ translate( 'SMW_ShieldDownTime' ) ] )
+                smwData[ t( 'SMW_ShieldDamageDelay' ) ],
+                translate( 'unit_whendown', false, smwData[ t( 'SMW_ShieldDownTime' ) ] )
             )
         end
 
@@ -480,26 +490,26 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
         --    title = translate( 'LBL_Resistances' ),
         --    col = 3,
         --    content = {
-        --        infobox:renderItem( translate( 'LBL_ShieldPhysicalResistance' ), smwData[ translate( 'SMW_ShieldPhysicalResistance' ) ] ),
-        --        infobox:renderItem( translate( 'LBL_ShieldEnergyResistance' ), smwData[ translate( 'SMW_ShieldEnergyResistance' ) ] ),
-        --        infobox:renderItem( translate( 'LBL_ShieldDistortionResistance' ), smwData[ translate( 'SMW_ShieldDistortionResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldPhysicalResistance' ), smwData[ t( 'SMW_ShieldPhysicalResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldEnergyResistance' ), smwData[ t( 'SMW_ShieldEnergyResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldDistortionResistance' ), smwData[ t( 'SMW_ShieldDistortionResistance' ) ] ),
         --
-        --        infobox:renderItem( translate( 'LBL_ShieldThermalResistance' ), smwData[ translate( 'SMW_ShieldThermalResistance' ) ] ),
-        --        infobox:renderItem( translate( 'LBL_ShieldBiochemicalResistance' ), smwData[ translate( 'SMW_ShieldBiochemicalResistance' ) ] ),
-        --        infobox:renderItem( translate( 'LBL_ShieldStunResistance' ), smwData[ translate( 'SMW_ShieldStunResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldThermalResistance' ), smwData[ t( 'SMW_ShieldThermalResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldBiochemicalResistance' ), smwData[ t( 'SMW_ShieldBiochemicalResistance' ) ] ),
+        --        infobox:renderItem( translate( 'LBL_ShieldStunResistance' ), smwData[ t( 'SMW_ShieldStunResistance' ) ] ),
         --    }
         --} )
         -- Tractor beam
         -- TODO: Maybe we should use SMW_Type for all the stuff above
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'TractorBeam' or smwData[ translate( 'SMW_Type' ) ] == 'TowingBeam' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'TractorBeam' or smwData[ t( 'SMW_Type' ) ] == 'TowingBeam' then
         -- Overview
         tabberData[ 'label1' ] = translate( 'LBL_Overview' )
         section = {
-            infobox:renderItem( translate( 'LBL_MaximumForce' ), smwData[ translate( 'SMW_MaximumForce' ) ] ),
-            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ translate( 'SMW_OptimalRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumAngle' ), smwData[ translate( 'SMW_MaximumAngle' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumVolume' ), smwData[ translate( 'SMW_MaximumVolume' ) ] )
+            infobox:renderItem( translate( 'LBL_MaximumForce' ), smwData[ t( 'SMW_MaximumForce' ) ] ),
+            infobox:renderItem( translate( 'LBL_OptimalRange' ), smwData[ t( 'SMW_OptimalRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumAngle' ), smwData[ t( 'SMW_MaximumAngle' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumVolume' ), smwData[ t( 'SMW_MaximumVolume' ) ] )
         }
         tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 2 }, true )
     end
@@ -519,50 +529,50 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     section = {
         infobox:renderItem( translate( 'LBL_PowerDraw' ),
             infobox.addUnitIfExists(
-                infobox.formatRange( smwData[ translate( 'SMW_MinimumPowerDraw' ) ],
-                    smwData[ translate( 'SMW_MaximumPowerDraw' ) ], true ), '🔌/s' ) ),
+                infobox.formatRange( smwData[ t( 'SMW_MinimumPowerDraw' ) ],
+                    smwData[ t( 'SMW_MaximumPowerDraw' ) ], true ), '🔌/s' ) ),
         infobox:renderItem( translate( 'LBL_ThermalEnergyOutput' ),
             infobox.addUnitIfExists(
-                infobox.formatRange( smwData[ translate( 'SMW_MinimumThermalEnergyOutput' ) ],
-                    smwData[ translate( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '🌡️/s' ) ),
-        infobox:renderItem( translate( 'LBL_MaximumCoolingRate' ), smwData[ translate( 'SMW_MaximumCoolingRate' ) ] ),
+                infobox.formatRange( smwData[ t( 'SMW_MinimumThermalEnergyOutput' ) ],
+                    smwData[ t( 'SMW_MaximumThermalEnergyOutput' ) ], true ), '🌡️/s' ) ),
+        infobox:renderItem( translate( 'LBL_MaximumCoolingRate' ), smwData[ t( 'SMW_MaximumCoolingRate' ) ] ),
         infobox:renderItem( translate( 'LBL_StartCoolingTemperature' ),
-            smwData[ translate( 'SMW_StartCoolingTemperature' ) ] ),
+            smwData[ t( 'SMW_StartCoolingTemperature' ) ] ),
         infobox:renderItem( translate( 'LBL_Temperature' ),
             infobox.addUnitIfExists(
-                infobox.formatRange( smwData[ translate( 'SMW_MinimumTemperature' ) ],
-                    smwData[ translate( 'SMW_MaximumTemperature' ) ], true ), '°C' ) ),
+                infobox.formatRange( smwData[ t( 'SMW_MinimumTemperature' ) ],
+                    smwData[ t( 'SMW_MaximumTemperature' ) ], true ), '°C' ) ),
         infobox:renderItem( translate( 'LBL_MisfireTemperature' ),
             infobox.addUnitIfExists(
-                infobox.formatRange( smwData[ translate( 'SMW_MinimumMisfireTemperature' ) ],
-                    smwData[ translate( 'SMW_MaximumMisfireTemperature' ) ], true ), '°C' ) ),
-        infobox:renderItem( translate( 'LBL_OverheatTemperature' ), smwData[ translate( 'SMW_OverheatTemperature' ) ] )
+                infobox.formatRange( smwData[ t( 'SMW_MinimumMisfireTemperature' ) ],
+                    smwData[ t( 'SMW_MaximumMisfireTemperature' ) ], true ), '°C' ) ),
+        infobox:renderItem( translate( 'LBL_OverheatTemperature' ), smwData[ t( 'SMW_OverheatTemperature' ) ] )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
 
     -- Emission
     local function getMaxIR()
         if
-            (type( smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] ) ~= 'number' or type( smwData[ translate( 'SMW_TemperatureToIR' ) ] ~= 'number' ))
-            and type( smwData[ translate( 'SMW_MinimumIR' ) ] ) ~= 'number'
+            (type( smwData[ t( 'SMW_IRTemperatureThreshold' ) ] ) ~= 'number' or type( smwData[ t( 'SMW_TemperatureToIR' ) ] ~= 'number' ))
+            and type( smwData[ t( 'SMW_MinimumIR' ) ] ) ~= 'number'
         then
             return
         end
 
-        return smwData[ translate( 'SMW_IRTemperatureThreshold' ) ] * smwData[ translate( 'SMW_TemperatureToIR' ) ] +
-            smwData[ translate( 'SMW_MinimumIR' ) ]
+        return smwData[ t( 'SMW_IRTemperatureThreshold' ) ] * smwData[ t( 'SMW_TemperatureToIR' ) ] +
+            smwData[ t( 'SMW_MinimumIR' ) ]
     end
 
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Emission' )
     section = {
         infobox:renderItem( translate( 'LBL_EM' ),
-            infobox.formatRange( smwData[ translate( 'SMW_MinimumEM' ) ], smwData[ translate( 'SMW_MaximumEM' ) ], true ) ),
-        infobox:renderItem( translate( 'LBL_PowerToEM' ), smwData[ translate( 'SMW_PowerToEM' ) ] ),
-        infobox:renderItem( translate( 'LBL_EMDecayRate' ), smwData[ translate( 'SMW_EMDecayRate' ) ] ),
+            infobox.formatRange( smwData[ t( 'SMW_MinimumEM' ) ], smwData[ t( 'SMW_MaximumEM' ) ], true ) ),
+        infobox:renderItem( translate( 'LBL_PowerToEM' ), smwData[ t( 'SMW_PowerToEM' ) ] ),
+        infobox:renderItem( translate( 'LBL_EMDecayRate' ), smwData[ t( 'SMW_EMDecayRate' ) ] ),
         infobox:renderItem( translate( 'LBL_IR' ),
-            infobox.formatRange( smwData[ translate( 'SMW_MinimumIR' ) ], getMaxIR(), true ) ),
-        infobox:renderItem( translate( 'LBL_TemperatureToIR' ), smwData[ translate( 'SMW_TemperatureToIR' ) ] )
+            infobox.formatRange( smwData[ t( 'SMW_MinimumIR' ) ], getMaxIR(), true ) ),
+        infobox:renderItem( translate( 'LBL_TemperatureToIR' ), smwData[ t( 'SMW_TemperatureToIR' ) ] )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
 
@@ -570,11 +580,11 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     tabCount = tabCount + 1
     tabberData[ 'label' .. tabCount ] = translate( 'LBL_Defense' )
     section = {
-        infobox:renderItem( translate( 'LBL_Health' ), smwData[ translate( 'SMW_HealthPoint' ) ] ),
+        infobox:renderItem( translate( 'LBL_Health' ), smwData[ t( 'SMW_HealthPoint' ) ] ),
         infobox:renderItem( translate( 'LBL_DistortionHealthPoint' ), smwData
-            [ translate( 'SMW_DistortionHealthPoint' ) ] ),
-        infobox:renderItem( translate( 'LBL_DistortionDecayRate' ), smwData[ translate( 'SMW_DistortionDecayRate' ) ] ),
-        infobox:renderItem( translate( 'LBL_DistortionDecayDelay' ), smwData[ translate( 'SMW_DistortionDecayDelay' ) ] )
+            [ t( 'SMW_DistortionHealthPoint' ) ] ),
+        infobox:renderItem( translate( 'LBL_DistortionDecayRate' ), smwData[ t( 'SMW_DistortionDecayRate' ) ] ),
+        infobox:renderItem( translate( 'LBL_DistortionDecayDelay' ), smwData[ t( 'SMW_DistortionDecayDelay' ) ] )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
 
@@ -583,19 +593,19 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     --section = {
     --    infobox:renderItem( {
     --        label = translate( 'LBL_Length' ),
-    --        data = smwData[ translate( 'SMW_EntityLength' ) ],
+    --        data = smwData[ t( 'SMW_EntityLength' ) ],
     --    } ),
     --    infobox:renderItem( {
     --        label = translate( 'LBL_Width' ),
-    --        data = smwData[ translate( 'SMW_EntityWidth' ) ],
+    --        data = smwData[ t( 'SMW_EntityWidth' ) ],
     --    } ),
     --    infobox:renderItem( {
     --        label = translate( 'LBL_Height' ),
-    --        data = smwData[ translate( 'SMW_EntityHeight' ) ],
+    --        data = smwData[ t( 'SMW_EntityHeight' ) ],
     --    } ),
     --    infobox:renderItem( {
     --        label = translate( 'LBL_Mass' ),
-    --        data = smwData[ translate( 'SMW_Mass' ) ],
+    --        data = smwData[ t( 'SMW_Mass' ) ],
     --    } )
     --}
     --tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )

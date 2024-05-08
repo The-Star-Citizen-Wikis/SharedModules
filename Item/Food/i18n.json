@@ -17,55 +17,6 @@
 	},
 	"data": [
 		[
-			"SMW_Manufacturer",
-			{
-				"de": "Hersteller",
-				"en": "Manufacturer"
-			}
-		],
-		[
-			"SMW_Type",
-			{
-				"de": "Typ",
-				"en": "Type"
-			}
-		],
-		[
-			"SMW_Size",
-			{
-				"de": "Größe",
-				"en": "Size"
-			}
-		],
-		[
-			"SMW_Uses",
-			{
-				"de": "Anwendungen",
-				"en": "Uses"
-			}
-		],
-		[
-			"SMW_NutritionalDensityRating",
-			{
-				"de": "Nutritional Density Rating",
-				"en": "Nutritional Density Rating"
-			}
-		],
-		[
-			"SMW_HydrationEfficacyIndex",
-			{
-				"de": "Hydration Efficacy Index",
-				"en": "Hydration Efficacy Index"
-			}
-		],
-		[
-			"SMW_Effect",
-			{
-				"de": "Effekt",
-				"en": "Effect"
-			}
-		],
-		[
 			"LBL_Uses",
 			{
 				"de": "Anwendungen",

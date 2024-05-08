@@ -9,8 +9,19 @@ metatable.__index = methodtable
 local navplate = require( 'Module:Navplate' )
 local common = require( 'Module:Common' )
 local mfu = require( 'Module:Manufacturer' )._manufacturer
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local lang = mw.getContentLanguage()
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
+
 
 --- FIXME: This should go to somewhere else, like Module:Common
 --- Calls TNT with the given key
@@ -37,7 +48,7 @@ function methodtable.getSmwData( self, category )
 
     category = category or ''
 
-	local smwManufacturer = translate( 'SMW_Manufacturer' )
+	local smwManufacturer = t( 'SMW_Manufacturer' )
 
     local askData = {
 		'[[:+]]',

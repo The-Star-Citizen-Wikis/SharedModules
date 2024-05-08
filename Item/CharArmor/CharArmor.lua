@@ -4,10 +4,20 @@ local p = {}
 
 local MODULE_NAME = 'CharArmor'
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -41,13 +51,13 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
     smwCommon.setFromTable( smwSetObject, apiData:get( 'clothing.resistances' ), 'type', 'multiplier', 'ModifierDamageTaken', translate, formatConfig )
 
     if apiData.clothing and apiData.clothing.clothing_type then
-        smwSetObject[ translate( 'SMW_Subtype') ] = apiData.clothing.clothing_type
+        smwSetObject[ t( 'SMW_Subtype') ] = apiData.clothing.clothing_type
     end
 
     if apiData.sub_type then
         -- This is an armor
         if apiData.sub_type == 'Light' or apiData.sub_type == 'Medium' or apiData.sub_type == 'Heavy' then
-            smwSetObject[ translate( 'SMW_Subtype') ] = translate( string.format( 'type_%s_armor', string.lower( apiData.sub_type ) ) )
+            smwSetObject[ t( 'SMW_Subtype') ] = translate( string.format( 'type_%s_armor', string.lower( apiData.sub_type ) ) )
         end
     end
 end
@@ -91,7 +101,7 @@ function p.addInfoboxData( infobox, smwData )
         content = {
             infobox:renderItem( {
                 label = translate( 'LBL_ResistanceTemperature' ),
-                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ translate( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ translate( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
+                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ t( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ t( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
             } )
         },
         col = 2
@@ -103,32 +113,32 @@ function p.addInfoboxData( infobox, smwData )
         content = {
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenPhysical' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenPhysical' ),
+                tooltip = t( 'SMW_ModifierDamageTakenPhysical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenPhysical' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenEnergy' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenEnergy' ),
+                tooltip = t( 'SMW_ModifierDamageTakenEnergy' ),
                 data = getResistance( 'SMW_ModifierDamageTakenEnergy' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenDistortion' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenDistortion' ),
+                tooltip = t( 'SMW_ModifierDamageTakenDistortion' ),
                 data = getResistance( 'SMW_ModifierDamageTakenDistortion' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenThermal' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenThermal' ),
+                tooltip = t( 'SMW_ModifierDamageTakenThermal' ),
                 data = getResistance( 'SMW_ModifierDamageTakenThermal' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenBiochemical' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenBiochemical' ),
+                tooltip = t( 'SMW_ModifierDamageTakenBiochemical' ),
                 data = getResistance( 'SMW_ModifierDamageTakenBiochemical' )
             } ),
             infobox:renderItem( {
                 label = translate( 'LBL_ModifierDamageTakenStun' ),
-                tooltip = translate( 'SMW_ModifierDamageTakenStun' ),
+                tooltip = t( 'SMW_ModifierDamageTakenStun' ),
                 data = getResistance( 'SMW_ModifierDamageTakenStun' )
             } )
         },

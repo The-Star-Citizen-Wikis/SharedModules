@@ -17,20 +17,6 @@
 	},
 	"data": [
 		[
-			"SMW_ItemBaseVariantName",
-			{
-				"de": "Basisversion Name",
-				"en": "Item base variant name"
-			}
-		],
-		[
-			"SMW_Name",
-			{
-				"de": "Name",
-				"en": "Name"
-			}
-		],
-		[
 			"error_no_variants_found",
 			{
 				"en": "No variants found on '''%s'''.",

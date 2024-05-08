@@ -7,11 +7,21 @@ local methodtable = {}
 
 metatable.__index = methodtable
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' ) -- formatNum and spairs
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:VehicleHardpoint/data.json' )
 local config = mw.loadJsonData( 'Module:VehicleHardpoint/config.json' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Calls TNT with the given key
@@ -45,46 +55,46 @@ local function makeSmwQueryObject( page )
     return {
         mw.ustring.format(
             '[[-Has subobject::' .. page .. ']][[%s::+]][[%s::+]]',
-            translate( 'SMW_HardpointType' ),
-            translate( 'SMW_VehicleHardpointsTemplateGroup' )
+            t( 'SMW_HardpointType' ),
+            t( 'SMW_VehicleHardpointsTemplateGroup' )
         ),
-        mw.ustring.format( '?%s#-=from_gamedata', translate( 'SMW_FromGameData' ) ),
-        mw.ustring.format( '?%s#-=count', translate( 'SMW_ItemQuantity' ) ),
-        mw.ustring.format( '?%s#-=min_size', translate( 'SMW_HardpointMinimumSize' ) ),
-        mw.ustring.format( '?%s#-=max_size', translate( 'SMW_HardpointMaximumSize' ) ),
-        mw.ustring.format( '?%s#-=class', translate( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=type', translate( 'SMW_HardpointType' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=sub_type', translate( 'SMW_HardpointSubtype' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=name', translate( 'SMW_Name' ) ),
-        mw.ustring.format( '?%s#-n=scu', translate( 'SMW_Inventory' ) ),
+        mw.ustring.format( '?%s#-=from_gamedata', t( 'SMW_FromGameData' ) ),
+        mw.ustring.format( '?%s#-=count', t( 'SMW_ItemQuantity' ) ),
+        mw.ustring.format( '?%s#-=min_size', t( 'SMW_HardpointMinimumSize' ) ),
+        mw.ustring.format( '?%s#-=max_size', t( 'SMW_HardpointMaximumSize' ) ),
+        mw.ustring.format( '?%s#-=class', t( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
+        mw.ustring.format( '?%s#-=type', t( 'SMW_HardpointType' ) ), langSuffix,
+        mw.ustring.format( '?%s#-=sub_type', t( 'SMW_HardpointSubtype' ) ), langSuffix,
+        mw.ustring.format( '?%s#-=name', t( 'SMW_Name' ) ),
+        mw.ustring.format( '?%s#-n=scu', t( 'SMW_Inventory' ) ),
         mw.ustring.format( '?UUID#-=uuid' ),
-        mw.ustring.format( '?%s#-=hardpoint', translate( 'SMW_Hardpoint' ) ) ,
-        mw.ustring.format( '?%s#-=class_name', translate( 'SMW_HardpointClassName' ) ) ,
-        mw.ustring.format( '?%s#-=magazine_capacity', translate( 'SMW_MagazineCapacity' ) ),
-        mw.ustring.format( '?%s=thrust_capacity', translate( 'SMW_ThrustCapacity' ) ),
-        mw.ustring.format( '?%s=damage', translate( 'SMW_Damage' ) ),
-        mw.ustring.format( '?%s=damage_radius', translate( 'SMW_DamageRadius' ) ),
-        mw.ustring.format( '?%s=fuel_capacity', translate( 'SMW_FuelCapacity' ) ),
-        mw.ustring.format( '?%s=fuel_intake_rate', translate( 'SMW_FuelIntakeRate' ) ),
-        mw.ustring.format( '?%s#-=parent_hardpoint', translate( 'SMW_ParentHardpoint' ) ),
-        mw.ustring.format( '?%s#-=root_hardpoint', translate( 'SMW_RootHardpoint' ) ),
-        mw.ustring.format( '?%s#-=parent_uuid', translate( 'SMW_ParentHardpointUuid' ) ),
-        mw.ustring.format( '?%s#-=icon', translate( 'SMW_Icon' ) ),
-        mw.ustring.format( '?%s=hp', translate( 'SMW_HitPoints' ) ),
-        mw.ustring.format( '?%s#-=position', translate( 'SMW_Position' ) ),
+        mw.ustring.format( '?%s#-=hardpoint', t( 'SMW_Hardpoint' ) ) ,
+        mw.ustring.format( '?%s#-=class_name', t( 'SMW_HardpointClassName' ) ) ,
+        mw.ustring.format( '?%s#-=magazine_capacity', t( 'SMW_MagazineCapacity' ) ),
+        mw.ustring.format( '?%s=thrust_capacity', t( 'SMW_ThrustCapacity' ) ),
+        mw.ustring.format( '?%s=damage', t( 'SMW_Damage' ) ),
+        mw.ustring.format( '?%s=damage_radius', t( 'SMW_DamageRadius' ) ),
+        mw.ustring.format( '?%s=fuel_capacity', t( 'SMW_FuelCapacity' ) ),
+        mw.ustring.format( '?%s=fuel_intake_rate', t( 'SMW_FuelIntakeRate' ) ),
+        mw.ustring.format( '?%s#-=parent_hardpoint', t( 'SMW_ParentHardpoint' ) ),
+        mw.ustring.format( '?%s#-=root_hardpoint', t( 'SMW_RootHardpoint' ) ),
+        mw.ustring.format( '?%s#-=parent_uuid', t( 'SMW_ParentHardpointUuid' ) ),
+        mw.ustring.format( '?%s#-=icon', t( 'SMW_Icon' ) ),
+        mw.ustring.format( '?%s=hp', t( 'SMW_HitPoints' ) ),
+        mw.ustring.format( '?%s#-=position', t( 'SMW_Position' ) ),
         -- These are subquery chains, they require that the 'Name' attribute is of type Page
         -- And that these pages contain SMW attributes
-        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Grade' ) .. '#-=item_grade',
-        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Class' ) .. '#-=item_class',
-        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Size' ) .. '#-=item_size',
-        '?' .. translate( 'SMW_Name' ) .. '.' .. translate( 'SMW_Manufacturer' ) .. '#-=manufacturer',
+        '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Grade' ) .. '#-=item_grade',
+        '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Class' ) .. '#-=item_class',
+        '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Size' ) .. '#-=item_size',
+        '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Manufacturer' ) .. '#-=manufacturer',
         mw.ustring.format(
             'sort=%s,%s,%s,%s,%s',
-            translate( 'SMW_VehicleHardpointsTemplateGroup' ),
-            translate( 'SMW_Hardpoint' ),
-            translate( 'SMW_HardpointType' ),
-            translate( 'SMW_HardpointMaximumSize' ),
-            translate( 'SMW_ItemQuantity' )
+            t( 'SMW_VehicleHardpointsTemplateGroup' ),
+            t( 'SMW_Hardpoint' ),
+            t( 'SMW_HardpointType' ),
+            t( 'SMW_HardpointMaximumSize' ),
+            t( 'SMW_ItemQuantity' )
         ),
         'order=asc,desc,asc,asc,asc',
         'limit=1000'
@@ -132,12 +142,12 @@ local function makeKey( row, hardpointData, parent, root )
     -- Appends the parent and root hardpoints in order to not mess up child counts
     -- Without this, a vehicle with four turrets containing each one weapon would be listed as
     -- having four turrets that each has four weapons (if the exact weapon is equipped on each turret)
-    if parent ~= nil and parent[ translate( 'SMW_Name' ) ] ~= nil and
+    if parent ~= nil and parent[ t( 'SMW_Name' ) ] ~= nil and
        row.type ~= 'DecoyLauncherMagazine' and
        row.type ~= 'NoiseLauncherMagazine'
     then
-        --key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
-        key = key .. ( parent[ translate( 'SMW_Name' ) ] or parent[ translate( 'SMW_Hardpoint' ) ] )
+        --key = key .. parent[ t( 'SMW_Hardpoint' ) ]
+        key = key .. ( parent[ t( 'SMW_Name' ) ] or parent[ t( 'SMW_Hardpoint' ) ] )
     end
 
     if root ~= nil and not mw.ustring.match( key, root ) and ( hardpointData.class == 'Weapons' or hardpointData.class == 'Utility' ) then
@@ -313,30 +323,30 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         return nil
     end
 
-    object[ translate( 'SMW_Hardpoint' ) ] = row.name
-    object[ translate( 'SMW_FromGameData' ) ] = true
-    object[ translate( 'SMW_HardpointMinimumSize' ) ] = row.min_size
-    object[ translate( 'SMW_HardpointMaximumSize' ) ] = row.max_size
-    object[ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class, true )
-    object[ translate( 'SMW_HitPoints' ) ] = row.damage_max
-    object[ translate( 'SMW_Position' ) ] = row.position
+    object[ t( 'SMW_Hardpoint' ) ] = row.name
+    object[ t( 'SMW_FromGameData' ) ] = true
+    object[ t( 'SMW_HardpointMinimumSize' ) ] = row.min_size
+    object[ t( 'SMW_HardpointMaximumSize' ) ] = row.max_size
+    object[ t( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( hardpointData.class, true )
+    object[ t( 'SMW_HitPoints' ) ] = row.damage_max
+    object[ t( 'SMW_Position' ) ] = row.position
 
     if type( row.class_name ) == 'string' then
-        object[ translate( 'SMW_HardpointClassName' ) ] = row.class_name
+        object[ t( 'SMW_HardpointClassName' ) ] = row.class_name
     end
 
-    object[ translate( 'SMW_HardpointType' ) ] = translate( hardpointData.type, true )
-    object[ translate( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type, true )
+    object[ t( 'SMW_HardpointType' ) ] = translate( hardpointData.type, true )
+    object[ t( 'SMW_HardpointSubtype' ) ] = translate( hardpointData.type, true )
 
     -- FIXME: Is there a way to use Lua table key directly instead of setting subtype separately in data.json?
     -- For some components (e.g. missile), the key is the subtype of the component
     local function setTypeSubtype( match )
         if match ~= nil then
             if match.type ~= nil then
-                object[ translate( 'SMW_HardpointType' ) ] = translate( match.type, true )
+                object[ t( 'SMW_HardpointType' ) ] = translate( match.type, true )
             end
             if match.subtype ~= nil then
-                object[ translate( 'SMW_HardpointSubtype' ) ] = translate( match.subtype, true )
+                object[ t( 'SMW_HardpointSubtype' ) ] = translate( match.subtype, true )
             end
         end
     end
@@ -345,7 +355,7 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
     setTypeSubtype( data.matches[ row.sub_type ] )
 
     if hardpointData.item ~= nil and type( hardpointData.item.name ) == 'string' then
-        object[ translate( 'SMW_Name' ) ] = hardpointData.item.name
+        object[ t( 'SMW_Name' ) ] = hardpointData.item.name
     end
 
     if type( row.item ) == 'table' then
@@ -355,59 +365,59 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             local match = mw.ustring.match( row.class_name or '', '[Dd]estruct_(%d+s)' )
 
             if row.type == 'SelfDestruct' and match ~= nil then
-                object[ translate( 'SMW_Name' ) ] = mw.ustring.format( '%s (%s)', translate( 'SMW_SelfDestruct' ), match )
+                object[ t( 'SMW_Name' ) ] = mw.ustring.format( '%s (%s)', t( 'SMW_SelfDestruct' ), match )
                 -- Set self-destruct stats
                 -- FIXME: Do subquery instead when CIG properly implement self-destruct components
                 if itemObj.self_destruct then
-                    object[ translate( 'SMW_Damage' ) ] = itemObj.self_destruct.damage
-                    object[ translate( 'SMW_DamageRadius' ) ] = itemObj.self_destruct.radius
+                    object[ t( 'SMW_Damage' ) ] = itemObj.self_destruct.damage
+                    object[ t( 'SMW_DamageRadius' ) ] = itemObj.self_destruct.radius
                 end
             else
-                object[ translate( 'SMW_Name' ) ] = itemObj.name
+                object[ t( 'SMW_Name' ) ] = itemObj.name
             end
         else
-            object[ translate( 'SMW_Name' ) ] = object[ translate( 'SMW_HardpointSubtype' ) ]
+            object[ t( 'SMW_Name' ) ] = object[ t( 'SMW_HardpointSubtype' ) ]
             -- Remove lang suffix
-            local parts = mw.text.split( object[ translate( 'SMW_Name' ) ], '@', true )
-            object[ translate( 'SMW_Name' ) ] = parts[ 1 ] or object[ translate( 'SMW_Name' ) ]
+            local parts = mw.text.split( object[ t( 'SMW_Name' ) ], '@', true )
+            object[ t( 'SMW_Name' ) ] = parts[ 1 ] or object[ t( 'SMW_Name' ) ]
         end
 
-        object[ translate( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity
+        object[ t( 'SMW_MagazineCapacity' ) ] = itemObj.magazine_capacity
 
         if ( itemObj.type == 'Cargo' or itemObj.type == 'SeatAccess' or itemObj.type == 'CargoGrid' or itemObj.type == 'Container' )
                 and type( itemObj.inventory ) == 'table' then
-            object[ translate( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil ), nil )
+            object[ t( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil ), nil )
         end
 
         if itemObj.thruster then
-            object[ translate( 'SMW_ThrustCapacity' ) ] = itemObj.thruster.thrust_capacity
+            object[ t( 'SMW_ThrustCapacity' ) ] = itemObj.thruster.thrust_capacity
             --- Convert to per Newton since thrust capacity is in Newton
-            object[ translate( 'SMW_FuelBurnRate' ) ] = itemObj.thruster.fuel_burn_per_10k_newton / 10000
+            object[ t( 'SMW_FuelBurnRate' ) ] = itemObj.thruster.fuel_burn_per_10k_newton / 10000
         end
 
         if itemObj.fuel_tank and itemObj.fuel_tank.capacity > 0 then
-            object[ translate( 'SMW_FuelCapacity' ) ] = itemObj.fuel_tank.capacity
+            object[ t( 'SMW_FuelCapacity' ) ] = itemObj.fuel_tank.capacity
         end
 
         if itemObj.fuel_intake then
-            object[ translate( 'SMW_FuelIntakeRate' ) ] = itemObj.fuel_intake.fuel_push_rate
+            object[ t( 'SMW_FuelIntakeRate' ) ] = itemObj.fuel_intake.fuel_push_rate
         end
 
-        if object[ translate( 'SMW_HardpointMinimumSize' ) ] == nil then
-            object[ translate( 'SMW_HardpointMinimumSize' ) ] = itemObj.size
-            object[ translate( 'SMW_HardpointMaximumSize' ) ] = itemObj.size
+        if object[ t( 'SMW_HardpointMinimumSize' ) ] == nil then
+            object[ t( 'SMW_HardpointMinimumSize' ) ] = itemObj.size
+            object[ t( 'SMW_HardpointMaximumSize' ) ] = itemObj.size
         end
 
         object[ 'UUID' ] = row.item.uuid
     end
 
     if parent ~= nil then
-        object[ translate( 'SMW_ParentHardpointUuid' ) ] = parent[ 'UUID' ]
-        object[ translate( 'SMW_ParentHardpoint' ) ] = parent[ translate( 'SMW_Name' ) ]
+        object[ t( 'SMW_ParentHardpointUuid' ) ] = parent[ 'UUID' ]
+        object[ t( 'SMW_ParentHardpoint' ) ] = parent[ t( 'SMW_Name' ) ]
     end
 
     if root ~= nil then
-        object[ translate( 'SMW_RootHardpoint' ) ] = root
+        object[ t( 'SMW_RootHardpoint' ) ] = root
     end
 
     -- Icon
@@ -437,11 +447,11 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
             icon = mw.ustring.lower( icon )
         end
 
-        object[ translate( 'SMW_Icon' ) ] = mw.ustring.format( 'File:%s%s.svg', config.icon_prefix, icon )
+        object[ t( 'SMW_Icon' ) ] = mw.ustring.format( 'File:%s%s.svg', config.icon_prefix, icon )
     end
 
     -- Remove SeatAccess Hardpoints without storage
-    if row.item ~= nil and row.item.type == 'SeatAccess' and object[ translate( 'SMW_Inventory' ) ] == nil then
+    if row.item ~= nil and row.item.type == 'SeatAccess' and object[ t( 'SMW_Inventory' ) ] == nil then
         object = nil
     end
 
@@ -485,25 +495,25 @@ function methodtable.setHardPointObjects( self, hardpoints )
         if type( objects[ key ] ) ~= 'table' then
             if object ~= nil then
                 objects[ key ] = object
-                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+                objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
             end
         else -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
-            objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = objects[ key ][ translate( 'SMW_ItemQuantity' ) ] + 1
-            if object[ translate( 'SMW_Position' ) ] ~= nil then
-                if type( objects[ key ][ translate( 'SMW_Position' ) ] ) == 'table' then
-                    table.insert( objects[ key ][ translate( 'SMW_Position' ) ], object[ translate( 'SMW_Position' ) ] )
+            objects[ key ][ t( 'SMW_ItemQuantity' ) ] = objects[ key ][ t( 'SMW_ItemQuantity' ) ] + 1
+            if object[ t( 'SMW_Position' ) ] ~= nil then
+                if type( objects[ key ][ t( 'SMW_Position' ) ] ) == 'table' then
+                    table.insert( objects[ key ][ t( 'SMW_Position' ) ], object[ t( 'SMW_Position' ) ] )
                 else
-                    objects[ key ][ translate( 'SMW_Position' ) ] = {
-                        objects[ key ][ translate( 'SMW_Position' ) ],
-                        object[ translate( 'SMW_Position' ) ]
+                    objects[ key ][ t( 'SMW_Position' ) ] = {
+                        objects[ key ][ t( 'SMW_Position' ) ],
+                        object[ t( 'SMW_Position' ) ]
                     }
                 end
             end
 
-            local inventoryKey = translate( 'SMW_Inventory' )
+            local inventoryKey = t( 'SMW_Inventory' )
             -- Accumulate the cargo capacities of all cargo grids
             if object[ inventoryKey ] ~= nil then
-                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+                objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
 
                 if objects[ key ][ inventoryKey ] ~= nil and object[ inventoryKey ] ~= nil then
                     local sucExisting, numExisting = pcall( tonumber, objects[ key ][ inventoryKey ], 10 )
@@ -604,7 +614,7 @@ function methodtable.setParts( self, parts )
         local key = row.name
 
         if parent ~= nil then
-            key = key .. parent[ translate( 'SMW_Hardpoint' ) ]
+            key = key .. parent[ t( 'SMW_Hardpoint' ) ]
         end
 
         mw.logObject( mw.ustring.format( 'Key: %s', key ), 'makeKey' )
@@ -623,7 +633,7 @@ function methodtable.setParts( self, parts )
         if type( objects[ key ] ) ~= 'table' then
             if object ~= nil then
                 objects[ key ] = object
-                objects[ key ][ translate( 'SMW_ItemQuantity' ) ] = 1
+                objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
             end
         end
     end
@@ -696,14 +706,14 @@ function methodtable.setComponents( self, components )
         type = mw.text.trim( type, 's' )
 
         mw.smw.subobject( {
-            [ translate( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( component.class, true ),
-            [ translate( 'SMW_HardpointType' ) ] = translate( type, true ),
-            [ translate( 'SMW_Name' ) ] = translate( component.name:gsub( ' ', '' ) ),
-            [ translate( 'SMW_ItemQuantity' ) ] = component.quantity,
+            [ t( 'SMW_VehicleHardpointsTemplateGroup' ) ] = translate( component.class, true ),
+            [ t( 'SMW_HardpointType' ) ] = translate( type, true ),
+            [ t( 'SMW_Name' ) ] = translate( component.name:gsub( ' ', '' ) ),
+            [ t( 'SMW_ItemQuantity' ) ] = component.quantity,
             --[ 'Komponentenbefestigungen' ] = component.mounts,
-            [ translate( 'SMW_Size' ) ] = component.component_size,
-            [ translate( 'SMW_HardpointMaximumSize' ) ] = component.size,
-            [ translate( 'SMW_FromGameData' ) ] = false,
+            [ t( 'SMW_Size' ) ] = component.component_size,
+            [ t( 'SMW_HardpointMaximumSize' ) ] = component.size,
+            [ t( 'SMW_FromGameData' ) ] = false,
         } )
     end
 

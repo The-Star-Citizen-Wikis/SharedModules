@@ -17,27 +17,6 @@
 	},
 	"data": [
 		[
-			"SMW_Type",
-			{
-				"de": "Typ",
-				"en": "Type"
-			}
-		],
-		[
-			"SMW_ModifierDuration",
-			{
-				"de": "Modifikator Dauer",
-				"en": "Modifier duration"
-			}
-		],
-		[
-			"SMW_ErrorChance",
-			{
-				"de": "Fehlerchance",
-				"en": "Error chance"
-			}
-		],
-		[
 			"LBL_ModifierDuration",
 			{
 				"de": "Dauer",

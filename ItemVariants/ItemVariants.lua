@@ -10,7 +10,17 @@ metatable.__index = methodtable
 local MODULE_NAME = 'Module:ItemVariants'
 local config = mw.loadJsonData( MODULE_NAME .. '/config.json' )
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -93,8 +103,8 @@ end
 --- @param page string the item page containing data
 --- @return table|string
 local function makeSmwQueryObject( page )
-    local smwItemBaseVariantName = translate( 'SMW_ItemBaseVariantName' )
-    local smwName = translate( 'SMW_Name' )
+    local smwItemBaseVariantName = t( 'SMW_ItemBaseVariantName' )
+    local smwName = t( 'SMW_Name' )
 
     -- 1. On variant page, select variants of base item
     -- 2. On variant page, select base item

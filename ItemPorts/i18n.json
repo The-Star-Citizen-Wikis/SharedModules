@@ -17,48 +17,6 @@
 	},
 	"data": [
 		[
-			"SMW_ItemPortName",
-			{
-				"de": "Itemport Name",
-				"en": "Item port name"
-			}
-		],
-		[
-			"SMW_ItemPortDisplayName",
-			{
-				"de": "Itemport angezeigter Name",
-				"en": "Item port display name"
-			}
-		],
-		[
-			"SMW_ItemPortMinimumSize",
-			{
-				"de": "Itemport Minimalgröße",
-				"en": "Item port minimum size"
-			}
-		],
-		[
-			"SMW_ItemPortMaximumSize",
-			{
-				"de": "Itemport Maximalgröße",
-				"en": "Item port maximum size"
-			}
-		],
-		[
-			"SMW_EquippedItemName",
-			{
-				"de": "Ausgerüstetes Item Name",
-				"en": "Equipped item name"
-			}
-		],
-		[
-			"SMW_EquippedItemUUID",
-			{
-				"de": "Ausgerüstetes Item UUID",
-				"en": "Equipped item UUID"
-			}
-		],
-		[
 			"item_placeholder",
 			{
 				"de": "Platzhalter Item",

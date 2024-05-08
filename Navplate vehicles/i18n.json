@@ -38,13 +38,6 @@
 			}
 		],
     [
-			"SMW_Manufacturer",
-			{
-				"de": "Hersteller",
-				"en": "Manufacturer"
-			}
-		],
-    [
       "category_ships",
       {
         "de": "raumschiff",

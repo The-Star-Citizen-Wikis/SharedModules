@@ -4,10 +4,20 @@ local p = {}
 
 local MODULE_NAME = 'WeaponPersonal'
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -45,8 +55,8 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
                 -- FIXME: Wikipedia modules like Module:String2 does not have a proper Lua entry point
                 -- Perhaps we should look into it some day
                 local ucfirstArgs = { args = { damage.name } }
-                subobject[ translate( 'SMW_DamageType' ) ] = damage.type
-                subobject[ translate( 'SMW_Damage' .. ucfirst( ucfirstArgs ) ) ] = damage.damage
+                subobject[ t( 'SMW_DamageType' ) ] = damage.type
+                subobject[ t( 'SMW_Damage' .. ucfirst( ucfirstArgs ) ) ] = damage.damage
             end
             mw.smw.subobject( subobject )
         end
@@ -70,7 +80,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
             end
 
             -- Use maximum range as effective range if there are no falloff
-            smwSetObject[ translate( 'SMW_EffectiveRange' ) ] = effectiveRange or apiData.personal_weapon.ammunition.range
+            smwSetObject[ t( 'SMW_EffectiveRange' ) ] = effectiveRange or apiData.personal_weapon.ammunition.range
         end
     end
 end
@@ -124,13 +134,13 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
             local tabCount = 1
 
             for _, mode in ipairs( subobjects ) do
-                tabberData[ 'label' .. tabCount ] = translate( 'damagetype_' .. mode[ translate( 'SMW_DamageType' ) ] )
+                tabberData[ 'label' .. tabCount ] = translate( 'damagetype_' .. mode[ t( 'SMW_DamageType' ) ] )
                 for _, damageType in ipairs( damageTypes ) do
                     table.insert( section,
                         infobox:renderItem( {
                             label = translate( 'LBL_Damage' .. damageType ),
-                            tooltip = translate( 'SMW_Damage' .. damageType ),
-                            data = mode[ translate( 'SMW_Damage' .. damageType ) ]
+                            tooltip = t( 'SMW_Damage' .. damageType ),
+                            data = mode[ t( 'SMW_Damage' .. damageType ) ]
                         } )
                     )
                 end
@@ -168,12 +178,12 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
             for _, mode in ipairs( subobjects ) do
                 tabberData[ 'label' .. tabCount ] = translate( 'firingmode_' ..
-                mode[ translate( 'SMW_FiringMode' ) ] )
+                mode[ t( 'SMW_FiringMode' ) ] )
                 section = {
-                    infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ translate( 'SMW_FiringRate' ) ] ),
+                    infobox:renderItem( translate( 'LBL_FiringRate' ), mode[ t( 'SMW_FiringRate' ) ] ),
                     infobox:renderItem( translate( 'LBL_ProjectilePerShot' ),
-                        mode[ translate( 'SMW_ProjectilePerShot' ) ] ),
-                    infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ translate( 'SMW_AmmoPerShot' ) ] )
+                        mode[ t( 'SMW_ProjectilePerShot' ) ] ),
+                    infobox:renderItem( translate( 'LBL_AmmoPerShot' ), mode[ t( 'SMW_AmmoPerShot' ) ] )
                 }
                 tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
                 tabCount = tabCount + 1
@@ -189,11 +199,11 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
 
     infobox:renderSection( {
         content = {
-            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ translate( 'SMW_Damage' ) ] ),
-            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ translate( 'SMW_AmmoSpeed' ) ] ),
-            infobox:renderItem( translate( 'LBL_EffectiveRange' ), smwData[ translate( 'SMW_EffectiveRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ translate( 'SMW_MaximumRange' ) ] ),
-            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ translate( 'SMW_Ammo' ) ] )
+            infobox:renderItem( translate( 'LBL_Damage' ), smwData[ t( 'SMW_Damage' ) ] ),
+            infobox:renderItem( translate( 'LBL_AmmoSpeed' ), smwData[ t( 'SMW_AmmoSpeed' ) ] ),
+            infobox:renderItem( translate( 'LBL_EffectiveRange' ), smwData[ t( 'SMW_EffectiveRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_MaximumRange' ), smwData[ t( 'SMW_MaximumRange' ) ] ),
+            infobox:renderItem( translate( 'LBL_Ammo' ), smwData[ t( 'SMW_Ammo' ) ] )
         },
         col = 2
     } )

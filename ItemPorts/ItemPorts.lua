@@ -11,7 +11,17 @@ metatable.__index = methodtable
 local MODULE_NAME = 'Module:ItemPorts'
 local config = mw.loadJsonData( MODULE_NAME .. '/config.json' )
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -31,14 +41,14 @@ end
 local function makeSmwQueryObject( page )
     local ignores = config.blocklist_itemport_name or {}
 
-    local itemPortName = translate( 'SMW_ItemPortName' )
+    local itemPortName = t( 'SMW_ItemPortName' )
     local query = {
         mw.ustring.format( '?%s#-=name', itemPortName ),
-        mw.ustring.format( '?%s#-=display_name', translate( 'SMW_ItemPortDisplayName' ) ),
-        mw.ustring.format( '?%s#-=min_size', translate( 'SMW_ItemPortMinimumSize' ) ),
-        mw.ustring.format( '?%s#-=max_size', translate( 'SMW_ItemPortMaximumSize' ) ),
-        mw.ustring.format( '?%s#-=equipped_name', translate( 'SMW_EquippedItemName' ) ),
-        mw.ustring.format( '?%s#-=equipped_uuid', translate( 'SMW_EquippedItemUUID' ) ),
+        mw.ustring.format( '?%s#-=display_name', t( 'SMW_ItemPortDisplayName' ) ),
+        mw.ustring.format( '?%s#-=min_size', t( 'SMW_ItemPortMinimumSize' ) ),
+        mw.ustring.format( '?%s#-=max_size', t( 'SMW_ItemPortMaximumSize' ) ),
+        mw.ustring.format( '?%s#-=equipped_name', t( 'SMW_EquippedItemName' ) ),
+        mw.ustring.format( '?%s#-=equipped_uuid', t( 'SMW_EquippedItemUUID' ) ),
         mw.ustring.format( 'sort=%s', itemPortName ),
         'order=asc',
         'limit=1000'

@@ -4,10 +4,20 @@ local p = {}
 
 local MODULE_NAME = 'WeaponAttachment'
 
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- Wrapper function for Module:Translate.translate
@@ -72,53 +82,53 @@ end
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
     -- Barrel attachments
-    if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
+    if smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
                     label = translate( 'LBL_ModifierDamage' ),
-                    data = smwData[ translate( 'SMW_ModifierDamage' ) ],
+                    data = smwData[ t( 'SMW_ModifierDamage' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ModifierFireRecoilStrength' ),
-                    data = smwData[ translate( 'SMW_ModifierFireRecoilStrength' ) ],
+                    data = smwData[ t( 'SMW_ModifierFireRecoilStrength' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ModifierSoundRadius' ),
-                    data = smwData[ translate( 'SMW_ModifierSoundRadius' ) ],
+                    data = smwData[ t( 'SMW_ModifierSoundRadius' ) ],
                 } )
             },
             col = 3
         } )
     -- Optics attachments
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
                     label = translate( 'LBL_OpticsMagnification' ),
-                    data = smwData[ translate( 'SMW_OpticsMagnification' ) ],
+                    data = smwData[ t( 'SMW_OpticsMagnification' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ZeroingRange' ),
-                    data = smwData[ translate( 'SMW_ZeroingRange' ) ],
+                    data = smwData[ t( 'SMW_ZeroingRange' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_ZeroingRangeIncrement' ),
-                    data = smwData[ translate( 'SMW_ZeroingRangeIncrement' ) ],
+                    data = smwData[ t( 'SMW_ZeroingRangeIncrement' ) ],
                 } ),
                 infobox:renderItem( {
                     label = translate( 'LBL_AutoZeroingTime' ),
-                    data = smwData[ translate( 'SMW_AutoZeroingTime' ) ],
+                    data = smwData[ t( 'SMW_AutoZeroingTime' ) ],
                 } )
             },
             col = 2
         } )
-    elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Magazine' then
+    elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.Magazine' then
         infobox:renderSection( {
             content = {
                 infobox:renderItem( {
                     label = translate( 'LBL_Ammo' ),
-                    data = smwData[ translate( 'SMW_Ammo' ) ],
+                    data = smwData[ t( 'SMW_Ammo' ) ],
                 } )
             },
             col = 2
@@ -138,14 +148,14 @@ function p.addCategories( categories, frameArgs, smwData )
     -- FIXME: Is there a way to make addSubcategory avaliable here?
 
     -- Barrel attachments
-    --if smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
+    --if smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
     --    -- e.g. Category:Barrel attachments (Energy stabliizer)
     --    table.insert( categories, string.format( '%s (%s)',
     --        translate( 'category_weaponattachment.barrel' ),
     --        translate( 'class_barrelattachmenttype' )
     --    ) )
     -- Optics attachments
-    --elseif smwData[ translate( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
+    --elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
     --    -- e.g. Category:Optics attachments (Telescopic)
     --    table.insert( categories, string.format( '%s (%s)',
     --        translate( 'category_weaponattachment.ironsight' ),
