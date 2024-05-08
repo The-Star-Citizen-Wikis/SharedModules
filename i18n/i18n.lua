@@ -46,13 +46,15 @@ end
 ---
 --- @param lang string
 --- @param namespace string
---- @return table { data = "The dataset", keys = "Translation key mapped to index" }
+--- @return table|nil { data = "The dataset", keys = "Translation key mapped to index" }
 local function load( lang, namespace )
     if cache[ lang ] and cache[ lang ][ namespace ] then
         return cache[ lang ][ namespace ]
     end
 
-    local data = mw.loadJsonData( string.format( 'Module:i18n/%s/%s.json', namespace, lang ) )
+    local success, data = pcall( mw.loadJsonData, string.format( 'Module:i18n/%s/%s.json', namespace, lang ) )
+
+    if not success then return end
 
     if not cache[ lang ] then
         cache[ lang ] = {}
@@ -83,9 +85,11 @@ function methodtable.translate( self, key )
     local i = 1
     while ( message == '' and i <= #languages ) do
         local dataset = load( languages[ i ], namespace )
-        local match = dataset[ key ]
-        if match then
-            message = match
+        if dataset then
+            local match = dataset[ key ]
+            if match then
+                message = match
+            end
         end
         i = i + 1
     end
