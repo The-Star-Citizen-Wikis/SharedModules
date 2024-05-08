@@ -85,7 +85,7 @@ local function makeSmwQueryObject( page )
 
 		-- safeguard
 		if smwKey ~= nil then
-			table.insert( query, mw.ustring.format( formatString, translate( smwKey ) ) )
+			table.insert( query, mw.ustring.format( formatString, t( smwKey ) ) )
 
 			if queryPart.type == 'multilingual_text' then
 				table.insert( query, langSuffix )
