@@ -1022,6 +1022,7 @@ function Vehicle.test( page )
 	instance.frameArgs[ translate( 'ARG_Name' ) ] = page
 
 	instance:saveApiData()
+	instance:getInfobox()
 end
 
 
