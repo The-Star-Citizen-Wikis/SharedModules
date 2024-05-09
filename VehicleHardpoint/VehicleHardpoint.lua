@@ -570,6 +570,11 @@ function methodtable.setHardPointObjects( self, hardpoints )
                     depth = depth + 1
                     addHardpoints( hardpoint.children, obj, root )
                 end
+            elseif hasChildren( hardpoint ) then
+                -- Fix for P72, if the main hardpoint is ignored, but it has children, try them
+                for _, child in pairs( hardpoint.children ) do
+                    table.insert( hardpoints, child )
+                end
             end
         end
 
@@ -1378,7 +1383,8 @@ end
 
 --- Set the hardpoints of the 300i as subobjects to the current page
 function VehicleHardpoint.test( frame )
-    local page = frame.args['Name'] or '300i'
+    frame = frame or { args = {} }
+    local page = frame.args['Name'] or '70580bce-2347-4e96-9260-dee6394f483d'
     local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. page, {
         include = {
             'hardpoints',
