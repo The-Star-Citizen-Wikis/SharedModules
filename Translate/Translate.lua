@@ -9,6 +9,7 @@ metatable.__index = methodtable
 
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
+local i18n = require( 'Module:i18n' ):new()
 
 --- Cache table containing i18n data at the 'data' key, and a key map at the 'keys' key
 --- The table is keyed by the i18n.json module name
@@ -234,6 +235,12 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
     checkType( 'Module:Translate.translate', 3, config, 'table' )
     checkType( 'Module:Translate.translate', 4, key, 'string' )
     checkType( 'Module:Translate.translate', 5, addSuffix, 'boolean', true )
+
+    -- Temporary fallback function
+	local prefix = string.match( key, '([^_]*)' )
+	if prefix == 'SMW' or prefix == 'label' then
+		return i18n:translate( key )
+	end
 
 	addSuffix = addSuffix or false
 	local success, translation
