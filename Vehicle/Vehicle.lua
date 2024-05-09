@@ -100,19 +100,19 @@ end
 
 
 --- FIXME: This should go to somewhere else, like Module:Common
-local function makeTimeReadable( t )
-	if t == nil then return end
+local function makeTimeReadable( time )
+	if time == nil then return end
 
 	-- Fix for german number format
-	if mw.ustring.find( t, ',', 1, true ) then
-		t = mw.ustring.gsub( t, ',', '.' )
+	if mw.ustring.find( time, ',', 1, true ) then
+		time = mw.ustring.gsub( time, ',', '.' )
 	end
 
-	if type( t ) == 'string' then
-		t = tonumber( t, 10 )
+	if type( time ) == 'string' then
+		time = tonumber( time, 10 )
 	end
 
-	t = lang:formatDuration( t * 60 )
+	time = lang:formatDuration( time * 60 )
 
 	local regex
 	if lang:getCode() == 'de' then
@@ -136,10 +136,10 @@ local function makeTimeReadable( t )
 	end
 
 	for pattern, replace in pairs( regex ) do
-		t = mw.ustring.gsub( t, pattern, replace )
+		time = mw.ustring.gsub( t, pattern, replace )
 	end
 
-	return t
+	return time
 end
 
 
