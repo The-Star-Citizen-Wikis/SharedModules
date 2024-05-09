@@ -14,6 +14,9 @@ local checkType = libraryUtil.checkType
 --- e.g. cache['en']['SMW'] will get you the SMW table in English
 local cache = {}
 
+--- Cache language codes for reuse
+local languages = {}
+
 
 --- Retrieve dataset namespace from key prefix
 ---
@@ -29,6 +32,7 @@ end
 ---
 --- @return table
 local function getLanguageCodes()
+    if #languages > 0 then return languages end
     local mwlang = mw.language.getContentLanguage()
     local langCodes = { mwlang:getCode() }
 
@@ -38,6 +42,8 @@ local function getLanguageCodes()
             table.insert( langCodes, fallbackLangCode )
         end
     end
+
+    mw.log( string.format( '[i18n] 🌐 Setting language chain: %s', table.concat( langCodes, '→' ) ) )
     return langCodes
 end
 
@@ -54,7 +60,6 @@ local function load( lang, namespace )
     end
 
     if cache[ lang ][ namespace ] then
-        mw.log( string.format( '[i18n] Dataset[%s][%s]: Cache HIT', lang, namespace ) )
         return cache[ lang ][ namespace ]
     end
 
@@ -62,14 +67,14 @@ local function load( lang, namespace )
     local success, data = pcall( mw.loadJsonData, datasetName )
 
     if not success then
-        mw.log( string.format( '[i18n] Dataset[%s][%s]: %s not found on wiki', lang, namespace, datasetName ) )
+        mw.log( string.format( '[i18n] 🚨 Loading dataset[%s][%s]: %s not found on wiki', lang, namespace, datasetName ) )
         -- Cache the empty result so we do not run mw.loadJsonData again
         cache[ lang ][ namespace ] = {}
         return
     end
 
     cache[ lang ][ namespace ] = data
-    mw.log( string.format( '[i18n] Dataset[%s][%s]: Cache MISS', lang, namespace ) )
+    mw.log( string.format( '[i18n] ⌛ Loading dataset[%s][%s]: %s', lang, namespace, datasetName ) )
 
     return cache[ lang ][ namespace ]
 end
@@ -83,7 +88,7 @@ function methodtable.translate( self, key )
     checkType( 'Module:i18n.translate', 1, self, 'table' )
     checkType( 'Module:i18n.translate', 2, key, 'string' )
 
-    mw.log( string.format( '[i18n] Message key: %s', key ) )
+    mw.log( string.format( '[i18n] 🔍 Looking for message: %s', key ) )
 
     local namespace = getNamespace( key )
     if namespace == nil then
@@ -91,22 +96,29 @@ function methodtable.translate( self, key )
         return key
     end
 
-    local message
-    local languages = getLanguageCodes()
+    languages = getLanguageCodes()
 
+    local message
     local i = 1
+
     while ( message == nil and i <= #languages ) do
         local dataset = load( languages[ i ], namespace )
         if dataset then
             local match = dataset[ key ]
             if match then
                 message = match
-                mw.log( string.format( '[i18n] Message MATCH: %s', message ) )
+                mw.log( string.format( '[i18n] ✔️ Found message: %s', message ) )
             end
         end
         i = i + 1
     end
-    return message or key
+
+    if message == nil then
+        message = key
+        mw.log( string.format( '[i18n] ❌ Could not found message: %s', key ) )
+    end
+
+    return message
 end
 
 
