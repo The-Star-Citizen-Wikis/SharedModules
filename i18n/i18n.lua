@@ -48,20 +48,24 @@ end
 --- @param namespace string
 --- @return table|nil { data = "The dataset", keys = "Translation key mapped to index" }
 local function load( lang, namespace )
-    if cache[ lang ] and cache[ lang ][ namespace ] then
+    -- Init language cache if it does not exist
+    if cache[ lang ] == nil then
+        cache[ lang ] = {}
+    end
+
+    if cache[ lang ][ namespace ] then
         mw.log( string.format( '[i18n] Dataset[%s][%s]: Cache HIT', lang, namespace ) )
         return cache[ lang ][ namespace ]
     end
 
-    local success, data = pcall( mw.loadJsonData, string.format( 'Module:i18n/%s/%s.json', namespace, lang ) )
+    local datasetName = string.format( 'Module:i18n/%s/%s.json', namespace, lang )
+    local success, data = pcall( mw.loadJsonData, datasetName )
 
     if not success then
-        mw.log( string.format( '[i18n] Dataset[%s][%s]: Not found on wiki', lang, namespace ) )
+        mw.log( string.format( '[i18n] Dataset[%s][%s]: %s not found on wiki', lang, namespace, datasetName ) )
+        -- Cache the empty result so we do not run mw.loadJsonData again
+        cache[ lang ][ namespace ] = {}
         return
-    end
-
-    if not cache[ lang ] then
-        cache[ lang ] = {}
     end
 
     cache[ lang ][ namespace ] = data
