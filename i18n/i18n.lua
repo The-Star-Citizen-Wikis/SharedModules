@@ -49,17 +49,23 @@ end
 --- @return table|nil { data = "The dataset", keys = "Translation key mapped to index" }
 local function load( lang, namespace )
     if cache[ lang ] and cache[ lang ][ namespace ] then
+        mw.log( string.format( 'Dataset[%s][%s]: Cache HIT', lang, namespace ) )
         return cache[ lang ][ namespace ]
     end
 
     local success, data = pcall( mw.loadJsonData, string.format( 'Module:i18n/%s/%s.json', namespace, lang ) )
 
-    if not success then return end
+    if not success then
+        mw.log( string.format( 'Dataset[%s][%s]: Not found on wiki', lang, namespace ) )
+        return
+    end
 
     if not cache[ lang ] then
         cache[ lang ] = {}
     end
+
     cache[ lang ][ namespace ] = data
+    mw.log( string.format( 'Dataset[%s][%s]: Cache CREATED', lang, namespace ) )
 
     return cache[ lang ][ namespace ]
 end
@@ -73,17 +79,16 @@ function methodtable.translate( self, key )
     checkType( 'Module:i18n.translate', 1, self, 'table' )
     checkType( 'Module:i18n.translate', 2, key, 'string' )
 
-    local message = ''
-
     local namespace = getNamespace( key )
     if namespace == nil then
         -- No namespace found error
         return key
     end
-    local languages = getLanguageCodes()
 
+    local message
+    local languages = getLanguageCodes()
     local i = 1
-    while ( message == '' and i <= #languages ) do
+    while ( message == nil and i <= #languages ) do
         local dataset = load( languages[ i ], namespace )
         if dataset then
             local match = dataset[ key ]
@@ -93,7 +98,7 @@ function methodtable.translate( self, key )
         end
         i = i + 1
     end
-    return message
+    return message or key
 end
 
 
