@@ -80,20 +80,31 @@ local function load( lang, namespace )
 end
 
 
---- Returns translated message
+--- Returns translated message (or key if returnKey is enabled)
 ---
 --- @param key string The translation key
---- @return string If the key was not found in the i18n table, the key is returned
-function methodtable.translate( self, key )
+--- @param options table|nil Optional options
+--- @return string|nil
+function methodtable.translate( self, key, options )
+    options = options or {
+        ['returnKey'] = true
+    }
+
     checkType( 'Module:i18n.translate', 1, self, 'table' )
     checkType( 'Module:i18n.translate', 2, key, 'string' )
+    checkType( 'Module:i18n.translate', 3, options, 'table' )
 
     mw.log( string.format( '[i18n] 🔍 Looking for message: %s', key ) )
 
     local namespace = getNamespace( key )
     if namespace == nil then
         -- No namespace found error
-        return key
+        mw.log( string.format( '[i18n] ❌ Namespace cannot be found from: %s', key ) )
+        if options['returnKey'] == true then
+            return key
+        else
+            return
+        end
     end
 
     languages = getLanguageCodes()
@@ -114,8 +125,10 @@ function methodtable.translate( self, key )
     end
 
     if message == nil then
-        message = key
         mw.log( string.format( '[i18n] ❌ Could not found message: %s', key ) )
+        if options['returnKey'] == true then
+            message = key
+        end
     end
 
     return message
