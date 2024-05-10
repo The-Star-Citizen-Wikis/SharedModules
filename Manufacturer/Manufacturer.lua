@@ -16,7 +16,7 @@ local TNT = require( 'Module:Translate' ):new()
 
 local mArguments
 
-local manufacturers = {}
+local cache = {}
 
 --- Wrapper function for Module:i18n.translate
 ---
@@ -60,29 +60,29 @@ local function getMessage( code, messageType )
 end
 
 
---- Initialize the manufacturer table either from cache or build it from the i18n
+--- Return the manufacturer table either from cache or build it from the i18n
 ---
 --- @return table
-local function init()
-    if #manufacturers > 0 then return manufacturers end
+local function getManufacturers()
+    if #cache > 0 then return cache end
 
     local codes = mw.loadJsonData( MODULE_NAME .. '/data.json' ).codes
 
-    local temp = {}
+    local manufacturers = {}
     for _, code in pairs( codes ) do
         local manufacturer = {}
         manufacturer['code'] = code
 		manufacturer['name'] = getMessage( code, 'name' )
 		manufacturer['shortname'] = getMessage( code, 'name_short' )
-        table.insert( temp, manufacturer )
+        table.insert( manufacturers, manufacturer )
     end
 
-    if #temp > 0 then
-        manufacturers = temp
+    if #manufacturers > 0 then
+        cache = manufacturers
         mw.log( '[Manufacturer] ⌛ Initialized dataset' )
     end
 
-    return manufacturers
+    return cache
 end
 
 
@@ -97,7 +97,7 @@ function methodtable.get( self, s )
     mw.log( string.format( '[Manufacturer] 🔍 Looking for manufacturer: %s', s ) )
 
     -- Initalize manufacturers
-    init()
+    local manufacturers = getManufacturers()
 
     local regex = string.format( '^%s$', mw.ustring.lower( escapeMagicCharacters( s ) ) )
 
