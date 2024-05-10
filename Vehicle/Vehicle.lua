@@ -10,7 +10,7 @@ metatable.__index = methodtable
 local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
-local manufacturer = require( 'Module:Manufacturer' )._manufacturer
+local manufacturer = require( 'Module:Manufacturer' ):new()
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
 local config = mw.loadJsonData( 'Module:Vehicle/config.json' )
@@ -216,7 +216,7 @@ function methodtable.setSemanticProperties( self )
 	)
 
 	if type( setData[ t( 'SMW_Manufacturer' ) ] ) == 'string' then
-		local man = manufacturer( setData[ t( 'SMW_Manufacturer' ) ] )
+		local man = manufacturer:get( setData[ t( 'SMW_Manufacturer' ) ] )
 		if man ~= nil then man = man.name end
 
 		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
@@ -317,7 +317,7 @@ function methodtable.getInfobox( self )
 	local function getManufacturer()
 		if smwData[ t( 'SMW_Manufacturer' ) ] == nil then return end
 
-		local mfu = manufacturer( smwData[ t( 'SMW_Manufacturer' ) ] )
+		local mfu = manufacturer:get( smwData[ t( 'SMW_Manufacturer' ) ] )
 		if mfu == nil then return smwData[ t( 'SMW_Manufacturer' ) ] end
 
 		return infobox.showDescIfDiff(
@@ -880,7 +880,7 @@ function methodtable.setShortDescription( self )
 
 	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
 		local mfuname = self.smwData[ t( 'SMW_Manufacturer' ) ]
-		local man = manufacturer( mfuname )
+		local man = manufacturer:get( mfuname )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 

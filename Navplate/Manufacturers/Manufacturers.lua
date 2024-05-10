@@ -19,7 +19,7 @@ metatable.__index = methodtable
 local common = require( 'Module:Common' )
 local navplate = require( 'Module:Navplate' )
 local template = mw.loadJsonData( 'Module:Navplate/Manufacturers/data.json' );
-local mfu = require( 'Module:Manufacturer' )._manufacturer
+local manufacturer = require( 'Module:Manufacturer' ):new()
 
 --- Queries the SMW Store
 --- @param conditions table|string For SMW query
@@ -110,9 +110,9 @@ end
 ---
 --- @return string
 function methodtable.make( self )
-	local manufacturer = mfu( self.frameArgs[ 1 ] ) and mfu( self.frameArgs[ 1 ] ).name or self.frameArgs[ 1 ]
+	local mfu = manufacturer:get( self.frameArgs[ 1 ] ) and manufacturer:get( self.frameArgs[ 1 ] ).name or self.frameArgs[ 1 ]
 
-	if manufacturer == nil then
+	if mfu == nil then
 		return mw.ustring.format(
             '<strong class="error">Error: %s.</strong>',
             'Missing manufacturer parmeter'
@@ -121,10 +121,10 @@ function methodtable.make( self )
 
 	local args = {
 		subtitle = 'Products of',
-		title = mw.ustring.format( '[[%s]]', manufacturer )
+		title = mw.ustring.format( '[[%s]]', mfu )
 	}
 
-	local conditions = 'Category:' .. manufacturer
+	local conditions = 'Category:' .. mfu
 
 	local data = self:getSmwData( conditions )
 	if data ~= nil then
