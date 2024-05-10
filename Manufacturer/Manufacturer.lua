@@ -18,6 +18,7 @@ local mArguments
 
 local cache = {}
 
+
 --- Wrapper function for Module:i18n.translate
 ---
 --- @param key string The translation key
@@ -109,6 +110,8 @@ function methodtable.get( self, s )
             end
         end
     end
+
+    mw.log( '[Manufacturer] ❌ Could not match manufacturer: %s', s )
 
     return nil
 end
