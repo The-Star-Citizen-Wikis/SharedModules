@@ -136,7 +136,7 @@ local function makeTimeReadable( time )
 	end
 
 	for pattern, replace in pairs( regex ) do
-		time = mw.ustring.gsub( t, pattern, replace )
+		time = mw.ustring.gsub( time, pattern, replace )
 	end
 
 	return time
