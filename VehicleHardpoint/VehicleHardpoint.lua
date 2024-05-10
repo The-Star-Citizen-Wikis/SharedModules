@@ -158,7 +158,7 @@ local function makeKey( row, hardpointData, parent, root )
 --        key = key .. row.item.name or row.name
     end
 
-    mw.logObject( mw.ustring.format( 'Key: %s', key ), 'makeKey' )
+    mw.logObject( mw.ustring.format( 'Key: %s', key ), '🔑 [VehicleHardpoint] Made key' )
 
     return key
 end
@@ -552,7 +552,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
                     else
                         root = hardpoint.name
                     end
-                    mw.logObject( mw.ustring.format( 'Root: %s', root ), 'addHardpoints' )
+                    mw.logObject( mw.ustring.format( 'Root: %s', root ), '[VehicleHardpoint] Added hardpoint' )
                 end
 
                 addSubComponents( hardpoint )

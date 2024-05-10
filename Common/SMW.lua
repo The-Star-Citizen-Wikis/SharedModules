@@ -144,7 +144,7 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 				}
 			end
 
-			mw.logObject( parts, 'Key Parts' )
+			mw.logObject( parts, '✂️ [Common/SMW] Found data key parts' )
 
 			-- safeguard check if we have two parts
 			if #parts == 2 then
@@ -166,10 +166,13 @@ function commonSMW.addSmwProperties( apiData, frameArgs, smwSetObject, translate
 					end
 				-- Retrieve data from API
 				elseif parts[ 1 ] == 'API' and apiData ~= nil then
-					mw.logObject({
-						key_access = parts[2],
-						value = apiData:get( parts[ 2 ] )
-					})
+					mw.logObject(
+						{
+							key_access = parts[2],
+							value = apiData:get( parts[ 2 ] )
+						},
+						'📡 [Common/SMW] Retrieved API data'
+					)
 
 					value = apiData:get( parts[ 2 ] )
 				end

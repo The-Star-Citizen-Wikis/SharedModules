@@ -80,7 +80,7 @@ local function getManufacturers()
 
     if #manufacturers > 0 then
         cache = manufacturers
-        mw.log( '[Manufacturer] ⌛ Initialized dataset' )
+        mw.log( '⌛ [Manufacturer] Initialized dataset' )
     end
 
     return cache
@@ -95,7 +95,7 @@ function methodtable.get( self, s )
     checkType( MODULE_NAME .. '.get', 1, self, 'table' )
     checkType( MODULE_NAME .. '.get', 2, s, 'string' )
 
-    mw.log( string.format( '[Manufacturer] 🔍 Looking for manufacturer: %s', s ) )
+    mw.log( string.format( '🔍 [Manufacturer] Looking for manufacturer: %s', s ) )
 
     -- Initalize manufacturers
     local manufacturers = getManufacturers()
@@ -105,13 +105,13 @@ function methodtable.get( self, s )
     for _, manufacturer in ipairs( manufacturers ) do
         for _, value in pairs( manufacturer ) do
             if mw.ustring.match( mw.ustring.lower( value ), regex ) then
-                mw.logObject( manufacturer, '[Manufacturer] ✔️ Matched manufacturer' )
+                mw.logObject( manufacturer, '✅ [Manufacturer] Matched manufacturer' )
                 return manufacturer
             end
         end
     end
 
-    mw.log( '[Manufacturer] ❌ Could not match manufacturer: %s', s )
+    mw.log( '❌ [Manufacturer] Could not match manufacturer: %s', s )
 
     return nil
 end

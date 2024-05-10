@@ -245,7 +245,7 @@ function methodtable.setSemanticProperties( self )
 		end
 	end
 
-	mw.logObject( setData, 'SET' )
+	mw.logObject( setData, '✅ [Vehicle] Set SMW data' )
 
 	self.setData = setData
 
