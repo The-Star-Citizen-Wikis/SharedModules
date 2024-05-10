@@ -245,7 +245,7 @@ function methodtable.setSemanticProperties( self )
 		end
 	end
 
-	mw.logObject( setData, '✅ [Vehicle] Set SMW data' )
+	mw.logObject( setData, '💾 [Vehicle] Set SMW data' )
 
 	self.setData = setData
 
@@ -286,6 +286,8 @@ end
 --- Creates the infobox
 function methodtable.getInfobox( self )
 	local smwData = self:getSmwData()
+
+	mw.logObject( smwData, '⌛ [Vehicle] Loaded infobox SMW data' )
 
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
 		placeholderImage = config.placeholder_image

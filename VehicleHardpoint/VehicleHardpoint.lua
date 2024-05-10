@@ -158,7 +158,7 @@ local function makeKey( row, hardpointData, parent, root )
 --        key = key .. row.item.name or row.name
     end
 
-    mw.logObject( mw.ustring.format( 'Key: %s', key ), '🔑 [VehicleHardpoint] Made key' )
+    mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makekey' )
 
     return key
 end
@@ -552,7 +552,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
                     else
                         root = hardpoint.name
                     end
-                    mw.logObject( mw.ustring.format( 'Root: %s', root ), '[VehicleHardpoint] Added hardpoint' )
+                    mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addHardpoints' )
                 end
 
                 addSubComponents( hardpoint )
@@ -588,7 +588,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
     addHardpoints( hardpoints )
 
-    mw.logObject( objects, 'setHardPointObjects' )
+    mw.logObject( objects, '📐 [VehicleHardpoint] setHardPointObjects' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -622,7 +622,7 @@ function methodtable.setParts( self, parts )
             key = key .. parent[ t( 'SMW_Hardpoint' ) ]
         end
 
-        mw.logObject( mw.ustring.format( 'Key: %s', key ), 'makeKey' )
+        mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makeKey' )
 
         return key
     end
@@ -656,7 +656,7 @@ function methodtable.setParts( self, parts )
 
             if depth == 1 then
                 root = part.name
-                mw.logObject( mw.ustring.format( 'Root: %s', root ), 'addParts' )
+                mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addParts' )
             end
 
             local key = makeKey( part, parent )
@@ -682,7 +682,7 @@ function methodtable.setParts( self, parts )
 
     addParts( parts )
 
-    mw.logObject( objects, 'setParts' )
+    mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -722,7 +722,7 @@ function methodtable.setComponents( self, components )
         } )
     end
 
-    mw.logObject( objects, 'setParts' )
+    mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -746,7 +746,7 @@ function methodtable.querySmwStore( self, page )
         return nil
     end
 
-    --mw.logObject( smwData, 'querySmwStore' )
+    --mw.logObject( smwData, '📐 [VehicleHardpoint] querySmwStore' )
 
     self.smwData = smwData
 
@@ -787,7 +787,7 @@ function methodtable.group( self, smwData )
         end
     end
 
-    --mw.logObject( grouped )
+    --mw.logObject( grouped, '📐 [VehicleHardpoint] grouped' )
 
     return grouped
 end
@@ -1191,7 +1191,7 @@ function methodtable.makeOutput( self, groupedData )
         classOutput[ class ] = makeSection( types )
     end
 
-    mw.logObject( classOutput, 'makeOutput' )
+    mw.logObject( classOutput, '📐 [VehicleHardpoint] makeOutput' )
 
     return classOutput
 end
@@ -1417,7 +1417,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
 
     for index, rule in ipairs( rules ) do
         if type( rule ) == 'string' then
-            -- mw.logObject( mw.ustring.format( 'Evaluating rule %s', rule ), 'evalRule' )
+            -- mw.logObject( mw.ustring.format( 'Evaluating rule %s', rule ), '📐 [VehicleHardpoint] evalRule' )
 
             if mw.ustring.find( rule, ':', 1, true ) ~= nil then
                 local parts = mw.text.split( rule, ':', true )
@@ -1425,7 +1425,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                 -- Simple check if a key equals a value
                 if #parts == 2 then
                     local result = hardpoint[ parts[ 1 ] ] == parts[ 2 ]
-                    -- mw.logObject( mw.ustring.format( 'Rule <%s == %s>, equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ), 'evalRule' )
+                    -- mw.logObject( mw.ustring.format( 'Rule <%s == %s>, equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
 
                     table.insert( stepVal, result )
                     -- String Match
@@ -1440,7 +1440,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                     local matcher = mw.ustring.lower( table.concat( parts, ':' ) )
 
                     local result = string[ fn ]( mw.ustring.lower( hardpoint[ key ] ), matcher ) ~= nil
-                    -- mw.logObject( mw.ustring.format( 'Rule <%s matches %s>, equates to %s', hardpoint[ key ], matcher, tostring( result ) ), 'evalRule' )
+                    -- mw.logObject( mw.ustring.format( 'Rule <%s matches %s>, equates to %s', hardpoint[ key ], matcher, tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
 
                     table.insert( stepVal, result )
                 else
@@ -1460,7 +1460,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                 table.insert( invalidRules, v )
             end
         else
-            -- mw.logObject( 'Is invalid ' .. rule, 'evalRule' )
+            -- mw.logObject( 'Is invalid ' .. rule, '📐 [VehicleHardpoint] evalRule' )
             invalidRule( rule, index )
         end
     end
@@ -1470,7 +1470,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
         if index == 1 then
             ruleMatches = matched
         else
-            -- mw.logObject( 'test is ' .. combination[ index - 1 ], 'evalRule' )
+            -- mw.logObject( 'test is ' .. combination[ index - 1 ], '📐 [VehicleHardpoint] evalRule' )
             if combination[ index - 1 ] == 'and' then
                 ruleMatches = ruleMatches and matched
             else
@@ -1479,7 +1479,7 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
         end
     end
 
-    -- mw.logObject( 'Final rule result is ' .. tostring( ruleMatches ), 'evalRule' )
+    -- mw.logObject( 'Final rule result is ' .. tostring( ruleMatches ), '📐 [VehicleHardpoint] evalRule' )
 
     if returnInvalid then
         return ruleMatches, invalidRules

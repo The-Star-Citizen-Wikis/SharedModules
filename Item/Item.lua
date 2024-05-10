@@ -192,7 +192,7 @@ function methodtable.setSemanticProperties( self )
 
 	runModuleFN( setData[ t( 'SMW_Type' ) ], 'addSmwProperties', { self.apiData, self.frameArgs, setData } )
 
-	mw.logObject( setData, 'SET' )
+	mw.logObject( setData, '💾 [Item] Set SMW data' )
 
 	self.setData = setData
 
@@ -236,9 +236,8 @@ function methodtable.getInfobox( self )
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
 		placeholderImage = config.placeholder_image
 	} )
-	local tabber = require( 'Module:Tabber' ).renderTabber
 
-	mw.logObject( smwData, 'infoboxSmwData' )
+	mw.logObject( smwData, '⌛ [Item] Loaded infobox SMW data' )
 
 	--- SMW Data load error
 	--- Infobox data should always have Name property
