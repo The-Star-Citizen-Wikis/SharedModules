@@ -6,6 +6,15 @@
 		"shops",
 		"parts"
 	],
+	"%hardpoint_filter": "List of hardpoint types that shall not be returned",
+	"hardpoint_filter": [
+		"SeatAccess",
+		"SeatDashboard",
+		"Seat",
+		"DockingAnimator",
+		"DoorController",
+		"Door"
+	],
 	"%smw_data": "Sets which data gets added to SMW",
 	"smw_data": [
 		{
