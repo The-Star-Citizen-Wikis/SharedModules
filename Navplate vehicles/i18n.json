@@ -29,20 +29,6 @@
 				"de": "Fahrzeug",
 				"en": "Vehicles"
 			}
-		],
-    [
-      "category_ships",
-      {
-        "de": "raumschiff",
-        "en": "ships"
-      }
-    ],
-    [
-      "category_ground_vehicles",
-      {
-        "de": "bodenfahrzeug",
-        "en": "ground vehicles"
-      }
-    ]
+		]
   ]
 }

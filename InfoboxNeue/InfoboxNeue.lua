@@ -24,22 +24,6 @@ local function t( key )
 end
 
 
---- Calls TNT with the given key
----
---- @param key string The translation key
---- @return string If the key was not found in the .tab page, the key is returned
-local function translate( key, ... )
-	local TNT = require( 'Module:Translate' ):new()
-	local success, translation = pcall( TNT.format, 'Module:InfoboxNeue/i18n.json', key or '', ... )
-
-	if not success or translation == nil then
-		return key
-	end
-
-	return translation
-end
-
-
 --- Helper function to restore underscore from space
 --- so that it does not screw up the external link wikitext syntax
 --- For some reason SMW property converts underscore into space
@@ -157,7 +141,7 @@ function methodtable.renderImage( self, filename )
 		filename = self.config.placeholderImage
 		-- Add tracking category for infoboxes using placeholder image
 		table.insert( self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_infobox_using_placeholder_image' ) )
+			string.format( '[[Category:%s]]', t( 'category_infobox_using_placeholder_image' ) )
 		)
 	end
 

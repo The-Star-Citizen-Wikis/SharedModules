@@ -277,7 +277,7 @@ function methodtable.getSmwData( self )
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
 				t( 'error_no_data_text' ),
-				t( 'error_script_error_cat' )
+				t( 'category_error_pages_with_script_errors' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -356,7 +356,7 @@ function methodtable.getInfobox( self )
 		if series == nil then return end
 		return mw.ustring.format(
 			'[[:Category:%s|%s]]',
-			translate( 'category_series', false, series ),
+			mw.ustring.format( t( 'category_series' ), series ),
 			series
 		)
 	end
@@ -792,21 +792,21 @@ function methodtable.setCategories( self )
 		pledge_cat = 'category_ground_vehicle_pledge'
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_ground_vehicle' ) )
+			string.format( '[[Category:%s]]', t( 'category_ground_vehicle' ) )
 		)
 	else
 		size_cat = 'category_ship_size'
 		pledge_cat = 'category_ship_pledge'
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_ship' ) )
+			string.format( '[[Category:%s]]', t( 'category_ship' ) )
 		)
 	end
 
 	if size ~= nil and size_cat then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( size_cat, false, size ) )
+			string.format( '[[Category:%s]]', mw.ustring.format( t( size_cat ), size ) )
 		)
 	end
 
@@ -830,7 +830,7 @@ function methodtable.setCategories( self )
 	if self.smwData[ t( 'SMW_Series' ) ] ~= nil then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_series', false, self.smwData[ t( 'SMW_Series' ) ] ) )
+			string.format( '[[Category:%s]]', mw.ustring.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
 		)
 	end
 

@@ -151,14 +151,14 @@ function p.addCategories( categories, frameArgs, smwData )
     --if smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.Barrel' then
     --    -- e.g. Category:Barrel attachments (Energy stabliizer)
     --    table.insert( categories, string.format( '%s (%s)',
-    --        translate( 'category_weaponattachment.barrel' ),
+    --        t( 'category_weaponattachment.barrel' ),
     --        translate( 'class_barrelattachmenttype' )
     --    ) )
     -- Optics attachments
     --elseif smwData[ t( 'SMW_Type' ) ] == 'WeaponAttachment.IronSight' then
     --    -- e.g. Category:Optics attachments (Telescopic)
     --    table.insert( categories, string.format( '%s (%s)',
-    --        translate( 'category_weaponattachment.ironsight' ),
+    --        t( 'category_weaponattachment.ironsight' ),
     --        translate( 'class_opticstype' )
     --    ) )
     --end

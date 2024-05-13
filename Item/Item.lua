@@ -563,9 +563,10 @@ function methodtable.setCategories( self )
 
 	--- Only set category if category_type value exists
 	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
-		local typeCategory = translate( 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) )
+		local typeCategoryKey = 'category_itemtype_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
+		local typeCategory = t( typeCategoryKey )
 
-		if typeCategory ~= nil and typeCategory ~= 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) then
+		if typeCategory ~= nil and typeCategory ~= typeCategoryKey then
 			table.insert( self.categories, typeCategory ) 
 
 			if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
@@ -592,11 +593,11 @@ function methodtable.setCategories( self )
 
 		table.insert( self.categories, manufacturer )
 	else
-		table.insert( self.categories, t( 'error_category_item_missing_manufacturer' ) )
+		table.insert( self.categories, t( 'category_error_item_missing_manufacturer' ) )
 	end
 
 	if self.smwData[ t( 'SMW_UUID' ) ] == nil then
-		table.insert( self.categories, t( 'error_category_item_missing_uuid' ) )
+		table.insert( self.categories, t( 'category_error_item_missing_uuid' ) )
 	end
 
 	runModuleFN( self.smwData[ t( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )

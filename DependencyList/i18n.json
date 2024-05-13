@@ -94,55 +94,6 @@
       }
     ],
     [
-      "category_strict_mode_modules",
-      {
-        "de": "Modul (strikt)",
-        "en": "Strict mode modules"
-      }
-    ],
-    [
-      "category_lua_based_template",
-      {
-        "de": "Lua-basierte Vorlage",
-        "en": "Lua-based templates"
-      }
-    ],
-    [
-      "category_template_invoked_modules",
-      {
-        "de": "Modul aufgerufen von Vorlagen",
-        "en": "Template invoked modules"
-      }
-    ],
-    [
-      "category_modules_required_by_modules",
-      {
-        "de": "Modul benötigt von Modulen",
-        "en": "Modules required by modules"
-      }
-    ],
-    [
-      "category_module_data",
-      {
-        "de": "Moduldaten",
-        "en": "Module data"
-      }
-    ],
-    [
-      "category_modules_using_data",
-      {
-        "de": "Modul das Daten verwendet",
-        "en": "Modules using data"
-      }
-    ],
-    [
-      "category_unused_module",
-      {
-        "de": "Unbenutztes Modul",
-        "en": "Unused modules"
-      }
-    ],
-    [
       "list_type_modules",
       {
         "de": "Module",

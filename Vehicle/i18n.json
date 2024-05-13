@@ -871,55 +871,6 @@
 			}
 		],
 		[
-			"category_series",
-			{
-				"de": "$1 (Baureihe)",
-				"en": "$1 series"
-			}
-		],
-		[
-			"category_ground_vehicle",
-			{
-				"de": "Bodenfahrzeug",
-				"en": "Ground vehicles"
-			}
-		],
-		[
-			"category_ship",
-			{
-				"de": "Raumschiff",
-				"en": "Ships"
-			}
-		],
-		[
-			"category_ship_size",
-			{
-				"de": "Raumschiff ($1)",
-				"en": "$1 ships"
-			}
-		],
-		[
-			"category_ground_vehicle_size",
-			{
-				"de": "Bodenfahrzeug ($1)",
-				"en": "$1 vehicles"
-			}
-		],
-		[
-			"category_ship_pledge",
-			{
-				"de": "Pledge Raumschiff",
-				"en": "Pledge ships"
-			}
-		],
-		[
-			"category_ground_vehicle_pledge",
-			{
-				"de": "Pledge Bodenfahrzeug",
-				"en": "Pledge vehicles"
-			}
-		],
-		[
 			"shortdesc_ground_vehicle",
 			{
 				"de": "Bodenfahrzeug",

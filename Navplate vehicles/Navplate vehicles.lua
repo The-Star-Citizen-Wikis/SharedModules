@@ -148,8 +148,8 @@ function methodtable.make( self )
 	}
 	
 	local sections = {
-		translate( 'category_ships' ),
-		translate( 'category_ground_vehicles' )
+		t( 'category_ships' ),
+		t( 'category_ground_vehicles' )
 	}
 
 	local i = 1
