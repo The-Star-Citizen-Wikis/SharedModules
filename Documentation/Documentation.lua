@@ -38,21 +38,21 @@ function p.doc( frame )
     local args = frame:getParent().args
     local page = args[1] or mw.ustring.gsub( title.fullText, '/[Dd]o[ck]u?$', '' )
     local ret, cats, ret1, ret2, ret3
-    local pageType = title.namespace == 828 and translate( 'module' ) or translate( 'template' )
+    local pageType = title.namespace == 828 and 'module' or 'template'
 
     -- subpage header
     if title.subpageText == 'doc' then
 		ret = mbox(
 			translate( 'message_subpage_title', page ),
-			translate( 'message_subpage_desc', page, pageType ),
+			translate( 'message_subpage_desc', page, translate( pageType ) ),
 			{ icon = 'WikimediaUI-Notice.svg' }
     	)
 
         if title.namespace == 10 then -- Template namespace
-            cats = '[[Category:' .. t( 'category_template_documentation' ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
         elseif title.namespace == 828 then -- Module namespace
-            cats = '[[Category:' .. t( 'category_module_documentation' ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
             ret2 = ret2 .. require('Module:Module toc').main()
         else
@@ -112,7 +112,7 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_shared_across' ), lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_shared_by_the_star_citizen_wikis' ), lang:ucfirst( pageType ) ) .. ']]' )
 		--- Interlanguage link
 		--- TODO: Make this into a for loop when there are more wikis
 		for _, code in pairs{ 'de', 'en' } do
@@ -139,7 +139,7 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_from_wikipedia' ), lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_imported_from_wikipedia' ), lang:ucfirst( pageType ) ) .. ']]' )
     end
 
     if title.namespace == 828 then
