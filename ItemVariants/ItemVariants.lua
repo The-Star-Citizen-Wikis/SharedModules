@@ -11,7 +11,6 @@ local MODULE_NAME = 'Module:ItemVariants'
 local config = mw.loadJsonData( MODULE_NAME .. '/config.json' )
 
 local i18n = require( 'Module:i18n' ):new()
-local TNT = require( 'Module:Translate' ):new()
 
 
 --- Wrapper function for Module:i18n.translate
@@ -22,15 +21,6 @@ local function t( key )
 	return i18n:translate( key )
 end
 
-
---- Wrapper function for Module:Translate.translate
----
---- @param key string The translation key
---- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
---- @return string If the key was not found in the .tab page, the key is returned
-local function translate( key, addSuffix, ... )
-    return TNT:translate( MODULE_NAME .. '/i18n.json', config, key, addSuffix, { ... } ) or key
-end
 
 --- Escape magic characters in Lua for use in regex
 --- TODO: This should be move upstream to Module:Common
@@ -163,7 +153,7 @@ function methodtable.out( self )
     local smwData = self:getSmwData( self.page )
 
     if smwData == nil then
-        local msg = mw.ustring.format( translate( 'error_no_variants_found' ), self.page )
+        local msg = mw.ustring.format( t( 'error_no_variants_found' ), self.page )
         return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
     end
 

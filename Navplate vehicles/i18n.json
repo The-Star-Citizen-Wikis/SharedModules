@@ -17,13 +17,6 @@
   },
   "data": [
     [
-			"error_no_data_text",
-			{
-				"de": "Keine SMW-Daten auf der Abfrage gefunden.",
-				"en": "SMW data not found from the query."
-			}
-		],
-    [
 			"subtitle_navplatevehicles",
 			{
 				"de": "Übersicht",

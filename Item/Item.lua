@@ -216,8 +216,8 @@ function methodtable.getSmwData( self )
     if smwData == nil or smwData[ 1 ] == nil then
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
-				translate( 'error_no_data_text' ),
-				translate( 'error_category_script_error' )
+				t( 'error_no_data_text' ),
+				t( 'error_category_script_error' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -243,8 +243,8 @@ function methodtable.getInfobox( self )
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
 		return infobox:renderInfobox( infobox:renderMessage( {
-			title = translate( 'error_no_infobox_data_title' ),
-			desc = translate( 'error_no_data_text' ),
+			title = t( 'error_no_infobox_data_title' ),
+			desc = t( 'error_no_data_text' ),
 		} ) )
 	end
 
@@ -475,8 +475,8 @@ function methodtable.getDescription( self )
 	--- Error: No SMW Data
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_description_title' ),
-			translate( 'error_no_data_text' ),
+			t( 'error_no_description_title' ),
+			t( 'error_no_data_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -484,8 +484,8 @@ function methodtable.getDescription( self )
 	--- Error: No description SMW property
 	if smwData[ t( 'SMW_Description' ) ] == nil then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_description_title' ),
-			translate( 'error_no_description_text' ),
+			t( 'error_no_description_title' ),
+			t( 'error_no_description_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -500,8 +500,8 @@ function methodtable.getAvailability( self )
 	--- Error: No SMW Data
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_availability_title' ),
-			translate( 'error_no_data_text' ),
+			t( 'error_no_availability_title' ),
+			t( 'error_no_data_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -592,11 +592,11 @@ function methodtable.setCategories( self )
 
 		table.insert( self.categories, manufacturer )
 	else
-		table.insert( self.categories, translate( 'error_category_item_missing_manufacturer' ) )
+		table.insert( self.categories, t( 'error_category_item_missing_manufacturer' ) )
 	end
 
 	if self.smwData[ t( 'SMW_UUID' ) ] == nil then
-		table.insert( self.categories, translate( 'error_category_item_missing_uuid' ) )
+		table.insert( self.categories, t( 'error_category_item_missing_uuid' ) )
 	end
 
 	runModuleFN( self.smwData[ t( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )

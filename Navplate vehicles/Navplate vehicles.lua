@@ -158,7 +158,7 @@ function methodtable.make( self )
 		if data == nil then
 			local hatnote = require( 'Module:Hatnote' )._hatnote
 			return hatnote(
-				translate( 'error_no_data_text' ),
+				t( 'error_no_data_text' ),
 				{ icon = 'WikimediaUI-Error.svg' }
 			)
 		end

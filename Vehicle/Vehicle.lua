@@ -276,8 +276,8 @@ function methodtable.getSmwData( self )
     if smwData == nil or smwData[ 1 ] == nil then
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
-				translate( 'error_no_data_text' ),
-				translate( 'error_script_error_cat' )
+				t( 'error_no_data_text' ),
+				t( 'error_script_error_cat' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -304,8 +304,8 @@ function methodtable.getInfobox( self )
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
 		return infobox:renderInfobox( infobox:renderMessage( {
-			title = translate( 'error_no_data_title' ),
-			desc = translate( 'error_no_data_text' ),
+			title = t( 'error_no_data_title' ),
+			desc = t( 'error_no_data_text' ),
 		} ) )
 	end
 

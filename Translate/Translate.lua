@@ -238,7 +238,7 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
 
     -- Temporary fallback function
 	local prefix = string.match( key, '([^_]*)' )
-	if prefix == 'SMW' or prefix == 'label' then
+	if prefix == 'SMW' or prefix == 'label' or prefix == 'error' then
 		return i18n:translate( key )
 	end
 
