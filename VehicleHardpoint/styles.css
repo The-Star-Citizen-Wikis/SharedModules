@@ -133,9 +133,27 @@
 }
 
 .template-component__title {
+    display: flex;
+    gap: 0 var(--space-xxs);
+    flex-wrap: wrap;
+    word-break: break-word;
+    align-items: center;
+    gap: var( --space-xxs );
     color: var( --color-base--emphasized );
     font-weight: var( --font-size-medium );
     font-size: var( --font-size-small );
+}
+
+.template-component__title-subtext {
+    color: var( --color-base--subtle );
+}
+
+.template-component__title-subtext:before {
+    content: '(';
+}
+
+.template-component__title-subtext:after {
+    content: ')';
 }
 
 /* New links on component title is usually a false alert */
