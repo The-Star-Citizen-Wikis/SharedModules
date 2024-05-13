@@ -1,0 +1,12 @@
+{
+	"message_error_no_availability_title": "No availability data found.",
+	"message_error_no_data_text": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
+	"message_error_no_data_title": "ERROR - Semantic MediaWiki (CODE 16008)",
+	"message_error_no_description_text": "Keine Beschreibung für diesen Gegenstand in den Spieldaten gefunden.",
+	"message_error_no_description_title": "Keine Beschreibung gefunden.",
+	"message_error_no_infobox_data_title": "Keine Infoboxdaten gefunden",
+	"message_error_no_itemports_found": "Keine Ports an Item '''%s''' gefunden.",
+	"message_error_no_text": "Kein Text angegeben.",
+	"message_error_no_variants_found": "Keine Varianten für Item '''%s''' gefunden.",
+	"message_error_not_found": "Kein %s gefunden für die Eingabe %s"
+}

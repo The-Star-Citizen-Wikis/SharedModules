@@ -153,7 +153,7 @@ function methodtable.out( self )
     local smwData = self:getSmwData( self.page )
 
     if smwData == nil then
-        local msg = mw.ustring.format( t( 'error_no_variants_found' ), self.page )
+        local msg = mw.ustring.format( t( 'message_error_no_variants_found' ), self.page )
         return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
     end
 

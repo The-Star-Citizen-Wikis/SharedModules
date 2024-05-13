@@ -131,7 +131,7 @@ local function fromTemplate( frame, type, returnKey )
     local s = args[1]
 
     if not s then
-        return mw.ustring.format( '<span class="error">%s</span>', t( 'error_no_text' ) )
+        return mw.ustring.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
     end
 
     local instance = Manufacturer:new()
@@ -141,7 +141,7 @@ local function fromTemplate( frame, type, returnKey )
         if returnKey then
             return s
         else
-            return '<span class="error">' .. mw.ustring.format( t( 'error_not_found' ), type, s ) .. '</span>'
+            return '<span class="error">' .. mw.ustring.format( t( 'message_error_not_found' ), type, s ) .. '</span>'
         end
     end
 
