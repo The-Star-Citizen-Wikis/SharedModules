@@ -1,53 +1,53 @@
-.template-itemVariants {
+.template-vehicleVariants {
 	margin-top: var( --space-md );
 	display: grid;
-	grid-template-columns: repeat( auto-fill, minmax( 384px,1fr ) );
+	grid-template-columns: repeat( auto-fill, minmax( 256px,1fr ) );
 	gap: var( --space-xs );
 }
 
-.template-itemVariant {
+.template-vehicleVariant {
 	position: relative;
     border: 1px solid var( --border-color-base );
     border-radius: var( --border-radius--medium );
     overflow: hidden;
 }
 
-.template-itemVariant.template-itemVariant--selected {
+.template-vehicleVariant.template-vehicleVariant--selected {
 	order: -1;
 	background: var( --color-surface-2 );
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):hover {
+.template-vehicleVariant:not(.template-vehicleVariant--selected):hover {
 	background: var( --background-color-quiet--hover );
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):active {
+.template-vehicleVariant:not(.template-vehicleVariant--selected):active {
 	background: var( --background-color-quiet--active );
 }
 
-.template-itemVariant-fakelink {
+.template-vehicleVariant-fakelink {
 	position: absolute;
     inset: 0;
     opacity: 0;
 	z-index: 2;
 }
 
-.template-itemVariant-fakelink a {
+.template-vehicleVariant-fakelink a {
 	display: block;
     height: 100%;
 }
 
-.template-itemVariant-fakelink:hover + .template-itemVariant-image img {
+.template-vehicleVariant-fakelink:hover + .template-vehicleVariant-image img {
 	transform: scale( 1.1 );
 }
 
-.template-itemVariant-image {
+.template-vehicleVariant-image {
 	position: relative;
 	z-index: 0;
     height: 160px;
 }
 
-.template-itemVariant-image img {
+.template-vehicleVariant-image img {
 	height: 100%;
     width: 100%;
     object-fit: cover;
@@ -55,7 +55,7 @@
     transition-property: transform;
 }
 
-.template-itemVariant-image::before {
+.template-vehicleVariant-image::before {
 	position: absolute;
     content: "";
     inset: 0px;
@@ -64,14 +64,22 @@
 	z-index: 1;
 }
 
-.template-itemVariant-title {
+.template-vehicleVariant-text {
 	position: absolute;
 	bottom: var( --space-sm );
 	left: var( --space-md );
 	right: var( --space-md );
+    line-height: var( --line-height-sm );
+	overflow-wrap: break-word;
+}
+
+.template-vehicleVariant-title {
 	color: var( --color-base--emphasized );
 	font-size: var( --font-size-small );
     font-weight: var( --font-weight-medium );
-    line-height: var( --line-height-sm );
-	overflow-wrap: break-word;
+}
+
+.template-vehicleVariant-subtitle {
+	color: var( --color-base--subtle );
+	font-size: var( --font-size-x-small );
 }
