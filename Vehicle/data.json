@@ -359,6 +359,9 @@
 		{
 			"SMW_InsuranceExpediteCost": "API_insurance.expedite_cost",
 			"type": "number"
+		},
+		{
+			"SMW_QueryImage": "ARG_QueryImage"
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",

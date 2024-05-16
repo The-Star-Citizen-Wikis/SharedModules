@@ -68,6 +68,25 @@
 			"Defender.jpg"
 		],
 		[
+			"ARG_QueryImage",
+			{
+				"de": "queryimage",
+				"en": "queryimage"
+			},
+			"wiki-file-name",
+			{
+				"en": "Query image",
+				"de": "Query image"
+			},
+			false,
+			false,
+			{
+				"en": "The file name of the alternative image of the ship/vehicle used by other templates",
+				"de": "The file name of the alternative image of the ship/vehicle used by other templates"
+			},
+			"Defender.jpg"
+		],
+		[
 			"ARG_Name",
 			{
 				"de": "Name",

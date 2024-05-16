@@ -45,6 +45,7 @@ local function makeSmwQueryObject( page )
         '?#-=page',
         '?' .. smwName .. '#-=name',
         '?' .. t( 'SMW_Role' ) .. '#-=role',
+        '?' .. t( 'SMW_QueryImage' ) .. '#-=queryImage',
         '?Page Image#-=image',
         'sort=',
         'order=asc',
@@ -97,12 +98,19 @@ function methodtable.out( self )
                 variantHtml:addClass( 'template-vehicleVariant--selected' )
             end
 
+            local image
+            if variant.queryImage then
+                image = string.format( 'File:%s', variant.queryImage )
+            else
+                image = variant.image or placeholderImage
+            end
+
             variantHtml:tag( 'div' )
                 :addClass( 'template-vehicleVariant-fakelink' )
                 :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-vehicleVariant-image' )
-                :wikitext( mw.ustring.format( '[[%s|400px|link=]]', variant.image or placeholderImage ) )
+                :wikitext( mw.ustring.format( '[[%s|400px|link=]]', image ) )
 
             local variantTextHtml = mw.html.create( 'div' )
                 :addClass( 'template-vehicleVariant-text' )
