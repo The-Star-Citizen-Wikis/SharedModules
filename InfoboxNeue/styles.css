@@ -146,6 +146,19 @@
     );
 }
 
+.infobox__image::after,
+.infobox__image ~ .infobox__indicator,
+.infobox__image ~ .infobox__header {
+    transition: var( --transition-hover );
+    transition-property: opacity;
+}
+
+.infobox__image:hover::after,
+.infobox__image:hover ~ .infobox__indicator,
+.infobox__image:hover ~ .infobox__header {
+    opacity: 0;
+}
+
 .infobox__image img {
     /* Prevent overflow */
     max-width: 100%;
