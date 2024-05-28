@@ -149,7 +149,7 @@
 .infobox__image::after,
 .infobox__image ~ .infobox__indicator,
 .infobox__image ~ .infobox__header {
-    transition: var( --transition-hover );
+    transition: var(--transition-hover);
     transition-property: opacity;
 }
 
@@ -613,6 +613,7 @@
 .infobox__section--metadata .infobox__sectionContent {
     padding: var(--space-md);
     background: var(--color-surface-1);
+    line-height: var(--line-height-xs);
     gap: var(--space-xxs);
 }
 
@@ -623,6 +624,7 @@
 
 .infobox__section--metadata .infobox__data {
     word-break: break-word;
+    font-family: var(--font-family-monospace);
 }
 
 /* Tabber styles */
