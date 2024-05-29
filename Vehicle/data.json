@@ -10,7 +10,6 @@
 	"hardpoint_filter": [
 		"SeatAccess",
 		"SeatDashboard",
-		"Seat",
 		"DockingAnimator",
 		"DoorController",
 		"Door"
