@@ -172,8 +172,10 @@
 
 .infobox__image-upload {
     position: absolute;
-    bottom: 0;
+    bottom: var(--space-md);
+    left: 0;
     right: 0;
+    z-index: 1;
 }
 
 .infobox__image-upload > a {
@@ -181,10 +183,11 @@
     margin: var(--space-md);
     padding: var(--space-xs) var(--space-sm);
     border-radius: var(--border-radius--small);
-    background: var(--color-surface-2);
+    background: var(--color-surface-3);
     color: var(--color-base--emphasized);
     font-weight: var(--font-weight-medium);
     text-decoration: none;
+    justify-content: center;
     align-items: center;
     gap: var(--space-xs);
 }

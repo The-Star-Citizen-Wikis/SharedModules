@@ -596,6 +596,13 @@
 			}
 		],
 		[
+			"type_radar.midrangeradar",
+			{
+				"de": "Radar",
+				"en": "Radar"
+			}
+		],
+		[
 			"type_salvagehead",
 			{
 				"de": "Bergungskopf",

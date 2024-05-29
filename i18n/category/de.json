@@ -74,6 +74,7 @@
 	"category_itemtype_powerplant.power": "Generator",
 	"category_itemtype_quantumdrive": "Quantenantrieb",
 	"category_itemtype_quantuminterdictiongenerator": "Quantum Enforcement Device",
+	"category_itemtype_radar.midrangeradar": "Radar",
 	"category_itemtype_salvagehead": "Bergungskopf",
 	"category_itemtype_salvagemodifier": "Bergungsmodifikator",
 	"category_itemtype_salvagemodifier.salvagemodifier_tractorbeam": "Traktorstrahl",
