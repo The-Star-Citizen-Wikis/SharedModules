@@ -132,7 +132,7 @@
     "SMW_ModifierExtractionEfficiency": "模块效率修正",
     "SMW_ModifierExtractionLaserPower": "模块激光功率修正",
     "SMW_ModifierFireRecoilStrength": "后坐力修正",
-    "SMW_ModifierInertMaterials": "惰性材料修正",
+    "SMW_ModifierInertMaterials": "惰性材料加成",
     "SMW_ModifierLaserInstability": "采矿激光不稳定性修正",
     "SMW_ModifierMiningLaserPower": "采矿激光功率修正",
     "SMW_ModifierOptimalChargeRate": "理想充能速率修正",
