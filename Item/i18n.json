@@ -1044,20 +1044,6 @@
 			}
 		],
 		[
-			"shortdesc_grade",
-			{
-				"de": "$1 Grad $2",
-				"en": "$1 grade $2"
-			}
-		],
-		[
-			"shortdesc_manufactured_by",
-			{
-				"de": "$1 hergestellt von $2",
-				"en": "$1 manufactured by $2"
-			}
-		],
-		[
 			"actions_find_item_title",
 			{
 				"de": "Finde das Item im Spiel",

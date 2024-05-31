@@ -890,34 +890,6 @@
 			}
 		],
 		[
-			"shortdesc_ground_vehicle",
-			{
-				"de": "Bodenfahrzeug",
-				"en": "ground vehicle"
-			}
-		],
-		[
-			"shortdesc_ship",
-			{
-				"de": "Raumschiff",
-				"en": "ship"
-			}
-		],
-		[
-			"shortdesc_single_seat",
-			{
-				"de": "Einzelsitz",
-				"en": "single-seat"
-			}
-		],
-		[
-			"shortdesc_manufactured_by",
-			{
-				"de": "$1 hergestellt von $2",
-				"en": "$1 manufactured by $2"
-			}
-		],
-		[
 			"actions_find_item_title",
 			{
 				"de": "Finde dieses Item im Spiel",
