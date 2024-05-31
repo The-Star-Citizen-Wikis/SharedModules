@@ -1,7 +1,7 @@
 {
-	"shortdesc_grade": "$1 grade $2",
+	"shortdesc_grade": "%s grade %s",
 	"shortdesc_ground_vehicle": "ground vehicle",
-	"shortdesc_manufactured_by": "$1 manufactured by $2",
+	"shortdesc_manufactured_by": "%s manufactured by %s",
 	"shortdesc_ship": "ship",
 	"shortdesc_single_seat": "single-seat"
 }

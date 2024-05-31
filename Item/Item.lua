@@ -632,7 +632,7 @@ function methodtable.setShortDescription( self )
 	end
 
 	if self.smwData[ t( 'SMW_Grade' ) ] ~= nil then
-		shortdesc = t( 'shortdesc_grade', false, self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
+		shortdesc = mw.ustring.format( t( 'shortdesc_grade' ), self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
 	end
 
 	if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
@@ -649,7 +649,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = t( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
+		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	--- Submodule override

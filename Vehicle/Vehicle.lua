@@ -892,7 +892,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = t( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
+		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	shortdesc = lang:ucfirst( shortdesc )
