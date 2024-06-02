@@ -517,6 +517,8 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 
 		html
 			:addClass( 'infobox__snippet mw-collapsible-toggle' )
+			:attr( 'role', 'button' )
+			:attr( 'aria-owns', 'infobox__content' )
 			:tag( 'div' )
 				:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
 				:done()
@@ -538,6 +540,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		:wikitext( renderSnippet() )
 		:tag( 'div' )
 			:addClass( 'infobox__content mw-collapsible-content' )
+			:attr( 'id', 'infobox__content' )
 			:wikitext( innerHtml )
 
 	return tostring( html ) .. mw.getCurrentFrame():extensionTag{
