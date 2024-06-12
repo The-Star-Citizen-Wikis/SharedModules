@@ -128,42 +128,6 @@
         "de": "'''$1''' lädt Styles aus [[$2/styles.css]].",
         "en": "'''$1''' loads styles from [[$2/styles.css]]."
       }
-    ],
-
-    [
-      "category_template_documentation",
-      {
-        "de": "Vorlagendokumentation",
-        "en": "Template documentation"
-      }
-    ],
-    [
-      "category_module_documentation",
-      {
-        "de": "Moduldokumentation",
-        "en": "Module documentation"
-      }
-    ],
-    [
-      "category_module",
-      {
-        "de": "Modul",
-        "en": "Modules"
-      }
-    ],
-    [
-      "category_shared_across",
-      {
-        "de": "$1 genutzt von den Star Citizen Wikis",
-        "en": "$1s shared by the Star Citizen Wikis"
-      }
-    ],
-    [
-      "category_from_wikipedia",
-      {
-        "de": "$1 (Wikipedia)",
-        "en": "$1s imported from Wikipedia"
-      }
     ]
   ]
 }

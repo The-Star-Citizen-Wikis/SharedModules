@@ -3664,13 +3664,6 @@
 			}
 		],
 		[
-			"error_no_itemports_found",
-			{
-				"en": "No item ports found on '''%s'''.",
-				"de": "Keine Ports an Item '''%s''' gefunden."
-			}
-		],
-		[
 			"msg_no_item_equipped",
 			{
 				"en": "No item equipped",

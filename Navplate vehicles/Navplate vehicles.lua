@@ -148,8 +148,8 @@ function methodtable.make( self )
 	}
 	
 	local sections = {
-		translate( 'category_ships' ),
-		translate( 'category_ground_vehicles' )
+		t( 'category_ships' ),
+		t( 'category_ground_vehicles' )
 	}
 
 	local i = 1
@@ -158,7 +158,7 @@ function methodtable.make( self )
 		if data == nil then
 			local hatnote = require( 'Module:Hatnote' )._hatnote
 			return hatnote(
-				translate( 'error_no_data_text' ),
+				t( 'message_error_no_data_text' ),
 				{ icon = 'WikimediaUI-Error.svg' }
 			)
 		end

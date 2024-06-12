@@ -1,20 +1,162 @@
 .infobox {
-    margin-bottom: var( --space-md );
+    margin-bottom: var(--space-md);
     width: 100%;
     max-width: 400px;
-    border-radius: var( --border-radius--medium );
-    background-color: var( --color-surface-2 );
-    font-size: var( --font-size-small );
-    line-height: var( --line-height-sm );
+    border-radius: var(--border-radius--medium);
+    background-color: var(--color-surface-2);
+    font-size: var(--font-size-small);
+    line-height: var(--line-height-sm);
 }
 
 .infobox.mw-collapsed {
     background-color: transparent;
-    box-shadow: inset 0 0 0 1px var( --border-color-base );
+    box-shadow: inset 0 0 0 1px var(--border-color-base);
+}
+
+.infobox__content {
+    position: relative;
 }
 
 .infobox__image {
     position: relative;
+    margin-bottom: -2rem;
+}
+
+.infobox__image::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    height: 50%;
+    /* Corresponds to --color-surface-2 */
+    background: linear-gradient(
+        to top,
+        hsl(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l)
+            )
+            0%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.987
+            )
+            8.1%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.951
+            )
+            15.5%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.896
+            )
+            22.5%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.825
+            )
+            29%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.741
+            )
+            35.3%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.648
+            )
+            41.2%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.55
+            )
+            47.1%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.45
+            )
+            52.9%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.352
+            )
+            58.8%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.259
+            )
+            64.7%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.175
+            )
+            71%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.104
+            )
+            77.5%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.049
+            )
+            84.5%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0.013
+            )
+            91.9%,
+        hsla(
+                var(--color-primary__h),
+                var(--color-surface-2__s),
+                var(--color-surface-2__l),
+                0
+            )
+            100%
+    );
+}
+
+.infobox__image::after,
+.infobox__image ~ .infobox__indicator,
+.infobox__image ~ .infobox__header {
+    transition: var(--transition-hover);
+    transition-property: opacity;
+}
+
+.infobox__image:hover::after,
+.infobox__image:hover ~ .infobox__indicator,
+.infobox__image:hover ~ .infobox__header {
+    opacity: 0;
 }
 
 .infobox__image img {
@@ -30,21 +172,24 @@
 
 .infobox__image-upload {
     position: absolute;
-    bottom: 0;
+    bottom: var(--space-md);
+    left: 0;
     right: 0;
+    z-index: 1;
 }
 
 .infobox__image-upload > a {
     display: flex;
-    margin: var( --space-md );
-    padding: var( --space-xs ) var( --space-sm );
-    border-radius: var( --border-radius--small );
-    background: var( --color-surface-2 );
-    color: var( --color-base--emphasized );
-    font-weight: var( --font-weight-medium );
+    margin: var(--space-md);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius--small);
+    background: var(--color-surface-3);
+    color: var(--color-base--emphasized);
+    font-weight: var(--font-weight-medium);
     text-decoration: none;
+    justify-content: center;
     align-items: center;
-    gap: var( --space-xs );
+    gap: var(--space-xs);
 }
 
 .infobox__image-upload > a .citizen-ui-icon {
@@ -53,31 +198,35 @@
 }
 
 .infobox__image-upload > a:hover {
-    background: var( --color-surface-2--hover );
+    background: var(--color-surface-2--hover);
 }
 
 .infobox__image-upload > a:active {
-    background: var( --color-surface-2--active );
+    background: var(--color-surface-2--active);
+}
+
+.infobox__indicator,
+.infobox__header {
+    /* Needed to stay on top of image fade */
+    position: relative;
 }
 
 .infobox__snippet,
-.infobox__indicator,
 .infobox__header,
 .infobox__sectionHeader,
 .infobox__sectionContent {
-    padding-left: var( --space-md );
-    padding-right: var( --space-md );
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
 }
 
-.infobox__snippet,
-.infobox__indicator {
-    padding-top: var( --space-sm );
-    padding-bottom: var( --space-sm );
+.infobox__snippet {
+    padding-top: var(--space-sm);
+    padding-bottom: var(--space-sm);
 }
 
 .infobox__snippet {
     display: flex;
-    gap: var( --space-xs );
+    gap: var(--space-xs);
     align-items: center;
     white-space: nowrap;
 }
@@ -85,102 +234,135 @@
 .infobox__snippet.mw-collapsible-toggle {
     /* Disable default style */
     float: none;
-    border-top-left-radius: var( --border-radius--medium );
-    border-top-right-radius: var( --border-radius--medium );
+    border-top-left-radius: var(--border-radius--medium);
+    border-top-right-radius: var(--border-radius--medium);
 }
 
 .infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed {
-    border-bottom-left-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
+    border-bottom-left-radius: var(--border-radius--medium);
+    border-bottom-right-radius: var(--border-radius--medium);
 }
 
 .infobox__snippet.mw-collapsible-toggle:hover {
-    background-color: var( --background-color-quiet--hover );
+    background-color: var(--background-color-quiet--hover);
 }
 
 /* Might as well steal from skin */
 .infobox__snippet.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
-    width: var( --font-size-small );
-    height: var( --font-size-small );
+    width: var(--font-size-small);
+    height: var(--font-size-small);
     flex-shrink: 0;
-    transition: var( --transition-menu );
+    transition: var(--transition-menu);
     transition-property: transform;
 }
 
 /* Might as well steal from skin */
-.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed .mw-ui-icon-wikimedia-collapse {
-    transform: rotate( 180deg );
+.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed
+    .mw-ui-icon-wikimedia-collapse {
+    transform: rotate(180deg);
 }
 
 .infobox__snippet .infobox__desc {
     max-width: 100%;
     text-overflow: ellipsis;
     overflow: hidden;
-    font-size: var( --font-size-small );
+    font-size: var(--font-size-small);
 }
 
 .infobox__indicator {
-    background-color: var( --color-surface-3 );
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    justify-content: flex-end;
+    margin: var(--space-xs);
+    gap: var(--space-xxs);
 }
 
-.infobox__indicator.infobox__indicator--red {
-    /* color-destructive */
-    background-color: rgba( 221, 51, 51, 0.1 );
-    color: rgba( 221, 51, 51, 1 );
+.infobox__indicator .infobox__data {
+    font-size: var(--font-size-x-small);
+    padding: var(--space-xxs) var(--space-xs);
+    background: var(--color-surface-2);
+    color: var(--color-base);
+    border-radius: var(--border-radius--small);
+    font-weight: var(--font-weight-normal);
+    letter-spacing: 0.025em;
+    line-height: var(--line-height-xs);
 }
 
-.infobox__indicator.infobox__indicator--yellow {
-    /* color-warning */
-    background-color: rgba( 255, 204, 51, 0.1 );
-    color: rgba( 255, 204, 51, 1 );
+.infobox__indicator .infobox__desc {
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background: var(--color-surface-1);
+    padding: var(--space-xs) var(--space-sm);
+    border-radius: var(--border-radius--small);
+    box-shadow: var(--box-shadow-dialog);
+    visibility: hidden;
 }
 
-.infobox__indicator.infobox__indicator--green {
-    /* color-success */
-    background-color: rgba( 0, 175, 137, 0.1 );
-    color: rgba( 0, 175, 137, 1 );
+.infobox__indicator .infobox__desc:hover,
+.infobox__indicator .infobox__data:hover + .infobox__desc {
+    visibility: visible;
+}
+
+/* TODO: Add support for multiple badges */
+.infobox__indicator.infobox__indicator--red .infobox__data {
+    background-color: var(--color-destructive);
+    color: #fff;
+}
+
+.infobox__indicator.infobox__indicator--yellow .infobox__data {
+    background-color: var(--color-warning);
+    color: #fff;
+}
+
+.infobox__indicator.infobox__indicator--green .infobox__data {
+    background-color: var(--color-success);
+    color: #fff;
 }
 
 .infobox__header,
 .infobox__sectionHeader {
-    line-height: var( --line-height-xs );
+    line-height: var(--line-height-xs);
 }
 
 .infobox__header {
-    margin-top: var( --space-lg );
-    margin-bottom: var( --space-md );
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-lg);
     display: flex;
-    gap: var( --space-sm );
+    gap: var(--space-sm);
 }
 
 .infobox__section,
 .infobox__sectionHeader,
 .infobox__sectionContent {
-    margin-top: var( --space-md );
+    margin-top: var(--space-md);
 }
 
 .infobox__title,
 .infobox__sectionTitle {
-    color: var( --color-base--emphasized );
-    font-weight: var( --font-weight-semibold );
+    color: var(--color-base--emphasized);
+    font-weight: var(--font-weight-semibold);
 }
 
 .infobox__title {
-    font-size: var( --font-size-x-large );
+    font-size: var(--font-size-x-large);
 }
 
 .infobox__sectionSubtitle {
     margin-top: 2px;
 }
 
-.infobox__section + .infobox__section:not( .infobox__section--noborder ) {
-    border-top: 1px solid var( --border-color-base );
+.infobox__section + .infobox__section:not(.infobox__section--noborder) {
+    border-top: 1px solid var(--border-color-base);
 }
 
 /* Use padding to prevent margin collapse when there is no footer */
 .infobox__content > .infobox__section:last-child {
     margin-bottom: 0;
-    padding-bottom: var( --space-md );
+    padding-bottom: var(--space-md);
 }
 
 .infobox__sectionTitle {
@@ -188,40 +370,40 @@
 }
 
 .infobox__sectionSubtitle {
-    color: var( --color-base--subtle );
+    color: var(--color-base--subtle);
 }
 
 .infobox__sectionContent {
     display: grid;
-    gap: var( --space-sm );
+    gap: var(--space-sm);
 }
 
 .infobox__item {
     display: grid;
-    gap: 2px var( --space-xs );
+    gap: 2px var(--space-xs);
     grid-auto-rows: max-content;
 }
 
 .infobox__item--hasIcon {
     display: flex;
     align-items: center;
-    column-gap: var( --space-sm );
+    column-gap: var(--space-sm);
 }
 
 .infobox__badge {
     place-content: center;
     text-align: center;
-    box-shadow: inset 0 0 0 1px var( --border-color-base );
-    border-radius: var( --border-radius--medium );
-    padding: var( --space-xs ) var( --space-sm );
-    font-weight: var( --font-weight-medium );
-    background-color: var( --color-surface-1 );
+    box-shadow: inset 0 0 0 1px var(--border-color-base);
+    border-radius: var(--border-radius--medium);
+    padding: var(--space-xs) var(--space-sm);
+    font-weight: var(--font-weight-medium);
+    background-color: var(--color-surface-1);
 }
 
 .infobox__desc,
 .infobox__label {
-    color: var( --color-base--subtle );
-    font-size: var( --font-size-x-small );
+    color: var(--color-base--subtle);
+    font-size: var(--font-size-x-small);
 }
 
 .infobox__label {
@@ -230,43 +412,43 @@
 
 .infobox__grid--row .infobox__label,
 .infobox__grid--row .infobox__desc {
-    font-size: var( --font-size-small );
+    font-size: var(--font-size-small);
 }
 
 .infobox__data {
-    font-weight: var( --font-weight-medium );
+    font-weight: var(--font-weight-medium);
 }
 
 .infobox__icon img {
-    filter: var( --filter-invert );
-    opacity: var( --opacity-icon-base );
+    filter: var(--filter-invert);
+    opacity: var(--opacity-icon-base);
 }
 
 .infobox__itemButton {
     position: relative;
-    padding: var( --space-sm ) var( --space-md );
-    line-height: var( --line-height-sm );
+    padding: var(--space-sm) var(--space-md);
+    line-height: var(--line-height-sm);
     gap: 0;
 }
 
 .infobox__itemButton:hover {
-    background-color: var( --background-color-quiet--hover );
+    background-color: var(--background-color-quiet--hover);
 }
 
-.infobox__itemButton:hover .infobox__itemButtonArrow  {
-    transform: rotate( 90deg ) translateY( -4px );
+.infobox__itemButton:hover .infobox__itemButtonArrow {
+    transform: rotate(90deg) translateY(-4px);
 }
 
 .infobox__itemButton:active {
-    background-color: var( --background-color-quiet--active );
+    background-color: var(--background-color-quiet--active);
 }
 
-.infobox__itemButton  .infobox__text {
+.infobox__itemButton .infobox__text {
     flex-grow: 1;
 }
 
-.infobox__itemButton  .infobox__data {
-    color: var( --color-base--emphasized );
+.infobox__itemButton .infobox__data {
+    color: var(--color-base--emphasized);
 }
 
 .infobox__itemButtonLink a {
@@ -276,7 +458,7 @@
 }
 
 .infobox__itemButton .infobox__icon {
-    margin-right: var( --space-sm );
+    margin-right: var(--space-sm);
 }
 
 .infobox__itemButton .infobox__icon img {
@@ -287,45 +469,45 @@
 .infobox__itemButtonArrow {
     width: 1rem;
     height: 1rem;
-    transition: var( --transition-hover );
-    transform: rotate( 90deg );
+    transition: var(--transition-hover);
+    transform: rotate(90deg);
 }
 
 .infobox__footer {
-    margin-top: var( --space-lg );
-    border-top: 1px solid var( --border-color-base );
-    background-color: var( --color-surface-1 );
-    border-bottom-left-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
+    margin-top: var(--space-lg);
+    border-top: 1px solid var(--border-color-base);
+    background-color: var(--color-surface-1);
+    border-bottom-left-radius: var(--border-radius--medium);
+    border-bottom-right-radius: var(--border-radius--medium);
 }
 
 .infobox__footer > .infobox__section {
     margin: 0;
-    padding: var( --space-md );
+    padding: var(--space-md);
     display: grid;
-    gap: var( --space-xxs );
+    gap: var(--space-xxs);
 }
 
 .infobox__button {
     position: relative;
-    border-bottom-left-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
-    padding: var( --space-sm ) var( --space-md );
-    background-color: var( --color-primary );
+    border-bottom-left-radius: var(--border-radius--medium);
+    border-bottom-right-radius: var(--border-radius--medium);
+    padding: var(--space-sm) var(--space-md);
+    background-color: var(--color-primary);
     cursor: pointer;
 }
 
 .infobox__button:hover {
-    background-color: var( --color-primary--hover );
+    background-color: var(--color-primary--hover);
 }
 
 .infobox__buttonLabel {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: var( --space-xs );
+    gap: var(--space-xs);
     color: #fff;
-    font-weight: var( --font-weight-medium );
+    font-weight: var(--font-weight-medium);
 }
 
 /* Fake button with link element */
@@ -349,14 +531,14 @@
     left: 0;
     right: 0;
     z-index: -1;
-    background-color: var( --color-surface-1 );
-    border-radius: var( --border-radius--medium );
-    box-shadow: var( --box-shadow-dialog );
+    background-color: var(--color-surface-1);
+    border-radius: var(--border-radius--medium);
+    box-shadow: var(--box-shadow-dialog);
     opacity: 0;
-    transition: var( --transition-menu );
+    transition: var(--transition-menu);
     transition-property: opacity, transform;
     visibility: hidden;
-    transform: translateY( -20px );
+    transform: translateY(-20px);
 }
 
 .infobox__button:hover > .infobox__buttonCard {
@@ -368,9 +550,9 @@
 }
 
 .infobox__linkButton a {
-    padding: var( --space-xxs ) var( --space-xs );
+    padding: var(--space-xxs) var(--space-xs);
     display: block;
-    border-radius: var( --border-radius--small );
+    border-radius: var(--border-radius--small);
     text-decoration: none !important;
 }
 
@@ -380,19 +562,19 @@
 }
 
 .infobox__linkButton a:hover {
-    background-color: var( --background-color-quiet--hover );
+    background-color: var(--background-color-quiet--hover);
 }
 
 .infobox__linkButton a:active {
-    background-color: var( --background-color-quiet--active );
+    background-color: var(--background-color-quiet--active);
 }
 
 .infobox__section--linkButtons > .infobox__sectionContent {
-    margin-bottom: var( --space-md );
+    margin-bottom: var(--space-md);
 }
 
 .infobox__section--linkButtons .infobox__data {
-    margin-top: var( --space-xxs );
+    margin-top: var(--space-xxs);
     margin-left: -8px; /* negative space-xs */
     margin-right: -8px; /* negative space-xs */
     display: flex;
@@ -401,7 +583,7 @@
 }
 
 .infobox__buttonLabel img[src$=".svg"] {
-    filter: invert( 1 );
+    filter: invert(1);
 }
 
 .infobox.mw-collapsible:before {
@@ -409,7 +591,7 @@
     content: none !important;
 }
 
-@media only screen and ( max-width: 639px ) {
+@media only screen and (max-width: 639px) {
     .infobox {
         margin-right: auto;
         margin-left: auto;
@@ -432,23 +614,25 @@
 }
 
 .infobox__section--metadata .infobox__sectionContent {
-    padding: var( --space-md );
-    background: var( --color-surface-1 );
-    gap: var( --space-xxs );
+    padding: var(--space-md);
+    background: var(--color-surface-1);
+    line-height: var(--line-height-xs);
+    gap: var(--space-xxs);
 }
 
 .infobox__section--metadata .infobox__label,
 .infobox__section--metadata .infobox__data {
-    font-size: var( --font-size-x-small );
+    font-size: var(--font-size-x-small);
 }
 
 .infobox__section--metadata .infobox__data {
     word-break: break-word;
+    font-family: var(--font-family-monospace);
 }
 
 /* Tabber styles */
 .infobox__section--tabber > .infobox__sectionHeader {
-    margin-bottom: var( --space-xxs );
+    margin-bottom: var(--space-xxs);
 }
 
 .infobox__section--tabber > .infobox__sectionContent {
@@ -463,19 +647,19 @@
 }
 
 .infobox__section--tabber .tabber .infobox__section {
-    margin-top: var( --space-sm );
+    margin-top: var(--space-sm);
     margin-bottom: 0;
 }
 
 /* Increase top margin for nested tabber section */
 .infobox__section--tabber .infobox__section.infobox__section--tabber {
-    margin-top: var( --space-xl );
+    margin-top: var(--space-xl);
 }
 
 /* Match padding in the rest of the infobox */
 .infobox__section--tabber .tabber__tab {
-    padding-left: var( --space-md );
-    padding-right: var( --space-md );
+    padding-left: var(--space-md);
+    padding-right: var(--space-md);
 }
 
 /* CSS grid utility classes */
@@ -484,23 +668,23 @@
 }
 
 .infobox__grid--cols-2 {
-    grid-template-columns: repeat( 2, minmax( 0, 1fr ) );
+    grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-3 {
-    grid-template-columns: repeat( 3, minmax( 0, 1fr ) );
+    grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-4 {
-    grid-template-columns: repeat( 4, minmax( 0, 1fr ) );
+    grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-5 {
-    grid-template-columns: repeat( 5, minmax( 0, 1fr ) );
+    grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-6 {
-    grid-template-columns: repeat( 6, minmax( 0, 1fr ) );
+    grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .infobox__grid--col-span-2 {

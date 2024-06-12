@@ -115,20 +115,6 @@
 			"https://robertsspaceindustries.com/galactapedia/article/0Gxpleqwqo-nine-tails"
 		],
 		[
-			"error_no_infobox_data_title",
-			{
-				"de": "Keine Infoboxdaten gefunden",
-				"en": "No infobox data found"
-			}
-		],
-		[
-			"error_no_data_text",
-			{
-				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
-				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
-			}
-		],
-		[
 			"none",
 			{
 				"de": "Keine",

@@ -6,6 +6,14 @@
 		"shops",
 		"parts"
 	],
+	"%hardpoint_filter": "List of hardpoint types that shall not be returned",
+	"hardpoint_filter": [
+		"SeatAccess",
+		"SeatDashboard",
+		"DockingAnimator",
+		"DoorController",
+		"Door"
+	],
 	"%smw_data": "Sets which data gets added to SMW",
 	"smw_data": [
 		{
@@ -350,6 +358,9 @@
 		{
 			"SMW_InsuranceExpediteCost": "API_insurance.expedite_cost",
 			"type": "number"
+		},
+		{
+			"SMW_QueryImage": "ARG_QueryImage"
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",

@@ -639,13 +639,6 @@
       },
       false,
       true
-    ],
-    [
-      "category_infobox_using_placeholder_image",
-      {
-        "de": "Infoboxen mit Platzhalterbild",
-        "en": "Infoboxes using placeholder image"
-      }
     ]
   ]
 }

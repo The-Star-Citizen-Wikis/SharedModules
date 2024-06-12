@@ -12,7 +12,6 @@ local MODULE_NAME = 'Module:Manufacturer'
 local libraryUtil = require( 'libraryUtil' )
 local checkType = libraryUtil.checkType
 local i18n = require( 'Module:i18n' ):new()
-local TNT = require( 'Module:Translate' ):new()
 
 local mArguments
 
@@ -25,15 +24,6 @@ local cache = {}
 --- @return string|nil
 local function t( key )
 	return i18n:translate( key, { ['returnKey'] = false } )
-end
-
-
---- Wrapper function for Module:Translate.translate
----
---- @param key string The translation key
---- @return string If the key was not found in the .tab page, the key is returned
-local function translate( key, ... )
-	return TNT:translate( MODULE_NAME .. '/i18n.json', {}, key, nil, {...} ) or key
 end
 
 
@@ -141,7 +131,7 @@ local function fromTemplate( frame, type, returnKey )
     local s = args[1]
 
     if not s then
-        return mw.ustring.format( '<span class="error">%s</span>', translate( 'error_no_text' ) )
+        return mw.ustring.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
     end
 
     local instance = Manufacturer:new()
@@ -151,7 +141,7 @@ local function fromTemplate( frame, type, returnKey )
         if returnKey then
             return s
         else
-            return mw.ustring.format( '<span class="error">%s</span>', translate( 'error_not_found', type, s ) )
+            return '<span class="error">' .. mw.ustring.format( t( 'message_error_not_found' ), type, s ) .. '</span>'
         end
     end
 

@@ -180,9 +180,15 @@ function methodtable.getApiDataForCurrentPage( self )
 		config.name_suffixes
     )
 
+    local hardpointFilter = {}
+    for _, filter in pairs( data.hardpoint_filter or {} ) do
+        table.insert( hardpointFilter, '!' .. filter )
+    end
+
 	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
 		include = data.includes,
-		locale = config.api_locale
+		locale = config.api_locale,
+        [ 'filter[hardpoints]' ] = table.concat( hardpointFilter, ',' )
 	} ) )
 
 	if not success or api.checkResponseStructure( json, true, false ) == false then return end
@@ -270,8 +276,8 @@ function methodtable.getSmwData( self )
     if smwData == nil or smwData[ 1 ] == nil then
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
-				translate( 'error_no_data_text' ),
-				translate( 'error_script_error_cat' )
+				t( 'message_error_no_data_text' ),
+				t( 'category_error_pages_with_script_errors' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -298,8 +304,8 @@ function methodtable.getInfobox( self )
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
 		return infobox:renderInfobox( infobox:renderMessage( {
-			title = translate( 'error_no_data_title' ),
-			desc = translate( 'error_no_data_text' ),
+			title = t( 'message_error_no_data_title' ),
+			desc = t( 'message_error_no_data_text' ),
 		} ) )
 	end
 
@@ -350,7 +356,7 @@ function methodtable.getInfobox( self )
 		if series == nil then return end
 		return mw.ustring.format(
 			'[[:Category:%s|%s]]',
-			translate( 'category_series', false, series ),
+			mw.ustring.format( t( 'category_series' ), series ),
 			series
 		)
 	end
@@ -786,21 +792,21 @@ function methodtable.setCategories( self )
 		pledge_cat = 'category_ground_vehicle_pledge'
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_ground_vehicle' ) )
+			string.format( '[[Category:%s]]', t( 'category_ground_vehicle' ) )
 		)
 	else
 		size_cat = 'category_ship_size'
 		pledge_cat = 'category_ship_pledge'
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_ship' ) )
+			string.format( '[[Category:%s]]', t( 'category_ship' ) )
 		)
 	end
 
 	if size ~= nil and size_cat then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( size_cat, false, size ) )
+			string.format( '[[Category:%s]]', mw.ustring.format( t( size_cat ), size ) )
 		)
 	end
 
@@ -824,7 +830,7 @@ function methodtable.setCategories( self )
 	if self.smwData[ t( 'SMW_Series' ) ] ~= nil then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', translate( 'category_series', false, self.smwData[ t( 'SMW_Series' ) ] ) )
+			string.format( '[[Category:%s]]', mw.ustring.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
 		)
 	end
 
@@ -843,9 +849,9 @@ function methodtable.setShortDescription( self )
 	local isGroundVehicle = isGroundVehicle( self.smwData )
 
 	if isGroundVehicle then
-		vehicleType = translate( 'shortdesc_ground_vehicle' )
+		vehicleType = t( 'shortdesc_ground_vehicle' )
 	else
-		vehicleType = translate( 'shortdesc_ship' )
+		vehicleType = t( 'shortdesc_ship' )
 	end
 
 	if self.smwData[ t( 'SMW_Role' ) ] ~= nil then
@@ -874,7 +880,7 @@ function methodtable.setShortDescription( self )
 		local vehicleSize = self.smwData[ t( 'SMW_ShipMatrixSize' ) ]
 		--- Special handling for single-seat ship
 		if self.smwData[ t( 'SMW_MaximumCrew' ) ] ~= nil and self.smwData[ t( 'SMW_MaximumCrew' ) ] == 1 then
-			vehicleSize = translate( 'shortdesc_single_seat' )
+			vehicleSize = t( 'shortdesc_single_seat' )
 		end
 
 		shortdesc = mw.ustring.format( '%s %s', vehicleSize, shortdesc )
@@ -886,7 +892,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
+		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	shortdesc = lang:ucfirst( shortdesc )

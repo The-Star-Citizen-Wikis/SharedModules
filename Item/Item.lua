@@ -216,8 +216,8 @@ function methodtable.getSmwData( self )
     if smwData == nil or smwData[ 1 ] == nil then
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
-				translate( 'error_no_data_text' ),
-				translate( 'error_category_script_error' )
+				t( 'message_error_no_data_text' ),
+				t( 'message_error_category_script_error' )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
@@ -243,8 +243,8 @@ function methodtable.getInfobox( self )
 	--- Infobox data should always have Name property
 	if type( smwData ) ~= 'table' then
 		return infobox:renderInfobox( infobox:renderMessage( {
-			title = translate( 'error_no_infobox_data_title' ),
-			desc = translate( 'error_no_data_text' ),
+			title = t( 'message_error_no_infobox_data_title' ),
+			desc = t( 'message_error_no_data_text' ),
 		} ) )
 	end
 
@@ -475,8 +475,8 @@ function methodtable.getDescription( self )
 	--- Error: No SMW Data
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_description_title' ),
-			translate( 'error_no_data_text' ),
+			t( 'message_error_no_description_title' ),
+			t( 'message_error_no_data_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -484,8 +484,8 @@ function methodtable.getDescription( self )
 	--- Error: No description SMW property
 	if smwData[ t( 'SMW_Description' ) ] == nil then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_description_title' ),
-			translate( 'error_no_description_text' ),
+			t( 'message_error_no_description_title' ),
+			t( 'message_error_no_description_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -500,8 +500,8 @@ function methodtable.getAvailability( self )
 	--- Error: No SMW Data
 	if type( smwData ) ~= 'table' then
 		return require( 'Module:Mbox' )._mbox(
-			translate( 'error_no_availability_title' ),
-			translate( 'error_no_data_text' ),
+			t( 'message_error_no_availability_title' ),
+			t( 'message_error_no_data_text' ),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
 	end
@@ -563,9 +563,10 @@ function methodtable.setCategories( self )
 
 	--- Only set category if category_type value exists
 	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
-		local typeCategory = translate( 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) )
+		local typeCategoryKey = 'category_itemtype_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
+		local typeCategory = t( typeCategoryKey )
 
-		if typeCategory ~= nil and typeCategory ~= 'category_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] ) then
+		if typeCategory ~= nil and typeCategory ~= typeCategoryKey then
 			table.insert( self.categories, typeCategory ) 
 
 			if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
@@ -592,11 +593,11 @@ function methodtable.setCategories( self )
 
 		table.insert( self.categories, manufacturer )
 	else
-		table.insert( self.categories, translate( 'error_category_item_missing_manufacturer' ) )
+		table.insert( self.categories, t( 'category_error_item_missing_manufacturer' ) )
 	end
 
 	if self.smwData[ t( 'SMW_UUID' ) ] == nil then
-		table.insert( self.categories, translate( 'error_category_item_missing_uuid' ) )
+		table.insert( self.categories, t( 'category_error_item_missing_uuid' ) )
 	end
 
 	runModuleFN( self.smwData[ t( 'SMW_Type' ) ], 'addCategories', { self.categories, self.frameArgs, self.smwData } )
@@ -631,7 +632,7 @@ function methodtable.setShortDescription( self )
 	end
 
 	if self.smwData[ t( 'SMW_Grade' ) ] ~= nil then
-		shortdesc = translate( 'shortdesc_grade', false, self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
+		shortdesc = mw.ustring.format( t( 'shortdesc_grade' ), self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
 	end
 
 	if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
@@ -648,7 +649,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = translate( 'shortdesc_manufactured_by', false, shortdesc, mfuname )
+		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	--- Submodule override

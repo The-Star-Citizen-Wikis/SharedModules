@@ -113,6 +113,13 @@
       "type": "OffensiveDevices",
       "subtype": "EMP"
     },
+    "EscapePod": {
+      "class": "Facilities",
+      "matches": [
+        "hardpoint_escape_pod.*"
+      ],
+      "type": "EscapePod"
+    },
     "ExternalFuelTank": {
       "class": "Cargo",
       "matches": [],
@@ -471,6 +478,7 @@
     "WeaponRack",
     "Bed",
     "Container",
+    "EscapePod",
     "FuelRefinery",
     "Battery",
     "Computer",
@@ -491,6 +499,7 @@
     "DefensiveDevices": "",
     "DockingCollar": "",
     "DriveUnit": "",
+    "EscapePod": "",
     "FillerStation": "",
     "FireExtinguisher": "",
     "FuelNozzle": "",

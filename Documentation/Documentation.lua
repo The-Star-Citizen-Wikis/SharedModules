@@ -2,9 +2,19 @@
 local dependencyList = require( 'Module:DependencyList' )
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local mbox = require( 'Module:Mbox' )._mbox
+local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local lang = mw.getContentLanguage()
 local p = {}
+
+
+--- Wrapper function for Module:i18n.translate
+---
+--- @param key string The translation key
+--- @return string If the key was not found, the key is returned
+local function t( key )
+	return i18n:translate( key )
+end
 
 
 --- FIXME: This should go to somewhere else, like Module:Common
@@ -28,21 +38,21 @@ function p.doc( frame )
     local args = frame:getParent().args
     local page = args[1] or mw.ustring.gsub( title.fullText, '/[Dd]o[ck]u?$', '' )
     local ret, cats, ret1, ret2, ret3
-    local pageType = title.namespace == 828 and translate( 'module' ) or translate( 'template' )
+    local pageType = title.namespace == 828 and 'module' or 'template'
 
     -- subpage header
     if title.subpageText == 'doc' then
 		ret = mbox(
 			translate( 'message_subpage_title', page ),
-			translate( 'message_subpage_desc', page, pageType ),
+			translate( 'message_subpage_desc', page, translate( pageType ) ),
 			{ icon = 'WikimediaUI-Notice.svg' }
     	)
 
         if title.namespace == 10 then -- Template namespace
-            cats = '[[Category:' .. translate( 'category_template_documentation' ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
         elseif title.namespace == 828 then -- Module namespace
-            cats = '[[Category:' .. translate( 'category_module_documentation' ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
             ret2 = ret2 .. require('Module:Module toc').main()
         else
@@ -102,7 +112,7 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. translate( 'category_shared_across', lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_shared_by_the_star_citizen_wikis' ), lang:ucfirst( pageType ) ) .. ']]' )
 		--- Interlanguage link
 		--- TODO: Make this into a for loop when there are more wikis
 		for _, code in pairs{ 'de', 'en' } do
@@ -129,7 +139,7 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. translate( 'category_from_wikipedia', lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_imported_from_wikipedia' ), lang:ucfirst( pageType ) ) .. ']]' )
     end
 
     if title.namespace == 828 then
@@ -173,7 +183,7 @@ function p.doc( frame )
 		    )
 		end
 
-		table.insert( ret3, mw.ustring.format( '[[Category:%s]]', translate( 'category_module' ) ) )
+		table.insert( ret3, mw.ustring.format( '[[Category:%s]]', t( 'category_module' ) ) )
     end
 
     --- Dependency list

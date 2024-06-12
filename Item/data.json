@@ -231,6 +231,7 @@
 				"PowerPlant.Power",
 				"QuantumDrive",
 				"QuantumInterdictionGenerator",
+				"Radar.MidRangeRadar",
 				"SalvageHead",
 				"SalvageModifier",
 				"SalvageModifier.SalvageModifier_TractorBeam",

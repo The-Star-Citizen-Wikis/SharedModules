@@ -1104,6 +1104,10 @@ function methodtable.makeOutput( self, groupedData )
             else
                 name = mw.ustring.format( '[[%s]]', item.name )
             end
+
+            if item.class_name and item.name == item.sub_type then
+                name = mw.ustring.format( '%s<span class="template-component__title-subtext">%s</span>', name, item.class_name )
+            end
         end
 
         local nodeItem = mw.html.create( 'div' )

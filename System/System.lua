@@ -177,8 +177,8 @@ function System.main( frame )
 	mega[ 'code' ] = args[ 'code' ]
 	if mega[ 'name' ] == nil and mega[ 'code' ] == nil then
 		return infobox:renderInfobox( infobox:renderMessage( { 
-			title = t( 'error_title' ),
-			desc = t( 'error_invalid_args_desc' )
+			title = t( 'message_error_title' ),
+			desc = t( 'message_error_invalid_args_desc' )
 		} ) )
 	end
 	

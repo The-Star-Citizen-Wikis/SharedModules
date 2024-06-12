@@ -68,6 +68,25 @@
 			"Defender.jpg"
 		],
 		[
+			"ARG_QueryImage",
+			{
+				"de": "queryimage",
+				"en": "queryimage"
+			},
+			"wiki-file-name",
+			{
+				"en": "Query image",
+				"de": "Query image"
+			},
+			false,
+			false,
+			{
+				"en": "The file name of the alternative image of the ship/vehicle used by other templates",
+				"de": "The file name of the alternative image of the ship/vehicle used by other templates"
+			},
+			"Defender.jpg"
+		],
+		[
 			"ARG_Name",
 			{
 				"de": "Name",
@@ -871,83 +890,6 @@
 			}
 		],
 		[
-			"category_series",
-			{
-				"de": "$1 (Baureihe)",
-				"en": "$1 series"
-			}
-		],
-		[
-			"category_ground_vehicle",
-			{
-				"de": "Bodenfahrzeug",
-				"en": "Ground vehicles"
-			}
-		],
-		[
-			"category_ship",
-			{
-				"de": "Raumschiff",
-				"en": "Ships"
-			}
-		],
-		[
-			"category_ship_size",
-			{
-				"de": "Raumschiff ($1)",
-				"en": "$1 ships"
-			}
-		],
-		[
-			"category_ground_vehicle_size",
-			{
-				"de": "Bodenfahrzeug ($1)",
-				"en": "$1 vehicles"
-			}
-		],
-		[
-			"category_ship_pledge",
-			{
-				"de": "Pledge Raumschiff",
-				"en": "Pledge ships"
-			}
-		],
-		[
-			"category_ground_vehicle_pledge",
-			{
-				"de": "Pledge Bodenfahrzeug",
-				"en": "Pledge vehicles"
-			}
-		],
-		[
-			"shortdesc_ground_vehicle",
-			{
-				"de": "Bodenfahrzeug",
-				"en": "ground vehicle"
-			}
-		],
-		[
-			"shortdesc_ship",
-			{
-				"de": "Raumschiff",
-				"en": "ship"
-			}
-		],
-		[
-			"shortdesc_single_seat",
-			{
-				"de": "Einzelsitz",
-				"en": "single-seat"
-			}
-		],
-		[
-			"shortdesc_manufactured_by",
-			{
-				"de": "$1 hergestellt von $2",
-				"en": "$1 manufactured by $2"
-			}
-		],
-		[
 			"actions_find_item_title",
 			{
 				"de": "Finde dieses Item im Spiel",
@@ -973,27 +915,6 @@
 			{
 				"de": "Kauf- und Mietinformationen findest du jetzt im [[{{FULLPAGENAMEE}}#Kauf-_&_Mietpreise_im_PU|Kauf- & Mietpreise im PU]]-Abschnitt auf der Seite.",
 				"en": "Buy and rent information are now at the [[{{FULLPAGENAMEE}}#Universe_availability|universe availability]] section on the page."
-			}
-		],
-		[
-			"error_no_data_title",
-			{
-				"de": "ERROR - Semantic MediaWiki (CODE 16008)",
-				"en": "ERROR - Semantic MediaWiki (CODE 16008)"
-			}
-		],
-		[
-			"error_no_data_text",
-			{
-				"de": "Keine SMW-Daten auf der Seite gefunden. Wenn du registriert bist, kann eine leere Bearbeitung oder ein Zurücksetzen der Seite das Problem beheben.",
-				"en": "SMW data not found on page. If you are registered, an empty edit or a page purge might be able to fix this."
-			}
-		],
-		[
-			"error_script_error_cat",
-			{
-				"de": "Seiten mit Skriptfehlern",
-				"en": "Pages with script errors"
 			}
 		],
 		[
