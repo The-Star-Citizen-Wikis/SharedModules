@@ -315,7 +315,7 @@
 
 .infobox__indicator.infobox__indicator--yellow .infobox__data {
     background-color: var(--color-warning);
-    color: #fff;
+    color: #000;
 }
 
 .infobox__indicator.infobox__indicator--green .infobox__data {
