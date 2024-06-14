@@ -228,5 +228,6 @@
     "SMW_ZeroToMaximumSpeedTime": "静止至满速加速时间",
     "SMW_ZeroToScmSpeedTime": "静止至战斗速度时间",
     "SMW_ZeroingRange": "归零范围",
-    "SMW_ZeroingRangeIncrement": "归零范围增量"
+    "SMW_ZeroingRangeIncrement": "归零范围增量",
+    "SMW_QueryImage": "查询图像"
 }
