@@ -890,34 +890,6 @@
 			}
 		],
 		[
-			"actions_find_item_title",
-			{
-				"de": "Finde dieses Item im Spiel",
-				"en": "Find item in game"
-			}
-		],
-		[
-			"actions_find_item_text",
-			{
-				"de": "Unterstützt durch Universal Item Finder",
-				"en": "Powered by Universal Item Finder"
-			}
-		],
-		[
-			"msg_ingame_prices_title",
-			{
-				"de": "In-Game Preise sind umgezogen",
-				"en": "Persistent Universe data has moved"
-			}
-		],
-		[
-			"msg_ingame_prices_content",
-			{
-				"de": "Kauf- und Mietinformationen findest du jetzt im [[{{FULLPAGENAMEE}}#Kauf-_&_Mietpreise_im_PU|Kauf- & Mietpreise im PU]]-Abschnitt auf der Seite.",
-				"en": "Buy and rent information are now at the [[{{FULLPAGENAMEE}}#Universe_availability|universe availability]] section on the page."
-			}
-		],
-		[
 			"none",
 			{
 				"de": "Keine",

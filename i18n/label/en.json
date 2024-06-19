@@ -180,6 +180,8 @@
 	"label_YawRate": "Yaw rate",
 	"label_ZeroingRange": "Zeroing range",
 	"label_ZeroingRangeIncrement": "Zeroing range increment",
+	"label_actions_find_item_text": "Powered by Universal Item Finder",
+	"label_actions_find_item_title": "Find item in game",
 	"label_quick_facts": "Quick facts",
 	"label_upload_image": "Upload image"
 }

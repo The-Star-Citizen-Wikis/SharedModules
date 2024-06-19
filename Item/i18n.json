@@ -1044,20 +1044,6 @@
 			}
 		],
 		[
-			"actions_find_item_title",
-			{
-				"de": "Finde das Item im Spiel",
-				"en": "Find item in game"
-			}
-		],
-		[
-			"actions_find_item_text",
-			{
-				"de": "Unterstützt durch Universal Item Finder",
-				"en": "Powered by Universal Item Finder"
-			}
-		],
-		[
 			"none",
 			{
 				"de": "Keine",

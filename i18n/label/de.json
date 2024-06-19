@@ -180,6 +180,8 @@
 	"label_YawRate": "Gieren",
 	"label_ZeroingRange": "Nullstellung Reichweite",
 	"label_ZeroingRangeIncrement": "Nullstellung Schrittweite",
+	"label_actions_find_item_text": "Unterstützt durch Universal Item Finder",
+	"label_actions_find_item_title": "Finde dieses Item im Spiel",
 	"label_quick_facts": "Zusammenfassung",
 	"label_upload_image": "Bild hochladen"
 }

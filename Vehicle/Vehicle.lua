@@ -732,8 +732,8 @@ function methodtable.getInfobox( self )
 			content = {
 				infobox:renderItem( {
 					icon = 'WikimediaUI-Search.svg',
-					data = translate( 'actions_find_item_title' ),
-					desc = translate( 'actions_find_item_text' ),
+					data = translate( 'label_actions_find_item_title' ),
+					desc = t( 'label_actions_find_item_text' ),
 					-- FIXME: Make this configurable?
 					link = 'https://finder.cstone.space/search/' .. smwData[ t( 'SMW_UUID' ) ]
 				} )
