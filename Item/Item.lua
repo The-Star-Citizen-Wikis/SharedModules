@@ -263,9 +263,9 @@ function methodtable.getInfobox( self )
 	local function getType()
 		if smwData[ t( 'SMW_Type' ) ] == nil then return end
 
-		local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( smwData[ t( 'SMW_Type' ) ] ) ) )
+		local itemType = t( mw.ustring.format( 'label_itemtype_%s', mw.ustring.lower( smwData[ t( 'SMW_Type' ) ] ) ) )
 
-		if mw.ustring.find( itemType, 'type_' ) then
+		if mw.ustring.find( itemType, 'label_itemtype_' ) then
 			itemType = smwData[ t( 'SMW_Type' ) ]
 		end
 
@@ -614,9 +614,9 @@ function methodtable.setShortDescription( self )
 			-- TODO: Localize subtype
 			itemType = self.smwData[ t( 'SMW_Subtype' ) ]
 		else
-			local itemTypeKey = 'type_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
-			if translate( itemTypeKey ) ~= nil and translate( itemTypeKey ) ~= itemTypeKey then
-				itemType = translate( itemTypeKey )
+			local itemTypeKey = 'label_itemtype_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
+			if t( itemTypeKey ) ~= nil and t( itemTypeKey ) ~= itemTypeKey then
+				itemType = t( itemTypeKey )
 			end
 		end
 		itemType = mw.ustring.lower( itemType )
