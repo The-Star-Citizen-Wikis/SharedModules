@@ -1,0 +1,12 @@
+{
+	"message_error_no_availability_title": "사용가능한 데이터를 찾을 수 없습니다.",
+	"message_error_no_data_text": "페이지에서 SMW 데이터를 찾을 수 없습니다. 등록되어 있는 경우 빈 편집이나 페이지 삭제를 통해 이 문제를 해결할 수 있습니다.",
+	"message_error_no_data_title": "오류 - Semantic MediaWiki(CODE 16008)",
+	"message_error_no_description_text": "게임 데이터에서 이 항목에 대한 설명을 찾을 수 없습니다.",
+	"message_error_no_description_title": "설명을 찾을 수 없습니다.",
+	"message_error_no_infobox_data_title": "infobox 데이터를 찾을 수 없습니다",
+	"message_error_no_itemports_found": "항목 포트를 찾을 수 없습니다. '''%s'''.",
+	"message_error_no_text": "텍스트를 지정하지 않았습니다.",
+	"message_error_no_variants_found": "변종 데이터를 검색하지 못했습니다. '''%s'''.",
+	"message_error_not_found": "%s 을 찾을 수 없습니다. %s."
+}
