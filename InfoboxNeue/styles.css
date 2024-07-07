@@ -355,8 +355,8 @@
     margin-top: 2px;
 }
 
-.infobox__section + .infobox__section:not(.infobox__section--noborder) {
-    border-top: 1px solid var(--border-color-base);
+.infobox__section + .infobox__section {
+    margin-top: var(--space-xl);
 }
 
 /* Use padding to prevent margin collapse when there is no footer */
@@ -366,7 +366,17 @@
 }
 
 .infobox__sectionTitle {
-    font-size: 1rem;
+    font-size: var(--font-size-medium);
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+}
+
+.infobox__sectionTitle:after {
+    content: "";
+    height: 1px;
+    flex-grow: 1;
+    background: var(--border-color-base);
 }
 
 .infobox__sectionSubtitle {
@@ -656,10 +666,18 @@
     margin-top: var(--space-xl);
 }
 
+.infobox__section--tabber .tabber__header {
+    margin-left: var(--space-xs);
+    margin-right: var(--space-xs);
+    box-shadow: none;
+}
+
 /* Match padding in the rest of the infobox */
 .infobox__section--tabber .tabber__tab {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+    margin-left: var(--space-xs);
+    margin-right: var(--space-xs);
+    padding-left: 0;
+    padding-right: 0;
 }
 
 /* CSS grid utility classes */
