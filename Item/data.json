@@ -153,6 +153,11 @@
 		{
 			"label": "label_Galactapedia",
 			"attribute": "SMW_GalactapediaUrl"
+		},
+		{
+			"label": "label_IssueCouncil",
+			"format": "https://issue-council.robertsspaceindustries.com/projects/STAR-CITIZEN/issues?search=%s&limit=50&sort=reproduction&statuses=confirmed,open,underinvestigation",
+			"data": "SMW_Name"
 		}
 	],
 	"%extension_modules": "List of modules that can extend item data",

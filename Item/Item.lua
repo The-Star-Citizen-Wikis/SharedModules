@@ -309,7 +309,7 @@ function methodtable.getInfobox( self )
 				if query ~= nil then
 					if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
 						query = mw.ustring.lower( query )
-					elseif site.data == 'SMW_ShipMatrixName' then
+					else
 						query = mw.uri.encode( query, 'PATH' )
 					end
 
