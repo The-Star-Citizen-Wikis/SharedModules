@@ -544,12 +544,10 @@ function methodtable.getInfobox( self )
 		return tabber( tabberData )
 	end
 
-	--- Other sites
-	--- TODO: Refactor with community sites
-	local function getOfficialSites()
+	local function getSites( sitesData )
 		local links = {}
 
-		for _, site in ipairs( data.official_sites ) do
+		for _, site in ipairs( sitesData ) do
 			if site.attribute then
 				local query = smwData[ translate( site.attribute ) ]
 
@@ -569,6 +567,11 @@ function methodtable.getInfobox( self )
 						query = mw.uri.encode( query, 'PATH' )
 					end
 
+					-- TODO: This is no ideal, we should make this more generic and reusuable
+					if site.label == 'FleetYards' then
+						query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
+					end
+
 					table.insert( links, infobox:renderLinkButton( {
 						label = t( site.label ),
 						link = mw.ustring.format( site.format, query )
@@ -579,34 +582,6 @@ function methodtable.getInfobox( self )
 
 		return links
 	end
-
-	local function getCommunitySites()
-		local links = {}
-
-		for _, site in ipairs( data.community_sites ) do
-			local query = smwData[ translate( site.data ) ]
-
-			if query ~= nil then
-				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-					query = mw.ustring.lower( query )
-				elseif site.data == 'SMW_ShipMatrixName' then
-					query = mw.uri.encode( query, 'PATH' )
-				end
-
-				if site.label == 'FleetYards' then
-					query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
-				end
-
-				table.insert( links, infobox:renderLinkButton( {
-					label = site.label,
-					link = mw.ustring.format( site.format, query )
-				} ) )
-			end
-		end
-
-		return links
-	end
-
 
 	local image = self.frameArgs[ translate( 'ARG_Image' ) ] or self.frameArgs[ 'image' ] or smwData[ 'image' ]
 	infobox:renderImage( image )
@@ -770,11 +745,11 @@ function methodtable.getInfobox( self )
 				content = {
 					infobox:renderItem( {
 						label = t( 'label_OfficialSites' ),
-						data = table.concat( getOfficialSites(), '' )
+						data = table.concat( getSites( data.official_sites ), '' )
 					} ),
 					infobox:renderItem( {
 						label = t( 'label_CommunitySites' ),
-						data = table.concat( getCommunitySites(), '' )
+						data = table.concat( getSites( data.community_sites ), '' )
 					} ),
 				},
 				class = 'infobox__section--linkButtons',
