@@ -545,17 +545,35 @@ function methodtable.getInfobox( self )
 	end
 
 	--- Other sites
+	--- TODO: Refactor with community sites
 	local function getOfficialSites()
 		local links = {}
 
 		for _, site in ipairs( data.official_sites ) do
-			local query = smwData[ translate( site.attribute ) ]
+			if site.attribute then
+				local query = smwData[ translate( site.attribute ) ]
 
-			if query ~= nil then
-				table.insert( links, infobox:renderLinkButton( {
-					label = translate( site.label ),
-					link = query
-				} ) )
+				if query ~= nil then
+					table.insert( links, infobox:renderLinkButton( {
+						label = t( site.label ),
+						link = query
+					} ) )
+				end
+			else
+				local query = smwData[ translate( site.data ) ]
+
+				if query ~= nil then
+					if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
+						query = mw.ustring.lower( query )
+					elseif site.data == 'SMW_ShipMatrixName' then
+						query = mw.uri.encode( query, 'PATH' )
+					end
+
+					table.insert( links, infobox:renderLinkButton( {
+						label = t( site.label ),
+						link = mw.ustring.format( site.format, query )
+					} ) )
+				end
 			end
 		end
 
@@ -732,7 +750,7 @@ function methodtable.getInfobox( self )
 			content = {
 				infobox:renderItem( {
 					icon = 'WikimediaUI-Search.svg',
-					data = translate( 'label_actions_find_item_title' ),
+					data = t( 'label_actions_find_item_title' ),
 					desc = t( 'label_actions_find_item_text' ),
 					-- FIXME: Make this configurable?
 					link = 'https://finder.cstone.space/search/' .. smwData[ t( 'SMW_UUID' ) ]

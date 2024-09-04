@@ -434,6 +434,11 @@
 		{
 			"label": "label_QA",
 			"attribute": "SMW_QAndAUrl"
+		},
+		{
+			"label": "label_IssueCouncil",
+			"format": "https://issue-council.robertsspaceindustries.com/projects/STAR-CITIZEN/issues?search=%s&limit=50&sort=reproduction&statuses=confirmed,open,underinvestigation",
+			"data": "SMW_ShipMatrixName"
 		}
 	]
 }
