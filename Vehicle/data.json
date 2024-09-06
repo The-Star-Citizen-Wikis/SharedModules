@@ -440,5 +440,37 @@
 			"format": "https://issue-council.robertsspaceindustries.com/projects/STAR-CITIZEN/issues?search=%s&limit=50&sort=reproduction&statuses=confirmed,open,underinvestigation",
 			"data": "SMW_Name"
 		}
+	],
+	"productionstates": [
+		{
+			"key": "flight_ready",
+			"name": "FlightReady",
+			"color": "green"
+		},
+		{
+			"key": "drive_ready",
+			"name": "DriveReady",
+			"color": "green"
+		},
+		{
+			"key": "active_production",
+			"name": "ActiveProduction",
+			"color": "yellow"
+		},
+		{
+			"key": "active_for_squadron-42",
+			"name": "ActiveForSquadron42",
+			"color": "yellow"
+		},
+		{
+			"key": "long_term_production",
+			"name": "LongTermProduction",
+			"color": "yellow"
+		},
+		{
+			"key": "in_concept",
+			"name": "InConcept",
+			"color": "red"
+		}
 	]
 }

@@ -62,7 +62,7 @@
 	"label_FuelDrainRate": "Drain rate",
 	"label_FuelFillRate": "Fill rate",
 	"label_Galactapedia": "Galactapedia",
-	"label_Health": "Health", 
+	"label_Health": "Health",
 	"label_Height": "Height",
 	"label_Hull": "Hull",
 	"label_HydrationEfficacyIndex": "HEI",
@@ -275,6 +275,11 @@
 	"label_itemtype_weaponpersonal.large": "Shouldered weapon",
 	"label_itemtype_weaponpersonal.medium": "Stocked weapon",
 	"label_itemtype_weaponpersonal.small": "Sidearm weapon",
+	"label_productionstate_active_for_squadron_42": "Active for Squadron 42",
+	"label_productionstate_active_production": "Active production",
+	"label_productionstate_flight_ready": "Flight ready",
+	"label_productionstate_in_concept": "In concept",
+	"label_productionstate_long_term_production": "Long term production",
 	"label_quick_facts": "Quick facts",
 	"label_upload_image": "Upload image"
 }

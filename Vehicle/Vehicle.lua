@@ -298,6 +298,7 @@ function methodtable.getInfobox( self )
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
 		placeholderImage = config.placeholder_image
 	} )
+	local floatingui = require( 'Module:FloatingUI' ).render
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
 	--- SMW Data load error
@@ -309,17 +310,22 @@ function methodtable.getInfobox( self )
 		} ) )
 	end
 
-	local function getIndicatorClass()
+	local function getIndicator()
 		local state = smwData[ t( 'SMW_ProductionState' ) ]
 		if state == nil then return end
 
-		local classMap = config.productionstate_map
+		local stateData = data.productionstates
+		local indicator = {
+			data = floatingui( smwData[ t( 'SMW_ProductionState' ) ], smwData[ t( 'SMW_ProductionStateDesc' ) ] )
+		}
 
-		for _, map in pairs( classMap ) do
-			if mw.ustring.match( state, translate( map.name ) ) ~= nil then
-				return 'infobox__indicator--' .. map.color
+		for _, map in pairs( stateData ) do
+			if mw.ustring.match( state, t( 'label_productionstate_' .. map.key ) ) ~= nil then
+				indicator['class'] = 'infobox__indicator--' .. map.color
 			end
 		end
+
+		return indicator;
 	end
 
 	local function getManufacturer()
@@ -586,11 +592,7 @@ function methodtable.getInfobox( self )
 	local image = self.frameArgs[ translate( 'ARG_Image' ) ] or self.frameArgs[ 'image' ] or smwData[ 'image' ]
 	infobox:renderImage( image )
 
-	infobox:renderIndicator( {
-		data = smwData[ t( 'SMW_ProductionState' ) ],
-		desc = smwData[ t( 'SMW_ProductionStateDesc' ) ],
-		class = getIndicatorClass()
-	} )
+	infobox:renderIndicator( getIndicator() )
 	infobox:renderHeader( {
 		title = smwData[ t( 'SMW_Name' ) ],
 		--- e.g. Aegis Dynamics (AEGS)

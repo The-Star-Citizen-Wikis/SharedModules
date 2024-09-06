@@ -274,6 +274,11 @@
 	"label_itemtype_weaponpersonal.large": "Geschulterte Waffe",
 	"label_itemtype_weaponpersonal.medium": "Gewehr",
 	"label_itemtype_weaponpersonal.small": "Seitenwaffe",
+	"label_productionstate_active_for_squadron_42": "Aktiv für Squadron 42",
+	"label_productionstate_active_production": "Aktive Produktion",
+	"label_productionstate_flight_ready": "Flugbereit",
+	"label_productionstate_in_concept": "Im Konzept",
+	"label_productionstate_long_term_production": "Langzeit Produktion",
 	"label_quick_facts": "Zusammenfassung",
 	"label_upload_image": "Bild hochladen"
 }

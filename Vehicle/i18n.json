@@ -839,49 +839,6 @@
 			},
 			"https://robertsspaceindustries.com/comm-link/spectrum-dispatch/19081-Whitleys-Guide-Terrapin"
 		],
-
-		[
-			"InConcept",
-			{
-				"de": "Im Konzept",
-				"en": "In concept"
-			}
-		],
-		[
-			"ActiveForSquadron42",
-			{
-				"de": "Aktiv für Squadron 42",
-				"en": "Active for Squadron 42"
-			}
-		],
-		[
-			"FlightReady",
-			{
-				"de": "Flugbereit",
-				"en": "Flight ready"
-			}
-		],
-		[
-			"DriveReady",
-			{
-				"de": "Fahrbereit",
-				"en": "Drive ready"
-			}
-		],
-		[
-			"ActiveProduction",
-			{
-				"de": "Aktive Produktion",
-				"en": "Active production"
-			}
-		],
-		[
-			"LongTermProduction",
-			{
-				"de": "Langzeit Produktion",
-				"en": "Long term production"
-			}
-		],
 		[
 			"Vehicle",
 			{
