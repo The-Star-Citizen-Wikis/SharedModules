@@ -176,10 +176,10 @@ function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 
 	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or
-	common.removeTypeSuffix(
-		mw.title.getCurrentTitle().text,
-		config.name_suffixes
-	)
+		common.removeTypeSuffix(
+			mw.title.getCurrentTitle().text,
+			config.name_suffixes
+		)
 
 	local hardpointFilter = {}
 	for _, filter in pairs( data.hardpoint_filter or {} ) do
@@ -237,7 +237,7 @@ function methodtable.setSemanticProperties( self )
 			--- Components
 			if self.apiData.hardpoints ~= nil and type( self.apiData.hardpoints ) == 'table' and #self.apiData.hardpoints > 0 then
 				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ translate( 'ARG_name' ) ] or
-				mw.title.getCurrentTitle().fullText )
+					mw.title.getCurrentTitle().fullText )
 				hardpoint:setHardPointObjects( self.apiData.hardpoints )
 				hardpoint:setParts( self.apiData.parts )
 
@@ -309,20 +309,51 @@ function methodtable.getInfobox( self )
 		} ) )
 	end
 
+	--- Create indicator and its floating element
+	--- This needs to be custom-built because there are multiple content inside the floating element
 	local function getIndicator()
 		local state = smwData[ t( 'SMW_ProductionState' ) ]
 		if state == nil then return end
 
-		local stateData = data.productionstates
-		local indicator = {
-			data = floatingui( smwData[ t( 'SMW_ProductionState' ) ], smwData[ t( 'SMW_ProductionStateDesc' ) ] ),
-			nopadding = true
-		}
+		local indicator = {}
 
+		local matchedDesc
+		local stateData = data.productionstates
 		for _, map in pairs( stateData ) do
-			if mw.ustring.match( state, t( 'label_productionstate_' .. map.key ) ) ~= nil then
+			local msgKey = 'label_productionstate_' .. map.key
+			if mw.ustring.match( state, t( msgKey ) ) ~= nil then
 				indicator[ 'color' ] = map.color
+				local descMsgKey = msgKey .. '_desc'
+				if t( descMsgKey ) ~= descMsgKey then
+					matchedDesc = t( descMsgKey )
+				end
 			end
+		end
+
+		if smwData[ t( 'SMW_ProductionStateDesc' ) ] == nil then
+			indicator[ 'data' ] = smwData[ t( 'SMW_ProductionState' ) ]
+		else
+			local contentHtml = mw.html.create()
+				:tag( 'div' )
+				:addClass( 't-floatingui-section infobox__data' )
+				:wikitext( smwData[ t( 'SMW_ProductionStateDesc' ) ] )
+				:done()
+
+			if matchedDesc then
+				contentHtml:tag( 'div' )
+					:addClass( 't-floatingui-section infobox__item' )
+					:tag( 'div' )
+					:addClass( 'infobox__label' )
+					:wikitext( smwData[ t( 'SMW_ProductionState' ) ] )
+					:done()
+					:tag( 'div' )
+					:addClass( 'infobox-data' )
+					:wikitext( matchedDesc )
+					:done()
+			end
+
+			indicator[ 'data' ] = floatingui( smwData[ t( 'SMW_ProductionState' ) ], tostring( contentHtml ) )
+			indicator[ 'nopadding' ] = true
 		end
 
 		return indicator

@@ -40,12 +40,18 @@ function FloatingUI.render( reference, content, inline )
         :done()
         :tag( htmlTag )
         :addClass( 'ext-floatingui-content' )
+        :tag( htmlTag )
+        :addClass( 'mw-parser-output' )
+        :tag( htmlTag )
+        :addClass( 't-floatingui' )
         :wikitext( content )
         :allDone()
 
-    return mw.getCurrentFrame():callParserFunction {
+    return tostring( html ) .. mw.getCurrentFrame():callParserFunction {
         name = '#floatingui', args = { '' }
-    } .. tostring( html )
+    } .. mw.getCurrentFrame():extensionTag {
+        name = 'templatestyles', args = { src = 'Module:FloatingUI/styles.css' }
+    }
 end
 
 return FloatingUI

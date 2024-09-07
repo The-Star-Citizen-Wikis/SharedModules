@@ -1,0 +1,9 @@
+.t-floatingui {
+	max-width: 50ch;
+}
+
+.t-floatingui-section + .t-floatingui-section {
+	margin-top: var(--space-xs);
+	padding-top: var(--space-xs);
+	border-top: 1px solid var(--border-color-base);
+}

@@ -276,10 +276,17 @@
 	"label_itemtype_weaponpersonal.medium": "Stocked weapon",
 	"label_itemtype_weaponpersonal.small": "Sidearm weapon",
 	"label_productionstate_active_for_squadron_42": "Active for Squadron 42",
+	"label_productionstate_active_for_squadron_42_desc": "The ship is mentioned to be in development for Squadron 42, but is not avaliable in the Persistent Universe.",
 	"label_productionstate_active_production": "Active production",
+	"label_productionstate_active_production_desc": "Development, designers, and QA work from start to finish on the ship.",
 	"label_productionstate_flight_ready": "Flight ready",
+	"label_productionstate_flight_ready_desc": "The vehicle can fly/drive with full operations including physics, interactions, systems, fuel, cargo, and more.",
 	"label_productionstate_in_concept": "In concept",
+	"label_productionstate_in_concept_desc": "Artists and designers determine the concept look, 3D renders, and functional design for a ship.",
+	"label_productionstate_in_lore": "In lore",
+	"label_productionstate_in_lore_desc": "The ship is mentioned in lore only.",
 	"label_productionstate_long_term_production": "Long term production",
+	"label_productionstate_long_term_production_desc": "Development work is planned and added to the Roadmap.",
 	"label_quick_facts": "Quick facts",
 	"label_upload_image": "Upload image"
 }
