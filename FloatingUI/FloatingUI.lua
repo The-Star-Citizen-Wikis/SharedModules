@@ -35,12 +35,15 @@ end
 ---
 --- @return string wikitext Wikitext to load the FloatingUI library only
 function FloatingUI.load()
-    return mw.getCurrentFrame():callParserFunction {
+    local frame = mw.getCurrentFrame()
+    return frame:callParserFunction {
         name = '#floatingui', args = { '' }
+    } .. frame:extensionTag {
+        name = 'templatestyles', args = { src = 'Module:FloatingUI/styles.css' }
     }
 end
 
---- Render FloatingUI
+--- Render the HTML for FloatingUI
 ---
 --- @param reference string Reference wikitext to trigger the floating element
 --- @param content string Content wikitext in the floating element
@@ -70,11 +73,7 @@ function FloatingUI.render( reference, content, inline )
         :wikitext( content )
         :allDone()
 
-    return tostring( html ) .. mw.getCurrentFrame():callParserFunction {
-        name = '#floatingui', args = { '' }
-    } .. mw.getCurrentFrame():extensionTag {
-        name = 'templatestyles', args = { src = 'Module:FloatingUI/styles.css' }
-    }
+    return tostring( html )
 end
 
 return FloatingUI

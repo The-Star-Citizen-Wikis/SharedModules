@@ -11,6 +11,7 @@ local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local manufacturer = require( 'Module:Manufacturer' ):new()
+local floatingui = require( 'Module:FloatingUI' )
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
 local config = mw.loadJsonData( 'Module:Vehicle/config.json' )
@@ -297,7 +298,7 @@ function methodtable.getInfobox( self )
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
 		placeholderImage = config.placeholder_image
 	} )
-	local floatingui = require( 'Module:FloatingUI' )
+
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
 	--- SMW Data load error
@@ -1063,7 +1064,7 @@ function Vehicle.main( frame )
 		infobox = infobox .. common.generateInterWikiLinks( mw.title.getCurrentTitle().text )
 	end
 
-	return infobox .. debugOutput .. table.concat( instance.categories )
+	return infobox .. debugOutput .. table.concat( instance.categories ) .. floatingui.load()
 end
 
 ---
