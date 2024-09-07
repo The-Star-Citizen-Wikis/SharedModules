@@ -431,12 +431,12 @@ function methodtable.getInfobox( self )
 		tabberData[ 'label1' ] = t( 'label_Pledge' )
 		section = {
 			infobox:renderItem( {
-				label = t( 'label_Standalone' ),
+				label = getLabelWithTooltip( 'label_Standalone' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = t( 'label_Warbond' ),
+				label = getLabelWithTooltip( 'label_Warbond' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
