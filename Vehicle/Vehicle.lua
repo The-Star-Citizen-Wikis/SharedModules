@@ -336,7 +336,7 @@ function methodtable.getInfobox( self )
 			end
 		end
 
-		if smwData[ t( 'SMW_ProductionStateDesc' ) ] == nil then
+		if smwData[ t( 'SMW_ProductionStateDesc' ) ] == nil and matchedDesc == nil then
 			indicator[ 'data' ] = smwData[ t( 'SMW_ProductionState' ) ]
 		else
 			local content = {
