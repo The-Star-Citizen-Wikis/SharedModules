@@ -11,7 +11,6 @@ local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 local common = require( 'Module:Common' )
 local manufacturer = require( 'Module:Manufacturer' ):new()
-local floatingui = require( 'Module:FloatingUI' )
 local hatnote = require( 'Module:Hatnote' )._hatnote
 local data = mw.loadJsonData( 'Module:Vehicle/data.json' )
 local config = mw.loadJsonData( 'Module:Vehicle/config.json' )
@@ -299,6 +298,7 @@ function methodtable.getInfobox( self )
 		placeholderImage = config.placeholder_image
 	} )
 
+	local floatingui = require( 'Module:FloatingUI' )
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
 	--- SMW Data load error
@@ -817,7 +817,7 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
+	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] ) .. floatingui.load()
 end
 
 --- Set the frame and load args
@@ -1036,7 +1036,7 @@ function Vehicle.infobox( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
-	return tostring( instance:getInfobox() ) .. debugOutput
+	return instance:getInfobox() .. debugOutput
 end
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
@@ -1053,7 +1053,7 @@ function Vehicle.main( frame )
 		debugOutput = instance:makeDebugOutput()
 	end
 
-	local infobox = tostring( instance:getInfobox() )
+	local infobox = instance:getInfobox()
 
 	-- Only set categories and short desc if this is the page that also holds the smw attributes
 	-- Allows outputting vehicle infoboxes on other pages without setting categories
@@ -1064,7 +1064,7 @@ function Vehicle.main( frame )
 		infobox = infobox .. common.generateInterWikiLinks( mw.title.getCurrentTitle().text )
 	end
 
-	return infobox .. debugOutput .. table.concat( instance.categories ) .. floatingui.load()
+	return infobox .. debugOutput .. table.concat( instance.categories )
 end
 
 ---
