@@ -319,7 +319,7 @@ function methodtable.getInfobox( self )
 	--- This needs to be custom-built because there are multiple content inside the floating element
 	local function getIndicator()
 		local state = smwData[ t( 'SMW_ProductionState' ) ]
-		if state == nil then return end
+		if state == nil then return {} end
 
 		local indicator = {}
 
