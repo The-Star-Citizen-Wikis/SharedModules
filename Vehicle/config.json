@@ -6,7 +6,7 @@
 	"%module_lang": "Set the language of the module, if set to 'null' the content language of the wiki will be used.",
 	"module_lang": null,
 	"%set_categories": "Whether the module should automatically set categories.",
-	"set_categories": false,
+	"set_categories": true,
 	"%placeholder_image": "Placeholder image to use if no image was found",
 	"placeholder_image": "Placeholderv2.png",
 	"%name_suffixes": "List of suffixes that should be removed from the entity's name. Data values are converted to lowercase",
