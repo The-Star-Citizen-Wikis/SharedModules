@@ -297,7 +297,7 @@ function methodtable.getInfobox( self )
 	local infobox = require( 'Module:InfoboxNeue' ):new( {
 		placeholderImage = config.placeholder_image
 	} )
-	local floatingui = require( 'Module:FloatingUI' ).render
+	local floatingui = require( 'Module:FloatingUI' )
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
 	--- SMW Data load error
@@ -307,6 +307,11 @@ function methodtable.getInfobox( self )
 			title = t( 'message_error_no_data_title' ),
 			desc = t( 'message_error_no_data_text' ),
 		} ) )
+	end
+
+	--- FIXME: Should this go into Module:i18n?
+	local function hasI18n( key )
+		return t(key) ~= key
 	end
 
 	--- Create indicator and its floating element
@@ -324,7 +329,7 @@ function methodtable.getInfobox( self )
 			if mw.ustring.match( state, t( msgKey ) ) ~= nil then
 				indicator[ 'color' ] = map.color
 				local descMsgKey = msgKey .. '_desc'
-				if t( descMsgKey ) ~= descMsgKey then
+				if hasI18n( descMsgKey ) then
 					matchedDesc = t( descMsgKey )
 				end
 			end
@@ -333,30 +338,49 @@ function methodtable.getInfobox( self )
 		if smwData[ t( 'SMW_ProductionStateDesc' ) ] == nil then
 			indicator[ 'data' ] = smwData[ t( 'SMW_ProductionState' ) ]
 		else
-			local contentHtml = mw.html.create()
-				:tag( 'div' )
-				:addClass( 't-floatingui-section infobox__data' )
-				:wikitext( smwData[ t( 'SMW_ProductionStateDesc' ) ] )
-				:done()
+			local content = {
+				floatingui.renderSection( {
+					data = smwData[ t( 'SMW_ProductionStateDesc' ) ]
+				} ),
+				floatingui.renderSection( {
+					data = smwData[ t( 'SMW_ProductionState' ) ],
+					desc = matchedDesc
+				} )
+			}
 
-			if matchedDesc then
-				contentHtml:tag( 'div' )
-					:addClass( 't-floatingui-section infobox__item' )
-					:tag( 'div' )
-					:addClass( 'infobox__label' )
-					:wikitext( smwData[ t( 'SMW_ProductionState' ) ] )
-					:done()
-					:tag( 'div' )
-					:addClass( 'infobox-data' )
-					:wikitext( matchedDesc )
-					:done()
-			end
-
-			indicator[ 'data' ] = floatingui( smwData[ t( 'SMW_ProductionState' ) ], tostring( contentHtml ) )
+			indicator[ 'data' ] = floatingui.render( smwData[ t( 'SMW_ProductionState' ) ], table.concat( content ) )
 			indicator[ 'nopadding' ] = true
 		end
 
 		return indicator
+	end
+
+	-- TODO: Implement i18n to source
+	local function getLabelWithTooltip( key, source )
+		local title
+		if hasI18n( key .. '_title' ) then
+			title = t( key .. '_title' )
+		else
+			title = t( key )
+		end
+
+		local content = {
+			floatingui.renderSection( {
+				data = title,
+				desc = t( key .. '_desc' )
+			} )
+		}
+
+		if source ~= nil then
+			table.insert( content,
+				floatingui.renderSection( {
+					col = 2,
+					label = t( 'label_data_source' ),
+					data = source
+				} )
+			)
+		end
+		return floatingui.render( t( key ), table.concat( content ) )
 	end
 
 	local function getManufacturer()
@@ -649,7 +673,7 @@ function methodtable.getInfobox( self )
 				data = getSeries(),
 			} ),
 			infobox:renderItem( {
-				label = t( 'label_Loaner' ),
+				label = getLabelWithTooltip( 'label_Loaner', '[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
 			} ),
 		},
