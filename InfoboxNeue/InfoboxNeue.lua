@@ -10,7 +10,7 @@ local i18n = require( 'Module:i18n' ):new()
 
 metatable.__index = methodtable
 
-metatable.__tostring = function( self )
+metatable.__tostring = function ( self )
 	return tostring( self:renderInfobox() )
 end
 
@@ -39,7 +39,7 @@ local function formatNumber( s )
 	if s == nil then
 		return
 	end
-	
+
 	if type( s ) ~= 'number' then
 		s = tonumber( s )
 	end
@@ -74,7 +74,7 @@ function methodtable.formatRange( s1, s2, formatNum )
 		return
 	end
 
-	formatNum = formatNum or false;
+	formatNum = formatNum or false
 
 	if formatNum then
 		if s1 then
@@ -105,7 +105,6 @@ function methodtable.addUnitIfExists( s, unit )
 	return s .. ' ' .. unit
 end
 
-
 --- Shortcut to return the HTML of the infobox message component as string
 ---
 --- @param data table {title, desc)
@@ -125,7 +124,6 @@ function methodtable.renderMessage( self, data, noInsert )
 
 	return item
 end
-
 
 --- Return the HTML of the infobox image component as string
 ---
@@ -163,7 +161,8 @@ function methodtable.renderImage( self, filename )
 		local icon = mw.html.create( 'span' ):addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-upload' )
 		-- TODO: Point the Upload link to a specific file name
 		html:tag( 'div' ):addClass( 'infobox__image-upload' )
-			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard', tostring( icon ) .. t( 'label_upload_image' ) ) )
+			:wikitext( mw.ustring.format( '[[%s|%s]]', 'Special:UploadWizard',
+				tostring( icon ) .. t( 'label_upload_image' ) ) )
 	end
 
 	local item = tostring( html )
@@ -173,10 +172,9 @@ function methodtable.renderImage( self, filename )
 	return item
 end
 
-
 --- Return the HTML of the infobox indicator component as string
 ---
---- @param data table {data, desc, class)
+--- @param data table {data, class, color, nopadding)
 --- @return string html
 function methodtable.renderIndicator( self, data )
 	checkType( 'Module:InfoboxNeue.renderIndicator', 1, self, 'table' )
@@ -184,19 +182,34 @@ function methodtable.renderIndicator( self, data )
 
 	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
 
-	local html = mw.html.create( 'div' ):addClass( 'infobox__indicator' )
+	local html = mw.html.create( 'div' ):addClass( 'infobox__indicators' )
+
+	local htmlClasses = {
+		'infobox__indicator'
+	}
+
+	if data[ 'class' ] then
+		table.insert( htmlClasses, data[ 'class' ] )
+	end
+
+	if data[ 'color' ] then
+		table.insert( htmlClasses, 'infobox__indicator--' .. data[ 'color' ] )
+	end
+
+	if data[ 'nopadding' ] == true then
+		table.insert( htmlClasses, 'infobox__indicator--nopadding' )
+	end
+
 	html:wikitext(
 		self:renderItem(
 			{
 				[ 'data' ] = data[ 'data' ],
-				[ 'desc' ] = data[ 'desc' ] or nil,
+				[ 'class' ] = table.concat( htmlClasses, ' ' ),
 				row = true,
 				spacebetween = true
 			}
 		)
 	)
-
-	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
 
 	local item = tostring( html )
 
@@ -204,7 +217,6 @@ function methodtable.renderIndicator( self, data )
 
 	return item
 end
-
 
 --- Return the HTML of the infobox header component as string
 ---
@@ -238,7 +250,7 @@ function methodtable.renderHeader( self, data )
 
 	if data[ 'subtitle' ] then
 		titleItem:tag( 'div' )
-			-- Subtitle is always data
+		-- Subtitle is always data
 			:addClass( 'infobox__subtitle infobox__data' )
 			:wikitext( data[ 'subtitle' ] )
 	end
@@ -251,7 +263,6 @@ function methodtable.renderHeader( self, data )
 
 	return item
 end
-
 
 --- Wrap the HTML into an infobox section
 ---
@@ -276,8 +287,8 @@ function methodtable.renderSection( self, data, noInsert )
 	if data[ 'title' ] then
 		local header = html:tag( 'div' ):addClass( 'infobox__sectionHeader' )
 		header:tag( 'div' )
-				:addClass( 'infobox__sectionTitle' )
-				:wikitext( data[ 'title' ] )
+			:addClass( 'infobox__sectionTitle' )
+			:wikitext( data[ 'title' ] )
 		if data[ 'subtitle' ] then
 			header:tag( 'div' )
 				:addClass( 'infobox__sectionSubtitle' )
@@ -286,8 +297,8 @@ function methodtable.renderSection( self, data, noInsert )
 	end
 
 	local content = html:tag( 'div' )
-	content:addClass( 'infobox__sectionContent')
-			:wikitext( data[ 'content' ] )
+	content:addClass( 'infobox__sectionContent' )
+		:wikitext( data[ 'content' ] )
 
 	if data[ 'border' ] == false then html:addClass( 'infobox__section--noborder' ) end
 	if data[ 'col' ] then content:addClass( 'infobox__grid--cols-' .. data[ 'col' ] ) end
@@ -302,7 +313,6 @@ function methodtable.renderSection( self, data, noInsert )
 	return item
 end
 
-
 --- Return the HTML of the infobox link button component as string
 ---
 --- @param data table {label, link, page}
@@ -311,7 +321,7 @@ function methodtable.renderLinkButton( self, data )
 	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
 	checkType( 'Module:InfoboxNeue.renderLinkButton', 2, data, 'table' )
 
-	if data == nil or data[ 'label' ] == nil or ( data[ 'link' ] == nil and data[ 'page' ] == nil ) then return '' end
+	if data == nil or data[ 'label' ] == nil or (data[ 'link' ] == nil and data[ 'page' ] == nil) then return '' end
 
 	--- Render multiple linkButton when link is a table
 	if type( data[ 'link' ] ) == 'table' then
@@ -350,13 +360,14 @@ function methodtable.renderFooter( self, data )
 
 	if data == nil then return '' end
 
-    -- Checks if an input is of type 'table' or 'string' and if it is not empty
-    local function isNonEmpty( input )
-        return ( type( input ) == 'table' and next( input ) ~= nil ) or ( type( input ) == 'string' and #input > 0 )
-    end
+	-- Checks if an input is of type 'table' or 'string' and if it is not empty
+	local function isNonEmpty( input )
+		return (type( input ) == 'table' and next( input ) ~= nil) or (type( input ) == 'string' and #input > 0)
+	end
 
 	local hasContent = isNonEmpty( data[ 'content' ] )
-	local hasButton = isNonEmpty( data[ 'button' ] ) and isNonEmpty( data[ 'button' ][ 'content' ] ) and isNonEmpty( data[ 'button' ][ 'label' ] )
+	local hasButton = isNonEmpty( data[ 'button' ] ) and isNonEmpty( data[ 'button' ][ 'content' ] ) and
+		isNonEmpty( data[ 'button' ][ 'label' ] )
 
 	if not hasContent and not hasButton then return '' end
 
@@ -366,15 +377,15 @@ function methodtable.renderFooter( self, data )
 		local content = data[ 'content' ]
 		if type( content ) == 'table' then content = table.concat( content ) end
 
-        html:addClass( 'infobox__footer--has-content')
-        html:tag( 'div' )
-            :addClass( 'infobox__section' )
-            :wikitext( content )
+		html:addClass( 'infobox__footer--has-content' )
+		html:tag( 'div' )
+			:addClass( 'infobox__section' )
+			:wikitext( content )
 	end
 
 	if hasButton then
-	    html:addClass( 'infobox__footer--has-button')
-		local buttonData = data[ 'button' ];
+		html:addClass( 'infobox__footer--has-button' )
+		local buttonData = data[ 'button' ]
 		local button = html:tag( 'div' ):addClass( 'infobox__button' )
 		local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
 
@@ -402,7 +413,6 @@ function methodtable.renderFooter( self, data )
 	return item
 end
 
-
 --- Return the HTML of the infobox footer button component as string
 ---
 --- @param data table {icon, label, type, content}
@@ -416,10 +426,9 @@ function methodtable.renderFooterButton( self, data )
 	return self:renderFooter( { button = data } )
 end
 
-
 --- Return the HTML of the infobox item component as string
 ---
---- @param data table {label, data, desc, tooltip, icon, row, spacebetween, colspan)
+--- @param data table {label, data, desc, class, tooltip, icon, row, spacebetween, colspan)
 --- @param content string|number|nil optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
@@ -444,6 +453,7 @@ function methodtable.renderItem( self, data, content )
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
+	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
 	if data[ 'tooltip' ] then html:attr( 'title', data[ 'tooltip' ] ) end
 	if data[ 'row' ] == true then html:addClass( 'infobox__grid--row' ) end
 	if data[ 'spacebetween' ] == true then html:addClass( 'infobox__grid--space-between' ) end
@@ -494,7 +504,6 @@ function methodtable.renderItem( self, data, content )
 	return tostring( html )
 end
 
-
 --- Wrap the infobox HTML
 ---
 --- @param innerHtml string inner html of the infobox
@@ -520,15 +529,15 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 			:attr( 'role', 'button' )
 			:attr( 'aria-owns', 'infobox__content' )
 			:tag( 'div' )
-				:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
-				:done()
+			:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
+			:done()
 			:tag( 'div' )
-				:addClass( 'infobox__data' )
-				:wikitext( mw.ustring.format( '%s:', t( 'label_quick_facts' ) ) )
-				:done()
+			:addClass( 'infobox__data' )
+			:wikitext( mw.ustring.format( '%s:', t( 'label_quick_facts' ) ) )
+			:done()
 			:tag( 'div' )
-				:addClass( 'infobox__desc' )
-				:wikitext( snippetText )
+			:addClass( 'infobox__desc' )
+			:wikitext( snippetText )
 
 		return tostring( html )
 	end
@@ -539,21 +548,19 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		:addClass( 'infobox floatright mw-collapsible' )
 		:wikitext( renderSnippet() )
 		:tag( 'div' )
-			:addClass( 'infobox__content mw-collapsible-content' )
-			:attr( 'id', 'infobox__content' )
-			:wikitext( innerHtml )
+		:addClass( 'infobox__content mw-collapsible-content' )
+		:attr( 'id', 'infobox__content' )
+		:wikitext( innerHtml )
 
-	return tostring( html ) .. mw.getCurrentFrame():extensionTag{
+	return tostring( html ) .. mw.getCurrentFrame():extensionTag {
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
 	} .. table.concat( self.categories )
 end
-
 
 --- Just an accessor for the class method
 function methodtable.showDescIfDiff( s1, s2 )
 	return InfoboxNeue.showDescIfDiff( s1, s2 )
 end
-
 
 --- Format text to show comparison as desc text if two strings are different
 ---
@@ -561,10 +568,9 @@ end
 --- @param s2 string|nil comparsion
 --- @return string|nil html
 function InfoboxNeue.showDescIfDiff( s1, s2 )
-    if s1 == nil or s2 == nil or s1 == s2 then return s1 end
-    return mw.ustring.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
+	if s1 == nil or s2 == nil or s1 == s2 then return s1 end
+	return mw.ustring.format( '%s <span class="infobox__desc">(%s)</span>', s1, s2 )
 end
-
 
 --- New Instance
 ---
@@ -585,17 +591,16 @@ function InfoboxNeue.new( self, config )
 		baseConfig[ k ] = v
 	end
 
-    local instance = {
+	local instance = {
 		categories = {},
 		config = baseConfig,
 		entries = {}
 	}
 
-    setmetatable( instance, metatable )
+	setmetatable( instance, metatable )
 
-    return instance
+	return instance
 end
-
 
 --- Create an Infobox from args
 ---
@@ -620,7 +625,6 @@ function InfoboxNeue.fromArgs( frame )
 	if args[ 'indicator' ] then
 		instance:renderIndicator( {
 			data = args[ 'indicator' ],
-			desc = args[ 'indicatorDesc' ],
 			class = args[ 'indicatorClass' ]
 		} )
 	end
@@ -647,7 +651,8 @@ function InfoboxNeue.fromArgs( frame )
 		end
 
 		if args[ 'label' .. i ] and args[ 'content' .. i ] then
-			table.insert( sections[ sectionMap[ ( currentSection or 'default' ) ] ].content, instance:renderItem( args[ 'label' .. i ], args[ 'content' .. i ] ) )
+			table.insert( sections[ sectionMap[ (currentSection or 'default') ] ].content,
+				instance:renderItem( args[ 'label' .. i ], args[ 'content' .. i ] ) )
 		end
 	end
 
@@ -662,6 +667,5 @@ function InfoboxNeue.fromArgs( frame )
 
 	return instance:renderInfobox( nil, args[ 'snippet' ] )
 end
-
 
 return InfoboxNeue

@@ -38,7 +38,7 @@ end
 --- @param addSuffix boolean|nil Adds a language suffix if config.smw_multilingual_text is true
 --- @return string If the key was not found in the .tab page, the key is returned
 local function translate( key, addSuffix, ... )
-	return TNT:translate( 'Module:Vehicle/i18n.json', config, key, addSuffix, {...} ) or key
+	return TNT:translate( 'Module:Vehicle/i18n.json', config, key, addSuffix, { ... } ) or key
 end
 
 
@@ -49,7 +49,7 @@ end
 local function isGroundVehicle( smwData )
 	local size = smwData[ t( 'SMW_ShipMatrixSize' ) ]
 
-	return ( size ~= nil and size == translate( 'Vehicle' ) ) or smwData[ t( 'SMW_ReverseSpeed' ) ] ~= nil
+	return (size ~= nil and size == translate( 'Vehicle' )) or smwData[ t( 'SMW_ReverseSpeed' ) ] ~= nil
 end
 
 
@@ -58,10 +58,10 @@ end
 --- @param page string the vehicle page containing data
 --- @return table
 local function makeSmwQueryObject( page )
-    local langSuffix = ''
-    if config.smw_multilingual_text == true then
-        langSuffix = '+lang=' .. ( config.module_lang or mw.getContentLanguage():getCode() )
-    end
+	local langSuffix = ''
+	if config.smw_multilingual_text == true then
+		langSuffix = '+lang=' .. (config.module_lang or mw.getContentLanguage():getCode())
+	end
 
 	local query = {
 		string.format( '[[%s]]', page ),
@@ -121,8 +121,8 @@ local function makeTimeReadable( time )
 			[ '%s?[Ss]tunden?' ] = 'h',
 			[ '%s?[Mm]inuten?' ] = 'm',
 			[ '%s?[Ss]ekunden?' ] = 's',
-			[ ','] = '',
-			[ 'und%s'] = ''
+			[ ',' ] = '',
+			[ 'und%s' ] = ''
 		}
 	else
 		regex = {
@@ -130,8 +130,8 @@ local function makeTimeReadable( time )
 			[ '%shours*' ] = 'h',
 			[ '%sminutes*' ] = 'm',
 			[ '%sseconds*' ] = 's',
-			[ ','] = '',
-			[ 'and%s'] = ''
+			[ ',' ] = '',
+			[ 'and%s' ] = ''
 		}
 	end
 
@@ -175,30 +175,30 @@ end
 function methodtable.getApiDataForCurrentPage( self )
 	local api = require( 'Module:Common/Api' )
 
-	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or common.removeTypeSuffix(
-        mw.title.getCurrentTitle().text,
+	local query = self.frameArgs[ translate( 'ARG_UUID' ) ] or self.frameArgs[ translate( 'ARG_Name' ) ] or
+	common.removeTypeSuffix(
+		mw.title.getCurrentTitle().text,
 		config.name_suffixes
-    )
+	)
 
-    local hardpointFilter = {}
-    for _, filter in pairs( data.hardpoint_filter or {} ) do
-        table.insert( hardpointFilter, '!' .. filter )
-    end
+	local hardpointFilter = {}
+	for _, filter in pairs( data.hardpoint_filter or {} ) do
+		table.insert( hardpointFilter, '!' .. filter )
+	end
 
 	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
 		include = data.includes,
 		locale = config.api_locale,
-        [ 'filter[hardpoints]' ] = table.concat( hardpointFilter, ',' )
+		[ 'filter[hardpoints]' ] = table.concat( hardpointFilter, ',' )
 	} ) )
 
 	if not success or api.checkResponseStructure( json, true, false ) == false then return end
 
-    self.apiData = json[ 'data' ]
-    self.apiData = api.makeAccessSafe( self.apiData )
+	self.apiData = json[ 'data' ]
+	self.apiData = api.makeAccessSafe( self.apiData )
 
-    return self.apiData
+	return self.apiData
 end
-
 
 --- Base Properties that are shared across all Vehicles
 --- @return table SMW Result
@@ -229,14 +229,15 @@ function methodtable.setSemanticProperties( self )
 		setData[ t( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
 	end
 
-    -- Set properties with API data
-    if self.apiData ~= nil then
+	-- Set properties with API data
+	if self.apiData ~= nil then
 		-- Flight ready vehicles
 		--- Override template parameter with in-game data
 		if self.apiData.uuid ~= nil then
 			--- Components
 			if self.apiData.hardpoints ~= nil and type( self.apiData.hardpoints ) == 'table' and #self.apiData.hardpoints > 0 then
-				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ translate( 'ARG_name' ) ] or mw.title.getCurrentTitle().fullText )
+				local hardpoint = require( 'Module:VehicleHardpoint' ):new( self.frameArgs[ translate( 'ARG_name' ) ] or
+				mw.title.getCurrentTitle().fullText )
 				hardpoint:setHardPointObjects( self.apiData.hardpoints )
 				hardpoint:setParts( self.apiData.parts )
 
@@ -258,22 +259,21 @@ function methodtable.setSemanticProperties( self )
 	return mw.smw.set( setData )
 end
 
-
 --- Queries the SMW Store
 --- @return table
 function methodtable.getSmwData( self )
 	-- Cache multiple calls
-    if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
-        return self.smwData
-    end
+	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
+		return self.smwData
+	end
 
 	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
-					  self.frameArgs[ translate( 'ARG_Name' ) ] or
-					  mw.title.getCurrentTitle().fullText
+		self.frameArgs[ translate( 'ARG_Name' ) ] or
+		mw.title.getCurrentTitle().fullText
 
-    local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
+	local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
-    if smwData == nil or smwData[ 1 ] == nil then
+	if smwData == nil or smwData[ 1 ] == nil then
 		return hatnote( mw.ustring.format(
 				'%s[[%s]]',
 				t( 'message_error_no_data_text' ),
@@ -281,13 +281,12 @@ function methodtable.getSmwData( self )
 			),
 			{ icon = 'WikimediaUI-Error.svg' }
 		)
-    end
+	end
 
-    self.smwData = smwData[ 1 ]
+	self.smwData = smwData[ 1 ]
 
-    return self.smwData
+	return self.smwData
 end
-
 
 --- Creates the infobox
 function methodtable.getInfobox( self )
@@ -316,16 +315,17 @@ function methodtable.getInfobox( self )
 
 		local stateData = data.productionstates
 		local indicator = {
-			data = floatingui( smwData[ t( 'SMW_ProductionState' ) ], smwData[ t( 'SMW_ProductionStateDesc' ) ] )
+			data = floatingui( smwData[ t( 'SMW_ProductionState' ) ], smwData[ t( 'SMW_ProductionStateDesc' ) ] ),
+			nopadding = true
 		}
 
 		for _, map in pairs( stateData ) do
 			if mw.ustring.match( state, t( 'label_productionstate_' .. map.key ) ) ~= nil then
-				indicator['class'] = 'infobox__indicator--' .. map.color
+				indicator[ 'color' ] = map.color
 			end
 		end
 
-		return indicator;
+		return indicator
 	end
 
 	local function getManufacturer()
@@ -335,7 +335,7 @@ function methodtable.getInfobox( self )
 		if mfu == nil then return smwData[ t( 'SMW_Manufacturer' ) ] end
 
 		return infobox.showDescIfDiff(
-			table.concat( { '[[', smwData[ t( 'SMW_Manufacturer' ) ], '|', mfu.name , ']]' } ),
+			table.concat( { '[[', smwData[ t( 'SMW_Manufacturer' ) ], '|', mfu.name, ']]' } ),
 			mfu.code
 		)
 	end
@@ -376,11 +376,13 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_Standalone' ),
-				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ], smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ],
+					smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_Warbond' ),
-				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ], smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
+				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ],
+					smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_Availability' ),
@@ -394,15 +396,15 @@ function methodtable.getInfobox( self )
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_Claim' ),
-				data = makeTimeReadable( smwData[ translate('SMW_InsuranceClaimTime' ) ] ),
+				data = makeTimeReadable( smwData[ translate( 'SMW_InsuranceClaimTime' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_Expedite' ),
-				data = makeTimeReadable( smwData[ translate('SMW_InsuranceExpediteTime' ) ] ),
+				data = makeTimeReadable( smwData[ translate( 'SMW_InsuranceExpediteTime' ) ] ),
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_ExpediteFee' ),
-				data = smwData[ translate('SMW_InsuranceExpediteCost' ) ],
+				data = smwData[ translate( 'SMW_InsuranceExpediteCost' ) ],
 				colspan = 2
 			} ),
 		}
@@ -437,7 +439,7 @@ function methodtable.getInfobox( self )
 			} ),
 		}
 
-		tabberData[ 'content1' ] = infobox:renderSection( { content =section, col = 3 }, true )
+		tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 3 }, true )
 
 		tabberData[ 'label2' ] = t( 'label_Speed' )
 		section = {
@@ -656,7 +658,7 @@ function methodtable.getInfobox( self )
 	--- Specifications
 	infobox:renderSection( {
 		title = t( 'label_Specifications' ),
-	 	class = 'infobox__section--tabber',
+		class = 'infobox__section--tabber',
 		content = getSpecificationsSection(),
 	} )
 
@@ -762,14 +764,12 @@ function methodtable.getInfobox( self )
 	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
 end
 
-
 --- Set the frame and load args
 --- @param frame table
 function methodtable.setFrame( self, frame )
 	self.currentFrame = frame
 	self.frameArgs = require( 'Module:Arguments' ).getArgs( frame )
 end
-
 
 --- Sets the main categories for this object
 function methodtable.setCategories( self )
@@ -825,7 +825,8 @@ function methodtable.setCategories( self )
 	if self.smwData[ t( 'SMW_Series' ) ] ~= nil then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', mw.ustring.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
+			string.format( '[[Category:%s]]',
+				mw.ustring.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
 		)
 	end
 
@@ -856,7 +857,7 @@ function methodtable.setShortDescription( self )
 		end
 
 		vehicleRole = mw.ustring.lower( vehicleRole )
-		
+
 		for _, noun in pairs( config.role_suffixes ) do
 			local match = mw.ustring.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
 			--- Remove suffix from role
@@ -895,13 +896,11 @@ function methodtable.setShortDescription( self )
 	self.currentFrame:callParserFunction( 'SHORTDESC', shortdesc )
 end
 
-
 --- Save Api Data to SMW store
 function methodtable.saveApiData( self )
-    self:getApiDataForCurrentPage()
-    self:setSemanticProperties()
+	self:getApiDataForCurrentPage()
+	self:setSemanticProperties()
 end
-
 
 --- Generates debug output
 function methodtable.makeDebugOutput( self )
@@ -911,10 +910,10 @@ function methodtable.makeDebugOutput( self )
 	local smwData = self:getSmwData()
 
 	local queryName = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or
-					  self.frameArgs[ translate( 'ARG_Name' ) ] or
-					  mw.title.getCurrentTitle().fullText
+		self.frameArgs[ translate( 'ARG_Name' ) ] or
+		mw.title.getCurrentTitle().fullText
 
-	return debug.collapsedDebugSections({
+	return debug.collapsedDebugSections( {
 		{
 			title = 'SMW Query',
 			content = debug.convertSmwQueryObject( makeSmwQueryObject( queryName ) ),
@@ -929,21 +928,19 @@ function methodtable.makeDebugOutput( self )
 			content = self.frameArgs,
 			tag = 'pre',
 		},
-	})
+	} )
 end
-
 
 --- New Instance
 function Vehicle.new( self )
-    local instance = {
-        categories = {}
-    }
+	local instance = {
+		categories = {}
+	}
 
-    setmetatable( instance, metatable )
+	setmetatable( instance, metatable )
 
-    return instance
+	return instance
 end
-
 
 --- Load data from api.star-citizen.wiki and save it to SMW
 ---
@@ -958,17 +955,17 @@ function Vehicle.loadApiData( frame )
 	if instance.frameArgs[ 'debug' ] ~= nil then
 		local debug = require( 'Module:Common/Debug' )
 
-		debugOutput = debug.collapsedDebugSections({
+		debugOutput = debug.collapsedDebugSections( {
 			{
 				title = 'SMW Set Data',
-				content = mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', mw.dumpObject( instance.setData or {} ) } ),
+				content = mw.getCurrentFrame():callParserFunction( '#tag',
+					{ 'nowiki', mw.dumpObject( instance.setData or {} ) } ),
 			},
-		})
+		} )
 	end
 
 	return debugOutput
 end
-
 
 --- Generates an infobox based on passed frame args and SMW data
 ---
@@ -985,7 +982,6 @@ function Vehicle.infobox( frame )
 
 	return tostring( instance:getInfobox() ) .. debugOutput
 end
-
 
 --- "Main" entry point for templates that saves the API Data and outputs the infobox
 ---
@@ -1015,7 +1011,6 @@ function Vehicle.main( frame )
 	return infobox .. debugOutput .. table.concat( instance.categories )
 end
 
-
 ---
 function Vehicle.test( page )
 	page = page or '300i'
@@ -1027,6 +1022,5 @@ function Vehicle.test( page )
 	instance:saveApiData()
 	instance:getInfobox()
 end
-
 
 return Vehicle

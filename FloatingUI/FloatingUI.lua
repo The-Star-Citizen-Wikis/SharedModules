@@ -13,7 +13,7 @@ local FloatingUI = {}
 --- @return string wikitext Wikitext to load the FloatingUI library only
 function FloatingUI.load()
     return mw.getCurrentFrame():callParserFunction {
-        name = '#floatingui'
+        name = '#floatingui', args = { '' }
     }
 end
 
@@ -21,19 +21,31 @@ end
 ---
 --- @param reference string Reference wikitext to trigger the floating element
 --- @param content string Content wikitext in the floating element
+--- @param inline boolean Whether to render inline
 --- @return string wikitext Wikitext for the HTML required to use FloatingUI
-function FloatingUI.render( reference, content )
+function FloatingUI.render( reference, content, inline )
     if not reference or not content then
         return ''
     end
 
+    local htmlTag = 'div'
+    if inline == true then
+        htmlTag = 'span'
+    end
+
+    local html = mw.html.create()
+        :tag( htmlTag )
+        :addClass( 'ext-floatingui-reference' )
+        :wikitext( reference )
+        :done()
+        :tag( htmlTag )
+        :addClass( 'ext-floatingui-content' )
+        :wikitext( content )
+        :allDone()
+
     return mw.getCurrentFrame():callParserFunction {
-        name = '#floatingui',
-        args = {
-            reference,
-            content
-        }
-    }
+        name = '#floatingui', args = { '' }
+    } .. tostring( html )
 end
 
 return FloatingUI

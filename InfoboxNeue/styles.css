@@ -1,730 +1,725 @@
 .infobox {
-    margin-bottom: var(--space-md);
-    width: 100%;
-    max-width: 400px;
-    border-radius: var(--border-radius--medium);
-    background-color: var(--color-surface-2);
-    font-size: var(--font-size-small);
-    line-height: var(--line-height-sm);
+	margin-bottom: var(--space-md);
+	width: 100%;
+	max-width: 400px;
+	border-radius: var(--border-radius--medium);
+	background-color: var(--color-surface-2);
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-sm);
 }
 
 .infobox.mw-collapsed {
-    background-color: transparent;
-    box-shadow: inset 0 0 0 1px var(--border-color-base);
+	background-color: transparent;
+	box-shadow: inset 0 0 0 1px var(--border-color-base);
 }
 
 .infobox__content {
-    position: relative;
+	position: relative;
 }
 
 .infobox__image {
-    position: relative;
-    margin-bottom: -2rem;
+	position: relative;
+	margin-bottom: -2rem;
 }
 
 .infobox__image::after {
-    content: "";
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    height: 50%;
-    /* Corresponds to --color-surface-2 */
-    background: linear-gradient(
-        to top,
-        hsl(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l)
-            )
-            0%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.987
-            )
-            8.1%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.951
-            )
-            15.5%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.896
-            )
-            22.5%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.825
-            )
-            29%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.741
-            )
-            35.3%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.648
-            )
-            41.2%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.55
-            )
-            47.1%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.45
-            )
-            52.9%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.352
-            )
-            58.8%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.259
-            )
-            64.7%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.175
-            )
-            71%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.104
-            )
-            77.5%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.049
-            )
-            84.5%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0.013
-            )
-            91.9%,
-        hsla(
-                var(--color-primary__h),
-                var(--color-surface-2__s),
-                var(--color-surface-2__l),
-                0
-            )
-            100%
-    );
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 50%;
+	/* Corresponds to --color-surface-2 */
+	background: linear-gradient(
+		to top,
+		hsl(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l)
+			)
+			0%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.987
+			)
+			8.1%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.951
+			)
+			15.5%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.896
+			)
+			22.5%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.825
+			)
+			29%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.741
+			)
+			35.3%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.648
+			)
+			41.2%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.55
+			)
+			47.1%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.45
+			)
+			52.9%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.352
+			)
+			58.8%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.259
+			)
+			64.7%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.175
+			)
+			71%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.104
+			)
+			77.5%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.049
+			)
+			84.5%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0.013
+			)
+			91.9%,
+		hsla(
+				var(--color-primary__h),
+				var(--color-surface-2__s),
+				var(--color-surface-2__l),
+				0
+			)
+			100%
+	);
 }
 
 .infobox__image::after,
 .infobox__image ~ .infobox__indicator,
 .infobox__image ~ .infobox__header {
-    transition: var(--transition-hover);
-    transition-property: opacity;
+	transition: var(--transition-hover);
+	transition-property: opacity;
 }
 
 .infobox__image:hover::after,
 .infobox__image:hover ~ .infobox__indicator,
 .infobox__image:hover ~ .infobox__header {
-    opacity: 0;
+	opacity: 0;
 }
 
 .infobox__image img {
-    /* Prevent overflow */
-    max-width: 100%;
-    height: auto;
+	/* Prevent overflow */
+	max-width: 100%;
+	height: auto;
 }
 
 /* Provide background color for transparent SVGs */
-.infobox__image img[src$=".svg"] {
-    background: #eaecf0;
+.infobox__image img[src$='.svg'] {
+	background: #eaecf0;
 }
 
 .infobox__image-upload {
-    position: absolute;
-    bottom: var(--space-md);
-    left: 0;
-    right: 0;
-    z-index: 1;
+	position: absolute;
+	bottom: var(--space-md);
+	left: 0;
+	right: 0;
+	z-index: 1;
 }
 
 .infobox__image-upload > a {
-    display: flex;
-    margin: var(--space-md);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--border-radius--small);
-    background: var(--color-surface-3);
-    color: var(--color-base--emphasized);
-    font-weight: var(--font-weight-medium);
-    text-decoration: none;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-xs);
+	display: flex;
+	margin: var(--space-md);
+	padding: var(--space-xs) var(--space-sm);
+	border-radius: var(--border-radius--small);
+	background: var(--color-surface-3);
+	color: var(--color-base--emphasized);
+	font-weight: var(--font-weight-medium);
+	text-decoration: none;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xs);
 }
 
 .infobox__image-upload > a .citizen-ui-icon {
-    width: 1rem;
-    height: 1rem;
+	width: 1rem;
+	height: 1rem;
 }
 
 .infobox__image-upload > a:hover {
-    background: var(--color-surface-2--hover);
+	background: var(--color-surface-2--hover);
 }
 
 .infobox__image-upload > a:active {
-    background: var(--color-surface-2--active);
+	background: var(--color-surface-2--active);
 }
 
-.infobox__indicator,
 .infobox__header {
-    /* Needed to stay on top of image fade */
-    position: relative;
+	/* Needed to stay on top of image fade */
+	position: relative;
 }
 
 .infobox__snippet,
 .infobox__header,
 .infobox__sectionHeader,
 .infobox__sectionContent {
-    padding-left: var(--space-md);
-    padding-right: var(--space-md);
+	padding-left: var(--space-md);
+	padding-right: var(--space-md);
 }
 
 .infobox__snippet {
-    padding-top: var(--space-sm);
-    padding-bottom: var(--space-sm);
+	padding-top: var(--space-sm);
+	padding-bottom: var(--space-sm);
 }
 
 .infobox__snippet {
-    display: flex;
-    gap: var(--space-xs);
-    align-items: center;
-    white-space: nowrap;
+	display: flex;
+	gap: var(--space-xs);
+	align-items: center;
+	white-space: nowrap;
 }
 
 .infobox__snippet.mw-collapsible-toggle {
-    /* Disable default style */
-    float: none;
-    border-top-left-radius: var(--border-radius--medium);
-    border-top-right-radius: var(--border-radius--medium);
+	/* Disable default style */
+	float: none;
+	border-top-left-radius: var(--border-radius--medium);
+	border-top-right-radius: var(--border-radius--medium);
 }
 
 .infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed {
-    border-bottom-left-radius: var(--border-radius--medium);
-    border-bottom-right-radius: var(--border-radius--medium);
+	border-bottom-left-radius: var(--border-radius--medium);
+	border-bottom-right-radius: var(--border-radius--medium);
 }
 
 .infobox__snippet.mw-collapsible-toggle:hover {
-    background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-quiet--hover);
 }
 
 /* Might as well steal from skin */
 .infobox__snippet.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
-    width: var(--font-size-small);
-    height: var(--font-size-small);
-    flex-shrink: 0;
-    transition: var(--transition-menu);
-    transition-property: transform;
+	width: var(--font-size-small);
+	height: var(--font-size-small);
+	flex-shrink: 0;
+	transition: var(--transition-menu);
+	transition-property: transform;
 }
 
 /* Might as well steal from skin */
 .infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed
-    .mw-ui-icon-wikimedia-collapse {
-    transform: rotate(180deg);
+	.mw-ui-icon-wikimedia-collapse {
+	transform: rotate(180deg);
 }
 
 .infobox__snippet .infobox__desc {
-    max-width: 100%;
-    text-overflow: ellipsis;
-    overflow: hidden;
-    font-size: var(--font-size-small);
+	max-width: 100%;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	font-size: var(--font-size-small);
+}
+
+.infobox__indicators {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	display: flex;
+	justify-content: flex-end;
+	margin: var(--space-xs);
+	gap: var(--space-xxs);
 }
 
 .infobox__indicator {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: flex-end;
-    margin: var(--space-xs);
-    gap: var(--space-xxs);
+	padding: var(--space-xxs) var(--space-xs);
+	background: var(--color-surface-2);
+	color: var(--color-base);
+	border-radius: var(--border-radius--small);
+	line-height: var(--line-height-xs);
 }
 
 .infobox__indicator .infobox__data {
-    font-size: var(--font-size-x-small);
-    padding: var(--space-xxs) var(--space-xs);
-    background: var(--color-surface-2);
-    color: var(--color-base);
-    border-radius: var(--border-radius--small);
-    font-weight: var(--font-weight-normal);
-    letter-spacing: 0.025em;
-    line-height: var(--line-height-xs);
-}
-
-.infobox__indicator .infobox__desc {
-    position: absolute;
-    top: 100%;
-    right: 0;
-    background: var(--color-surface-1);
-    padding: var(--space-xs) var(--space-sm);
-    border-radius: var(--border-radius--small);
-    box-shadow: var(--box-shadow-dialog);
-    visibility: hidden;
-}
-
-.infobox__indicator .infobox__desc:hover,
-.infobox__indicator .infobox__data:hover + .infobox__desc {
-    visibility: visible;
+	font-size: var(--font-size-x-small);
+	font-weight: var(--font-weight-normal);
+	letter-spacing: 0.025em;
 }
 
 /* TODO: Add support for multiple badges */
-.infobox__indicator.infobox__indicator--red .infobox__data {
-    background-color: var(--color-destructive);
-    color: #fff;
+.infobox__indicator.infobox__indicator--nopadding {
+    padding: 0;
 }
 
-.infobox__indicator.infobox__indicator--yellow .infobox__data {
-    background-color: var(--color-warning);
-    color: #000;
+.infobox__indicator.infobox__indicator--red {
+	background-color: var(--color-destructive);
+	color: #fff;
 }
 
-.infobox__indicator.infobox__indicator--green .infobox__data {
-    background-color: var(--color-success);
-    color: #fff;
+.infobox__indicator.infobox__indicator--yellow {
+	background-color: var(--color-warning);
+	color: #000;
+}
+
+.infobox__indicator.infobox__indicator--green {
+	background-color: var(--color-success);
+	color: #fff;
 }
 
 .infobox__header,
 .infobox__sectionHeader {
-    line-height: var(--line-height-xs);
+	line-height: var(--line-height-xs);
 }
 
 .infobox__header {
-    margin-top: var(--space-md);
-    margin-bottom: var(--space-lg);
-    display: flex;
-    gap: var(--space-sm);
+	margin-top: var(--space-md);
+	margin-bottom: var(--space-lg);
+	display: flex;
+	gap: var(--space-sm);
 }
 
 .infobox__section,
 .infobox__sectionHeader,
 .infobox__sectionContent {
-    margin-top: var(--space-md);
+	margin-top: var(--space-md);
 }
 
 .infobox__title,
 .infobox__sectionTitle {
-    color: var(--color-base--emphasized);
-    font-weight: var(--font-weight-semibold);
+	color: var(--color-base--emphasized);
+	font-weight: var(--font-weight-semibold);
 }
 
 .infobox__title {
-    font-size: var(--font-size-x-large);
+	font-size: var(--font-size-x-large);
 }
 
 .infobox__sectionSubtitle {
-    margin-top: 2px;
+	margin-top: 2px;
 }
 
 .infobox__section + .infobox__section {
-    margin-top: var(--space-xl);
+	margin-top: var(--space-xl);
 }
 
 /* Use padding to prevent margin collapse when there is no footer */
 .infobox__content > .infobox__section:last-child {
-    margin-bottom: 0;
-    padding-bottom: var(--space-md);
+	margin-bottom: 0;
+	padding-bottom: var(--space-md);
 }
 
 .infobox__sectionTitle {
-    font-size: var(--font-size-medium);
-    display: flex;
-    align-items: center;
-    gap: var(--space-md);
+	font-size: var(--font-size-medium);
+	display: flex;
+	align-items: center;
+	gap: var(--space-md);
 }
 
 .infobox__sectionTitle:after {
-    content: "";
-    height: 1px;
-    flex-grow: 1;
-    background: var(--border-color-base);
+	content: '';
+	height: 1px;
+	flex-grow: 1;
+	background: var(--border-color-base);
 }
 
 .infobox__sectionSubtitle {
-    color: var(--color-base--subtle);
+	color: var(--color-base--subtle);
 }
 
 .infobox__sectionContent {
-    display: grid;
-    gap: var(--space-sm);
+	display: grid;
+	gap: var(--space-sm);
 }
 
 .infobox__item {
-    display: grid;
-    gap: 2px var(--space-xs);
-    grid-auto-rows: max-content;
+	display: grid;
+	gap: 2px var(--space-xs);
+	grid-auto-rows: max-content;
 }
 
 .infobox__item--hasIcon {
-    display: flex;
-    align-items: center;
-    column-gap: var(--space-sm);
+	display: flex;
+	align-items: center;
+	column-gap: var(--space-sm);
 }
 
 .infobox__badge {
-    place-content: center;
-    text-align: center;
-    box-shadow: inset 0 0 0 1px var(--border-color-base);
-    border-radius: var(--border-radius--medium);
-    padding: var(--space-xs) var(--space-sm);
-    font-weight: var(--font-weight-medium);
-    background-color: var(--color-surface-1);
+	place-content: center;
+	text-align: center;
+	box-shadow: inset 0 0 0 1px var(--border-color-base);
+	border-radius: var(--border-radius--medium);
+	padding: var(--space-xs) var(--space-sm);
+	font-weight: var(--font-weight-medium);
+	background-color: var(--color-surface-1);
 }
 
 .infobox__desc,
 .infobox__label {
-    color: var(--color-base--subtle);
-    font-size: var(--font-size-x-small);
+	color: var(--color-base--subtle);
+	font-size: var(--font-size-x-small);
 }
 
 .infobox__label {
-    letter-spacing: 0.05em;
+	letter-spacing: 0.05em;
 }
 
 .infobox__grid--row .infobox__label,
 .infobox__grid--row .infobox__desc {
-    font-size: var(--font-size-small);
+	font-size: var(--font-size-small);
 }
 
 .infobox__data {
-    font-weight: var(--font-weight-medium);
+	font-weight: var(--font-weight-medium);
 }
 
 .infobox__icon img {
-    filter: var(--filter-invert);
-    opacity: var(--opacity-icon-base);
+	filter: var(--filter-invert);
+	opacity: var(--opacity-icon-base);
 }
 
 .infobox__itemButton {
-    position: relative;
-    padding: var(--space-sm) var(--space-md);
-    line-height: var(--line-height-sm);
-    gap: 0;
+	position: relative;
+	padding: var(--space-sm) var(--space-md);
+	line-height: var(--line-height-sm);
+	gap: 0;
 }
 
 .infobox__itemButton:hover {
-    background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-quiet--hover);
 }
 
 .infobox__itemButton:hover .infobox__itemButtonArrow {
-    transform: rotate(90deg) translateY(-4px);
+	transform: rotate(90deg) translateY(-4px);
 }
 
 .infobox__itemButton:active {
-    background-color: var(--background-color-quiet--active);
+	background-color: var(--background-color-quiet--active);
 }
 
 .infobox__itemButton .infobox__text {
-    flex-grow: 1;
+	flex-grow: 1;
 }
 
 .infobox__itemButton .infobox__data {
-    color: var(--color-base--emphasized);
+	color: var(--color-base--emphasized);
 }
 
 .infobox__itemButtonLink a {
-    position: absolute;
-    inset: 0;
-    opacity: 0;
+	position: absolute;
+	inset: 0;
+	opacity: 0;
 }
 
 .infobox__itemButton .infobox__icon {
-    margin-right: var(--space-sm);
+	margin-right: var(--space-sm);
 }
 
 .infobox__itemButton .infobox__icon img {
-    width: 1.25rem;
-    height: 1.25rem;
+	width: 1.25rem;
+	height: 1.25rem;
 }
 
 .infobox__itemButtonArrow {
-    width: 1rem;
-    height: 1rem;
-    transition: var(--transition-hover);
-    transform: rotate(90deg);
+	width: 1rem;
+	height: 1rem;
+	transition: var(--transition-hover);
+	transform: rotate(90deg);
 }
 
 .infobox__footer {
-    margin-top: var(--space-lg);
-    border-top: 1px solid var(--border-color-base);
-    background-color: var(--color-surface-1);
-    border-bottom-left-radius: var(--border-radius--medium);
-    border-bottom-right-radius: var(--border-radius--medium);
+	margin-top: var(--space-lg);
+	border-top: 1px solid var(--border-color-base);
+	background-color: var(--color-surface-1);
+	border-bottom-left-radius: var(--border-radius--medium);
+	border-bottom-right-radius: var(--border-radius--medium);
 }
 
 .infobox__footer > .infobox__section {
-    margin: 0;
-    padding: var(--space-md);
-    display: grid;
-    gap: var(--space-xxs);
+	margin: 0;
+	padding: var(--space-md);
+	display: grid;
+	gap: var(--space-xxs);
 }
 
 .infobox__button {
-    position: relative;
-    border-bottom-left-radius: var(--border-radius--medium);
-    border-bottom-right-radius: var(--border-radius--medium);
-    padding: var(--space-sm) var(--space-md);
-    background-color: var(--color-primary);
-    cursor: pointer;
+	position: relative;
+	border-bottom-left-radius: var(--border-radius--medium);
+	border-bottom-right-radius: var(--border-radius--medium);
+	padding: var(--space-sm) var(--space-md);
+	background-color: var(--color-primary);
+	cursor: pointer;
 }
 
 .infobox__button:hover {
-    background-color: var(--color-primary--hover);
+	background-color: var(--color-primary--hover);
 }
 
 .infobox__buttonLabel {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    gap: var(--space-xs);
-    color: #fff;
-    font-weight: var(--font-weight-medium);
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	gap: var(--space-xs);
+	color: #fff;
+	font-weight: var(--font-weight-medium);
 }
 
 /* Fake button with link element */
 .infobox__buttonLink {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
+	position: absolute;
+	top: 0;
+	bottom: 0;
+	left: 0;
+	right: 0;
 }
 
 .infobox__buttonLink a {
-    display: block;
-    height: 100%;
-    font-size: 0;
+	display: block;
+	height: 100%;
+	font-size: 0;
 }
 
 .infobox__buttonCard {
-    position: absolute;
-    top: 100%;
-    left: 0;
-    right: 0;
-    z-index: -1;
-    background-color: var(--color-surface-1);
-    border-radius: var(--border-radius--medium);
-    box-shadow: var(--box-shadow-dialog);
-    opacity: 0;
-    transition: var(--transition-menu);
-    transition-property: opacity, transform;
-    visibility: hidden;
-    transform: translateY(-20px);
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: -1;
+	background-color: var(--color-surface-1);
+	border-radius: var(--border-radius--medium);
+	box-shadow: var(--box-shadow-dialog);
+	opacity: 0;
+	transition: var(--transition-menu);
+	transition-property: opacity, transform;
+	visibility: hidden;
+	transform: translateY(-20px);
 }
 
 .infobox__button:hover > .infobox__buttonCard {
-    z-index: 10;
-    opacity: 1;
-    visibility: visible;
-    transform: none;
-    cursor: auto;
+	z-index: 10;
+	opacity: 1;
+	visibility: visible;
+	transform: none;
+	cursor: auto;
 }
 
 .infobox__linkButton a {
-    padding: var(--space-xxs) var(--space-xs);
-    display: block;
-    border-radius: var(--border-radius--small);
-    text-decoration: none !important;
+	padding: var(--space-xxs) var(--space-xs);
+	display: block;
+	border-radius: var(--border-radius--small);
+	text-decoration: none !important;
 }
 
 /* Hide external URL icon */
 .infobox__linkButton a:after {
-    content: none;
+	content: none;
 }
 
 .infobox__linkButton a:hover {
-    background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-quiet--hover);
 }
 
 .infobox__linkButton a:active {
-    background-color: var(--background-color-quiet--active);
+	background-color: var(--background-color-quiet--active);
 }
 
 .infobox__section--linkButtons > .infobox__sectionContent {
-    margin-bottom: var(--space-md);
+	margin-bottom: var(--space-md);
 }
 
 .infobox__section--linkButtons .infobox__data {
-    margin-top: var(--space-xxs);
-    margin-left: -8px; /* negative space-xs */
-    margin-right: -8px; /* negative space-xs */
-    display: flex;
-    flex-wrap: wrap;
-    align-items: baseline;
+	margin-top: var(--space-xxs);
+	margin-left: -8px; /* negative space-xs */
+	margin-right: -8px; /* negative space-xs */
+	display: flex;
+	flex-wrap: wrap;
+	align-items: baseline;
 }
 
-.infobox__buttonLabel img[src$=".svg"] {
-    filter: invert(1);
+.infobox__buttonLabel img[src$='.svg'] {
+	filter: invert(1);
 }
 
 .infobox.mw-collapsible:before {
-    /* Avoid collapse button flash */
-    content: none !important;
+	/* Avoid collapse button flash */
+	content: none !important;
 }
 
 @media only screen and (max-width: 639px) {
-    .infobox {
-        margin-right: auto;
-        margin-left: auto;
-    }
+	.infobox {
+		margin-right: auto;
+		margin-left: auto;
+	}
 }
 
 .infobox__section--actions .infobox__sectionContent {
-    padding-left: 0;
-    padding-right: 0;
+	padding-left: 0;
+	padding-right: 0;
 }
 
 /* TODO: Remove when footer is removed */
 .infobox__section--hasBackground + .infobox__section--hasBackground,
 .infobox__section--hasBackground + .infobox__footer {
-    margin-top: 0;
+	margin-top: 0;
 }
 
 .infobox__section--hasBackground .infobox__sectionContent {
-    margin: 0;
+	margin: 0;
 }
 
 .infobox__section--metadata .infobox__sectionContent {
-    padding: var(--space-md);
-    background: var(--color-surface-1);
-    line-height: var(--line-height-xs);
-    gap: var(--space-xxs);
+	padding: var(--space-md);
+	background: var(--color-surface-1);
+	line-height: var(--line-height-xs);
+	gap: var(--space-xxs);
 }
 
 .infobox__section--metadata .infobox__label,
 .infobox__section--metadata .infobox__data {
-    font-size: var(--font-size-x-small);
+	font-size: var(--font-size-x-small);
 }
 
 .infobox__section--metadata .infobox__data {
-    word-break: break-word;
-    font-family: var(--font-family-monospace);
-}
-
-/* Tabber styles */
-.infobox__section--tabber > .infobox__sectionHeader {
-    margin-bottom: var(--space-xxs);
-}
-
-.infobox__section--tabber > .infobox__sectionContent {
-    padding-left: 0;
-    padding-right: 0;
-}
-
-/* Spacing is handled by tabber */
-.infobox__section--tabber .infobox__sectionContent {
-    margin-top: 0;
-    margin-bottom: 0;
-}
-
-.infobox__section--tabber .tabber .infobox__section {
-    margin-top: var(--space-sm);
-    margin-bottom: 0;
-}
-
-/* Increase top margin for nested tabber section */
-.infobox__section--tabber .infobox__section.infobox__section--tabber {
-    margin-top: var(--space-xl);
-}
-
-.infobox__section--tabber .tabber__header {
-    margin-left: var(--space-xs);
-    margin-right: var(--space-xs);
-    box-shadow: none;
-}
-
-/* Match padding in the rest of the infobox */
-.infobox__section--tabber .tabber__tab {
-    margin-left: var(--space-xs);
-    margin-right: var(--space-xs);
-    padding-left: 0;
-    padding-right: 0;
+	word-break: break-word;
+	font-family: var(--font-family-monospace);
 }
 
 /* CSS grid utility classes */
 .infobox__grid--row {
-    grid-auto-flow: column;
+	grid-auto-flow: column;
 }
 
 .infobox__grid--cols-2 {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
+	grid-template-columns: repeat(2, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-3 {
-    grid-template-columns: repeat(3, minmax(0, 1fr));
+	grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-4 {
-    grid-template-columns: repeat(4, minmax(0, 1fr));
+	grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-5 {
-    grid-template-columns: repeat(5, minmax(0, 1fr));
+	grid-template-columns: repeat(5, minmax(0, 1fr));
 }
 
 .infobox__grid--cols-6 {
-    grid-template-columns: repeat(6, minmax(0, 1fr));
+	grid-template-columns: repeat(6, minmax(0, 1fr));
 }
 
 .infobox__grid--col-span-2 {
-    grid-column: span 2;
+	grid-column: span 2;
 }
 
 .infobox__grid--col-span-3 {
-    grid-column: span 3;
+	grid-column: span 3;
 }
 
 .infobox__grid--col-span-4 {
-    grid-column: span 4;
+	grid-column: span 4;
 }
 
 .infobox__grid--col-span-5 {
-    grid-column: span 5;
+	grid-column: span 5;
 }
 
 .infobox__grid--col-span-6 {
-    grid-column: span 6;
+	grid-column: span 6;
 }
 
 .infobox__grid--space-between {
-    justify-content: space-between;
+	justify-content: space-between;
+}
+
+/* FloatingUI styles */
+.infobox__indicator--nopadding .ext-floatingui-reference {
+	padding: var(--space-xxs) var(--space-xs);
+}
+
+/* Tabber styles */
+.infobox__section--tabber > .infobox__sectionHeader {
+	margin-bottom: var(--space-xxs);
+}
+
+.infobox__section--tabber > .infobox__sectionContent {
+	padding-left: 0;
+	padding-right: 0;
+}
+
+/* Spacing is handled by tabber */
+.infobox__section--tabber .infobox__sectionContent {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.infobox__section--tabber .tabber .infobox__section {
+	margin-top: var(--space-sm);
+	margin-bottom: 0;
+}
+
+/* Increase top margin for nested tabber section */
+.infobox__section--tabber .infobox__section.infobox__section--tabber {
+	margin-top: var(--space-xl);
+}
+
+.infobox__section--tabber .tabber__header {
+	margin-left: var(--space-xs);
+	margin-right: var(--space-xs);
+	box-shadow: none;
+}
+
+/* Match padding in the rest of the infobox */
+.infobox__section--tabber .tabber__tab {
+	margin-left: var(--space-xs);
+	margin-right: var(--space-xs);
+	padding-left: 0;
+	padding-right: 0;
 }
