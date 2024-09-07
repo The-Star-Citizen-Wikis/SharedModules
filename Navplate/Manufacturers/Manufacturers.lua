@@ -129,7 +129,7 @@ function methodtable.make( self )
 	local data = self:getSmwData( conditions )
 	if data ~= nil then
 		local navplateData = self:buildNavplateData( data )
-		mw.logObject( navplateData )
+		--mw.logObject( navplateData )
 
 		if navplateData ~= nil then
 			for i, row in ipairs( navplateData ) do

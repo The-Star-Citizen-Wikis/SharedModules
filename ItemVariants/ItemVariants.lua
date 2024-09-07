@@ -141,7 +141,7 @@ function methodtable.getSmwData( self, page )
         return nil
     end
 
-    mw.logObject( smwData, 'getSmwData' )
+    --mw.logObject( smwData, 'getSmwData' )
     self.smwData = smwData
 
     return self.smwData
@@ -164,7 +164,7 @@ function methodtable.out( self )
 
     if smwData[ 1 ] and smwData[ 1 ].name and smwData[ 2 ] and smwData[ 2 ].name then
         baseVariantWords = findCommonWords( smwData[ 1 ].name, smwData[ 2 ].name )
-        mw.logObject( baseVariantWords, 'baseVariantWords' )
+        --mw.logObject( baseVariantWords, 'baseVariantWords' )
     end
 
     for i, variant in ipairs( smwData ) do
@@ -184,7 +184,7 @@ function methodtable.out( self )
                 end
             end
 
-            mw.log( displayName, variant.name )
+            --mw.log( displayName, variant.name )
 
             local variantHtml = mw.html.create( 'div' ):addClass( 'template-itemVariant' )
 

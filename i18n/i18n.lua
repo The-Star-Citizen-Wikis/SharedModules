@@ -43,7 +43,7 @@ local function getLanguageCodes()
         end
     end
 
-    mw.log( string.format( '🌐 [i18n] Setting language chain: %s', table.concat( langCodes, '→' ) ) )
+    --mw.log( string.format( '🌐 [i18n] Setting language chain: %s', table.concat( langCodes, '→' ) ) )
     return langCodes
 end
 
@@ -67,14 +67,14 @@ local function load( lang, namespace )
     local success, data = pcall( mw.loadJsonData, datasetName )
 
     if not success then
-        mw.log( string.format( '🚨 [i18n] Loading dataset[%s][%s]: %s not found on wiki', lang, namespace, datasetName ) )
+        --mw.log( string.format( '🚨 [i18n] Loading dataset[%s][%s]: %s not found on wiki', lang, namespace, datasetName ) )
         -- Cache the empty result so we do not run mw.loadJsonData again
         cache[ lang ][ namespace ] = {}
         return
     end
 
     cache[ lang ][ namespace ] = data
-    mw.log( string.format( '⌛ [i18n] Loading dataset[%s][%s]: %s', lang, namespace, datasetName ) )
+    --mw.log( string.format( '⌛ [i18n] Loading dataset[%s][%s]: %s', lang, namespace, datasetName ) )
 
     return cache[ lang ][ namespace ]
 end
@@ -94,12 +94,12 @@ function methodtable.translate( self, key, options )
     checkType( 'Module:i18n.translate', 2, key, 'string' )
     checkType( 'Module:i18n.translate', 3, options, 'table' )
 
-    mw.log( string.format( '🔍 [i18n] Looking for message: %s', key ) )
+    --mw.log( string.format( '🔍 [i18n] Looking for message: %s', key ) )
 
     local namespace = getNamespace( key )
     if namespace == nil then
         -- No namespace found error
-        mw.log( string.format( '❌ [i18n] Namespace cannot be found from: %s', key ) )
+        --mw.log( string.format( '❌ [i18n] Namespace cannot be found from: %s', key ) )
         if options['returnKey'] == true then
             return key
         else
@@ -118,14 +118,14 @@ function methodtable.translate( self, key, options )
             local match = dataset[ key ]
             if match then
                 message = match
-                mw.log( string.format( '✅ [i18n] Found message: %s', message ) )
+                --mw.log( string.format( '✅ [i18n] Found message: %s', message ) )
             end
         end
         i = i + 1
     end
 
     if message == nil then
-        mw.log( string.format( '❌ [i18n] Could not found message: %s', key ) )
+        --mw.log( string.format( '❌ [i18n] Could not found message: %s', key ) )
         if options['returnKey'] == true then
             message = key
         end

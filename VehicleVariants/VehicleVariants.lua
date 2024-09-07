@@ -70,7 +70,7 @@ function methodtable.getSmwData( self, page )
         return nil
     end
 
-    mw.logObject( smwData, 'getSmwData' )
+    --mw.logObject( smwData, 'getSmwData' )
     self.smwData = smwData
 
     return self.smwData

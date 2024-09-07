@@ -75,7 +75,7 @@ function methodtable.getSmwData( self, category )
         return nil
     end
 
-	mw.logObject( data )
+	--mw.logObject( data )
 
 	-- Init self.smwData
 	if self.smwData == nil then
@@ -132,7 +132,7 @@ function methodtable.group( self, data, groupKey, suffix )
         end
     end
 
-	mw.logObject( grouped )
+	--mw.logObject( grouped )
 
     return grouped
 end
@@ -188,7 +188,7 @@ function methodtable.make( self )
 		end
 	end
 
-	mw.logObject( args )
+	--mw.logObject( args )
 
     return navplate.navplateTemplate({
 		args = args

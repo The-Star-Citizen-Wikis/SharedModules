@@ -154,11 +154,11 @@ local function makeKey( row, hardpointData, parent, root )
         key = key .. root
     end
 
-    if hardpointData.class == 'Weapons' and row.name ~= nil and row.type == 'MissileLauncher' then
+--    if hardpointData.class == 'Weapons' and row.name ~= nil and row.type == 'MissileLauncher' then
 --        key = key .. row.item.name or row.name
-    end
+--    end
 
-    mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makekey' )
+    --mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makekey' )
 
     return key
 end
@@ -552,7 +552,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
                     else
                         root = hardpoint.name
                     end
-                    mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addHardpoints' )
+                    --mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addHardpoints' )
                 end
 
                 addSubComponents( hardpoint )
@@ -588,7 +588,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
     addHardpoints( hardpoints )
 
-    mw.logObject( objects, '📐 [VehicleHardpoint] setHardPointObjects' )
+    --mw.logObject( objects, '📐 [VehicleHardpoint] setHardPointObjects' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -622,7 +622,7 @@ function methodtable.setParts( self, parts )
             key = key .. parent[ t( 'SMW_Hardpoint' ) ]
         end
 
-        mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makeKey' )
+        --mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makeKey' )
 
         return key
     end
@@ -656,7 +656,7 @@ function methodtable.setParts( self, parts )
 
             if depth == 1 then
                 root = part.name
-                mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addParts' )
+                --mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addParts' )
             end
 
             local key = makeKey( part, parent )
@@ -682,7 +682,7 @@ function methodtable.setParts( self, parts )
 
     addParts( parts )
 
-    mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
+    --mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -722,7 +722,7 @@ function methodtable.setComponents( self, components )
         } )
     end
 
-    mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
+    --mw.logObject( objects, '📐 [VehicleHardpoint] setParts' )
 
     for _, subobject in pairs( objects ) do
         mw.smw.subobject( subobject )
@@ -1195,7 +1195,7 @@ function methodtable.makeOutput( self, groupedData )
         classOutput[ class ] = makeSection( types )
     end
 
-    mw.logObject( classOutput, '📐 [VehicleHardpoint] makeOutput' )
+    --mw.logObject( classOutput, '📐 [VehicleHardpoint] makeOutput' )
 
     return classOutput
 end

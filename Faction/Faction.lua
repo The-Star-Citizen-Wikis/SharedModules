@@ -110,7 +110,7 @@ function methodtable.setSemanticProperties( self )
 		config.name_suffixes
 	)
 
-	mw.logObject( setData, 'SET' )
+	--mw.logObject( setData, 'SET' )
 
 	self.setData = setData
 
@@ -156,7 +156,7 @@ function methodtable.getInfobox( self )
 	} )
 	local tabber = require( 'Module:Tabber' ).renderTabber
 
-	mw.logObject( smwData, 'infoboxSmwData' )
+	--mw.logObject( smwData, 'infoboxSmwData' )
 
 	--- SMW Data load error
 	--- Infobox data should always have Name property
