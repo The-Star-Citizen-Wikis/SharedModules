@@ -501,12 +501,12 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
         -- If this key (object) has not been seen before, save it to the list of subobjects
         if type( objects[ key ] ) ~= 'table' then
-            if object ~= nil then
-                objects[ key ] = object
-                objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
-            end
-        else -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
-            objects[ key ][ t( 'SMW_ItemQuantity' ) ] = objects[ key ][ t( 'SMW_ItemQuantity' ) ] + 1
+            objects[ key ] = object
+            objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
+        else 
+            -- This key (object) has been seen before: Increase the quantity and any other cumulative metrics
+            -- Sometimes objects[ key ][ t( 'SMW_ItemQuantity' ) ] is undefined, fallback to 1
+            objects[ key ][ t( 'SMW_ItemQuantity' ) ] = objects[ key ][ t( 'SMW_ItemQuantity' ) ] + 1 or 1
             if object[ t( 'SMW_Position' ) ] ~= nil then
                 if type( objects[ key ][ t( 'SMW_Position' ) ] ) == 'table' then
                     table.insert( objects[ key ][ t( 'SMW_Position' ) ], object[ t( 'SMW_Position' ) ] )
@@ -520,16 +520,12 @@ function methodtable.setHardPointObjects( self, hardpoints )
 
             local inventoryKey = t( 'SMW_Inventory' )
             -- Accumulate the cargo capacities of all cargo grids
-            if object[ inventoryKey ] ~= nil then
-                objects[ key ][ t( 'SMW_ItemQuantity' ) ] = 1
+            if object[ inventoryKey ] ~= nil and objects[ key ][ inventoryKey ] ~= nil then
+                local sucExisting, numExisting = pcall( tonumber, objects[ key ][ inventoryKey ], 10 )
+                local sucNew, numNew = pcall( tonumber, object[ inventoryKey ], 10 )
 
-                if objects[ key ][ inventoryKey ] ~= nil and object[ inventoryKey ] ~= nil then
-                    local sucExisting, numExisting = pcall( tonumber, objects[ key ][ inventoryKey ], 10 )
-                    local sucNew, numNew = pcall( tonumber, object[ inventoryKey ], 10 )
-
-                    if sucExisting and sucNew and numExisting ~= nil and numNew ~= nil then
-                        objects[ key ][ inventoryKey ] = numExisting + numNew
-                    end
+                if sucExisting and sucNew and numExisting ~= nil and numNew ~= nil then
+                    objects[ key ][ inventoryKey ] = numExisting + numNew
                 end
             end
         end
@@ -1404,7 +1400,7 @@ end
 --- Set the hardpoints of the 300i as subobjects to the current page
 function VehicleHardpoint.test( frame )
     frame = frame or { args = {} }
-    local page = frame.args['Name'] or '70580bce-2347-4e96-9260-dee6394f483d'
+    local page = frame.args['Name'] or 'dc39ca6b-1d76-4db5-9346-356f49954978'
     local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. page, {
         include = {
             'hardpoints',
