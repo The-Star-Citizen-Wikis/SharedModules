@@ -264,6 +264,7 @@ end
 function methodtable.getSmwData( self )
 	-- Cache multiple calls
 	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
+		self.smwData['__cache status'] = 'HIT'
 		return self.smwData
 	end
 
@@ -284,6 +285,7 @@ function methodtable.getSmwData( self )
 	end
 
 	self.smwData = smwData[ 1 ]
+	self.smwData['__cache status'] = 'MISS'
 
 	return self.smwData
 end
@@ -312,7 +314,7 @@ function methodtable.getInfobox( self )
 
 	--- FIXME: Should this go into Module:i18n?
 	local function hasI18n( key )
-		return t(key) ~= key
+		return t( key ) ~= key
 	end
 
 	--- Create indicator and its floating element
@@ -674,7 +676,8 @@ function methodtable.getInfobox( self )
 				data = getSeries(),
 			} ),
 			infobox:renderItem( {
-				label = getLabelWithTooltip( 'label_Loaner', '[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
+				label = getLabelWithTooltip( 'label_Loaner',
+				'[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
 			} ),
 		},
@@ -1047,6 +1050,7 @@ function Vehicle.main( frame )
 	local instance = Vehicle:new()
 	instance:setFrame( frame )
 	instance:saveApiData()
+	instance:getSmwData()
 
 	local debugOutput = ''
 	if instance.frameArgs[ 'debug' ] ~= nil then
@@ -1076,6 +1080,7 @@ function Vehicle.test( page )
 	instance.frameArgs[ translate( 'ARG_Name' ) ] = page
 
 	instance:saveApiData()
+	instance:getSmwData()
 	instance:getInfobox()
 end
 

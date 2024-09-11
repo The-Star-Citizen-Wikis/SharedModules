@@ -205,6 +205,7 @@ end
 function methodtable.getSmwData( self )
 	-- Use cached data if possible, SMW queries are expensive
 	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
+		self.smwData['__cache status'] = 'HIT'
         return self.smwData
     end
 
@@ -224,6 +225,7 @@ function methodtable.getSmwData( self )
     end
 
     self.smwData = smwData[ 1 ]
+	self.smwData['__cache status'] = 'MISS'
 
     return self.smwData
 end
@@ -793,6 +795,7 @@ function Item.main( frame )
 	local instance = Item:new()
 	instance:setFrame( frame )
 	instance:saveApiData()
+	instance:getSmwData()
 
 	local debugOutput = ''
 	local interwikiLinks = ''
