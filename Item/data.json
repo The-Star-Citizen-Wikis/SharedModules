@@ -57,7 +57,7 @@
 				"API_dimension.true_dimension.length"
 			],
 			"type": "number",
-			"smw_format": "#p2-cm"
+			"smw_format": "#p3"
 		},
 		{
 			"SMW_EntityWidth": [
@@ -65,7 +65,7 @@
 				"API_dimension.true_dimension.width"
 			],
 			"type": "number",
-			"smw_format": "#p2-cm"
+			"smw_format": "#p3"
 		},
 		{
 			"SMW_EntityHeight": [
@@ -73,7 +73,7 @@
 				"API_dimension.true_dimension.height"
 			],
 			"type": "number",
-			"smw_format": "#p2-cm"
+			"smw_format": "#p3"
 		},
 		{
 			"SMW_Mass": "API_mass",
