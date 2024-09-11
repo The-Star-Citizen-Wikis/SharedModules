@@ -67,6 +67,9 @@ local function makeSmwQueryObject( page )
         mw.ustring.format( '?%s#-=sub_type', t( 'SMW_HardpointSubtype' ) ), langSuffix,
         mw.ustring.format( '?%s#-=name', t( 'SMW_Name' ) ),
         mw.ustring.format( '?%s#-n=scu', t( 'SMW_Inventory' ) ),
+        mw.ustring.format( '?%s#-=length', t( 'SMW_EntityLength' ) ),
+        mw.ustring.format( '?%s#-=width', t( 'SMW_EntityWidth' ) ),
+        mw.ustring.format( '?%s#-=height', t( 'SMW_EntityHeight' ) ),
         mw.ustring.format( '?UUID#-=uuid' ),
         mw.ustring.format( '?%s#-=hardpoint', t( 'SMW_Hardpoint' ) ) ,
         mw.ustring.format( '?%s#-=class_name', t( 'SMW_HardpointClassName' ) ) ,
@@ -121,7 +124,6 @@ local function makeKey( row, hardpointData, parent, root )
            row.type == 'MainThruster' or
            row.type == 'ArmorLocker' or
            row.type == 'Bed' or
-           row.type == 'CargoGrid' or
            row.type == 'Cargo'
         then
             key = row.type .. row.sub_type
@@ -387,6 +389,12 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         if ( itemObj.type == 'Cargo' or itemObj.type == 'SeatAccess' or itemObj.type == 'CargoGrid' or itemObj.type == 'Container' )
                 and type( itemObj.inventory ) == 'table' then
             object[ t( 'SMW_Inventory' ) ] = common.formatNum( (itemObj.inventory.scu or nil ), nil )
+
+            if itemObj.type == 'CargoGrid' then
+                object[ t( 'SMW_EntityHeight' ) ] = common.formatNum( (itemObj.inventory.height or nil ), nil )
+                object[ t( 'SMW_EntityLength' ) ] = common.formatNum( (itemObj.inventory.length or nil ), nil )
+                object[ t( 'SMW_EntityWidth' ) ] = common.formatNum( (itemObj.inventory.width or nil ), nil )
+            end
         end
 
         if itemObj.thruster then
@@ -874,11 +882,21 @@ function methodtable.makeSubtitle( self, item )
 
         -- We need to use raw value from SMW to show scu in different units (SCU, K µSCU)
         -- So we need to format the number manually
-        if item.scu ~= nil and item.type == translate( 'CargoGrid' ) then
+        if item.type == translate( 'CargoGrid' ) then
             table.insert( subtitle,
                 common.formatNum( item.scu ) .. ' SCU' or 'N/A'
             )
-        elseif item.scu ~= nil and item.type == translate( 'PersonalStorage' ) then
+            if item.length and item.width and item.height then
+                table.insert( subtitle,
+                    mw.ustring.format(
+                        'L %s x W %s x H %s',
+                        item.length,
+                        item.width,
+                        item.height
+                    )
+                )
+            end
+        elseif item.type == translate( 'PersonalStorage' ) then
             table.insert( subtitle,
                 common.formatNum( item.scu * 1000 ) .. 'K µSCU' or 'N/A'
             )
@@ -1087,13 +1105,11 @@ function methodtable.makeOutput( self, groupedData )
                     :wikitext( mw.ustring.format( '%dx', item.count ) )
                 :done()
 
-        if item.class ~= translate( 'CargoGrid' ) then
-            nodeSizeCount
-                :tag( 'div' )
-                    :addClass( 'template-component__size' )
-                        :wikitext( size )
-                    :done()
-        end
+        nodeSizeCount
+            :tag( 'div' )
+                :addClass( 'template-component__size' )
+                    :wikitext( size )
+                :done()
 
         nodeSizeCount = nodeSizeCount:allDone()
 

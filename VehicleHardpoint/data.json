@@ -57,7 +57,8 @@
     "CargoGrid": {
       "class": "Cargo",
       "matches": [
-        "hardpoint_cargo.*"
+        "hardpoint_cargo.*",
+        "hardpoint_cargogrid_"
       ],
       "type": "CargoGrid"
     },
