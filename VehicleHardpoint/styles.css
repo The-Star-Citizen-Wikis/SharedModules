@@ -146,6 +146,7 @@
 
 .template-component__title-subtext {
     color: var( --color-base--subtle );
+    font-size: var( --font-size-x-small );
 }
 
 .template-component__title-subtext:before {
