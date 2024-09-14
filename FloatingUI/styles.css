@@ -16,6 +16,7 @@
 
 .t-floatingui-section--cols-2 {
 	grid-template-columns: repeat(2, minmax(0, 1fr));
+	font-size: var(--font-size-x-small); /* Shouldn't be here but works for now */
 }
 
 .t-floatingui-section--cols-2 .t-floatingui-data {
