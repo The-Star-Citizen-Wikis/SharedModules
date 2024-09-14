@@ -13,11 +13,14 @@ On other pages, it can be used to display the infobox of other vehicles.
 ## Requirements
 - [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
 - [Extension:Apiunto](https://github.com/StarCitizenWiki/Apiunto)
+- [Extension:FloatingUI](https://github.com/StarCitizenTools/mediawiki-extensions-FloatingUI)
 - [Extension:TabberNeue](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue)
 - [Module:Arguments](https://www.mediawiki.org/wiki/Module:Arguments)
 - Module:Common
 - Module:Commodity
+- [Module:FloatingUI](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/FloatingUI)
 - Module:Hatnote
+- [Module:i18n](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/i18n)
 - [Module:InfoboxNeue](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/InfoboxNeue)
 - [Module:Manufacturer](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Manufacturer)
 - [Module:Tabber](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Tabber)
