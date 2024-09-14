@@ -247,8 +247,8 @@ function methodtable.setSemanticProperties( self )
 			end
 
 			--- Commodity
-			local commodity = require( 'Module:Commodity' ):new()
-			commodity:addShopData( self.apiData )
+			--- local commodity = require( 'Module:Commodity' ):new()
+			--- commodity:addShopData( self.apiData )
 		end
 	end
 

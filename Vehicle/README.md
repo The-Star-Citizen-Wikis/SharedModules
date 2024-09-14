@@ -17,9 +17,8 @@ On other pages, it can be used to display the infobox of other vehicles.
 - [Extension:TabberNeue](https://github.com/StarCitizenTools/mediawiki-extensions-TabberNeue)
 - [Module:Arguments](https://www.mediawiki.org/wiki/Module:Arguments)
 - Module:Common
-- Module:Commodity
 - [Module:FloatingUI](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/FloatingUI)
-- Module:Hatnote
+- [Module:Hatnote](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Hatnote)
 - [Module:i18n](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/i18n)
 - [Module:InfoboxNeue](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/InfoboxNeue)
 - [Module:Manufacturer](https://github.com/The-Star-Citizen-Wikis/SharedModules/tree/master/Manufacturer)
