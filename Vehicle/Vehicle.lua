@@ -264,7 +264,7 @@ end
 function methodtable.getSmwData( self )
 	-- Cache multiple calls
 	if self.smwData ~= nil and self.smwData[ t( 'SMW_Name' ) ] ~= nil then
-		self.smwData['__cache status'] = 'HIT'
+		self.smwData[ '__cache status' ] = 'HIT'
 		return self.smwData
 	end
 
@@ -285,7 +285,7 @@ function methodtable.getSmwData( self )
 	end
 
 	self.smwData = smwData[ 1 ]
-	self.smwData['__cache status'] = 'MISS'
+	self.smwData[ '__cache status' ] = 'MISS'
 
 	return self.smwData
 end
@@ -359,7 +359,10 @@ function methodtable.getInfobox( self )
 	end
 
 	-- TODO: Implement i18n to source
-	local function getLabelWithTooltip( key, source )
+	local function getSimpleTooltip( key, source, target )
+		-- Return label if no target is specified (e.g. infobox label)
+		target = target or t( key )
+
 		local title
 		if hasI18n( key .. '_title' ) then
 			title = t( key .. '_title' )
@@ -370,7 +373,8 @@ function methodtable.getInfobox( self )
 		local content = {
 			floatingui.renderSection( {
 				data = title,
-				desc = t( key .. '_desc' )
+				desc = t( key .. '_desc' ),
+				inline = true
 			} )
 		}
 
@@ -379,11 +383,13 @@ function methodtable.getInfobox( self )
 				floatingui.renderSection( {
 					col = 2,
 					label = t( 'label_data_source' ),
-					data = source
+					data = source,
+					inline = true
 				} )
 			)
 		end
-		return floatingui.render( t( key ), table.concat( content ) )
+
+		return floatingui.render( target, table.concat( content ), true )
 	end
 
 	local function getManufacturer()
@@ -399,7 +405,14 @@ function methodtable.getInfobox( self )
 	end
 
 	local function getSize()
-		if smwData[ t( 'SMW_Size' ) ] == nil then return smwData[ t( 'SMW_ShipMatrixSize' ) ] end
+		local shipMatrixSize = smwData[ t( 'SMW_ShipMatrixSize' ) ]
+		shipMatrixSize = getSimpleTooltip(
+			'label_Size_shipmatrix',
+			'[https://robertsspaceindustries.com/ship-matrix Ship Matrix]',
+			shipMatrixSize
+		)
+
+		if smwData[ t( 'SMW_Size' ) ] == nil then return shipMatrixSize end
 
 		local codes = { 'XXS', 'XS', 'S', 'M', 'L', 'XL' }
 		local size = smwData[ t( 'SMW_Size' ) ]
@@ -409,9 +422,16 @@ function methodtable.getInfobox( self )
 			size = tonumber( size, 10 )
 		end
 
+		size = table.concat( { 'S', size, '/', codes[ size ] } )
+		size = getSimpleTooltip(
+			'label_Size_game',
+			'Game data',
+			size
+		)
+
 		return infobox.showDescIfDiff(
-			smwData[ t( 'SMW_ShipMatrixSize' ) ],
-			table.concat( { 'S', size, '/', codes[ size ] } )
+			shipMatrixSize,
+			size
 		)
 	end
 
@@ -433,12 +453,12 @@ function methodtable.getInfobox( self )
 		tabberData[ 'label1' ] = t( 'label_Pledge' )
 		section = {
 			infobox:renderItem( {
-				label = getLabelWithTooltip( 'label_Standalone' ),
+				label = getSimpleTooltip( 'label_Standalone' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
 			} ),
 			infobox:renderItem( {
-				label = getLabelWithTooltip( 'label_Warbond' ),
+				label = getSimpleTooltip( 'label_Warbond' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
 			} ),
@@ -676,8 +696,8 @@ function methodtable.getInfobox( self )
 				data = getSeries(),
 			} ),
 			infobox:renderItem( {
-				label = getLabelWithTooltip( 'label_Loaner',
-				'[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
+				label = getSimpleTooltip( 'label_Loaner',
+					'[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
 			} ),
 		},

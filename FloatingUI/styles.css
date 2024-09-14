@@ -1,5 +1,7 @@
 .t-floatingui {
 	max-width: 50ch;
+	/* Needed when this is a span element */
+	display: block;
 }
 
 /* 

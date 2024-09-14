@@ -10,12 +10,17 @@ local FloatingUI = {}
 
 --- Return the HTML of the FloatingUI section component as string
 ---
---- @param data table {label, data, desc, col)
+--- @param data table {label, data, desc, col, inline)
 --- @return string html
 function FloatingUI.renderSection( data )
     if data == nil or type( data ) ~= 'table' or next( data ) == nil then return '' end
 
-    local html = mw.html.create( 'div' )
+    local htmlTag = 'div'
+    if data[ 'inline' ] == true then
+        htmlTag = 'span'
+    end
+
+    local html = mw.html.create( htmlTag )
         :addClass( 't-floatingui-section' )
 
     if data[ 'col' ] then html:addClass( 't-floatingui-section--cols-' .. data[ 'col' ] ) end
@@ -23,7 +28,7 @@ function FloatingUI.renderSection( data )
     local dataOrder = { 'label', 'data', 'desc' }
     for _, key in ipairs( dataOrder ) do
         if data[ key ] then
-            html:tag( 'div' )
+            html:tag( htmlTag )
                 :addClass( 't-floatingui-' .. key )
                 :wikitext( data[ key ] )
         end
