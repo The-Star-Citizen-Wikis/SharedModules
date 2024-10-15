@@ -7,9 +7,9 @@
 
 .template-vehicleVariant {
 	position: relative;
-    border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius--medium );
-    overflow: hidden;
+	border: 1px solid var( --border-color-base );
+	border-radius: var( --border-radius--medium );
+	overflow: hidden;
 }
 
 .template-vehicleVariant.template-vehicleVariant--selected {
@@ -17,51 +17,41 @@
 	background: var( --color-surface-2 );
 }
 
-.template-vehicleVariant:not(.template-vehicleVariant--selected):hover {
-	background: var( --background-color-quiet--hover );
-}
-
-.template-vehicleVariant:not(.template-vehicleVariant--selected):active {
-	background: var( --background-color-quiet--active );
-}
-
 .template-vehicleVariant-fakelink {
 	position: absolute;
-    inset: 0;
-    opacity: 0;
+	inset: 0;
+	opacity: 0;
 	z-index: 2;
 }
 
 .template-vehicleVariant-fakelink a {
 	display: block;
-    height: 100%;
-}
-
-.template-vehicleVariant-fakelink:hover + .template-vehicleVariant-image img {
-	transform: scale( 1.1 );
+	height: 100%;
 }
 
 .template-vehicleVariant-image {
 	position: relative;
 	z-index: 0;
-    height: 160px;
+	height: 160px;
 }
 
 .template-vehicleVariant-image img {
 	height: 100%;
-    width: 100%;
-    object-fit: cover;
+	width: 100%;
+	object-fit: cover;
 	transition: var( --transition-hover );
-    transition-property: transform;
+	transition-property: transform;
 }
 
 .template-vehicleVariant-image::before {
 	position: absolute;
-    content: "";
-    inset: 0px;
-    background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
-    background-position: center top;
+	content: "";
+	inset: 0px;
+	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
+	background-position: center top;
 	z-index: 1;
+	transition: var( --transition-hover );
+	transition-property: opacity;
 }
 
 .template-vehicleVariant-text {
@@ -69,8 +59,10 @@
 	bottom: var( --space-sm );
 	left: var( --space-md );
 	right: var( --space-md );
-    line-height: var( --line-height-sm );
+	line-height: var( --line-height-sm );
 	overflow-wrap: break-word;
+	transition: var( --transition-hover );
+	transition-property: opacity;
 }
 
 .template-vehicleVariant-title {
@@ -82,4 +74,21 @@
 .template-vehicleVariant-subtitle {
 	color: var( --color-base--subtle );
 	font-size: var( --font-size-x-small );
+}
+
+.template-vehicleVariant:not(.template-vehicleVariant--selected):hover {
+	background: var( --background-color-quiet--hover );
+}
+
+.template-vehicleVariant:not(.template-vehicleVariant--selected):active {
+	background: var( --background-color-quiet--active );
+}
+
+.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-image img {
+	transform: scale( 1.1 );
+}
+
+.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-image::before,
+.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-text {
+	opacity: 0;
 }

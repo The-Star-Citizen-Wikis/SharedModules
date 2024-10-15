@@ -7,14 +7,65 @@
 
 .template-itemVariant {
 	position: relative;
-    border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius--medium );
-    overflow: hidden;
+	border: 1px solid var( --border-color-base );
+	border-radius: var( --border-radius--medium );
+	overflow: hidden;
 }
 
 .template-itemVariant.template-itemVariant--selected {
 	order: -1;
 	background: var( --color-surface-2 );
+}
+
+.template-itemVariant-fakelink {
+	position: absolute;
+	inset: 0;
+	opacity: 0;
+	z-index: 2;
+}
+
+.template-itemVariant-fakelink a {
+	display: block;
+	height: 100%;
+}
+
+.template-itemVariant-image {
+	position: relative;
+	z-index: 0;
+	height: 160px;
+}
+
+.template-itemVariant-image img {
+	height: 100%;
+	width: 100%;
+	object-fit: cover;
+	transition: var( --transition-hover );
+	transition-property: transform;
+}
+
+.template-itemVariant-image::before {
+	position: absolute;
+	content: "";
+	inset: 0px;
+	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
+	background-position: center top;
+	z-index: 1;
+	transition: var( --transition-hover );
+	transition-property: opacity;
+}
+
+.template-itemVariant-title {
+	position: absolute;
+	bottom: var( --space-sm );
+	left: var( --space-md );
+	right: var( --space-md );
+	color: var( --color-base--emphasized );
+	font-size: var( --font-size-small );
+	font-weight: var( --font-weight-medium );
+	line-height: var( --line-height-sm );
+	overflow-wrap: break-word;
+	transition: var( --transition-hover );
+	transition-property: opacity;
 }
 
 .template-itemVariant:not(.template-itemVariant--selected):hover {
@@ -25,53 +76,11 @@
 	background: var( --background-color-quiet--active );
 }
 
-.template-itemVariant-fakelink {
-	position: absolute;
-    inset: 0;
-    opacity: 0;
-	z-index: 2;
-}
-
-.template-itemVariant-fakelink a {
-	display: block;
-    height: 100%;
-}
-
-.template-itemVariant-fakelink:hover + .template-itemVariant-image img {
+.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-image img {
 	transform: scale( 1.1 );
 }
 
-.template-itemVariant-image {
-	position: relative;
-	z-index: 0;
-    height: 160px;
-}
-
-.template-itemVariant-image img {
-	height: 100%;
-    width: 100%;
-    object-fit: cover;
-	transition: var( --transition-hover );
-    transition-property: transform;
-}
-
-.template-itemVariant-image::before {
-	position: absolute;
-    content: "";
-    inset: 0px;
-    background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
-    background-position: center top;
-	z-index: 1;
-}
-
-.template-itemVariant-title {
-	position: absolute;
-	bottom: var( --space-sm );
-	left: var( --space-md );
-	right: var( --space-md );
-	color: var( --color-base--emphasized );
-	font-size: var( --font-size-small );
-    font-weight: var( --font-weight-medium );
-    line-height: var( --line-height-sm );
-	overflow-wrap: break-word;
+.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-image::before,
+.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-title {
+	opacity: 0;
 }
