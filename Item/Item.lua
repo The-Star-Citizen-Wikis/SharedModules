@@ -315,6 +315,10 @@ function methodtable.getInfobox( self )
 						query = mw.uri.encode( query, 'PATH' )
 					end
 
+					if site.label == 'UEX' then
+						query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
+					end
+
 					table.insert( links, infobox:renderLinkButton( {
 						label = t( site.label ),
 						link = mw.ustring.format( site.format, query )

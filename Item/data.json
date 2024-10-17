@@ -143,6 +143,11 @@
 			"data": "SMW_UUID"
 		},
 		{
+			"label": "UEX",
+			"format": "https://uexcorp.space/items/info?name=%s",
+			"data": "SMW_Name"
+		},
+		{
 			"label": "Wiki API",
 			"format": "https://api.star-citizen.wiki/api/v2/items/%s",
 			"data": "SMW_UUID"
