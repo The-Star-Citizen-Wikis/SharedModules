@@ -1,0 +1,69 @@
+{
+	"%locations": "Locations containing transit lines in Star Citizen universe",
+	"locations": {
+		"Lorville": {
+			"lines": {
+				"Central Line": {
+					"bg": "#afaea6",
+					"color": "#000"
+				},
+				"Commerce Line": {
+					"bg": "#319843",
+					"color": "#fff"
+				},
+				"Spaceport Line": {
+					"bg": "#1265bd",
+					"color": "#fff"
+				},
+				"Perimeter Line East": {
+					"bg": "#ff5733",
+					"color": "#fff"
+				},
+				"Perimeter Line West": {
+					"bg": "#ffc300",
+					"color": "#000"
+				}
+			}
+		},
+		"New Babbage": {
+			"lines": {
+				"Grand Line": {
+					"bg": "#161e21",
+					"color": "#d0e485"
+				}
+			}
+		},
+		"Orison": {
+			"lines": {
+				"Main Line": {
+					"bg": "#19b431",
+					"color": "#fff"
+				},
+				"Discovery Tours": {
+					"bg": "#2cfdff",
+					"color": "#000"
+				},
+				"Vision Center Line": {
+					"bg": "#ff4a5d",
+					"color": "#fff"
+				},
+				"Inspiration Park Line": {
+					"bg": "#ffc300",
+					"color": "#000"
+				},
+				"Solanki-Brushwood Line": {
+					"bg": "#feea6d",
+					"color": "#000"
+				},
+				"Solanki-Hartmoore Line": {
+					"bg": "#37bfff",
+					"color": "#000"
+				},
+				"Hartmoore-Brushwood Line": {
+					"bg": "#d475d8",
+					"color": "#000"
+				}
+			}
+		}
+	}
+}
