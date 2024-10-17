@@ -9,6 +9,11 @@
 	line-height: var(--line-height-sm);
 }
 
+.infobox::before {
+	/* Need important to override mw-collapsible styles */
+	content: '' !important;
+}
+
 .infobox.mw-collapsed {
 	background-color: transparent;
 }
@@ -583,11 +588,6 @@
 
 .infobox__buttonLabel img[src$='.svg'] {
 	filter: invert(1);
-}
-
-.infobox.mw-collapsible:before {
-	/* Avoid collapse button flash */
-	content: none !important;
 }
 
 @media only screen and (max-width: 639px) {

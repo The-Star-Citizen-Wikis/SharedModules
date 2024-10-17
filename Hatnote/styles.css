@@ -5,6 +5,7 @@
     margin-top: var( --space-xs );
     margin-bottom: var( --space-md );
     background: var( --color-surface-2 );
+    border: 1px solid var( --border-color-base );
     border-radius: var( --border-radius--medium );
     color: var( --color-base--subtle );
     font-size: var( --font-size-small );
