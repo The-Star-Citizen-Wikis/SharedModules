@@ -1,0 +1,76 @@
+.template-itemports-group {
+    margin-top: var( --space-sm );
+    margin-bottom: var( --space-sm );
+}
+
+.template-itemports-group .template-itemports-group  {
+    margin-left: 1.5rem;
+    padding-left: 1.5rem;
+    border-left: 1px solid var( --border-color-base );
+}
+
+.template-itemports-group-label {
+    margin-bottom: var( --space-xs );
+    display: flex;
+    align-items: center;
+    gap: var( --space-md );
+    color: var( --color-subtle );
+    font-size: var( --font-size-x-small );
+    letter-spacing: 0.025em;
+}
+
+.template-itemports-group-label::after {
+    content: '';
+    height: 1px;
+    flex-grow: 1;
+    background: var( --border-color-base );
+}
+
+.template-itemports-list {
+    margin: 0;
+    list-style: none;
+}
+
+.template-itemports-list-item + .template-itemports-list-item {
+    margin-top: var( --space-xs );
+}
+
+.template-itemport {
+    display: grid;
+    grid-template-columns: 3rem auto;
+    min-height: 4rem;
+    border: 1px solid var( --border-color-base );
+    border-radius: var( --border-radius-medium );
+    /* Set font size as the template might be used outside of itemports */
+    font-size: var( --font-size-small );
+    line-height: var( --line-height-sm );
+}
+
+.template-itemport-port {
+    display: grid;
+    place-content: center;
+    text-align: center;
+    border-right: 1px solid var( --border-color-base );
+}
+
+.template-itemport-item {
+    display: grid;
+    padding: var( --space-sm ) var( --space-md );
+    align-items: center;
+    border-top-right-radius: var( --border-radius-medium );
+    border-bottom-right-radius: var( --border-radius-medium );
+}
+
+.template-itemport[ data-itemport-has-item ] .template-itemport-item {
+    background-color: var( --color-surface-2 );
+}
+
+.template-itemport-text-emphasized {
+    color: var( --color-emphasized );
+    font-weight: var( --font-weight-medium );
+}
+
+.template-itemport-text-subtle {
+    color: var( --color-subtle );
+    font-size: var( --font-size-x-small );
+}
