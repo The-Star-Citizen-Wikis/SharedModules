@@ -302,18 +302,18 @@
 }
 
 .infobox__indicator.infobox__indicator--red {
-	background-color: var(--color-destructive);
-	color: #fff;
+	background-color: var(--background-color-destructive-subtle);
+	color: var(--color-destructive);
 }
 
 .infobox__indicator.infobox__indicator--yellow {
-	background-color: var(--color-warning);
-	color: #000;
+	background-color: var(--background-color-warning-subtle);
+	color: var(--color-warning);
 }
 
 .infobox__indicator.infobox__indicator--green {
-	background-color: var(--color-success);
-	color: #fff;
+	background-color: var(--background-color-success-subtle);
+	color: var(--color-success);
 }
 
 .infobox__header,
