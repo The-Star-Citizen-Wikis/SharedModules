@@ -2,14 +2,31 @@ require( 'strict' )
 
 local p = {}
 
-local metatable = {}
-local methodtable = {}
-
-metatable.__index = methodtable
-
 local i18n = require( 'Module:i18n' ):new()
 
 local cache = {}
+
+-- TODO: Move this to data.json or something
+local order = {
+    -- Pilot weapons
+    'WeaponGun.Gun',
+    'Turret.BallTurret',
+    'Turret.CanardTurret',
+    'Turret.GunTurret',
+    'Turret.NoseMounted',
+    -- Ordnances
+    'MissileLauncher.MissileRack',
+    'Missile.Missile',
+    'Missile.Torpedo',
+    'WeaponGun.Rocket',
+    'Bomb',
+    -- System
+    'Shield',
+    'PowerPlant.Power',
+    'Cooler',
+    -- Propulsion
+    "QuantumDrive"
+}
 
 
 --- Wrapper function for Module:i18n.translate
@@ -18,6 +35,33 @@ local cache = {}
 --- @return string If the key was not found, the key is returned
 local function t( key )
 	return i18n:translate( key )
+end
+
+
+--- Reorder table by the key listed in order
+--- TODO: Move to Module:Common as it can be shared
+---
+--- @param originalTable table - Table to use
+--- @param order table - Table of keys to indicate the order
+--- @return table
+local function reorderTable( originalTable, order )
+    local reorderedTable = {}
+    local remainingValues = {}
+
+    -- Iterate over the order table
+    for _, key in ipairs( order ) do
+        if originalTable[ key ] ~= nil then
+            reorderedTable[ #reorderedTable + 1 ] = originalTable[ key ]
+            originalTable[ key ] = nil
+        end
+    end
+
+    -- Add remaining elements to the end of the reordered table
+    for _, value in pairs( originalTable ) do
+        reorderedTable[ #reorderedTable + 1 ] = value
+    end
+
+    return reorderedTable
 end
 
 
@@ -150,7 +194,7 @@ local function getPortsData( ports, level )
     return data
 end
 
-
+--[[
 --- Map component data from API to data format for the template
 ---
 --- @param port table
@@ -240,7 +284,7 @@ local function getComponentsData( components, level )
     end
     return data
 end
-
+]]--
 
 --- Return mw.html object for each item port
 ---
@@ -306,7 +350,7 @@ local function getPortsHTML( data, level )
     level = level or 1
     local html = mw.html.create()
 
-    for group, ports in pairs( data ) do
+    for _, ports in pairs( data ) do
         local groupHTML = html:tag( 'div' )
             :addClass( 'template-itemports-group' )
             :tag( 'div' )
@@ -364,8 +408,7 @@ local function getAPIData( query )
     local api = require( 'Module:Common/Api' )
     local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v3/vehicles/' .. query, {
         include = {
-            'ports',
-            'components'
+            'ports'
         }
     } ) )
 
@@ -384,16 +427,12 @@ function p.main( frame )
         return string.format( '[ItemPort/Vehicle] No API data found for %s', query )
     end
 
-    if not data.ports and not data.components then
+    if not data.ports then
         return string.format( '[ItemPort/Vehicle] No ports data found for %s', query )
     end
 
-    local portsData
-    if data.ports then
-        portsData = getPortsData( data.ports )
-    else
-        portsData = getComponentsData( data.components )
-    end
+    local portsData = getPortsData( data.ports )
+    portsData = reorderTable( portsData, order )
 
     return tostring( getOutputHTML( portsData ) ) .. frame:extensionTag{
         name = 'templatestyles', args = { src = 'User:Alistair3149/sandbox/itemport2/styles.css' }
@@ -414,19 +453,14 @@ function p.test( query )
         return
     end
 
-    mw.logObject( data )
+    --mw.logObject( data )
 
-    if not data.ports and not data.components then
-        mw.log( string.format( '[ItemPort/Vehicle] No ports data found for %s', query ) )
-        return
+    if not data.ports then
+        return string.format( '[ItemPort/Vehicle] No ports data found for %s', query )
     end
 
-    local portsData
-    if data.ports then
-        portsData = getPortsData( data.ports )
-    else
-        portsData = getComponentsData( data.components )
-    end
+    local portsData = getPortsData( data.ports )
+    portsData = reorderTable( portsData, order )
     mw.logObject( portsData )
 
     return
