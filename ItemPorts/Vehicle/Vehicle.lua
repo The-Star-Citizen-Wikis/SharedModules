@@ -4,8 +4,6 @@ local p = {}
 
 local i18n = require( 'Module:i18n' ):new()
 
-local cache = {}
-
 -- TODO: Move this to data.json or something
 local order = {
     -- Pilot weapons
@@ -35,6 +33,12 @@ local order = {
 --- @return string If the key was not found, the key is returned
 local function t( key )
 	return i18n:translate( key )
+end
+
+
+--- FIXME: Should this go into Module:i18n?
+local function hasI18n( key )
+    return t( key ) ~= key
 end
 
 
@@ -106,6 +110,20 @@ local function getType( type, subtype )
 end
 
 
+--- Utilty function to get item type label from i18n
+---
+--- @param type string |nil
+--- @return string
+local function getItemTypeLabel( type )
+    if not type then return 'Unknown' end
+    local key = 'label_itemtype_' .. string.lower( type )
+    if hasI18n( key ) then
+        return t( key )
+    end
+    return type
+end
+
+
 --- Utility function to get display name of an item
 ---
 --- @param item table
@@ -130,14 +148,16 @@ local function getPortData( port )
     data.portName = port.name
 
     if item then
-        data.hasItem = true
-        data.itemUUID = item.uuid;
         data.itemType = getType( item.type, item.sub_type )
         data.size = getSize( item.size )
         data.title = getItemName( item )
+        data.attr = {
+            [ 'item-uuid' ] = item.uuid,
+            [ 'item-type' ] = data.itemType,
+            [ 'has-item' ] = ''
+        }
     -- For items that are either placeholder or not parsed by API
     elseif itemClassName and itemClassName ~= '' then
-        data.hasItem = true
         data.size = getSize( port.sizes )
         -- Try to get size from class name
         if data.size == '-' then
@@ -146,6 +166,9 @@ local function getPortData( port )
             data.size = getSize( sizeNumFromClassName )
         end
         data.title = itemClassName
+        data.attr = {
+            [ 'has-item' ] = ''
+        }
     else
         data.size = getSize( port.sizes )
         data.pretitle = port.name
@@ -167,29 +190,19 @@ local function getPortsData( ports, level )
     local data = {}
     for i = 1, #ports do
         local port = ports[ i ]
-        local prevPortData = cache.prevPortData
-        local shouldStack = prevPortData and prevPortData.itemUUID and port.equipped_item and port.equipped_item.uuid and port.equipped_item.uuid == prevPortData.itemUUID
-        -- Stack port if it has the same equipped item as the previous port
-        if shouldStack then
-            prevPortData.quantity = prevPortData.quantity or 1
-            prevPortData.quantity = prevPortData.quantity + 1
-        else
-            local portData = getPortData( port )
-            -- Cache port data to use for comparison with the next port
-            cache.prevPortData = portData
-            portData.level = level
-            local childPorts = port.ports
-            if childPorts and #childPorts > 0 then
-                portData.ports = getPortsData( childPorts, level + 1 )
-            end
-            -- Index port by their types
-            local portType = portData.itemType or 'Unknown'
-            data[ portType ] = data[ portType ] or {
-                label = portType,
-                list = {}
-            }
-            table.insert( data[ portType ].list, portData )
+        local portData = getPortData( port )
+        portData.level = level
+        local childPorts = port.ports
+        if childPorts and #childPorts > 0 then
+            portData.ports = getPortsData( childPorts, level + 1 )
         end
+        -- Index port by their types
+        local portType = portData.itemType or 'Unknown'
+        data[ portType ] = data[ portType ] or {
+            label = getItemTypeLabel( portData.itemType ),
+            list = {}
+        }
+        table.insert( data[ portType ].list, portData )
     end
     return data
 end
@@ -203,7 +216,6 @@ local function getComponentData( port )
     local data = {
         title = port.name,
         itemType = port.type,
-        hasItem = true
     }
     if port.component_size and tonumber( port.component_size ) then
         data.size = getSize( port.component_size )
@@ -300,11 +312,10 @@ local function getPortHTML( data )
     local item = html:tag( 'div' )
         :addClass( 'template-itemport-item' )
 
-    if data.hasItem then
-        html:attr( 'data-itemport-has-item', '' )
-    end
-    if data.itemUUID then
-        html:attr( 'data-itemport-item-uuid', data.itemUUID )
+    if data.attr and next( data.attr ) ~= nil then
+        for k, v in pairs( data.attr ) do
+            html:attr( 'data-itemport-' .. k, v )
+        end
     end
 
     port:attr( 'title', data.portName )
