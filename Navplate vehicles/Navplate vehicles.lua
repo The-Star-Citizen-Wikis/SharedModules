@@ -61,7 +61,7 @@ function methodtable.getSmwData( self, category )
 
     local query = ''
 
-    if mw.ustring.sub( category, 1, 2 ) == '[[' then
+    if string.sub( category, 1, 2 ) == '[[' then
     	query = category
     else
     	query = '[[Category:' .. category .. '|+depth=0]]'
@@ -171,18 +171,18 @@ function methodtable.make( self )
 			local label
 			local mfuData = manufacturer:get( mfu )
 			if mfuData and mfuData.code then
-				icon = mw.ustring.format( '[[File:sc-icon-manufacturer-%s.svg|36px|link=]] ', mw.ustring.lower( mfuData.code ) )
+				icon = string.format( '[[File:sc-icon-manufacturer-%s.svg|36px|link=]] ', string.lower( mfuData.code ) )
 				-- TODO: Intergrate label title and subtitle into Module:Navplate
-				label = mw.ustring.format(
+				label = string.format(
 					'[[%s|%s<div class="template-navplate__subtitle>%s</div>]]',
 					mfu,
 					mfuData.name,
 					mfuData.code
 				)
 			else
-				label = mw.ustring.format( '[[%s]]', mfu )
+				label = string.format( '[[%s]]', mfu )
 			end
-			args[ 'label' .. i ] = mw.ustring.format( '%s%s', icon, label )
+			args[ 'label' .. i ] = string.format( '%s%s', icon, label )
 			args[ 'list' .. i ] = table.concat( vehicles )
 			i = i + 1
 		end

@@ -22,7 +22,7 @@ end
 --- @return string
 function Transit.main( location, name, frame )
     if not location and not name then
-        return mw.ustring.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
+        return string.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
     end
 
     local bg = '#000'

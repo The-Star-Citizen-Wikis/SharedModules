@@ -9,7 +9,7 @@ local function getTabberLength( data )
     local length = 0
 
     for k, _ in next, data do
-        if mw.ustring.find( k, 'label' ) == 1 then
+        if string.find( k, 'label' ) == 1 then
             length = length + 1
         end
     end

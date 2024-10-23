@@ -71,7 +71,7 @@ local function makeSmwQueryObject( page )
 	for _, queryPart in pairs( data.smw_data ) do
 		local smwKey
 		for key, _ in pairs( queryPart ) do
-			if mw.ustring.sub( key, 1, 3 ) == 'SMW' then
+			if string.sub( key, 1, 3 ) == 'SMW' then
 				smwKey = key
 				break
 			end
@@ -85,7 +85,7 @@ local function makeSmwQueryObject( page )
 
 		-- safeguard
 		if smwKey ~= nil then
-			table.insert( query, mw.ustring.format( formatString, t( smwKey ) ) )
+			table.insert( query, string.format( formatString, t( smwKey ) ) )
 
 			if queryPart.type == 'multilingual_text' then
 				table.insert( query, langSuffix )
@@ -104,8 +104,8 @@ local function makeTimeReadable( time )
 	if time == nil then return end
 
 	-- Fix for german number format
-	if mw.ustring.find( time, ',', 1, true ) then
-		time = mw.ustring.gsub( time, ',', '.' )
+	if string.find( time, ',', 1, true ) then
+		time = string.gsub( time, ',', '.' )
 	end
 
 	if type( time ) == 'string' then
@@ -136,7 +136,7 @@ local function makeTimeReadable( time )
 	end
 
 	for pattern, replace in pairs( regex ) do
-		time = mw.ustring.gsub( time, pattern, replace )
+		time = string.gsub( time, pattern, replace )
 	end
 
 	return time
@@ -148,8 +148,8 @@ end
 local function formatModifier( x )
 	if x == nil then return end
 	-- Fix for german number format
-	if mw.ustring.find( x, ',', 1, true ) then
-		x = mw.ustring.gsub( x, ',', '.' )
+	if string.find( x, ',', 1, true ) then
+		x = string.gsub( x, ',', '.' )
 	end
 
 	if type( x ) == 'string' then x = tonumber( x, 10 ) end
@@ -226,7 +226,7 @@ function methodtable.setSemanticProperties( self )
 		if man ~= nil then man = man.name end
 
 		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
-		setData[ t( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
+		setData[ t( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
 	end
 
 	-- Set properties with API data
@@ -275,7 +275,7 @@ function methodtable.getSmwData( self )
 	local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
 	if smwData == nil or smwData[ 1 ] == nil then
-		return hatnote( mw.ustring.format(
+		return hatnote( string.format(
 				'%s[[%s]]',
 				t( 'message_error_no_data_text' ),
 				t( 'category_error_pages_with_script_errors' )
@@ -329,7 +329,7 @@ function methodtable.getInfobox( self )
 		local stateData = data.productionstates
 		for _, map in pairs( stateData ) do
 			local msgKey = 'label_productionstate_' .. map.key
-			if mw.ustring.match( state, t( msgKey ) ) ~= nil then
+			if string.match( state, t( msgKey ) ) ~= nil then
 				indicator[ 'color' ] = map.color
 				local descMsgKey = msgKey .. '_desc'
 				if hasI18n( descMsgKey ) then
@@ -438,9 +438,9 @@ function methodtable.getInfobox( self )
 	local function getSeries()
 		local series = smwData[ t( 'SMW_Series' ) ]
 		if series == nil then return end
-		return mw.ustring.format(
+		return string.format(
 			'[[:Category:%s|%s]]',
-			mw.ustring.format( t( 'category_series' ), series ),
+			string.format( t( 'category_series' ), series ),
 			series
 		)
 	end
@@ -648,19 +648,19 @@ function methodtable.getInfobox( self )
 
 				if query ~= nil then
 					if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-						query = mw.ustring.lower( query )
+						query = string.lower( query )
 					else
 						query = mw.uri.encode( query, 'PATH' )
 					end
 
 					-- TODO: This is no ideal, we should make this more generic and reusuable
 					if site.label == 'FleetYards' then
-						query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
+						query = string.lower( string.gsub( query, '%%20', '-' ) )
 					end
 
 					table.insert( links, infobox:renderLinkButton( {
 						label = t( site.label ),
-						link = mw.ustring.format( site.format, query )
+						link = string.format( site.format, query )
 					} ) )
 				end
 			end
@@ -880,13 +880,13 @@ function methodtable.setCategories( self )
 	if size ~= nil and size_cat then
 		table.insert(
 			self.categories,
-			string.format( '[[Category:%s]]', mw.ustring.format( t( size_cat ), size ) )
+			string.format( '[[Category:%s]]', string.format( t( size_cat ), size ) )
 		)
 	end
 
 	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = mw.ustring.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
-		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
+		local manufacturer = string.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = string.gsub( manufacturer, '%]+', '' )
 
 		table.insert(
 			self.categories,
@@ -905,7 +905,7 @@ function methodtable.setCategories( self )
 		table.insert(
 			self.categories,
 			string.format( '[[Category:%s]]',
-				mw.ustring.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
+				string.format( t( 'category_series' ), self.smwData[ t( 'SMW_Series' ) ] ) )
 		)
 	end
 
@@ -935,18 +935,18 @@ function methodtable.setShortDescription( self )
 			vehicleRole = table.concat( vehicleRole, ' ' )
 		end
 
-		vehicleRole = mw.ustring.lower( vehicleRole )
+		vehicleRole = string.lower( vehicleRole )
 
 		for _, noun in pairs( config.role_suffixes ) do
-			local match = mw.ustring.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
+			local match = string.find( vehicleRole, '%f[%a]' .. noun .. '%f[%A]' )
 			--- Remove suffix from role
 			if match then
-				vehicleRole = mw.text.trim( mw.ustring.gsub( vehicleRole, noun, '' ) )
+				vehicleRole = mw.text.trim( string.gsub( vehicleRole, noun, '' ) )
 				vehicleType = noun
 			end
 		end
 
-		shortdesc = mw.ustring.format( '%s %s', vehicleRole, vehicleType )
+		shortdesc = string.format( '%s %s', vehicleRole, vehicleType )
 	else
 		shortdesc = vehicleType
 	end
@@ -958,7 +958,7 @@ function methodtable.setShortDescription( self )
 			vehicleSize = t( 'shortdesc_single_seat' )
 		end
 
-		shortdesc = mw.ustring.format( '%s %s', vehicleSize, shortdesc )
+		shortdesc = string.format( '%s %s', vehicleSize, shortdesc )
 	end
 
 	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
@@ -967,7 +967,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
+		shortdesc = string.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	shortdesc = lang:ucfirst( shortdesc )

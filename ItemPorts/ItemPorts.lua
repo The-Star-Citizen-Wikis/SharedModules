@@ -43,24 +43,24 @@ local function makeSmwQueryObject( page )
 
     local itemPortName = t( 'SMW_ItemPortName' )
     local query = {
-        mw.ustring.format( '?%s#-=name', itemPortName ),
-        mw.ustring.format( '?%s#-=display_name', t( 'SMW_ItemPortDisplayName' ) ),
-        mw.ustring.format( '?%s#-=min_size', t( 'SMW_ItemPortMinimumSize' ) ),
-        mw.ustring.format( '?%s#-=max_size', t( 'SMW_ItemPortMaximumSize' ) ),
-        mw.ustring.format( '?%s#-=equipped_name', t( 'SMW_EquippedItemName' ) ),
-        mw.ustring.format( '?%s#-=equipped_uuid', t( 'SMW_EquippedItemUUID' ) ),
-        mw.ustring.format( 'sort=%s', itemPortName ),
+        string.format( '?%s#-=name', itemPortName ),
+        string.format( '?%s#-=display_name', t( 'SMW_ItemPortDisplayName' ) ),
+        string.format( '?%s#-=min_size', t( 'SMW_ItemPortMinimumSize' ) ),
+        string.format( '?%s#-=max_size', t( 'SMW_ItemPortMaximumSize' ) ),
+        string.format( '?%s#-=equipped_name', t( 'SMW_EquippedItemName' ) ),
+        string.format( '?%s#-=equipped_uuid', t( 'SMW_EquippedItemUUID' ) ),
+        string.format( 'sort=%s', itemPortName ),
         'order=asc',
         'limit=1000'
     }
 
-    table.insert( query, 1, mw.ustring.format(
+    table.insert( query, 1, string.format(
         '[[-Has subobject::' .. page .. ']][[%s::+]]',
         itemPortName
     ) )
 
     for _, portName in ipairs(ignores) do
-        table.insert( query, 2, mw.ustring.format(
+        table.insert( query, 2, string.format(
             '[[%s::!' .. portName .. ']]',
             itemPortName
         ))
@@ -98,7 +98,7 @@ function methodtable.out( self )
 	local smwData = self:getSmwData( self.page )
 	
 	if smwData == nil then
-        local msg = mw.ustring.format( t( 'message_error_no_itemports_found' ), self.page )
+        local msg = string.format( t( 'message_error_no_itemports_found' ), self.page )
 		return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
 	end
 
@@ -115,9 +115,9 @@ function methodtable.out( self )
         end
 
 		if port.min_size == port.max_size then
-			size_text = mw.ustring.format( 'S%d', port.min_size )
+			size_text = string.format( 'S%d', port.min_size )
 		else
-			size_text = mw.ustring.format( 'S%d–%d', port.min_size, port.max_size )
+			size_text = string.format( 'S%d–%d', port.min_size, port.max_size )
 		end
 		
 		if port.equipped_name ~= nil then
@@ -125,7 +125,7 @@ function methodtable.out( self )
                 -- TODO: Display more specific name by getting the type of the item
                 title = translate( 'item_placeholder' )
             else
-			    title = mw.ustring.format( '[[%s]]', port.equipped_name )
+			    title = string.format( '[[%s]]', port.equipped_name )
             end
 		else
 			title = translate( 'msg_no_item_equipped' )

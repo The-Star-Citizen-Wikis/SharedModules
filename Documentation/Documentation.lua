@@ -36,7 +36,7 @@ end
 function p.doc( frame )
     local title = mw.title.getCurrentTitle()
     local args = frame:getParent().args
-    local page = args[1] or mw.ustring.gsub( title.fullText, '/[Dd]o[ck]u?$', '' )
+    local page = args[1] or string.gsub( title.fullText, '/[Dd]o[ck]u?$', '' )
     local ret, cats, ret1, ret2, ret3
     local pageType = title.namespace == 828 and 'module' or 'template'
 
@@ -49,10 +49,10 @@ function p.doc( frame )
     	)
 
         if title.namespace == 10 then -- Template namespace
-            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. string.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
         elseif title.namespace == 828 then -- Module namespace
-            cats = '[[Category:' .. mw.ustring.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
+            cats = '[[Category:' .. string.format( t( 'category_documentation' ), t( 'category_' .. pageType ) ) .. '|' .. title.baseText .. ']]'
             ret2 = dependencyList._main()
             ret2 = ret2 .. require('Module:Module toc').main()
         else
@@ -112,12 +112,12 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_shared_by_the_star_citizen_wikis' ), lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. string.format( t( 'category_shared_by_the_star_citizen_wikis' ), lang:ucfirst( pageType ) ) .. ']]' )
 		--- Interlanguage link
 		--- TODO: Make this into a for loop when there are more wikis
 		for _, code in pairs{ 'de', 'en' } do
 			if lang:getCode() ~= code then
-	    		table.insert( ret3, mw.ustring.format( '[[%s:%s]]', code, title.fullText ) )
+	    		table.insert( ret3, string.format( '[[%s:%s]]', code, title.fullText ) )
 			end
 		end
     end
@@ -139,7 +139,7 @@ function p.doc( frame )
 			)
 	   )
 	   --- Set category
-	   table.insert( ret3, '[[Category:' .. mw.ustring.format( t( 'category_imported_from_wikipedia' ), lang:ucfirst( pageType ) ) .. ']]' )
+	   table.insert( ret3, '[[Category:' .. string.format( t( 'category_imported_from_wikipedia' ), lang:ucfirst( pageType ) ) .. ']]' )
     end
 
     if title.namespace == 828 then
@@ -183,7 +183,7 @@ function p.doc( frame )
 		    )
 		end
 
-		table.insert( ret3, mw.ustring.format( '[[Category:%s]]', t( 'category_module' ) ) )
+		table.insert( ret3, string.format( '[[Category:%s]]', t( 'category_module' ) ) )
     end
 
     --- Dependency list

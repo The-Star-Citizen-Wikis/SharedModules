@@ -102,7 +102,7 @@ local function makeSmwQueryObject( page )
     -- 4. On base item page, select base item
     local query = {
         '[[:+]]',
-        mw.ustring.format(
+        string.format(
             '[[%s::<q>[[-%s::%s]]</q>]] || [[-%s::%s]] || [[%s::%s]] || [[%s::%s]]',
             smwItemBaseVariantName,
             smwItemBaseVariantName,
@@ -153,7 +153,7 @@ function methodtable.out( self )
     local smwData = self:getSmwData( self.page )
 
     if smwData == nil then
-        local msg = mw.ustring.format( t( 'message_error_no_variants_found' ), self.page )
+        local msg = string.format( t( 'message_error_no_variants_found' ), self.page )
         return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
     end
 
@@ -194,10 +194,10 @@ function methodtable.out( self )
 
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-fakelink' )
-                :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
+                :wikitext( string.format( '[[%s|%s]]', variant.page, variant.name ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-image' )
-                :wikitext( mw.ustring.format( '[[%s|200px|link=]]', variant.image or placeholderImage ) )
+                :wikitext( string.format( '[[%s|200px|link=]]', variant.image or placeholderImage ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-title' )
                 :wikitext( displayName )

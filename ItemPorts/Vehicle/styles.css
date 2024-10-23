@@ -1,6 +1,6 @@
 .template-itemports-group {
     margin-top: var( --space-sm );
-    margin-bottom: var( --space-sm );
+    margin-bottom: var( --space-md );
 }
 
 .template-itemports-group .template-itemports-group  {

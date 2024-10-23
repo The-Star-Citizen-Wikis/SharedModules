@@ -113,7 +113,7 @@ function methodtable.make( self )
 	local mfu = manufacturer:get( self.frameArgs[ 1 ] ) and manufacturer:get( self.frameArgs[ 1 ] ).name or self.frameArgs[ 1 ]
 
 	if mfu == nil then
-		return mw.ustring.format(
+		return string.format(
             '<strong class="error">Error: %s.</strong>',
             'Missing manufacturer parmeter'
     	)
@@ -121,7 +121,7 @@ function methodtable.make( self )
 
 	local args = {
 		subtitle = 'Products of',
-		title = mw.ustring.format( '[[%s]]', mfu )
+		title = string.format( '[[%s]]', mfu )
 	}
 
 	local conditions = 'Category:' .. mfu

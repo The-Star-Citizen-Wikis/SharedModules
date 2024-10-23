@@ -40,7 +40,7 @@ local function makeSmwQueryObject( page )
 
     local query = {
         '[[:+]]',
-        mw.ustring.format( '[[%s::%s]]', smwSeries, series ),
+        string.format( '[[%s::%s]]', smwSeries, series ),
         '[[Category:Ground vehicles||Ships]]',
         '?#-=page',
         '?' .. smwName .. '#-=name',
@@ -83,7 +83,7 @@ function methodtable.out( self )
     local smwData = self:getSmwData( self.page )
 
     if smwData == nil then
-        local msg = mw.ustring.format( t( 'message_error_no_variants_found' ), self.page )
+        local msg = string.format( t( 'message_error_no_variants_found' ), self.page )
         return require( 'Module:Hatnote' )._hatnote( msg, { icon = 'WikimediaUI-Error.svg' } )
     end
 
@@ -107,10 +107,10 @@ function methodtable.out( self )
 
             variantHtml:tag( 'div' )
                 :addClass( 'template-vehicleVariant-fakelink' )
-                :wikitext( mw.ustring.format( '[[%s|%s]]', variant.page, variant.name ) )
+                :wikitext( string.format( '[[%s|%s]]', variant.page, variant.name ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-vehicleVariant-image' )
-                :wikitext( mw.ustring.format( '[[%s|400px|link=]]', image ) )
+                :wikitext( string.format( '[[%s|400px|link=]]', image ) )
 
             local variantTextHtml = mw.html.create( 'div' )
                 :addClass( 'template-vehicleVariant-text' )

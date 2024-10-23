@@ -5,7 +5,7 @@
 
 return function (val, default)
     -- If your wiki uses non-ascii characters for any of "yes", "no", etc., you
-    -- should replace "val:lower()" with "mw.ustring.lower(val)" in the
+    -- should replace "val:lower()" with "string.lower(val)" in the
     -- following line.
     val = type(val) == 'string' and val:lower() or val
     if val == nil then

@@ -91,9 +91,9 @@ local function formatDisplay(parsed, options)
 	if (not section) then
 		return page
 	elseif (not page) then
-		return mw.ustring.format('§&nbsp;%s', section)
+		return string.format('§&nbsp;%s', section)
 	else
-		return mw.ustring.format('%s §&nbsp;%s', page, section)
+		return string.format('%s §&nbsp;%s', page, section)
 	end
 end
 
@@ -166,22 +166,22 @@ function p._formatLink(options)
 	end
 
 	-- Test if page exists if a diagnostic category is specified
-	if catMissing and (mw.ustring.len(catMissing) > 0) then
+	if catMissing and (string.len(catMissing) > 0) then
 		local title = nil
 		if parsed.page then title = mw.title.new(parsed.page) end
 		if title and (not title.isExternal) then
 			local success, exists = pcall(function() return title.exists end)
 			if success and not exists then
-				category = mw.ustring.format('[[Category:%s]]', catMissing)
+				category = string.format('[[Category:%s]]', catMissing)
 			end
 		end
 	end
 
 	-- Format the result as a link
 	if parsed.link == display then
-		return mw.ustring.format('[[:%s]]%s', parsed.link, category)
+		return string.format('[[:%s]]%s', parsed.link, category)
 	else
-		return mw.ustring.format('[[:%s|%s]]%s', parsed.link, display, category)
+		return string.format('[[:%s|%s]]%s', parsed.link, display, category)
 	end
 end
 

@@ -24,7 +24,7 @@ end
 
 --- Remove parentheses and their content
 local function removeParentheses( inputString )
-    return mw.ustring.match( mw.ustring.gsub( inputString, '%b()', '' ), '^%s*(.*%S)' ) or ''
+    return string.match( string.gsub( inputString, '%b()', '' ), '^%s*(.*%S)' ) or ''
 end
 
 --- Alternative for doing table[key][key], this returns nil instead of an error if it doesn't exist
@@ -44,7 +44,7 @@ end
 -- @param suffix string
 -- @return boolean
 local function endsWith( str, suffix )
-    return mw.ustring.sub( str, -string.len( suffix ) ) == suffix
+    return string.sub( str, -string.len( suffix ) ) == suffix
 end
 
 --- Does string start with x
@@ -52,7 +52,7 @@ end
 -- @param prefix string
 -- @return boolean
 local function startsWith( str, prefix )
-    return mw.ustring.sub( str, 1, mw.ustring.len( prefix ) ) == prefix
+    return string.sub( str, 1, string.len( prefix ) ) == prefix
 end
 
 --- Filter table
@@ -81,15 +81,15 @@ end
 -- @param sep string Seperator
 local function split( str, sep )
 	local matches = {}
-	for str in mw.ustring.gmatch( str, '([^' .. sep .. ']+)' ) do
-		table.insert( matches, mw.ustring.gsub( str, '%b()', '' ) or '' )
+	for str in string.gmatch( str, '([^' .. sep .. ']+)' ) do
+		table.insert( matches, string.gsub( str, '%b()', '' ) or '' )
 	end
 	return matches
 end
 
 -- @param str string
 local function trim( str )
-    return mw.ustring.match( str, '([^:%(%s]+)' )
+    return string.match( str, '([^:%(%s]+)' )
 end
 
 --- If but inline
@@ -105,8 +105,8 @@ local function convertCategories( categories )
 	local mapped = {}
 	for _, category in pairs( categories ) do
 		if category ~= nil then
-			if mw.ustring.sub( category, 1, 2 ) ~= '[[' then
-				category = mw.ustring.format( '[[Category:%s]]', category )
+			if string.sub( category, 1, 2 ) ~= '[[' then
+				category = string.format( '[[Category:%s]]', category )
 			end
 			
 			table.insert( mapped, category )
@@ -184,7 +184,7 @@ function System.main( frame )
 	
 	--- Trim 'system' from the name
 	if mega[ 'name' ] ~= nil and endsWith( mega[ 'name' ], 'system' ) then
-		mega[ 'name' ] = trim( mw.ustring.sub( mega[ 'name' ], 1, -6 ) )
+		mega[ 'name' ] = trim( string.sub( mega[ 'name' ], 1, -6 ) )
 	end
 	
 	mega[ 'system' ] = Starmap.findStructure( 'system', mega[ 'code' ] or mega[ 'name' ] ) or {}
@@ -201,7 +201,7 @@ function System.main( frame )
 	
 	mega[ 'type' ] = args[ 'type' ] or mega[ 'system' ][ 'type' ]
 	if mega[ 'type' ] ~= nil then
-		mega[ '#type' ] = t( 'val_type_' .. mw.ustring.lower( mega[ 'type' ] ) )
+		mega[ '#type' ] = t( 'val_type_' .. string.lower( mega[ 'type' ] ) )
 		table.insert( mega[ 'categories' ], mega[ '#type' ] .. ' systems' )
 	end
 	
@@ -212,7 +212,7 @@ function System.main( frame )
 	else mega[ '#size' ] = '? AU' end
 	
 	mega[ 'status' ] = args[ 'status' ] or mega[ 'system' ][ 'status' ]
-	if mega[ 'status' ] ~= nil then mega[ '#status' ] = t( 'val_status_' .. mw.ustring.lower( mega[ 'status' ] ) ) end
+	if mega[ 'status' ] ~= nil then mega[ '#status' ] = t( 'val_status_' .. string.lower( mega[ 'status' ] ) ) end
 	
 	mega[ 'system_objects' ] = Starmap.systemObjects( mega[ 'code' ] or mega[ 'name' ] )
 	
@@ -236,13 +236,13 @@ function System.main( frame )
 	elseif e( mega, 'system', 'affiliation' ) ~= nil then
 		mega[ 'affiliation' ] = {}
 		for _, empire in ipairs( mega[ 'system' ][ 'affiliation' ] ) do
-			table.insert( mega[ 'affiliation' ], t( 'val_affiliation_' .. mw.ustring.lower( empire[ 'code' ] ) ) )
+			table.insert( mega[ 'affiliation' ], t( 'val_affiliation_' .. string.lower( empire[ 'code' ] ) ) )
 		end
 	end
 	if mega[ 'affiliation' ][ 1 ] then table.insert( mega[ 'categories' ], mega[ 'affiliation' ][ 1 ] .. ' systems' ) end
 	mega[ '#affiliation' ] = {}
 	for _, name in ipairs( mega[ 'affiliation' ] ) do
-		table.insert( mega[ '#affiliation' ], mw.ustring.format( '[[%s]]', name ) )
+		table.insert( mega[ '#affiliation' ], string.format( '[[%s]]', name ) )
 	end
 	mega[ '#affiliation' ] = table.concat( mega[ '#affiliation' ], ', ' )
 	
@@ -290,7 +290,7 @@ function System.main( frame )
 	if mega[ 'starmap_link' ] == nil and mega[ 'code' ] then mega[ 'starmap_link' ] = Starmap.link( mega[ 'code' ] ) end
 	mega[ 'starmap_id' ] = e( mega, 'system', 'id' )
 	mega[ 'cornerstone_link' ] = args[ 'cornerstone' ]
-	if mega[ 'cornerstone_link' ] == nil and Array.contains( cuteArray( config[ 'cornerstone_systems' ] ), mega[ 'code' ] ) then mega[ 'cornerstone_link' ] = mw.ustring.format( config[ 'cornerstone' ], mega[ 'name' ] ) end
+	if mega[ 'cornerstone_link' ] == nil and Array.contains( cuteArray( config[ 'cornerstone_systems' ] ), mega[ 'code' ] ) then mega[ 'cornerstone_link' ] = string.format( config[ 'cornerstone' ], mega[ 'name' ] ) end
 	
 	infobox:renderImage( mega[ 'image' ] )
 	infobox:renderHeader( {
@@ -457,18 +457,18 @@ function System.main( frame )
 	} )
 
 	if mega[ 'planet_count' ] ~= nil and mega[ 'planet_count' ] ~= 0 and mega[ '#type' ] ~= nil then
-		frame:callParserFunction( 'SHORTDESC', mw.ustring.format( 
+		frame:callParserFunction( 'SHORTDESC', string.format( 
 			inlineIf( mega[ 'planet_count' ] == 1, t( 'shortdesc_1_singular' ), t( 'shortdesc_1_plural' ) ), 
-			string.gsub( mw.ustring.lower( mega[ '#type' ] ), '^%l', mw.ustring.upper ),
+			string.gsub( string.lower( mega[ '#type' ] ), '^%l', string.upper ),
 			mega[ 'planet_count' ]
 		) )
 	elseif (mega[ 'planet_count' ] == nil or mega[ 'planet_count' ] == 0) and mega[ '#type' ] ~= nil then
-		frame:callParserFunction( 'SHORTDESC', mw.ustring.format( 
+		frame:callParserFunction( 'SHORTDESC', string.format( 
 			t( 'shortdesc_2' ),
-			string.gsub( mw.ustring.lower( mega[ '#type' ] ), '^%l', mw.ustring.upper )
+			string.gsub( string.lower( mega[ '#type' ] ), '^%l', string.upper )
 		) )
 	elseif mega[ 'planet_count' ] ~= nil and mega[ 'planet_count' ] ~= 0 then
-		frame:callParserFunction( 'SHORTDESC', mw.ustring.format( 
+		frame:callParserFunction( 'SHORTDESC', string.format( 
 			inlineIf( mega[ 'planet_count' ] == 1, t( 'shortdesc_3_singular' ), t( 'shortdesc_3_plural' ) ), 
 			mega[ 'planet_count' ]
 		) )

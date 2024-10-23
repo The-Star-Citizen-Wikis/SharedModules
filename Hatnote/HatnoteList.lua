@@ -32,8 +32,8 @@ local stringifyListDefaultOptions = {
 
 --Searches display text only
 local function searchDisp(haystack, needle)
-    return mw.ustring.find(
-            mw.ustring.sub(haystack, (string.find(haystack, '|') or 0) + 1), needle
+    return string.find(
+            string.sub(haystack, (string.find(haystack, '|') or 0) + 1), needle
     )
 end
 
@@ -105,7 +105,7 @@ local function punctuationCollapse (text)
         ["%?%]%]%.$"] = "?]]",
         ["%!%]%]%.$"] = "!]]"
     }
-    for k, v in pairs(replacements) do text = mw.ustring.gsub(text, k, v) end
+    for k, v in pairs(replacements) do text = string.gsub(text, k, v) end
     return text
 end
 
@@ -184,7 +184,7 @@ function p.forSeeTableToString (forSeeTable, options)
                         categorizeMissing = mHatnote.missingTargetCat,
                         link = mHatnote.disambiguate(options.title)
                     }
-            local forSeeStr = mw.ustring.format(options.forSeeForm, useStr, pagesStr)
+            local forSeeStr = string.format(options.forSeeForm, useStr, pagesStr)
             forSeeStr = punctuationCollapse(forSeeStr)
             table.insert(strList, forSeeStr)
         end

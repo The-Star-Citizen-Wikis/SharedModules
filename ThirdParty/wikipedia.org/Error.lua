@@ -5,7 +5,7 @@
 local p = {}
 
 local function _error(args)
-    local tag = mw.ustring.lower(tostring(args.tag))
+    local tag = string.lower(tostring(args.tag))
 
     -- Work out what html tag we should use.
     if not (tag == 'p' or tag == 'span' or tag == 'div') then

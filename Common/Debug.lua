@@ -19,19 +19,19 @@ function Common.convertSmwQueryObject( queryObject )
     }
 
     for _, part in ipairs( queryObject ) do
-        if mw.ustring.sub( part, 1, 1 ) == '?' then
+        if string.sub( part, 1, 1 ) == '?' then
             table.insert( queryParts.output, part )
-        elseif mw.ustring.sub( part, 1, 5 ) == '+lang' then
+        elseif string.sub( part, 1, 5 ) == '+lang' then
             local index = #queryParts.output
-            queryParts.output[ index ] = mw.ustring.format( '%s|%s', queryParts.output[ index ], part )
-        elseif mw.ustring.sub( part, 1, 2 ) == '[[' then
+            queryParts.output[ index ] = string.format( '%s|%s', queryParts.output[ index ], part )
+        elseif string.sub( part, 1, 2 ) == '[[' then
             table.insert( queryParts.restrictions, mw.getCurrentFrame():callParserFunction( '#tag', { 'nowiki', part } ) )
         elseif #part > 0 and part ~= nil then
             table.insert( queryParts.other, part )
         end
     end
 
-    local queryString = mw.ustring.format(
+    local queryString = string.format(
         'Restrictions:<pre>%s</pre>Outputs:<pre>%s</pre>Other:<pre>%s</pre>',
         table.concat( queryParts.restrictions, "\n" ),
         table.concat( queryParts.output, "\n"),

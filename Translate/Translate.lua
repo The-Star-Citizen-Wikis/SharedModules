@@ -22,10 +22,10 @@ local i18nDataset = 'Module:Translate/i18n.json'
 --- @param dataset table
 --- @return string|nil
 local function guessDataset( dataset )
-    if mw.ustring.find( dataset, ':', 1, true ) then
+    if string.find( dataset, ':', 1, true ) then
         return dataset
     elseif type( dataset ) == 'string' then
-        return mw.ustring.format( 'Module:%s/i18n.json', dataset )
+        return string.format( 'Module:%s/i18n.json', dataset )
     end
 
     return nil
@@ -75,7 +75,7 @@ local function formatMessage( dataset, key, params, lang )
         error( formatMessage( i18nDataset, 'error_bad_msgkey', { key, dataset }, mw.getContentLanguage():getCode() ) )
     end
 
-    msg = msg[ lang ] or error( mw.ustring.format( 'Language "%s" not found for key "%s"', lang, key ) )
+    msg = msg[ lang ] or error( string.format( 'Language "%s" not found for key "%s"', lang, key ) )
 
     local result = mw.message.newRawMessage( msg, unpack( params or {} ) )
 
@@ -168,7 +168,7 @@ function Translate.getTemplateData( dataset )
             end
 
             if name and newVal[ 'type' ] ~= nil then
-                if type( name ) ~= "number" and ( type( name ) ~= "string" or not mw.ustring.match( name, "^%d+$" ) ) then
+                if type( name ) ~= "number" and ( type( name ) ~= "string" or not string.match( name, "^%d+$" ) ) then
                     numOnly = false
                 end
 
@@ -215,7 +215,7 @@ function Translate.getTemplateData( dataset )
     })
 
     if numOnly then
-        json = mw.ustring.gsub( json,'"zzz123":"",?', "" )
+        json = string.gsub( json,'"zzz123":"",?', "" )
     end
 
     return json
@@ -247,7 +247,7 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
 
 	local function multilingualIfActive( input )
 		if addSuffix and config.smw_multilingual_text == true then
-			return mw.ustring.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
+			return string.format( '%s@%s', input, config.module_lang or mw.getContentLanguage():getCode() )
 		end
 
 		return input
@@ -263,7 +263,7 @@ function methodtable.translate( self, dataset, config, key, addSuffix, ... )
         local title = mw.title.new( guessDataset( dataset ) )
 
         if not title.exists then
-            error( mw.ustring.format( 'I18N table "%s" does not exist!', dataset ), 3 )
+            error( string.format( 'I18N table "%s" does not exist!', dataset ), 3 )
         end
 
 		return nil

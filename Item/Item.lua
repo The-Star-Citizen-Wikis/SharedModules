@@ -154,7 +154,7 @@ function methodtable.setSemanticProperties( self )
 		if man ~= nil then man = man.name end
 
 		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
-		setData[ t( 'SMW_Manufacturer' ) ] = mw.ustring.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
+		setData[ t( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
 	end
 
 	-- Set properties with API data
@@ -167,7 +167,7 @@ function methodtable.setSemanticProperties( self )
 			-- Merge subtype into type, like how the game handles it
 			if self.apiData.sub_type ~= 'UNDEFINED' then
 				-- SMW_Type is already set prior if self.apiData.type exists
-				setData[ t( 'SMW_Type' ) ] = mw.ustring.format( '%s.%s', setData[ t( 'SMW_Type' ) ], self.apiData.sub_type )
+				setData[ t( 'SMW_Type' ) ] = string.format( '%s.%s', setData[ t( 'SMW_Type' ) ], self.apiData.sub_type )
 			end
 
 			local descData = self.apiData.description_data
@@ -177,11 +177,11 @@ function methodtable.setSemanticProperties( self )
 					if descObj.name == 'Item Type' or descObj.name == 'Type' then
 						local descType = descObj.type
 						-- FIXME: This only works for English, need some way to get only the English text for comparison since descType is always in English
-						local itemType = translate( mw.ustring.format( 'type_%s', mw.ustring.lower( setData[ t( 'SMW_Type' ) ] ) ) )
+						local itemType = translate( string.format( 'type_%s', string.lower( setData[ t( 'SMW_Type' ) ] ) ) )
 
 						-- If the type in item description is different than what we compose out of type and subtype data, record it in subtype
 						-- TODO: We should make a common function to sanitize strings for comaprison (e.g. lowercase, remove all the space)
-						if mw.ustring.lower( descType ) ~= mw.ustring.lower( itemType ) then
+						if string.lower( descType ) ~= string.lower( itemType ) then
 							setData[ t( 'SMW_Subtype' ) ] = descType
 						end
 					end
@@ -215,7 +215,7 @@ function methodtable.getSmwData( self )
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-		return hatnote( mw.ustring.format(
+		return hatnote( string.format(
 				'%s[[%s]]',
 				t( 'message_error_no_data_text' ),
 				t( 'message_error_category_script_error' )
@@ -265,13 +265,13 @@ function methodtable.getInfobox( self )
 	local function getType()
 		if smwData[ t( 'SMW_Type' ) ] == nil then return end
 
-		local itemType = t( mw.ustring.format( 'label_itemtype_%s', mw.ustring.lower( smwData[ t( 'SMW_Type' ) ] ) ) )
+		local itemType = t( string.format( 'label_itemtype_%s', string.lower( smwData[ t( 'SMW_Type' ) ] ) ) )
 
-		if mw.ustring.find( itemType, 'label_itemtype_' ) then
+		if string.find( itemType, 'label_itemtype_' ) then
 			itemType = smwData[ t( 'SMW_Type' ) ]
 		end
 
-		return mw.ustring.format( '[[%s]]', itemType )
+		return string.format( '[[%s]]', itemType )
 	end
 
 	local function getSize()
@@ -282,8 +282,8 @@ function methodtable.getInfobox( self )
 	local function getClass()
 		if smwData[ t( 'SMW_Class' ) ] == nil then return end
 
-		local classKey = mw.ustring.lower( smwData[ t( 'SMW_Class' ) ] )
-		local class = translate( mw.ustring.format( 'class_%s', classKey ) )
+		local classKey = string.lower( smwData[ t( 'SMW_Class' ) ] )
+		local class = translate( string.format( 'class_%s', classKey ) )
 
 		if smwData[ t( 'SMW_Grade' ) ] ~= nil then
 			class = class .. ' (' .. smwData[ t( 'SMW_Grade' ) ] .. ')'
@@ -310,18 +310,18 @@ function methodtable.getInfobox( self )
 
 				if query ~= nil then
 					if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-						query = mw.ustring.lower( query )
+						query = string.lower( query )
 					else
 						query = mw.uri.encode( query, 'PATH' )
 					end
 
 					if site.label == 'UEX' then
-						query = mw.ustring.lower( mw.ustring.gsub( query, '%%20', '-' ) )
+						query = string.lower( string.gsub( query, '%%20', '-' ) )
 					end
 
 					table.insert( links, infobox:renderLinkButton( {
 						label = t( site.label ),
-						link = mw.ustring.format( site.format, query )
+						link = string.format( site.format, query )
 					} ) )
 				end
 			end
@@ -553,12 +553,12 @@ function methodtable.setCategories( self )
 	end
 
 	local function addSubcategory( s1, s2 )
-		table.insert( self.categories, mw.ustring.format( '%s (%s)', s1, s2 ) )
+		table.insert( self.categories, string.format( '%s (%s)', s1, s2 ) )
 	end
 
 	--- Only set category if category_type value exists
 	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
-		local typeCategoryKey = 'category_itemtype_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
+		local typeCategoryKey = 'category_itemtype_' .. string.lower( self.smwData[ t( 'SMW_Type' ) ] )
 		local typeCategory = t( typeCategoryKey )
 
 		if typeCategory ~= nil and typeCategory ~= typeCategoryKey then
@@ -583,8 +583,8 @@ function methodtable.setCategories( self )
 	end
 
 	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
-		local manufacturer = mw.ustring.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
-		manufacturer = mw.ustring.gsub( manufacturer, '%]+', '' )
+		local manufacturer = string.gsub( self.smwData[ t( 'SMW_Manufacturer' ) ], '%[+', '' )
+		manufacturer = string.gsub( manufacturer, '%]+', '' )
 
 		table.insert( self.categories, manufacturer )
 	else
@@ -609,29 +609,29 @@ function methodtable.setShortDescription( self )
 			-- TODO: Localize subtype
 			itemType = self.smwData[ t( 'SMW_Subtype' ) ]
 		else
-			local itemTypeKey = 'label_itemtype_' .. mw.ustring.lower( self.smwData[ t( 'SMW_Type' ) ] )
+			local itemTypeKey = 'label_itemtype_' .. string.lower( self.smwData[ t( 'SMW_Type' ) ] )
 			if t( itemTypeKey ) ~= nil and t( itemTypeKey ) ~= itemTypeKey then
 				itemType = t( itemTypeKey )
 			end
 		end
-		itemType = mw.ustring.lower( itemType )
+		itemType = string.lower( itemType )
 	end
 
 	shortdesc = itemType
 
 	if self.smwData[ t( 'SMW_Class' ) ] ~= nil then
-		shortdesc = mw.ustring.format( '%s %s',
+		shortdesc = string.format( '%s %s',
 			string.lower( self.smwData[ t( 'SMW_Class' ) ] ),
 			shortdesc
 		)
 	end
 
 	if self.smwData[ t( 'SMW_Grade' ) ] ~= nil then
-		shortdesc = mw.ustring.format( t( 'shortdesc_grade' ), self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
+		shortdesc = string.format( t( 'shortdesc_grade' ), self.smwData[ t( 'SMW_Grade' ) ], shortdesc )
 	end
 
 	if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
-		shortdesc = mw.ustring.format( 'S%d %s',
+		shortdesc = string.format( 'S%d %s',
 			self.smwData[ t( 'SMW_Size' ) ],
 			shortdesc
 		)
@@ -644,7 +644,7 @@ function methodtable.setShortDescription( self )
 		--- Use short name if possible
 		if man ~= nil and man.shortname ~= nil then mfuname = man.shortname end
 
-		shortdesc = mw.ustring.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
+		shortdesc = string.format( t( 'shortdesc_manufactured_by' ), shortdesc, mfuname )
 	end
 
 	--- Submodule override
@@ -704,8 +704,8 @@ function methodtable.getCategories( self )
 	local mapped = {}
 
 	for _, category in pairs( self.categories ) do
-		if mw.ustring.sub( category, 1, 2 ) ~= '[[' then
-			category = mw.ustring.format( '[[Category:%s]]', category )
+		if string.sub( category, 1, 2 ) ~= '[[' then
+			category = string.format( '[[Category:%s]]', category )
 		end
 
 		table.insert( mapped, category )

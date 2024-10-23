@@ -54,32 +54,32 @@ p.ucfirst = function (frame )
 
     s1 = table.concat (prefixes_t);												-- recreate the prefix string for later reattachment
 
-    local first_text = mw.ustring.match (s, '^%[%[[^%]]+%]%]');					-- extract wikilink at start of string if present; TODO: this can be string.match()?
+    local first_text = string.match (s, '^%[%[[^%]]+%]%]');					-- extract wikilink at start of string if present; TODO: this can be string.match()?
 
     local upcased;
     if first_text then
         if first_text:match ('^%[%[[^|]+|[^%]]+%]%]') then						-- if <first_text> is a piped link
-            upcased = mw.ustring.match (s, '^%[%[[^|]+|%W*(%w)');				-- get first letter character
-            upcased = mw.ustring.upper (upcased);								-- upcase first letter character
-            s = mw.ustring.gsub (s, '^(%[%[[^|]+|%W*)%w', '%1' .. upcased);		-- replace
+            upcased = string.match (s, '^%[%[[^|]+|%W*(%w)');				-- get first letter character
+            upcased = string.upper (upcased);								-- upcase first letter character
+            s = string.gsub (s, '^(%[%[[^|]+|%W*)%w', '%1' .. upcased);		-- replace
         else																	-- here when <first_text> is a wikilink but not a piped link
-            upcased = mw.ustring.match (s, '^%[%[%W*%w');						-- get '[[' and first letter
-            upcased = mw.ustring.upper (upcased);								-- upcase first letter character
-            s = mw.ustring.gsub (s, '^%[%[%W*%w', upcased);						-- replace; no capture needed here
+            upcased = string.match (s, '^%[%[%W*%w');						-- get '[[' and first letter
+            upcased = string.upper (upcased);								-- upcase first letter character
+            s = string.gsub (s, '^%[%[%W*%w', upcased);						-- replace; no capture needed here
         end
 
     elseif s:match ('^%[%S+%s+[^%]]+%]') then									-- if <s> is a ext link of some sort; must have label text
-        upcased = mw.ustring.match (s, '^%[%S+%s+%W*(%w)');						-- get first letter character
-        upcased = mw.ustring.upper (upcased);									-- upcase first letter character
-        s = mw.ustring.gsub (s, '^(%[%S+%s+%W*)%w', '%1' .. upcased);			-- replace
+        upcased = string.match (s, '^%[%S+%s+%W*(%w)');						-- get first letter character
+        upcased = string.upper (upcased);									-- upcase first letter character
+        s = string.gsub (s, '^(%[%S+%s+%W*)%w', '%1' .. upcased);			-- replace
 
     elseif s:match ('^%[%S+%s*%]') then											-- if <s> is a ext link without label text; nothing to do
         return s1 .. s;															-- reattach prefix string (if present) and done
 
     else																		-- <s> is not a wikilink or ext link; assume plain text
-        upcased = mw.ustring.match (s, '^%W*%w');								-- get the first letter character
-        upcased = mw.ustring.upper (upcased);									-- upcase first letter character
-        s = mw.ustring.gsub (s, '^%W*%w', upcased);								-- replace; no capture needed here
+        upcased = string.match (s, '^%W*%w');								-- get the first letter character
+        upcased = string.upper (upcased);									-- upcase first letter character
+        s = string.gsub (s, '^%W*%w', upcased);								-- replace; no capture needed here
     end
 
     return s1 .. s;																-- reattach prefix string (if present) and done
@@ -213,7 +213,7 @@ p._findpagetext = function(args)
     if plain:sub(1, 1) == "f" then plain = false else plain = true end
     -- get the page content and look for 'text' - return position or nomatch
     local content = titleobj and titleobj:getContent()
-    return content and mw.ustring.find(content, text, 1, plain) or nomatch
+    return content and string.find(content, text, 1, plain) or nomatch
 end
 p.findpagetext = function(frame)
     local args = frame.args
@@ -251,7 +251,7 @@ p._getParameters = p._GetParameters.getParameters
 
 -- Escape Pattern helper function so that all characters are treated as plain text, as per Module:String
 function p._escapePattern( pattern_str )
-    return mw.ustring.gsub( pattern_str, "([%(%)%.%%%+%-%*%?%[%^%$%]])", "%%%1" )
+    return string.gsub( pattern_str, "([%(%)%.%%%+%-%*%?%[%^%$%]])", "%%%1" )
 end
 
 -- Helper Function to interpret boolean strings, as per Module:String
@@ -285,7 +285,7 @@ function p.strip( frame )
         chars = p._escapePattern( chars )
     end
     local result
-    result = mw.ustring.gsub(source_str, "["..chars.."]", '')
+    result = string.gsub(source_str, "["..chars.."]", '')
     return result
 end
 
@@ -308,7 +308,7 @@ function p.matchAny(frame)
     for i = 1, math.huge do
         local pattern = frame.args[i]
         if not pattern then return '' end
-        if mw.ustring.find(source_str, pattern, 1, l_plain) then
+        if string.find(source_str, pattern, 1, l_plain) then
             return tostring(i)
         end
     end
@@ -346,7 +346,7 @@ function p.hyphen_to_dash( str, spacing )
     for _, item in ipairs (list) do												-- for each item in the list
         item = mw.text.trim(item)												-- trim whitespace
         item, accept = item:gsub ('^%(%((.+)%)%)$', '%1')
-        if accept == 0 and mw.ustring.match (item, '^%w*[%.%-]?%w+%s*[%-–—]%s*%w*[%.%-]?%w+$') then	-- if a hyphenated range or has endash or emdash separators
+        if accept == 0 and string.match (item, '^%w*[%.%-]?%w+%s*[%-–—]%s*%w*[%.%-]?%w+$') then	-- if a hyphenated range or has endash or emdash separators
             if item:match ('^%a+[%.%-]?%d+%s*%-%s*%a+[%.%-]?%d+$') or			-- letterdigit hyphen letterdigit (optional separator between letter and digit)
                 item:match ('^%d+[%.%-]?%a+%s*%-%s*%d+[%.%-]?%a+$') or			-- digitletter hyphen digitletter (optional separator between digit and letter)
                 item:match ('^%d+[%.%-]%d+%s*%-%s*%d+[%.%-]%d+$') or			-- digit separator digit hyphen digit separator digit
@@ -354,7 +354,7 @@ function p.hyphen_to_dash( str, spacing )
                 item:match ('^%a+%s*%-%s*%a+$') then							-- letter hyphen letter
                 item = item:gsub ('(%w*[%.%-]?%w+)%s*%-%s*(%w*[%.%-]?%w+)', '%1–%2')	-- replace hyphen, remove extraneous space characters
             else
-                item = mw.ustring.gsub (item, '%s*[–—]%s*', '–')				-- for endash or emdash separated ranges, replace em with en, remove extraneous whitespace
+                item = string.gsub (item, '%s*[–—]%s*', '–')				-- for endash or emdash separated ranges, replace em with en, remove extraneous whitespace
             end
         end
         table.insert (out, item)												-- add the (possibly modified) item to the output table

@@ -53,45 +53,45 @@ local function makeSmwQueryObject( page )
     end
 
     return {
-        mw.ustring.format(
+        string.format(
             '[[-Has subobject::' .. page .. ']][[%s::+]][[%s::+]]',
             t( 'SMW_HardpointType' ),
             t( 'SMW_VehicleHardpointsTemplateGroup' )
         ),
-        mw.ustring.format( '?%s#-=from_gamedata', t( 'SMW_FromGameData' ) ),
-        mw.ustring.format( '?%s#-=count', t( 'SMW_ItemQuantity' ) ),
-        mw.ustring.format( '?%s#-=min_size', t( 'SMW_HardpointMinimumSize' ) ),
-        mw.ustring.format( '?%s#-=max_size', t( 'SMW_HardpointMaximumSize' ) ),
-        mw.ustring.format( '?%s#-=class', t( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=type', t( 'SMW_HardpointType' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=sub_type', t( 'SMW_HardpointSubtype' ) ), langSuffix,
-        mw.ustring.format( '?%s#-=name', t( 'SMW_Name' ) ),
-        mw.ustring.format( '?%s#-n=scu', t( 'SMW_Inventory' ) ),
-        mw.ustring.format( '?%s#-=length', t( 'SMW_EntityLength' ) ),
-        mw.ustring.format( '?%s#-=width', t( 'SMW_EntityWidth' ) ),
-        mw.ustring.format( '?%s#-=height', t( 'SMW_EntityHeight' ) ),
-        mw.ustring.format( '?UUID#-=uuid' ),
-        mw.ustring.format( '?%s#-=hardpoint', t( 'SMW_Hardpoint' ) ) ,
-        mw.ustring.format( '?%s#-=class_name', t( 'SMW_HardpointClassName' ) ) ,
-        mw.ustring.format( '?%s#-=magazine_capacity', t( 'SMW_MagazineCapacity' ) ),
-        mw.ustring.format( '?%s=thrust_capacity', t( 'SMW_ThrustCapacity' ) ),
-        mw.ustring.format( '?%s=damage', t( 'SMW_Damage' ) ),
-        mw.ustring.format( '?%s=damage_radius', t( 'SMW_DamageRadius' ) ),
-        mw.ustring.format( '?%s=fuel_capacity', t( 'SMW_FuelCapacity' ) ),
-        mw.ustring.format( '?%s=fuel_intake_rate', t( 'SMW_FuelIntakeRate' ) ),
-        mw.ustring.format( '?%s#-=parent_hardpoint', t( 'SMW_ParentHardpoint' ) ),
-        mw.ustring.format( '?%s#-=root_hardpoint', t( 'SMW_RootHardpoint' ) ),
-        mw.ustring.format( '?%s#-=parent_uuid', t( 'SMW_ParentHardpointUuid' ) ),
-        mw.ustring.format( '?%s#-=icon', t( 'SMW_Icon' ) ),
-        mw.ustring.format( '?%s=hp', t( 'SMW_HitPoints' ) ),
-        mw.ustring.format( '?%s#-=position', t( 'SMW_Position' ) ),
+        string.format( '?%s#-=from_gamedata', t( 'SMW_FromGameData' ) ),
+        string.format( '?%s#-=count', t( 'SMW_ItemQuantity' ) ),
+        string.format( '?%s#-=min_size', t( 'SMW_HardpointMinimumSize' ) ),
+        string.format( '?%s#-=max_size', t( 'SMW_HardpointMaximumSize' ) ),
+        string.format( '?%s#-=class', t( 'SMW_VehicleHardpointsTemplateGroup' ) ), langSuffix,
+        string.format( '?%s#-=type', t( 'SMW_HardpointType' ) ), langSuffix,
+        string.format( '?%s#-=sub_type', t( 'SMW_HardpointSubtype' ) ), langSuffix,
+        string.format( '?%s#-=name', t( 'SMW_Name' ) ),
+        string.format( '?%s#-n=scu', t( 'SMW_Inventory' ) ),
+        string.format( '?%s#-=length', t( 'SMW_EntityLength' ) ),
+        string.format( '?%s#-=width', t( 'SMW_EntityWidth' ) ),
+        string.format( '?%s#-=height', t( 'SMW_EntityHeight' ) ),
+        string.format( '?UUID#-=uuid' ),
+        string.format( '?%s#-=hardpoint', t( 'SMW_Hardpoint' ) ) ,
+        string.format( '?%s#-=class_name', t( 'SMW_HardpointClassName' ) ) ,
+        string.format( '?%s#-=magazine_capacity', t( 'SMW_MagazineCapacity' ) ),
+        string.format( '?%s=thrust_capacity', t( 'SMW_ThrustCapacity' ) ),
+        string.format( '?%s=damage', t( 'SMW_Damage' ) ),
+        string.format( '?%s=damage_radius', t( 'SMW_DamageRadius' ) ),
+        string.format( '?%s=fuel_capacity', t( 'SMW_FuelCapacity' ) ),
+        string.format( '?%s=fuel_intake_rate', t( 'SMW_FuelIntakeRate' ) ),
+        string.format( '?%s#-=parent_hardpoint', t( 'SMW_ParentHardpoint' ) ),
+        string.format( '?%s#-=root_hardpoint', t( 'SMW_RootHardpoint' ) ),
+        string.format( '?%s#-=parent_uuid', t( 'SMW_ParentHardpointUuid' ) ),
+        string.format( '?%s#-=icon', t( 'SMW_Icon' ) ),
+        string.format( '?%s=hp', t( 'SMW_HitPoints' ) ),
+        string.format( '?%s#-=position', t( 'SMW_Position' ) ),
         -- These are subquery chains, they require that the 'Name' attribute is of type Page
         -- And that these pages contain SMW attributes
         '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Grade' ) .. '#-=item_grade',
         '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Class' ) .. '#-=item_class',
         '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Size' ) .. '#-=item_size',
         '?' .. t( 'SMW_Name' ) .. '.' .. t( 'SMW_Manufacturer' ) .. '#-=manufacturer',
-        mw.ustring.format(
+        string.format(
             'sort=%s,%s,%s,%s,%s',
             t( 'SMW_VehicleHardpointsTemplateGroup' ),
             t( 'SMW_Hardpoint' ),
@@ -152,7 +152,7 @@ local function makeKey( row, hardpointData, parent, root )
         key = key .. ( parent[ t( 'SMW_Name' ) ] or parent[ t( 'SMW_Hardpoint' ) ] )
     end
 
-    if root ~= nil and not mw.ustring.match( key, root ) and ( hardpointData.class == 'Weapons' or hardpointData.class == 'Utility' ) then
+    if root ~= nil and not string.match( key, root ) and ( hardpointData.class == 'Weapons' or hardpointData.class == 'Utility' ) then
         key = key .. root
     end
 
@@ -160,7 +160,7 @@ local function makeKey( row, hardpointData, parent, root )
 --        key = key .. row.item.name or row.name
 --    end
 
-    --mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makekey' )
+    --mw.logObject( string.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makekey' )
 
     return key
 end
@@ -181,7 +181,7 @@ function methodtable.getHardpointData( self, hardpointType )
             return mappingData
         elseif type( mappingData.matches ) == 'table' then
             for _, matcher in pairs( mappingData.matches ) do
-                if mw.ustring.match( hardpointType, matcher ) ~= nil then
+                if string.match( hardpointType, matcher ) ~= nil then
                     return mappingData
                 end
             end
@@ -208,9 +208,9 @@ local function addSubComponents( hardpoint )
 
     if hardpoint.item.type == 'WeaponDefensive' or hardpoint.item.type == 'WeaponGun' then
         local item_type = 'Magazine'
-        if mw.ustring.sub( hardpoint.class_name, -5 ) == 'chaff' then
+        if string.sub( hardpoint.class_name, -5 ) == 'chaff' then
             item_type = 'NoiseLauncherMagazine'
-        elseif mw.ustring.sub( hardpoint.class_name, -5 ) == 'flare' then
+        elseif string.sub( hardpoint.class_name, -5 ) == 'flare' then
             item_type = 'DecoyLauncherMagazine'
         end
 
@@ -249,20 +249,20 @@ local function addSubComponents( hardpoint )
         local item_type = 'WeaponPort'
         for _, port in pairs( hardpoint.item.ports ) do
             -- Prevent stuff like mattress and pillow to count as weapon ports (I don't think SC let you hide weapons inside them :P)
-            if ( mw.ustring.find( port.name, 'weapon', 1, true ) or mw.ustring.find( port.display_name, 'weapon', 1, true ) ) then
+            if ( string.find( port.name, 'weapon', 1, true ) or string.find( port.display_name, 'weapon', 1, true ) ) then
                 local sub_type = item_type .. tostring( port.sizes.min or 0 ) .. tostring( port.sizes.max or 0 )
                 local name = 'WeaponPort'
 
-                if port.sizes.max == 5 or mw.ustring.find( port.display_name, 'launcher', 1, true ) then
+                if port.sizes.max == 5 or string.find( port.display_name, 'launcher', 1, true ) then
                     name = name .. 'Launcher'
-                elseif port.sizes.max == 4 or mw.ustring.find( port.display_name, 'rifle', 1, true ) then
+                elseif port.sizes.max == 4 or string.find( port.display_name, 'rifle', 1, true ) then
                     name = name .. 'Rifle'
-                elseif mw.ustring.find( port.display_name, 'multitool', 1, true ) then
+                elseif string.find( port.display_name, 'multitool', 1, true ) then
                     name = name .. 'Multitool'
-                elseif mw.ustring.find( port.display_name, 'addon', 1, true ) then
+                elseif string.find( port.display_name, 'addon', 1, true ) then
                     name = name .. 'Addon'
                 -- Assume size 1 is pistol slot if it is not specified as multitool or addon
-                elseif port.sizes.max == 1 or mw.ustring.find( port.display_name, 'pistol', 1, true ) then
+                elseif port.sizes.max == 1 or string.find( port.display_name, 'pistol', 1, true ) then
                     name = name .. 'Pistol'
                 end
 
@@ -364,10 +364,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         local itemObj = row.item
 
         if itemObj.name ~= '<= PLACEHOLDER =>' then
-            local match = mw.ustring.match( row.class_name or '', '[Dd]estruct_(%d+s)' )
+            local match = string.match( row.class_name or '', '[Dd]estruct_(%d+s)' )
 
             if row.type == 'SelfDestruct' and match ~= nil then
-                object[ t( 'SMW_Name' ) ] = mw.ustring.format( '%s (%s)', t( 'SMW_SelfDestruct' ), match )
+                object[ t( 'SMW_Name' ) ] = string.format( '%s (%s)', t( 'SMW_SelfDestruct' ), match )
                 -- Set self-destruct stats
                 -- FIXME: Do subquery instead when CIG properly implement self-destruct components
                 if itemObj.self_destruct then
@@ -452,10 +452,10 @@ function methodtable.makeObject( self, row, hardpointData, parent, root )
         end
 
         if config.icon_name_lowercase == true then
-            icon = mw.ustring.lower( icon )
+            icon = string.lower( icon )
         end
 
-        object[ t( 'SMW_Icon' ) ] = mw.ustring.format( 'File:%s%s.svg', config.icon_prefix, icon )
+        object[ t( 'SMW_Icon' ) ] = string.format( 'File:%s%s.svg', config.icon_prefix, icon )
     end
 
     -- Remove SeatAccess Hardpoints without storage
@@ -480,13 +480,13 @@ function methodtable.setHardPointObjects( self, hardpoints )
     local depth = 1
 
     local function cleanClassName( input )
-        if mw.ustring.find( input, 'turret', 1, true ) then
+        if string.find( input, 'turret', 1, true ) then
             local parts = mw.text.split( input, 'turret', true )
             input = parts[ 1 ] or input
         end
 
         for _, remove in pairs( { 'top', 'bottom', 'left', 'right', 'front', 'rear', 'bubble', 'side' } ) do
-            input = mw.ustring.gsub( input, '_' .. remove, '', 1 )
+            input = string.gsub( input, '_' .. remove, '', 1 )
         end
 
         return input
@@ -535,10 +535,10 @@ function methodtable.setHardPointObjects( self, hardpoints )
     -- Iterates through the list of hardpoints found on the API object
     local function addHardpoints( hardpoints, parent, root )
         for _, hardpoint in pairs( hardpoints ) do
-            hardpoint.name = mw.ustring.lower( hardpoint.name )
+            hardpoint.name = string.lower( hardpoint.name )
 
             if type( hardpoint.class_name ) == 'string' then
-                hardpoint.class_name = cleanClassName( mw.ustring.lower( hardpoint.class_name ) )
+                hardpoint.class_name = cleanClassName( string.lower( hardpoint.class_name ) )
             end
 
             hardpoint = VehicleHardpoint.fixTypes( hardpoint, data.fixes )
@@ -556,7 +556,7 @@ function methodtable.setHardPointObjects( self, hardpoints )
                     else
                         root = hardpoint.name
                     end
-                    --mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addHardpoints' )
+                    --mw.logObject( string.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addHardpoints' )
                 end
 
                 addSubComponents( hardpoint )
@@ -626,7 +626,7 @@ function methodtable.setParts( self, parts )
             key = key .. parent[ t( 'SMW_Hardpoint' ) ]
         end
 
-        --mw.logObject( mw.ustring.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makeKey' )
+        --mw.logObject( string.format( 'Key: %s', key ), '📐 [VehicleHardpoint] makeKey' )
 
         return key
     end
@@ -660,7 +660,7 @@ function methodtable.setParts( self, parts )
 
             if depth == 1 then
                 root = part.name
-                --mw.logObject( mw.ustring.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addParts' )
+                --mw.logObject( string.format( 'Root: %s', root ), '📐 [VehicleHardpoint] addParts' )
             end
 
             local key = makeKey( part, parent )
@@ -774,7 +774,7 @@ function methodtable.group( self, smwData )
             -- Specifically hide manually added weapon ports that have no parent
             -- This should not be needed anymore if weapon lockers are found everywhere with an uuid
             row.type ~= translate( 'WeaponPort' ) and
-            not mw.ustring.find( row.type, translate( 'Magazine' ), 1, true )
+            not string.find( row.type, translate( 'Magazine' ), 1, true )
         then
             if type( grouped[ row.class ] ) ~= 'table' then
                 grouped[ row.class ] = {}
@@ -864,8 +864,8 @@ function methodtable.makeSubtitle( self, item )
     -- SCU
     if item.scu ~= nil then
         -- Fix for german number format
-        if mw.ustring.find( item.scu, ',', 1, true ) then
-            item.scu = mw.ustring.gsub( item.scu, ',', '.' )
+        if string.find( item.scu, ',', 1, true ) then
+            item.scu = string.gsub( item.scu, ',', '.' )
         end
 
         if type( item.scu ) ~= 'number' then
@@ -884,7 +884,7 @@ function methodtable.makeSubtitle( self, item )
             )
             if item.length and item.width and item.height then
                 table.insert( subtitle,
-                    mw.ustring.format(
+                    string.format(
                         'L %s x W %s x H %s',
                         item.length,
                         item.width,
@@ -904,7 +904,7 @@ function methodtable.makeSubtitle( self, item )
     if item.magazine_capacity ~= nil then
         if type( item.magazine_capacity ) == 'table' then
             table.insert( subtitle,
-                mw.ustring.format(
+                string.format(
                     '%s/∞ %s',
                     item.magazine_capacity[ 1 ],
                     translate( 'Ammunition' )
@@ -912,7 +912,7 @@ function methodtable.makeSubtitle( self, item )
             )
         else
             table.insert( subtitle,
-                mw.ustring.format(
+                string.format(
                     '%s/%s %s',
                     item.magazine_capacity,
                     item.magazine_capacity,
@@ -946,7 +946,7 @@ function methodtable.makeSubtitle( self, item )
     -- Self destruct
     if item.damage ~= nil and item.damage_radius ~= nil then
         table.insert( subtitle,
-            mw.ustring.format(
+            string.format(
                 '%s · %s',
                 item.damage,
                 item.damage_radius
@@ -964,7 +964,7 @@ function methodtable.makeSubtitle( self, item )
     -- Weapon ports
     if item.type == translate( 'WeaponPort' ) then
         table.insert( subtitle,
-            mw.ustring.format(
+            string.format(
                 '%s (S%s – S%s)',
                 translate( 'Weapon' ),
                 item.min_size or 0,
@@ -990,7 +990,7 @@ function methodtable.makeSubtitle( self, item )
         end
 
         if item.item_grade ~= nil and item.item_class ~= nil then
-            grade_class = mw.ustring.format( '%s (%s)', item.item_class, item.item_grade )
+            grade_class = string.format( '%s (%s)', item.item_class, item.item_grade )
         elseif item.item_grade ~= nil then
             grade_class = item.item_grade
         end
@@ -1011,7 +1011,7 @@ function methodtable.makeSubtitle( self, item )
     
             local converted = {}
             for _, position in ipairs( item.position ) do
-                table.insert( converted, mw.text.trim( mw.getContentLanguage():ucfirst( mw.ustring.gsub( position, '_', ' ' ) ) ) )
+                table.insert( converted, mw.text.trim( mw.getContentLanguage():ucfirst( string.gsub( position, '_', ' ' ) ) ) )
             end
 
             table.insert( subtitle,
@@ -1026,7 +1026,7 @@ function methodtable.makeSubtitle( self, item )
         -- Manufacturer
         if item.manufacturer ~= nil and item.manufacturer ~= 'N/A' then
             table.insert( subtitle,
-                mw.ustring.format( '[[%s]]', item.manufacturer )
+                string.format( '[[%s]]', item.manufacturer )
             )
         end
     end
@@ -1065,7 +1065,7 @@ function methodtable.makeOutput( self, groupedData )
 
         local row = mw.html.create( 'div' )
             :addClass( 'template-component' )
-            :addClass( mw.ustring.format( 'template-component--level-%d', depth ) )
+            :addClass( string.format( 'template-component--level-%d', depth ) )
                :tag( 'div' )
                   :addClass( 'template-component__connectors' )
                       :tag( 'div' ):addClass( 'template-component__connectorX' ):done()
@@ -1089,16 +1089,16 @@ function methodtable.makeOutput( self, groupedData )
         end
 
         if item.item_size ~= nil then
-            size = mw.ustring.format( '%s%s', prefix, item.item_size )
+            size = string.format( '%s%s', prefix, item.item_size )
         else
-            size = mw.ustring.format( '%s%s', prefix, item.max_size )
+            size = string.format( '%s%s', prefix, item.max_size )
         end
 
         local nodeSizeCount = mw.html.create( 'div' )
             :addClass('template-component__port')
                 :tag( 'div' )
                     :addClass( 'template-component__count' )
-                    :wikitext( mw.ustring.format( '%dx', item.count ) )
+                    :wikitext( string.format( '%dx', item.count ) )
                 :done()
 
         nodeSizeCount
@@ -1112,13 +1112,13 @@ function methodtable.makeOutput( self, groupedData )
         local name = item.sub_type or item.type
         if item.name ~= nil then
             if config.name_fixes[ item.name ] ~= nil then
-                name = mw.ustring.format( '[[%s|%s]]', config.name_fixes[ item.name ], item.name )
+                name = string.format( '[[%s|%s]]', config.name_fixes[ item.name ], item.name )
             else
-                name = mw.ustring.format( '[[%s]]', item.name )
+                name = string.format( '[[%s]]', item.name )
             end
 
             if item.class_name and item.name == item.sub_type then
-                name = mw.ustring.format( '%s<span class="template-component__title-subtext">%s</span>', name, item.class_name )
+                name = string.format( '%s<span class="template-component__title-subtext">%s</span>', name, item.class_name )
             end
         end
 
@@ -1170,14 +1170,14 @@ function methodtable.makeOutput( self, groupedData )
 
             local icon = ''
             if self.iconMap[ classType ] ~= nil then
-                icon = mw.ustring.format( '[[%s|20px|link=]]', self.iconMap[ classType ] )
+                icon = string.format( '[[%s|20px|link=]]', self.iconMap[ classType ] )
             end
 
             local section = mw.html.create( 'div' )
                   :addClass( 'template-components__section')
                       :tag( 'div' )
                           :addClass( 'template-components__label' )
-                          :wikitext( mw.ustring.format(
+                          :wikitext( string.format(
                               '%s %s',
                               icon,
                               classType
@@ -1304,7 +1304,7 @@ function VehicleHardpoint.fixTypes( hardpoint, fixes )
             local parts = mw.text.split( assignment, '=', true )
 
             if #parts == 2 then
-                if mw.ustring.find( parts[ 2 ], '+', 1, true ) then
+                if string.find( parts[ 2 ], '+', 1, true ) then
                     local valueParts = mw.text.split( parts[ 2 ], '+', true )
 
                     parts[ 2 ] = valueParts[ 1 ] .. ( hardpoint[ valueParts[ 2 ] ] or '' )
@@ -1347,13 +1347,13 @@ function VehicleHardpoint.fixTypes( hardpoint, fixes )
     -- Manual mapping defined in Module:VehicleHardpoint/Data
     if type( hardpoint.item ) == 'table' and hardpoint.item ~= nil then
         -- If this is a noise launcher, but the class name says decoy, change Noise to Decoy
-        if mw.ustring.find( hardpoint.item.name, 'Noise', 1, true ) and mw.ustring.find( hardpoint.class_name, 'decoy', 1, true ) then
-            hardpoint.item.name = mw.ustring.gsub( hardpoint.item.name, ' Noise ', ' Decoy ' )
+        if string.find( hardpoint.item.name, 'Noise', 1, true ) and string.find( hardpoint.class_name, 'decoy', 1, true ) then
+            hardpoint.item.name = string.gsub( hardpoint.item.name, ' Noise ', ' Decoy ' )
         end
 
         for _, mapping in pairs( data.hardpoint_type_fixes ) do
             for _, matcher in pairs( data.matches[ mapping ][ 'matches' ] ) do
-                if mw.ustring.match( hardpoint.name, matcher ) ~= nil then
+                if string.match( hardpoint.name, matcher ) ~= nil then
                     hardpoint.type = mapping
                     return hardpoint
                 end
@@ -1428,20 +1428,20 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
     local invalidRules = {}
 
     local function invalidRule( rule, index )
-        table.insert( invalidRules, mw.ustring.format( 'Invalid Rule found, skipping: <%s (Element %d)>', rule, index ) )
+        table.insert( invalidRules, string.format( 'Invalid Rule found, skipping: <%s (Element %d)>', rule, index ) )
     end
 
     for index, rule in ipairs( rules ) do
         if type( rule ) == 'string' then
-            -- mw.logObject( mw.ustring.format( 'Evaluating rule %s', rule ), '📐 [VehicleHardpoint] evalRule' )
+            -- mw.logObject( string.format( 'Evaluating rule %s', rule ), '📐 [VehicleHardpoint] evalRule' )
 
-            if mw.ustring.find( rule, ':', 1, true ) ~= nil then
+            if string.find( rule, ':', 1, true ) ~= nil then
                 local parts = mw.text.split( rule, ':', true )
 
                 -- Simple check if a key equals a value
                 if #parts == 2 then
                     local result = hardpoint[ parts[ 1 ] ] == parts[ 2 ]
-                    -- mw.logObject( mw.ustring.format( 'Rule <%s == %s>, equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
+                    -- mw.logObject( string.format( 'Rule <%s == %s>, equates to %s', hardpoint[ parts[ 1 ] ], parts[ 2 ], tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
 
                     table.insert( stepVal, result )
                     -- String Match
@@ -1453,10 +1453,10 @@ function VehicleHardpoint.evalRule( rules, hardpoint, returnInvalid )
                     table.remove( parts, 1 )
                     table.remove( parts, 1 )
 
-                    local matcher = mw.ustring.lower( table.concat( parts, ':' ) )
+                    local matcher = string.lower( table.concat( parts, ':' ) )
 
-                    local result = string[ fn ]( mw.ustring.lower( hardpoint[ key ] ), matcher ) ~= nil
-                    -- mw.logObject( mw.ustring.format( 'Rule <%s matches %s>, equates to %s', hardpoint[ key ], matcher, tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
+                    local result = string[ fn ]( string.lower( hardpoint[ key ] ), matcher ) ~= nil
+                    -- mw.logObject( string.format( 'Rule <%s matches %s>, equates to %s', hardpoint[ key ], matcher, tostring( result ) ), '📐 [VehicleHardpoint] evalRule' )
 
                     table.insert( stepVal, result )
                 else

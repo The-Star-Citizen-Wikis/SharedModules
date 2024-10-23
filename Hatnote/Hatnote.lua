@@ -43,7 +43,7 @@ function p.disambiguate(page, disambiguator)
     checkType('disambiguate', 1, page, 'string')
     checkType('disambiguate', 2, disambiguator, 'string', true)
     disambiguator = disambiguator or 'disambiguation'
-    return mw.ustring.format('%s (%s)', page, disambiguator)
+    return string.format('%s (%s)', page, disambiguator)
 end
 
 function p.findNamespaceId(link, removeColon)
@@ -89,7 +89,7 @@ function p.makeWikitextError(msg, helpLink, addTrackingCategory, title)
             and yesno(addTrackingCategory) ~= false -- Allow opting out
     then
         category = 'Hatnote templates with errors'
-        category = mw.ustring.format(
+        category = string.format(
                 '[[%s:%s]]',
                 mw.site.namespaces[14].name,
                 category
@@ -97,7 +97,7 @@ function p.makeWikitextError(msg, helpLink, addTrackingCategory, title)
     else
         category = ''
     end
-    return mw.ustring.format(
+    return string.format(
             '<strong class="error">Error: %s%s.</strong>%s',
             msg,
             helpText,

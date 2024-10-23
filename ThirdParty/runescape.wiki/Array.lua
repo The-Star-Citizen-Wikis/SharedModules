@@ -77,7 +77,7 @@ local function mathTemplate(lhs, rhs, funName, opName, fun)
 			res[i] = fun(lhs[i], rhs)
 		end
 	else
-		assert(#lhs == #rhs, mw.ustring.format('Elementwise %s failed because arrays have different sizes (left: %d, right: %d)', opName, #lhs, #rhs))
+		assert(#lhs == #rhs, string.format('Elementwise %s failed because arrays have different sizes (left: %d, right: %d)', opName, #lhs, #rhs))
 		for i = 1, #lhs do
 			res[i] = fun(lhs[i], rhs[i])
 		end
@@ -838,7 +838,7 @@ function Array.set(arr, indexes, values)
 		indexes = {indexes}
 	end
 	if type(values) == 'table' then
-		assert(#indexes == #values, mw.ustring.format("Module:Array.set: 'indexes' and 'values' arrays are not equal length (#indexes = %d, #values = %d)", #indexes, #values))
+		assert(#indexes == #values, string.format("Module:Array.set: 'indexes' and 'values' arrays are not equal length (#indexes = %d, #values = %d)", #indexes, #values))
 		for i = 1, #indexes do
 			arr[indexes[i]] = values[i]
 		end

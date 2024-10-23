@@ -90,11 +90,11 @@ function methodtable.get( self, s )
     -- Initalize manufacturers
     local manufacturers = getManufacturers()
 
-    local regex = string.format( '^%s$', mw.ustring.lower( escapeMagicCharacters( s ) ) )
+    local regex = string.format( '^%s$', string.lower( escapeMagicCharacters( s ) ) )
 
     for _, manufacturer in ipairs( manufacturers ) do
         for _, value in pairs( manufacturer ) do
-            if mw.ustring.match( mw.ustring.lower( value ), regex ) then
+            if string.match( string.lower( value ), regex ) then
                 --mw.logObject( manufacturer, '✅ [Manufacturer] Matched manufacturer' )
                 return manufacturer
             end
@@ -131,7 +131,7 @@ local function fromTemplate( frame, type, returnKey )
     local s = args[1]
 
     if not s then
-        return mw.ustring.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
+        return string.format( '<span class="error">%s</span>', t( 'message_error_no_text' ) )
     end
 
     local instance = Manufacturer:new()
@@ -141,7 +141,7 @@ local function fromTemplate( frame, type, returnKey )
         if returnKey then
             return s
         else
-            return '<span class="error">' .. mw.ustring.format( t( 'message_error_not_found' ), type, s ) .. '</span>'
+            return '<span class="error">' .. string.format( t( 'message_error_not_found' ), type, s ) .. '</span>'
         end
     end
 

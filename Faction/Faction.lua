@@ -132,7 +132,7 @@ function methodtable.getSmwData( self )
     local smwData = mw.smw.ask( makeSmwQueryObject( queryName ) )
 
     if smwData == nil or smwData[ 1 ] == nil then
-		return hatnote( mw.ustring.format(
+		return hatnote( string.format(
 				'%s[[%s]]',
 				t( 'message_error_no_data_text' ),
 				t( 'message_error_category_script_error' )
@@ -193,12 +193,12 @@ function methodtable.getInfobox( self )
 
 			if query ~= nil then
 				if site.data == 'SMW_ClassName' or site.data == 'SMW_UUID' then
-					query = mw.ustring.lower( query )
+					query = string.lower( query )
 				end
 
 				table.insert( links, infobox:renderLinkButton( {
 					label = site.label,
-					link = mw.ustring.format( site.format, query )
+					link = string.format( site.format, query )
 				} ) )
 			end
 		end
