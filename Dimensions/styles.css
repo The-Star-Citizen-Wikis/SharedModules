@@ -1,0 +1,198 @@
+.template-dimensions {
+	background: var(--color-surface-2);
+	border-radius: var(--border-radius-medium);
+	display: grid;
+	place-content: center;
+	padding: var(--space-md);
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-xx-small);
+}
+
+.template-dimensions-label {
+	color: var(--color-subtle);
+	font-size: var(--font-size-x-small);
+}
+
+.template-dimensions-data {
+	color: var(--color-emphasized);
+	font-weight: var(--font-size-medium);
+}
+
+.template-dimensions-object {
+	--container-size: 160px;
+	--rotate-x: 45deg;
+	--rotate-z: -45deg;
+	--object-longest-side: max(
+		var(--object-length),
+		var(--object-width),
+		var(--object-height)
+	);
+	--object-scale: calc(var(--container-size) / var(--object-longest-side));
+	--box-length: calc(var(--object-length) * var(--object-scale));
+	--box-width: calc(var(--object-width) * var(--object-scale));
+	--box-height: calc(var(--object-height) * var(--object-scale));
+	--container-width: calc(
+		(
+			var(--box-width) * cos(max(var(--rotate-z), -1 * var(--rotate-z))) +
+				var(--box-length) *
+				sin(max(var(--rotate-z), -1 * var(--rotate-z)))
+		)
+	);
+	--container-height: calc(
+		(
+				var(--box-length) *
+					cos(max(var(--rotate-z), -1 * var(--rotate-z))) +
+					var(--box-width) *
+					sin(max(var(--rotate-z), -1 * var(--rotate-z)))
+			) + var(--box-height)
+	);
+	display: grid;
+	place-content: center;
+	width: var(--container-width);
+	height: var(--container-height);
+}
+
+.template-dimensions-isometric {
+	--color-surface-3--lighter: hsl(
+		var(--color-primary__h),
+		var(--color-surface-3__s),
+		calc(var(--color-surface-3__l) + var(--delta-lightness-hover-state))
+	);
+	--color-surface-3--darker: hsl(
+		var(--color-primary__h),
+		var(--color-surface-3__s),
+		calc(var(--color-surface-3__l) - var(--delta-lightness-hover-state))
+	);
+	--box-position-offset-up: calc(var(--box-height) / 2);
+	--box-position-offset-down: calc(var(--box-height) / -2);
+	--dimensions-isometric-transform: rotateX(var(--rotate-x))
+		rotateZ(var(--rotate-z));
+	--dimensions-isometric-invert-transform: rotateZ(calc(var(--rotate-z) * -1))
+		rotateX(calc(var(--rotate-x) * -1));
+	transform: var(--dimensions-isometric-transform);
+	display: grid;
+}
+
+.template-dimensions-layer {
+	--layer-transform: translateZ(var(--layer-z));
+	width: var(--box-length);
+	height: var(--box-width);
+	grid-area: layer;
+	transform: var(--layer-transform);
+}
+
+.template-dimensions-layer-top {
+	--layer-z: var(--box-position-offset-up);
+}
+
+.template-dimensions-layer-mid {
+}
+
+.template-dimensions-layer-bottom {
+	--layer-z: var(--box-position-offset-down);
+	box-shadow: var(--box-shadow-drop-xx-large);
+}
+
+.template-dimensions-box-faces {
+	position: absolute;
+	inset: 0;
+	--box-transform-front: rotateY(90deg)
+		translateX(var(--box-position-offset-up));
+	--box-transform-right: rotateX(90deg)
+		translateY(var(--box-position-offset-down));
+}
+
+.template-dimensions-box-face {
+	position: absolute;
+	box-shadow: var(--box-shadow-border);
+}
+
+/* Top */
+.template-dimensions-box-face-top {
+	inset: 0;
+	background-color: var(--color-surface-3--lighter);
+	width: var(--box-length);
+	height: var(--box-width);
+}
+
+/* Front */
+.template-dimensions-box-face-front {
+	top: 0;
+	left: var(--box-position-offset-down);
+	width: var(--box-height);
+	height: var(--box-width);
+	background-color: var(--color-surface-3);
+	transform: var(--box-transform-front);
+}
+
+/* Right */
+.template-dimensions-box-face-right {
+	bottom: var(--box-position-offset-down);
+	left: 0;
+	background-color: var(--color-surface-3--darker);
+	width: var(--box-length);
+	height: var(--box-height);
+	transform: var(--box-transform-right);
+}
+
+.template-dimensions-box-text {
+	position: absolute;
+	text-align: end;
+	padding: var(--space-xs);
+}
+
+.template-dimensions-box-text-y {
+	/* -3px is the magic number IDK why */
+	--box-transform-text-y: translateX(calc(-100% - var(--space-xs) - 3px));
+	transform: var(--dimensions-isometric-invert-transform)
+		var(--box-transform-text-y);
+}
+
+.template-dimensions-box-text-x {
+	width: var(--box-width);
+	transform: rotate(90deg);
+	transform-origin: top left;
+}
+
+.template-dimensions-box-text-z {
+	--box-transform-text-z-top: translateY(calc(var(--box-width) * -1));
+	--box-transform-text-z-bottom: translateY(100%);
+	width: var(--box-length);
+	bottom: 0;
+}
+
+.template-dimensions-layer-top .template-dimensions-box-text-z {
+	transform: var(--box-transform-text-z-top);
+}
+
+.template-dimensions-layer-bottom .template-dimensions-box-text-z {
+	transform: var(--box-transform-text-z-bottom);
+}
+
+.template-dimensions-reference {
+	--reference-transform: translateY(var(--space-xs))
+		scale3d(
+			var(--reference-scale-length),
+			var(--reference-scale-width),
+			calc(var(--reference-scale-height) * -1)
+		);
+	/* Human */
+	--reference-length: 0.2;
+	--reference-width: 0.4;
+	--reference-height: 1.8;
+	--reference-scale-length: calc(
+		var(--reference-length) / var(--object-length)
+	);
+	--reference-scale-width: calc(var(--reference-width) / var(--object-width));
+	--reference-scale-height: calc(
+		var(--reference-height) / var(--object-height)
+	);
+	transform: var(--reference-transform);
+	transform-origin: bottom left;
+	top: unset;
+}
+
+.template-dimensions-reference .template-dimensions-box-face {
+	background-color: var(--color-progressive);
+	opacity: 0.5;
+}
