@@ -6,6 +6,7 @@
 	padding: var(--space-md);
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-xx-small);
+	overflow: visible;
 }
 
 .template-dimensions-label {

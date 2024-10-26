@@ -57,7 +57,7 @@
 				"API_dimension.true_dimension.length"
 			],
 			"type": "number",
-			"smw_format": "#p3"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_EntityWidth": [
@@ -65,7 +65,7 @@
 				"API_dimension.true_dimension.width"
 			],
 			"type": "number",
-			"smw_format": "#p3"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_EntityHeight": [
@@ -73,11 +73,12 @@
 				"API_dimension.true_dimension.height"
 			],
 			"type": "number",
-			"smw_format": "#p3"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_Mass": "API_mass",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_GalactapediaUrl": "ARG_GalactapediaUrl",

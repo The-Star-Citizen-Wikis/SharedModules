@@ -372,29 +372,48 @@ function methodtable.getInfobox( self )
 	local pageIdentifier = self.frameArgs[ translate( 'ARG_SmwQueryName' ) ] or mw.title.getCurrentTitle().fullText
 	runModuleFN( smwData[ t( 'SMW_Type' ) ], 'addInfoboxData', { infobox, smwData, pageIdentifier } )
 
+	local function getDimensionsSectionData()
+		local dimensions = require( 'Module:Dimensions' )
+		local dimensionsOutput = dimensions._main( {
+			length = smwData[ t( 'SMW_EntityLength' ) ],
+			width = smwData[ t( 'SMW_EntityWidth' ) ],
+			height = smwData[ t( 'SMW_EntityHeight' ) ],
+			mass = smwData[ t( 'SMW_Mass' ) ]
+		} )
+		if dimensionsOutput then
+			return {
+				class = 'infobox__section--fullContent',
+				title = t( 'label_Dimensions' ),
+				content = dimensionsOutput
+			}
+		else
+			return {
+				title = t( 'label_Dimensions' ),
+				content = {
+					infobox:renderItem( {
+						label = t( 'label_Length' ),
+						data = smwData[ t( 'SMW_EntityLength' ) ]
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Width' ),
+						data = smwData[ t( 'SMW_EntityWidth' ) ]
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Height' ),
+						data = smwData[ t( 'SMW_EntityHeight' ) ]
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Mass' ),
+						data = smwData[ t( 'SMW_Mass' ) ]
+					} )
+				},
+				col = 3
+			}
+		end
+	end
+
 	--- Dimensions
-	infobox:renderSection( {
-		title = t( 'label_Dimensions' ),
-		content = {
-			infobox:renderItem( {
-				label = t( 'label_Length' ),
-				data = smwData[ t( 'SMW_EntityLength' ) ],
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Width' ),
-				data = smwData[ t( 'SMW_EntityWidth' ) ],
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Height' ),
-				data = smwData[ t( 'SMW_EntityHeight' ) ],
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Mass' ),
-				data = smwData[ t( 'SMW_Mass' ) ],
-			} )
-		},
-		col = 3
-	} )
+	infobox:renderSection( getDimensionsSectionData() )
 
 	--- Metadata section
 	infobox:renderSection( {

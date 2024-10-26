@@ -504,6 +504,7 @@ function methodtable.getInfobox( self )
 		} )
 		if dimensionsOutput then
 			return {
+				class = 'infobox__section--fullContent',
 				content = dimensionsOutput
 			}
 		else

@@ -602,6 +602,10 @@
 	padding-right: 0;
 }
 
+.infobox__section--fullContent > .infobox__sectionContent {
+	margin: 0 !important;
+}
+
 /* TODO: Remove when footer is removed */
 .infobox__section--hasBackground + .infobox__section--hasBackground,
 .infobox__section--hasBackground + .infobox__footer {
