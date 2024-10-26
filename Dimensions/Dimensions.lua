@@ -3,6 +3,7 @@
 ---
 --- TODO: Add i18n
 --- TODO: Brush up isometric functions for more generic use cases
+--- TODO: Don't hardcode --container-size, it should be based on the current container
 require( 'strict' )
 
 local p = {}

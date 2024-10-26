@@ -39,12 +39,7 @@
 		)
 	);
 	--container-height: calc(
-		(
-				var(--box-length) *
-					cos(max(var(--rotate-z), -1 * var(--rotate-z))) +
-					var(--box-width) *
-					sin(max(var(--rotate-z), -1 * var(--rotate-z)))
-			) + var(--box-height)
+		var(--box-height) / 2 + hypot(var(--box-length), var(--box-width))
 	);
 	display: grid;
 	place-content: center;
@@ -71,6 +66,9 @@
 		rotateX(calc(var(--rotate-x) * -1));
 	transform: var(--dimensions-isometric-transform);
 	display: grid;
+	transition-property: transform;
+	transition-duration: 250ms;
+	transition-timing-function: var(--transition-timing-function-ease);
 }
 
 .template-dimensions-layer {
@@ -79,13 +77,11 @@
 	height: var(--box-width);
 	grid-area: layer;
 	transform: var(--layer-transform);
+	transition: inherit;
 }
 
 .template-dimensions-layer-top {
 	--layer-z: var(--box-position-offset-up);
-}
-
-.template-dimensions-layer-mid {
 }
 
 .template-dimensions-layer-bottom {
@@ -137,13 +133,19 @@
 
 .template-dimensions-box-text {
 	position: absolute;
-	text-align: end;
-	padding: var(--space-xs);
+	padding: var(--space-xs) 0;
+	display: flex;
+	flex-direction: column;
+	align-items: end;
+	white-space: nowrap;
+	transition: inherit;
 }
 
 .template-dimensions-box-text-y {
 	/* -3px is the magic number IDK why */
 	--box-transform-text-y: translateX(calc(-100% - var(--space-xs) - 3px));
+	padding-left: var(--space-xs);
+	padding-right: var(--space-xs);
 	transform: var(--dimensions-isometric-invert-transform)
 		var(--box-transform-text-y);
 }
@@ -157,8 +159,9 @@
 .template-dimensions-box-text-z {
 	--box-transform-text-z-top: translateY(calc(var(--box-width) * -1));
 	--box-transform-text-z-bottom: translateY(100%);
-	width: var(--box-length);
+	/* max-width: var(--box-length); */
 	bottom: 0;
+	right: 0;
 }
 
 .template-dimensions-layer-top .template-dimensions-box-text-z {
@@ -195,4 +198,32 @@
 .template-dimensions-reference .template-dimensions-box-face {
 	background-color: var(--color-progressive);
 	opacity: 0.5;
+}
+
+.template-dimensions:hover .template-dimensions-object {
+	--rotate-z: 0deg;
+	--rotate-x: 0deg;
+}
+
+.template-dimensions:hover
+	.template-dimensions-layer-top
+	.template-dimensions-box-text-z {
+	--box-transform-text-z-top: translateY(calc(var(--box-width) * -1))
+		translateX(calc(var(--box-length) * -1 + 100%));
+	align-items: flex-start;
+}
+
+.template-dimensions:hover .template-dimensions-box-text-x {
+	writing-mode: vertical-lr;
+	justify-content: flex-end;
+	align-items: flex-start;
+}
+
+.template-dimensions:hover .template-dimensions-box-text-y {
+	--box-transform-text-y: translateX(var(--box-length));
+	align-items: start;
+}
+
+.template-dimensions:hover .template-dimensions-box-text-x > div {
+	transform: scale(-1);
 }
