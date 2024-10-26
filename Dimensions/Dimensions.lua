@@ -153,6 +153,18 @@ local function getOutputHTML( data )
 	return html
 end
 
+--- Return string containing the number with separator and unit
+---
+--- @param arg string|number|nil
+--- @param unit string
+--- @return string|nil
+local function getDimensionsValue( arg, unit )
+	if not arg or not unit then return end
+	local num = tonumber( arg )
+	if not num then return end
+	return string.format( '%s %s', lang:formatNum( num ), unit )
+end
+
 
 --- Format arguments into data used by HTML functions
 ---
@@ -165,39 +177,30 @@ local function getDimensionsData( args )
 
 	if not lengthNum or not widthNum or not heightNum then return end
 	-- TODO: Make this cleaner by using another table to map the units?
-	local lengthValue = lang:formatNum( lengthNum ) .. ' m'
-	local widthValue = lang:formatNum( widthNum ) .. ' m'
-	local heightValue = lang:formatNum( heightNum ) .. ' m'
-
-	-- Mass is optional
-	local massValue = '-'
-	if args.mass then
-		local massNum = tonumber( args.mass )
-		if massNum then
-			massValue = lang:formatNum( massNum ) .. ' kg'
-		end
-	end
+	local lengthValue = getDimensionsValue( args.length, 'm' )
+	local widthValue = getDimensionsValue( args.width, 'm' )
+	local heightValue = getDimensionsValue( args.height, 'm' )
 
 	-- TODO: Perhaps this can be done in a loop
 	local data = {
 		length = {
 			number = lengthNum,
-			label = 'Length',
+			label = t( 'label_Length' ),
 			value = lengthValue
 		},
 		width = {
 			number = widthNum,
-			label = 'Width',
+			label = t( 'label_Width' ),
 			value = widthValue
 		},
 		height = {
 			number = heightNum,
-			label = 'Height',
+			label = t( 'label_Height' ),
 			value = heightValue
 		},
 		mass = {
-			label = 'Mass',
-			value = massValue
+			label = t( 'label_Mass' ),
+			value = getDimensionsValue( args.mass, 'kg' ) or '-'
 		}
 	}
 
@@ -212,6 +215,8 @@ end
 --- @return string|nil
 function p._main( args, frame )
 	if not args.length or not args.width or not args.height then return end
+	-- Alternative dimensions are not supported right now
+	if args.lengthAlt or args.widthAlt or args.heightAlt then return end
 	-- Frame object can be missing if function is invoked from Lua
 	frame = frame or mw.getCurrentFrame()
 

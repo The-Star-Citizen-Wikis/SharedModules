@@ -148,40 +148,47 @@
 				"API_sizes.length",
 				"ARG_Length"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_EntityWidth": [
 				"API_sizes.beam",
 				"ARG_Width"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_EntityHeight": [
 				"API_sizes.height",
 				"ARG_Height"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_RetractedLength": "ARG_RetractedLength",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_RetractedWidth": "ARG_RetractedWidth",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_RetractedHeight": "ARG_RetractedHeight",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_Mass": [
 				"API_mass",
 				"ARG_mass"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_LoreReleaseDate": "ARG_ReleaseDate"

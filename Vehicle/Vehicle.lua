@@ -491,6 +491,45 @@ function methodtable.getInfobox( self )
 		return tabber( tabberData )
 	end
 
+	local function getDimensionsSectionData()
+		local dimensions = require( 'Module:Dimensions' )
+		local dimensionsOutput = dimensions._main( {
+			length = smwData[ t( 'SMW_EntityLength' ) ],
+			width = smwData[ t( 'SMW_EntityWidth' ) ],
+			height = smwData[ t( 'SMW_EntityHeight' ) ],
+			mass = smwData[ t( 'SMW_Mass' ) ],
+			lengthAlt = smwData[ t( 'SMW_RetractedLength' ) ],
+			widthAlt = smwData[ t( 'SMW_RetractedWidth' ) ],
+			heightAlt = smwData[ t( 'SMW_RetractedHeight' ) ]
+		} )
+		if dimensionsOutput then
+			return {
+				content = dimensionsOutput
+			}
+		else
+			return {
+				content = {
+					infobox:renderItem( {
+						label = t( 'label_Length' ),
+						data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityLength' ) ], smwData[ t( 'SMW_RetractedLength' ) ] ),
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Width' ),
+						data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityWidth' ) ], smwData[ t( 'SMW_RetractedWidth' ) ] ),
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Height' ),
+						data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityHeight' ) ], smwData[ t( 'SMW_RetractedHeight' ) ] ),
+					} ),
+					infobox:renderItem( {
+						label = t( 'label_Mass' ),
+						data = smwData[ t( 'SMW_Mass' ) ],
+					} )
+				},
+				col = 3
+			}
+		end
+	end
 
 	--- Specifications section
 	local function getSpecificationsSection()
@@ -498,26 +537,7 @@ function methodtable.getInfobox( self )
 		local section
 
 		tabberData[ 'label1' ] = t( 'label_Dimensions' )
-		section = {
-			infobox:renderItem( {
-				label = t( 'label_Length' ),
-				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityLength' ) ], smwData[ t( 'SMW_RetractedLength' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Width' ),
-				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityWidth' ) ], smwData[ t( 'SMW_RetractedWidth' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Height' ),
-				data = infobox.showDescIfDiff( smwData[ t( 'SMW_EntityHeight' ) ], smwData[ t( 'SMW_RetractedHeight' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Mass' ),
-				data = smwData[ t( 'SMW_Mass' ) ],
-			} ),
-		}
-
-		tabberData[ 'content1' ] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content1' ] = infobox:renderSection( getDimensionsSectionData(), true )
 
 		tabberData[ 'label2' ] = t( 'label_Speed' )
 		section = {
