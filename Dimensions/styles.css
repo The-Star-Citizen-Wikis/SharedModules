@@ -25,7 +25,7 @@
 }
 
 .template-dimensions-object {
-	--container-size: 160px;
+	--container-size: 140px;
 	--rotate-x: 45deg;
 	--rotate-z: -45deg;
 	--object-longest-side: max(
