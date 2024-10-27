@@ -10,13 +10,18 @@
 }
 
 .template-dimensions-label {
-	color: var(--color-subtle);
-	font-size: var(--font-size-x-small);
+	letter-spacing: 0.05em;
 }
 
 .template-dimensions-data {
 	color: var(--color-emphasized);
 	font-weight: var(--font-size-medium);
+}
+
+.template-dimensions-label,
+.template-dimensions-data-subtle {
+	color: var(--color-subtle);
+	font-size: var(--font-size-x-small);
 }
 
 .template-dimensions-object {

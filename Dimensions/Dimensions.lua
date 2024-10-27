@@ -157,12 +157,27 @@ end
 ---
 --- @param arg string|number|nil
 --- @param unit string
+--- @param altArg string|number|nil
 --- @return string|nil
-local function getDimensionsValue( arg, unit )
+local function getDimensionsValue( arg, unit, altArg )
 	if not arg or not unit then return end
 	local num = tonumber( arg )
 	if not num then return end
-	return string.format( '%s %s', lang:formatNum( num ), unit )
+
+	local value = string.format( '%s %s', lang:formatNum( num ), unit )
+	if not altArg or arg == altArg then
+		return value
+	end
+
+	local altValue = getDimensionsValue( altArg, unit )
+	if not altValue then
+		return value
+	end
+	return string.format(
+		'%s <span class="template-dimensions-data-subtle">(%s)</span>',
+		value,
+		altValue
+	)
 end
 
 
@@ -177,9 +192,9 @@ local function getDimensionsData( args )
 
 	if not lengthNum or not widthNum or not heightNum then return end
 	-- TODO: Make this cleaner by using another table to map the units?
-	local lengthValue = getDimensionsValue( args.length, 'm' )
-	local widthValue = getDimensionsValue( args.width, 'm' )
-	local heightValue = getDimensionsValue( args.height, 'm' )
+	local lengthValue = getDimensionsValue( args.length, 'm', args.lengthAlt )
+	local widthValue = getDimensionsValue( args.width, 'm', args.widthAlt )
+	local heightValue = getDimensionsValue( args.height, 'm', args.heightAlt )
 
 	-- TODO: Perhaps this can be done in a loop
 	local data = {
@@ -215,8 +230,6 @@ end
 --- @return string|nil
 function p._main( args, frame )
 	if not args.length or not args.width or not args.height then return end
-	-- Alternative dimensions are not supported right now
-	if args.lengthAlt or args.widthAlt or args.heightAlt then return end
 	-- Frame object can be missing if function is invoked from Lua
 	frame = frame or mw.getCurrentFrame()
 
