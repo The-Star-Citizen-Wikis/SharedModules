@@ -142,18 +142,19 @@
 	padding: var(--space-xs) 0;
 	display: flex;
 	flex-direction: column;
-	align-items: end;
 	white-space: nowrap;
 	transition: inherit;
 }
 
 .template-dimensions-box-text-y {
-	/* -3px is the magic number IDK why */
-	--box-transform-text-y: translateX(calc(-100% - var(--space-xs) - 3px));
-	padding-left: var(--space-xs);
-	padding-right: var(--space-xs);
+	--box-transform-text-y: translateX(100%)
+		translateY(var(--box-position-offset-up));
+	bottom: 0;
+	right: 0;
+	padding: 0 var(--space-xs);
 	transform: var(--dimensions-isometric-invert-transform)
 		var(--box-transform-text-y);
+	transform-origin: bottom right;
 }
 
 .template-dimensions-box-text-x {
@@ -165,13 +166,14 @@
 .template-dimensions-box-text-z {
 	--box-transform-text-z-top: translateY(calc(var(--box-width) * -1));
 	--box-transform-text-z-bottom: translateY(100%);
-	/* max-width: var(--box-length); */
 	bottom: 0;
 	right: 0;
+	width: var(--box-length);
 }
 
 .template-dimensions-layer-top .template-dimensions-box-text-z {
 	transform: var(--box-transform-text-z-top);
+	align-items: end;
 }
 
 .template-dimensions-layer-bottom .template-dimensions-box-text-z {
@@ -179,12 +181,12 @@
 }
 
 .template-dimensions-reference {
-	--reference-transform: translateY(var(--space-xs))
-		scale3d(
-			var(--reference-scale-length),
-			var(--reference-scale-width),
-			calc(var(--reference-scale-height) * -1)
-		);
+	--reference-transform: scale3d(
+				var(--reference-scale-length),
+				var(--reference-scale-width),
+				calc(var(--reference-scale-height) * -1)
+			)
+			translateX(calc(-100% - var(--space-xs)));
 	/* Human */
 	--reference-length: 0.2;
 	--reference-width: 0.4;
@@ -198,7 +200,6 @@
 	);
 	transform: var(--reference-transform);
 	transform-origin: bottom left;
-	top: unset;
 }
 
 .template-dimensions-reference .template-dimensions-box-face {
@@ -216,17 +217,15 @@
 	.template-dimensions-box-text-z {
 	--box-transform-text-z-top: translateY(calc(var(--box-width) * -1))
 		translateX(calc(var(--box-length) * -1 + 100%));
-	align-items: flex-start;
 }
 
 .template-dimensions:hover .template-dimensions-box-text-x {
 	writing-mode: vertical-lr;
-	justify-content: flex-end;
 	align-items: flex-start;
 }
 
 .template-dimensions:hover .template-dimensions-box-text-y {
-	--box-transform-text-y: translateX(var(--box-length));
+	--box-transform-text-y: translateX(100%);
 	align-items: start;
 }
 

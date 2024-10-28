@@ -89,20 +89,14 @@ local function getObjectHTML( data )
 		:done()
 		:done()
 		:node( getTextHTML( {
-			label = data.mass.label,
-			value = data.mass.value,
-			variant = 'z'
-		} ) )
-		:done()
-
-	-- Mid layer
-	isometric:tag( 'div' )
-		:addClass( 'template-dimensions-layer template-dimensions-layer-mid' )
-		:css( 'transform-style', 'preserve-3d' )
-		:node( getTextHTML( {
 			label = data.height.label,
 			value = data.height.value,
 			variant = 'y'
+		} ) )
+		:node( getTextHTML( {
+			label = data.mass.label,
+			value = data.mass.value,
+			variant = 'z'
 		} ) )
 		:done()
 
@@ -110,8 +104,8 @@ local function getObjectHTML( data )
 	isometric:tag( 'div' )
 		:addClass( 'template-dimensions-layer template-dimensions-layer-bottom' )
 		:css( 'transform-style', 'preserve-3d' )
-	--- Create a human-sized object for reference
-	--- FIXME: Figure out how to do a box properly, haven't done trigonometry in ages...
+		--- Create a human-sized object for reference
+		--- FIXME: Figure out how to do a box properly, haven't done trigonometry in ages...
 		:tag( 'div' )
 		:addClass( 'template-dimensions-reference template-dimensions-box-faces' )
 		:attr( 'title', 'Human for reference' )
