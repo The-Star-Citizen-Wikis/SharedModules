@@ -51,6 +51,45 @@ local function getTextHTML( data )
 end
 
 
+--- Create a human-sized object for reference
+--- FIXME: Figure out how to do a box properly, haven't done trigonometry in ages...
+---
+--- @param type string|nil
+--- @return mw.html|nil
+local function getReferenceObjectHTML( type )
+	if not type then return end
+
+	local refData = {}
+	if type == 'human' then
+		refData.length = 0.2;
+		refData.width = 0.4;
+		refData.height = 1.8;
+	end
+	if refData == {} then return end
+
+	local html = mw.html.create( 'div' )
+		:addClass( 'template-dimensions-reference template-dimensions-box-faces' )
+		:attr( 'title', string.format( '%s for reference', type ) )
+		:css( 'transform-style', 'preserve-3d' )
+		:tag( 'div' )
+		:addClass( 'template-dimensions-box-face template-dimensions-box-face-top' )
+		:done()
+		:tag( 'div' )
+		:addClass( 'template-dimensions-box-face template-dimensions-box-face-front' )
+		:done()
+		--:tag( 'div' )
+		--:addClass( 'template-dimensions-box-face template-dimensions-box-face-right' )
+		--:done()
+
+	for k, v in pairs( refData ) do
+		local cssVar = string.format( '--reference-%s', k )
+		html:css( cssVar, tostring( v ) )
+	end
+
+	return html
+end
+
+
 --- Get the object HTML object
 ---
 --- @param data table
@@ -104,22 +143,7 @@ local function getObjectHTML( data )
 	isometric:tag( 'div' )
 		:addClass( 'template-dimensions-layer template-dimensions-layer-bottom' )
 		:css( 'transform-style', 'preserve-3d' )
-		--- Create a human-sized object for reference
-		--- FIXME: Figure out how to do a box properly, haven't done trigonometry in ages...
-		:tag( 'div' )
-		:addClass( 'template-dimensions-reference template-dimensions-box-faces' )
-		:attr( 'title', 'Human for reference' )
-		:css( 'transform-style', 'preserve-3d' )
-		:tag( 'div' )
-		:addClass( 'template-dimensions-box-face template-dimensions-box-face-top' )
-		:done()
-		:tag( 'div' )
-		:addClass( 'template-dimensions-box-face template-dimensions-box-face-front' )
-		:done()
-	--:tag( 'div' )
-	--    :addClass( 'template-dimensions-box-face template-dimensions-box-face-right' )
-	--    :done()
-		:done()
+		:node( getReferenceObjectHTML( data.referenceType ) )
 		:node( getTextHTML( {
 			label = data.length.label,
 			value = data.length.value,
@@ -210,7 +234,8 @@ local function getDimensionsData( args )
 		mass = {
 			label = t( 'label_Mass' ),
 			value = getDimensionsValue( args.mass, 'kg' ) or '-'
-		}
+		},
+		referenceType = args.referenceType
 	}
 
 	return data

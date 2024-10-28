@@ -500,7 +500,8 @@ function methodtable.getInfobox( self )
 			mass = smwData[ t( 'SMW_Mass' ) ],
 			lengthAlt = smwData[ t( 'SMW_RetractedLength' ) ],
 			widthAlt = smwData[ t( 'SMW_RetractedWidth' ) ],
-			heightAlt = smwData[ t( 'SMW_RetractedHeight' ) ]
+			heightAlt = smwData[ t( 'SMW_RetractedHeight' ) ],
+			referenceType = 'human'
 		} )
 		if dimensionsOutput then
 			return {

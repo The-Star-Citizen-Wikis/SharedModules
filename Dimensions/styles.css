@@ -182,15 +182,11 @@
 
 .template-dimensions-reference {
 	--reference-transform: scale3d(
-				var(--reference-scale-length),
-				var(--reference-scale-width),
-				calc(var(--reference-scale-height) * -1)
-			)
-			translateX(calc(-100% - var(--space-xs)));
-	/* Human */
-	--reference-length: 0.2;
-	--reference-width: 0.4;
-	--reference-height: 1.8;
+			var(--reference-scale-length),
+			var(--reference-scale-width),
+			calc(var(--reference-scale-height) * -1)
+		)
+		translateX(calc(-100% - var(--space-xs)));
 	--reference-scale-length: calc(
 		var(--reference-length) / var(--object-length)
 	);
