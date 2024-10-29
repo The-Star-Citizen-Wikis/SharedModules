@@ -1,0 +1,72 @@
+.template-vehicle-hull .infobox__sectionContent {
+	gap: var(--space-xxs);
+	grid-template-areas:
+		'cs cs em em ir ir'
+		'phy eng dis the bio stu'
+		'hp hp hp hp hp hp';
+}
+
+.template-vehicle-hull .infobox__item {
+	padding: var(--space-xs);
+	border: 1px solid var(--border-color-base);
+	border-radius: var(--border-radius-base);
+	background-color: var(--color-surface-1);
+	display: grid;
+	place-content: center;
+	text-align: center;
+}
+
+.template-vehicle-hull .template-vehicle-hull-item-pos {
+	background-color: var(--background-color-success-subtle);
+	color: var(--color-success);
+}
+
+.template-vehicle-hull .template-vehicle-hull-item-neg {
+	background-color: var(--background-color-destructive-subtle);
+	color: var(--color-destructive);
+}
+
+.template-vehicle-hull .template-vehicle-hull-item-null {
+	background-color: transparent;
+	color: var(--color-subtle);
+}
+
+.template-vehicle-hull-cs {
+	grid-area: cs;
+}
+
+.template-vehicle-hull-em {
+	grid-area: em;
+}
+
+.template-vehicle-hull-ir {
+	grid-area: ir;
+}
+
+.template-vehicle-hull-phy {
+	grid-area: phy;
+}
+
+.template-vehicle-hull-eng {
+	grid-area: eng;
+}
+
+.template-vehicle-hull-dis {
+	grid-area: dis;
+}
+
+.template-vehicle-hull-the {
+	grid-area: the;
+}
+
+.template-vehicle-hull-bio {
+	grid-area: bio;
+}
+
+.template-vehicle-hull-stu {
+	grid-area: stu;
+}
+
+.template-vehicle-hull-hp {
+	grid-area: hp;
+}

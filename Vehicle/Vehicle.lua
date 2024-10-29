@@ -143,32 +143,6 @@ local function makeTimeReadable( time )
 end
 
 
---- FIXME: This should go to somewhere else, like Module:Common
---- TODO: Should we color code this for buff and debuff?
-local function formatModifier( x )
-	if x == nil then return end
-	-- Fix for german number format
-	if string.find( x, ',', 1, true ) then
-		x = string.gsub( x, ',', '.' )
-	end
-
-	if type( x ) == 'string' then x = tonumber( x, 10 ) end
-
-	local diff = x - 1
-	local sign = ''
-	if diff == 0 then
-		--- Display 'None' instead of 0 % for better readability
-		return translate( 'none' )
-	elseif diff > 0 then
-		--- Extra space for formatting
-		sign = '+ '
-	elseif diff < 0 then
-		sign = '- '
-	end
-	return sign .. tostring( math.abs( diff ) * 100 ) .. ' %'
-end
-
-
 --- Request Api Data
 --- Using current subpage name without vehicle type suffix
 --- @return table|nil
@@ -505,7 +479,6 @@ function methodtable.getInfobox( self )
 		} )
 		if dimensionsOutput then
 			return {
-				class = 'infobox__section--fullContent',
 				content = dimensionsOutput
 			}
 		else
@@ -531,6 +504,95 @@ function methodtable.getInfobox( self )
 				col = 3
 			}
 		end
+	end
+
+	--- Format modifiers for infobox:renderItem
+	--- TODO: Maybe make this generic for other infobox modules?
+	local function getModifierItemData( data )
+		if not data or not data.data then return {} end
+		local itemData = {
+			class = data.class,
+			label = data.label,
+			-- Default to 0%
+			data = '0%'
+		}
+		local x = data.data
+		-- Fix for german number format
+		if string.find( x, ',', 1, true ) then
+			x = string.gsub( x, ',', '.' )
+		end
+		if type( x ) == 'string' then x = tonumber( x, 10 ) end
+
+		local diff = x - 1
+		if diff == 0 then
+			itemData.class = itemData.class .. ' template-vehicle-hull-item-null'
+		elseif diff > 0 then
+			itemData.class = itemData.class .. ' template-vehicle-hull-item-neg'
+			itemData.data = '+' .. tostring( math.abs( diff ) * 100 ) .. '%'
+		elseif diff < 0 then
+			itemData.class = itemData.class .. ' template-vehicle-hull-item-pos'
+			itemData.data = '-' .. tostring( math.abs( diff ) * 100 ) .. '%'
+		end
+		return itemData
+	end
+
+	local function getHullSectionData()
+		return {
+			class = 'template-vehicle-hull',
+			content = {
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-cs',
+					label = getSimpleTooltip( 'label_CrossSection' ),
+					data = smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-em',
+					label = getSimpleTooltip( 'label_Electromagnetic' ),
+					data = smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-ir',
+					label = getSimpleTooltip( 'label_Infrared' ),
+					data = smwData[ t( 'SMW_InfraredSignatureModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-phy',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenPhysical' ),
+					data = smwData[ t( 'SMW_PhysicalDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-eng',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenEnergy' ),
+					data = smwData[ t( 'SMW_EnergyDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-dis',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenDistortion' ),
+					data = smwData[ t( 'SMW_DistortionDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-the',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenThermal' ),
+					data = smwData[ t( 'SMW_ThermalDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-bio',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenBiochemical' ),
+					data = smwData[ t( 'SMW_BiochemicalDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-stu',
+					label = getSimpleTooltip( 'label_ModifierDamageTakenStun' ),
+					data = smwData[ t( 'SMW_StunDamageModifier' ) ],
+				} ) ),
+				infobox:renderItem( {
+					class = 'template-vehicle-hull-hp',
+					label = t( 'label_Health' ),
+					data = smwData[ t( 'SMW_HealthPoint' ) ],
+				} )
+			},
+			col = 6
+		}
 	end
 
 	--- Specifications section
@@ -604,50 +666,7 @@ function methodtable.getInfobox( self )
 		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
 		tabberData[ 'label4' ] = t( 'label_Hull' )
-
-		section = {
-			infobox:renderItem( {
-				label = t( 'label_CrossSection' ),
-				data = formatModifier( smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Electromagnetic' ),
-				data = formatModifier( smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Infrared' ),
-				data = formatModifier( smwData[ t( 'SMW_InfraredSignatureModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Physical' ),
-				data = formatModifier( smwData[ t( 'SMW_PhysicalDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Energy' ),
-				data = formatModifier( smwData[ t( 'SMW_EnergyDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Distortion' ),
-				data = formatModifier( smwData[ t( 'SMW_DistortionDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Thermal' ),
-				data = formatModifier( smwData[ t( 'SMW_ThermalDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Biochemical' ),
-				data = formatModifier( smwData[ t( 'SMW_BiochemicalDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Stun' ),
-				data = formatModifier( smwData[ t( 'SMW_StunDamageModifier' ) ] ),
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_Health' ),
-				data = smwData[ t( 'SMW_HealthPoint' ) ],
-			} ),
-		}
-		tabberData[ 'content4' ] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content4' ] = infobox:renderSection( getHullSectionData(), true )
 
 		return tabber( tabberData )
 	end
@@ -862,7 +881,13 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] ) .. floatingui.load()
+	return table.concat( {
+		infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] ),
+		floatingui.load(),
+		self.currentFrame:extensionTag {
+			name = 'templatestyles', args = { src = 'Module:Vehicle/styles.css' }
+		}
+	} )
 end
 
 --- Set the frame and load args

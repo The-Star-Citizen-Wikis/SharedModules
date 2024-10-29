@@ -382,7 +382,6 @@ function methodtable.getInfobox( self )
 		} )
 		if dimensionsOutput then
 			return {
-				class = 'infobox__section--fullContent',
 				title = t( 'label_Dimensions' ),
 				content = dimensionsOutput
 			}
