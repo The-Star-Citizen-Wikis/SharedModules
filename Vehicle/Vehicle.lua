@@ -603,7 +603,10 @@ function methodtable.getInfobox( self )
 		tabberData[ 'label1' ] = t( 'label_Dimensions' )
 		tabberData[ 'content1' ] = infobox:renderSection( getDimensionsSectionData(), true )
 
-		tabberData[ 'label2' ] = t( 'label_Speed' )
+		tabberData[ 'label2' ] = t( 'label_Hull' )
+		tabberData[ 'content2' ] = infobox:renderSection( getHullSectionData(), true )
+
+		tabberData[ 'label3' ] = t( 'label_Speed' )
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_ScmSpeed' ),
@@ -646,9 +649,9 @@ function methodtable.getInfobox( self )
 				data = smwData[ t( 'SMW_YawRate' ) ]
 			} ),
 		}
-		tabberData[ 'content2' ] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 3 }, true )
 
-		tabberData[ 'label3' ] = t( 'label_Fuel' )
+		tabberData[ 'label4' ] = t( 'label_Fuel' )
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_HydrogenCapacity' ),
@@ -663,10 +666,7 @@ function methodtable.getInfobox( self )
 				data = smwData[ t( 'SMW_QuantumFuelCapacity' ) ],
 			} ),
 		}
-		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 2 }, true )
-
-		tabberData[ 'label4' ] = t( 'label_Hull' )
-		tabberData[ 'content4' ] = infobox:renderSection( getHullSectionData(), true )
+		tabberData[ 'content4' ] = infobox:renderSection( { content = section, col = 2 }, true )
 
 		return tabber( tabberData )
 	end
