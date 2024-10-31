@@ -4,22 +4,20 @@
 	max-width: 400px;
 	border: 1px solid var(--border-color-base);
 	border-radius: var(--border-radius--medium);
-	background-color: var(--color-surface-2);
+	background-color: transparent;
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-sm);
+	user-select: none;
 }
 
-.infobox::before {
-	/* Need important to override mw-collapsible styles */
-	content: '' !important;
-}
-
-.infobox.mw-collapsed {
-	background-color: transparent;
+.infobox[open] {
+	background-color: var(--color-surface-2);
 }
 
 .infobox__content {
 	position: relative;
+	/* So that clicking the infobox summary won't highlight the text */
+	user-select: auto;
 }
 
 .infobox__image {
@@ -230,38 +228,27 @@
 	gap: var(--space-xs);
 	align-items: center;
 	white-space: nowrap;
+	cursor: pointer;
 }
 
-.infobox__snippet.mw-collapsible-toggle {
-	/* Disable default style */
-	float: none;
-	border-top-left-radius: var(--border-radius--medium);
-	border-top-right-radius: var(--border-radius--medium);
-}
-
-.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed {
-	border-bottom-left-radius: var(--border-radius--medium);
-	border-bottom-right-radius: var(--border-radius--medium);
-}
-
-.infobox__snippet.mw-collapsible-toggle:hover {
+.infobox__snippet:hover {
 	background-color: var(--background-color-quiet--hover);
 }
 
 /* Might as well steal from skin */
-.infobox__snippet.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
-	--size-icon: var( --font-size-small);
+.infobox__snippet .mw-ui-icon-wikimedia-collapse {
+	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
+	--size-icon: var(--font-size-small);
 	width: var(--font-size-small);
 	height: var(--font-size-small);
 	flex-shrink: 0;
-	transition: var(--transition-menu);
+	transition: var(--transition-hover);
 	transition-property: transform;
+	transform: var(--transform-rotate-collapse);
 }
 
-/* Might as well steal from skin */
-.infobox__snippet.mw-collapsible-toggle.mw-collapsible-toggle-collapsed
-	.mw-ui-icon-wikimedia-collapse {
-	transform: rotate(180deg);
+.infobox[open] .infobox__snippet .mw-ui-icon-wikimedia-collapse {
+	transform: none;
 }
 
 .infobox__snippet .infobox__desc {
@@ -298,7 +285,7 @@
 
 /* TODO: Add support for multiple badges */
 .infobox__indicator.infobox__indicator--nopadding {
-    padding: 0;
+	padding: 0;
 }
 
 .infobox__indicator.infobox__indicator--red {

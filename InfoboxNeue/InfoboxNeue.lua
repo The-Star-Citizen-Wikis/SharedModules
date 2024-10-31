@@ -51,6 +51,26 @@ local function formatNumber( s )
 	return s
 end
 
+-- TODO: Perhaps we should turn this into another module
+local function getDetailsHTML( data, frame )
+	local summary = frame:extensionTag {
+		name = 'summary',
+		content = data.summary.content,
+		args = {
+			class = data.summary.class
+		}
+	}
+	local details = frame:extensionTag {
+		name = 'details',
+		content = summary .. data.details.content,
+		args = {
+			class = data.details.class,
+			open = true
+		}
+	}
+	return details
+end
+
 
 --- Put table values into a comma-separated list
 ---
@@ -519,16 +539,19 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		innerHtml = table.concat( self.entries )
 	end
 
+	local function renderContent()
+		local html = mw.html.create( 'div' )
+			:addClass( 'infobox__content' )
+			:wikitext( innerHtml )
+		return tostring( html )
+	end
+
 	local function renderSnippet()
 		if snippetText == nil then snippetText = mw.title.getCurrentTitle().text end
 
-		local html = mw.html.create( 'div' )
-
-		html
-			:addClass( 'infobox__snippet mw-collapsible-toggle' )
-			:attr( 'role', 'button' )
-			:attr( 'aria-owns', 'infobox__content' )
-			:tag( 'div' )
+		local html = mw.html.create()
+		
+		html:tag( 'div' )
 			:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
 			:done()
 			:tag( 'div' )
@@ -542,17 +565,19 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		return tostring( html )
 	end
 
-	local html = mw.html.create( 'div' )
+	local frame =  mw.getCurrentFrame()
+	local output = getDetailsHTML( {
+		details = {
+			class = 'infobox floatright',
+			content = renderContent()
+		},
+		summary = {
+			class = 'infobox__snippet',
+			content = renderSnippet()
+		}
+	}, frame )
 
-	html
-		:addClass( 'infobox floatright mw-collapsible' )
-		:wikitext( renderSnippet() )
-		:tag( 'div' )
-		:addClass( 'infobox__content mw-collapsible-content' )
-		:attr( 'id', 'infobox__content' )
-		:wikitext( innerHtml )
-
-	return tostring( html ) .. mw.getCurrentFrame():extensionTag {
+	return output .. frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
 	} .. table.concat( self.categories )
 end
