@@ -96,7 +96,7 @@ end
 --- @return mw.html
 local function getObjectHTML( data )
 	local html = mw.html.create( 'div' )
-		:addClass( 'template-dimensions-object' )
+		:addClass( 'template-dimensions' )
 		:css( {
 			[ '--object-length' ] = data.length.number,
 			[ '--object-width' ] = data.width.number,
@@ -159,17 +159,6 @@ local function getObjectHTML( data )
 	return html
 end
 
-
---- Get the output HTML object
----
---- @param data table
---- @return mw.html
-local function getOutputHTML( data )
-	local html = mw.html.create( 'div' )
-		:addClass( 'template-dimensions' )
-		:node( getObjectHTML( data ) )
-	return html
-end
 
 --- Return string containing the number with separator and unit
 ---
@@ -254,7 +243,7 @@ function p._main( args, frame )
 
 	local data = getDimensionsData( args )
 	if not data then return end
-	return tostring( getOutputHTML( data ) ) .. frame:extensionTag {
+	return tostring( getObjectHTML( data ) ) .. frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:Dimensions/styles.css' }
 	}
 end

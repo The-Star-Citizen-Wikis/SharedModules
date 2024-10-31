@@ -1,12 +1,38 @@
 .template-dimensions {
-	background: var(--color-surface-2);
+	--container-size: 140px;
+	--rotate-x: 45deg;
+	--rotate-z: -45deg;
+	--object-longest-side: max(
+		var(--object-length),
+		var(--object-width),
+		var(--object-height)
+	);
+	--object-scale: calc(var(--container-size) / var(--object-longest-side));
+	--box-length: calc(var(--object-length) * var(--object-scale));
+	--box-width: calc(var(--object-width) * var(--object-scale));
+	--box-height: calc(var(--object-height) * var(--object-scale));
+	/*
+	--container-width: calc(
+		(
+			var(--box-width) * cos(max(var(--rotate-z), -1 * var(--rotate-z))) +
+				var(--box-length) *
+				sin(max(var(--rotate-z), -1 * var(--rotate-z)))
+		)
+	);
+	*/
+	--container-height: calc(
+		var(--box-height) / 2 + hypot(var(--box-length), var(--box-width)) +
+			var(--space-md) * 2
+	);
+
 	border-radius: var(--border-radius-medium);
-	display: grid;
-	place-content: center;
-	padding: var(--space-md);
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-xx-small);
 	overflow: hidden;
+	display: grid;
+	place-content: center;
+	height: var(--container-height);
+	contain: strict;
 }
 
 .template-dimensions-label {
@@ -22,35 +48,6 @@
 .template-dimensions-data-subtle {
 	color: var(--color-subtle);
 	font-size: var(--font-size-x-small);
-}
-
-.template-dimensions-object {
-	--container-size: 140px;
-	--rotate-x: 45deg;
-	--rotate-z: -45deg;
-	--object-longest-side: max(
-		var(--object-length),
-		var(--object-width),
-		var(--object-height)
-	);
-	--object-scale: calc(var(--container-size) / var(--object-longest-side));
-	--box-length: calc(var(--object-length) * var(--object-scale));
-	--box-width: calc(var(--object-width) * var(--object-scale));
-	--box-height: calc(var(--object-height) * var(--object-scale));
-	--container-width: calc(
-		(
-			var(--box-width) * cos(max(var(--rotate-z), -1 * var(--rotate-z))) +
-				var(--box-length) *
-				sin(max(var(--rotate-z), -1 * var(--rotate-z)))
-		)
-	);
-	--container-height: calc(
-		var(--box-height) / 2 + hypot(var(--box-length), var(--box-width))
-	);
-	display: grid;
-	place-content: center;
-	width: var(--container-width);
-	height: var(--container-height);
 }
 
 .template-dimensions-isometric {
@@ -203,7 +200,7 @@
 	opacity: 0.5;
 }
 
-.template-dimensions:hover .template-dimensions-object {
+.template-dimensions:hover {
 	--rotate-z: 0deg;
 	--rotate-x: 0deg;
 }
