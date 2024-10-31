@@ -8,9 +8,6 @@
 local p = {}
 local args = {}
 local origArgs = {}
-local root
-local header
-local content
 
 local function union( t1, t2 )
 	-- Returns the union of the values of two tables, as a sequence.
@@ -41,63 +38,97 @@ local function getArgNums( prefix )
 	return nums
 end
 
-local function addRow( rowArgs, content )
+--- Get the string of the <details> element
+--- TODO: Perhaps we should turn this into another module
+---
+--- @param data table
+--- @param frame table
+--- @return string
+local function getDetailsHTML( data, frame )
+	local summary = frame:extensionTag {
+		name = 'summary',
+		content = data.summary.content,
+		args = {
+			class = data.summary.class
+		}
+	}
+	local details = frame:extensionTag {
+		name = 'details',
+		content = summary .. data.details.content,
+		args = {
+			class = data.details.class,
+			role = data.details.role,
+			open = data.details.open or 'no'
+		}
+	}
+	return details
+end
+
+
+--- @param rowArgs table
+--- @return mw.html
+local function getRowHTML( rowArgs )
+	local html = mw.html.create()
 	-- Adds a row to the navplate, with either a header
 	-- or a label/list combination.
 	if rowArgs.header then
-		content
+		html
 			:tag( 'div' )
 			:addClass( 'template-navplate__groupheader' )
 			:wikitext( rowArgs.header )
 	elseif rowArgs.list then
-		local row = content:tag( 'div' )
-		row:addClass( 'template-navplate-item' )
-		row
+		html
+			:tag( 'div' )
+			:addClass( 'template-navplate-item' )
 			:tag( 'div' )
 			:addClass( 'template-navplate-item__label' )
 			:wikitext( rowArgs.label )
 			:done()
-
-		local list = row:tag( 'div' )
-		list
+			:tag( 'div' )
 			:addClass( 'template-navplate-item__list' )
 			:wikitext( rowArgs.list )
 	end
+	return html
 end
 
-local function renderTitle( header )
-	local headerContent = mw.html.create( 'div' )
-	headerContent:addClass( 'template-navplate__headerContent' )
+
+--- @return mw.html
+local function getTitleHTML()
+	local html = mw.html.create( 'div' )
+	html:addClass( 'template-navplate__headerContent' )
 
 	if not args.title then return end
 	if args.subtitle then
-		headerContent
+		html
 			:tag( 'div' )
 			:addClass( 'template-navplate__subtitle' )
 			:wikitext( args.subtitle )
 			:done()
 	end
-	headerContent
+	html
 		:tag( 'div' )
 		:addClass( 'template-navplate__title' )
 		:wikitext( args.title )
 
-	header:node( headerContent )
+	return html
 end
 
-local function renderRows( content )
+
+--- @return mw.html
+local function getRowsHTML()
+	local html = mw.html.create()
 	-- Gets the union of the header and list argument numbers,
 	-- and renders them all in order using addRow.
 	local rownums = union( getArgNums( 'header' ), getArgNums( 'list' ) )
 	table.sort( rownums )
-	for k, num in ipairs( rownums ) do
-		addRow( {
-				header = args[ 'header' .. tostring( num ) ],
-				label = args[ 'label' .. tostring( num ) ],
-				list = args[ 'list' .. tostring( num ) ]
-			},
-			content )
+	for _, num in ipairs( rownums ) do
+		html:node( getRowHTML( {
+			header = args[ 'header' .. tostring( num ) ],
+			label = args[ 'label' .. tostring( num ) ],
+			list = args[ 'list' .. tostring( num ) ]
+		} ) )
 	end
+	return html
 end
 
 -- If the argument exists and isn't blank, add it to the argument table.
@@ -181,39 +212,32 @@ local function parseDataParameters()
 end
 
 local function _navplate()
-	root = mw.html.create( 'div' )
-	header = mw.html.create( 'div' )
-	content = mw.html.create( 'div' )
+	local frame = mw.getCurrentFrame()
 
-	header
-		:addClass( 'template-navplate__header' )
-		:addClass( 'mw-collapsible-toggle' )
-		:attr( 'role', 'button' )
-		:attr( 'aria-owns', 'template-navplate__content' )
+	local summaryHTML = mw.html.create()
 		:tag( 'div' )
 		:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
 		:done()
+		:node( getTitleHTML() )
 
-	content
+	local contentHTML = mw.html.create( 'div' )
 		:addClass( 'template-navplate__content' )
-		:addClass( 'mw-collapsible-content' )
-		:attr( 'id', 'template-navplate__content' )
+		:node( getRowsHTML() )
 
-	renderTitle( header )
-	renderRows( content )
+	local output = getDetailsHTML( {
+		details = {
+			class = 'template-navplate',
+			content = tostring( contentHTML )
+		},
+		summary = {
+			class = 'template-navplate__header',
+			content = tostring( summaryHTML )
+		}
+	}, frame )
 
-	root
-		:addClass( 'template-navplate' )
-		:addClass( 'mw-collapsible' )
-		:attr( 'role', 'navigation' )
-		:node( header )
-		:node( content )
-
-	if args.id then root:attr( 'id', 'navplate-' .. args.id ) end
-
-	return mw.getCurrentFrame():extensionTag {
+	return frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:Navplate/styles.css' }
-	} .. tostring( root )
+	} .. output
 end
 
 -- If called via #invoke, use the args passed into the invoking template.

@@ -4,20 +4,26 @@
 	font-size: var( --font-size-small );
 	line-height: var( --line-height-sm );
 	border: 1px solid var( --border-color-base );
-	border-radius: var( --border-radius--medium );
+	border-radius: var( --border-radius-medium );
     overflow: hidden;
+	user-select: none;
 }
 
 .template-navplate__header {
 	padding: var( --space-sm ) var( --space-md );
-	background-color: var( --color-surface-2 );
+	background-color: transparent;
 	display: flex;
-    align-items: center;
-    gap: var( --space-md );
+	align-items: center;
+	gap: var( --space-md );
+	cursor: pointer;
 }
 
-.template-navplate.mw-collapsed .template-navplate__header {
-	background-color: transparent;
+.template-navplate[ open ] .template-navplate__header {
+	background-color: var( --color-surface-2 );
+}
+
+.template-navplate .template-navplate__header:hover {
+	background-color: var( --background-color-quiet--hover );
 }
 
 .template-navplate__subtitle {
@@ -37,12 +43,13 @@
 }
 
 .template-navplate__title {
-	font-size: var( --font-size-x-large );
+	font-size: var( --font-size-medium );
 }
 
 .template-navplate__content {
 	position: relative;
 	border-top: 1px solid var( --border-color-base );
+	user-select: auto;
 }
 
 .template-navplate__groupheader {
@@ -78,24 +85,17 @@
 	border-top: 1px solid var( --border-color-base );
 }
 
-/* Style collapse button */
-.template-navplate__header.mw-collapsible-toggle {
-	float: none;
-}
-
-.template-navplate__header.mw-collapsible-toggle:hover {
-	background-color: var( --background-color-quiet--hover );
-}
-
-.template-navplate__header.mw-collapsible-toggle .mw-ui-icon-wikimedia-collapse {
+.template-navplate__header .mw-ui-icon-wikimedia-collapse {
+	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
 	width: var( --font-size-small );
-    height: var( --font-size-small );
-    transition: var( --transition-menu );
-    transition-property: transform;
+	height: var( --font-size-small );
+	transition: var( --transition-hover );
+	transition-property: transform;
+	transform: var( --transform-rotate-collapse );
 }
 
-.template-navplate__header.mw-collapsible-toggle.mw-collapsible-toggle-collapsed .mw-ui-icon-wikimedia-collapse {
-	transform: rotate( 180deg );
+.template-navplate[ open ] .template-navplate__header .mw-ui-icon-wikimedia-collapse {
+	transform: none;
 }
 
 @media only screen and ( min-width: 640px ) {

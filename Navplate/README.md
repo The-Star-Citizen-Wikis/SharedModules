@@ -3,7 +3,7 @@
 Module:Navplate implements Template:Navplate for templates and modules.
 
 ## Requirements
-None
+- [Extension:Details](https://www.mediawiki.org/wiki/Extension:Details)
 
 ## Installation
 1. Create `Module:Navplate/styles.css` with the content found in `styles.css` on your wiki
