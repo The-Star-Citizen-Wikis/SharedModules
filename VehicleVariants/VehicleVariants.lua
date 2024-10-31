@@ -110,7 +110,7 @@ function methodtable.out( self )
                 :wikitext( string.format( '[[%s|%s]]', variant.page, variant.name ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-vehicleVariant-image' )
-                :wikitext( string.format( '[[%s|400px|link=]]', image ) )
+                :wikitext( string.format( '[[%s|480px|link=]]', image ) )
 
             local variantTextHtml = mw.html.create( 'div' )
                 :addClass( 'template-vehicleVariant-text' )
