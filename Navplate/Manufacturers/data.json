@@ -42,6 +42,10 @@
             "conditions": "Category:Guns"
         },
         {
+            "label": "Life support generator",
+            "conditions": "Category:Life support generators"
+        },
+        {
             "label": "Mining lasers",
             "conditions": "Category:Mining lasers"
         },
