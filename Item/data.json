@@ -235,6 +235,7 @@
 				"EMP",
 				"ExternalFuelTank",
 				"Gadget",
+				"JumpDrive.JumpDrive",
 				"LifeSupportGenerator",
 				"MiningModifier.Gun",
 				"Missile.Missile",

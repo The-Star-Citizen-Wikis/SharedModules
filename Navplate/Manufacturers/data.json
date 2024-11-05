@@ -42,7 +42,11 @@
             "conditions": "Category:Guns"
         },
         {
-            "label": "Life support generator",
+            "label": "Jump modules",
+            "conditions": "Category:Jump modules"
+        },
+        {
+            "label": "Life support generators",
             "conditions": "Category:Life support generators"
         },
         {
