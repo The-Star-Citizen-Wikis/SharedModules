@@ -239,8 +239,11 @@
 }
 
 .infobox__snippet {
+	position: relative;
+	z-index: 1;
 	padding-top: var(--space-sm);
 	padding-bottom: var(--space-sm);
+	background-color: var(--color-surface-2);
 	display: flex;
 	gap: var(--space-xs);
 	align-items: center;
