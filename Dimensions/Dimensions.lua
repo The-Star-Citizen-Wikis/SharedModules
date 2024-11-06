@@ -243,9 +243,9 @@ function p._main( args, frame )
 
 	local data = getDimensionsData( args )
 	if not data then return end
-	return tostring( getObjectHTML( data ) ) .. frame:extensionTag {
+	return frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:Dimensions/styles.css' }
-	}
+	} .. tostring( getObjectHTML( data ) )
 end
 
 --- Wikitext entry point

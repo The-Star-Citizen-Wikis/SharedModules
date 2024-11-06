@@ -577,9 +577,9 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		}
 	}, frame )
 
-	return output .. frame:extensionTag {
+	return frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
-	} .. table.concat( self.categories )
+	} .. output .. table.concat( self.categories )
 end
 
 --- Just an accessor for the class method

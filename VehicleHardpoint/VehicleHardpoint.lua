@@ -1248,9 +1248,9 @@ function methodtable.out( self )
         tabberData[ 'content' .. i ] = groupContent
     end
 
-    return require( 'Module:Tabber' ).renderTabber( tabberData ) .. mw.getCurrentFrame():extensionTag{
+    return mw.getCurrentFrame():extensionTag{
         name = 'templatestyles', args = { src = config.template_styles_page }
-    }
+    } .. require( 'Module:Tabber' ).renderTabber( tabberData )
 end
 
 

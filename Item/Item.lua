@@ -547,9 +547,13 @@ function methodtable.getAvailability( self )
 				tostring( label ),
 				tostring( chervon )
 			) )
-		table.insert( output, tostring( container ) .. mw.getCurrentFrame():extensionTag{
-			name = 'templatestyles', args = { src = 'Template:Item availability/styles.css' }
-		} )
+		table.insert(
+			output,
+			mw.getCurrentFrame():extensionTag{
+				name = 'templatestyles', args = { src = 'Template:Item availability/styles.css' }
+			},
+			tostring( container )
+		)
 	end
 
 	return table.concat( output )

@@ -445,9 +445,9 @@ function p.main( frame )
     local portsData = getPortsData( data.ports )
     portsData = reorderTable( portsData, order )
 
-    return tostring( getOutputHTML( portsData ) ) .. frame:extensionTag{
+    return frame:extensionTag{
         name = 'templatestyles', args = { src = 'User:Alistair3149/sandbox/itemport2/styles.css' }
-    }
+    } .. tostring( getOutputHTML( portsData ) )
 end
 
 

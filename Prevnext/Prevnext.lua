@@ -32,7 +32,7 @@ function methodtable.make( self )
 
 		local inner = mw.html.create( 'div' )
 		inner:addClass( 'template-prevnext__' .. dir )
-		   :addClass( 'template-prevnext__link' )
+			:addClass( 'template-prevnext__link' )
 
 		if not pageExists( self.frameArgs[ dir ] ) then
 			inner:addClass( 'template-prevnext__link--new' )
@@ -41,7 +41,7 @@ function methodtable.make( self )
 		local icon = mw.html.create( 'div' )
 
 		icon:addClass( 'template-prevnext__icon' )
-				:wikitext( string.format( '[[File:WikimediaUI-%s-ltr.svg|14px|link=]]', arrow ) )
+			:wikitext( string.format( '[[File:WikimediaUI-%s-ltr.svg|14px|link=]]', arrow ) )
 			:done()
 
 		if dir == 'prev' then
@@ -49,17 +49,17 @@ function methodtable.make( self )
 		end
 
 		local content = inner:tag( 'div' )
-				:addClass( 'template-prevnext__content' )
-					:tag( 'div' )
-						:addClass( 'template-prevnext__title' )
-						:wikitext( self.frameArgs[ dir .. 'Title' ] or self.frameArgs[ dir ] )
-					:done()
+			:addClass( 'template-prevnext__content' )
+			:tag( 'div' )
+			:addClass( 'template-prevnext__title' )
+			:wikitext( self.frameArgs[ dir .. 'Title' ] or self.frameArgs[ dir ] )
+			:done()
 
 		if self.frameArgs[ dir .. 'Desc' ] then
 			content:tag( 'div' )
-					:addClass( 'template-prevnext__desc' )
-						:wikitext( self.frameArgs[ dir .. 'Desc' ] )
-					:done()
+				:addClass( 'template-prevnext__desc' )
+				:wikitext( self.frameArgs[ dir .. 'Desc' ] )
+				:done()
 		end
 
 		if dir == 'next' then
@@ -67,25 +67,25 @@ function methodtable.make( self )
 		end
 
 		inner:tag( 'div' )
-				:addClass( 'template-prevnext__linkoverlay' )
-					:wikitext( string.format( '[[%s]]', self.frameArgs[ dir ] ) )
-				:allDone()
+			:addClass( 'template-prevnext__linkoverlay' )
+			:wikitext( string.format( '[[%s]]', self.frameArgs[ dir ] ) )
+			:allDone()
 
 		return inner
 	end
 
 	local div = mw.html.create( 'div' )
-		div:addClass( 'template-prevnext' )
+	div:addClass( 'template-prevnext' )
 
 	local current = mw.html.create( 'div' )
 	current:addClass( 'template-prevnext__current' )
 
 	local content = current:tag( 'div' )
-			:addClass('template-prevnext__content')
-				:tag( 'div' )
-					:addClass('template-prevnext__title')
-					:wikitext( self.frameArgs[ 'title' ] or mw.title.getCurrentTitle().subpageText )
-				:done()
+		:addClass( 'template-prevnext__content' )
+		:tag( 'div' )
+		:addClass( 'template-prevnext__title' )
+		:wikitext( self.frameArgs[ 'title' ] or mw.title.getCurrentTitle().subpageText )
+		:done()
 
 	if self.frameArgs[ 'desc' ] then
 		content:tag( 'div' )
@@ -95,13 +95,12 @@ function methodtable.make( self )
 
 	current:allDone()
 
-	div:node(makeLink('prev')):node(current):node(makeLink('next'))
+	div:node( makeLink( 'prev' ) ):node( current ):node( makeLink( 'next' ) )
 
-	return tostring( div:allDone() ) .. mw.getCurrentFrame():extensionTag{
+	return mw.getCurrentFrame():extensionTag {
 		name = 'templatestyles', args = { src = 'Module:Prevnext/styles.css' }
-	}
+	} .. tostring( div:allDone() )
 end
-
 
 --- Set the frame and load args
 --- @param frame table
@@ -109,7 +108,6 @@ function methodtable.setFrame( self, frame )
 	self.currentFrame = frame
 	self.frameArgs = require( 'Module:Arguments' ).getArgs( frame )
 end
-
 
 --- New Instance
 function Prevnext.new( self, args )
@@ -122,7 +120,6 @@ function Prevnext.new( self, args )
 	return instance
 end
 
-
 --- Template entry
 function Prevnext.main( frame )
 	local instance = Prevnext:new()
@@ -130,6 +127,5 @@ function Prevnext.main( frame )
 
 	return instance:make()
 end
-
 
 return Prevnext

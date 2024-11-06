@@ -129,9 +129,9 @@ function methodtable.out( self )
         end
     end
 
-    return tostring( containerHtml ) .. mw.getCurrentFrame():extensionTag {
+    return mw.getCurrentFrame():extensionTag {
         name = 'templatestyles', args = { src = MODULE_NAME .. '/styles.css' }
-    }
+    } .. tostring( containerHtml )
 end
 
 
