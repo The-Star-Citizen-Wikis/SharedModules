@@ -6,7 +6,6 @@
 }
 
 .template-itemVariant {
-	--gradient-color: #000;
 	position: relative;
 	border: 1px solid var( --border-color-base );
 	border-radius: var( --border-radius-medium );
@@ -14,8 +13,7 @@
 }
 
 .template-itemVariant.template-itemVariant--selected {
-	pointer-events: none;
-	outline: 2px solid var( --color-progressive );
+	display: none;
 }
 
 .template-itemVariant-fakelink {

@@ -13,8 +13,7 @@
 }
 
 .template-vehicleVariant.template-vehicleVariant--selected {
-	pointer-events: none;
-	outline: 2px solid var( --color-progressive );
+	display: none;
 }
 
 .template-vehicleVariant-fakelink {
