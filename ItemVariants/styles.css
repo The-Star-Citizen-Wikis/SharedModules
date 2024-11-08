@@ -6,15 +6,16 @@
 }
 
 .template-itemVariant {
+	--gradient-color: #000;
 	position: relative;
 	border: 1px solid var( --border-color-base );
-	border-radius: var( --border-radius--medium );
+	border-radius: var( --border-radius-medium );
 	overflow: hidden;
 }
 
 .template-itemVariant.template-itemVariant--selected {
-	order: -1;
-	background: var( --color-surface-2 );
+	pointer-events: none;
+	outline: 2px solid var( --color-progressive );
 }
 
 .template-itemVariant-fakelink {
@@ -47,7 +48,7 @@
 	position: absolute;
 	content: "";
 	inset: 0px;
-	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
+	background: linear-gradient( transparent 50%, #000 100% ) center top / cover;
 	background-position: center top;
 	z-index: 1;
 	transition: var( --transition-hover );
@@ -59,7 +60,7 @@
 	bottom: var( --space-sm );
 	left: var( --space-md );
 	right: var( --space-md );
-	color: var( --color-base--emphasized );
+	color: #fff;
 	font-size: var( --font-size-small );
 	font-weight: var( --font-weight-medium );
 	line-height: var( --line-height-sm );
@@ -68,19 +69,19 @@
 	transition-property: opacity;
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):hover {
+.template-itemVariant:hover {
 	background: var( --background-color-quiet--hover );
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):active {
+.template-itemVariant:active {
 	background: var( --background-color-quiet--active );
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-image img {
+.template-itemVariant:hover .template-itemVariant-image img {
 	transform: scale( 1.1 );
 }
 
-.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-image::before,
-.template-itemVariant:not(.template-itemVariant--selected):hover .template-itemVariant-title {
+.template-itemVariant:hover .template-itemVariant-image::before,
+.template-itemVariant:hover .template-itemVariant-title {
 	opacity: 0;
 }

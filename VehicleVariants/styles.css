@@ -13,8 +13,8 @@
 }
 
 .template-vehicleVariant.template-vehicleVariant--selected {
-	order: -1;
-	background: var( --color-surface-2 );
+	pointer-events: none;
+	outline: 2px solid var( --color-progressive );
 }
 
 .template-vehicleVariant-fakelink {
@@ -76,19 +76,19 @@
 	font-size: var( --font-size-x-small );
 }
 
-.template-vehicleVariant:not(.template-vehicleVariant--selected):hover {
+.template-vehicleVariant:hover {
 	background: var( --background-color-quiet--hover );
 }
 
-.template-vehicleVariant:not(.template-vehicleVariant--selected):active {
+.template-vehicleVariant:active {
 	background: var( --background-color-quiet--active );
 }
 
-.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-image img {
+.template-vehicleVariant:hover .template-vehicleVariant-image img {
 	transform: scale( 1.1 );
 }
 
-.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-image::before,
-.template-vehicleVariant:not(.template-vehicleVariant--selected):hover .template-vehicleVariant-text {
+.template-vehicleVariant:hover .template-vehicleVariant-image::before,
+.template-vehicleVariant:hover .template-vehicleVariant-text {
 	opacity: 0;
 }

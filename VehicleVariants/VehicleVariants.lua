@@ -18,7 +18,7 @@ local i18n = require( 'Module:i18n' ):new()
 --- @param key string The translation key
 --- @return string If the key was not found, the key is returned
 local function t( key )
-	return i18n:translate( key )
+    return i18n:translate( key )
 end
 
 
@@ -31,10 +31,10 @@ local function makeSmwQueryObject( page )
     local smwSeries = t( 'SMW_Series' )
 
     local series = mw.smw.ask( {
-    	'[[' .. page .. ']]',
-    	'?' .. smwSeries .. '#=value',
-    	'?limit=1'
-    } )[1].value
+        '[[' .. page .. ']]',
+        '?' .. smwSeries .. '#=value',
+        '?limit=1'
+    } )[ 1 ].value
 
     if not series then return end
 
@@ -76,7 +76,6 @@ function methodtable.getSmwData( self, page )
     return self.smwData
 end
 
-
 --- Generates wikitext needed for the template
 --- @return string
 function methodtable.out( self )
@@ -115,9 +114,9 @@ function methodtable.out( self )
             local variantTextHtml = mw.html.create( 'div' )
                 :addClass( 'template-vehicleVariant-text' )
                 :tag( 'div' )
-                    :addClass( 'template-vehicleVariant-title' )
-                    :wikitext( variant.name )
-                    :done()
+                :addClass( 'template-vehicleVariant-title' )
+                :wikitext( variant.name )
+                :done()
             local role = variant.role
             if type( variant.role ) == 'table' then role = table.concat( variant.role, ', ' ) end
             variantTextHtml:tag( 'div' )
@@ -134,7 +133,6 @@ function methodtable.out( self )
     } .. tostring( containerHtml )
 end
 
-
 --- New Instance
 ---
 --- @return table VehicleVariants
@@ -148,7 +146,6 @@ function VehicleVariants.new( self, page )
     return instance
 end
 
-
 --- Parser call for generating the table
 function VehicleVariants.outputTable( frame )
     local args = require( 'Module:Arguments' ).getArgs( frame )
@@ -159,7 +156,6 @@ function VehicleVariants.outputTable( frame )
 
     return out
 end
-
 
 --- For debugging use
 ---
