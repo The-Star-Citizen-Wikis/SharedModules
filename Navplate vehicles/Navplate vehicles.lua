@@ -171,7 +171,7 @@ function methodtable.make( self )
 			local label
 			local mfuData = manufacturer:get( mfu )
 			if mfuData and mfuData.code then
-				icon = string.format( '[[File:sc-icon-manufacturer-%s.svg|36px|link=]] ', string.lower( mfuData.code ) )
+				icon = string.format( '[[File:sc-icon-brand-%s.svg|36px|link=]] ', string.lower( mfuData.code ) )
 				-- TODO: Intergrate label title and subtitle into Module:Navplate
 				label = string.format(
 					'[[%s|%s<div class="template-navplate__subtitle>%s</div>]]',
