@@ -380,6 +380,8 @@ function methodtable.getInfobox( self )
 
 	local function getSize()
 		local shipMatrixSize = smwData[ t( 'SMW_ShipMatrixSize' ) ]
+		if not shipMatrixSize then return end
+
 		shipMatrixSize = getSimpleTooltip(
 			'label_Size_shipmatrix',
 			'[https://robertsspaceindustries.com/ship-matrix Ship Matrix]',
