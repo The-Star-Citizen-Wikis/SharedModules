@@ -92,7 +92,10 @@
 			"smw_format": "#-"
 		},
 		{
-			"SMW_UUID": "API_uuid",
+			"SMW_UUID": [
+				"ARG_UUID",
+				"API_uuid"
+			],
 			"smw_format": "#-"
 		},
 		{
