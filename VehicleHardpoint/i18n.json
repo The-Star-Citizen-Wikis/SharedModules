@@ -860,7 +860,7 @@
             "msg_no_data",
             {
                 "de": "Keine SMW-Daten auf der Seite [[$1]] gefunden.",
-                "en": "SMW data not found on [[$1]]."
+                "en": "No data is found on [[$1]] on the wiki."
             }
         ],
         [
