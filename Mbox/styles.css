@@ -41,9 +41,9 @@
     width: 100%;
     box-sizing: border-box;
     background-color: var( --color-surface-1 );
-    border-bottom-left-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
-    box-shadow: var( --box-shadow-dialog );
+    border-bottom-left-radius: var( --border-radius-medium );
+    border-bottom-right-radius: var( --border-radius-medium );
+    box-shadow: var( --box-shadow-drop-xx-large );
     opacity: 0;
     visibility: hidden;
 }
@@ -52,7 +52,7 @@
     /* Merge with popup */
     border-bottom-left-radius: 0;
     border-bottom-right-radius: 0;
-    box-shadow: var( --box-shadow-dialog );
+    box-shadow: var( --box-shadow-drop-xx-large );
 }
 
 .mbox:hover .mbox-text {

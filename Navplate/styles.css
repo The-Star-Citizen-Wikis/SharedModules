@@ -2,7 +2,7 @@
 	margin-top: var( --space-md );
 	clear: both;
 	font-size: var( --font-size-small );
-	line-height: var( --line-height-sm );
+	line-height: var( --line-height-xx-small );
 	border: 1px solid var( --border-color-base );
 	border-radius: var( --border-radius-medium );
     overflow: hidden;
@@ -23,7 +23,7 @@
 }
 
 .template-navplate .template-navplate__header:hover {
-	background-color: var( --background-color-quiet--hover );
+	background-color: var( --background-color-button-quiet--hover );
 }
 
 .template-navplate__subtitle {
@@ -32,14 +32,14 @@
 
 .template-navplate__subtitle,
 .template-navplate-item__label {
-	color: var( --color-base--subtle );
+	color: var( --color-subtle );
 	letter-spacing: 0.05em;
 }
 
 .template-navplate__title,
 .template-navplate__groupheader {
-	color: var( --color-base--emphasized );
-	font-weight: var( --font-weight-semibold );
+	color: var( --color-emphasized );
+	font-weight: var( --font-weight-semi-bold );
 }
 
 .template-navplate__title {

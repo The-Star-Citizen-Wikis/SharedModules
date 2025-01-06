@@ -39,6 +39,6 @@
 
 .t-floatingui-desc,
 .t-floatingui-label {
-	color: var(--color-base--subtle);
+	color: var(--color-subtle);
 	font-size: var(--font-size-x-small);
 }

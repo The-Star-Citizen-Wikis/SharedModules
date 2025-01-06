@@ -5,7 +5,7 @@
     display: flex;
     flex-direction: column;
     gap: var( --space-xs );
-    line-height: var( --line-height-sm );
+    line-height: var( --line-height-xx-small );
 }
 
 /* TemplateStyles style tag can get in-between */
@@ -18,7 +18,7 @@
     align-self: flex-start;
     display: flex;
     align-items: center;
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-small );
     letter-spacing: 0.05em;
     gap: var( --space-xs );
@@ -97,7 +97,7 @@
 .template-component__card {
     position: relative;
     border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius--medium );
+    border-radius: var( --border-radius-medium );
     display: grid;
     grid-template-columns: 3rem auto;
     flex-grow: 1;
@@ -112,8 +112,8 @@
 .template-component__port {
     padding: var( --space-sm ) 0;
     border-right: 1px solid var( --border-color-base );
-    border-top-left-radius: var( --border-radius--medium );
-    border-bottom-left-radius: var( --border-radius--medium );
+    border-top-left-radius: var( --border-radius-medium );
+    border-bottom-left-radius: var( --border-radius-medium );
     justify-items: center;
     background-color: var( --color-surface-0 );
     font-weight: var( --font-weight-medium );
@@ -121,14 +121,14 @@
 }
 
 .template-component__count {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-x-small );
 }
 
 .template-component__item {
     padding: var( --space-sm ) var( --space-md );
-    border-top-right-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
+    border-top-right-radius: var( --border-radius-medium );
+    border-bottom-right-radius: var( --border-radius-medium );
     background-color: var( --color-surface-2 );
 }
 
@@ -139,13 +139,13 @@
     word-break: break-word;
     align-items: center;
     gap: var( --space-xxs );
-    color: var( --color-base--emphasized );
+    color: var( --color-emphasized );
     font-weight: var( --font-size-medium );
     font-size: var( --font-size-small );
 }
 
 .template-component__title-subtext {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-x-small );
 }
 
@@ -159,14 +159,14 @@
 
 /* New links on component title is usually a false alert */
 .template-component__title a.new {
-    color: var( --color-base--emphasized );
+    color: var( --color-emphasized );
 }
 
 .template-component__subtitle {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-x-small );
 }
 
 .template-component__subtitle a {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
 }

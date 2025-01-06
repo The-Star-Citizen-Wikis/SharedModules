@@ -8,7 +8,7 @@
 .template-vehicleVariant {
 	position: relative;
 	border: 1px solid var( --border-color-base );
-	border-radius: var( --border-radius--medium );
+	border-radius: var( --border-radius-medium );
 	overflow: hidden;
 }
 
@@ -58,29 +58,29 @@
 	bottom: var( --space-sm );
 	left: var( --space-md );
 	right: var( --space-md );
-	line-height: var( --line-height-sm );
+	line-height: var( --line-height-xx-small );
 	overflow-wrap: break-word;
 	transition: var( --transition-hover );
 	transition-property: opacity;
 }
 
 .template-vehicleVariant-title {
-	color: var( --color-base--emphasized );
+	color: var( --color-emphasized );
 	font-size: var( --font-size-small );
     font-weight: var( --font-weight-medium );
 }
 
 .template-vehicleVariant-subtitle {
-	color: var( --color-base--subtle );
+	color: var( --color-subtle );
 	font-size: var( --font-size-x-small );
 }
 
 .template-vehicleVariant:hover {
-	background: var( --background-color-quiet--hover );
+	background: var( --background-color-button-quiet--hover );
 }
 
 .template-vehicleVariant:active {
-	background: var( --background-color-quiet--active );
+	background: var( --background-color-button-quiet--active );
 }
 
 .template-vehicleVariant:hover .template-vehicleVariant-image img {

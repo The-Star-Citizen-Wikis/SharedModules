@@ -14,10 +14,10 @@
 }
 
 .documentation-title {
-    color: var( --color-base--emphasized );
+    color: var( --color-emphasized );
     font-size: var( --font-size-x-large );
-    font-weight: var( --font-weight-semibold );
-    line-height: var( --line-height-xs );
+    font-weight: var( --font-weight-semi-bold );
+    line-height: var( --line-height-xxx-small );
 }
 
 .documentation-links {
@@ -25,9 +25,9 @@
 }
 
 .documentation-subheader {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-x-small );
-    line-height: var( --line-height-sm );
+    line-height: var( --line-height-xx-small );
 }
 
 .documentation-content {
@@ -37,7 +37,7 @@
 .documentation-modulestats {
     padding: var( --space-xxs );
     background: var( --color-surface-2 );
-    border-radius: var( --border-radius--medium );
+    border-radius: var( --border-radius-medium );
     display: flex;
     align-items: center;
     justify-content: space-between;

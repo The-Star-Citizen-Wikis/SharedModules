@@ -10,8 +10,8 @@
     grid-template-areas: 'port item';
     grid-template-columns: max-content 1fr;
     border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius--medium );
-    line-height: var( --line-height-sm );
+    border-radius: var( --border-radius-medium );
+    line-height: var( --line-height-xx-small );
 }
 
 .template-itemPort-port {
@@ -20,15 +20,15 @@
     place-content: center;
     padding: var( --space-sm ) var( --space-md );
     border-right: 1px solid var( --border-color-base );
-    border-top-left-radius: var( --border-radius--medium );
-    border-bottom-left-radius: var( --border-radius--medium );
+    border-top-left-radius: var( --border-radius-medium );
+    border-bottom-left-radius: var( --border-radius-medium );
 }
 
 .template-itemPort-item {
     grid-area: item;
     padding: var( --space-sm ) var( --space-md );
-    border-top-right-radius: var( --border-radius--medium );
-    border-bottom-right-radius: var( --border-radius--medium );
+    border-top-right-radius: var( --border-radius-medium );
+    border-bottom-right-radius: var( --border-radius-medium );
 }
 
 .template-itemPort-item--hasItem {
@@ -41,7 +41,7 @@
 }
 
 .template-itemPort-subtitle {
-    color: var( --color-base--subtle );
+    color: var( --color-subtle );
     font-size: var( --font-size-x-small );
 }
 
@@ -51,5 +51,5 @@
 }
 
 .template-itemPort-item--hasItem .template-itemPort-title {
-    color: var( --color-base--emphasized );
+    color: var( --color-emphasized );
 }

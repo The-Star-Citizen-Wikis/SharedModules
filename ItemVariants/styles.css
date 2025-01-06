@@ -61,18 +61,18 @@
 	color: #fff;
 	font-size: var( --font-size-small );
 	font-weight: var( --font-weight-medium );
-	line-height: var( --line-height-sm );
+	line-height: var( --line-height-xx-small );
 	overflow-wrap: break-word;
 	transition: var( --transition-hover );
 	transition-property: opacity;
 }
 
 .template-itemVariant:hover {
-	background: var( --background-color-quiet--hover );
+	background: var( --background-color-button-quiet--hover );
 }
 
 .template-itemVariant:active {
-	background: var( --background-color-quiet--active );
+	background: var( --background-color-button-quiet--active );
 }
 
 .template-itemVariant:hover .template-itemVariant-image img {
