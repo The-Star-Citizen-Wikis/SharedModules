@@ -2,14 +2,12 @@
     display: flex;
     align-items: center;
     padding: var( --space-sm ) var( --space-md );
-    margin-top: var( --space-xs );
-    margin-bottom: var( --space-md );
+    margin-block: var( --space-md );
     background: var( --color-surface-2 );
     border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius--medium );
-    color: var( --color-base--subtle );
+    border-radius: var( --border-radius-medium );
     font-size: var( --font-size-small );
-    line-height: var( --line-height-xs );
+    line-height: var( --line-height-xx-small );
 }
 
 .hatnote-icon img {
