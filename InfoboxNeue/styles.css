@@ -3,10 +3,10 @@
 	width: 100%;
 	max-width: 400px;
 	border: 1px solid var(--border-color-base);
-	border-radius: var(--border-radius--medium);
+	border-radius: var(--border-radius-medium);
 	background-color: transparent;
 	font-size: var(--font-size-small);
-	line-height: var(--line-height-sm);
+	line-height: var(--line-height-xx-small);
 	box-sizing: content-box;
 }
 
@@ -34,111 +34,111 @@
 	background: linear-gradient(
 		to top,
 		hsl(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l)
 			)
 			0%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.987
 			)
 			8.1%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.951
 			)
 			15.5%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.896
 			)
 			22.5%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.825
 			)
 			29%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.741
 			)
 			35.3%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.648
 			)
 			41.2%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.55
 			)
 			47.1%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.45
 			)
 			52.9%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.352
 			)
 			58.8%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.259
 			)
 			64.7%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.175
 			)
 			71%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.104
 			)
 			77.5%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.049
 			)
 			84.5%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0.013
 			)
 			91.9%,
 		hsla(
-				var(--color-primary__h),
+				var( --color-primary__h),
 				var(--color-surface-2__s),
 				var(--color-surface-2__l),
 				0
@@ -200,9 +200,9 @@
 	display: flex;
 	margin: var(--space-md);
 	padding: var(--space-xs) var(--space-sm);
-	border-radius: var(--border-radius--small);
+	border-radius: var(--border-radius-base);
 	background: var(--color-surface-3);
-	color: var(--color-base--emphasized);
+	color: var(--color-emphasized);
 	font-weight: var(--font-weight-medium);
 	text-decoration: none;
 	justify-content: center;
@@ -241,7 +241,6 @@
 	z-index: 1;
 	padding-top: var(--space-sm);
 	padding-bottom: var(--space-sm);
-	background-color: var(--color-surface-2);
 	display: flex;
 	gap: var(--space-xs);
 	align-items: center;
@@ -252,7 +251,7 @@
 }
 
 .infobox__snippet:hover {
-	background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-button-quiet--hover);
 }
 
 /* Might as well steal from skin */
@@ -293,8 +292,8 @@
 	padding: var(--space-xxs) var(--space-xs);
 	background: var(--color-surface-2);
 	color: var(--color-base);
-	border-radius: var(--border-radius--small);
-	line-height: var(--line-height-xs);
+	border-radius: var(--border-radius-base);
+	line-height: var(--line-height-xxx-small);
 }
 
 .infobox__indicator .infobox__data {
@@ -325,7 +324,7 @@
 
 .infobox__header,
 .infobox__sectionHeader {
-	line-height: var(--line-height-xs);
+	line-height: var(--line-height-xxx-small);
 }
 
 .infobox__header {
@@ -343,8 +342,8 @@
 
 .infobox__title,
 .infobox__sectionTitle {
-	color: var(--color-base--emphasized);
-	font-weight: var(--font-weight-semibold);
+	color: var(--color-emphasized);
+	font-weight: var(--font-weight-medium);
 }
 
 .infobox__title {
@@ -380,7 +379,7 @@
 }
 
 .infobox__sectionSubtitle {
-	color: var(--color-base--subtle);
+	color: var(--color-subtle);
 }
 
 .infobox__sectionContent {
@@ -404,7 +403,7 @@
 	place-content: center;
 	text-align: center;
 	box-shadow: inset 0 0 0 1px var(--border-color-base);
-	border-radius: var(--border-radius--medium);
+	border-radius: var(--border-radius-medium);
 	padding: var(--space-xs) var(--space-sm);
 	font-weight: var(--font-weight-medium);
 	background-color: var(--color-surface-1);
@@ -412,7 +411,7 @@
 
 .infobox__desc,
 .infobox__label {
-	color: var(--color-base--subtle);
+	color: var(--color-subtle);
 	font-size: var(--font-size-x-small);
 }
 
@@ -437,12 +436,12 @@
 .infobox__itemButton {
 	position: relative;
 	padding: var(--space-sm) var(--space-md);
-	line-height: var(--line-height-sm);
+	line-height: var(--line-height-xx-small);
 	gap: 0;
 }
 
 .infobox__itemButton:hover {
-	background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-button-quiet--hover);
 }
 
 .infobox__itemButton:hover .infobox__itemButtonArrow {
@@ -450,7 +449,7 @@
 }
 
 .infobox__itemButton:active {
-	background-color: var(--background-color-quiet--active);
+	background-color: var(--background-color-button-quiet--active);
 }
 
 .infobox__itemButton .infobox__text {
@@ -458,7 +457,7 @@
 }
 
 .infobox__itemButton .infobox__data {
-	color: var(--color-base--emphasized);
+	color: var(--color-emphasized);
 }
 
 .infobox__itemButtonLink a {
@@ -487,8 +486,8 @@
 	margin-top: var(--space-lg);
 	border-top: 1px solid var(--border-color-base);
 	background-color: var(--color-surface-1);
-	border-bottom-left-radius: var(--border-radius--medium);
-	border-bottom-right-radius: var(--border-radius--medium);
+	border-bottom-left-radius: var(--border-radius-medium);
+	border-bottom-right-radius: var(--border-radius-medium);
 }
 
 .infobox__footer > .infobox__section {
@@ -500,15 +499,15 @@
 
 .infobox__button {
 	position: relative;
-	border-bottom-left-radius: var(--border-radius--medium);
-	border-bottom-right-radius: var(--border-radius--medium);
+	border-bottom-left-radius: var(--border-radius-medium);
+	border-bottom-right-radius: var(--border-radius-medium);
 	padding: var(--space-sm) var(--space-md);
-	background-color: var(--color-primary);
+	background-color: var( --color-progressive);
 	cursor: pointer;
 }
 
 .infobox__button:hover {
-	background-color: var(--color-primary--hover);
+	background-color: var( --color-progressive--hover);
 }
 
 .infobox__buttonLabel {
@@ -543,8 +542,8 @@
 	z-index: -1;
 	border: 1px solid var(--border-color-base);
 	background-color: var(--color-surface-1);
-	border-radius: var(--border-radius--medium);
-	box-shadow: var(--box-shadow-dialog);
+	border-radius: var(--border-radius-medium);
+	box-shadow: var(--box-shadow-drop-xx-large);
 	opacity: 0;
 	transition: var(--transition-menu);
 	transition-property: opacity, transform;
@@ -563,7 +562,7 @@
 .infobox__linkButton a {
 	padding: var(--space-xxs) var(--space-xs);
 	display: block;
-	border-radius: var(--border-radius--small);
+	border-radius: var(--border-radius-base);
 	text-decoration: none !important;
 }
 
@@ -573,11 +572,11 @@
 }
 
 .infobox__linkButton a:hover {
-	background-color: var(--background-color-quiet--hover);
+	background-color: var(--background-color-button-quiet--hover);
 }
 
 .infobox__linkButton a:active {
-	background-color: var(--background-color-quiet--active);
+	background-color: var(--background-color-button-quiet--active);
 }
 
 .infobox__section--linkButtons > .infobox__sectionContent {
@@ -622,7 +621,7 @@
 .infobox__section--metadata .infobox__sectionContent {
 	padding: var(--space-md);
 	background: var(--color-surface-1);
-	line-height: var(--line-height-xs);
+	line-height: var(--line-height-xxx-small);
 	gap: var(--space-xxs);
 }
 
