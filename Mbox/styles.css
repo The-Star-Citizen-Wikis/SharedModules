@@ -1,61 +1,61 @@
 .mbox {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    margin-block: var( --space-md );
-    background-color: var( --color-surface-2 );
-    border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius-medium );
-    font-size: var( --font-size-small );
-    line-height: var( --line-height-xx-small );
+	position: relative;
+	display: flex;
+	flex-direction: column;
+	margin-block: var(--space-md);
+	background-color: var(--color-surface-1);
+	border: 1px solid var(--border-color-base);
+	border-radius: var(--border-radius-medium);
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-xx-small);
 }
 
 .mbox.mbox-high {
-    background-color: var( --background-color-destructive-subtle );
+	background-color: var(--background-color-destructive-subtle);
 }
 
 .mbox.mbox-med {
-    background-color: var( --background-color-warning-subtle );
+	background-color: var(--background-color-warning-subtle);
 }
 
 .mbox-title {
-    display: flex;
-    align-items: center;
-    padding: var( --space-sm ) var( --space-md );
+	display: flex;
+	align-items: center;
+	padding: var(--space-sm) var(--space-md);
 }
 
 .mbox-icon img {
-    display: block;
-    width: var( --font-size-small );
-    height: auto;
-    margin-right: var( --space-xs );
-    opacity: var( --opacity-icon-base );
-    filter: var( --filter-invert );
+	display: block;
+	width: var(--font-size-small);
+	height: auto;
+	margin-right: var(--space-xs);
+	opacity: var(--opacity-icon-base);
+	filter: var(--filter-invert);
 }
 
 .mbox-text {
-    position: absolute;
-    top: 100%;
-    z-index: 10;
-    padding: var( --space-md );
-    width: 100%;
-    box-sizing: border-box;
-    background-color: var( --color-surface-1 );
-    border-bottom-left-radius: var( --border-radius-medium );
-    border-bottom-right-radius: var( --border-radius-medium );
-    box-shadow: var( --box-shadow-drop-xx-large );
-    opacity: 0;
-    visibility: hidden;
+	position: absolute;
+	top: 100%;
+	z-index: 10;
+	padding: var(--space-md);
+	width: 100%;
+	box-sizing: border-box;
+	background-color: var(--color-surface-1);
+	border-bottom-left-radius: var(--border-radius-medium);
+	border-bottom-right-radius: var(--border-radius-medium);
+	box-shadow: var(--box-shadow-drop-xx-large);
+	opacity: 0;
+	visibility: hidden;
 }
 
 .mbox:hover {
-    /* Merge with popup */
-    border-bottom-left-radius: 0;
-    border-bottom-right-radius: 0;
-    box-shadow: var( --box-shadow-drop-xx-large );
+	/* Merge with popup */
+	border-bottom-left-radius: 0;
+	border-bottom-right-radius: 0;
+	box-shadow: var(--box-shadow-drop-xx-large);
 }
 
 .mbox:hover .mbox-text {
-    opacity: 1;
-    visibility: visible;
+	opacity: 1;
+	visibility: visible;
 }

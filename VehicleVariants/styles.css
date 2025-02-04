@@ -1,14 +1,14 @@
 .template-vehicleVariants {
-	margin-top: var( --space-md );
+	margin-top: var(--space-md);
 	display: grid;
-	grid-template-columns: repeat( auto-fill, minmax( 320px,1fr ) );
-	gap: var( --space-xs );
+	grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+	gap: var(--space-xs);
 }
 
 .template-vehicleVariant {
 	position: relative;
-	border: 1px solid var( --border-color-base );
-	border-radius: var( --border-radius-medium );
+	border: 1px solid var(--border-color-base);
+	border-radius: var(--border-radius-medium);
 	overflow: hidden;
 }
 
@@ -38,53 +38,54 @@
 	height: 100%;
 	width: 100%;
 	object-fit: cover;
-	transition: var( --transition-hover );
+	transition: var(--transition-hover);
 	transition-property: transform;
 }
 
 .template-vehicleVariant-image::before {
 	position: absolute;
-	content: "";
+	content: '';
 	inset: 0px;
-	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center top / cover;
+	background: linear-gradient(rgba(0, 0, 0, 0) 50%, rgb(0, 0, 0) 100%) center
+		top / cover;
 	background-position: center top;
 	z-index: 1;
-	transition: var( --transition-hover );
+	transition: var(--transition-hover);
 	transition-property: opacity;
 }
 
 .template-vehicleVariant-text {
 	position: absolute;
-	bottom: var( --space-sm );
-	left: var( --space-md );
-	right: var( --space-md );
-	line-height: var( --line-height-xx-small );
+	bottom: var(--space-sm);
+	left: var(--space-md);
+	right: var(--space-md);
+	line-height: var(--line-height-xx-small);
 	overflow-wrap: break-word;
-	transition: var( --transition-hover );
+	transition: var(--transition-hover);
 	transition-property: opacity;
 }
 
 .template-vehicleVariant-title {
-	color: var( --color-emphasized );
-	font-size: var( --font-size-small );
-    font-weight: var( --font-weight-medium );
+	color: #fff;
+	font-size: var(--font-size-small);
+	font-weight: var(--font-weight-medium);
 }
 
 .template-vehicleVariant-subtitle {
-	color: var( --color-subtle );
-	font-size: var( --font-size-x-small );
+	color: #ddd;
+	font-size: var(--font-size-x-small);
 }
 
 .template-vehicleVariant:hover {
-	background: var( --background-color-button-quiet--hover );
+	background: var(--background-color-button-quiet--hover);
 }
 
 .template-vehicleVariant:active {
-	background: var( --background-color-button-quiet--active );
+	background: var(--background-color-button-quiet--active);
 }
 
 .template-vehicleVariant:hover .template-vehicleVariant-image img {
-	transform: scale( 1.1 );
+	transform: scale(1.1);
 }
 
 .template-vehicleVariant:hover .template-vehicleVariant-image::before,

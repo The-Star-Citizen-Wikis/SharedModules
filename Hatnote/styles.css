@@ -1,20 +1,20 @@
 .hatnote-container {
-    display: flex;
-    align-items: center;
-    padding: var( --space-sm ) var( --space-md );
-    margin-block: var( --space-md );
-    background: var( --color-surface-2 );
-    border: 1px solid var( --border-color-base );
-    border-radius: var( --border-radius-medium );
-    font-size: var( --font-size-small );
-    line-height: var( --line-height-xx-small );
+	display: flex;
+	align-items: center;
+	padding: var(--space-sm) var(--space-md);
+	margin-block: var(--space-md);
+	background: var(--color-surface-1);
+	border: 1px solid var(--border-color-base);
+	border-radius: var(--border-radius-medium);
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-xx-small);
 }
 
 .hatnote-icon img {
-    display: block;
-    width: var( --font-size-small );
-    height: auto;
-    margin-right: var( --space-xs );
-    opacity: var( --opacity-icon-base );
-    filter: var( --filter-invert );
+	display: block;
+	width: var(--font-size-small);
+	height: auto;
+	margin-right: var(--space-xs);
+	opacity: var(--opacity-icon-base);
+	filter: var(--filter-invert);
 }
