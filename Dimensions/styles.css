@@ -32,7 +32,6 @@
 	display: grid;
 	place-content: center;
 	height: var(--container-height);
-	contain: strict;
 }
 
 .template-dimensions-label {
@@ -51,16 +50,6 @@
 }
 
 .template-dimensions-isometric {
-	--color-surface-3--lighter: hsl(
-		var(--color-primary__h),
-		var(--color-surface-3__s),
-		calc(var(--color-surface-3__l) + var(--delta-lightness-hover-state))
-	);
-	--color-surface-3--darker: hsl(
-		var(--color-primary__h),
-		var(--color-surface-3__s),
-		calc(var(--color-surface-3__l) - var(--delta-lightness-hover-state))
-	);
 	--box-position-offset-up: calc(var(--box-height) / 2);
 	--box-position-offset-down: calc(var(--box-height) / -2);
 	--dimensions-isometric-transform: rotateX(var(--rotate-x))
@@ -109,7 +98,7 @@
 /* Top */
 .template-dimensions-box-face-top {
 	inset: 0;
-	background-color: var(--color-surface-3--lighter);
+	background-color: var(--color-surface-2);
 	width: var(--box-length);
 	height: var(--box-width);
 }
@@ -128,7 +117,7 @@
 .template-dimensions-box-face-right {
 	bottom: var(--box-position-offset-down);
 	left: 0;
-	background-color: var(--color-surface-3--darker);
+	background-color: var(--color-surface-4);
 	width: var(--box-length);
 	height: var(--box-height);
 	transform: var(--box-transform-right);
