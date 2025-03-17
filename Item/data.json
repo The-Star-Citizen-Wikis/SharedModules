@@ -137,6 +137,9 @@
 		},
 		{
 			"SMW_ItemBaseVariantUUID": "API_base_variant.uuid"
+		},
+		{
+			"SMW_QueryImage": "ARG_QueryImage"
 		}
 	],
 	"%community_sites": "List of format strings which link to community sites",
