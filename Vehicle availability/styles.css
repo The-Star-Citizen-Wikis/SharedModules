@@ -1,0 +1,12 @@
+/* System and price columns */
+.t-vehicle-availability-table thead th:first-child,
+.t-vehicle-availability-table thead th:last-child {
+    width: 8rem;
+}
+
+/* Price column */
+.t-vehicle-availability-table thead th:last-child,
+.t-vehicle-availability-table tbody td:last-child {
+    text-align: end;
+}
+

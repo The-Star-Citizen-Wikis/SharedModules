@@ -73,10 +73,15 @@ end
 
 --- Generates HTML for a table
 --- @param data table
+--- @param caption string
 --- @return table
-local function getTableHtml( data )
+local function getTableHtml( data, caption )
     local html = mw.html.create( 'table' )
     html:addClass( 't-vehicle-availability-table wikitable wikitable--fluid sortable' )
+
+    if caption then
+        html:tag( 'caption' ):wikitext( caption )
+    end
 
     local headerRow = html:tag( 'tr' )
     for _, mapping in ipairs( columnMappings ) do
@@ -126,10 +131,17 @@ function p.out( page )
 
     local html = mw.html.create()
 
+    html:wikitext(
+        hatnote(
+            'Purchase and rental data are sourced from [https://uexcorp.space UEX]',
+            { icon = 'WikimediaUI-Robot.svg' }
+        )
+    )
+
     if data.purchaseLocations == nil then
         html:wikitext(
             hatnote(
-            string.format( 'No purchase locations data found for [[%s]]', page ),
+                string.format( 'No purchase locations data found for [[%s]]', page ),
                 { icon = 'WikimediaUI-Error.svg' }
             )
         )
@@ -141,7 +153,7 @@ function p.out( page )
             )
         )
     else
-        html:node( getTableHtml( data.purchaseLocations ) )
+        html:node( getTableHtml( data.purchaseLocations, 'Purchase' ) )
     end
 
     if data.rentalLocations == nil then
@@ -159,7 +171,7 @@ function p.out( page )
             )
         )
     else
-        html:node( getTableHtml( data.rentalLocations ) )
+        html:node( getTableHtml( data.rentalLocations, 'Rental' ) )
     end
 
     local frame = mw.getCurrentFrame()
@@ -171,6 +183,7 @@ function p.out( page )
         } ),
         -- TODO: Convert this into module
         frame:expandTemplate{ title = 'Find item UIF' },
+        '<hr>',
         tostring( html )
     } )
 end
