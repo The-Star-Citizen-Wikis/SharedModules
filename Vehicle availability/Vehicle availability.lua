@@ -43,7 +43,7 @@ local function formatValue( key, row )
     end
 
     if key == 'terminalName' then
-        local linkKeys = { 'companyName', 'cityName' }
+        local linkKeys = { 'companyName', 'cityName', 'spaceStationName' }
         local parts = {}
         for part in value:gmatch( '[^%-]+' ) do
             part = part:match( '^%s*(.-)%s*$' ) -- trim whitespace
