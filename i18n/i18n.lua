@@ -135,6 +135,18 @@ function methodtable.translate( self, key, options )
 end
 
 
+--- Normalize a string to be used as an i18n key by converting whitespace to underscores and making all characters lowercase
+---
+--- @param str string The string to normalize
+--- @return string
+function methodtable.normalizeKey( self, str )
+    checkType( 'Module:i18n.normalizeKey', 1, self, 'table' )
+    checkType( 'Module:i18n.normalizeKey', 2, str, 'string' )
+
+    return string.lower( string.gsub( str, '%s+', '_' ) )
+end
+
+
 --- New Instance
 ---
 --- @return table i18n
