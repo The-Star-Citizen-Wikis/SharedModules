@@ -114,5 +114,16 @@
 	"category_ships": "ships",
 	"category_strict_mode_modules": "Strict mode modules",
 	"category_template_invoked_modules": "Template invoked modules",
-	"category_unused_module": "Unused modules"
+	"category_unused_module": "Unused modules",
+	"category_weaponpersonal_assault_rifle": "Assault rifles",
+	"category_weaponpersonal_frag_pistol": "Frag pistols",
+	"category_weaponpersonal_grenade_launcher": "Grenade launchers",
+	"category_weaponpersonal_lmg": "LMGs",
+	"category_weaponpersonal_missile_launcher": "Missile launchers",
+	"category_weaponpersonal_pistol": "Pistols",
+	"category_weaponpersonal_railgun": "Railguns",
+	"category_weaponpersonal_shotgun": "Shotguns",
+	"category_weaponpersonal_smg": "SMGs",
+	"category_weaponpersonal_sniper_rifle": "Sniper rifles",
+	"category_weaponpersonal_toy_pistol": "Toy pistols"
 }

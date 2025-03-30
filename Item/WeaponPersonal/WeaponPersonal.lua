@@ -219,7 +219,11 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addCategories( categories, frameArgs, smwData )
-
+    -- Add weapon type categories directly (e.g. SMGs, Shotguns, etc.)
+    if smwData[ t( 'SMW_Subtype' ) ] ~= nil then
+        local categoryKey = i18n:normalizeKey( 'category_weaponpersonal_' .. smwData[ t( 'SMW_Subtype' ) ] )
+        table.insert( categories, t( categoryKey ) )
+    end
 end
 
 --- Return the short description for this object
