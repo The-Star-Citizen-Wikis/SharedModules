@@ -804,6 +804,13 @@
 			}
 		],
 		[
+			"class_energy (electron)",
+			{
+				"de": "Energy (Electron)",
+				"en": "Energy (Electron)"
+			}
+		],
+		[
 			"class_energy (laser)",
 			{
 				"de": "Energy (Laser)",
