@@ -188,8 +188,7 @@
 
 .infobox__indicator .infobox__data {
 	font-size: var(--font-size-x-small);
-	font-weight: var(--font-weight-normal);
-	letter-spacing: 0.025em;
+	font-weight: var(--font-weight-medium);
 }
 
 /* TODO: Add support for multiple badges */
@@ -306,7 +305,7 @@
 }
 
 .infobox__label {
-	letter-spacing: 0.05em;
+	font-weight: var(--font-weight-medium);
 }
 
 .infobox__grid--row .infobox__label,

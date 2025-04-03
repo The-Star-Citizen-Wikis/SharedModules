@@ -35,7 +35,7 @@
 }
 
 .template-dimensions-label {
-	letter-spacing: 0.05em;
+	font-weight: var(--font-weight-medium);
 }
 
 .template-dimensions-data {

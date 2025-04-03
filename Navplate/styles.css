@@ -33,7 +33,7 @@
 .template-navplate__subtitle,
 .template-navplate-item__label {
 	color: var( --color-subtle );
-	letter-spacing: 0.05em;
+	font-weight: var(--font-weight-medium);
 }
 
 .template-navplate__title,

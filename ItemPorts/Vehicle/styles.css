@@ -16,7 +16,7 @@
     gap: var( --space-md );
     color: var( --color-subtle );
     font-size: var( --font-size-x-small );
-    letter-spacing: 0.025em;
+    font-weight: var(--font-weight-medium);
 }
 
 .template-itemports-group-label::after {

@@ -20,7 +20,7 @@
     align-items: center;
     color: var( --color-subtle );
     font-size: var( --font-size-small );
-    letter-spacing: 0.05em;
+    font-weight: var( --font-weight-medium );
     gap: var( --space-xs );
 }
 
