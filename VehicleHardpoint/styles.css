@@ -129,7 +129,7 @@
     padding: var( --space-sm ) var( --space-md );
     border-top-right-radius: var( --border-radius-medium );
     border-bottom-right-radius: var( --border-radius-medium );
-    background-color: var( --color-surface-2 );
+    background-color: var( --color-surface-1 );
 }
 
 .template-component__title {
