@@ -35,7 +35,7 @@ end
 local function getModifierItemData( data )
     if not data or not data.data then return {} end
     local itemData = {
-        class = data.class,
+        class = 'infobox__item--is-cell',
         label = data.label,
         -- Default to 0%
         data = '0%',
