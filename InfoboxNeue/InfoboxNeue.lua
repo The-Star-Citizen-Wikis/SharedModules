@@ -286,7 +286,7 @@ end
 
 --- Wrap the HTML into an infobox section
 ---
---- @param data table {title, subtitle, content, border, col, class}
+--- @param data table {title, subtitle, content, border, col, class, contentClass}
 --- @param noInsert boolean whether to insert this section into the internal table table
 --- @return string html
 function methodtable.renderSection( self, data, noInsert )
@@ -323,6 +323,7 @@ function methodtable.renderSection( self, data, noInsert )
 	if data['border'] == false then html:addClass( 'infobox__section--noborder' ) end
 	if data['col'] then content:addClass( 'infobox__grid--cols-' .. data['col'] ) end
 	if data['class'] then html:addClass( data['class'] ) end
+	if data['contentClass'] then content:addClass( data['contentClass'] ) end
 
 	local item = tostring( html )
 

@@ -138,13 +138,21 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 for _, damageType in ipairs( damageTypes ) do
                     table.insert( section,
                         infobox:renderItem( {
+                            class = 'infobox__item--is-cell',
                             label = t( 'label_Damage' .. damageType ),
                             tooltip = t( 'SMW_Damage' .. damageType ),
                             data = mode[ t( 'SMW_Damage' .. damageType ) ]
                         } )
                     )
                 end
-                tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
+                tabberData[ 'content' .. tabCount ] = infobox:renderSection(
+                    {
+                        contentClass = 'infobox__sectionContent--has-cells',
+                        content = section,
+                        col = 3
+                    },
+                    true
+                )
                 tabCount = tabCount + 1
                 -- Clean up
                 section = {}

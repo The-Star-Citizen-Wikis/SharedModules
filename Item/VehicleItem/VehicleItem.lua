@@ -152,6 +152,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 for _, damageType in ipairs( damageTypes ) do
                     table.insert( section,
                         infobox:renderItem( {
+                            class = 'infobox__item--is-cell',
                             label = t( 'label_Damage' .. damageType ),
                             tooltip = t( 'SMW_Damage' .. damageType ),
                             data = damage[ t( 'SMW_Damage' .. damageType ) ]
@@ -167,6 +168,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
                 title = t( 'label_Damages' ),
                 class = 'infobox__section--tabber',
                 content = tabber( damagesTabberData ),
+                contentClass = 'infobox__sectionContent--has-cells',
                 border = false
             }, true )
         end
@@ -588,29 +590,8 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     }
     tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 2 }, true )
 
-    -- Dimensions
-    --tabberData[ 'label' .. tabCount ] = t( 'label_Dimensions' )
-    --section = {
-    --    infobox:renderItem( {
-    --        label = t( 'label_Length' ),
-    --        data = smwData[ t( 'SMW_EntityLength' ) ],
-    --    } ),
-    --    infobox:renderItem( {
-    --        label = t( 'label_Width' ),
-    --        data = smwData[ t( 'SMW_EntityWidth' ) ],
-    --    } ),
-    --    infobox:renderItem( {
-    --        label = t( 'label_Height' ),
-    --        data = smwData[ t( 'SMW_EntityHeight' ) ],
-    --    } ),
-    --    infobox:renderItem( {
-    --        label = t( 'label_Mass' ),
-    --        data = smwData[ t( 'SMW_Mass' ) ],
-    --    } )
-    --}
-    --tabberData[ 'content' .. tabCount ] = infobox:renderSection( { content = section, col = 3 }, true )
-
     infobox:renderSection( {
+        title = t( 'label_Component' ),
         class = 'infobox__section--tabber',
         content = tabber( tabberData ),
         border = false

@@ -277,6 +277,10 @@
 	grid-template-columns: repeat(var(--infobox-grid-cols), minmax(0, 1fr));
 }
 
+.infobox__sectionContent--has-cells {
+	gap: var(--space-xxs);
+}
+
 .infobox__item {
 	display: grid;
 	gap: 2px var(--space-xs);
@@ -576,7 +580,6 @@
 
 .infobox__grid--cols-6 {
 	--infobox-grid-cols: 6;
-	gap: var(--space-xxs);
 }
 
 .infobox__grid--col-span-2 {

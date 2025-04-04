@@ -609,6 +609,7 @@ function methodtable.getInfobox( self )
 				--	data = smwData[ t( 'SMW_HealthPoint' ) ]
 				--} )
 			},
+			contentClass = 'infobox__sectionContent--has-cells',
 			col = 6
 		}
 	end

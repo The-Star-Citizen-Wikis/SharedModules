@@ -35,7 +35,7 @@ end
 local function getModifierItemData( data )
     if not data or not data.data then return {} end
     local itemData = {
-        class = 'infobox__item--is-cell',
+        class = data.class,
         label = data.label,
         -- Default to 0%
         data = '0%',
@@ -161,7 +161,8 @@ function p.addInfoboxData( infobox, smwData )
                 data = smwData[ t( 'SMW_ModifierDamageTakenStun' ) ]
             } ) )
         },
-        col = 6
+        col = 6,
+        contentClass = 'infobox__sectionContent--has-cells'
     } )
 end
 
