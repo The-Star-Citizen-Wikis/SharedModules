@@ -30,6 +30,38 @@ local function translate( key, addSuffix, ... )
 end
 
 
+--- Format modifiers for infobox:renderItem
+--- TODO: Maybe make this generic for other infobox modules?
+local function getModifierItemData( data )
+    if not data or not data.data then return {} end
+    local itemData = {
+        class = 'infobox__item--is-cell',
+        label = data.label,
+        -- Default to 0%
+        data = '0%',
+        tooltip = data.tooltip
+    }
+    local x = data.data
+    -- Fix for german number format
+    if string.find( x, ',', 1, true ) then
+        x = string.gsub( x, ',', '.' )
+    end
+    if type( x ) == 'string' then x = tonumber( x, 10 ) end
+
+    local diff = x - 1
+    if diff == 0 then
+        itemData.class = itemData.class .. ' infobox__item--null'
+    elseif diff > 0 then
+        itemData.class = itemData.class .. ' infobox__item--negative'
+        itemData.data = '+' .. tostring( math.abs( diff ) * 100 ) .. '%'
+    elseif diff < 0 then
+        itemData.class = itemData.class .. ' infobox__item--positive'
+        itemData.data = '-' .. tostring( math.abs( diff ) * 100 ) .. '%'
+    end
+    return itemData
+end
+
+
 --- Adds the properties valid for this item to the SMW Set object
 ---
 --- @param smwSetObject table
@@ -83,19 +115,6 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
-    --- Format resistance (e.g. 0.9) to human readable format (e.g. 10%)
-    ---
-    --- @param key string SMW property name of the resistance data
-    --- @return string|nil
-    local function getResistance( key )
-        local translatedKey = translate( key )
-        if smwData[translatedKey] == nil or type( smwData[translatedKey] ) ~= 'number' then
-            return
-        end
-
-        return ( 1 - smwData[translatedKey] ) * 100 .. ' %'
-    end
-
     infobox:renderSection( {
         title = t( 'label_Clothing' ),
         content = {
@@ -111,36 +130,36 @@ function p.addInfoboxData( infobox, smwData )
     infobox:renderSection( {
         title = t( 'label_Armor' ),
         content = {
-            infobox:renderItem( {
+            infobox:renderItem( getModifierItemData ( {
                 label = t( 'label_ModifierDamageTakenPhysical' ),
                 tooltip = t( 'SMW_ModifierDamageTakenPhysical' ),
-                data = getResistance( 'SMW_ModifierDamageTakenPhysical' )
-            } ),
-            infobox:renderItem( {
+                data = smwData[ t( 'SMW_ModifierDamageTakenPhysical' ) ]
+            } ) ),
+            infobox:renderItem( getModifierItemData( {
                 label = t( 'label_ModifierDamageTakenEnergy' ),
                 tooltip = t( 'SMW_ModifierDamageTakenEnergy' ),
-                data = getResistance( 'SMW_ModifierDamageTakenEnergy' )
-            } ),
-            infobox:renderItem( {
+                data = smwData[ t( 'SMW_ModifierDamageTakenEnergy' ) ]
+            } ) ),
+            infobox:renderItem( getModifierItemData( {
                 label = t( 'label_ModifierDamageTakenDistortion' ),
                 tooltip = t( 'SMW_ModifierDamageTakenDistortion' ),
-                data = getResistance( 'SMW_ModifierDamageTakenDistortion' )
-            } ),
-            infobox:renderItem( {
+                data = smwData[ t( 'SMW_ModifierDamageTakenDistortion' ) ]
+            } ) ),
+            infobox:renderItem( getModifierItemData( {
                 label = t( 'label_ModifierDamageTakenThermal' ),
                 tooltip = t( 'SMW_ModifierDamageTakenThermal' ),
-                data = getResistance( 'SMW_ModifierDamageTakenThermal' )
-            } ),
-            infobox:renderItem( {
+                data = smwData[ t( 'SMW_ModifierDamageTakenThermal' ) ]
+            } ) ),
+            infobox:renderItem( getModifierItemData( {
                 label = t( 'label_ModifierDamageTakenBiochemical' ),
                 tooltip = t( 'SMW_ModifierDamageTakenBiochemical' ),
-                data = getResistance( 'SMW_ModifierDamageTakenBiochemical' )
-            } ),
-            infobox:renderItem( {
+                data = smwData[ t( 'SMW_ModifierDamageTakenBiochemical' ) ]
+            } ) ),
+            infobox:renderItem( getModifierItemData( {
                 label = t( 'label_ModifierDamageTakenStun' ),
                 tooltip = t( 'SMW_ModifierDamageTakenStun' ),
-                data = getResistance( 'SMW_ModifierDamageTakenStun' )
-            } )
+                data = smwData[ t( 'SMW_ModifierDamageTakenStun' ) ]
+            } ) )
         },
         col = 6
     } )

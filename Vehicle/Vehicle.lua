@@ -528,7 +528,7 @@ function methodtable.getInfobox( self )
 	local function getModifierItemData( data )
 		if not data or not data.data then return {} end
 		local itemData = {
-			class = data.class,
+			class = 'infobox__item--is-cell',
 			label = data.label,
 			-- Default to 0%
 			data = '0%',
@@ -558,55 +558,46 @@ function methodtable.getInfobox( self )
 		return {
 			content = {
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenPhysical' ),
 					data = smwData[ t( 'SMW_PhysicalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenPhysical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenEnergy' ),
 					data = smwData[ t( 'SMW_EnergyDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenEnergy' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenDistortion' ),
 					data = smwData[ t( 'SMW_DistortionDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenDistortion' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenThermal' ),
 					data = smwData[ t( 'SMW_ThermalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenThermal' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenBiochemical' ),
 					data = smwData[ t( 'SMW_BiochemicalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenBiochemical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenStun' ),
 					data = smwData[ t( 'SMW_StunDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenStun' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_CrossSection' ),
 					data = smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_CrossSection' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_Electromagnetic' ),
 					data = smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_Electromagnetic' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'infobox__item--is-cell',
 					label = t( 'label_Infrared' ),
 					data = smwData[ t( 'SMW_InfraredSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_Infrared' ),
