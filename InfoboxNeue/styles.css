@@ -289,8 +289,6 @@
 
 .infobox__item--is-cell {
 	display: grid;
-	place-content: center;
-	text-align: center;
 	padding: var(--space-xs);
 	border: var(--border-base);
 	border-radius: var(--border-radius-base);
@@ -311,6 +309,7 @@
 }
 
 .infobox__item--is-cell.infobox__item--null {
+	border-color: var(--border-color-subtle);
 	color: var(--color-subtle);
 }
 
