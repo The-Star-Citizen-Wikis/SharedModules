@@ -48,9 +48,10 @@ end
 
 --- Load FloatingUI library only
 ---
+--- @param frame table
 --- @return string wikitext Wikitext to load the FloatingUI library only
-function FloatingUI.load()
-    local frame = mw.getCurrentFrame()
+function FloatingUI.load( frame )
+    frame = frame or mw.getCurrentFrame()
     return frame:extensionTag {
         name = 'templatestyles', args = { src = 'Module:FloatingUI/styles.css' }
     } .. frame:callParserFunction {
