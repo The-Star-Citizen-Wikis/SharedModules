@@ -546,7 +546,7 @@ function methodtable.renderItem( self, data, content )
 	-- Handle tooltip if present
 	if data.tooltip then
 		self.modules.FloatingUI = self.modules.FloatingUI or require( 'Module:FloatingUI' )
-		html:addClass( 'infobox__item--hasTooltip' )
+		html:addClass( 'infobox__item--has-tooltip' )
 		return self.modules.FloatingUI.render( tostring( html ), data.tooltip )
 	end
 

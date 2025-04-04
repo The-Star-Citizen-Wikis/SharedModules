@@ -274,12 +274,40 @@
 .infobox__sectionContent {
 	display: grid;
 	gap: var(--space-sm);
+	grid-template-columns: repeat(var(--infobox-grid-cols), minmax(0, 1fr));
 }
 
 .infobox__item {
 	display: grid;
 	gap: 2px var(--space-xs);
 	grid-auto-rows: max-content;
+}
+
+.infobox__item--is-cell {
+	display: grid;
+	place-content: center;
+	text-align: center;
+	padding: var(--space-xs);
+	border: var(--border-base);
+	border-radius: var(--border-radius-base);
+}
+
+.infobox__item--is-cell.infobox__item--has-tooltip:hover {
+	background-color: var(--background-color-button-quiet--hover);
+}
+
+.infobox__item--is-cell.infobox__item--positive {
+	background-color: var(--background-color-success-subtle);
+	color: var(--color-success);
+}
+
+.infobox__item--is-cell.infobox__item--negative {
+	background-color: var(--background-color-destructive-subtle);
+	color: var(--color-destructive);
+}
+
+.infobox__item--is-cell.infobox__item--null {
+	color: var(--color-subtle);
 }
 
 .infobox__item--hasIcon {
@@ -526,27 +554,29 @@
 
 /* CSS grid utility classes */
 .infobox__grid--row {
+	--infobox-grid-cols: 1;
 	grid-auto-flow: column;
 }
 
 .infobox__grid--cols-2 {
-	grid-template-columns: repeat(2, minmax(0, 1fr));
+	--infobox-grid-cols: 2;
 }
 
 .infobox__grid--cols-3 {
-	grid-template-columns: repeat(3, minmax(0, 1fr));
+	--infobox-grid-cols: 3;
 }
 
 .infobox__grid--cols-4 {
-	grid-template-columns: repeat(4, minmax(0, 1fr));
+	--infobox-grid-cols: 4;
 }
 
 .infobox__grid--cols-5 {
-	grid-template-columns: repeat(5, minmax(0, 1fr));
+	--infobox-grid-cols: 5;
 }
 
 .infobox__grid--cols-6 {
-	grid-template-columns: repeat(6, minmax(0, 1fr));
+	--infobox-grid-cols: 6;
+	gap: var(--space-xxs);
 }
 
 .infobox__grid--col-span-2 {

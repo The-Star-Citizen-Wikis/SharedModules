@@ -543,12 +543,12 @@ function methodtable.getInfobox( self )
 
 		local diff = x - 1
 		if diff == 0 then
-			itemData.class = itemData.class .. ' template-vehicle-hull-item-null'
+			itemData.class = itemData.class .. ' infobox__item--null'
 		elseif diff > 0 then
-			itemData.class = itemData.class .. ' template-vehicle-hull-item-neg'
+			itemData.class = itemData.class .. ' infobox__item--negative'
 			itemData.data = '+' .. tostring( math.abs( diff ) * 100 ) .. '%'
 		elseif diff < 0 then
-			itemData.class = itemData.class .. ' template-vehicle-hull-item-pos'
+			itemData.class = itemData.class .. ' infobox__item--positive'
 			itemData.data = '-' .. tostring( math.abs( diff ) * 100 ) .. '%'
 		end
 		return itemData
@@ -556,65 +556,64 @@ function methodtable.getInfobox( self )
 
 	local function getHullSectionData()
 		return {
-			class = 'template-vehicle-hull',
 			content = {
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-phy',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenPhysical' ),
 					data = smwData[ t( 'SMW_PhysicalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenPhysical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-eng',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenEnergy' ),
 					data = smwData[ t( 'SMW_EnergyDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenEnergy' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-dis',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenDistortion' ),
 					data = smwData[ t( 'SMW_DistortionDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenDistortion' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-the',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenThermal' ),
 					data = smwData[ t( 'SMW_ThermalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenThermal' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-bio',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenBiochemical' ),
 					data = smwData[ t( 'SMW_BiochemicalDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenBiochemical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-stu',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_ModifierDamageTakenStun' ),
 					data = smwData[ t( 'SMW_StunDamageModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenStun' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-cs',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_CrossSection' ),
 					data = smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_CrossSection' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-em',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_Electromagnetic' ),
 					data = smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_Electromagnetic' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-ir',
+					class = 'infobox__item--is-cell',
 					label = t( 'label_Infrared' ),
 					data = smwData[ t( 'SMW_InfraredSignatureModifier' ) ],
 					tooltip = getSimpleTooltipContent( 'label_Infrared' ),
 				} ) )
 				-- Health is broken in the API and returns 0
 				--infobox:renderItem( {
-				--	class = 'template-vehicle-hull-hp',
+				--	class = 'infobox__item--is-cell',
 				--	label = t( 'label_Health' ),
 				--	data = smwData[ t( 'SMW_HealthPoint' ) ]
 				--} )
@@ -913,13 +912,7 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return table.concat( {
-		infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] ),
-		floatingui.load(),
-		self.currentFrame:extensionTag {
-			name = 'templatestyles', args = { src = 'Module:Vehicle/styles.css' }
-		}
-	} )
+	return infobox:renderInfobox( nil, smwData[ t( 'SMW_Name' ) ] )
 end
 
 --- Set the frame and load args
