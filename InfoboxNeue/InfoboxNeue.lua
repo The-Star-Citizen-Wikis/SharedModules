@@ -200,7 +200,7 @@ function methodtable.renderIndicator( self, data )
 	checkType( 'Module:InfoboxNeue.renderIndicator', 1, self, 'table' )
 	checkType( 'Module:InfoboxNeue.renderIndicator', 2, data, 'table' )
 
-	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
+	if data == nil or data['data'] == nil or data['data'] == '' then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__indicators' )
 
@@ -208,23 +208,23 @@ function methodtable.renderIndicator( self, data )
 		'infobox__indicator'
 	}
 
-	if data[ 'class' ] then
-		table.insert( htmlClasses, data[ 'class' ] )
+	if data['class'] then
+		table.insert( htmlClasses, data['class'] )
 	end
 
-	if data[ 'color' ] then
-		table.insert( htmlClasses, 'infobox__indicator--' .. data[ 'color' ] )
+	if data['color'] then
+		table.insert( htmlClasses, 'infobox__indicator--' .. data['color'] )
 	end
 
-	if data[ 'nopadding' ] == true then
+	if data['nopadding'] == true then
 		table.insert( htmlClasses, 'infobox__indicator--nopadding' )
 	end
 
 	html:wikitext(
 		self:renderItem(
 			{
-				[ 'data' ] = data[ 'data' ],
-				[ 'class' ] = table.concat( htmlClasses, ' ' ),
+				['data'] = data['data'],
+				['class'] = table.concat( htmlClasses, ' ' ),
 				row = true,
 				spacebetween = true
 			}
@@ -252,27 +252,27 @@ function methodtable.renderHeader( self, data )
 		}
 	end
 
-	if data == nil or data[ 'title' ] == nil then return '' end
+	if data == nil or data['title'] == nil then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__header' )
 
-	if data[ 'badge' ] then
+	if data['badge'] then
 		html:tag( 'div' )
 			:addClass( 'infobox__item infobox__badge' )
-			:wikitext( data[ 'badge' ] )
+			:wikitext( data['badge'] )
 	end
 
 	local titleItem = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
 	titleItem:tag( 'div' )
 		:addClass( 'infobox__title' )
-		:wikitext( data[ 'title' ] )
+		:wikitext( data['title'] )
 
-	if data[ 'subtitle' ] then
+	if data['subtitle'] then
 		titleItem:tag( 'div' )
 		-- Subtitle is always data
 			:addClass( 'infobox__subtitle infobox__data' )
-			:wikitext( data[ 'subtitle' ] )
+			:wikitext( data['subtitle'] )
 	end
 
 	html:node( titleItem )
@@ -300,29 +300,29 @@ function methodtable.renderSection( self, data, noInsert )
 		data.content = table.concat( data.content )
 	end
 
-	if data == nil or data[ 'content' ] == nil or data[ 'content' ] == '' then return '' end
+	if data == nil or data['content'] == nil or data['content'] == '' then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__section' )
 
-	if data[ 'title' ] then
+	if data['title'] then
 		local header = html:tag( 'div' ):addClass( 'infobox__sectionHeader' )
 		header:tag( 'div' )
 			:addClass( 'infobox__sectionTitle' )
-			:wikitext( data[ 'title' ] )
-		if data[ 'subtitle' ] then
+			:wikitext( data['title'] )
+		if data['subtitle'] then
 			header:tag( 'div' )
 				:addClass( 'infobox__sectionSubtitle' )
-				:wikitext( data[ 'subtitle' ] )
+				:wikitext( data['subtitle'] )
 		end
 	end
 
 	local content = html:tag( 'div' )
 	content:addClass( 'infobox__sectionContent' )
-		:wikitext( data[ 'content' ] )
+		:wikitext( data['content'] )
 
-	if data[ 'border' ] == false then html:addClass( 'infobox__section--noborder' ) end
-	if data[ 'col' ] then content:addClass( 'infobox__grid--cols-' .. data[ 'col' ] ) end
-	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
+	if data['border'] == false then html:addClass( 'infobox__section--noborder' ) end
+	if data['col'] then content:addClass( 'infobox__grid--cols-' .. data['col'] ) end
+	if data['class'] then html:addClass( data['class'] ) end
 
 	local item = tostring( html )
 
@@ -341,16 +341,16 @@ function methodtable.renderLinkButton( self, data )
 	checkType( 'Module:InfoboxNeue.renderLinkButton', 1, self, 'table' )
 	checkType( 'Module:InfoboxNeue.renderLinkButton', 2, data, 'table' )
 
-	if data == nil or data[ 'label' ] == nil or (data[ 'link' ] == nil and data[ 'page' ] == nil) then return '' end
+	if data == nil or data['label'] == nil or (data['link'] == nil and data['page'] == nil) then return '' end
 
 	--- Render multiple linkButton when link is a table
-	if type( data[ 'link' ] ) == 'table' then
+	if type( data['link'] ) == 'table' then
 		local htmls = {}
 
-		for i, url in ipairs( data[ 'link' ] ) do
+		for i, url in ipairs( data['link'] ) do
 			table.insert( htmls,
 				self:renderLinkButton( {
-					label = string.format( '%s %d', data[ 'label' ], i ),
+					label = string.format( '%s %d', data['label'], i ),
 					link = url
 				} )
 			)
@@ -361,10 +361,10 @@ function methodtable.renderLinkButton( self, data )
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__linkButton' )
 
-	if data[ 'link' ] then
-		html:wikitext( string.format( '[%s %s]', restoreUnderscore( data[ 'link' ] ), data[ 'label' ] ) )
-	elseif data[ 'page' ] then
-		html:wikitext( string.format( '[[%s|%s]]', data[ 'page' ], data[ 'label' ] ) )
+	if data['link'] then
+		html:wikitext( string.format( '[%s %s]', restoreUnderscore( data['link'] ), data['label'] ) )
+	elseif data['page'] then
+		html:wikitext( string.format( '[[%s|%s]]', data['page'], data['label'] ) )
 	end
 
 	return tostring( html )
@@ -385,16 +385,16 @@ function methodtable.renderFooter( self, data )
 		return (type( input ) == 'table' and next( input ) ~= nil) or (type( input ) == 'string' and #input > 0)
 	end
 
-	local hasContent = isNonEmpty( data[ 'content' ] )
-	local hasButton = isNonEmpty( data[ 'button' ] ) and isNonEmpty( data[ 'button' ][ 'content' ] ) and
-		isNonEmpty( data[ 'button' ][ 'label' ] )
+	local hasContent = isNonEmpty( data['content'] )
+	local hasButton = isNonEmpty( data['button'] ) and isNonEmpty( data['button']['content'] ) and
+		isNonEmpty( data['button']['label'] )
 
 	if not hasContent and not hasButton then return '' end
 
 	local html = mw.html.create( 'div' ):addClass( 'infobox__footer' )
 
 	if hasContent then
-		local content = data[ 'content' ]
+		local content = data['content']
 		if type( content ) == 'table' then content = table.concat( content ) end
 
 		html:addClass( 'infobox__footer--has-content' )
@@ -405,24 +405,24 @@ function methodtable.renderFooter( self, data )
 
 	if hasButton then
 		html:addClass( 'infobox__footer--has-button' )
-		local buttonData = data[ 'button' ]
+		local buttonData = data['button']
 		local button = html:tag( 'div' ):addClass( 'infobox__button' )
 		local label = button:tag( 'div' ):addClass( 'infobox__buttonLabel' )
 
-		if buttonData[ 'icon' ] ~= nil then
-			label:wikitext( string.format( '[[File:%s|16px|link=]]%s', buttonData[ 'icon' ], buttonData[ 'label' ] ) )
+		if buttonData['icon'] ~= nil then
+			label:wikitext( string.format( '[[File:%s|16px|link=]]%s', buttonData['icon'], buttonData['label'] ) )
 		else
-			label:wikitext( buttonData[ 'label' ] )
+			label:wikitext( buttonData['label'] )
 		end
 
-		if buttonData[ 'type' ] == 'link' then
+		if buttonData['type'] == 'link' then
 			button:tag( 'div' )
 				:addClass( 'infobox__buttonLink' )
-				:wikitext( buttonData[ 'content' ] )
-		elseif buttonData[ 'type' ] == 'popup' then
+				:wikitext( buttonData['content'] )
+		elseif buttonData['type'] == 'popup' then
 			button:tag( 'div' )
 				:addClass( 'infobox__buttonCard' )
-				:wikitext( buttonData[ 'content' ] )
+				:wikitext( buttonData['content'] )
 		end
 	end
 
@@ -446,9 +446,57 @@ function methodtable.renderFooterButton( self, data )
 	return self:renderFooter( { button = data } )
 end
 
+--- Helper function to render icon element within an infobox item
+--- @param html table The HTML builder object
+--- @param icon string The icon filename
+--- @return table The text wrapper element
+local function renderItemIconElement( html, icon )
+	html:addClass( 'infobox__item--hasIcon' )
+	html:tag( 'div' )
+		:addClass( 'infobox__icon' )
+		:wikitext( string.format( '[[File:%s|16px|link=]]', icon ) )
+		:done()
+	return html:tag( 'div' ):addClass( 'infobox__text' )
+end
+
+--- Helper function to render link elements within an infobox item
+--- @param html table The HTML builder object
+--- @param data table The data containing link information
+local function renderItemLinkElements( html, data )
+	if data.link then
+		html:addClass( 'infobox__itemButton' )
+		html:tag( 'div' )
+			:addClass( 'infobox__itemButtonLink' )
+			:wikitext( string.format( '[%s]', data.link ) )
+			:done()
+	elseif data.page then
+		html:addClass( 'infobox__itemButton' )
+		html:tag( 'div' )
+			:addClass( 'infobox__itemButtonLink' )
+			:wikitext( string.format( '[[%s]]', data.link ) )
+			:done()
+	end
+end
+
+--- Helper function to render text elements within an infobox item
+--- @param wrapper table The HTML wrapper element
+--- @param data table The data containing text elements
+local function renderItemTextElements( wrapper, data )
+	local dataOrder = { 'label', 'data', 'desc' }
+	for _, key in ipairs( dataOrder ) do
+		if data[key] then
+			if type( data[key] ) == 'table' then
+				data[key] = table.concat( data[key], ', ' )
+			end
+			wrapper:tag( 'div' )
+				:addClass( 'infobox__' .. key )
+				:wikitext( data[key] )
+		end
+	end
+end
+
 --- Return the HTML of the infobox item component as string
----
---- @param data table {label, data, desc, class, tooltip, icon, row, spacebetween, colspan)
+--- @param data table {label, data, desc, class, tooltip, icon, row, spacebetween, colspan}
 --- @param content string|number|nil optional
 --- @return string html
 function methodtable.renderItem( self, data, content )
@@ -456,8 +504,7 @@ function methodtable.renderItem( self, data, content )
 	checkTypeMulti( 'Module:InfoboxNeue.renderItem', 2, data, { 'table', 'string' } )
 	checkTypeMulti( 'Module:InfoboxNeue.renderItem', 3, content, { 'string', 'number', 'nil' } )
 
-	-- The arguments are not passed as a table
-	-- Allows to call this as box:renderItem( 'Label', 'Data' )
+	-- Handle simplified parameter format
 	if content ~= nil then
 		data = {
 			label = data,
@@ -465,60 +512,42 @@ function methodtable.renderItem( self, data, content )
 		}
 	end
 
-	if data == nil or data[ 'data' ] == nil or data[ 'data' ] == '' then return '' end
-
-	if self.config.removeEmpty == true and data[ 'data' ] == self.config.emptyString then
+	-- Skip empty items
+	if data == nil or data.data == nil or data.data == '' then return '' end
+	if self.config.removeEmpty == true and data.data == self.config.emptyString then
 		return ''
 	end
 
+	-- Create base HTML structure
 	local html = mw.html.create( 'div' ):addClass( 'infobox__item' )
 
-	if data[ 'class' ] then html:addClass( data[ 'class' ] ) end
-	if data[ 'tooltip' ] then html:attr( 'title', data[ 'tooltip' ] ) end
-	if data[ 'row' ] == true then html:addClass( 'infobox__grid--row' ) end
-	if data[ 'spacebetween' ] == true then html:addClass( 'infobox__grid--space-between' ) end
-	if data[ 'colspan' ] then html:addClass( 'infobox__grid--col-span-' .. data[ 'colspan' ] ) end
+	-- Add classes based on configuration
+	if data.class then html:addClass( data.class ) end
+	if data.row == true then html:addClass( 'infobox__grid--row' ) end
+	if data.spacebetween == true then html:addClass( 'infobox__grid--space-between' ) end
+	if data.colspan then html:addClass( 'infobox__grid--col-span-' .. data.colspan ) end
 
-	local textWrapper = html
+	-- Create link elements if needed
+	renderItemLinkElements( html, data )
 
-	if data[ 'link' ] then
-		html:addClass( 'infobox__itemButton' )
+	-- Handle icon and text wrapper
+	local textWrapper = data.icon and renderItemIconElement( html, data.icon ) or html
+
+	-- Render text elements
+	renderItemTextElements( textWrapper, data )
+
+	-- Add arrow indicator for links
+	if data.link or data.page then
 		html:tag( 'div' )
-			:addClass( 'infobox__itemButtonLink' )
-			:wikitext( string.format( '[%s]', data[ 'link' ] ) )
-	elseif data[ 'page' ] then
-		html:addClass( 'infobox__itemButton' )
-		html:tag( 'div' )
-			:addClass( 'infobox__itemButtonLink' )
-			:wikitext( string.format( '[[%s]]', data[ 'link' ] ) )
+			:addClass( 'infobox__itemButtonArrow citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
+			:done()
 	end
 
-	if data[ 'icon' ] then
-		html:addClass( 'infobox__item--hasIcon' )
-		html:tag( 'div' )
-			:addClass( 'infobox__icon' )
-			:wikitext( string.format( '[[File:%s|16px|link=]]', data[ 'icon' ] ) )
-		-- Create wrapper for text to align with icon
-		textWrapper = html:tag( 'div' ):addClass( 'infobox__text' )
-	end
-
-	local dataOrder = { 'label', 'data', 'desc' }
-
-	for _, key in ipairs( dataOrder ) do
-		if data[ key ] then
-			if type( data[ key ] ) == 'table' then
-				data[ key ] = table.concat( data[ key ], ', ' )
-			end
-
-			textWrapper:tag( 'div' )
-				:addClass( 'infobox__' .. key )
-				:wikitext( data[ key ] )
-		end
-	end
-
-	-- Add arrow indicator as affordnance
-	if data[ 'link' ] or data[ 'page' ] then
-		html:tag( 'div' ):addClass( 'infobox__itemButtonArrow citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
+	-- Handle tooltip if present
+	if data.tooltip then
+		self.modules.FloatingUI = self.modules.FloatingUI or require( 'Module:FloatingUI' )
+		html:addClass( 'infobox__item--hasTooltip' )
+		return self.modules.FloatingUI.render( tostring( html ), data.tooltip )
 	end
 
 	return tostring( html )
@@ -550,7 +579,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		if snippetText == nil then snippetText = mw.title.getCurrentTitle().text end
 
 		local html = mw.html.create()
-		
+
 		html:tag( 'div' )
 			:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
 			:done()
@@ -565,7 +594,7 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 		return tostring( html )
 	end
 
-	local frame =  mw.getCurrentFrame()
+	local frame = mw.getCurrentFrame()
 	local output = getDetailsHTML( {
 		details = {
 			class = 'infobox floatright',
@@ -576,6 +605,10 @@ function methodtable.renderInfobox( self, innerHtml, snippetText )
 			content = renderSnippet()
 		}
 	}, frame )
+
+	if self.modules.FloatingUI then
+		output = self.modules.FloatingUI.load( frame ) .. output
+	end
 
 	return frame:extensionTag {
 		name = 'templatestyles', args = { src = 'Module:InfoboxNeue/styles.css' }
@@ -613,13 +646,16 @@ function InfoboxNeue.new( self, config )
 	}
 
 	for k, v in pairs( config or {} ) do
-		baseConfig[ k ] = v
+		baseConfig[k] = v
 	end
 
 	local instance = {
 		categories = {},
 		config = baseConfig,
-		entries = {}
+		entries = {},
+		modules = {
+			FloatingUI = nil
+		}
 	}
 
 	setmetatable( instance, metatable )
@@ -636,48 +672,48 @@ function InfoboxNeue.fromArgs( frame )
 	local args = require( 'Module:Arguments' ).getArgs( frame )
 
 	local sections = {
-		{ content = {}, col = args[ 'col' ] or 2 }
+		{ content = {}, col = args['col'] or 2 }
 	}
 
 	local sectionMap = { default = 1 }
 
 	local currentSection
 
-	if args[ 'image' ] then
-		instance:renderImage( args[ 'image' ] )
+	if args['image'] then
+		instance:renderImage( args['image'] )
 	end
 
-	if args[ 'indicator' ] then
+	if args['indicator'] then
 		instance:renderIndicator( {
-			data = args[ 'indicator' ],
-			class = args[ 'indicatorClass' ]
+			data = args['indicator'],
+			class = args['indicatorClass']
 		} )
 	end
 
-	if args[ 'title' ] then
+	if args['title'] then
 		instance:renderHeader( {
-			title = args[ 'title' ],
-			subtitle = args[ 'subtitle' ],
+			title = args['title'],
+			subtitle = args['subtitle'],
 		} )
 	end
 
 	for i = 1, 50, 1 do
-		if args[ 'section' .. i ] then
-			currentSection = args[ 'section' .. i ]
+		if args['section' .. i] then
+			currentSection = args['section' .. i]
 
 			table.insert( sections, {
 				title = currentSection,
-				subtitle = args[ 'section-subtitle' .. i ],
-				col = args[ 'section-col' .. i ] or args[ 'col' ] or 2,
+				subtitle = args['section-subtitle' .. i],
+				col = args['section-col' .. i] or args['col'] or 2,
 				content = {}
 			} )
 
-			sectionMap[ currentSection ] = #sections
+			sectionMap[currentSection] = #sections
 		end
 
-		if args[ 'label' .. i ] and args[ 'content' .. i ] then
-			table.insert( sections[ sectionMap[ (currentSection or 'default') ] ].content,
-				instance:renderItem( args[ 'label' .. i ], args[ 'content' .. i ] ) )
+		if args['label' .. i] and args['content' .. i] then
+			table.insert( sections[sectionMap[(currentSection or 'default')]].content,
+				instance:renderItem( args['label' .. i], args['content' .. i] ) )
 		end
 	end
 
@@ -690,7 +726,7 @@ function InfoboxNeue.fromArgs( frame )
 		} )
 	end
 
-	return instance:renderInfobox( nil, args[ 'snippet' ] )
+	return instance:renderInfobox( nil, args['snippet'] )
 end
 
 return InfoboxNeue

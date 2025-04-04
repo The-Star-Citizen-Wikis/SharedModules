@@ -45,10 +45,8 @@ function FloatingUI.renderSection( data )
     return tostring( html )
 end
 
-
 --- Load FloatingUI library only
 ---
---- @param frame table
 --- @return string wikitext Wikitext to load the FloatingUI library only
 function FloatingUI.load( frame )
     frame = frame or mw.getCurrentFrame()
@@ -59,30 +57,29 @@ function FloatingUI.load( frame )
     }
 end
 
-
 --- Attach the FloatingUI content to the HTML element
 ---
---- @param html table
 --- @param content string
 --- @param htmlTag string
-function FloatingUI.attachToHtml( html, content, htmlTag )
+--- @return table|nil
+function FloatingUI.getContentHtml( content, htmlTag )
     if isStringEmpty( content ) then
         return
     end
 
     -- TODO: Detect if HTML is a div or a span
     htmlTag = htmlTag or 'div'
-    html:addClass( 'ext-floatingui-reference' )
-    html:tag( htmlTag )
-        :addClass( 'ext-floatingui-content' )
+
+    local html = mw.html.create( 'div' ):addClass( 'ext-floatingui-content' )
         :tag( htmlTag )
         :addClass( 'mw-parser-output' )
         :tag( htmlTag )
         :addClass( 't-floatingui' )
         :wikitext( content )
         :allDone()
-end
 
+    return html
+end
 
 --- Render the HTML for FloatingUI
 ---
@@ -91,7 +88,7 @@ end
 --- @param inline boolean Whether to render inline
 --- @return string wikitext Wikitext for the HTML required to use FloatingUI
 function FloatingUI.render( reference, content, inline )
-    if isStringEmpty( reference ) or isStringEmpty( content ) then
+    if not reference or not content then
         return ''
     end
 
@@ -100,8 +97,13 @@ function FloatingUI.render( reference, content, inline )
         htmlTag = 'span'
     end
 
-    local html = mw.html.create( htmlTag )
-    FloatingUI.attachToHtml( html, content, htmlTag )
+    local html = mw.html.create()
+        :tag( htmlTag )
+        :addClass( 'ext-floatingui-reference' )
+        :wikitext( reference )
+        :done()
+        :node( FloatingUI.getContentHtml( content, htmlTag ) )
+
     return tostring( html )
 end
 

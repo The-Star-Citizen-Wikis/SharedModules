@@ -332,11 +332,12 @@ function methodtable.getInfobox( self )
 		return indicator
 	end
 
-	-- TODO: Implement i18n to source
-	local function getSimpleTooltip( key, source, target )
-		-- Return label if no target is specified (e.g. infobox label)
-		target = target or t( key )
-
+	--- Get the content used for FloatingUI tooltips
+	---
+	--- @param key string i18n key used for the tooltip content
+	--- @param source string|nil Text to display in the source column
+	--- @return string
+	local function getSimpleTooltipContent( key, source )
 		local title
 		if hasI18n( key .. '_title' ) then
 			title = t( key .. '_title' )
@@ -363,7 +364,19 @@ function methodtable.getInfobox( self )
 			)
 		end
 
-		return floatingui.render( target, table.concat( content ), true )
+		return table.concat( content )
+	end
+
+	--- Get the translated text with tooltip
+	---
+	--- @param key string i18n key used for the tooltip content
+	--- @param source string|nil Text to display in the source column
+	--- @param target string|nil Text to display in the tooltip
+	--- @return string
+	local function getTextWithTooltip( key, source, target )
+		-- Return label if no target is specified (e.g. infobox label)
+		target = target or t( key )
+		return floatingui.render( target, getSimpleTooltipContent( key, source ), true )
 	end
 
 	local function getManufacturer()
@@ -382,7 +395,7 @@ function methodtable.getInfobox( self )
 		local shipMatrixSize = smwData[ t( 'SMW_ShipMatrixSize' ) ]
 		if not shipMatrixSize then return end
 
-		shipMatrixSize = getSimpleTooltip(
+		shipMatrixSize = getTextWithTooltip(
 			'label_Size_shipmatrix',
 			'[https://robertsspaceindustries.com/ship-matrix Ship Matrix]',
 			shipMatrixSize
@@ -399,7 +412,7 @@ function methodtable.getInfobox( self )
 		end
 
 		size = table.concat( { 'S', size, '/', codes[ size ] } )
-		size = getSimpleTooltip(
+		size = getTextWithTooltip(
 			'label_Size_game',
 			'Game data',
 			size
@@ -429,14 +442,16 @@ function methodtable.getInfobox( self )
 		tabberData[ 'label1' ] = t( 'label_Pledge' )
 		section = {
 			infobox:renderItem( {
-				label = getSimpleTooltip( 'label_Standalone' ),
+				label = t( 'label_Standalone' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_PledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalPledgePrice' ) ] ),
+				tooltip = getSimpleTooltipContent( 'label_Standalone' )
 			} ),
 			infobox:renderItem( {
-				label = getSimpleTooltip( 'label_Warbond' ),
+				label = t( 'label_Warbond' ),
 				data = infobox.showDescIfDiff( smwData[ t( 'SMW_WarbondPledgePrice' ) ],
 					smwData[ t( 'SMW_OriginalWarbondPledgePrice' ) ] ),
+				tooltip = getSimpleTooltipContent( 'label_Warbond' )
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_Availability' ),
@@ -516,7 +531,8 @@ function methodtable.getInfobox( self )
 			class = data.class,
 			label = data.label,
 			-- Default to 0%
-			data = '0%'
+			data = '0%',
+			tooltip = data.tooltip
 		}
 		local x = data.data
 		-- Fix for german number format
@@ -543,55 +559,65 @@ function methodtable.getInfobox( self )
 			class = 'template-vehicle-hull',
 			content = {
 				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-cs',
-					label = getSimpleTooltip( 'label_CrossSection' ),
-					data = smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ],
-				} ) ),
-				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-em',
-					label = getSimpleTooltip( 'label_Electromagnetic' ),
-					data = smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ],
-				} ) ),
-				infobox:renderItem( getModifierItemData( {
-					class = 'template-vehicle-hull-ir',
-					label = getSimpleTooltip( 'label_Infrared' ),
-					data = smwData[ t( 'SMW_InfraredSignatureModifier' ) ],
-				} ) ),
-				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-phy',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenPhysical' ),
+					label = t( 'label_ModifierDamageTakenPhysical' ),
 					data = smwData[ t( 'SMW_PhysicalDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenPhysical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-eng',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenEnergy' ),
+					label = t( 'label_ModifierDamageTakenEnergy' ),
 					data = smwData[ t( 'SMW_EnergyDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenEnergy' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-dis',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenDistortion' ),
+					label = t( 'label_ModifierDamageTakenDistortion' ),
 					data = smwData[ t( 'SMW_DistortionDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenDistortion' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-the',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenThermal' ),
+					label = t( 'label_ModifierDamageTakenThermal' ),
 					data = smwData[ t( 'SMW_ThermalDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenThermal' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-bio',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenBiochemical' ),
+					label = t( 'label_ModifierDamageTakenBiochemical' ),
 					data = smwData[ t( 'SMW_BiochemicalDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenBiochemical' ),
 				} ) ),
 				infobox:renderItem( getModifierItemData( {
 					class = 'template-vehicle-hull-stu',
-					label = getSimpleTooltip( 'label_ModifierDamageTakenStun' ),
+					label = t( 'label_ModifierDamageTakenStun' ),
 					data = smwData[ t( 'SMW_StunDamageModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_ModifierDamageTakenStun' ),
 				} ) ),
-				infobox:renderItem( {
-					class = 'template-vehicle-hull-hp',
-					label = t( 'label_Health' ),
-					data = smwData[ t( 'SMW_HealthPoint' ) ],
-				} )
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-cs',
+					label = t( 'label_CrossSection' ),
+					data = smwData[ t( 'SMW_CrossSectionSignatureModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_CrossSection' ),
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-em',
+					label = t( 'label_Electromagnetic' ),
+					data = smwData[ t( 'SMW_ElectromagneticSignatureModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_Electromagnetic' ),
+				} ) ),
+				infobox:renderItem( getModifierItemData( {
+					class = 'template-vehicle-hull-ir',
+					label = t( 'label_Infrared' ),
+					data = smwData[ t( 'SMW_InfraredSignatureModifier' ) ],
+					tooltip = getSimpleTooltipContent( 'label_Infrared' ),
+				} ) )
+				-- Health is broken in the API and returns 0
+				--infobox:renderItem( {
+				--	class = 'template-vehicle-hull-hp',
+				--	label = t( 'label_Health' ),
+				--	data = smwData[ t( 'SMW_HealthPoint' ) ]
+				--} )
 			},
 			col = 6
 		}
@@ -609,31 +635,32 @@ function methodtable.getInfobox( self )
 		tabberData[ 'content2' ] = infobox:renderSection( getHullSectionData(), true )
 
 		tabberData[ 'label3' ] = t( 'label_Speed' )
+		-- Acceleration are broken in the API and return 0
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_ScmSpeed' ),
 				data = smwData[ t( 'SMW_ScmSpeed' ) ]
 			} ),
-			infobox:renderItem( {
-				label = t( 'label_0ToScm' ),
-				data = smwData[ t( 'SMW_ZeroToScmSpeedTime' ) ]
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_ScmTo0' ),
-				data = smwData[ t( 'SMW_ScmSpeedToZeroTime' ) ]
-			} ),
+			--infobox:renderItem( {
+			--	label = t( 'label_0ToScm' ),
+			--	data = smwData[ t( 'SMW_ZeroToScmSpeedTime' ) ]
+			--} ),
+			--infobox:renderItem( {
+			--	label = t( 'label_ScmTo0' ),
+			--	data = smwData[ t( 'SMW_ScmSpeedToZeroTime' ) ]
+			--} ),
 			infobox:renderItem( {
 				label = t( 'label_MaxSpeed' ),
 				data = smwData[ t( 'SMW_MaximumSpeed' ) ]
 			} ),
-			infobox:renderItem( {
-				label = t( 'label_0ToMax' ),
-				data = smwData[ t( 'SMW_ZeroToMaximumSpeedTime' ) ]
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_MaxTo0' ),
-				data = smwData[ t( 'SMW_MaximumSpeedToZeroTime' ) ]
-			} ),
+			--infobox:renderItem( {
+			--	label = t( 'label_0ToMax' ),
+			--	data = smwData[ t( 'SMW_ZeroToMaximumSpeedTime' ) ]
+			--} ),
+			--infobox:renderItem( {
+			--	label = t( 'label_MaxTo0' ),
+			--	data = smwData[ t( 'SMW_MaximumSpeedToZeroTime' ) ]
+			--} ),
 			infobox:renderItem( {
 				label = t( 'label_ReverseSpeed' ),
 				data = smwData[ t( 'SMW_ReverseSpeed' ) ]
@@ -739,9 +766,12 @@ function methodtable.getInfobox( self )
 				data = getSeries(),
 			} ),
 			infobox:renderItem( {
-				label = getSimpleTooltip( 'label_Loaner',
-					'[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]' ),
+				label = t( 'label_Loaner' ),
 				data = infobox.tableToCommaList( smwData[ t( 'SMW_LoanerVehicle' ) ] ),
+				tooltip = getSimpleTooltipContent(
+					'label_Loaner',
+					'[https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114-Loaner-Ship-Matrix Loaner Ship Matrix]'
+				)
 			} ),
 		},
 		col = 2
