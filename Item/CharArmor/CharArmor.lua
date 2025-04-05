@@ -2,6 +2,13 @@ require( 'strict' )
 
 local p = {}
 
+local CONST = {
+    TEMPERATURE = {
+        MIN = -230,
+        MAX = 250
+    }
+}
+
 local MODULE_NAME = 'CharArmor'
 
 local i18n = require( 'Module:i18n' ):new()
@@ -9,7 +16,6 @@ local TNT = require( 'Module:Translate' ):new()
 local smwCommon = require( 'Module:Common/SMW' )
 local data = mw.loadJsonData( 'Module:Item/' .. MODULE_NAME .. '/data.json' )
 local config = mw.loadJsonData( 'Module:Item/config.json' )
-
 
 --- Wrapper function for Module:i18n.translate
 ---
@@ -117,17 +123,14 @@ function p.addInfoboxData( infobox, smwData )
 
 
     local function getTemperatureItemData()
-        local floorTemp = -230
-        local ceilingTemp = 250
-
         local minTemp = smwData[ t( 'SMW_ResistanceMinimumTemperature' ) ]
         local maxTemp = smwData[ t( 'SMW_ResistanceMaximumTemperature' ) ]
 
         if not minTemp or not maxTemp then return {} end
 
-        local totalRange = ceilingTemp - floorTemp
-        local startPercentage = ( ( minTemp - floorTemp ) / totalRange ) * 100
-        local endPercentage = ( ( maxTemp - floorTemp ) / totalRange ) * 100
+        local totalRange = CONST.TEMPERATURE.MAX - CONST.TEMPERATURE.MIN
+        local startPercentage = ( ( minTemp - CONST.TEMPERATURE.MIN ) / totalRange ) * 100
+        local endPercentage = ( ( maxTemp - CONST.TEMPERATURE.MIN ) / totalRange ) * 100
 
         return {
             class = 'infobox__item--is-range--temperature',

@@ -122,14 +122,16 @@
 				"ARG_ScmSpeed",
 				"API_speed.scm"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_MaximumSpeed": [
 				"ARG_MaximumSpeed",
 				"API_speed.max"
 			],
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_QuantumSpeed": [
@@ -149,7 +151,7 @@
 				"ARG_Length"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_EntityWidth": [
@@ -157,7 +159,7 @@
 				"ARG_Width"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_EntityHeight": [
@@ -165,22 +167,22 @@
 				"ARG_Height"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_RetractedLength": "ARG_RetractedLength",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_RetractedWidth": "ARG_RetractedWidth",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_RetractedHeight": "ARG_RetractedHeight",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p2"
 		},
 		{
 			"SMW_Mass": [
@@ -333,15 +335,18 @@
 		},
 		{
 			"SMW_RollRate": "API_agility.roll",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_PitchRate": "API_agility.pitch",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_YawRate": "API_agility.yaw",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n"
 		},
 		{
 			"SMW_HydrogenFuelCapacity": "API_fuel.capacity",

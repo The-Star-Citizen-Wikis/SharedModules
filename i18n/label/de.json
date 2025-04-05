@@ -87,6 +87,7 @@
 	"label_MaximumCoolingRate": "Kühlrate",
 	"label_MaximumForce": "Maximale Kraft",
 	"label_MaximumRange": "Maximalreichweite",
+	"label_MaximumSpeed": "Max. Geschwindigkeit",
 	"label_MaximumVolume": "Maximales Volumen",
 	"label_MiningLaserPower": "Bergbau Laserleistung",
 	"label_MisfireTemperature": "Fehlzündungstemperatur",

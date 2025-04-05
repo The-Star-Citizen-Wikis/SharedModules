@@ -2,6 +2,33 @@ require( 'strict' )
 
 local Vehicle = {}
 
+local BOUNDS = {
+	ScmSpeed = {
+		min = 50,
+		max = 300
+	},
+	MaximumSpeed = {
+		min = 20,
+		max = 1490
+	},
+	ReverseSpeed = {
+		min = 10,
+		max = 30
+	},
+	RollRate = {
+		min = 20,
+		max = 230
+	},
+	PitchRate = {
+		min = 10,
+		max = 100
+	},
+	YawRate = {
+		min = 10,
+		max = 100
+	}
+}
+
 local metatable = {}
 local methodtable = {}
 
@@ -626,12 +653,30 @@ function methodtable.getInfobox( self )
 		tabberData[ 'content2' ] = infobox:renderSection( getHullSectionData(), true )
 
 		tabberData[ 'label3' ] = t( 'label_Speed' )
+
+		local function getRangeItemData( key, unit )
+			local value = smwData[ t( 'SMW_' .. key ) ]
+			if not value then return {} end
+
+			local min = BOUNDS[ key ].min
+			local max = BOUNDS[ key ].max
+			local totalRange = max - min
+			local endPercentage = ( ( value - min ) / totalRange ) * 100
+
+			return {
+				label = t( 'label_' .. key ),
+				-- TODO: Add i18n for unit
+				data = value .. ' ' .. unit,
+				range = {
+					['start'] = '0%',
+					['end'] = tostring( endPercentage ) .. '%'
+				}
+			}
+		end
+
 		-- Acceleration are broken in the API and return 0
 		section = {
-			infobox:renderItem( {
-				label = t( 'label_ScmSpeed' ),
-				data = smwData[ t( 'SMW_ScmSpeed' ) ]
-			} ),
+			infobox:renderItem( getRangeItemData( 'ScmSpeed', 'm/s' ) ),
 			--infobox:renderItem( {
 			--	label = t( 'label_0ToScm' ),
 			--	data = smwData[ t( 'SMW_ZeroToScmSpeedTime' ) ]
@@ -640,10 +685,7 @@ function methodtable.getInfobox( self )
 			--	label = t( 'label_ScmTo0' ),
 			--	data = smwData[ t( 'SMW_ScmSpeedToZeroTime' ) ]
 			--} ),
-			infobox:renderItem( {
-				label = t( 'label_MaxSpeed' ),
-				data = smwData[ t( 'SMW_MaximumSpeed' ) ]
-			} ),
+			infobox:renderItem( getRangeItemData( 'MaximumSpeed', 'm/s' ) ),
 			--infobox:renderItem( {
 			--	label = t( 'label_0ToMax' ),
 			--	data = smwData[ t( 'SMW_ZeroToMaximumSpeedTime' ) ]
@@ -652,24 +694,12 @@ function methodtable.getInfobox( self )
 			--	label = t( 'label_MaxTo0' ),
 			--	data = smwData[ t( 'SMW_MaximumSpeedToZeroTime' ) ]
 			--} ),
-			infobox:renderItem( {
-				label = t( 'label_ReverseSpeed' ),
-				data = smwData[ t( 'SMW_ReverseSpeed' ) ]
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_RollRate' ),
-				data = smwData[ t( 'SMW_RollRate' ) ]
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_PitchRate' ),
-				data = smwData[ t( 'SMW_PitchRate' ) ]
-			} ),
-			infobox:renderItem( {
-				label = t( 'label_YawRate' ),
-				data = smwData[ t( 'SMW_YawRate' ) ]
-			} ),
+			infobox:renderItem( getRangeItemData( 'ReverseSpeed', 'm/s' ) ),
+			infobox:renderItem( getRangeItemData( 'RollRate', '°/s' ) ),
+			infobox:renderItem( getRangeItemData( 'PitchRate', '°/s' ) ),
+			infobox:renderItem( getRangeItemData( 'YawRate', '°/s' ) ),
 		}
-		tabberData[ 'content3' ] = infobox:renderSection( { content = section, col = 3 }, true )
+		tabberData[ 'content3' ] = infobox:renderSection( { content = section }, true )
 
 		tabberData[ 'label4' ] = t( 'label_Fuel' )
 		section = {

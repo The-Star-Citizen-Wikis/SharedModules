@@ -96,6 +96,7 @@
 	"label_MaximumCoolingRate": "Cooling rate",
 	"label_MaximumForce": "Max force",
 	"label_MaximumRange": "Max range",
+	"label_MaximumSpeed": "Max speed",
 	"label_MaximumVolume": "Max volume",
 	"label_MiningLaserPower": "Mining laser power",
 	"label_MisfireTemperature": "Misfire temperature",

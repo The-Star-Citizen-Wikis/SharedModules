@@ -319,6 +319,7 @@
 		'label data'
 		'bar   bar ';
 	gap: var(--space-xs);
+	grid-column: -1 / 1;
 }
 
 .infobox__item--is-range .infobox__label {
@@ -355,7 +356,7 @@
 
 	height: 100%;
 	border-radius: var(--border-radius-pill);
-	background-color: var(--color-progressive);
+	background: linear-gradient(to right, transparent, var(--color-success));
 	clip-path: var(--infobox-bar-item-clip-path);
 }
 
