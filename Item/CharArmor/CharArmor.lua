@@ -30,38 +30,6 @@ local function translate( key, addSuffix, ... )
 end
 
 
---- Format modifiers for infobox:renderItem
---- TODO: Maybe make this generic for other infobox modules?
-local function getModifierItemData( data )
-    if not data or not data.data then return {} end
-    local itemData = {
-        class = 'infobox__item--is-cell',
-        label = data.label,
-        -- Default to 0%
-        data = '0%',
-        tooltip = data.tooltip
-    }
-    local x = data.data
-    -- Fix for german number format
-    if string.find( x, ',', 1, true ) then
-        x = string.gsub( x, ',', '.' )
-    end
-    if type( x ) == 'string' then x = tonumber( x, 10 ) end
-
-    local diff = x - 1
-    if diff == 0 then
-        itemData.class = itemData.class .. ' infobox__item--null'
-    elseif diff > 0 then
-        itemData.class = itemData.class .. ' infobox__item--negative'
-        itemData.data = '+' .. tostring( math.abs( diff ) * 100 ) .. '%'
-    elseif diff < 0 then
-        itemData.class = itemData.class .. ' infobox__item--positive'
-        itemData.data = '-' .. tostring( math.abs( diff ) * 100 ) .. '%'
-    end
-    return itemData
-end
-
-
 --- Adds the properties valid for this item to the SMW Set object
 ---
 --- @param smwSetObject table
@@ -115,15 +83,68 @@ end
 --- @param smwData table Data from Semantic MediaWiki
 --- @return nil
 function p.addInfoboxData( infobox, smwData )
+
+    --- Format modifiers for infobox:renderItem
+    --- TODO: Maybe make this generic for other infobox modules?
+    local function getModifierItemData( data )
+        if not data or not data.data then return {} end
+        local itemData = {
+            class = 'infobox__item--is-cell',
+            label = data.label,
+            -- Default to 0%
+            data = '0%',
+            tooltip = data.tooltip
+        }
+        local x = data.data
+        -- Fix for german number format
+        if string.find( x, ',', 1, true ) then
+            x = string.gsub( x, ',', '.' )
+        end
+        if type( x ) == 'string' then x = tonumber( x, 10 ) end
+
+        local diff = x - 1
+        if diff == 0 then
+            itemData.class = itemData.class .. ' infobox__item--null'
+        elseif diff > 0 then
+            itemData.class = itemData.class .. ' infobox__item--negative'
+            itemData.data = '+' .. tostring( math.abs( diff ) * 100 ) .. '%'
+        elseif diff < 0 then
+            itemData.class = itemData.class .. ' infobox__item--positive'
+            itemData.data = '-' .. tostring( math.abs( diff ) * 100 ) .. '%'
+        end
+        return itemData
+    end
+
+
+    local function getTemperatureItemData()
+        local floorTemp = -230
+        local ceilingTemp = 250
+
+        local minTemp = smwData[ t( 'SMW_ResistanceMinimumTemperature' ) ]
+        local maxTemp = smwData[ t( 'SMW_ResistanceMaximumTemperature' ) ]
+
+        if not minTemp or not maxTemp then return {} end
+
+        local totalRange = ceilingTemp - floorTemp
+        local startPercentage = ( ( minTemp - floorTemp ) / totalRange ) * 100
+        local endPercentage = ( ( maxTemp - floorTemp ) / totalRange ) * 100
+
+        return {
+            class = 'infobox__item--is-range--temperature',
+            label = t( 'label_ResistanceTemperature' ),
+            data = infobox.formatRange( minTemp, maxTemp, true ) .. '°C',
+            range = {
+                ['start'] = tostring( startPercentage ) .. '%',
+                ['end'] = tostring( endPercentage ) .. '%'
+            }
+        }
+    end
+
     infobox:renderSection( {
         title = t( 'label_Clothing' ),
         content = {
-            infobox:renderItem( {
-                label = t( 'label_ResistanceTemperature' ),
-                data = infobox.addUnitIfExists( infobox.formatRange( smwData[ t( 'SMW_ResistanceMinimumTemperature' ) ], smwData[ t( 'SMW_ResistanceMaximumTemperature' ) ], true ), '°C')
-            } )
-        },
-        col = 2
+            infobox:renderItem( getTemperatureItemData() )
+        }
     } )
 
     -- TODO: Maybe we should somehow generalize the armor section since it applies to other items too

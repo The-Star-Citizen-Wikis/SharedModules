@@ -313,10 +313,59 @@
 	color: var(--color-subtle);
 }
 
+.infobox__item--is-range {
+	justify-content: space-between;
+	grid-template-areas:
+		'label data'
+		'bar   bar ';
+	gap: var(--space-xs);
+}
+
+.infobox__item--is-range .infobox__label {
+	grid-area: label;
+}
+
+.infobox__item--is-range .infobox__data {
+	grid-area: data;
+}
+
+.infobox__item--is-range .infobox__bar {
+	grid-area: bar;
+}
+
 .infobox__item--hasIcon {
 	display: flex;
 	align-items: center;
 	column-gap: var(--space-sm);
+}
+
+.infobox__bar {
+	height: 4px;
+	border-radius: var(--border-radius-pill);
+	background-color: var(--color-surface-3);
+}
+
+.infobox__bar-item {
+	--infobox-bar-item-clip-path: polygon(
+		var(--infobox-bar-item-range-start) 0,
+		var(--infobox-bar-item-range-end) 0,
+		var(--infobox-bar-item-range-end) 100%,
+		var(--infobox-bar-item-range-start) 100%
+	);
+
+	height: 100%;
+	border-radius: var(--border-radius-pill);
+	background-color: var(--color-progressive);
+	clip-path: var(--infobox-bar-item-clip-path);
+}
+
+/* Should not be here, but it's a quick fix */
+.infobox__item--is-range--temperature .infobox__bar-item {
+	background: linear-gradient(
+		to right,
+		var(--color-destructive),
+		var(--color-progressive)
+	);
 }
 
 .infobox__badge {

@@ -544,6 +544,18 @@ function methodtable.renderItem( self, data, content )
 			:done()
 	end
 
+	-- Linter does not like data.range.end
+	if data.range then
+		html:addClass( 'infobox__item--is-range' )
+			:tag( 'div' )
+			:addClass( 'infobox__bar' )
+			:tag( 'div' )
+			:addClass( 'infobox__bar-item' )
+			:css( '--infobox-bar-item-range-start', data.range['start'] )
+			:css( '--infobox-bar-item-range-end', data.range['end'] )
+			:allDone()
+	end
+
 	-- Handle tooltip if present
 	if data.tooltip then
 		self.modules.FloatingUI = self.modules.FloatingUI or require( 'Module:FloatingUI' )
