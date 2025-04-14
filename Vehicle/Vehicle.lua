@@ -4,28 +4,28 @@ local Vehicle = {}
 
 local BOUNDS = {
 	ScmSpeed = {
-		min = 50,
+		min = 45,
 		max = 300
 	},
 	MaximumSpeed = {
 		min = 20,
-		max = 1490
+		max = 1485
 	},
 	ReverseSpeed = {
-		min = 10,
-		max = 30
+		min = 7,
+		max = 34
 	},
 	RollRate = {
-		min = 20,
-		max = 230
+		min = 15,
+		max = 234
 	},
 	PitchRate = {
-		min = 10,
-		max = 100
+		min = 7,
+		max = 97
 	},
 	YawRate = {
-		min = 10,
-		max = 100
+		min = 8,
+		max = 97
 	}
 }
 
@@ -339,10 +339,10 @@ function methodtable.getInfobox( self )
 			end
 		end
 
-		if smwData[ t( 'SMW_ProductionStateDesc' ) ] == nil and matchedDesc == nil then
-			indicator[ 'data' ] = smwData[ t( 'SMW_ProductionState' ) ]
-		else
-			local content = {
+		indicator[ 'data' ] = smwData[ t( 'SMW_ProductionState' ) ]
+
+		if smwData[ t( 'SMW_ProductionStateDesc' ) ] ~= nil or matchedDesc ~= nil then
+			local tooltip = {
 				floatingui.renderSection( {
 					data = smwData[ t( 'SMW_ProductionStateDesc' ) ]
 				} ),
@@ -352,8 +352,7 @@ function methodtable.getInfobox( self )
 				} )
 			}
 
-			indicator[ 'data' ] = floatingui.render( smwData[ t( 'SMW_ProductionState' ) ], table.concat( content ) )
-			indicator[ 'nopadding' ] = true
+			indicator[ 'tooltip' ] = table.concat( tooltip )
 		end
 
 		return indicator

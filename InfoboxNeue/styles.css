@@ -191,11 +191,6 @@
 	font-weight: var(--font-weight-medium);
 }
 
-/* TODO: Add support for multiple badges */
-.infobox__indicator.infobox__indicator--nopadding {
-	padding: 0;
-}
-
 .infobox__indicator.infobox__indicator--red {
 	background-color: var(--background-color-destructive-subtle);
 	color: var(--color-destructive);
@@ -653,11 +648,6 @@
 
 .infobox__grid--space-between {
 	justify-content: space-between;
-}
-
-/* FloatingUI styles */
-.infobox__indicator--nopadding .ext-floatingui-reference {
-	padding: var(--space-xxs) var(--space-xs);
 }
 
 /* Tabber styles */

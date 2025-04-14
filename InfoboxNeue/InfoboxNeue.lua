@@ -194,7 +194,7 @@ end
 
 --- Return the HTML of the infobox indicator component as string
 ---
---- @param data table {data, class, color, nopadding)
+--- @param data table {data, class, tooltip, color)
 --- @return string html
 function methodtable.renderIndicator( self, data )
 	checkType( 'Module:InfoboxNeue.renderIndicator', 1, self, 'table' )
@@ -216,15 +216,12 @@ function methodtable.renderIndicator( self, data )
 		table.insert( htmlClasses, 'infobox__indicator--' .. data['color'] )
 	end
 
-	if data['nopadding'] == true then
-		table.insert( htmlClasses, 'infobox__indicator--nopadding' )
-	end
-
 	html:wikitext(
 		self:renderItem(
 			{
 				['data'] = data['data'],
 				['class'] = table.concat( htmlClasses, ' ' ),
+				['tooltip'] = data.tooltip,
 				row = true,
 				spacebetween = true
 			}
