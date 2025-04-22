@@ -88,6 +88,7 @@ end
 ---
 --- @param s1 string|nil
 --- @param s2 string|nil
+--- @param formatNum boolean
 --- @return string|nil
 function methodtable.formatRange( s1, s2, formatNum )
 	if s1 == nil and s2 == nil then

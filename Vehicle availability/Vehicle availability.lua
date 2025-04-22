@@ -8,8 +8,8 @@ local MODULE_NAME = 'Module:Vehicle availability'
 
 local columnMappings = {
     { key = 'starSystemName', display = 'System' },
-    { key = 'terminalName', display = 'Terminal' },
-    { key = 'price', display = 'Price' }
+    { key = 'terminalName',   display = 'Terminal' },
+    { key = 'price',          display = 'Price' }
 }
 
 
@@ -20,10 +20,69 @@ local function hasElements( t )
     if t == nil then
         return false
     end
-    for _ in ipairs(t) do
+    for _ in ipairs( t ) do
         return true
     end
     return false
+end
+
+
+--- Gets price statistics from a list of locations
+--- @param locations table List of locations with price property
+--- @return number|nil minPrice Minimum price found
+--- @return number|nil maxPrice Maximum price found
+--- @return number|nil avgPrice Average price found
+local function getPriceStats( locations )
+    local prices = {}
+    local sum = 0
+    for _, location in ipairs( locations ) do
+        if location.price then
+            table.insert( prices, location.price )
+            sum = sum + location.price
+        end
+    end
+
+    if #prices > 0 then
+        table.sort( prices )
+        return prices[1], prices[#prices], sum / #prices
+    end
+    return nil, nil, nil
+end
+
+
+--- Sets the SMW properties for the page
+--- @param page string
+--- @param data table
+local function setSMWData( page, data )
+    local setData = {}
+
+    if data.canPurchase and data.purchaseLocations then
+        local minPrice, maxPrice, avgPrice = getPriceStats( data.purchaseLocations )
+        if minPrice then
+            setData['Minimum price'] = minPrice
+            setData['Maximum price'] = maxPrice
+            setData['Average price'] = avgPrice
+        end
+    end
+
+    if data.canRent and data.rentalLocations then
+        local minPrice, maxPrice, avgPrice = getPriceStats( data.rentalLocations )
+        if minPrice then
+            setData['Minimum rental price (1 day)'] = minPrice
+            setData['Maximum rental price (1 day)'] = maxPrice
+            setData['Average rental price (1 day)'] = avgPrice
+        end
+    end
+
+    if not next( setData ) then
+        return
+    end
+
+    local result = mw.smw.set( setData )
+
+    if not result or result ~= true then
+        mw.log( '🚨 [Vehicle availability] Failed to set data for ' .. page .. ': ' .. tostring( result ) )
+    end
 end
 
 
@@ -108,27 +167,18 @@ function p.getData( page )
     local success, result = pcall( mw.loadJsonData, dataPage )
 
     if not success then
-        mw.log( '🚨 [Vehicle availability] Failed to load JSON data from ' .. dataPage .. ': ' .. tostring(result) )
+        mw.log( '🚨 [Vehicle availability] Failed to load JSON data from ' .. dataPage .. ': ' .. tostring( result ) )
         return nil
     end
 
     return result
 end
 
-
 --- Generates wikitext needed for the template
 --- @param page string page name on the wiki
+--- @param data table
 --- @return string
-function p.out( page )
-    local data = p.getData( page )
-
-    if data == nil then
-        return hatnote(
-            string.format( 'No availability data found for [[%s]]', page ),
-            { icon = 'WikimediaUI-Error.svg' }
-        )
-    end
-
+function p.out( page, data )
     local html = mw.html.create()
 
     html:wikitext(
@@ -182,12 +232,11 @@ function p.out( page )
             args = { src = MODULE_NAME .. '/styles.css' }
         } ),
         -- TODO: Convert this into module
-        frame:expandTemplate{ title = 'Find item UIF' },
+        frame:expandTemplate { title = 'Find item UIF' },
         '<hr>',
         tostring( html )
     } )
 end
-
 
 --- Wikitext template for the vehicle availability
 ---
@@ -195,8 +244,22 @@ end
 --- @return string
 function p.template( frame )
     local args = require( 'Module:Arguments' ).getArgs( frame )
-    local page = args[ 1 ] or mw.title.getCurrentTitle().text
-    return p.out( page )
+    local page = args[1] or mw.title.getCurrentTitle().text
+
+    local data = p.getData( page )
+
+    if data == nil then
+        return hatnote(
+            string.format( 'No availability data found for [[%s]]', page ),
+            { icon = 'WikimediaUI-Error.svg' }
+        )
+    end
+
+    if not args[1] then
+        setSMWData( page, data )
+    end
+
+    return p.out( page, data )
 end
 
 return p
