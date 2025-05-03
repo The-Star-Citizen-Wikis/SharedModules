@@ -121,8 +121,8 @@ local function makeSmwQueryObject( page )
 	end
 
 	-- These properties are set by Module:Vehicle availability
-	table.insert( query, '?Average price#-n' )
-	table.insert( query, '?Average rental price (per day)#-n' )
+	table.insert( query, '?Average price' )
+	table.insert( query, '?Average rental price (1 day)' )
 
 	table.insert( query, 'limit=1' )
 
@@ -469,7 +469,22 @@ function methodtable.getInfobox( self )
 		local tabberData = {}
 		local section
 
-		tabberData['label1'] = t( 'label_Pledge' )
+		-- TODO: Add i18n
+		-- TODO: Make a generic tooltip for showing the min, max and average price
+		tabberData['label1'] = t( 'label_Universe' )
+		section = {
+			infobox:renderItem( {
+				label = 'Purchase',
+				data = smwData['Average price'] or '🚫 Not available'
+			} ),
+			infobox:renderItem( {
+				label = 'Rental',
+				data = smwData['Average rental price (1 day)'] or '🚫 Not available'
+			} )
+		}
+		tabberData['content1'] = infobox:renderSection( { content = section, col = 2 }, true )
+
+		tabberData['label2'] = t( 'label_Pledge' )
 		section = {
 			infobox:renderItem( {
 				label = t( 'label_Standalone' ),
@@ -488,22 +503,6 @@ function methodtable.getInfobox( self )
 				data = smwData[t( 'SMW_PledgeAvailability' )],
 			} ),
 		}
-		tabberData['content1'] = infobox:renderSection( { content = section, col = 2 }, true )
-
-		-- TODO: Add i18n
-		-- TODO: Make a generic tooltip for showing the min, max and average price
-		tabberData['label2'] = t( 'label_Universe' )
-		section = {
-			infobox:renderItem( {
-				label = 'Purchase',
-				data = infobox.addUnitIfExists( smwData['Average price'], 'aUEC' ) or '🚫 Not available'
-			} ),
-			infobox:renderItem( {
-				label = 'Rental',
-				data = infobox.addUnitIfExists( smwData['Average rental price (1 day)'], 'aUEC' ) or '🚫 Not available'
-			} )
-		}
-
 		tabberData['content2'] = infobox:renderSection( { content = section, col = 2 }, true )
 
 		tabberData['label3'] = t( 'label_Insurance' )
@@ -725,18 +724,19 @@ function methodtable.getInfobox( self )
 
 		tabberData['label4'] = t( 'label_Fuel' )
 		section = {
-			infobox:renderItem( {
-				label = t( 'label_HydrogenCapacity' ),
-				data = smwData[t( 'SMW_HydrogenFuelCapacity' )],
-			} ),
+			-- Fuel capacity is not working in the API
+			--infobox:renderItem( {
+			--	label = t( 'label_HydrogenCapacity' ),
+			--	data = smwData[t( 'SMW_HydrogenFuelCapacity' )],
+			--} ),
 			infobox:renderItem( {
 				label = t( 'label_HydrogenIntake' ),
 				data = smwData[t( 'SMW_HydrogenFuelIntakeRate' )],
 			} ),
-			infobox:renderItem( {
-				label = t( 'label_QuantumCapacity' ),
-				data = smwData[t( 'SMW_QuantumFuelCapacity' )],
-			} ),
+			--infobox:renderItem( {
+			--	label = t( 'label_QuantumCapacity' ),
+			--	data = smwData[t( 'SMW_QuantumFuelCapacity' )],
+			--} ),
 		}
 		tabberData['content4'] = infobox:renderSection( { content = section, col = 2 }, true )
 
@@ -1197,7 +1197,7 @@ function Vehicle.main( frame )
 
 	-- Only set categories and short desc if this is the page that also holds the smw attributes
 	-- Allows outputting vehicle infoboxes on other pages without setting categories
-	if instance.smwData ~= nil then
+	if mw.title.getCurrentTitle():inNamespace( 0 ) and instance.smwData ~= nil then
 		instance:setCategories()
 		instance:setShortDescription()
 		-- FIXME: Is there a cleaner way?

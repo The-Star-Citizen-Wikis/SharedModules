@@ -829,7 +829,7 @@ function Item.main( frame )
 
 	local infobox = tostring( instance:getInfobox() )
 
-	if instance.smwData ~= nil then
+	if mw.title.getCurrentTitle():inNamespace( 0 ) and instance.smwData ~= nil then
 		instance:setCategories()
 		instance:setShortDescription()
 		interwikiLinks = common.generateInterWikiLinks( mw.title.getCurrentTitle().text )
