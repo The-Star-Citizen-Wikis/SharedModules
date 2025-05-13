@@ -222,6 +222,8 @@ local function _navplate()
 
 	local contentHTML = mw.html.create( 'div' )
 		:addClass( 'template-navplate__content' )
+		-- TODO: Remove this once TemplateStylesExtender supports content-visibility
+		:css( 'content-visibility', 'auto' )
 		:node( getRowsHTML() )
 
 	local output = getDetailsHTML( {
