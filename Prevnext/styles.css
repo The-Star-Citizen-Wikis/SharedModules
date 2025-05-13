@@ -1,7 +1,8 @@
 .template-prevnext {
     margin: var( --space-md ) 0;
     padding: var( --space-xxs );
-    background-color: var( --color-surface-2 );
+    background-color: var( --color-surface-1 );
+    border: var( --border-base );
     border-radius: var( --border-radius-medium );
     font-size: var( --font-size-small );
     line-height: var( --line-height-xx-small );
