@@ -275,6 +275,7 @@
 	"label_itemtype_fueltank.fuel": "Fuel tank",
 	"label_itemtype_inventorycontainer.cargo": "Container",
 	"label_itemtype_item": "Item",
+	"label_itemtype_jumpdrive": "Jump module",
 	"label_itemtype_jumpdrive.jumpdrive": "Jump module",
 	"label_itemtype_lifesupportgenerator": "Life support generator",
 	"label_itemtype_mainthruster.fixedthruster": "Main thruster",
