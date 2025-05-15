@@ -257,6 +257,7 @@
 	"label_itemtype_drink.can": "Drink",
 	"label_itemtype_emp": "EMP generator",
 	"label_itemtype_externalfueltank": "Fuel pod",
+	"label_itemtype_flightcontroller": "Flight blade",
 	"label_itemtype_food.bar": "Food",
 	"label_itemtype_food.box": "Food",
 	"label_itemtype_food.consumable": "Food",
