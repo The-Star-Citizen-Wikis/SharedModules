@@ -87,6 +87,7 @@
 	"category_itemtype_turret.canardturret": "Weapon mounts",
 	"category_itemtype_turret.gunturret": "Weapon mounts",
 	"category_itemtype_turret.nosemounted": "Weapon mounts",
+	"category_itemtype_turret.pdcturret": "PDCs",
 	"category_itemtype_weaponattachment.barrel": "Barrel attachments",
 	"category_itemtype_weaponattachment.bottomattachment": "Underbarrel attachments",
 	"category_itemtype_weaponattachment.ironsight": "Optics attachments",
