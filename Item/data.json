@@ -261,6 +261,7 @@
 				"Turret.CanardTurret",
 				"Turret.GunTurret",
 				"Turret.NoseMounted",
+				"Turret.PDC",
 				"WeaponGun.Gun",
 				"WeaponGun.Rocket",
 				"WeaponMining.Gun"

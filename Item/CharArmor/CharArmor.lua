@@ -4,8 +4,8 @@ local p = {}
 
 local CONST = {
     TEMPERATURE = {
-        MIN = -230,
-        MAX = 250
+        MIN = -225,
+        MAX = 245
     }
 }
 
@@ -63,7 +63,7 @@ function p.addSmwProperties( apiData, frameArgs, smwSetObject )
     if apiData.sub_type then
         -- This is an armor
         if apiData.sub_type == 'Light' or apiData.sub_type == 'Medium' or apiData.sub_type == 'Heavy' then
-            smwSetObject[ t( 'SMW_Subtype') ] = translate( string.format( 'type_%s_armor', string.lower( apiData.sub_type ) ) )
+            smwSetObject[ t( 'SMW_Subtype') ] = t( string.format( 'label_itemtype_%s_armor', string.lower( apiData.sub_type ) ) )
         end
     end
 end

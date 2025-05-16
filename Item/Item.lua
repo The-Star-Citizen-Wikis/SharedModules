@@ -176,8 +176,7 @@ function methodtable.setSemanticProperties( self )
 					-- Check if there are item type localization
 					if descObj.name == 'Item Type' or descObj.name == 'Type' then
 						local descType = descObj.type
-						-- FIXME: This only works for English, need some way to get only the English text for comparison since descType is always in English
-						local itemType = translate( string.format( 'type_%s', string.lower( setData[ t( 'SMW_Type' ) ] ) ) )
+						local itemType = t( string.format( 'label_itemtype_%s', string.lower( setData[ t( 'SMW_Type' ) ] ) ) )
 
 						-- If the type in item description is different than what we compose out of type and subtype data, record it in subtype
 						-- TODO: We should make a common function to sanitize strings for comaprison (e.g. lowercase, remove all the space)
@@ -621,7 +620,7 @@ end
 --- Sets the short description for this object
 function methodtable.setShortDescription( self )
 	local shortdesc = ''
-	local itemType = translate( 'type_item' )
+	local itemType = t( 'label_itemtype_item' )
 
 	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
 		if self.smwData[ t( 'SMW_Subtype' ) ] ~= nil then
