@@ -306,6 +306,7 @@
 	"label_itemtype_turret.gunturret": "Weapon mount",
 	"label_itemtype_turret.missileturret": "Missile turret",
 	"label_itemtype_turret.nosemounted": "Weapon mount",
+	"label_itemtype_turret.pdcturret": "PDC",
 	"label_itemtype_turretbase.mannedturret": "Manned turret",
 	"label_itemtype_weaponattachment": "Weapon attachment",
 	"label_itemtype_weaponattachment.barrel": "Barrel attachment",
