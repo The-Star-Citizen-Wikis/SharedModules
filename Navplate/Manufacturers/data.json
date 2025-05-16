@@ -66,6 +66,10 @@
             "conditions": "Category:Missile racks"
         },
         {
+            "label": "PDCs",
+            "conditions": "Category:PDCs"
+        },
+        {
             "label": "Power plants",
             "conditions": "Category:Power plants"
         },
