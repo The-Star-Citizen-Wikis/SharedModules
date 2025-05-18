@@ -65,6 +65,7 @@
 	"category_itemtype_fps_consumable.medpack": "Medical consumables",
 	"category_itemtype_fps_consumable.oxygencap": "Medical consumables",
 	"category_itemtype_inventorycontainer.cargo": "Containers",
+	"category_itemtype_jumpdrive": "Jump modules",
 	"category_itemtype_jumpdrive.jumpdrive": "Jump modules",
 	"category_itemtype_lifesupportgenerator": "Life support generators",
 	"category_itemtype_miningmodifier.gun": "Mining modules",
