@@ -16,45 +16,38 @@
 	align-items: center;
 	gap: var( --space-md );
 	cursor: pointer;
+	user-select: none;
 }
 
 .template-navplate[ open ] .template-navplate__header {
-	background-color: var( --color-surface-2 );
+	background-color: var( --color-surface-1 );
 }
 
 .template-navplate .template-navplate__header:hover {
 	background-color: var( --background-color-button-quiet--hover );
 }
 
-.template-navplate__subtitle {
-	font-size: var( --font-size-x-small );
-}
-
 .template-navplate__subtitle,
 .template-navplate-item__label {
 	color: var( --color-subtle );
-	font-weight: var(--font-weight-medium);
 }
 
-.template-navplate__title,
-.template-navplate__groupheader {
+.template-navplate-item__label {
+	font-weight: var( --font-weight-medium );
+}
+
+.template-navplate__title {
 	color: var( --color-emphasized );
 	font-weight: var( --font-weight-semi-bold );
 }
 
-.template-navplate__title {
-	font-size: var( --font-size-medium );
-}
-
 .template-navplate__content {
-	position: relative;
-	border-top: 1px solid var( --border-color-base );
-	user-select: auto;
-	/* content-visibility: auto; - This is inlined for now because of TemplateStyles */
+	border-top: var( --border-base );
+	content-visibility: auto;
 }
 
 .template-navplate__groupheader {
-	background-color: var( --color-surface-2 );
+	background-color: var( --color-surface-1 );
 	padding: var( --space-xs ) var( --space-md );
 }
 
@@ -83,7 +76,7 @@
 }
 
 .template-navplate__content > div + div {
-	border-top: 1px solid var( --border-color-base );
+	border-top: var( --border-base );
 }
 
 .template-navplate__header .mw-ui-icon-wikimedia-collapse {
