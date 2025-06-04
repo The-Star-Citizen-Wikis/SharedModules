@@ -215,6 +215,7 @@
 	"label_actions_find_item_title": "Find item in game",
 	"label_data_source": "Data source",
 	"label_itemtype_bomb": "Bomb",
+	"label_itemtype_bomb.utility": "Bomb",
 	"label_itemtype_bomblauncher.bombrack": "Bomb rack",
 	"label_itemtype_cargo.small": "Commodity",
 	"label_itemtype_cargogrid": "Cargo grid",
