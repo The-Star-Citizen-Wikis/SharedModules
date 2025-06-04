@@ -39,6 +39,7 @@
 .template-navplate__title {
 	color: var( --color-emphasized );
 	font-weight: var( --font-weight-semi-bold );
+	font-size: var( --font-size-medium );
 }
 
 .template-navplate__content {
