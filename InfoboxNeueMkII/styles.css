@@ -1,0 +1,24 @@
+/* TODO: Break down into components? */
+.t-infobox {
+    width: 100%;
+    max-width: 400px;
+    font-size: var( --font-size-small );
+    line-height: var( --line-height-xx-small );
+}
+
+.t-infobox-section-label {
+    font-size: var( --font-size-medium );
+    font-weight: var( --font-weight-medium );
+    color: var( --color-emphasized );
+}
+
+.t-infobox-section-items {
+    display: grid;
+    grid-template-columns: repeat( var( --infobox-section-columns ), 1fr );
+}
+
+.t-infobox-item-label {
+    font-size: var( --font-size-x-small );
+    font-weight: var( --font-weight-medium );
+    color: var( --color-subtle );
+}

@@ -1,0 +1,138 @@
+{
+	"title": "Gladius",
+	"subtitle": "Aegis Dynamics (AEGS)",
+	"image": "Gladius - Flying away from world through debris.jpg",
+	"sections": [
+		{
+			"columns": 2,
+			"items": [
+				{
+					"label": "Role",
+					"content": "Light Fighter"
+				},
+				{
+					"label": "Size",
+					"content": "Small (S2/XS)"
+				},
+				{
+					"label": "Series",
+					"content": "Gladius"
+				}
+			]
+		},
+		{
+			"label": "Capacity",
+			"columns": 3,
+			"items": [
+				{
+					"label": "Crew",
+					"content": "1"
+				},
+				{
+					"label": "Cargo",
+					"content": "0 SCU"
+				},
+				{
+					"label": "Stowage",
+					"content": "1,300 KµSCU"
+				}
+			]
+		},
+		{
+			"label": "Cost",
+			"sections": [
+				{
+					"label": "Universe",
+					"columns": 2,
+					"items": [
+						{
+							"label": "Purchase",
+							"content": "2,381,400 aUEC"
+						},
+						{
+							"label": "Rental",
+							"content": "Not available"
+						}
+					]
+				},
+				{
+					"label": "Pledge",
+					"columns": 2,
+					"items": [
+						{
+							"label": "Standalone",
+							"content": "$ 90.00 ($ 80.00)"
+						},
+						{
+							"label": "Availability",
+							"content": "Always available"
+						}
+					]
+				},
+				{
+					"label": "Insurance",
+					"columns": 2,
+					"items": [
+						{
+							"label": "Claim",
+							"content": "6m"
+						},
+						{
+							"label": "Expedite",
+							"content": "2m"
+						},
+						{
+							"label": "Expedite fee",
+							"content": "2,335 aUEC"
+						}
+					]
+				}
+			]
+		},
+		{
+			"label": "Specifications",
+			"sections": [
+				{
+					"label": "Dimensions",
+					"content": "HTML from the dimension template"
+				},
+				{
+					"label": "Hull",
+					"columns": 6,
+					"items": [
+						{
+							"label": "PHY",
+							"content": "-57%"
+						},
+						{
+							"label": "ENG",
+							"content": "0%"
+						},
+						{
+							"label": "DST",
+							"content": "0%"
+						},
+						{
+							"label": "THM",
+							"content": "0%"
+						},
+						{
+							"label": "BIO",
+							"content": "0%"
+						},
+						{
+							"label": "STN",
+							"content": "-100%"
+						}
+					]
+				},
+				{
+					"label": "Speed"
+				},
+				{
+					"label": "Fuel"
+				}
+			]
+		}
+	]
+}
