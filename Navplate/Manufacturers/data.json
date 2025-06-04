@@ -20,6 +20,12 @@
             }
         },
         {
+            "label": "Bomb racks",
+            "conditions": {
+                "Category": "Bomb racks"
+            }
+        },
+        {
             "label": "Cargo pods",
             "conditions": {
                 "Category": "Cargo pods"

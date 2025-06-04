@@ -11,7 +11,7 @@ require( 'strict' )
 local p = {}
 
 local navplate = require( 'Module:Navplate' )
-local template = mw.loadJsonData( 'Module:Navplate/Manufacturers/sandbox/data.json' )
+local template = mw.loadJsonData( 'Module:Navplate/Manufacturers/data.json' )
 local manufacturer = require( 'Module:Manufacturer' ):new()
 local util = require( 'Module:Navplate/Util' )
 
