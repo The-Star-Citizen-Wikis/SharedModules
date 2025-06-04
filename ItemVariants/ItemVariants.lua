@@ -117,6 +117,7 @@ local function makeSmwQueryObject( page )
         '[[Category:+]]', -- Filter out subobjects, i.e. select pages having a category. Warning, order matters? Dont put this above the variant query
         '?#-=page',
         '?' .. smwName .. '#-=name',
+        '?' .. t( 'SMW_QueryImage' ) .. '#-=queryImage',
         '?Page Image#-=image',
         'sort=',
         'order=asc',
@@ -192,12 +193,19 @@ function methodtable.out( self )
                 variantHtml:addClass( 'template-itemVariant--selected' )
             end
 
+            local image
+            if variant.queryImage then
+                image = string.format( 'File:%s', variant.queryImage )
+            else
+                image = variant.image or placeholderImage
+            end
+
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-fakelink' )
                 :wikitext( string.format( '[[%s|%s]]', variant.page, variant.name ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-image' )
-                :wikitext( string.format( '[[%s|160px|link=]]', variant.image or placeholderImage ) )
+                :wikitext( string.format( '[[%s|320px|link=]]', image ) )
             variantHtml:tag( 'div' )
                 :addClass( 'template-itemVariant-title' )
                 :wikitext( displayName )
