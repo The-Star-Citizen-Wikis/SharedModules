@@ -3,239 +3,345 @@
     "content": [
         {
             "label": "Spacecraft",
-            "conditions": "Category:Ships"
+            "conditions": {
+                "Category": "Ships"
+            }
         },
         {
             "label": "Ground vehicles",
-            "conditions": "Category:Ground vehicles"
+            "conditions": {
+                "Category": "Ground vehicles"
+            }
         },
         {
             "label": "Bombs",
-            "conditions": "Category:Bombs"
+            "conditions": {
+                "Category": "Bombs"
+            }
         },
         {
             "label": "Cargo pods",
-            "conditions": "Category:Cargo pods"
+            "conditions": {
+                "Category": "Cargo pods"
+            }
         },
         {
             "label": "Coolers",
-            "conditions": "Category:Coolers"
+            "conditions": {
+                "Category": "Coolers"
+            }
         },
         {
             "label": "Computers",
-            "conditions": "Category:Computers"
+            "conditions": {
+                "Category": "Computers"
+            }
         },
         {
             "label": "EMP generators",
-            "conditions": "Category:EMP generators"
+            "conditions": {
+                "Category": "EMP generators"
+            }
         },
         {
             "label": "Fuel nozzles",
-            "conditions": "Category:Fuel nozzles"
+            "conditions": {
+                "Category": "Fuel nozzles"
+            }
         },
         {
             "label": "Fuel pods",
-            "conditions": "Category:Fuel pods"
+            "conditions": {
+                "Category": "Fuel pods"
+            }
         },
         {
             "label": "Guns",
-            "conditions": "Category:Guns"
+            "conditions": {
+                "Category": "Guns"
+            }
         },
         {
             "label": "Jump modules",
-            "conditions": "Category:Jump modules"
+            "conditions": {
+                "Category": "Jump modules"
+            }
         },
         {
             "label": "Life support generators",
-            "conditions": "Category:Life support generators"
+            "conditions": {
+                "Category": "Life support generators"
+            }
         },
         {
             "label": "Mining lasers",
-            "conditions": "Category:Mining lasers"
+            "conditions": {
+                "Category": "Mining lasers"
+            }
         },
         {
             "label": "Mining modules",
-            "conditions": "Category:Mining modules"
+            "conditions": {
+                "Category": "Mining modules"
+            }
         },
         {
             "label": "Missiles",
-            "conditions": "Category:Missiles"
+            "conditions": {
+                "Category": "Missiles"
+            }
         },
         {
             "label": "Missile racks",
-            "conditions": "Category:Missile racks"
+            "conditions": {
+                "Category": "Missile racks"
+            }
         },
         {
             "label": "PDCs",
-            "conditions": "Category:PDCs"
+            "conditions": {
+                "Category": "PDCs"
+            }
         },
         {
             "label": "Power plants",
-            "conditions": "Category:Power plants"
+            "conditions": {
+                "Category": "Power plants"
+            }
         },
         {
             "label": "Rocket pods",
-            "conditions": "Category:Rocket pods"
+            "conditions": {
+                "Category": "Rocket pods"
+            }
         },
         {
             "label": "Quantum drives",
-            "conditions": "Category:Quantum drives"
+            "conditions": {
+                "Category": "Quantum drives"
+            }
         },
         {
             "label": "Quantum Enforcement Devices",
-            "conditions": "Category:Quantum Enforcement Devices"
+            "conditions": {
+                "Category": "Quantum Enforcement Devices"
+            }
         },
         {
             "label": "Radars",
-            "conditions": "Category:Radars"
+            "conditions": {
+                "Category": "Radars"
+            }
         },
         {
             "label": "Salvage heads",
-            "conditions": "Category:Salvage heads"
+            "conditions": {
+                "Category": "Salvage heads"
+            }
         },
         {
             "label": "Scraper modules",
-            "conditions": "Category:Scraper modules"
+            "conditions": {
+                "Category": "Scraper modules"
+            }
         },
         {
             "label": "Shield generators",
-            "conditions": "Category:Shield generators"
+            "conditions": {
+                "Category": "Shield generators"
+            }
         },
         {
             "label": "Torpedoes",
-            "conditions": "Category:Torpedoes"
+            "conditions": {
+                "Category": "Torpedoes"
+            }
         },
         {
             "label": "Towing beams",
-            "conditions": "Category:Towing beams"
+            "conditions": {
+                "Category": "Towing beams"
+            }
         },
         {
             "label": "Tractor beams",
-            "conditions": "Category:Tractor beams"
+            "conditions": {
+                "Category": "Tractor beams"
+            }
         },
         {
             "label": "Weapon mounts",
-            "conditions": "Category:Weapon mounts"
+            "conditions": {
+                "Category": "Weapon mounts"
+            }
         },
         {
             "label": "Arms armor",
-            "conditions": "Category:Arms armor"
+            "conditions": {
+                "Category": "Arms armor"
+            }
         },
         {
             "label": "Backpacks",
-            "conditions": "Category:Backpacks"
+            "conditions": {
+                "Category": "Backpacks"
+            }
         },
         {
             "label": "Barrel attachments",
-            "conditions": "Category:Barrel attachments"
+            "conditions": {
+                "Category": "Barrel attachments"
+            }
         },
         {
             "label": "Containers",
-            "conditions": "Category:Containers"
+            "conditions": {
+                "Category": "Containers"
+            }
         },
         {
             "label": "Eyewear",
-            "conditions": "Category:Eyewear"
+            "conditions": {
+                "Category": "Eyewear"
+            }
         },
         {
             "label": "Footwear",
-            "conditions": "Category:Footwear"
+            "conditions": {
+                "Category": "Footwear"
+            }
         },
         {
             "label": "Gadgets",
-            "conditions": "Category:Gadgets"
+            "conditions": {
+                "Category": "Gadgets"
+            }
         },
         {
             "label": "Gloves",
-            "conditions": "Category:Gloves"
+            "conditions": {
+                "Category": "Gloves"
+            }
         },
         {
-            "label": "Hats",
-            "conditions": "Category:Hats"
+            "label": "Headgears",
+            "conditions": {
+                "Category": "Headgears"
+            }
         },
         {
             "label": "Helmets",
-            "conditions": "Category:Helmets"
-        },
-        {
-            "label": "Jackets",
-            "conditions": "Category:Jackets"
+            "conditions": {
+                "Category": "Helmets"
+            }
         },
         {
             "label": "Legs armor",
-            "conditions": "Category:Legs armor"
+            "conditions": {
+                "Category": "Legs armor"
+            }
         },
         {
             "label": "Multi-Tool attachment",
-            "conditions": "Category:Multi-Tool attachments"
+            "conditions": {
+                "Category": "Multi-Tool attachments"
+            }
         },
         {
             "label": "Optics attachments",
-            "conditions": "Category:Optics attachments"
+            "conditions": {
+                "Category": "Optics attachments"
+            }
         },
         {
             "label": "Outerwear",
-            "conditions": "Category:Outerwear"
+            "conditions": {
+                "Category": "Outerwear"
+            }
         },
         {
             "label": "Legwear",
-            "conditions": "Category:Legwear"
+            "conditions": {
+                "Category": "Legwear"
+            }
         },
         {
             "label": "Personal utility items",
-            "conditions": "Category:Personal utility items"
+            "conditions": {
+                "Category": "Personal utility items"
+            }
         },
         {
             "label": "Personal weapons",
-            "conditions": "Category:Personal weapons"
+            "conditions": {
+                "Category": "Personal weapons"
+            }
         },
         {
             "label": "Sidearm weapons",
-            "conditions": "Category:Sidearm weapons"
+            "conditions": {
+                "Category": "Sidearm weapons"
+            }
         },
         {
             "label": "Shouldered weapons",
-            "conditions": "Category:Shouldered weapons"
+            "conditions": {
+                "Category": "Shouldered weapons"
+            }
         },
         {
             "label": "Stocked weapons",
-            "conditions": "Category:Stocked weapons"
+            "conditions": {
+                "Category": "Stocked weapons"
+            }
         },
         {
             "label": "Shirts",
-            "conditions": "Category:Shirts"
+            "conditions": {
+                "Category": "Shirts"
+            }
         },
         {
             "label": "Torso armor",
-            "conditions": "Category:Torso armor"
-        },
-        {
-            "label": "T-shirts",
-            "conditions": "Category:T-shirts"
+            "conditions": {
+                "Category": "Torso armor"
+            }
         },
         {
             "label": "Underbarrel attachments",
-            "conditions": "Category:Underbarrel attachments"
+            "conditions": {
+                "Category": "Underbarrel attachments"
+            }
         },
         {
             "label": "Undersuits",
-            "conditions": "Category:Undersuits"
+            "conditions": {
+                "Category": "Undersuits"
+            }
         },
         {
             "label": "Cryptokeys",
-            "conditions": "Category:Cryptokeys"
+            "conditions": {
+                "Category": "Cryptokeys"
+            }
         },
         {
             "label": "Drinks",
-            "conditions": "Category:Drinks"
+            "conditions": {
+                "Category": "Drinks"
+            }
         },
         {
             "label": "Food",
-            "conditions": "Category:Food"
+            "conditions": {
+                "Category": "Food"
+            }
         },
         {
             "label": "Medical consumable",
-            "conditions": "Category:Medical consumables"
+            "conditions": {
+                "Category": "Medical consumables"
+            }
         }
     ]
 }

@@ -13,10 +13,10 @@ local function union( t1, t2 )
 	-- Returns the union of the values of two tables, as a sequence.
 	local vals = {}
 	for k, v in pairs( t1 ) do
-		vals[ v ] = true
+		vals[v] = true
 	end
 	for k, v in pairs( t2 ) do
-		vals[ v ] = true
+		vals[v] = true
 	end
 	local ret = {}
 	for k, v in pairs( vals ) do
@@ -123,9 +123,9 @@ local function getRowsHTML()
 	table.sort( rownums )
 	for _, num in ipairs( rownums ) do
 		html:node( getRowHTML( {
-			header = args[ 'header' .. tostring( num ) ],
-			label = args[ 'label' .. tostring( num ) ],
-			list = args[ 'list' .. tostring( num ) ]
+			header = args['header' .. tostring( num )],
+			label = args['label' .. tostring( num )],
+			list = args['list' .. tostring( num )]
 		} ) )
 	end
 	return html
@@ -134,8 +134,8 @@ end
 -- If the argument exists and isn't blank, add it to the argument table.
 -- Blank arguments are treated as nil to match the behaviour of ParserFunctions.
 local function preprocessSingleArg( argName )
-	if origArgs[ argName ] and origArgs[ argName ] ~= '' then
-		args[ argName ] = origArgs[ argName ]
+	if origArgs[argName] and origArgs[argName] ~= '' then
+		args[argName] = origArgs[argName]
 	end
 end
 
@@ -163,7 +163,7 @@ local function preprocessArgs( prefixTable, step )
 		preprocessSingleArg( v.prefix )
 		-- Only parse the depend parameter if the prefix parameter is present
 		-- and not blank.
-		if args[ v.prefix ] and v.depend then
+		if args[v.prefix] and v.depend then
 			for j, dependValue in ipairs( v.depend ) do
 				if type( dependValue ) ~= 'string' then
 					error( 'Invalid "depend" parameter value detected in preprocessArgs' )
@@ -181,7 +181,7 @@ local function preprocessArgs( prefixTable, step )
 		for i = a, a + step - 1 do
 			for j, v in ipairs( prefixTable ) do
 				local prefixArgName = v.prefix .. tostring( i )
-				if origArgs[ prefixArgName ] then
+				if origArgs[prefixArgName] then
 					-- Do another loop if any arguments are found, even blank ones.
 					moreArgumentsExist = true
 					preprocessSingleArg( prefixArgName )
@@ -189,7 +189,7 @@ local function preprocessArgs( prefixTable, step )
 				-- Process the depend table if the prefix argument is present
 				-- and not blank, or we are processing "prefix1" and "prefix" is
 				-- present and not blank, and if the depend table is present.
-				if v.depend and (args[ prefixArgName ] or (i == 1 and args[ v.prefix ])) then
+				if v.depend and (args[prefixArgName] or (i == 1 and args[v.prefix])) then
 					for j, dependValue in ipairs( v.depend ) do
 						local dependArgName = dependValue .. tostring( i )
 						preprocessSingleArg( dependArgName )
@@ -254,14 +254,54 @@ function p.navplate( frame )
 	return _navplate()
 end
 
+-- Legacy method, do not use
 -- For calling via #invoke within a template
 function p.navplateTemplate( frame )
 	origArgs = {}
-	for k, v in pairs( frame.args ) do origArgs[ k ] = mw.text.trim( v ) end
+	for k, v in pairs( frame.args ) do origArgs[k] = mw.text.trim( v ) end
 
 	parseDataParameters()
 
 	return _navplate()
+end
+
+-- For calling via other modules
+function p.fromData( data )
+	local directArgs = {}
+
+	if not data or type( data ) ~= 'table' then
+		-- TODO: Add error state
+	else
+		if data.title then
+			directArgs.title = data.title
+		end
+		if data.subtitle then
+			directArgs.subtitle = data.subtitle
+		end
+		if data.id then
+			directArgs.id = data.id
+		end
+
+		if data.items and type( data.items ) == 'table' and #data.items > 0 then
+			for i, item in ipairs( data.items ) do
+				if type( item ) == 'table' then
+					if item.label then
+						directArgs['label' .. tostring( i )] = item.label
+					end
+					if item.pages then -- 'pages' from Manufacturers.lua maps to 'list' here
+						directArgs['list' .. tostring( i )] = item.pages
+					end
+					if item.header then -- Also support 'header' if needed
+						directArgs['header' .. tostring( i )] = item.header
+					end
+				end
+			end
+		else
+			-- TODO: Add empty state to navplate
+		end
+	end
+
+	return p.navplateTemplate( { args = directArgs } )
 end
 
 return p
