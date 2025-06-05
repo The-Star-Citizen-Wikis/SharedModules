@@ -175,7 +175,7 @@ function p.addInfoboxData( infobox, smwData, itemPageIdentifier )
     end
 
     -- Bomb
-    if smwData[ t( 'SMW_Type' ) ] == 'Bomb' then
+    if smwData[ t( 'SMW_Type' ) ] == 'Bomb.Utility' then
         -- Overview
         tabberData[ 'label1' ] = t( 'label_Overview' )
         section = {
