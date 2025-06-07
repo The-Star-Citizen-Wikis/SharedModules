@@ -88,7 +88,7 @@ function methodtable.getSmwData( self, category )
 end
 
 
---- Sorts the table by Manufacturer
+--- Groups data by a given key, and sorts the pages within each group alphabetically.
 ---
 --- @param data table SMW data - Requires a 'page' key on each row
 --- @param groupKey string Key on objects to group them under, e.g. manufacturer
@@ -100,7 +100,7 @@ function methodtable.group( self, data, groupKey, suffix )
     if type( data ) ~= 'table' or type( groupKey ) ~= 'string' then
         return grouped
     end
-    
+
     local name
 
     for _, row in pairs( data ) do
@@ -131,6 +131,20 @@ function methodtable.group( self, data, groupKey, suffix )
         	)
         end
     end
+
+	-- Sort vehicles alphabetically
+	for _, pages in pairs( grouped ) do
+		table.sort( pages, function( a, b )
+			local nameA = string.match( a, '%|(.+)]]' )
+			local nameB = string.match( b, '%|(.+)]]' )
+
+			if nameA and nameB then
+				return nameA < nameB
+			end
+			
+			return a < b -- Fallback to sorting by page link
+		end )
+	end
 
 	--mw.logObject( grouped )
 
@@ -211,6 +225,12 @@ end
 --- @param frame table Invocation frame
 --- @return string
 function NavplateVehicles.main( frame )
+    local instance = NavplateVehicles:new()
+
+    return instance:make()
+end
+
+function NavplateVehicles.test( frame )
     local instance = NavplateVehicles:new()
 
     return instance:make()
