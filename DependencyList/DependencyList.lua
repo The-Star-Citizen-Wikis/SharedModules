@@ -2,16 +2,16 @@
 --- Modified to use SMW instead of DPL
 --- @see https://runescape.wiki/w/Module:DependencyList
 
-require("strict");
+require( 'strict' )
 
 local p = {}
 local libraryUtil = require( 'libraryUtil' )
 local arr = require( 'Module:Array' )
 local yn = require( 'Module:Yesno' )
 local param = require( 'Module:Paramtest' )
-local userError = require("Module:User error")
-local hatnote = require('Module:Hatnote')._hatnote
-local mHatlist = require('Module:Hatnote list')
+local userError = require( 'Module:User error' )
+local hatnote = require( 'Module:Hatnote' )._hatnote
+local mHatlist = require( 'Module:Hatnote list' )
 local mbox = require( 'Module:Mbox' )._mbox
 local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
@@ -25,8 +25,8 @@ local shouldAddCategories = false
 local COLLAPSE_LIST_LENGTH_THRESHOLD = 5
 local dynamicRequireListQueryCache = {}
 
-local NS_MODULE_NAME =  mw.site.namespaces[ 828 ].name
-local NS_TEMPLATE_NAME = mw.site.namespaces[ 10 ].name
+local NS_MODULE_NAME = mw.site.namespaces[828].name
+local NS_TEMPLATE_NAME = mw.site.namespaces[10].name
 
 
 --- Wrapper function for Module:i18n.translate
@@ -34,7 +34,7 @@ local NS_TEMPLATE_NAME = mw.site.namespaces[ 10 ].name
 --- @param key string The translation key
 --- @return string If the key was not found, the key is returned
 local function t( key )
-	return i18n:translate( key )
+    return i18n:translate( key )
 end
 
 
@@ -55,14 +55,14 @@ end
 
 
 local builtins = {
-    ["libraryUtil"] = {
-        link = "mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#libraryUtil",
+    ['libraryUtil'] = {
+        link = 'mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#libraryUtil',
         categories = {},
     },
-	[ "strict" ] = {
-		link = "mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#strict",
-		categories = { t( 'category_strict_mode_modules' ) },
-	},
+    ['strict'] = {
+        link = 'mw:Special:MyLanguage/Extension:Scribunto/Lua reference manual#strict',
+        categories = { t( 'category_strict_mode_modules' ) },
+    },
 }
 
 
@@ -71,7 +71,8 @@ local builtins = {
 ---@param varName string
 ---@return string
 local function substVarValue( content, varName )
-    local res = content:match( varName .. '%s*=%s*(%b""%s-%.*)' ) or content:match( varName .. "%s*=%s*(%b''%s-%.*)" ) or ''
+    local res = content:match( varName .. '%s*=%s*(%b""%s-%.*)' ) or content:match( varName .. "%s*=%s*(%b''%s-%.*)" ) or
+    ''
     if res:find( '^(["\'])[Mm]odule?:[%S]+%1' ) and not res:find( '%.%.' ) and not res:find( '%%%a' ) then
         return mw.text.trim( res )
     else
@@ -86,7 +87,7 @@ end
 local function extractModuleName( capture, content )
     capture = capture:gsub( '^%(%s*(.-)%s*%)$', '%1' )
 
-    if capture:find( '^(["\']).-%1$' ) then -- Check if it is already a pure string
+    if capture:find( '^(["\']).-%1$' ) then     -- Check if it is already a pure string
         return capture
     elseif capture:find( '^[%a_][%w_]*$' ) then -- Check if if is a single variable
         return substVarValue( content, capture )
@@ -100,7 +101,7 @@ end
 ---@return string
 local function formatPageName( str )
     local name = mw.text.trim( str )
-        :gsub( '^([\'\"])(.-)%1$', function( _, x ) return x end ) -- Only remove quotes at start and end of string if both are the same type
+        :gsub( '^([\'\"])(.-)%1$', function ( _, x ) return x end ) -- Only remove quotes at start and end of string if both are the same type
         :gsub( '_', ' ' )
         :gsub( '^.', string.upper )
         :gsub( ':.', string.upper )
@@ -113,15 +114,15 @@ end
 ---@param allowBuiltins? boolean
 ---@return string
 local function formatModuleName( str, allowBuiltins )
-	if allowBuiltins then
-		local name = mw.text.trim( str )
-			-- Only remove quotes at start and end of string if both are the same type
-            :gsub([[^(['"])(.-)%1$]], '%2')
+    if allowBuiltins then
+        local name = mw.text.trim( str )
+            -- Only remove quotes at start and end of string if both are the same type
+            :gsub( [[^(['"])(.-)%1$]], '%2' )
 
         if builtins[name] then
             return name
         end
-	end
+    end
 
     local module = formatPageName( str )
 
@@ -137,7 +138,7 @@ local function dualGmatch( str, pat1, pat2 )
     local f1 = string.gmatch( str, pat1 )
     if pat2 then
         local f2 = string.gmatch( str, pat2 )
-        return function()
+        return function ()
             return f1() or f2()
         end
     else
@@ -157,8 +158,8 @@ end
 local function getDynamicRequireList( query )
     if query:find( '%.%.' ) then
         query = mw.text.split( query, '..', true )
-        query = arr.map( query, function( x ) return mw.text.trim( x ) end )
-        query = arr.map( query, function( x ) return ( x:match('^[\'\"](.-)[\'\"]$') or '%') end )
+        query = arr.map( query, function ( x ) return mw.text.trim( x ) end )
+        query = arr.map( query, function ( x ) return (x:match( '^[\'\"](.-)[\'\"]$' ) or '%') end )
         query = table.concat( query )
     else
         local _, _query = query:match( '(["\'])(.-)%1' )
@@ -166,11 +167,11 @@ local function getDynamicRequireList( query )
     end
     query = query:gsub( '^[Mm]odule:', '' )
 
-    if dynamicRequireListQueryCache[ query ] then
-        return dynamicRequireListQueryCache[ query ];
+    if dynamicRequireListQueryCache[query] then
+        return dynamicRequireListQueryCache[query]
     end
 
-    return {};
+    return {}
 end
 
 
@@ -180,16 +181,25 @@ end
 ---@return table<string, string[]>
 local function getRequireList( moduleName, searchForUsedTemplates )
     local content = mw.title.new( moduleName ):getContent()
-    local requireList = arr{}
-    local loadDataList = arr{}
-    local loadJsonDataList = arr{}
-    local usedTemplateList = arr{}
-    local dynamicRequirelist = arr{}
-    local dynamicLoadDataList = arr{}
-    local dynamicLoadJsonDataList = arr{}
-    local extraCategories = arr{}
+    local requireList = arr {}
+    local loadDataList = arr {}
+    local loadJsonDataList = arr {}
+    local usedTemplateList = arr {}
+    local dynamicRequirelist = arr {}
+    local dynamicLoadDataList = arr {}
+    local dynamicLoadJsonDataList = arr {}
+    local extraCategories = arr {}
 
-    assert( content ~= nil, translate( 'message_not_exists', moduleName ) )
+    if content == nil then
+        --assert( content ~= nil, translate( 'message_not_exists', moduleName ) )
+        return {
+            requireList = requireList,
+            loadDataList = loadDataList,
+            loadJsonDataList = loadJsonDataList,
+            usedTemplateList = usedTemplateList,
+            extraCategories = extraCategories
+        }
+    end
 
     content = content:gsub( '%-%-%[(=-)%[.-%]%1%]', '' ):gsub( '%-%-[^\n]*', '' ) -- Strip comments
 
@@ -213,7 +223,8 @@ local function getRequireList( moduleName, searchForUsedTemplates )
 
     getList( 'require%s*(%b())', 'require%s*((["\'])%s*[Mm]odule:.-%2)', requireList, dynamicRequirelist )
     getList( 'mw%.loadData%s*(%b())', 'mw%.loadData%s*((["\'])%s*[Mm]odule:.-%2)', loadDataList, dynamicLoadDataList )
-    getList( 'mw%.loadJsonData%s*(%b())', 'mw%.loadJsonData%s*((["\'])%s*[Mm]odule:.-%2)', loadJsonDataList, dynamicLoadJsonDataList )
+    getList( 'mw%.loadJsonData%s*(%b())', 'mw%.loadJsonData%s*((["\'])%s*[Mm]odule:.-%2)', loadJsonDataList,
+        dynamicLoadJsonDataList )
     getList( 'pcall%s*%(%s*require%s*,([^%),]+)', nil, requireList, dynamicRequirelist )
     getList( 'pcall%s*%(%s*mw%.loadData%s*,([^%),]+)', nil, loadDataList, dynamicLoadDataList )
     getList( 'pcall%s*%(%s*mw%.loadJsonData%s*,([^%),]+)', nil, loadJsonDataList, dynamicLoadJsonDataList )
@@ -225,16 +236,16 @@ local function getRequireList( moduleName, searchForUsedTemplates )
                 local i = 0
 
                 repeat
-                    for match in string.gmatch( list[ i ] or str, pat ) do
+                    for match in string.gmatch( list[i] or str, pat ) do
                         table.insert( list, match )
                     end
-                    i =  i + 1
+                    i = i + 1
                 until i > #list or i > 100
 
                 i = 0
-                return function()
+                return function ()
                     i = i + 1
-                    return list[ i ]
+                    return list[i]
                 end
             end
 
@@ -252,7 +263,7 @@ local function getRequireList( moduleName, searchForUsedTemplates )
                         if name:match( '^%u+$' ) or name == '!' then
                             table.insert( usedTemplateList, name ) -- Probably a magic word
                         else
-                            table.insert( usedTemplateList, 'Template:'..name )
+                            table.insert( usedTemplateList, 'Template:' .. name )
                         end
                     end
                 end
@@ -293,26 +304,26 @@ local function getInvokeCallList( templateName )
         moduleName = formatModuleName( moduleName )
         funcName = mw.text.trim( funcName )
         if string.find( funcName, '^{{{' ) then
-        	funcName = funcName ..  '}}}'
+            funcName = funcName .. '}}}'
         end
         table.insert( invokeList, { moduleName = moduleName, funcName = funcName } )
     end
 
-    invokeList = arr.unique( invokeList, function( x ) return x.moduleName..x.funcName end )
-    table.sort( invokeList, function( x, y ) return x.moduleName..x.funcName < y.moduleName..y.funcName end )
+    invokeList = arr.unique( invokeList, function ( x ) return x.moduleName .. x.funcName end )
+    table.sort( invokeList, function ( x, y ) return x.moduleName .. x.funcName < y.moduleName .. y.funcName end )
 
     return invokeList
 end
 
 ---@return string
 local function messageBoxUnused()
-	local category = shouldAddCategories and '[[Category:' .. t( 'category_unused_module' ) .. ']]' or ''
+    local category = shouldAddCategories and '[[Category:' .. t( 'category_unused_module' ) .. ']]' or ''
 
-	return mbox(
-		translate( 'message_unused_module_title' ),
-		translate( 'message_unused_module_desc' ),
-		{ icon = 'WikimediaUI-Alert.svg' }
-	) .. category
+    return mbox(
+        translate( 'message_unused_module_title' ),
+        translate( 'message_unused_module_desc' ),
+        { icon = 'WikimediaUI-Alert.svg' }
+    ) .. category
 end
 
 --- Returns the wikitext for the message template (mbox/hatnote)
@@ -332,11 +343,11 @@ local function getDependencyListWikitext( msgKey, pageName, list, listType )
             listContent,
             { icon = 'WikimediaUI-Code.svg' }
         )
-    --- Return hatnote
+        --- Return hatnote
     else
         return hatnote(
             translate( msgKey, pageName, listContent ),
-            { icon='WikimediaUI-Code.svg' }
+            { icon = 'WikimediaUI-Code.svg' }
         )
     end
 end
@@ -349,7 +360,7 @@ local function formatDynamicQueryLink( query )
     local prefix = query:match( '^([^/]+)' )
     local linkText = query:gsub( '%%', '&lt; ... &gt;' )
 
-    query = query:gsub( '^Module?:',  '' )
+    query = query:gsub( '^Module?:', '' )
 
     query = query:gsub( '([^/]+)/?', function ( match )
         if match == '%' then
@@ -369,7 +380,10 @@ local function formatDynamicQueryLink( query )
         prefix
     )
 
-    return string.format( '<span class="plainlinks">[%s %s]</span>', tostring( mw.uri.fullUrl( 'Special:Search', { search = query } ) ), linkText )
+    return string.format( '<span class="plainlinks">[%s %s]</span>',
+        tostring( mw.uri.fullUrl( 'Special:Search', {
+            search = query
+        } ) ), linkText )
 end
 
 --- Helper function to return the wikitext of the templates and categories
@@ -404,11 +418,11 @@ local function formatInvokeCallList( templateName, invokeList )
 
     for _, item in ipairs( invokeList ) do
         local msg = translate(
-                'message_invokes_function',
-    		templateName,
-    		item.funcName,
-    		item.moduleName
-    	)
+            'message_invokes_function',
+            templateName,
+            item.funcName,
+            item.moduleName
+        )
         table.insert( res, hatnote( msg, { icon = 'WikimediaUI-Code.svg' } ) )
     end
 
@@ -425,12 +439,16 @@ end
 ---@return string
 local function formatInvokedByList( moduleName, whatLinksHere )
     local function lcfirst( str )
-		return string.gsub( str, '^[Mm]odule?:.', string.lower )
-	end
+        return string.gsub( str, '^[Mm]odule?:.', string.lower )
+    end
 
-    local templateData = arr.map( whatLinksHere, function( x ) return { templateName = x, invokeList = getInvokeCallList( x ) } end )
-    templateData = arr.filter( templateData, function( x )
-        return arr.any( x.invokeList, function( y )
+    local templateData = arr.map( whatLinksHere,
+        function ( x ) return {
+                templateName = x,
+                invokeList = getInvokeCallList( x )
+            } end )
+    templateData = arr.filter( templateData, function ( x )
+        return arr.any( x.invokeList, function ( y )
             return lcfirst( y.moduleName ) == lcfirst( moduleName )
         end )
     end )
@@ -440,7 +458,8 @@ local function formatInvokedByList( moduleName, whatLinksHere )
     for _, template in ipairs( templateData ) do
         for _, invoke in ipairs( template.invokeList ) do
             --- NOTE: Somehow only templates aren't linked properly, not sure why
-            table.insert( invokedByList, translate( 'message_function_invoked_by', invoke.funcName, '[[' .. template.templateName .. ']]' ) )
+            table.insert( invokedByList,
+                translate( 'message_function_invoked_by', invoke.funcName, '[[' .. template.templateName .. ']]' ) )
         end
     end
 
@@ -464,11 +483,15 @@ end
 local function formatRequiredByList( moduleName, whatLinksHere )
     local childModuleData = arr.map( whatLinksHere, function ( title )
         local lists = getRequireList( title )
-        return { name = title, requireList = lists.requireList, loadDataList = lists.loadDataList .. lists.loadJsonDataList }
+        return {
+            name = title,
+            requireList = lists.requireList,
+            loadDataList = lists.loadDataList .. lists.loadJsonDataList
+        }
     end )
 
     local requiredByList = arr.map( childModuleData, function ( item )
-        if arr.any( item.requireList, function( x ) return x:lower() == moduleName:lower() end ) then
+        if arr.any( item.requireList, function ( x ) return x:lower() == moduleName:lower() end ) then
             if item.name:find( '%%' ) then
                 return formatDynamicQueryLink( item.name )
             else
@@ -478,7 +501,7 @@ local function formatRequiredByList( moduleName, whatLinksHere )
     end )
 
     local loadedByList = arr.map( childModuleData, function ( item )
-        if arr.any( item.loadDataList, function( x ) return x:lower() == moduleName:lower() end ) then
+        if arr.any( item.loadDataList, function ( x ) return x:lower() == moduleName:lower() end ) then
             if item.name:find( '%%' ) then
                 return formatDynamicQueryLink( item.name )
             else
@@ -522,7 +545,7 @@ local function cleanFrom( from )
     local parts = mw.text.split( from, '|', true )
 
     if #parts == 2 then
-        local name = string.gsub( parts[ 1 ], '%[%[:', '' )
+        local name = string.gsub( parts[1], '%[%[:', '' )
         name = string.gsub( name, '/[Dd]o[ck]u?', '' )
 
         return name
@@ -537,21 +560,20 @@ end
 function p.getWhatTemplatesLinkHere( pageName )
     local whatTemplatesLinkHere = {}
 
-    local templatesRes = mw.smw.ask({
+    local templatesRes = mw.smw.ask( {
         '[[Links to::' .. pageName .. ']]',
         '[[' .. NS_TEMPLATE_NAME .. ':+]]',
         'sort=Links to',
         'order=asc',
         'mainlabel=from'
-    }) or {}
+    } ) or {}
 
     whatTemplatesLinkHere = arr.new( arr.condenseSparse( arr.map( templatesRes, function ( link )
-        return cleanFrom( link[ 'from' ] )
+        return cleanFrom( link['from'] )
     end ) ) ):unique()
 
     return whatTemplatesLinkHere
 end
-
 
 ---@param pageName string
 ---@return table
@@ -567,18 +589,16 @@ function p.getWhatModulesLinkHere( pageName )
     } ) or {}
 
     whatModulesLinkHere = arr.new( arr.condenseSparse( arr.map( moduleRes, function ( link )
-        return cleanFrom( link[ 'from' ] )
+        return cleanFrom( link['from'] )
     end ) ) ):unique():reject( { pageName } )
 
     return whatModulesLinkHere
 end
 
-
 function p.main( frame )
     local args = frame:getParent().args
-    return p._main( args[ 1 ], args.category, args.isUsed )
+    return p._main( args[1], args.category, args.isUsed )
 end
-
 
 ---@param currentPageName string|nil
 ---@param addCategories boolean|string|nil
@@ -592,7 +612,7 @@ function p._main( currentPageName, addCategories, isUsed )
 
     -- Leave early if not in module or template namespace
     if param.is_empty( currentPageName ) and
-        ( not arr.contains( { NS_MODULE_NAME, NS_TEMPLATE_NAME }, title.nsText ) ) then
+        (not arr.contains( { NS_MODULE_NAME, NS_TEMPLATE_NAME }, title.nsText )) then
         return ''
     end
 
@@ -600,20 +620,20 @@ function p._main( currentPageName, addCategories, isUsed )
     currentPageName = string.gsub( currentPageName, '/[Dd]o[ck]u?$', '' )
     currentPageName = formatPageName( currentPageName )
     moduleIsUsed = yn( param.default_to( isUsed, false ) )
-    shouldAddCategories = yn( param.default_to( addCategories, title.subpageText~='doc' ) )
+    shouldAddCategories = yn( param.default_to( addCategories, title.subpageText ~= 'doc' ) )
 
     -- Don't show sandbox and testcases modules as unused
     if title.text:lower():find( 'sandbox' ) or title.text:lower():find( 'testcases' ) then
-    	moduleIsUsed = true
+        moduleIsUsed = true
     end
 
     if currentPageName:find( '^' .. NS_TEMPLATE_NAME .. ':' ) then
         local ok, invokeList = pcall( getInvokeCallList, currentPageName )
-		if ok then
-        	return formatInvokeCallList( currentPageName, invokeList )
+        if ok then
+            return formatInvokeCallList( currentPageName, invokeList )
         else
-			return userError( invokeList )
-		end
+            return userError( invokeList )
+        end
     end
 
     local ok, lists = pcall( getRequireList, currentPageName, true )
@@ -647,30 +667,39 @@ function p._main( currentPageName, addCategories, isUsed )
         end
     end )
 
-    local usedTemplateList = arr.map( lists.usedTemplateList, function( templateName )
+    local usedTemplateList = arr.map( lists.usedTemplateList, function ( templateName )
         if string.find( templateName, ':' ) then -- Real templates are prefixed by a namespace, magic words are not
-            return '[['..templateName..']]'
+            return '[[' .. templateName .. ']]'
         else
-            return "'''&#123;&#123;"..templateName.."&#125;&#125;'''" -- Magic words don't have a page so make them bold instead
+            return "'''&#123;&#123;" ..
+            templateName .. "&#125;&#125;'''"                         -- Magic words don't have a page so make them bold instead
         end
     end )
 
     local res = {}
 
     table.insert( res, formatInvokedByList( currentPageName, p.getWhatTemplatesLinkHere( currentPageName ) ) )
-    table.insert( res, formatDependencyList( currentPageName, requireList, translate( 'list_type_modules' ), 'message_requires', t( 'category_modules_required_by_modules' ) ) )
-    table.insert( res, formatDependencyList( currentPageName, loadDataList, translate( 'list_type_modules' ), 'message_loads_data_from', t( 'category_modules_using_data' ) ) )
-    table.insert( res, formatDependencyList( currentPageName, loadJsonDataList, translate( 'list_type_modules' ), 'message_loads_data_from', t( 'category_modules_using_data' ) ) )
-    table.insert( res, formatDependencyList( currentPageName, usedTemplateList, translate( 'list_type_templates' ), 'message_transcludes', nil ) )
+    table.insert( res,
+        formatDependencyList( currentPageName, requireList, translate( 'list_type_modules' ), 'message_requires',
+            t( 'category_modules_required_by_modules' ) ) )
+    table.insert( res,
+        formatDependencyList( currentPageName, loadDataList, translate( 'list_type_modules' ), 'message_loads_data_from',
+            t( 'category_modules_using_data' ) ) )
+    table.insert( res,
+        formatDependencyList( currentPageName, loadJsonDataList, translate( 'list_type_modules' ),
+            'message_loads_data_from', t( 'category_modules_using_data' ) ) )
+    table.insert( res,
+        formatDependencyList( currentPageName, usedTemplateList, translate( 'list_type_templates' ),
+            'message_transcludes', nil ) )
     table.insert( res, formatRequiredByList( currentPageName, p.getWhatModulesLinkHere( currentPageName ) ) )
 
-	if shouldAddCategories then
-		local extraCategories = arr.map( lists.extraCategories, function( categoryName )
-			return "[[Category:" .. categoryName .. "]]";
-		end )
+    if shouldAddCategories then
+        local extraCategories = arr.map( lists.extraCategories, function ( categoryName )
+            return '[[Category:' .. categoryName .. ']]'
+        end )
 
-		table.insert( res, table.concat( extraCategories ) );
-	end
+        table.insert( res, table.concat( extraCategories ) )
+    end
 
     if not moduleIsUsed then
         table.insert( res, 1, messageBoxUnused() )
@@ -678,7 +707,6 @@ function p._main( currentPageName, addCategories, isUsed )
 
     return table.concat( res )
 end
-
 
 return p
 -- </nowiki>
