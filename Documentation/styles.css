@@ -1,9 +1,7 @@
 .documentation {
     margin-top: var( --space-md );
     padding-top: var( --space-md );
-    border-top: 1px solid;
-    border-color: var( --border-color-base );
-    font-size: var( --font-size-small );
+    border-top: var( --border-base );
 }
 
 .documentation-header {
@@ -13,11 +11,15 @@
     flex-wrap: wrap;
 }
 
+.documentation-header,
+.documentation-subheader {
+    line-height: 1.25;
+}
+
 .documentation-title {
     color: var( --color-emphasized );
-    font-size: var( --font-size-x-large );
+    font-size: var( --font-size-large );
     font-weight: var( --font-weight-semi-bold );
-    line-height: var( --line-height-xxx-small );
 }
 
 .documentation-links {
@@ -26,8 +28,7 @@
 
 .documentation-subheader {
     color: var( --color-subtle );
-    font-size: var( --font-size-x-small );
-    line-height: var( --line-height-xx-small );
+    font-size: var( --font-size-small );
 }
 
 .documentation-content {
@@ -36,7 +37,7 @@
 
 .documentation-modulestats {
     padding: var( --space-xxs );
-    background: var( --color-surface-2 );
+    background: var( --color-surface-1 );
     border-radius: var( --border-radius-medium );
     display: flex;
     align-items: center;
