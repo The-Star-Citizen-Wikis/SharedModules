@@ -3,6 +3,8 @@
 	"category_error_item_missing_manufacturer": "Items missing manufacturer",
 	"category_error_item_missing_uuid": "Items missing UUID",
 	"category_error_pages_with_script_errors": "Pages with script errors",
+	"category_error_item_missing_type_label": "Items missing type label",
+	"category_error_item_missing_type_category": "Items missing type category",
 	"category_ground_vehicle": "Ground vehicles",
 	"category_ground_vehicle_pledge": "Pledge vehicles",
 	"category_ground_vehicle_size": "%s vehicles",

@@ -574,12 +574,20 @@ function methodtable.setCategories( self )
 		table.insert( self.categories, string.format( '%s (%s)', s1, s2 ) )
 	end
 
-	--- Only set category if category_type value exists
 	if self.smwData[ t( 'SMW_Type' ) ] ~= nil then
-		local typeCategoryKey = 'category_itemtype_' .. string.lower( self.smwData[ t( 'SMW_Type' ) ] )
+		local typeKey = string.lower( self.smwData[ t( 'SMW_Type' ) ] )
+		local typeLabelKey = 'label_itemtype_' .. typeKey
+		local typeLabel = t( typeLabelKey )
+		local typeCategoryKey = 'category_itemtype_' .. typeKey
 		local typeCategory = t( typeCategoryKey )
 
-		if typeCategory ~= nil and typeCategory ~= typeCategoryKey then
+		if typeLabel == typeLabelKey then
+			table.insert( self.categories, t( 'category_error_item_missing_type_label' ) )
+		end
+
+		if typeCategory == typeCategoryKey then
+			table.insert( self.categories, t( 'category_error_item_missing_type_category' ) )
+		else
 			table.insert( self.categories, typeCategory ) 
 
 			if self.smwData[ t( 'SMW_Size' ) ] ~= nil then
