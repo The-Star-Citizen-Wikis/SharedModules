@@ -4,7 +4,7 @@
 	flex-direction: column;
 	margin-block: var(--space-md);
 	background-color: var(--color-surface-1);
-	border: 1px solid var(--border-color-base);
+	border: var(--border-base);
 	border-radius: var(--border-radius-medium);
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-xx-small);
@@ -18,10 +18,14 @@
 	background-color: var(--background-color-warning-subtle);
 }
 
+.mbox-title,
+.mbox-text {
+	padding: var(--space-sm) var(--space-md);
+}
+
 .mbox-title {
 	display: flex;
 	align-items: center;
-	padding: var(--space-sm) var(--space-md);
 }
 
 .mbox-icon img {
@@ -36,16 +40,30 @@
 .mbox-text {
 	position: absolute;
 	top: 100%;
+	left: 0;
+	right: 0;
 	z-index: 10;
-	padding: var(--space-md);
-	width: 100%;
+	margin-inline: -1px;
 	box-sizing: border-box;
 	background-color: var(--color-surface-1);
+	border-inline: var(--border-base);
+	border-bottom: var(--border-base);
 	border-bottom-left-radius: var(--border-radius-medium);
 	border-bottom-right-radius: var(--border-radius-medium);
 	box-shadow: var(--box-shadow-drop-xx-large);
 	opacity: 0;
 	visibility: hidden;
+}
+
+.mbox-text::before {
+	content: '';
+	display: block;
+	position: absolute;
+	top: 0;
+	left: var(--space-md);
+	right: var(--space-md);
+	height: var(--border-width-base);
+	background: var(--border-color-subtle);
 }
 
 .mbox:hover {
