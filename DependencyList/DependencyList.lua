@@ -16,9 +16,12 @@ local mbox = require( 'Module:Mbox' )._mbox
 local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 
+local dpl  -- Lazy load DPL
+
 -- Toggle query mode between SemanticMediaWiki (smw) and DynamicPageList3 (dpl)
 -- For SMW, you will need the SemanticExtraSpecialProperties extension and enable the 'Links to' property
-local QUERY_MODE = 'smw'
+local QUERY_MODE = 'dpl'
+local MAX_DYNAMIC_REQUIRE_LIST_LENGTH = 30
 
 local moduleIsUsed = false
 local shouldAddCategories = false
@@ -72,7 +75,7 @@ local builtins = {
 ---@return string
 local function substVarValue( content, varName )
     local res = content:match( varName .. '%s*=%s*(%b""%s-%.*)' ) or content:match( varName .. "%s*=%s*(%b''%s-%.*)" ) or
-    ''
+        ''
     if res:find( '^(["\'])[Mm]odule?:[%S]+%1' ) and not res:find( '%.%.' ) and not res:find( '%%%a' ) then
         return mw.text.trim( res )
     else
@@ -171,7 +174,32 @@ local function getDynamicRequireList( query )
         return dynamicRequireListQueryCache[query]
     end
 
-    return {}
+    local list = {}
+
+    if QUERY_MODE == 'smw' then
+        --  TODO: Implement SMW query
+    elseif QUERY_MODE == 'dpl' then
+        list = dpl.ask {
+            namespace = NS_MODULE_NAME,
+            titlematch = query,
+            nottitlematch = '%/doc|' .. query .. '/%',
+            distinct = 'strict',
+            ignorecase = true,
+            ordermethod = 'title',
+            count = MAX_DYNAMIC_REQUIRE_LIST_LENGTH + 1,
+            skipthispage = 'no',
+            allowcachedresults = true,
+            cacheperiod = 604800 -- One week
+        }
+    end
+
+    if #list > MAX_DYNAMIC_REQUIRE_LIST_LENGTH then
+        list = { 'Module:' .. query }
+    end
+
+    dynamicRequireListQueryCache[query] = list
+
+    return list
 end
 
 
@@ -443,10 +471,12 @@ local function formatInvokedByList( moduleName, whatLinksHere )
     end
 
     local templateData = arr.map( whatLinksHere,
-        function ( x ) return {
+        function ( x )
+            return {
                 templateName = x,
                 invokeList = getInvokeCallList( x )
-            } end )
+            }
+        end )
     templateData = arr.filter( templateData, function ( x )
         return arr.any( x.invokeList, function ( y )
             return lcfirst( y.moduleName ) == lcfirst( moduleName )
@@ -560,17 +590,29 @@ end
 function p.getWhatTemplatesLinkHere( pageName )
     local whatTemplatesLinkHere = {}
 
-    local templatesRes = mw.smw.ask( {
-        '[[Links to::' .. pageName .. ']]',
-        '[[' .. NS_TEMPLATE_NAME .. ':+]]',
-        'sort=Links to',
-        'order=asc',
-        'mainlabel=from'
-    } ) or {}
+    if QUERY_MODE == 'smw' then
+        local templatesRes = mw.smw.ask( {
+            '[[Links to::' .. pageName .. ']]',
+            '[[' .. NS_TEMPLATE_NAME .. ':+]]',
+            'sort=Links to',
+            'order=asc',
+            'mainlabel=from'
+        } ) or {}
 
-    whatTemplatesLinkHere = arr.new( arr.condenseSparse( arr.map( templatesRes, function ( link )
-        return cleanFrom( link['from'] )
-    end ) ) ):unique()
+        whatTemplatesLinkHere = arr.new( arr.condenseSparse( arr.map( templatesRes, function ( link )
+            return cleanFrom( link['from'] )
+        end ) ) ):unique()
+    elseif QUERY_MODE == 'dpl' then
+        whatTemplatesLinkHere = dpl.ask( {
+            namespace = NS_TEMPLATE_NAME,
+            linksto = pageName,
+            distinct = 'strict',
+            ignorecase = true,
+            ordermethod = 'title',
+            allowcachedresults = true,
+            cacheperiod = 604800 -- One week
+        } )
+    end
 
     return whatTemplatesLinkHere
 end
@@ -580,17 +622,29 @@ end
 function p.getWhatModulesLinkHere( pageName )
     local whatModulesLinkHere = {}
 
-    local moduleRes = mw.smw.ask( {
-        '[[Links to::' .. pageName .. ']]',
-        '[[' .. NS_MODULE_NAME .. ':+]]',
-        'sort=Links to',
-        'order=asc',
-        'mainlabel=from'
-    } ) or {}
+    if QUERY_MODE == 'smw' then
+        local moduleRes = mw.smw.ask( {
+            '[[Links to::' .. pageName .. ']]',
+            '[[' .. NS_MODULE_NAME .. ':+]]',
+            'sort=Links to',
+            'order=asc',
+            'mainlabel=from'
+        } ) or {}
 
-    whatModulesLinkHere = arr.new( arr.condenseSparse( arr.map( moduleRes, function ( link )
-        return cleanFrom( link['from'] )
-    end ) ) ):unique():reject( { pageName } )
+        whatModulesLinkHere = arr.new( arr.condenseSparse( arr.map( moduleRes, function ( link )
+            return cleanFrom( link['from'] )
+        end ) ) ):unique():reject( { pageName } )
+    elseif QUERY_MODE == 'dpl' then
+        whatModulesLinkHere = dpl.ask( {
+            namespace = NS_MODULE_NAME,
+            linksto = pageName,
+            distinct = 'strict',
+            ignorecase = true,
+            ordermethod = 'title',
+            allowcachedresults = true,
+            cacheperiod = 604800 -- One week
+        } )
+    end
 
     return whatModulesLinkHere
 end
@@ -625,6 +679,10 @@ function p._main( currentPageName, addCategories, isUsed )
     -- Don't show sandbox and testcases modules as unused
     if title.text:lower():find( 'sandbox' ) or title.text:lower():find( 'testcases' ) then
         moduleIsUsed = true
+    end
+
+    if QUERY_MODE == 'dpl' then
+        dpl = require( 'Module:DPLlua' )
     end
 
     if currentPageName:find( '^' .. NS_TEMPLATE_NAME .. ':' ) then
@@ -672,7 +730,8 @@ function p._main( currentPageName, addCategories, isUsed )
             return '[[' .. templateName .. ']]'
         else
             return "'''&#123;&#123;" ..
-            templateName .. "&#125;&#125;'''"                         -- Magic words don't have a page so make them bold instead
+                templateName ..
+                "&#125;&#125;'''"             -- Magic words don't have a page so make them bold instead
         end
     end )
 
