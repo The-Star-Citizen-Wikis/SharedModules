@@ -16,7 +16,7 @@ local mbox = require( 'Module:Mbox' )._mbox
 local i18n = require( 'Module:i18n' ):new()
 local TNT = require( 'Module:Translate' ):new()
 
-local dpl  -- Lazy load DPL
+local dpl -- Lazy load DPL
 
 -- Toggle query mode between SemanticMediaWiki (smw) and DynamicPageList3 (dpl)
 -- For SMW, you will need the SemanticExtraSpecialProperties extension and enable the 'Links to' property
@@ -179,7 +179,7 @@ local function getDynamicRequireList( query )
     if QUERY_MODE == 'smw' then
         --  TODO: Implement SMW query
     elseif QUERY_MODE == 'dpl' then
-        list = dpl.ask {
+        list = dpl.ask( {
             namespace = NS_MODULE_NAME,
             titlematch = query,
             nottitlematch = '%/doc|' .. query .. '/%',
@@ -190,7 +190,7 @@ local function getDynamicRequireList( query )
             skipthispage = 'no',
             allowcachedresults = true,
             cacheperiod = 604800 -- One week
-        }
+        } )
     end
 
     if #list > MAX_DYNAMIC_REQUIRE_LIST_LENGTH then
@@ -587,24 +587,29 @@ end
 
 ---@param pageName string
 ---@return table
-function p.getWhatTemplatesLinkHere( pageName )
-    local whatTemplatesLinkHere = {}
+local function getWhatLinksHere( pageName, namespace, options )
+    options = options or {}
+    local whatLinksHere = {}
 
     if QUERY_MODE == 'smw' then
-        local templatesRes = mw.smw.ask( {
+        local res = mw.smw.ask( {
             '[[Links to::' .. pageName .. ']]',
-            '[[' .. NS_TEMPLATE_NAME .. ':+]]',
+            '[[' .. namespace .. ':+]]',
             'sort=Links to',
             'order=asc',
             'mainlabel=from'
         } ) or {}
 
-        whatTemplatesLinkHere = arr.new( arr.condenseSparse( arr.map( templatesRes, function ( link )
+        whatLinksHere = arr.new( arr.condenseSparse( arr.map( res, function ( link )
             return cleanFrom( link['from'] )
         end ) ) ):unique()
+
+        if options.smw_reject_self then
+            whatLinksHere = whatLinksHere:reject( { pageName } )
+        end
     elseif QUERY_MODE == 'dpl' then
-        whatTemplatesLinkHere = dpl.ask( {
-            namespace = NS_TEMPLATE_NAME,
+        whatLinksHere = dpl.ask( {
+            namespace = namespace,
             linksto = pageName,
             distinct = 'strict',
             ignorecase = true,
@@ -614,39 +619,19 @@ function p.getWhatTemplatesLinkHere( pageName )
         } )
     end
 
-    return whatTemplatesLinkHere
+    return whatLinksHere
+end
+
+---@param pageName string
+---@return table
+function p.getWhatTemplatesLinkHere( pageName )
+    return getWhatLinksHere( pageName, NS_TEMPLATE_NAME )
 end
 
 ---@param pageName string
 ---@return table
 function p.getWhatModulesLinkHere( pageName )
-    local whatModulesLinkHere = {}
-
-    if QUERY_MODE == 'smw' then
-        local moduleRes = mw.smw.ask( {
-            '[[Links to::' .. pageName .. ']]',
-            '[[' .. NS_MODULE_NAME .. ':+]]',
-            'sort=Links to',
-            'order=asc',
-            'mainlabel=from'
-        } ) or {}
-
-        whatModulesLinkHere = arr.new( arr.condenseSparse( arr.map( moduleRes, function ( link )
-            return cleanFrom( link['from'] )
-        end ) ) ):unique():reject( { pageName } )
-    elseif QUERY_MODE == 'dpl' then
-        whatModulesLinkHere = dpl.ask( {
-            namespace = NS_MODULE_NAME,
-            linksto = pageName,
-            distinct = 'strict',
-            ignorecase = true,
-            ordermethod = 'title',
-            allowcachedresults = true,
-            cacheperiod = 604800 -- One week
-        } )
-    end
-
-    return whatModulesLinkHere
+    return getWhatLinksHere( pageName, NS_MODULE_NAME, { smw_reject_self = true } )
 end
 
 function p.main( frame )
@@ -731,7 +716,7 @@ function p._main( currentPageName, addCategories, isUsed )
         else
             return "'''&#123;&#123;" ..
                 templateName ..
-                "&#125;&#125;'''"             -- Magic words don't have a page so make them bold instead
+                "&#125;&#125;'''" -- Magic words don't have a page so make them bold instead
         end
     end )
 
