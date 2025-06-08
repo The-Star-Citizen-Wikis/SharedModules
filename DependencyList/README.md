@@ -3,71 +3,20 @@
 This module generates a list of dependencies used by template and module documentation.
 
 ## Requirements
-- [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki)
-- [Semantic Extra Special Properties](https://github.com/SemanticMediaWiki/SemanticExtraSpecialProperties)
-- Modules: Array, Yesno, Paramtest, User error, Hatnote, Hatnote list, Translate
+- [Semantic MediaWiki](https://www.mediawiki.org/wiki/Extension:Semantic_MediaWiki) + [Semantic Extra Special Properties](https://github.com/SemanticMediaWiki/SemanticExtraSpecialProperties) or [DynamicPageList3](https://www.mediawiki.org/wiki/Extension:DynamicPageList3) + `Module:DPLlua`
+- Any other modules listed on https://starcitizen.tools/Module:DependencyList
 
 ## Installation
 1. Create `Module:DependencyList`
 2. Upload all icons from the `SharedIcons/wikimedia` repository
+3. Change the message `MediaWiki:scribunto-doc-page-name` to `Module:$1/doc`
 
-Change the message `MediaWiki:scribunto-doc-page-name` to `Module:$1/doc`.
+### Using with Semantic MediaWiki
 
-## Configuration
-All configuration of this module is handled in `config.json`.
-
-## SMW
 When using SMW, [Extension:SemanticExtraSpecialProperties](https://github.com/SemanticMediaWiki/SemanticExtraSpecialProperties) must be installed.
 
-A special `Links to` Attribute is generated using the code below (placed in LocalSettings.php or somewhere there like).
-
-The property should be populated on page edit, or can be manually triggered by the `rebuildData.php` SMW maintenance script.
+Enable the `Links to` special property in `localSettings.php`:
 ```php
-$sespgLocalDefinitions['_LINKSTO'] = [
-    'id'    => '_LINKSTO',
-    'type'  => '_wpg',
-    'alias' => 'sesp-property-links-to',
-    'desc' => 'sesp-property-links-to-desc',
-    'label' => 'Links to',
-    'callback'  => static function(\SESP\AppFactory $appFactory, \SMW\DIProperty $property, \SMW\SemanticData $semanticData ) {
-        $page = $semanticData->getSubject()->getTitle();
-
-        // The namespaces where the property will be added
-        $targetNS = [ 10, 828 ];
-
-        if ( $page === null || !in_array( $page->getNamespace(), $targetNS, true ) ) {
-            return;
-        }
-
-        /** @var \Wikimedia\Rdbms\DBConnRef $con */
-        $con = $appFactory->getConnection();
-
-        $where = [];
-        $where[] = sprintf('pl.pl_from = %s', $page->getArticleID() );
-        $where[] = sprintf('pl.pl_title != %s', $con->addQuotes( $page->getDBkey() ) );
-
-        if ( !empty( $targetNS ) ) {
-            $where[] = sprintf( 'pl.pl_namespace IN (%s)', implode(',', $targetNS ) );
-        }
-
-        $res = $con->select(
-            [ 'pl' => 'pagelinks', 'page' ],
-            [ 'sel_title' => 'pl.pl_title', 'sel_ns' => 'pl.pl_namespace' ],
-            $where,
-            __METHOD__,
-            [ 'DISTINCT' ],
-            [ 'page' => [ 'JOIN', 'page_id=pl_from' ] ]
-        );
-
-        foreach( $res as $row ) {
-            $title = Title::newFromText( $row->sel_title, $row->sel_ns );
-            if ( $title !== null && $title->exists() ) {
-                $semanticData->addPropertyObjectValue( $property,\SMW\DIWikiPage::newFromTitle( $title ) );
-            }
-        }
-    }
-];
-
 $sespgEnabledPropertyList[] = '_LINKSTO';
 ```
 
@@ -76,3 +25,12 @@ Enable Semantic Data on the Module and Template namespaces:
 $smwgNamespacesWithSemanticLinks[NS_TEMPLATE] = true;
 $smwgNamespacesWithSemanticLinks[828] = true;
 ```
+
+Set `QUERY_MODE` to `smw` in Lua module
+
+### Using with DynamicPageList3 (DPL3)
+
+Set `QUERY_MODE` to `dpl` in Lua module
+
+## Configuration
+All configuration of this module is handled in `config.json`.
