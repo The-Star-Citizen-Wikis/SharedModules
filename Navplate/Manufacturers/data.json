@@ -80,6 +80,12 @@
             }
         },
         {
+            "label": "Manned turrets",
+            "conditions": {
+                "Category": "Manned turrets"
+            }
+        },
+        {
             "label": "Mining lasers",
             "conditions": {
                 "Category": "Mining lasers"
@@ -101,6 +107,12 @@
             "label": "Missile racks",
             "conditions": {
                 "Category": "Missile racks"
+            }
+        },
+        {
+            "label": "mobiGlas",
+            "conditions": {
+                "Category": "mobiGlas"
             }
         },
         {
@@ -173,6 +185,12 @@
             "label": "Tractor beams",
             "conditions": {
                 "Category": "Tractor beams"
+            }
+        },
+        {
+            "label": "Vehicle modules",
+            "conditions": {
+                "Category": "Vehicle modules"
             }
         },
         {
