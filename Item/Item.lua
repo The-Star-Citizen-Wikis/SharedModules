@@ -150,11 +150,18 @@ function methodtable.setSemanticProperties( self )
 	)
 
 	if type( setData[ t( 'SMW_Manufacturer' ) ] ) == 'string' then
-		local man = manufacturer:get( setData[ t( 'SMW_Manufacturer' ) ] )
-		if man ~= nil then man = man.name end
+		if setData[ t( 'SMW_Manufacturer' ) ] == 'UNKN' then
+			setData[ t( 'SMW_Manufacturer' ) ] = nil
+		else
+			local man = manufacturer:get( setData[ t( 'SMW_Manufacturer' ) ] )
+			local manText = setData[ t( 'SMW_Manufacturer' ) ]
 
-		setData[ t( 'SMW_Manufacturer' ) ] = man or setData[ t( 'SMW_Manufacturer' ) ]
-		setData[ t( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', setData[ t( 'SMW_Manufacturer' ) ] )
+			if man ~= nil then
+				manText = man.name
+			end
+
+			setData[ t( 'SMW_Manufacturer' ) ] = string.format( '[[%s]]', manText )
+		end
 	end
 
 	-- Set properties with API data
@@ -613,8 +620,6 @@ function methodtable.setCategories( self )
 		manufacturer = string.gsub( manufacturer, '%]+', '' )
 
 		table.insert( self.categories, manufacturer )
-	else
-		table.insert( self.categories, t( 'category_error_item_missing_manufacturer' ) )
 	end
 
 	if self.smwData[ t( 'SMW_UUID' ) ] == nil then
@@ -664,7 +669,7 @@ function methodtable.setShortDescription( self )
 	end
 
 	--- Manufacturer
-	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil and self.smwData[ t( 'SMW_Manufacturer' ) ] ~= 'Unknown manufacturer' then
+	if self.smwData[ t( 'SMW_Manufacturer' ) ] ~= nil then
 		local mfuname = self.smwData[ t( 'SMW_Manufacturer' ) ]
 		local man = manufacturer:get( mfuname )
 		--- Use short name if possible
