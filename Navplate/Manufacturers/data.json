@@ -50,6 +50,12 @@
             }
         },
         {
+            "label": "Flight blades",
+            "conditions": {
+                "Category": "Flight blades"
+            }
+        },
+        {
             "label": "Fuel nozzles",
             "conditions": {
                 "Category": "Fuel nozzles"
