@@ -27,6 +27,18 @@ local p = {}
 
 --- Component data types
 
+--- @class HeaderComponentData @Represents the structure of a validated infobox header for HeaderComponent.
+--- @field title string The title of the header.
+--- @field subtitle string|nil The subtitle of the header. Optional.
+--- @field image string|nil The image of the header. Optional.
+
+--- @type DataSchemaDefinition @The schema for HeaderComponent data.
+p.HeaderComponentDataSchema = {
+	title = { type = 'string', required = true },
+	subtitle = { type = 'string', required = false, default = nil },
+	image = { type = 'string', required = false, default = nil }
+}
+
 --- @class SectionComponentData @Represents the structure of a validated infobox section for SectionComponent.
 --- @field label string|nil The label text for the section. Optional.
 --- @field columns number|nil The number of columns in the section. Optional.

@@ -1,24 +1,36 @@
 /* TODO: Break down into components? */
 .t-infobox {
-    width: 100%;
-    max-width: 400px;
-    font-size: var( --font-size-small );
-    line-height: var( --line-height-xx-small );
+	width: 100%;
+	max-width: 400px;
+	font-size: var(--font-size-small);
+	line-height: var(--line-height-xx-small);
 }
 
+/* Header Component */
+.t-infobox-header-bottom {
+	font-weight: var(--font-weight-medium);
+}
+
+.t-infobox-title {
+	font-size: var(--font-size-x-large);
+	color: var(--color-emphasized);
+}
+
+/* Section Component */
 .t-infobox-section-label {
-    font-size: var( --font-size-medium );
-    font-weight: var( --font-weight-medium );
-    color: var( --color-emphasized );
+	font-size: var(--font-size-medium);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-emphasized);
 }
 
 .t-infobox-section-items {
-    display: grid;
-    grid-template-columns: repeat( var( --infobox-section-columns ), 1fr );
+	display: grid;
+	grid-template-columns: repeat(var(--infobox-section-columns), 1fr);
 }
 
+/* Item Component */
 .t-infobox-item-label {
-    font-size: var( --font-size-x-small );
-    font-weight: var( --font-weight-medium );
-    color: var( --color-subtle );
+	font-size: var(--font-size-x-small);
+	font-weight: var(--font-weight-medium);
+	color: var(--color-subtle);
 }

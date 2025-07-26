@@ -27,6 +27,8 @@ local function getItemsHtml( section )
 	return root
 end
 
+--- @param section SectionComponentData
+--- @return mw.html
 local function getSubSectionsHtml( section )
 	local root = mw.html.create( 'div' )
 	root:addClass( 't-infobox-section-subsections' )
