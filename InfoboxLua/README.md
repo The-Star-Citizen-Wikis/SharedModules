@@ -1,4 +1,4 @@
-# Module:InfoboxNeueMkII
+# Module:InfoboxLua
 
 WIP
 

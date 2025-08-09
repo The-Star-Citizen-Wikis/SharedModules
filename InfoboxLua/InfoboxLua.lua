@@ -1,7 +1,7 @@
 require( 'strict' )
 
-local headerComponent = require( 'Module:InfoboxNeueMkII/Components/Header' )
-local sectionComponent = require( 'Module:InfoboxNeueMkII/Components/Section' )
+local headerComponent = require( 'Module:InfoboxLua/Components/Header' )
+local sectionComponent = require( 'Module:InfoboxLua/Components/Section' )
 
 local p = {}
 
@@ -39,10 +39,10 @@ local function renderInfobox( data )
 end
 
 function p.test()
-	local data = mw.loadJsonData( 'Module:InfoboxNeueMkII/testData.json' )
+	local data = mw.loadJsonData( 'Module:InfoboxLua/testData.json' )
 	local html = renderInfobox( data )
 	local styles = mw.getCurrentFrame():extensionTag {
-		name = 'templatestyles', args = { src = 'Module:InfoboxNeueMkII/styles.css' }
+		name = 'templatestyles', args = { src = 'Module:InfoboxLua/styles.css' }
 	}
 
 	mw.logObject( html )

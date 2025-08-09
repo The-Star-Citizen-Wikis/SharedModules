@@ -1,7 +1,7 @@
 require( 'strict' )
 
-local util = require( 'Module:InfoboxNeueMkII/Util' )
-local types = require( 'Module:InfoboxNeueMkII/Types' )
+local util = require( 'Module:InfoboxLua/Util' )
+local types = require( 'Module:InfoboxLua/Types' )
 
 local p = {}
 

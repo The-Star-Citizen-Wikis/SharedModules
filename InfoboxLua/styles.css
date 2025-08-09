@@ -6,6 +6,12 @@
 	line-height: var(--line-height-xx-small);
 }
 
+.t-infobox-content {
+	display: flex;
+	flex-direction: column;
+	row-gap: var(--space-md);
+}
+
 /* Header Component */
 .t-infobox-header-bottom {
 	font-weight: var(--font-weight-medium);
@@ -26,6 +32,7 @@
 .t-infobox-section-items {
 	display: grid;
 	grid-template-columns: repeat(var(--infobox-section-columns), 1fr);
+	gap: var(--space-xs);
 }
 
 /* Item Component */

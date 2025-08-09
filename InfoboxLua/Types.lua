@@ -15,7 +15,7 @@ local p = {}
 --- @field done function @Finishes the HTML element.
 
 
---- Schema definitions for InfoboxNeueMkII components.
+--- Schema definitions for InfoboxLua components.
 
 --- @class DataSchemaFieldDefinition @Represents the definition of a single field within a schema.
 --- @field type string The expected Lua type (e.g., "string", "number", "table", "boolean").

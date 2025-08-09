@@ -1,9 +1,9 @@
 require( 'strict' )
 
 local tabber = mw.ext.tabber
-local util = require( 'Module:InfoboxNeueMkII/Util' )
-local types = require( 'Module:InfoboxNeueMkII/Types' )
-local itemComponent = require( 'Module:InfoboxNeueMkII/Components/Item' )
+local util = require( 'Module:InfoboxLua/Util' )
+local types = require( 'Module:InfoboxLua/Types' )
+local itemComponent = require( 'Module:InfoboxLua/Components/Item' )
 
 local p = {}
 

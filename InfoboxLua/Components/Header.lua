@@ -1,7 +1,7 @@
 require( 'strict' )
 
-local util = require( 'Module:InfoboxNeueMkII/Util' )
-local types = require( 'Module:InfoboxNeueMkII/Types' )
+local util = require( 'Module:InfoboxLua/Util' )
+local types = require( 'Module:InfoboxLua/Types' )
 
 -- TODO: Move config somewhere else
 local PLACEHOLDER_IMAGE = 'Placeholderv2.png';
