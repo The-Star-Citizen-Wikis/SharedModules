@@ -267,9 +267,10 @@
 }
 
 .infobox__sectionContent {
+	--t-infoboxneue-grid-template-columns: repeat(var(--infobox-grid-cols), minmax(0, 1fr));
 	display: grid;
 	gap: var(--space-sm);
-	grid-template-columns: repeat(var(--infobox-grid-cols), minmax(0, 1fr));
+	grid-template-columns: var(--t-infoboxneue-grid-template-columns);
 }
 
 .infobox__sectionContent--has-cells {
