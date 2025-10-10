@@ -123,7 +123,7 @@
 				"API_speed.scm"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p0"
 		},
 		{
 			"SMW_MaximumSpeed": [
@@ -131,7 +131,7 @@
 				"API_speed.max"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p0"
 		},
 		{
 			"SMW_QuantumSpeed": [
@@ -190,7 +190,7 @@
 				"ARG_mass"
 			],
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p0"
 		},
 		{
 			"SMW_LoreReleaseDate": "ARG_ReleaseDate"
@@ -323,7 +323,8 @@
 		},
 		{
 			"SMW_ReverseSpeed": "API_speed.reverse",
-			"type": "number"
+			"type": "number",
+			"smw_format": "#-n-p1"
 		},
 		{
 			"SMW_ZeroToScmSpeedTime": "API_speed.zero_to_scm",
@@ -336,17 +337,17 @@
 		{
 			"SMW_RollRate": "API_agility.roll",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p1"
 		},
 		{
 			"SMW_PitchRate": "API_agility.pitch",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p1"
 		},
 		{
 			"SMW_YawRate": "API_agility.yaw",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p1"
 		},
 		{
 			"SMW_HydrogenFuelCapacity": "API_fuel.capacity",
@@ -363,12 +364,12 @@
 		{
 			"SMW_InsuranceClaimTime": "API_insurance.claim_time",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p0"
 		},
 		{
 			"SMW_InsuranceExpediteTime": "API_insurance.expedite_time",
 			"type": "number",
-			"smw_format": "#-n"
+			"smw_format": "#-n-p0"
 		},
 		{
 			"SMW_InsuranceExpediteCost": "API_insurance.expedite_cost",
