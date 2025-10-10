@@ -396,11 +396,6 @@
 			"data": "SMW_ClassName"
 		},
 		{
-			"label": "StarShip 42",
-			"format": "https://www.starship42.com/fleetview/single/?source=Star%%20Citizen%%20Wiki&type=matrix&style=colored&s=%s",
-			"data": "SMW_ShipMatrixName"
-		},
-		{
 			"label": "FleetYards",
 			"format": "https://fleetyards.net/ships/%s/",
 			"data": "SMW_ShipMatrixName"
@@ -412,7 +407,7 @@
 		},
 		{
 			"label": "Wiki API",
-			"format": "https://api.star-citizen.wiki/api/v2/vehicles/%s",
+			"format": "https://api.star-citizen.wiki/api/v2/vehicles/%s?include=hardpoints",
 			"data": "SMW_UUID"
 		}
 	],
