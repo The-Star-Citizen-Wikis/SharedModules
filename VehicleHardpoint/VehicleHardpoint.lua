@@ -1401,12 +1401,16 @@ end
 function VehicleHardpoint.test( frame )
     frame = frame or { args = {} }
     local page = frame.args['Name'] or 'dc39ca6b-1d76-4db5-9346-356f49954978'
-    local json = mw.text.jsonDecode( mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. page, {
-        include = {
-            'hardpoints',
-            'parts'
-        },
-    } ) )
+    local json = mw.text.jsonDecode( mw.ext.Apiunto.fetch(
+        'StarCitizenWikiAPI',
+        'v2/vehicles/' .. page,
+        {
+            include = {
+                'hardpoints',
+                'parts'
+            },
+        }
+    ) )
 
     local hardpoint = VehicleHardpoint:new( page )
     hardpoint:setHardPointObjects( json.data.hardpoints )

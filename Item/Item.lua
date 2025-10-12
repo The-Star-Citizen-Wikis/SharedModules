@@ -113,10 +113,14 @@ function methodtable.getApiDataForCurrentPage( self )
 		config.name_suffixes
     )
 
-	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v2/items/' .. query, {
-		include = data.includes,
-		locale = config.api_locale
-	} ) )
+	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.fetch(
+		'StarCitizenWikiAPI',
+		'v2/items/' .. query,
+		{
+			include = data.includes,
+			locale = config.api_locale
+		}
+	) )
 
 	if not success or api.checkResponseStructure( json, true, false ) == false then return end
 

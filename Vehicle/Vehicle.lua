@@ -191,11 +191,15 @@ function methodtable.getApiDataForCurrentPage( self )
 		table.insert( hardpointFilter, '!' .. filter )
 	end
 
-	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v2/vehicles/' .. query, {
-		include = data.includes,
-		locale = config.api_locale,
-		['filter[hardpoints]'] = table.concat( hardpointFilter, ',' )
-	} ) )
+	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.fetch(
+		'StarCitizenWikiAPI',
+		'v2/vehicles/' .. query,
+		{
+			include = data.includes,
+			locale = config.api_locale,
+			['filter[hardpoints]'] = table.concat( hardpointFilter, ',' )
+		}
+	) )
 
 	if not success or api.checkResponseStructure( json, true, false ) == false then return end
 

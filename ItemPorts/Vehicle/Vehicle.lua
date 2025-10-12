@@ -538,11 +538,15 @@ end
 --- @return table
 local function getAPIData( query )
     local api = require( 'Module:Common/Api' )
-    local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.get_raw( 'v3/vehicles/' .. query, {
-        include = {
-            'ports'
+    local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.fetch(
+        'StarCitizenWikiAPI',
+        'v3/vehicles/' .. query,
+        {
+            include = {
+                'ports'
+            }
         }
-    } ) )
+    ) )
 
     if not success or api.checkResponseStructure( json, true, false ) == false then return end
     return api.makeAccessSafe( json.data )
