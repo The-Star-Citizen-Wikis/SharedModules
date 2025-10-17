@@ -10,7 +10,6 @@ Lua helper to create `<details>` elements with [https://www.mediawiki.org/wiki/E
 
 ## Usage
 ```lua
-
 local Details = require( 'Module:Details' )
 
 local wikitext = Details.getWikitext(

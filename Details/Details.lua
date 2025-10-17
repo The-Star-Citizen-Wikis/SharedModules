@@ -38,7 +38,8 @@ function p.getWikitext( data, frame )
 		content = summary .. data.details.content,
 		args = {
 			class = data.details.class,
-			open = data.details.open or true
+			-- Boolean does not work with Extension:Details, has to be 'yes' or 'no'
+			open = data.details.open ~= false and 'yes' or 'no'
 		}
 	}
 	return details
