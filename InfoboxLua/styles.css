@@ -1,43 +1,191 @@
-/* TODO: Break down into components? */
 .t-infobox {
+	--t-infobox-padding-inline: var(--space-md);
+
 	width: 100%;
-	max-width: 400px;
+	margin-bottom: var(--space-md);
 	font-size: var(--font-size-small);
 	line-height: var(--line-height-xx-small);
+	background: var(--color-surface-1);
+	border: var(--border-base);
+	border-radius: var(--border-radius-medium);
+	overflow: hidden;
+	box-sizing: content-box;
 }
 
-.t-infobox-content {
+.t-infobox-collapsible-button {
+	--size-icon: var(--font-size-small);
+	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
+
+	border-top: var(--border-subtle);
+	padding-block: var(--space-sm);
 	display: flex;
-	flex-direction: column;
-	row-gap: var(--space-md);
+	column-gap: var(--space-xs);
+	align-items: center;
+	list-style: none;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.t-infobox-collapsible-button .mw-ui-icon-wikimedia-collapse {
+	transition: var(--transition-hover);
+	transition-property: transform;
+	transform: var(--transform-rotate-collapse);
+}
+
+.t-infobox-collapsible[open]
+	.t-infobox-collapsible-button
+	.mw-ui-icon-wikimedia-collapse {
+	transform: none;
+}
+
+.t-infobox-collapsible-button .t-infobox-section-label {
+	border-top: 0;
+	padding-block: 0;
+}
+
+.t-infobox-header,
+.t-infobox-content > .t-infobox-section > :last-child {
+	padding-bottom: var(--space-md);
 }
 
 /* Header Component */
-.t-infobox-header-bottom {
+.t-infobox-image-container {
+	position: relative;
+}
+
+.t-infobox-image-overlay {
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+}
+
+.t-infobox-image {
+	display: grid;
+	place-content: center;
+	min-height: 160px;
+}
+
+.t-infobox-image .mw-file-element {
+	max-width: 100%;
+	height: auto;
+}
+
+.t-infobox-header-content {
+	margin-top: var(--space-sm);
 	font-weight: var(--font-weight-medium);
 }
 
 .t-infobox-title {
 	font-size: var(--font-size-x-large);
+	font-weight: var(--font-weight-semi-bold);
 	color: var(--color-emphasized);
 }
 
 /* Section Component */
 .t-infobox-section-label {
+	border-top: var(--border-subtle);
+	padding-block: var(--space-sm);
 	font-size: var(--font-size-medium);
-	font-weight: var(--font-weight-medium);
+	font-weight: var(--font-weight-semi-bold);
 	color: var(--color-emphasized);
 }
 
 .t-infobox-section-items {
+	--t-infobox-section-columns-span: span var(--infobox-section-columns);
+	--t-infobox-section-grid-template-columns: repeat(
+		var(--infobox-section-columns),
+		1fr
+	);
+
 	display: grid;
-	grid-template-columns: repeat(var(--infobox-section-columns), 1fr);
-	gap: var(--space-xs);
+	grid-template-columns: var(--t-infobox-section-grid-template-columns);
+	gap: var(--space-sm);
+}
+
+.t-infobox-section-subsections {
+	margin-inline: calc(var(--t-infobox-padding-inline) * -1);
+}
+
+.t-infobox-section-subsections .tabber {
+	/* Compensate for the top padding of the tab buttons */
+	margin-top: -0.75em;
+}
+
+.t-infobox-section-subsections .tabber__header {
+	margin-inline: -0.5em; /* Compensate for the side padding of the tab buttons */
+	box-shadow: none; /* Hide the bottom border in Tabber to reduce visual clutter */
+}
+
+.t-infobox-section-subsections .tabber__header,
+.t-infobox-section-subsections .tabber__panel {
+	padding-inline: var(--t-infobox-padding-inline);
+}
+
+.t-infobox-section-subsections .tabber__tab {
+	/* Swap margin and padding so that the indicator is aligned */
+	margin-inline: 0.5em;
+	padding-inline: 0;
+}
+
+.t-infobox-section-subsections .tabber__panel > .t-infobox-section {
+	padding-inline: 0;
+}
+
+.t-infobox-section-subsections
+	.tabber__panel
+	> .t-infobox-section
+	> .t-infobox-section-items:first-child {
+	padding-top: var(--space-sm);
+}
+
+.t-infobox-section-subsections
+	.tabber__panel
+	> .t-infobox-section
+	> .t-infobox-section-items:last-child {
+	padding-bottom: var(--space-sm);
 }
 
 /* Item Component */
 .t-infobox-item-label {
-	font-size: var(--font-size-x-small);
 	font-weight: var(--font-weight-medium);
 	color: var(--color-subtle);
+}
+
+.t-infobox-header-content,
+.t-infobox-section {
+	padding-inline: var(--t-infobox-padding-inline);
+}
+
+.t-infobox-item {
+	display: flex;
+	flex-direction: column;
+	gap: 2px;
+}
+
+/* Item Card Component */
+.t-infobox-item-card.t-infobox-item {
+	margin-top: calc(var(--space-xxs) * -1);
+	grid-column: var(--t-infobox-section-columns-span);
+	border: var(--border-base);
+	border-radius: var(--border-radius-medium);
+	padding: var(--space-sm);
+	background: var(--color-surface-0);
+}
+
+.t-infobox-item-card-label {
+	margin-bottom: var(--space-sm);
+	font-weight: var(--font-weight-semi-bold);
+	font-size: var(--font-size-medium);
+}
+
+.t-infobox-item-card-items {
+	display: grid;
+	grid-template-columns: 1fr 1fr;
+	gap: var(--space-sm);
+}
+
+.t-infobox-item:not(.t-infobox-item-card) + .t-infobox-item-card {
+	margin-top: var(--space-xs);
 }

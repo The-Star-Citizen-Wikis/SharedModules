@@ -11,12 +11,14 @@ local p = {}
 --- @param data table
 --- @return mw.html|nil
 function p.getHtml( data )
-	--- @type ItemComponentData|nil
-	local item = util.validateAndConstruct( data, types.ItemComponentDataSchema )
-
-	if not item then
+	--- Sometimes modules short-circuit the infobox data and don't return a content string.
+	--- If that's the case, we don't want to render anything.
+	if not util.isNonEmptyString( data.content ) then
 		return nil
 	end
+
+	--- @type ItemComponentData
+	local item = util.validateAndConstruct( data, types.ItemComponentDataSchema )
 
 
 	local root = mw.html.create( 'div' )

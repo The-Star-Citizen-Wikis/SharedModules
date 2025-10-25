@@ -15,6 +15,14 @@ function p.isNonEmptyString( value )
 	return type( value ) == 'string' and value ~= ''
 end
 
+--- Checks if a value is a table and is not empty.
+---
+--- @param value any The value to check.
+--- @return boolean True if the value is a non-empty table, false otherwise.
+function p.isNonEmptyTable( value )
+	return type( value ) == 'table' and value ~= {}
+end
+
 --- Validates input data against a provided schema and constructs a new object.
 --- Returns nil if validation fails.
 ---
@@ -62,6 +70,24 @@ function p.validateAndConstruct( rawData, schema )
 	end
 
 	return newObject
+end
+
+--- Helper function to fix arrays from a JSON loaded with mw.loadJsonData.
+---
+--- @param array table The array to fix.
+--- @return table The fixed array.
+function p.fixJsonArray( array )
+	if array == nil then
+		return {}
+	end
+
+	checkType( 'Util.fixJsonArray', 1, array, 'table' )
+
+	local parts = {}
+	for _, value in ipairs( array ) do
+		table.insert( parts, value )
+	end
+	return parts
 end
 
 return p

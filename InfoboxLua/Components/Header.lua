@@ -1,41 +1,98 @@
 require( 'strict' )
 
+local tabber = mw.ext.tabber
 local util = require( 'Module:InfoboxLua/Util' )
 local types = require( 'Module:InfoboxLua/Types' )
-
--- TODO: Move config somewhere else
-local PLACEHOLDER_IMAGE = 'Placeholderv2.png';
-local IMAGE_SIZE = 400;
 
 local p = {}
 
 
---- @param image string
+--- @param image ImageComponentData|string
 --- @return mw.html
 local function getImageHtml( image )
-	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-image' )
-	root:wikitext( string.format( '[[File:%s|%dpx]]', image or PLACEHOLDER_IMAGE, IMAGE_SIZE ) )
+	if type( image ) == 'string' then
+		image = { src = image }
+	end
 
+	local imageData = util.validateAndConstruct( image, types.ImageComponentDataSchema )
+
+	local root = mw.html.create( 'div' )
+	root:addClass( 't-infobox-image-container' )
+
+	root:tag( 'div' )
+		:addClass( 't-infobox-image' )
+		:wikitext( string.format( '[[File:%s|%dpx|class=%s]]', imageData.src, imageData.size, imageData.class or '' ) )
+		:done()
+
+	if util.isNonEmptyString( imageData.overlay ) then
+		root:tag( 'div' )
+			:addClass( 't-infobox-image-overlay' )
+			:wikitext( imageData.overlay )
+			:done()
+	end
+
+	if util.isNonEmptyString( imageData.caption ) then
+		root:tag( 'div' )
+			:addClass( 't-infobox-image-caption' )
+			:wikitext( imageData.caption )
+			:done()
+	end
+
+	return root
+end
+
+--- @param images ImageComponentData[]
+--- @return mw.html
+local function getImagesHtml( images )
+	local root = mw.html.create( 'div' )
+	root:addClass( 't-infobox-images' )
+
+	local tabberData = {}
+
+	for i, image in ipairs( images ) do
+		if util.validateAndConstruct( image, types.ImageComponentDataSchema ) then
+			table.insert( tabberData, {
+				label = image.label or tostring( i ),
+				content = tostring( getImageHtml( image ) )
+			} )
+		end
+	end
+
+	if tabberData ~= {} then
+		root:node( tabber.render( tabberData ) )
+	end
+
+	return root
+end
+
+--- @param title string
+--- @return mw.html
+local function getHeaderTitleHtml( title )
+	local root = mw.html.create( 'div' )
+	root:addClass( 't-infobox-title' )
+	root:wikitext( title )
+	return root
+end
+
+--- @param subtitle string
+--- @return mw.html
+local function getHeaderSubtitleHtml( subtitle )
+	local root = mw.html.create( 'div' )
+	root:addClass( 't-infobox-subtitle' )
+	root:wikitext( subtitle )
 	return root
 end
 
 --- @param title string
 --- @param subtitle string
 --- @return mw.html
-local function getHeaderBottomHtml( title, subtitle )
+local function getHeaderContentHtml( title, subtitle )
 	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-header-bottom' )
-	root:tag( 'div' )
-		:addClass( 't-infobox-title' )
-		:wikitext( title )
-		:done()
+	root:addClass( 't-infobox-header-content' )
+	root:node( getHeaderTitleHtml( title ) )
 
 	if util.isNonEmptyString( subtitle ) then
-		root:tag( 'div' )
-			:addClass( 't-infobox-subtitle' )
-			:wikitext( subtitle )
-			:done()
+		root:node( getHeaderSubtitleHtml( subtitle ) )
 	end
 
 	return root
@@ -56,8 +113,13 @@ function p.getHtml( data )
 	local root = mw.html.create( 'div' )
 	root:addClass( 't-infobox-header' )
 
-	root:node( getImageHtml( header.image ) )
-	root:node( getHeaderBottomHtml( header.title, header.subtitle ) )
+	if type( header.images ) == 'table' then
+		root:node( getImagesHtml( header.images ) )
+	elseif type( header.image ) == 'table' then
+		root:node( getImageHtml( header.image ) )
+	end
+
+	root:node( getHeaderContentHtml( header.title, header.subtitle ) )
 
 	return root
 end

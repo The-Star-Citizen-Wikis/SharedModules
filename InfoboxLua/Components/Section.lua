@@ -1,60 +1,158 @@
 require( 'strict' )
 
 local tabber = mw.ext.tabber
+local details -- lazyload [[Module:Details]]
 local util = require( 'Module:InfoboxLua/Util' )
 local types = require( 'Module:InfoboxLua/Types' )
 local itemComponent = require( 'Module:InfoboxLua/Components/Item' )
 
 local p = {}
 
+--- @param label string
+--- @return mw.html
+local function getLabelHtml( label )
+	local html = mw.html.create( 'div' )
+	html:addClass( 't-infobox-section-label' )
+	html:wikitext( label )
+	return html
+end
 
 --- @param section SectionComponentData
 --- @return mw.html
 local function getItemsHtml( section )
-	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-section-items' )
+	local html = mw.html.create( 'div' )
+	html:addClass( 't-infobox-section-items' )
 
 	if section.columns and section.columns > 1 then
-		root:css( '--infobox-section-columns', tostring( section.columns ) )
+		html:css( '--infobox-section-columns', tostring( section.columns ) )
 	end
 	for _, itemData in ipairs( section.items ) do
 		local itemHtml = itemComponent.getHtml( itemData )
 		if itemHtml then
-			root:node( itemHtml )
+			html:node( itemHtml )
 		end
 	end
+
+	return html
+end
+
+--- @param section SectionComponentData
+--- @return mw.html|nil
+local function getSubSectionsHtml( section )
+	local tabberData = {}
+
+	for i, subSectionData in ipairs( section.sections ) do
+		local label = subSectionData.label
+		local contentHtml = p.getHtml( subSectionData, true )
+
+		if label and contentHtml then
+			table.insert( tabberData, {
+				label = label,
+				content = tostring( contentHtml )
+			} )
+		end
+	end
+
+	if tabberData == {} then
+		return nil
+	end
+
+	local root = mw.html.create( 'div' )
+	root:addClass( 't-infobox-section-subsections' )
+	root:node( tabber.render( tabberData ) )
 
 	return root
 end
 
 --- @param section SectionComponentData
---- @return mw.html
-local function getSubSectionsHtml( section )
-	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-section-subsections' )
+--- @return mw.html|nil
+local function getContentHtml( section )
+	local html = mw.html.create()
+	local isEmpty = true
 
-	local tabberData = {}
+	if util.isNonEmptyString( section.content ) then
+		isEmpty = false
+		html:wikitext( section.content )
+	end
 
-	for i, subSectionData in ipairs( section.sections ) do
-		local label = subSectionData.label
-
-		if not util.isNonEmptyString( label ) then
-			error( 'Label is required for subsection' )
+	if util.isNonEmptyTable( section.items ) then
+		local itemsHtml = getItemsHtml( section )
+		if itemsHtml then
+			isEmpty = false
+			html:node( itemsHtml )
 		end
-
-		local content = tostring( p.getHtml( subSectionData, true ) )
-
-		table.insert( tabberData, {
-			label = label,
-			content = content
-		} )
 	end
 
-	if tabberData ~= {} then
-		root:node( tabber.render( tabberData ) )
+	if util.isNonEmptyTable( section.sections ) then
+		local subSectionsHtml = getSubSectionsHtml( section )
+		if subSectionsHtml then
+			isEmpty = false
+			html:node( subSectionsHtml )
+		end
 	end
 
-	return root
+	return isEmpty and nil or html
+end
+
+--- @param class string|nil
+--- @return string
+local function getSectionClass( class )
+	return 't-infobox-section' .. (util.isNonEmptyString( class ) and ' ' .. class or '')
+end
+
+--- @param section SectionComponentData
+--- @param contentHtml mw.html|nil
+--- @param isSubSection boolean|nil
+--- @return mw.html
+local function getSimpleSectionHtml( section, contentHtml, isSubSection )
+	local html = mw.html.create( 'div' )
+	html:addClass( getSectionClass( section.class ) )
+
+	if isSubSection ~= true and util.isNonEmptyString( section.label ) then
+		html:node( getLabelHtml( section.label ) )
+	end
+
+	html:node( contentHtml )
+
+	return html
+end
+
+--- @param section SectionComponentData
+--- @return mw.html
+local function getCollapsibleButtonHtml( section )
+	local html = mw.html.create()
+
+	html:tag( 'div' )
+		:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
+		:done()
+		:node( getLabelHtml( section.label ) )
+
+	return html
+end
+
+--- @param section SectionComponentData
+--- @param contentHtml mw.html|nil
+--- @return mw.html
+local function getCollapsibleSectionHtml( section, contentHtml )
+	details = details or require( 'Module:Details' )
+
+	local html = mw.html.create()
+
+	local wikitext = details.getWikitext( {
+		details = {
+			content = tostring( contentHtml ),
+			class = getSectionClass( section.class ) .. ' t-infobox-collapsible',
+			open = not section.collapsed
+		},
+		summary = {
+			content = tostring( getCollapsibleButtonHtml( section ) ),
+			class = 't-infobox-collapsible-button'
+		}
+	} )
+
+	html:wikitext( wikitext )
+
+	return html
 end
 
 --- Renders an infobox section.
@@ -70,33 +168,14 @@ function p.getHtml( data, isSubSection )
 		return nil
 	end
 
-	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-section' )
+	local contentHtml = getContentHtml( section )
 
-	if util.isNonEmptyString( section.class ) then
-		root:addClass( section.class )
+	-- Subsection can't be collapsible for now
+	if section.collapsible == true and isSubSection ~= true then
+		return getCollapsibleSectionHtml( section, contentHtml )
 	end
 
-	if util.isNonEmptyString( section.content ) then
-		root:wikitext( section.content )
-	end
-
-	if util.isNonEmptyString( section.label ) and isSubSection ~= true then
-		root:tag( 'div' )
-			:addClass( 't-infobox-section-label' )
-			:wikitext( section.label )
-			:done()
-	end
-
-	if type( section.items ) == 'table' then
-		root:node( getItemsHtml( section ) )
-	end
-
-	if type( section.sections ) == 'table' then
-		root:node( getSubSectionsHtml( section ) )
-	end
-
-	return root
+	return getSimpleSectionHtml( section, contentHtml, isSubSection )
 end
 
 return p

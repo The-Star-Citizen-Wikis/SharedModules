@@ -1,7 +1,20 @@
 {
 	"title": "Gladius",
-	"subtitle": "Aegis Dynamics (AEGS)",
-	"image": "Gladius - Flying away from world through debris.jpg",
+	"subtitle": "[[Aegis Dynamics]] (AEGS)",
+	"images": [
+		{
+			"label": "Space",
+			"src": "Gladius - Flying away from world through debris.jpg",
+			"caption": "Flying away from world through debris",
+			"overlay": "Flight ready"
+		},
+		{
+			"label": "Landed",
+			"src": "Gladius_Hangar_3.1.png",
+			"caption": "Landed in hangar",
+			"overlay": "Alpha 3.1"
+		}
+	],
 	"sections": [
 		{
 			"columns": 2,
@@ -91,6 +104,7 @@
 		},
 		{
 			"label": "Specifications",
+			"collapsible": true,
 			"sections": [
 				{
 					"label": "Dimensions",
@@ -131,6 +145,30 @@
 				},
 				{
 					"label": "Fuel"
+				}
+			]
+		},
+		{
+			"label": "Lore",
+			"columns": 2,
+			"collapsible": true,
+			"collapsed": true,
+			"items": [
+				{
+					"label": "Released",
+					"content": "2579"
+				}
+			]
+		},
+		{
+			"label": "Development",
+			"columns": 2,
+			"collapsible": true,
+			"collapsed": true,
+			"items": [
+				{
+					"label": "Announced",
+					"content": "11 July 2014"
 				}
 			]
 		}
