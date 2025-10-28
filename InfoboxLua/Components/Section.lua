@@ -1,10 +1,10 @@
 require( 'strict' )
 
 local tabber = mw.ext.tabber
-local details -- lazyload [[Module:Details]]
 local util = require( 'Module:InfoboxLua/Util' )
 local types = require( 'Module:InfoboxLua/Types' )
 local itemComponent = require( 'Module:InfoboxLua/Components/Item' )
+local collapsibleComponent = require( 'Module:InfoboxLua/Components/Collapsible' )
 
 local p = {}
 
@@ -118,44 +118,19 @@ local function getSimpleSectionHtml( section, contentHtml, isSubSection )
 end
 
 --- @param section SectionComponentData
---- @return mw.html
-local function getCollapsibleButtonHtml( section )
-	local html = mw.html.create()
-
-	html:tag( 'div' )
-		:addClass( 'citizen-ui-icon mw-ui-icon-wikimedia-collapse' )
-		:done()
-		:node( getLabelHtml( section.label ) )
-
-	return html
-end
-
---- @param section SectionComponentData
 --- @param contentHtml mw.html|nil
 --- @return mw.html
 local function getCollapsibleSectionHtml( section, contentHtml )
-	details = details or require( 'Module:Details' )
-
-	local html = mw.html.create()
-
-	local wikitext = details.getWikitext( {
-		details = {
-			content = tostring( contentHtml ),
-			class = getSectionClass( section.class ) .. ' t-infobox-collapsible',
-			open = not section.collapsed
-		},
-		summary = {
-			content = tostring( getCollapsibleButtonHtml( section ) ),
-			class = 't-infobox-collapsible-button'
-		}
+	return collapsibleComponent.getHtml( {
+		summary = tostring( getLabelHtml( section.label ) ),
+		content = tostring( contentHtml ),
+		class = getSectionClass( section.class ) .. ' t-infobox-collapsible',
+		summaryClass = 't-infobox-collapsible-button',
+		open = not section.collapsed
 	} )
-
-	html:wikitext( wikitext )
-
-	return html
 end
 
---- Renders an infobox section.
+--- Returns the mw.html object of the infobox section component.
 ---
 --- @param data table
 --- @param isSubSection boolean|nil

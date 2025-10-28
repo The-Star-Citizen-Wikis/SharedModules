@@ -6,7 +6,7 @@ local types = require( 'Module:InfoboxLua/Types' )
 local p = {}
 
 
---- Renders an infobox item.
+--- Returns the mw.html object of the infobox item component.
 ---
 --- @param data table
 --- @return mw.html|nil

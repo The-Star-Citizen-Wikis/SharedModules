@@ -122,4 +122,20 @@ p.ItemCardComponentDataSchema = {
 	items = { type = 'table', required = false, default = nil }
 }
 
+--- @class CollapsibleComponentData @Represents the structure of a validated collapsible component.
+--- @field summary string The summary/button content displayed when collapsed.
+--- @field content string The content to be shown/hidden.
+--- @field class string|nil An additional HTML class for the details element. Optional.
+--- @field summaryClass string|nil An additional HTML class for the summary element. Optional.
+--- @field open boolean|nil Whether the collapsible starts open. Defaults to true. Optional.
+
+--- @type DataSchemaDefinition @The schema for CollapsibleComponent data.
+p.CollapsibleComponentDataSchema = {
+	summary = { type = 'string', required = true },
+	content = { type = 'string', required = true },
+	class = { type = 'string', required = false, default = nil },
+	summaryClass = { type = 'string', required = false, default = nil },
+	open = { type = 'boolean', required = false, default = true }
+}
+
 return p

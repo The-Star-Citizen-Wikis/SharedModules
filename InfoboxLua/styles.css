@@ -12,38 +12,6 @@
 	box-sizing: content-box;
 }
 
-.t-infobox-collapsible-button {
-	--size-icon: var(--font-size-small);
-	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
-
-	border-top: var(--border-subtle);
-	padding-block: var(--space-sm);
-	display: flex;
-	column-gap: var(--space-xs);
-	align-items: center;
-	list-style: none;
-	cursor: pointer;
-	user-select: none;
-	-webkit-user-select: none;
-}
-
-.t-infobox-collapsible-button .mw-ui-icon-wikimedia-collapse {
-	transition: var(--transition-hover);
-	transition-property: transform;
-	transform: var(--transform-rotate-collapse);
-}
-
-.t-infobox-collapsible[open]
-	.t-infobox-collapsible-button
-	.mw-ui-icon-wikimedia-collapse {
-	transform: none;
-}
-
-.t-infobox-collapsible-button .t-infobox-section-label {
-	border-top: 0;
-	padding-block: 0;
-}
-
 .t-infobox-header,
 .t-infobox-content > .t-infobox-section > :last-child {
 	padding-bottom: var(--space-md);
@@ -188,4 +156,37 @@
 
 .t-infobox-item:not(.t-infobox-item-card) + .t-infobox-item-card {
 	margin-top: var(--space-xs);
+}
+
+/* Collapsible Component */
+.t-infobox-collapsible-button {
+	--size-icon: var(--font-size-small);
+	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
+
+	border-top: var(--border-subtle);
+	padding-block: var(--space-sm);
+	display: flex;
+	column-gap: var(--space-xs);
+	align-items: center;
+	list-style: none;
+	cursor: pointer;
+	user-select: none;
+	-webkit-user-select: none;
+}
+
+.t-infobox-collapsible-button .mw-ui-icon-wikimedia-collapse {
+	transition: var(--transition-hover);
+	transition-property: transform;
+	transform: var(--transform-rotate-collapse);
+}
+
+.t-infobox-collapsible[open]
+	.t-infobox-collapsible-button
+	.mw-ui-icon-wikimedia-collapse {
+	transform: none;
+}
+
+.t-infobox-collapsible-button .t-infobox-section-label {
+	border-top: 0;
+	padding-block: 0;
 }

@@ -98,7 +98,7 @@ local function getHeaderContentHtml( title, subtitle )
 	return root
 end
 
---- Renders an infobox header.
+--- Returns the mw.html object of the infobox header component.
 ---
 --- @param data table
 --- @return mw.html|nil
