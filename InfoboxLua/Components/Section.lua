@@ -25,7 +25,9 @@ local function getItemsHtml( section )
 
 	if section.columns and section.columns > 1 then
 		html:css( '--infobox-section-columns', tostring( section.columns ) )
+		html:css( '--infobox-item-flex-direction', 'column' )
 	end
+
 	for _, itemData in ipairs( section.items ) do
 		local itemHtml = itemComponent.getHtml( itemData )
 		if itemHtml then

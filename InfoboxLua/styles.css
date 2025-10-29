@@ -103,7 +103,7 @@
 
 	display: grid;
 	grid-template-columns: var(--t-infobox-section-grid-template-columns);
-	gap: var(--space-sm);
+	gap: var(--space-xs) var(--space-sm);
 }
 
 .t-infobox-section-subsections {
@@ -153,6 +153,7 @@
 .t-infobox-item-label {
 	font-weight: var(--font-weight-medium);
 	color: var(--color-subtle);
+	flex-grow: 1;
 }
 
 .t-infobox-header-content,
@@ -162,8 +163,8 @@
 
 .t-infobox-item {
 	display: flex;
-	flex-direction: column;
-	gap: 2px;
+	flex-direction: var(--infobox-item-flex-direction);
+	gap: 2px var(--space-xxs);
 }
 
 /* Item Card Component */
