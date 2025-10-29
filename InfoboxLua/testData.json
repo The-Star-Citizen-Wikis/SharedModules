@@ -141,10 +141,12 @@
 					]
 				},
 				{
-					"label": "Speed"
+					"label": "Speed",
+					"content": "Wikitext for the speed section"
 				},
 				{
-					"label": "Fuel"
+					"label": "Fuel",
+					"content": "Wikitext for the fuel section"
 				}
 			]
 		},
