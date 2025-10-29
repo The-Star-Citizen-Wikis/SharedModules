@@ -5,13 +5,11 @@
 		{
 			"label": "Space",
 			"src": "Gladius - Flying away from world through debris.jpg",
-			"caption": "Flying away from world through debris",
 			"overlay": "Flight ready"
 		},
 		{
 			"label": "Landed",
 			"src": "Gladius_Hangar_3.1.png",
-			"caption": "Landed in hangar",
 			"overlay": "Alpha 3.1"
 		}
 	],

@@ -31,13 +31,6 @@ local function getImageHtml( image )
 			:done()
 	end
 
-	if util.isNonEmptyString( imageData.caption ) then
-		root:tag( 'div' )
-			:addClass( 't-infobox-image-caption' )
-			:wikitext( imageData.caption )
-			:done()
-	end
-
 	return root
 end
 

@@ -1,5 +1,7 @@
 .t-infobox {
+	--t-infobox-background: var(--color-surface-1);
 	--t-infobox-padding-inline: var(--space-md);
+	--t-infobox-image-gradient-transition-height: 2rem;
 
 	width: 100%;
 	margin-bottom: var(--space-md);
@@ -10,14 +12,18 @@
 .t-infobox-content {
 	border: var(--border-base);
 	border-radius: var(--border-radius-medium);
+	overflow-y: clip;
 }
 
 .t-infobox-content[open] {
-	background: var(--color-surface-1);
+	background: var(--t-infobox-background);
 }
 
 .t-infobox-header,
-.t-infobox-content > .t-infobox-collapsible-content > .t-infobox-section > :last-child {
+.t-infobox-content
+	> .t-infobox-collapsible-content
+	> .t-infobox-section
+	> :last-child {
 	padding-bottom: var(--space-md);
 }
 
@@ -63,6 +69,7 @@
 }
 
 .t-infobox-header-content {
+	position: relative;
 	margin-top: var(--space-sm);
 	font-weight: var(--font-weight-medium);
 }
@@ -186,6 +193,10 @@
 }
 
 /* Collapsible Component */
+.t-infobox-collapsible {
+	overflow-y: clip; /* For transition effects */
+}
+
 .t-infobox-collapsible-button {
 	--size-icon: var(--font-size-small);
 	--transform-rotate-collapse: rotate3d(1, 0, 0, 180deg);
@@ -217,3 +228,74 @@
 	border-top: 0;
 	padding-block: 0;
 }
+
+/*
+ * Star Citizen Tools styles
+ *
+ * These styles are additional styles that is used on the Star Citizen Wiki to
+ * match the look and feel of the Star Citizen Wiki.
+ */
+
+.t-infobox-title,
+.t-infobox-section-label {
+	font-weight: var(--font-weight-medium);
+}
+
+/*
+ * Start of image gradient effect
+ *
+ * Blend the image into the infobox with a gradient
+ * When the image is hovered, the gradient fades out and the header content move down to reveal the image
+ */
+.t-infobox-header > .t-infobox-images,
+.t-infobox-header > .t-infobox-image {
+	position: relative;
+}
+
+.t-infobox-header > .t-infobox-images::after,
+.t-infobox-header > .t-infobox-image::after {
+	content: '';
+	position: absolute;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	height: 50%;
+	background-image: linear-gradient(
+		to bottom,
+		transparent,
+		var(--t-infobox-background) 100%
+	);
+	pointer-events: none;
+	transition-property: opacity, transform;
+}
+
+.t-infobox-header > .t-infobox-images,
+.t-infobox-header > .t-infobox-image {
+	margin-block-end: calc(
+		var(--t-infobox-image-gradient-transition-height) * -1
+	);
+	transition-property: margin-block-end;
+}
+
+.t-infobox-header > .t-infobox-images,
+.t-infobox-header > .t-infobox-image,
+.t-infobox-header > .t-infobox-images::after,
+.t-infobox-header > .t-infobox-image::after {
+	transition-timing-function: var(--transition-timing-function-ease);
+	transition-duration: var(--transition-duration-medium);
+}
+
+.t-infobox-header > .t-infobox-images:hover,
+.t-infobox-header > .t-infobox-image:hover {
+	--t-infobox-image-transform: translateY(
+		var(--t-infobox-image-gradient-transition-height)
+	);
+	margin-block-end: 0;
+}
+
+.t-infobox-header > .t-infobox-images:hover::after,
+.t-infobox-header > .t-infobox-image:hover::after {
+	opacity: 0;
+	transform: var(--t-infobox-image-transform);
+}
+/* End of image gradient effect */

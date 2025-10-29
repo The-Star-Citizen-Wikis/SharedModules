@@ -91,7 +91,6 @@ end
 ```lua
 {
     src = string,                -- Required: Image filename
-    caption = string,            -- Optional: Image caption
     overlay = string,            -- Optional: Overlay text on image
     label = string,              -- Optional: Tab label (for multiple images)
     size = number,               -- Optional: Image size in pixels (default: 400)

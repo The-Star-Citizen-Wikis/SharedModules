@@ -44,7 +44,6 @@ local p = {}
 
 --- @class ImageComponentData @Represents the structure of a validated infobox image for ImageComponent.
 --- @field src string The source of the image.
---- @field caption string|nil The caption of the image. Optional.
 --- @field overlay string|nil The overlay wikitext of the image. Optional.
 --- @field label string|nil The label text for the image. Only used for tabber. Optional.
 --- @field size number|nil The size of the image. Optional.
@@ -53,7 +52,6 @@ local p = {}
 --- @type DataSchemaDefinition @The schema for ImageComponent data.
 p.ImageComponentDataSchema = {
 	src = { type = 'string', required = true },
-	caption = { type = 'string', required = false, default = nil },
 	overlay = { type = 'string', required = false, default = nil },
 	label = { type = 'string', required = false, default = nil },
 	size = { type = 'number', required = false, default = 400 },
