@@ -124,8 +124,7 @@ local function getCollapsibleSectionHtml( section, contentHtml )
 	return collapsibleComponent.getHtml( {
 		summary = tostring( getLabelHtml( section.label ) ),
 		content = tostring( contentHtml ),
-		class = getSectionClass( section.class ) .. ' t-infobox-collapsible',
-		summaryClass = 't-infobox-collapsible-button',
+		class = getSectionClass( section.class ),
 		open = not section.collapsed
 	} )
 end

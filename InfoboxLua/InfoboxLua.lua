@@ -3,16 +3,19 @@ require( 'strict' )
 local PLACEHOLDER_IMAGE = 'Placeholderv2.png'
 local PLACEHOLDER_IMAGE_SIZE = 400
 local INFOBOX_WIDTH = 400
+local SUMMARY_TEXT = "'''Quick facts:''' %s"
 
 local headerComponent = require( 'Module:InfoboxLua/Components/Header' )
 local sectionComponent = require( 'Module:InfoboxLua/Components/Section' )
+local collapsibleComponent = require( 'Module:InfoboxLua/Components/Collapsible' )
 
 --- @class InfoboxLuaData
 --- @field class string|nil An additional HTML class for the infobox's container. Optional.
 --- @field css table<string, string>|nil Additional CSS rules for the infobox. Optional.
+--- @field summary string|nil The summary of the infobox. Optional.
 --- @field title string The title of the infobox.
 --- @field subtitle string|nil The subtitle of the infobox. Optional.
---- @field image ImageComponentData|string|nil The image of the infobox. Optional.
+--- @field image ImageComponentData|string|nil The main image of the infobox. Optional.
 --- @field images table<ImageComponentData>|nil The images of the infobox. Optional.
 --- @field sections table<SectionComponentData>|nil The sections of the infobox. Optional.
 
@@ -63,19 +66,24 @@ end
 --- @param data InfoboxLuaData
 --- @return mw.html
 local function getContentHtml( data )
-	local root = mw.html.create( 'div' )
-	root:addClass( 't-infobox-content' )
+	local contentHtml = mw.html.create()
 
-	root:node( headerComponent.getHtml( getHeaderData( data ) ) )
+	contentHtml:node( headerComponent.getHtml( getHeaderData( data ) ) )
 
 	for _, section in ipairs( data.sections ) do
 		local sectionHtml = sectionComponent.getHtml( section )
 		if sectionHtml then
-			root:node( sectionHtml )
+			contentHtml:node( sectionHtml )
 		end
 	end
 
-	return root
+	return collapsibleComponent.getHtml( {
+		summary = data.summary or string.format( SUMMARY_TEXT, data.title ),
+		content = tostring( contentHtml ),
+		class = 't-infobox-content',
+		summaryClass = 't-infobox-content-collapsible-button',
+		open = true
+	} )
 end
 
 --- @param data InfoboxLuaData

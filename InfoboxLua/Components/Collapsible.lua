@@ -46,12 +46,12 @@ function p.getHtml( data )
 	local wikitext = details.getWikitext( {
 		details = {
 			content = tostring( getContentHtml( collapsible.content ) ),
-			class = collapsible.class or '',
+			class = 't-infobox-collapsible ' .. (collapsible.class or ''),
 			open = collapsible.open ~= false -- default to open
 		},
 		summary = {
 			content = tostring( getButtonHtml( collapsible.summary ) ),
-			class = collapsible.summaryClass or ''
+			class = 't-infobox-collapsible-button ' .. (collapsible.summaryClass or ''),
 		}
 	} )
 
