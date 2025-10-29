@@ -166,6 +166,18 @@
 				{
 					"label": "Announced",
 					"content": "11 July 2014"
+				},
+				{
+					"label": "UUID",
+					"content": "b6b59889-7226-458e-a6b0-1c9392128a3c"
+				},
+				{
+					"label": "Class name",
+					"content": "AEGS_Gladius"
+				},
+				{
+					"label": "Game version",
+					"content": "4.3.2-LIVE.10452200"
 				}
 			]
 		}

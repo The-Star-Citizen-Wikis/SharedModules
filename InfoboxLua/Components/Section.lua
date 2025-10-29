@@ -26,6 +26,8 @@ local function getItemsHtml( section )
 	if section.columns and section.columns > 1 then
 		html:css( '--infobox-section-columns', tostring( section.columns ) )
 		html:css( '--infobox-item-flex-direction', 'column' )
+	else
+		html:addClass( 't-infobox-section-items--single-col' )
 	end
 
 	for _, itemData in ipairs( section.items ) do
