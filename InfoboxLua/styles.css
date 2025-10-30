@@ -257,12 +257,12 @@
  * When the image is hovered, the gradient fades out and the header content move down to reveal the image
  */
 .t-infobox-header > .t-infobox-images,
-.t-infobox-header > .t-infobox-image {
+.t-infobox-header > .t-infobox-image-container {
 	position: relative;
 }
 
 .t-infobox-header > .t-infobox-images::after,
-.t-infobox-header > .t-infobox-image::after {
+.t-infobox-header > .t-infobox-image-container::after {
 	content: '';
 	position: absolute;
 	left: 0;
@@ -279,7 +279,7 @@
 }
 
 .t-infobox-header > .t-infobox-images,
-.t-infobox-header > .t-infobox-image {
+.t-infobox-header > .t-infobox-image-container {
 	margin-block-end: calc(
 		var(--t-infobox-image-gradient-transition-height) * -1
 	);
@@ -287,15 +287,15 @@
 }
 
 .t-infobox-header > .t-infobox-images,
-.t-infobox-header > .t-infobox-image,
+.t-infobox-header > .t-infobox-image-container,
 .t-infobox-header > .t-infobox-images::after,
-.t-infobox-header > .t-infobox-image::after {
+.t-infobox-header > .t-infobox-image-container::after {
 	transition-timing-function: var(--transition-timing-function-ease);
 	transition-duration: var(--transition-duration-medium);
 }
 
 .t-infobox-header > .t-infobox-images:hover,
-.t-infobox-header > .t-infobox-image:hover {
+.t-infobox-header > .t-infobox-image-container:hover {
 	--t-infobox-image-transform: translateY(
 		var(--t-infobox-image-gradient-transition-height)
 	);
@@ -303,7 +303,7 @@
 }
 
 .t-infobox-header > .t-infobox-images:hover::after,
-.t-infobox-header > .t-infobox-image:hover::after {
+.t-infobox-header > .t-infobox-image-container:hover::after {
 	opacity: 0;
 	transform: var(--t-infobox-image-transform);
 }
