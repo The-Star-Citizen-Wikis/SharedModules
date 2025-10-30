@@ -1,0 +1,15 @@
+.t-table__cell--align-start {
+	text-align: start;
+}
+
+.t-table__cell--align-center {
+	text-align: center;
+}
+
+.t-table__cell--align-end {
+	text-align: end;
+}
+
+.t-table__cell--align-number {
+	text-align: right;
+}
