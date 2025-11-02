@@ -236,7 +236,7 @@ function p._main( args )
 		local starCitizenWikiConfig = {
 			name = 'StarCitizenWikiAPI',
 			endpoint = 'v2/items/%s',
-			params = { locale = 'en_EN' },
+			params = { locale = 'en_EN', include = 'related_items' },
 			responseDataPath = 'data'
 		}
 		initialApiData = p.fetchApiData( 'starCitizenWiki', { starCitizenWiki = starCitizenWikiConfig }, args.uuid )
@@ -246,8 +246,20 @@ function p._main( args )
 	local typeModuleName = determineTypeModule( args, initialApiData )
 	local typeModule = require( 'Module:Entity/' .. typeModuleName )
 
-	-- Delegate everything to the type module
-	return typeModule.render( args, p )
+	-- Determine output mode (default to 'infobox' for backward compatibility)
+	local mode = args.mode or 'infobox'
+
+	-- Route to appropriate renderer based on mode
+	if mode == 'related_entities' then
+		if typeModule.renderRelatedEntities then
+			return typeModule.renderRelatedEntities( args, p )
+		else
+			return '<span class="error">Error: RelatedEntities mode not supported for this entity type</span>'
+		end
+	else
+		-- Default to infobox mode
+		return typeModule.render( args, p )
+	end
 end
 
 --- Frame entry point

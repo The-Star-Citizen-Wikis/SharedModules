@@ -47,7 +47,7 @@ p.API_CONFIGS = {
 	starCitizenWiki = {
 		name = 'StarCitizenWikiAPI',
 		endpoint = 'v2/items/%s',
-		params = { locale = 'en_EN' },
+		params = { locale = 'en_EN', include = 'related_items' },
 		responseDataPath = 'data'
 	}
 }
@@ -128,9 +128,14 @@ local function buildMainSection( paramValues )
 	end
 
 	if paramValues.volume then
+		local scuModule = require( 'Module:SCU' )
+		local formattedVolume = scuModule.convert( paramValues.volume, 'µSCU', {
+			includeUnit = true,
+			useSeparators = true
+		} )
 		table.insert( items, {
 			label = 'Volume',
-			content = tostring( paramValues.volume )
+			content = formattedVolume
 		} )
 	end
 
@@ -355,6 +360,18 @@ local function buildEngineeringSection( apiData )
 
 	local subsections = {}
 
+	-- Add durability subsection if data exists
+	if apiData.durability then
+		local durabilityItems = buildDurabilityItems( apiData.durability )
+		if durabilityItems and #durabilityItems > 0 then
+			table.insert( subsections, {
+				label = 'Durability',
+				columns = 2,
+				items = durabilityItems
+			} )
+		end
+	end
+
 	-- Add heat subsection if data exists
 	if apiData.heat then
 		local heatItems = buildHeatItems( apiData.heat )
@@ -387,18 +404,6 @@ local function buildEngineeringSection( apiData )
 				label = 'Distortion',
 				columns = 2,
 				items = distortionItems
-			} )
-		end
-	end
-
-	-- Add durability subsection if data exists
-	if apiData.durability then
-		local durabilityItems = buildDurabilityItems( apiData.durability )
-		if durabilityItems and #durabilityItems > 0 then
-			table.insert( subsections, {
-				label = 'Durability',
-				columns = 2,
-				items = durabilityItems
 			} )
 		end
 	end
@@ -529,6 +534,83 @@ function p.render( args, entityModule )
 		subtitle = manufacturerDisplay,
 		sections = sections
 	} )
+end
+
+--- Resolves a UUID redirect to its target page
+--- @param uuid string The UUID to resolve
+--- @return string|nil The page name or nil if not a redirect
+local function getRedirectPage( uuid )
+	if not uuid then
+		return nil
+	end
+	local title = mw.title.new( 'UUID:' .. uuid )
+	if title and title.isRedirect then
+		local target = title.redirectTarget
+		if target then
+			return target.text
+		end
+	end
+	return nil
+end
+
+--- Renders related entities (variants and set items)
+--- @param args table Template arguments
+--- @param entityModule table Reference to Entity module for utilities
+--- @return string HTML output
+function p.renderRelatedEntities( args, entityModule )
+	-- Fetch API data with related_items included
+	local apiCache = entityModule.getApiDataForAllApis( p.API_CONFIGS, args )
+	local apiData = apiCache.starCitizenWiki
+
+	if not apiData then
+		return '<span class="error">Error: Unable to fetch item data</span>'
+	end
+
+	local relatedItems = apiData.related_items
+	if not relatedItems then
+		return '<span class="error">Error: No related items data available</span>'
+	end
+
+	-- Build HTML using mw.html
+	local html = mw.html.create( 'div' )
+
+	-- Add variants section
+	if relatedItems.variant_items and #relatedItems.variant_items > 0 then
+		html:tag( 'h3' ):wikitext( 'Variants' )
+		local variantsList = html:tag( 'ul' )
+		for _, variant in ipairs( relatedItems.variant_items ) do
+			if variant.uuid and variant.name then
+				local pageName = getRedirectPage( variant.uuid )
+				local content
+				if pageName then
+					content = string.format( '[[%s|%s]]', pageName, variant.name )
+				else
+					content = variant.name
+				end
+				variantsList:tag( 'li' ):wikitext( content )
+			end
+		end
+	end
+
+	-- Add set items section
+	if relatedItems.set_items and #relatedItems.set_items > 0 then
+		html:tag( 'h3' ):wikitext( 'Set Items' )
+		local setList = html:tag( 'ul' )
+		for _, setItem in ipairs( relatedItems.set_items ) do
+			if setItem.uuid and setItem.name then
+				local pageName = getRedirectPage( setItem.uuid )
+				local content
+				if pageName then
+					content = string.format( '[[%s|%s]]', pageName, setItem.name )
+				else
+					content = setItem.name
+				end
+				setList:tag( 'li' ):wikitext( content )
+			end
+		end
+	end
+
+	return tostring( html )
 end
 
 return p
