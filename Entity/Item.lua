@@ -536,28 +536,87 @@ function p.render( args, entityModule )
 	} )
 end
 
---- Resolves a UUID redirect to its target page
---- @param uuid string The UUID to resolve
---- @return string|nil The page name or nil if not a redirect
-local function getRedirectPage( uuid )
-	if not uuid then
-		return nil
+--- Fetches SMW properties for a list of UUIDs
+--- @param uuids table A list of UUIDs
+--- @return table A map of UUID to {name, image, pageTitle}
+local function getPropertiesForUuids( uuids )
+	if not uuids or #uuids == 0 then
+		return {}
 	end
-	local title = mw.title.new( 'UUID:' .. uuid )
-	if title and title.isRedirect then
-		local target = title.redirectTarget
-		if target then
-			return target.text
-		end
+
+	local query = {
+		string.format( '[[UUID::%s]]', table.concat( uuids, '||' ) ),
+		'?#-=page',
+		'?UUID#-=uuid',
+		'?Name#-=name',
+		'?Page Image#-=image',
+		limit = #uuids
+	}
+
+	local success, result = pcall( mw.smw.ask, query )
+
+	if not success or not result then
+		return {}
 	end
-	return nil
+
+	local properties = {}
+	for _, pageData in ipairs( result ) do
+		properties[pageData.uuid] = {
+			page = pageData.page,
+			name = pageData.name,
+			image = pageData.image,
+		}
+	end
+
+	return properties
+end
+
+--- Builds a gallery section for related items
+--- @param title string Section title
+--- @param items table List of related items from API
+--- @param itemsData table Map of SMW properties by UUID
+--- @param frame table The frame object for wikitext rendering
+--- @return string Wikitext for the gallery
+local function buildGallery(title, items, itemsData, frame)
+    if not items or #items == 0 then
+        return ''
+    end
+
+    local galleryLines = {}
+    for _, item in ipairs(items) do
+        local itemData = itemsData[item.uuid]
+        if itemData then
+            table.insert(galleryLines, string.format(
+                '%s|[[%s|%s]]',
+                itemData.image, itemData.page, itemData.name
+            ))
+        end
+    end
+
+    if #galleryLines == 0 then
+        return ''
+    end
+
+    local galleryWikitext = table.concat(galleryLines, '\n')
+    local gallery = frame:extensionTag{
+        name = 'gallery',
+        args = {
+            widths = '120px',
+            heights = '120px',
+            perrow = 6,
+        },
+        content = galleryWikitext
+    }
+
+    return string.format('<h2>%s</h2>\n%s', title, gallery)
 end
 
 --- Renders related entities (variants and set items)
 --- @param args table Template arguments
 --- @param entityModule table Reference to Entity module for utilities
+--- @param frame table The frame object for wikitext rendering
 --- @return string HTML output
-function p.renderRelatedEntities( args, entityModule )
+function p.renderRelatedEntities( args, entityModule, frame )
 	-- Fetch API data with related_items included
 	local apiCache = entityModule.getApiDataForAllApis( p.API_CONFIGS, args )
 	local apiData = apiCache.starCitizenWiki
@@ -568,49 +627,41 @@ function p.renderRelatedEntities( args, entityModule )
 
 	local relatedItems = apiData.related_items
 	if not relatedItems then
-		return '<span class="error">Error: No related items data available</span>'
+		return '' -- Return empty string if no related items data
 	end
 
-	-- Build HTML using mw.html
-	local html = mw.html.create( 'div' )
-
-	-- Add variants section
-	if relatedItems.variant_items and #relatedItems.variant_items > 0 then
-		html:tag( 'h3' ):wikitext( 'Variants' )
-		local variantsList = html:tag( 'ul' )
-		for _, variant in ipairs( relatedItems.variant_items ) do
-			if variant.uuid and variant.name then
-				local pageName = getRedirectPage( variant.uuid )
-				local content
-				if pageName then
-					content = string.format( '[[%s|%s]]', pageName, variant.name )
-				else
-					content = variant.name
-				end
-				variantsList:tag( 'li' ):wikitext( content )
+	-- Aggregate all UUIDs for debugging
+	local allUuids = {}
+	if relatedItems.variant_items then
+		for _, item in ipairs( relatedItems.variant_items ) do
+			if item.uuid then
+				table.insert( allUuids, item.uuid )
+			end
+		end
+	end
+	if relatedItems.set_items then
+		for _, item in ipairs( relatedItems.set_items ) do
+			if item.uuid then
+				table.insert( allUuids, item.uuid )
 			end
 		end
 	end
 
-	-- Add set items section
-	if relatedItems.set_items and #relatedItems.set_items > 0 then
-		html:tag( 'h3' ):wikitext( 'Set Items' )
-		local setList = html:tag( 'ul' )
-		for _, setItem in ipairs( relatedItems.set_items ) do
-			if setItem.uuid and setItem.name then
-				local pageName = getRedirectPage( setItem.uuid )
-				local content
-				if pageName then
-					content = string.format( '[[%s|%s]]', pageName, setItem.name )
-				else
-					content = setItem.name
-				end
-				setList:tag( 'li' ):wikitext( content )
-			end
-		end
+	if #allUuids == 0 then
+		return ''
 	end
 
-	return tostring( html )
+	local itemsData = getPropertiesForUuids( allUuids )
+
+	local output = {}
+	if relatedItems.variant_items then
+		table.insert(output, buildGallery('Variants', relatedItems.variant_items, itemsData, frame))
+	end
+	if relatedItems.set_items then
+		table.insert(output, buildGallery('Items in set', relatedItems.set_items, itemsData, frame))
+	end
+
+	return table.concat(output, '\n')
 end
 
 return p

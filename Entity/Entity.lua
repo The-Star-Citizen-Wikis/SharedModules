@@ -226,7 +226,7 @@ end
 --- Main entry point
 --- @param args table Arguments from frame
 --- @return string Wikitext output
-function p._main( args )
+function p._main( args, frame )
 	libraryUtil.checkType( '_main', 1, args, 'table' )
 
 	-- Phase 1: Initial API fetch to determine type (if UUID provided)
@@ -252,7 +252,7 @@ function p._main( args )
 	-- Route to appropriate renderer based on mode
 	if mode == 'related_entities' then
 		if typeModule.renderRelatedEntities then
-			return typeModule.renderRelatedEntities( args, p )
+			return typeModule.renderRelatedEntities( args, p, frame )
 		else
 			return '<span class="error">Error: RelatedEntities mode not supported for this entity type</span>'
 		end
@@ -267,7 +267,7 @@ end
 --- @return string Wikitext output
 function p.main( frame )
 	local args = require( 'Module:Arguments' ).getArgs( frame )
-	return p._main( args )
+	return p._main( args, frame )
 end
 
 return p
