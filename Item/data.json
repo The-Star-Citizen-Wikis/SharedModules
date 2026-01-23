@@ -181,6 +181,8 @@
 				"Char_Armor_Arms.Light",
 				"Char_Armor_Arms.Medium",
 				"Char_Armor_Backpack",
+				"Char_Armor_Backpack.LightArmor",
+				"Char_Armor_Backpack.Medium",
 				"Char_Armor_Backpack.Personal",
 				"Char_Armor_Helmet",
 				"Char_Armor_Helmet.Heavy",
@@ -262,6 +264,7 @@
 				"Turret.GunTurret",
 				"Turret.NoseMounted",
 				"Turret.PDC",
+				"WeaponGun.NoseMounted",
 				"WeaponGun.Gun",
 				"WeaponGun.Rocket",
 				"WeaponMining.Gun"
