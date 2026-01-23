@@ -458,6 +458,36 @@ function methodtable.getInfobox( self )
 		)
 	end
 
+	local function getCareer()
+		local career = smwData[t( 'SMW_Career' )]
+		if career == nil then return end
+		-- Capitalising career string
+		career = (
+			string.upper(string.sub(career,1,1))
+			..
+			string.sub(career,2)
+			)
+		-- appending "-role" to "Multi"
+		if career == "Multi" and career ~= "Multi-role" then
+				career = career.."-role"
+		end
+		return string.format(
+			'[[:Category:%s|%s]]',
+			string.format( t( 'category_career' ), career ),
+			career
+		)
+	end
+	
+	local function getRole()
+		local role = smwData[t( 'SMW_Role' )]
+		if role == nil then return end
+		--format ships with multiple roles, e.g. "Starter / Pathfinder"
+		if role[2] ~= nil then
+			role = role[1].." / "..role[2]
+		end
+		return role
+	end
+
 	local function getSeries()
 		local series = smwData[t( 'SMW_Series' )]
 		if series == nil then return end
@@ -797,12 +827,16 @@ function methodtable.getInfobox( self )
 	} )
 
 
-	--- Role, Size, Series and Loaners
+	--- Career, Role, Size, Series and Loaners
 	infobox:renderSection( {
 		content = {
 			infobox:renderItem( {
+				label = t( 'label_Career' ),
+				data = getCareer(),
+			} ),
+			infobox:renderItem( {
 				label = t( 'label_Role' ),
-				data = infobox.tableToCommaList( smwData[t( 'SMW_Role' )] ),
+				data = getRole(),
 			} ),
 			infobox:renderItem( {
 				label = t( 'label_Size' ),
@@ -828,7 +862,7 @@ function methodtable.getInfobox( self )
 	--- Capacity
 	infobox:renderSection( {
 		title = t( 'label_Capacity' ),
-		col = 3,
+		col = 2,
 		content = {
 			infobox:renderItem( {
 				label = t( 'label_Crew' ),
@@ -960,7 +994,8 @@ function methodtable.getInfobox( self )
 		}
 	} )
 
-	return infobox:renderInfobox( nil, smwData[t( 'SMW_Name' )] )
+	-- Always load FloatingUI for now
+	return floatingui.load( self.currentFrame ) .. infobox:renderInfobox( nil, smwData[t( 'SMW_Name' )] )
 end
 
 --- Set the frame and load args
@@ -1026,6 +1061,14 @@ function methodtable.setCategories( self )
 			self.categories,
 			string.format( '[[Category:%s]]',
 				string.format( t( 'category_series' ), self.smwData[t( 'SMW_Series' )] ) )
+		)
+	end
+
+	if self.smwData[t( 'SMW_Career' )] ~= nil then
+		table.insert(
+			self.categories,
+			string.format( '[[Category:%s]]',
+				string.format( t( 'category_career' ), self.smwData[t( 'SMW_Career' )] ) )
 		)
 	end
 

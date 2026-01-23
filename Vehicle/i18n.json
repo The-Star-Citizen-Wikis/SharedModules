@@ -146,7 +146,6 @@
 			},
 			"97648869-5fa5-42da-b804-4d9314289539"
 		],
-
 		[
 			"ARG_ProductionState",
 			{
@@ -189,6 +188,28 @@
 			{
 				"en": "Active for [[Star Citizen Alpha 3.7.0|Alpha 3.7]]",
 				"de": "Verfügbar seit [[Star Citizen Alpha 3.7.0|Alpha 3.7]]"
+			}
+		],
+		[
+			"ARG_Career",
+			{
+				"de": "karriere",
+				"en": "career"
+			},
+			"string",
+			{
+				"de": "Karriere",
+				"en": "Career"
+			},
+			false,
+			true,
+			{
+				"en": "The Career of the ship/vehicle",
+				"de": "Die Karriere des Schiffes/Fahrzeugs"
+			},
+			{
+				"en": "Combat",
+				"de": "Kampf"
 			}
 		],
 		[

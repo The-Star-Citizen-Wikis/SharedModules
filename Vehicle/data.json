@@ -44,6 +44,14 @@
 			]
 		},
 		{
+			"SMW_Career": [
+				"API_type",
+				"ARG_Career"
+			],
+			"type": "multilingual_text",
+			"smw_format": "#-"
+		},
+		{
 			"SMW_Role": [
 				"API_foci",
 				"ARG_Role"
