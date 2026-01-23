@@ -156,7 +156,7 @@
 		},
 		{
 			"label": "Wiki API",
-			"format": "https://api.star-citizen.wiki/api/v2/items/%s",
+			"format": "https://api.star-citizen.wiki/items/%s",
 			"data": "SMW_UUID"
 		}
 	],
