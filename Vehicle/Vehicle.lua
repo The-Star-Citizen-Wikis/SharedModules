@@ -16,15 +16,15 @@ local BOUNDS = {
 		max = 34
 	},
 	RollRate = {
-		min = 15,
-		max = 234
+		min = 12,
+		max = 235
 	},
 	PitchRate = {
 		min = 7,
 		max = 97
 	},
 	YawRate = {
-		min = 8,
+		min = 7,
 		max = 97
 	}
 }
