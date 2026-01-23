@@ -408,7 +408,7 @@
 		},
 		{
 			"label": "Wiki API",
-			"format": "https://api.star-citizen.wiki/api/v2/vehicles/%s?include=hardpoints",
+			"format": "https://api.star-citizen.wiki/vehicles/%s",
 			"data": "SMW_UUID"
 		}
 	],
