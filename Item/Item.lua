@@ -115,7 +115,7 @@ function methodtable.getApiDataForCurrentPage( self )
 
 	local success, json = pcall( mw.text.jsonDecode, mw.ext.Apiunto.fetch(
 		'StarCitizenWikiAPI',
-		'v2/items/' .. query,
+		'items/' .. query,
 		{
 			include = data.includes,
 			locale = config.api_locale
