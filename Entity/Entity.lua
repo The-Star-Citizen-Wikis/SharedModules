@@ -235,7 +235,7 @@ function p._main( args, frame )
 		-- Use minimal API config to fetch initial data
 		local starCitizenWikiConfig = {
 			name = 'StarCitizenWikiAPI',
-			endpoint = 'v2/items/%s',
+			endpoint = 'items/%s',
 			params = { locale = 'en_EN', include = 'related_items' },
 			responseDataPath = 'data'
 		}
