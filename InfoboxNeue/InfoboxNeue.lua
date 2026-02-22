@@ -472,7 +472,7 @@ local function renderItemLinkElements( html, data )
 		html:addClass( 'infobox__itemButton' )
 		html:tag( 'div' )
 			:addClass( 'infobox__itemButtonLink' )
-			:wikitext( string.format( '[[%s]]', data.link ) )
+			:wikitext( string.format( '[[%s]]', data.page ) )
 			:done()
 	end
 end
